@@ -36,6 +36,12 @@ public Gdk.Window GdkWindow {
 	}
 }
 
+public void AddAccelerator (string accel_signal, AccelGroup accel_group, AccelKey accel_key)
+{
+	this.AddAccelerator (accel_signal, accel_group, (uint) accel_key.Key, accel_key.AccelMods, accel_key.AccelFlags);
+
+}
+
 [DllImport("gtksharpglue")]
 static extern int gtksharp_gtk_widget_style_get_int (IntPtr raw, string name);
 

@@ -1,5 +1,11 @@
 2004-06-07  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
+	* gtk/Widget.custom: Add the AddAccelerator method back which got
+	removed by accident during the last merge.
+	* sample/CustomNotebook.cs: New sample showing of a custom Notebook.
+
+2004-06-07  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
 	* *: Merge with HEAD.
 
 2004-06-07  Peter Williams  <peter@newton.cx>
