@@ -1,5 +1,10 @@
 2004-10-05  Todd Berman  <tberman@off.net>
 
+	* gtk/ComboBox.custom: Add SetCellDataFunc to allow you to set a
+	CellLayoutDataFunc on a ComboBox.
+
+2004-10-05  Todd Berman  <tberman@off.net>
+
 	* gtk/ComboBox.custom: new file, to allow get/set access to 'model'.
 	* gtk/Makefile.am: add ComboBox.custom.
 
