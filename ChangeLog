@@ -1,3 +1,13 @@
+2005-01-28  Mike Kestner  <mkestner@novell.com>
+
+	* generator/ReturnValue.cs : use ToNativeReturnType for ToNativeType
+	instead of MarshalType.
+	* generator/Signal.cs : deal with boxed return values. beef up return
+	handling in the default handler generation code.
+	* generator/SignalHandler.cs : use ToNative return types for native 
+	callbacks. Remove redundant casting/conversion in callback impl.
+	[Fixes #71899]
+
 2005-01-26  Mike Kestner  <mkestner@novell.com>
 
 	* glib/Value.cs : add a private debugging DllImport for ref_counts
