@@ -71,7 +71,7 @@ namespace GLib {
 		private delegate void DestroyNotify (IntPtr data);
 
 		[DllImport("libgobject-2.0-0.dll")]
-		private static extern void g_object_set_data (IntPtr obj, string name, IntPtr data, DestroyNotify destroy);
+		private static extern void g_object_set_data_full (IntPtr obj, string name, IntPtr data, DestroyNotify destroy);
 		
 		private void AddDestroyNotify (GLib.Object o) {
 			// This is a bit of an ugly hack. There is no
@@ -82,7 +82,7 @@ namespace GLib {
 			string name = String.Format ("_GtkSharpDelegateWrapper_{0}", notify_count);
 			DestroyNotify destroy = new DestroyNotify (this.OnDestroy);
 
-			g_object_set_data (o.Handle, name, IntPtr.Zero, destroy);
+			g_object_set_data_full (o.Handle, name, IntPtr.Zero, destroy);
 			lock (typeof (DelegateWrapper)) {
 				instances[this] = destroy;
 				notify_count++;
