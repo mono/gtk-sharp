@@ -1,3 +1,136 @@
+2004-05-23  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* *: Merge changes from HEAD again.
+
+2004-05-22  Radek Doulik  <rodo@ximian.com>
+
+	* gtk/TreeView.custom(GetPathAtPos): change Gtk.TreeViewColumn
+	column parameter to out[put] as gtk_tree_view_get_path_at_pos
+	returns column address to column parameter
+	(GetPathAtPos): use GLib.Object.GetObject so that we don't create
+	new TreeViewColumn object duplicates
+
+2004-05-19  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Container.custom : add CallbackInvoke and use it in OnForall.
+
+2004-05-19  Mike Kestner  <mkestner@ximian.com>
+
+	* generator/Makefile.am : add TimeTGen.cs 
+	* generator/SymbolTable.cs : use new TimeTGen.
+	* generator/StringGen.cs : s/GLibSharp/GLib
+	* generator/TimeTGen.cs : generatable to marshal time_t.
+	* glib/time_t_CustomMarshaler.cs : kill
+	* glib/Makefile.am : remove time_t_CustomMarshaler.cs
+	* glib/Markup.cs : s/GLibSharp/GLib
+	* glib/Marshaller.cs : move to GLib namespace. Add methods to
+	marshal time_t to and from DateTime.
+	* glib/glue/time_t.c : kill
+	* glib/glue/Makefile.am : remove time_t.c
+	* glib/glue/makefile.win32 : remove time_t.o
+	* gnome/*.custom : use GLib.Marshaller instead of the time_t custom
+	marshaler.
+	* gtk/*.custom : s/GLibSharp/GLib
+
+2004-05-18  Zoltan Varga  <vargaz@freemail.hu>
+
+	* glib/time_t_CustomMarshaler.cs: Fix custom marshalling after runtime
+	changes.
+
+2004-05-18  Vladimir Vukicevic  <vladimir@pobox.com
+
+	* gnome/Print.custom: Cast .Pixels usage to a (byte *)
+
+2004-05-17  Vladimir Vukicevic  <vladimir@pobox.com>
+
+	* gdk/Pixbuf.custom: Changed Pixbuf.Pixels to return an IntPtr instead
+	of a byte * -- anyone who needs a byte * can do the cast in an unsafe
+	context already.
+
+2004-05-18  Todd Berman  <tberman@sevenl.net>
+
+	* samples/Scribble.cs: Im bored, you can erase, etc
+
+2004-05-18  Mike Kestner  <mkestner@ximian.com>
+
+	* glib/MissingIntPtrCtorException.cs : new exception to throw if 
+	unable to access an IntPtr ctor on a GLib.Object subclass.  We need
+	an IntPtr ctor to be able to wrap arbitrary object handles.
+	* glib/Object.cs : have NativeType call LookupGType.
+	* glib/ObjectManager.cs : throw the new exception in a try/catch.
+
+2004-05-17  Mike Kestner  <mkestner@ximian.com>
+
+	* generator/ObjectGen.cs : Generate a .cctor that calls the assembly's
+	ObjectManager.Initialize method if the class will need to be registered
+	with GLib.ObjectManager.  Enhance the Initialize method to allow 
+	multiple invocations.
+
+2004-05-17  Mike Kestner  <mkestner@ximian.com>
+
+	* generator/SignalHandler.cs : fix some broken/redundant generation in
+	the Object/Struct wrapping for sig params.
+	* glib/Object.cs : internalize/protect lots of API that shouldn't need
+	to be used by non-subclass/non-glib code. Return GType.Object as GType.
+	* glib/Value.cs : use internal GLib.Object.NativeType prop.
+	* sample/TestDnd.cs : use ToString instead of TypeName.
+
+2004-05-14  Todd Berman  <tberman@sevenl.net>
+
+	* glib/Object.cs: make static GLib.Object.LookupGType protected for now.
+	* gtk/CellRenderer.custom: code to allow for subclassing and
+	implementing a custom cell renderer.
+	* gtk/Makefile.am: add custom to build.
+	* gtk/glue/Makefile.am: add glue to build.
+	* gtk/glue/cellrenderer.c: glue code to override get_size and render
+	from cellrenderer.
+	* sample/CustomCellRenderer.cs: new sample to show how to implement a
+	custom cell renderer.
+	* sample/Makefile.am: add CustomCellRenderer sample.
+
+2004-05-13  Todd Berman  <tberman@sevenl.net>
+
+	* *.pc.in: add .dll to the end of the Libs: references, and convert
+	them to be absolute paths.
+
+2004-05-11  Mike Kestner  <mkestner@ximian.com>
+
+	* *.pc.in : add Requires so that dependent libs are pulled in too.
+
+2004-05-11  Mike Kestner  <mkestner@ximian.com>
+
+	* gconf/GConf/NotifyWrapper.cs : add some defensive null checking.
+	[fixes #57902]
+
+2004-05-11  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/SelectionData.custom : add a Set overload without length param.
+
+2004-05-10  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Gtk.metadata : mark some Dialog API params as ResponseType 
+	instead of int.
+	[fixes #58240]
+
+2004-05-10  Mike Kestner  <mkestner@ximian.com>
+
+	* glib/Value.cs : fix GBoxed GLib.Value setting.
+	[fixes #58229]
+
+2004-05-10  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Gtk.metadata : change return-type on Global.EventsPending
+	to a bool to avoid compat problems in 2.4.  Also rename to
+	GetEventsPending so that it's generated as a property.
+	[fixes #58292]
+
+2004-05-10  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Gtk.metadata : hide some ctors and map some prop names.
+	* gtk/Makefile.am : add new customs.
+	* gtk/ItemFactory.custom : implement ctor for subclassing.
+	* gtk/Plug.custom : implement ctors for subclassing.
+
 2004-05-09  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* gdk/Gdk.metadata: Misc fixes for getting Muine to build & run.
@@ -52,6 +185,166 @@
 	and methods in Gtk.Toolbar to name a few). This is done in C# by using
 	the [Obsolete] metadata tag.
 
+2004-05-07  Todd Berman  <tberman@sevenl.net>
+
+	* gnome/Makefile.am: add DruidPageEdge.custom
+	* gnome/Gnome.metadata: hide DruidPageEdge ctors
+	* gnome/DruidPageEdge.custom: subclassable ctors.
+
+2004-05-07  Todd Berman  <tberman@sevenl.net>
+
+	* gnome/IconList.custom: subclassable ctor.
+	* gnome/Gnome.metadata: hide IconList ctor.
+
+2004-05-07  Mike Kestner  <mkestner@ximian.com>
+
+	* gnome/Canvas.custom : PixelsPerUnit prop.
+	* gnome/Gnome.metadata : hide Canvas.SetPixelsPerUnit.
+	* gnome/glue/Makefile.am : get_pixels_per_unit.
+	* gnome/glue/canvas.c : get_pixels_per_unit.
+	* gtk/Container.custom : OnForall virtual method impl.
+	* gtk/glue/Makefile.am : add container.c
+	* gtk/glue/container.c : virtual method glue for forall.
+	* gtk/glue/makefile.win32 : add container.o
+
+2004-05-07  Todd Berman  <tberman@sevenl.net>
+
+	* gnome/Gnome.metadata: map properties for with_flags DateEdit ctor,
+	and hide the DateTime, bool, bool ctor
+	* gnome/Makefile.am: Add DateEdit.custom.
+	* gnome/DateEdit.custom: Add subclassable ctor for DateEdit and
+	add enough overloads that accept variable parameter lists to make
+	Mike Kestner sick.
+
+2004-05-07  Todd Berman  <tberman@sevenl.net>
+
+	* gnome/Gnome.metadata: Hide App ctor.
+	* gnome/Makefile.am: add App.custom.
+	* gnome/App.custom: New custom for subclassing.
+
+2004-05-07  Todd Berman  <tberman@sevenl.net>
+
+	* gnome/Gnome.metadata: Hide Scores ctor.
+	* gnome/Makefile.am: add Scores.custom.
+	* gnome/Scores.custom: New custom for overridable ctor.
+
+2004-05-07  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Gtk.metadata : map some RadioButton ctor props.
+
+2004-05-07  Mike Kestner  <mkestner@ximian.com>
+
+	* gnome/Druid.custom : fix Todd's broken code.
+
+2004-05-07  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Gtk.metadata : hide TextView with_buffer ctor. map some parms
+	to props.
+	* gtk/Makefile.am : add new custom.
+	* gtk/TextView.custom : implement with_buffer ctor for subclassing.
+
+2004-05-07  Todd Berman  <tberman@sevenl.net>
+
+	* gnome/Gnome.metadata: Hide Druid with_window ctor, map About property.
+	add some null_ok from bug #57948.
+	* gnome/Druid.custom: implement with_window ctor for subclassing, and
+	a 3 paramatered version for when you dont care about the returned
+	window. another 3 parametered version for when you have want null
+	parent, and a 2 parametered version for the null parent and the
+	discarding of the window (THANKS MIKE!)
+	* gnome/Makefile.am: add new custom.
+
+2004-05-07  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/TreeView.custom : make the NodeStore ctor subclassable.
+
+2004-05-07  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Gtk.metadata : hide SpinButton with_range ctor.
+	* gtk/Makefile.am : add new custom.
+	* gtk/SpinButton.custom : implement with_range ctor for subclassing.
+
+2004-05-07  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Gtk.metadata : hide ListStore and TreeStore newv ctors.
+	* gtk/ListStore.custom : rework the ctors for subclassing.
+	* gtk/TreeStore.custom : rework the ctors for subclassing.
+
+2004-05-07  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Gtk.metadata : hide HScale and VScale with_range ctors.
+	* gtk/Makefile.am : add new customs.
+	* gtk/HScale.custom : implement with_range ctor for subclassing.
+	* gtk/VScale.custom : implement with_range ctor for subclassing.
+
+2004-05-07  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Gtk.metadata : map AccelLabel ctor parm to prop and hide
+	Adjustment ctor.
+	* gtk/Adjustment.custom : add set accessors for Upper/Lower and
+	implement ctor with subclassing.
+	* gtk/CheckMenuItem.custom : return from subclass branch.
+	* gtk/ImageMenuItem.custom : return from subclass branch.
+	* gtk/MenuItem.custom : return from subclass branch.
+	* gtk/RadioMenuItem.custom : return from subclass branch.
+	* gtk/glue/adjustment.c : add setters for lower/upper.
+
+2004-05-07  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Gtk.metadata : hide some *MenuItem ctors.
+	* gtk/CheckMenuItem.custom : implement string ctor.
+	* gtk/ImageMenuItem.custom : implement string ctor.
+	* gtk/MenuItem.custom : use AccelLabel.
+	* gtk/RadioMenuItem.custom : fix string ctor for subclassing.
+	* gtk/Makefile.am : add new customs.
+
+2004-05-07  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Gtk.metadata : hide some MenuItem ctors.
+	* gtk/Makefile.am : add the new custom.
+	* gtk/MenuItem.custom : implement the string ctor.
+
+2004-05-07  Mike Kestner  <mkestner@ximian.com>
+
+	* sample/GnomeHelloWorld.cs : guard against null args.Event in the
+	icon_selected_cb, which occurs on button-presses for some reason.
+	Thanks to wmealing on irc for the bug report.
+
+2004-05-07  Mike Kestner  <mkestner@ximian.com>
+
+	* sample/*/Makefile.am : rebuild if the assemblies change
+
+2004-05-07  Mike Kestner  <mkestner@ximian.com>
+
+	[Derived from a patch by Ben Maurer]
+	* generator/Ctor.cs : generate code to detect subclassing and handle
+	GType registration and native object creation properly.
+	* generator/Parameters.cs : add PropertyName accessor for param attr.
+	* generator/Property.cs : use a new GLib.Value ctor.
+	* glib/ObjectManager.cs : redo hash access.
+	* glib/Object.cs : CreateNativeObject method to invoke g_object_newv
+	and some refactoring of RegisterGType and LookupGType.
+	* glib/Value.cs : make gtype field an IntPtr.
+	* glib/glue/object.c : glue for g_object_newv use.
+	* glib/glue/value.c : new glue for value creation.
+	* gtk/Dialog.custom : fix a ctor declaration for auto-reg.
+	* gtk/Gtk.metadata : mark a couple property_name attrs as examples.
+	* sample/Subclass.cs : use auto-GType-registration now.
+
+2004-05-06  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : some out and array magic for Property.Get.
+	[Fixes #56513]
+
+2004-05-06  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* generator/Method.cs: Don't use the "unsafe" modifier for methods which
+	are part of an interface [fixes #58059].
+
+2004-05-06  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : bump version for cvs.
+
 2004-05-06  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* Makefile.in:
@@ -77,6 +370,35 @@
 	gnome 2.6.0 & gtk+-2.4.1 sources are now also downloaded when you run
 	"make get-source-code". Some samples are disabled for now since they
 	use deprecated API and fail to build.
+
+2004-05-05  Mike Kestner  <mkestner@ximian.com>
+
+	* generator/BoxedGen.cs : remove g_value_init DllImport and change
+	(g|s)et_boxed to use a glue method to simplify dllmapping.
+	* glib/Value.cs : add Init method.
+	* glib/glue/value.cs : add get/set_boxed glue methods.
+	* */*.config.in : remove libgobject mappings for dlls that no longer
+	need them.
+
+2004-05-05  Larry Ewing  <lewing@ximian.com>
+
+	* gtk/Adjustment.custom: add an a set method for StepIncrement.
+	* gtk/glue/adjustment.c: add gtk_adjustment_set_step_increment.
+
+2004-05-05  Mike Kestner  <mkestner@ximian.com>
+
+	* generator/Signal.cs : rmv Handle param to SignalCallback ctor calls.
+	s/GtkSharp.Signal*/GLib.Signal*.
+	* generator/SignalHandler.cs : rmv Handle param to ctors as it's 
+	redundant.  s/GtkSharp.Signal*/GLib.Signal*. Use new Connect/Disconnect
+	instead of generating DllImports into libgobject directly.
+	* glib/SignalArgs.cs : move the the GLib namespace.
+	* glib/SignalCallback.cs : expose Connect and Disconnect methods to
+	hide some pinvokes that were previously generated. Also move to the
+	GLib namespace.
+	gnome/*Handler.cs : update to new SignalHandler API.
+	gnome/CanvasProxy.cs : ditto
+	gnome/void*Signal.cs : ditto
 
 2004-05-05  Mike Kestner  <mkestner@ximian.com>
 

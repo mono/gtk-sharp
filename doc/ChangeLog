@@ -1,7 +1,3 @@
-2004-05-06  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
-
-	Merge changes from HEAD to the jeroen-gtk-2-4 branch.
-
 2004-04-27  John Luke  <jluke@cfl.rr.com>
 
 	* en/Gdk/Threads.xml: document

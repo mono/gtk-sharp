@@ -9,6 +9,7 @@
 
 /* Forward declarations */
 void gtksharp_value_create_from_property (GValue *value, GObject *obj, const gchar* name);
+void gtksharp_value_create_from_type_and_property (GValue *value, GType gtype, const gchar* name);
 GType gtksharp_value_get_value_type (GValue *value);
 /* */
 
@@ -16,6 +17,13 @@ void
 gtksharp_value_create_from_property (GValue *value, GObject *obj, const gchar* name)
 {
 	GParamSpec *spec = g_object_class_find_property (G_OBJECT_GET_CLASS (obj), name);
+	g_value_init (value, spec->value_type);
+}
+
+void
+gtksharp_value_create_from_type_and_property (GValue *value, GType gtype, const gchar* name)
+{
+	GParamSpec *spec = g_object_class_find_property (g_type_class_ref (gtype), name);
 	g_value_init (value, spec->value_type);
 }
 

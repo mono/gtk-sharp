@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
 <metadata>
+  <attr path="/api/namespace/object[@cname='GnomeApp']/constructor[@cname='gnome_app_new']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GnomeDateEdit']/constructor[@cname='gnome_date_edit_new_flags']/*/*[@name='flags']" name="property_name">dateedit_flags</attr>
+  <attr path="/api/namespace/object[@cname='GnomeDateEdit']/constructor[@cname='gnome_date_edit_new_flags']/*/*[@name='the_time']" name="property_name">time</attr>
+  <attr path="/api/namespace/object[@cname='GnomeDateEdit']/constructor[@cname='gnome_date_edit_new']" name="hidden">1</attr>
   <attr path="/api/namespace/boxed[@cname='GnomeCanvasPoints']" name="opaque">1</attr>
   <attr path="/api/namespace/boxed[@cname='GnomeGlyphList']/method/*/*[@type='const-guchar*']" name="type">const-gchar*</attr>
   <attr path="/api/namespace/boxed[@cname='GnomePrintUnit']/method/*/*[@type='const-guchar*']" name="type">const-gchar*</attr>
@@ -15,6 +19,7 @@
   <attr path="/api/namespace/class[@cname='GnomePrint_']/method/*/*[@name='data']" name="array">1</attr>
   <attr path="/api/namespace/object[@cname='GnomeAbout']/constructor[@cname='gnome_about_new']/*/*[@type='const-gchar**']" name="array">1</attr>
   <attr path="/api/namespace/object[@cname='GnomeAbout']/constructor[@cname='gnome_about_new']/*/*[@name='logo_pixbuf']" name="null_ok">1</attr>
+  <attr path="/api/namespace/object[@cname='GnomeAbout']/constructor[@cname='gnome_about_new']/*/*[@name='logo_pixbuf']" name="property_name">logo</attr>
   <attr path="/api/namespace/object[@cname='GnomeAppBar']/signal[@name='ClearPrompt']" name="name">PromptCleared</attr>
   <attr path="/api/namespace/object[@cname='GnomeCanvas']/method[@name='C2w']/*/*[@type='double*']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GnomeCanvas']/method[@name='GetButtPoints']/*/*[@type='double*']" name="pass_as">out</attr>
@@ -24,6 +29,7 @@
   <attr path="/api/namespace/object[@cname='GnomeCanvas']/method[@name='GetMiterPoints']/*/*[@type='double*']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GnomeCanvas']/method[@name='GetScrollOffsets']/*/*[@type='int*']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GnomeCanvas']/method[@name='GetScrollRegion']/*/*[@type='double*']" name="pass_as">out</attr>
+  <attr path="/api/namespace/object[@cname='GnomeCanvas']/method[@name='SetPixelsPerUnit']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GnomeCanvas']/method[@name='W2c']/*/*[@type='int*']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GnomeCanvas']/method[@name='W2cD']/*/*[@type='double*']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GnomeCanvas']/method[@name='WindowToWorld']/*/*[@type='double*']" name="pass_as">out</attr>
@@ -48,11 +54,22 @@
   <attr path="/api/namespace/object[@cname='GnomeClient']/signal[@name='Disconnect']" name="name">Disconnected</attr>
   <attr path="/api/namespace/object[@cname='GnomeDialog']/method[@name='Close']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GnomeDialog']/method[@name='SetClose']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GnomeDruid']/constructor[@cname='gnome_druid_new_with_window']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GnomeDruid']/method[@cname='gnome_druid_construct_with_window']/*/*[@name='window']" name="pass_as">out</attr>
+  <attr path="/api/namespace/object[@cname='GnomeDruid']/method[@cname='gnome_druid_construct_with_window']/*/*[@name='parent']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GnomeDruidPage']/signal[@name='Back']" name="name">BackClicked</attr>
   <attr path="/api/namespace/object[@cname='GnomeDruidPage']/signal[@name='Cancel']" name="name">CancelClicked</attr>
   <attr path="/api/namespace/object[@cname='GnomeDruidPage']/signal[@name='Finish']" name="name">FinishClicked</attr>
   <attr path="/api/namespace/object[@cname='GnomeDruidPage']/signal[@name='Next']" name="name">NextClicked</attr>
   <attr path="/api/namespace/object[@cname='GnomeDruidPage']/signal[@name='Prepare']" name="name">Prepared</attr>
+  <attr path="/api/namespace/object[@cname='GnomeDruidPageStandard']/constructor[@cname='gnome_druid_page_standard_new_with_vals']/*/*[@name='logo']" name="null_ok">1</attr>
+  <attr path="/api/namespace/object[@cname='GnomeDruidPageStandard']/constructor[@cname='gnome_druid_page_standard_new_with_vals']/*/*[@name='top_watermark']" name="null_ok">1</attr>
+  <attr path="/api/namespace/object[@cname='GnomeDruidPageEdge']/method[@cname='gnome_druid_page_edge_construct']/*/*[@name='logo']" name="null_ok">1</attr>
+  <attr path="/api/namespace/object[@cname='GnomeDruidPageEdge']/method[@cname='gnome_druid_page_edge_construct']/*/*[@name='watermark']" name="null_ok">1</attr>
+  <attr path="/api/namespace/object[@cname='GnomeDruidPageEdge']/method[@cname='gnome_druid_page_edge_construct']/*/*[@name='top_watermark']" name="null_ok">1</attr>
+  <attr path="/api/namespace/object[@cname='GnomeDruidPageEdge']/constructor[@cname='gnome_druid_page_edge_new']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GnomeDruidPageEdge']/constructor[@cname='gnome_druid_page_edge_new_with_vals']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GnomeDruidPageEdge']/constructor[@cname='gnome_druid_page_edge_new_aa']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GnomeEntry']/method[@name='GtkEntry']" name="name">GetGtkEntry</attr>
   <attr path="/api/namespace/object[@cname='GnomeEntry']/signal[@name='Activate']" name="name">Activated</attr>
   <attr path="/api/namespace/object[@cname='GnomeFileEntry']/method[@name='GnomeEntry']" name="hidden">1</attr>
@@ -75,7 +92,8 @@
   <attr path="/api/namespace/object[@cname='GnomeFontFamily']/method[@name='StyleListFree']" name="hidden">1</attr>
   <attr path="/api/namespace/class[@cname='GnomeIcon_']/method[@name='LookupSync']/*/*[@name='thumbnail_factory']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GnomeIconEntry']/method[@name='PickDialog']" name="hidden">1</attr>
-  <attr path="/api/namespace/object[@cname='GnomeIconList']/constructor[@cname='gnome_icon_list_new']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
+  <attr path="/api/namespace/object[@cname='GnomeIconList']/method[@cname='gnome_icon_list_construct']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
+  <attr path="/api/namespace/object[@cname='GnomeIconList']/constructor[@cname='gnome_icon_list_new']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GnomeIconList']/method[@name='GetSelection']" name="hidden">i</attr>
   <attr path="/api/namespace/object[@cname='GnomeIconList']/method[@name='SetHadjustment']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GnomeIconList']/method[@name='SetVadjustment']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
@@ -101,4 +119,5 @@
   <attr path="/api/namespace/struct[@cname='GnomeCanvasPathDef']/method[@name='Split']/return-type" name="element_type">Gnome.CanvasPathDef</attr>
   <attr path="/api/namespace/struct[@cname='GPFontEntry']/field[@cname='weight']" name="access">private</attr>
   <attr path="/api/namespace/struct[@cname='GnomePrintPaper']/method/*/*[@type='const-guchar*']" name="type">const-gchar*</attr>
+  <attr path="/api/namespace/object[@cname='GnomeScores']/constructor[@cname='gnome_scores_new']" name="hidden">1</attr>
 </metadata>

@@ -33,6 +33,8 @@ customs = 				\
 	Adjustment.custom		\
 	Button.custom			\
 	Calendar.custom			\
+	CellRenderer.custom		\
+	CheckMenuItem.custom		\
 	Clipboard.custom		\
 	ColorSelection.custom		\
 	ColorSelectionDialog.custom	\
@@ -42,18 +44,24 @@ customs = 				\
 	Entry.custom			\
 	Frame.custom			\
 	HBox.custom			\
+	HScale.custom			\
 	IconFactory.custom		\
 	IconSet.custom			\
+	ImageMenuItem.custom		\
+	ItemFactory.custom		\
 	Label.custom			\
 	Layout.custom			\
 	ListStore.custom		\
 	MessageDialog.custom		\
+	MenuItem.custom			\
 	Notebook.custom			\
 	Object.custom			\
+	Plug.custom			\
 	RadioButton.custom		\
 	RadioMenuItem.custom		\
 	ScrolledWindow.custom		\
 	SelectionData.custom		\
+	SpinButton.custom		\
 	Stock.custom			\
 	Style.custom			\
 	Table.custom			\
@@ -72,6 +80,7 @@ customs = 				\
 	TreeViewColumn.custom		\
 	TreeView.custom			\
 	VBox.custom			\
+	VScale.custom			\
 	Viewport.custom			\
 	Widget.custom			\
 	Window.custom

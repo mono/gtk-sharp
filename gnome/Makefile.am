@@ -42,6 +42,8 @@ sources =					\
 build_sources = $(addprefix $(srcdir)/, $(sources)) AssemblyInfo.cs
 
 customs =					\
+	App.custom				\
+	DateEdit.custom				\
 	CanvasBpath.custom			\
 	CanvasClipgroup.custom			\
 	Canvas.custom				\
@@ -58,6 +60,8 @@ customs =					\
 	CanvasShape.custom			\
 	CanvasText.custom			\
 	CanvasWidget.custom			\
+	Druid.custom				\
+	DruidPageEdge.custom			\
 	Font.custom				\
 	FontFamily.custom			\
 	IconList.custom				\
@@ -65,7 +69,8 @@ customs =					\
 	Print.custom				\
 	PrintDialog.custom			\
 	PrintJob.custom				\
-	Program.custom
+	Program.custom				\
+	Scores.custom
 
 build_customs = $(addprefix $(srcdir)/, $(customs))
 

@@ -40,17 +40,23 @@ namespace GtkSharp {
 				return null;
 			}
 
-			return (GLib.Object) Activator.CreateInstance (t, new object[] {raw});
+			GLib.Object obj;
+			try {
+				obj = (GLib.Object) Activator.CreateInstance (t, new object[] {raw});
+			} catch (MissingMethodException) {
+				throw new GLib.MissingIntPtrCtorException ("All GLib.Object subclasses must provide a protected or public IntPtr ctor to support wrapping of native object handles.");
+			}
+			return obj;
 		}
 
 		public static void RegisterType (string native_name, string managed_name, string assembly)
 		{
-			types.Add(native_name, managed_name + "," + assembly);
+			RegisterType (native_name, managed_name + "," + assembly);
 		}
 
 		public static void RegisterType (string native_name, string mangled)
 		{
-			types.Add(native_name, mangled);
+			types [native_name] = mangled;
 		}
 
 		static string GetExpected (string cname)
