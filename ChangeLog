@@ -1,6 +1,6 @@
-2005-02-01  Mike Kestner  <mkestner@novell.com>
+2005-02-01  Fredrik Nilsson  <jymdman@home.se>
 
-	* glib/Marshaller.cs : backport a unichar glue method name fix.
+	* glib/Marshaller.cs : DateTime marshaling fix.
 
 2005-01-31  Mike Kestner  <mkestner@novell.com>
 
