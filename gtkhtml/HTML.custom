@@ -48,4 +48,8 @@
 			Raw = gtk_html_new_from_string(Astr, Astr.Length);
 		}
 
+		public void Write (HTMLStream handle, string buffer, int size)
+		{
+			Write (handle, buffer, (ulong) size);
+		}
 

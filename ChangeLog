@@ -1,3 +1,9 @@
+2005-01-21  Mike Kestner  <mkestner@novell.com>
+
+	* gtkhtml/HTML.custom : port back the Write custom overload.
+	* gtkhtml/HTMLStream.custom : port back the Write custom overload.
+	[Fixes #71564]
+
 2005-01-20  Dan Winship  <danw@novell.com>
 
 	* gtk/MessageDialog.custom (MessageDialog): Escape any %s in the
