@@ -1,5 +1,10 @@
 2004-05-31  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
+	* gdk/Gdk.metadata: Pass the destination parameters of Rectangle.Union()
+	and Intersect() as ref.
+
+2004-05-31  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
 	* gtk/Gtk.metadata: Unhide the GtkWidgetFlags enum.
 	* gtk/Makefile.am: Remove WidgetFlags.cs.
 	* gtk/WidgetFlags.cs: Obsolete.
