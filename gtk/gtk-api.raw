@@ -4919,9 +4919,8 @@
           <parameter type="GtkDialogFlags" name="flags"/>
           <parameter type="GtkMessageType" name="type"/>
           <parameter type="GtkButtonsType" name="buttons"/>
-          <parameter type="const-gchar*" name="message_format"/>
-          <parameter ellipsis="true"/>
-          <parameter type="6" name="arg7"/>
+          <parameter type="const-gchar*" name="message_format" printf_format="true"/>
+          <parameter ellipsis="true" printf_format_args="true"/>
         </parameters>
       </constructor>
     </object>
