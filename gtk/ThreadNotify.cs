@@ -2,10 +2,12 @@
 // ThreadNotify.cs: implements a notification for the thread running the Gtk main
 // loop from another thread
 //
-// Author:
+// Authors:
 //    Miguel de Icaza (miguel@ximian.com).
+//    Gonzalo Paniagua Javier (gonzalo@ximian.com)
 //
 // (C) 2002 Ximian, Inc.
+// (C) 2004 Novell, Inc.
 //
 
 namespace Gtk {
@@ -24,35 +26,10 @@ namespace Gtk {
 	/// <remarks/>
 	///   
 	public class ThreadNotify : IDisposable {
-
-		//
-		// DllImport functions from Gtk
-		//
-		[DllImport ("libgtk-win32-2.0-0.dll")]
-		private static extern uint gdk_input_add (int s, int cond, GdkInputFunction f, IntPtr data);
-		public delegate void GdkInputFunction (IntPtr data, int source, int cond);
-
-		//
-		// Libc stuff
-		//
-		[DllImport ("libc.so.6")]
-		private static extern int pipe (int [] fd);
-		
-		[DllImport ("libc.so.6")]
-		private static extern unsafe int read (int fd, byte *b, int count);
-		
-		[DllImport ("libc.so.6")]
-		private static extern unsafe int write (int fd, byte *b, int count);
-
-		[DllImport ("libc.so.6")]
-		private static extern int close (int fd);
-		
-		GdkInputFunction notify_pipe;
-		int [] pipes;
 		bool disposed;
-		uint tag;
-
 		ReadyEvent re;
+		GLib.IdleHandler idle;
+		bool notified;
 
 		/// <summary>
 		///   The ReadyEvent delegate will be invoked on the current thread (which should
@@ -60,44 +37,35 @@ namespace Gtk {
 		/// </summary>
 		public ThreadNotify (ReadyEvent re)
 		{
-			notify_pipe = new GdkInputFunction (NotifyPipe);
-			pipes = new int [2];
-			pipe (pipes);
-			tag = gdk_input_add (pipes [0], 1, notify_pipe, (IntPtr) 0);
 			this.re = re;
+			idle = new GLib.IdleHandler (CallbackWrapper);
 		}
 		
-		void NotifyPipe (IntPtr data, int source, int cond)
+		bool CallbackWrapper ()
 		{
-			byte s;
-			
-			unsafe {
-				lock (this) {
-					read (pipes [0], &s, 1);
-					notified = false;
-				}
+			lock (this) {
+				if (disposed)
+					return false;
+
+				notified = false;
 			}
 			
 			re ();
+			return false;
 		}
 
-		bool notified = false;
-		
 		/// <summary>
 		///   Invoke this function from a thread to call the `ReadyEvent'
 		///   delegate provided in the constructor on the Main Gtk thread
 		/// </summary>
 		public void WakeupMain ()
 		{
-			unsafe {
-				byte s;
-
-				lock (this){
-					if (notified)
-						return;
-					write (pipes [1], &s, 1);
-					notified = true;
-				}
+			lock (this){
+				if (notified)
+					return;
+				
+				notified = true;
+				GLib.Idle.Add (idle);
 			}
 		}
 
@@ -119,15 +87,10 @@ namespace Gtk {
 		
 		protected virtual void Dispose (bool disposing)
 		{
-			if (!disposed) {
+			lock (this) {
 				disposed = true;
-				GLib.Source.Remove (tag);
-				close (pipes [1]);
-				close (pipes [0]);
 			}
-
-			pipes = null;
-			notify_pipe = null;
 		}
 	}
 }
+

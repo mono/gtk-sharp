@@ -14,7 +14,7 @@ namespace WidgetViewer {
 	public class TestCombo
 	{
 		static Window window = null;	       
-		static Gtk.Combo combo = null;
+		static Gtk.ComboBox combo = null;
 		
 		public static Gtk.Window Create ()
 		{
@@ -28,10 +28,10 @@ namespace WidgetViewer {
 			box2.BorderWidth = 10;
 			box1.PackStart (box2, true, true, 0);
 
-			combo = new Gtk.Combo ();
-			string[] pop = {"Foo", "Bar"};
-			combo.PopdownStrings = pop;
-			combo.Entry.Activated += new EventHandler (OnComboActivated);
+			combo = new Gtk.ComboBox ();
+			combo.AppendText ("Foo");
+			combo.AppendText ("Bar");
+			combo.Changed += new EventHandler (OnComboActivated);
 			box2.PackStart (combo, true, true, 0);
 
 			HSeparator separator = new HSeparator ();

@@ -19,16 +19,8 @@ public LayoutLine[] Lines {
 		LayoutLine[] result = new LayoutLine [list.Count];
 		int i = 0;
 		foreach (LayoutLine line in list)
-			result [i] = line;
+			result [i++] = line;
 		return result;
 	}
-}
-
-public System.Drawing.Size Size {
-    get {
-	    int width, height;
-	    GetSize (out width, out height);
-	    return new System.Drawing.Size (width, height);
-    }
 }
 

@@ -1,4 +1,10 @@
+vte-sharp.pc
+AssemblyInfo.cs
 vte-sharp.dll
+vte-sharp.dll.config
 generated
 generated-stamp
 Makefile
+Makefile.in
+*-api.xml
+gtk-sharp.pub

@@ -4,7 +4,9 @@
 // Authors: Rachel Hestilow <hestilow@ximian.com>
 //          Mike Kestner <mkestner@speakeasy.net>
 //
-// (c) 2002 Rachel Hestilow, 2001-2002 Mike Kestner 
+// Copyright (c) 2002 Rachel Hestilow
+// Copyright (c) 2001-2003 Mike Kestner 
+// Copyright (c) 2004 Novell, Inc.
 
 namespace GtkSharp.Generation {
 	using System;
@@ -19,7 +21,6 @@ namespace GtkSharp.Generation {
 		protected ArrayList interfaces = null;
 		protected ArrayList ctors = new ArrayList();
 
-		protected bool hasDefaultConstructor = true;
 		private bool ctors_initted = false;
 		private Hashtable clash_map;
 
@@ -38,12 +39,15 @@ namespace GtkSharp.Generation {
 		public ClassBase Parent {
 			get {
 				string parent = Elem.GetAttribute("parent");
-				return SymbolTable.Table.GetClassGen(parent);
+
+				if (parent == "")
+					return null;
+				else
+					return SymbolTable.Table.GetClassGen(parent);
 			}
 		}
 
 		protected ClassBase (XmlElement ns, XmlElement elem) : base (ns, elem) {
-			hasDefaultConstructor = !elem.HasAttribute ("disabledefaultconstructor");
 					
 			foreach (XmlNode node in elem.ChildNodes) {
 				if (!(node is XmlElement)) continue;
@@ -353,12 +357,6 @@ namespace GtkSharp.Generation {
 			
 			foreach (Ctor ctor in ctors)
 				ctor.Generate (gen_info);
-
-			if (!clash_map.ContainsKey("") && hasDefaultConstructor) {
-				gen_info.Writer.WriteLine("\t\tprotected " + Name + "() : base(){}");
-				gen_info.Writer.WriteLine();
-			}
-
 		}
 
 	}

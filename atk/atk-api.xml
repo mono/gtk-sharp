@@ -442,6 +442,13 @@
       </method>
     </interface>
     <interface name="Hypertext" cname="AtkHypertext">
+      <signal name="LinkSelected" cname="link_selected" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkHypertext*" name="hypertext" />
+          <parameter type="gint" name="link_index" />
+        </parameters>
+      </signal>
       <method name="GetLink" cname="atk_hypertext_get_link">
         <return-type type="AtkHyperlink*" />
         <parameters>
@@ -499,6 +506,12 @@
       </method>
     </interface>
     <interface name="Selection" cname="AtkSelection">
+      <signal name="SelectionChanged" cname="selection_changed" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkSelection*" name="selection" />
+        </parameters>
+      </signal>
       <method name="AddSelection" cname="atk_selection_add_selection">
         <return-type type="gboolean" />
         <parameters>
@@ -557,6 +570,56 @@
       </method>
     </interface>
     <interface name="Table" cname="AtkTable">
+      <signal name="RowInserted" cname="row_inserted" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkTable*" name="table" />
+          <parameter type="gint" name="row" />
+          <parameter type="gint" name="num_inserted" />
+        </parameters>
+      </signal>
+      <signal name="ColumnInserted" cname="column_inserted" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkTable*" name="table" />
+          <parameter type="gint" name="column" />
+          <parameter type="gint" name="num_inserted" />
+        </parameters>
+      </signal>
+      <signal name="RowDeleted" cname="row_deleted" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkTable*" name="table" />
+          <parameter type="gint" name="row" />
+          <parameter type="gint" name="num_deleted" />
+        </parameters>
+      </signal>
+      <signal name="ColumnDeleted" cname="column_deleted" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkTable*" name="table" />
+          <parameter type="gint" name="column" />
+          <parameter type="gint" name="num_deleted" />
+        </parameters>
+      </signal>
+      <signal name="RowReordered" cname="row_reordered" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkTable*" name="table" />
+        </parameters>
+      </signal>
+      <signal name="ColumnReordered" cname="column_reordered" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkTable*" name="table" />
+        </parameters>
+      </signal>
+      <signal name="ModelChanged" cname="model_changed" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkTable*" name="table" />
+        </parameters>
+      </signal>
       <method name="AddColumnSelection" cname="atk_table_add_column_selection">
         <return-type type="gboolean" />
         <parameters>
@@ -733,6 +796,33 @@
       </method>
     </interface>
     <interface name="Text" cname="AtkText">
+      <signal name="TextChanged" cname="text_changed" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkText*" name="text" />
+          <parameter type="gint" name="position" />
+          <parameter type="gint" name="length" />
+        </parameters>
+      </signal>
+      <signal name="TextCaretMoved" cname="text_caret_moved" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkText*" name="text" />
+          <parameter type="gint" name="location" />
+        </parameters>
+      </signal>
+      <signal name="TextSelectionChanged" cname="text_selection_changed" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkText*" name="text" />
+        </parameters>
+      </signal>
+      <signal name="TextAttributesChanged" cname="text_attributes_changed" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkText*" name="text" />
+        </parameters>
+      </signal>
       <method name="AddSelection" cname="atk_text_add_selection">
         <return-type type="gboolean" />
         <parameters>
@@ -944,6 +1034,44 @@
       </method>
     </object>
     <object name="Hyperlink" cname="AtkHyperlink" parent="GObject">
+      <property name="SelectedLink" cname="selected-link" type="gboolean" readable="true" />
+      <property name="NumberOfAnchors" cname="number-of-anchors" type="gint" readable="true" />
+      <property name="EndIndex" cname="end-index" type="gint" readable="true" />
+      <property name="StartIndex" cname="start-index" type="gint" readable="true" />
+      <signal name="LinkActivated" cname="link_activated" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkHyperlink*" name="link_" />
+        </parameters>
+      </signal>
+      <virtual_method name="GetUri" cname="get_uri">
+        <return-type type="gchar*" />
+        <parameters>
+          <parameter type="AtkHyperlink*" name="link_" />
+          <parameter type="gint" name="i" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="GetEndIndex" cname="get_end_index">
+        <return-type type="gint" />
+        <parameters>
+          <parameter type="AtkHyperlink*" name="link_" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="IsValid" cname="is_valid">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="AtkHyperlink*" name="link_" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="LinkState" cname="link_state">
+        <return-type type="guint" />
+        <parameters>
+          <parameter type="AtkHyperlink*" name="link_" />
+        </parameters>
+      </virtual_method>
+      <implements>
+        <interface cname="AtkAction" />
+      </implements>
       <method name="GetEndIndex" cname="atk_hyperlink_get_end_index">
         <return-type type="gint" />
       </method>
@@ -979,6 +1107,17 @@
       </method>
     </object>
     <object name="NoOpObject" cname="AtkNoOpObject" parent="AtkObject">
+      <implements>
+        <interface cname="AtkComponent" />
+        <interface cname="AtkAction" />
+        <interface cname="AtkEditableText" />
+        <interface cname="AtkImage" />
+        <interface cname="AtkSelection" />
+        <interface cname="AtkTable" />
+        <interface cname="AtkText" />
+        <interface cname="AtkHypertext" />
+        <interface cname="AtkValue" />
+      </implements>
       <method name="GetType" cname="atk_no_op_object_get_type" shared="true">
         <return-type type="GType" />
       </method>
@@ -1001,6 +1140,115 @@
       <field cname="role" type="AtkRole" />
       <field cname="relation_set" type="AtkRelationSet*" />
       <field cname="layer" type="AtkLayer" />
+      <property name="AtkObjectNamePropertyName" cname="atk_object_name_property_name" type="gchar*" readable="true" writeable="true" />
+      <property name="AtkObjectNamePropertyDescription" cname="atk_object_name_property_description" type="gchar*" readable="true" writeable="true" />
+      <property name="AtkObjectNamePropertyParent" cname="atk_object_name_property_parent" type="AtkObject" readable="true" writeable="true" />
+      <property name="AtkObjectNamePropertyValue" cname="atk_object_name_property_value" type="gdouble" readable="true" writeable="true" />
+      <property name="AtkObjectNamePropertyRole" cname="atk_object_name_property_role" type="gint" readable="true" writeable="true" />
+      <property name="AtkObjectNamePropertyComponentLayer" cname="atk_object_name_property_component_layer" type="gint" readable="true" />
+      <property name="AtkObjectNamePropertyComponentMdiZorder" cname="atk_object_name_property_component_mdi_zorder" type="gint" readable="true" />
+      <property name="AtkObjectNamePropertyTableCaption" cname="atk_object_name_property_table_caption" type="gchar*" readable="true" writeable="true" />
+      <property name="AtkObjectNamePropertyTableColumnHeader" cname="atk_object_name_property_table_column_header" type="AtkObject" readable="true" writeable="true" />
+      <property name="AtkObjectNamePropertyTableColumnDescription" cname="atk_object_name_property_table_column_description" type="gchar*" readable="true" writeable="true" />
+      <property name="AtkObjectNamePropertyTableRowHeader" cname="atk_object_name_property_table_row_header" type="AtkObject" readable="true" writeable="true" />
+      <property name="AtkObjectNamePropertyTableRowDescription" cname="atk_object_name_property_table_row_description" type="gchar*" readable="true" writeable="true" />
+      <property name="AtkObjectNamePropertyTableSummary" cname="atk_object_name_property_table_summary" type="AtkObject" readable="true" writeable="true" />
+      <property name="AtkObjectNamePropertyTableCaptionObject" cname="atk_object_name_property_table_caption_object" type="AtkObject" readable="true" writeable="true" />
+      <property name="AtkObjectNamePropertyHypertextNumLinks" cname="atk_object_name_property_hypertext_num_links" type="gint" readable="true" />
+      <signal name="ChildrenChanged" cname="children_changed" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkObject*" name="accessible" />
+          <parameter type="guint" name="change_index" />
+          <parameter type="gpointer" name="changed_child" />
+        </parameters>
+      </signal>
+      <signal name="FocusEvent" cname="focus_event" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkObject*" name="accessible" />
+          <parameter type="gboolean" name="focus_in" />
+        </parameters>
+      </signal>
+      <signal name="PropertyChange" cname="property_change" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkObject*" name="accessible" />
+          <parameter type="AtkPropertyValues*" name="values" />
+        </parameters>
+      </signal>
+      <signal name="StateChange" cname="state_change" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkObject*" name="accessible" />
+          <parameter type="const-gchar*" name="name" />
+          <parameter type="gboolean" name="state_set" />
+        </parameters>
+      </signal>
+      <signal name="VisibleDataChanged" cname="visible_data_changed" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkObject*" name="accessible" />
+        </parameters>
+      </signal>
+      <signal name="ActiveDescendantChanged" cname="active_descendant_changed" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkObject*" name="accessible" />
+          <parameter type="gpointer*" name="child" />
+        </parameters>
+      </signal>
+      <virtual_method name="GetParent" cname="get_parent">
+        <return-type type="AtkObject*" />
+        <parameters>
+          <parameter type="AtkObject*" name="accessible" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="RefChild" cname="ref_child">
+        <return-type type="AtkObject*" />
+        <parameters>
+          <parameter type="AtkObject*" name="accessible" />
+          <parameter type="gint" name="i" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="RefRelationSet" cname="ref_relation_set">
+        <return-type type="AtkRelationSet*" />
+        <parameters>
+          <parameter type="AtkObject*" name="accessible" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="GetLayer" cname="get_layer">
+        <return-type type="AtkLayer" />
+        <parameters>
+          <parameter type="AtkObject*" name="accessible" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="RefStateSet" cname="ref_state_set">
+        <return-type type="AtkStateSet*" />
+        <parameters>
+          <parameter type="AtkObject*" name="accessible" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="SetDescription" cname="set_description">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkObject*" name="accessible" />
+          <parameter type="const-gchar*" name="description" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="SetRole" cname="set_role">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkObject*" name="accessible" />
+          <parameter type="AtkRole" name="role" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="RemovePropertyChangeHandler" cname="remove_property_change_handler">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="AtkObjectguinthandler_id" name="arg1" />
+        </parameters>
+      </virtual_method>
       <method name="AddRelationship" cname="atk_object_add_relationship">
         <return-type type="gboolean" />
         <parameters>
@@ -1105,6 +1353,15 @@
       </method>
     </object>
     <object name="ObjectFactory" cname="AtkObjectFactory" parent="GObject">
+      <virtual_method name="CreateAccessible" cname="create_accessible">
+        <return-type type="AtkObject*" />
+        <parameters>
+          <parameter type="GObject*" name="obj" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="GetAccessibleType" cname="get_accessible_type">
+        <return-type type="GType" />
+      </virtual_method>
       <method name="CreateAccessible" cname="atk_object_factory_create_accessible">
         <return-type type="AtkObject*" />
         <parameters>
@@ -1150,6 +1407,8 @@
     <object name="Relation" cname="AtkRelation" parent="GObject">
       <field cname="target" type="GPtrArray*" />
       <field cname="relationship" type="AtkRelationType" />
+      <property name="RelationType" cname="relation_type" type="AtkRelationType" readable="true" writeable="true" />
+      <property name="Target" cname="target" type="value_array" readable="true" writeable="true" />
       <method name="GetRelationType" cname="atk_relation_get_relation_type">
         <return-type type="AtkRelationType" />
       </method>
@@ -1288,6 +1547,23 @@
       </method>
     </object>
     <object name="Util" cname="AtkUtil" parent="GObject">
+      <virtual_method name="AddGlobalEventListener" cname="add_global_event_listener">
+        <return-type type="guint" />
+        <parameters>
+          <parameter type="GSignalEmissionHook" name="listener" />
+          <parameter type="const-gchar*" name="event_type" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="AddKeyEventListener" cname="add_key_event_listener">
+        <return-type type="guint" />
+        <parameters>
+          <parameter type="AtkKeySnoopFunc" name="listener" />
+          <parameter type="gpointer" name="data" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="GetRoot" cname="get_root">
+        <return-type type="AtkObject*" />
+      </virtual_method>
       <method name="GetType" cname="atk_util_get_type" shared="true">
         <return-type type="GType" />
       </method>

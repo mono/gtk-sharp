@@ -2,8 +2,11 @@
 AC_INIT(README)
 AC_CANONICAL_SYSTEM
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gtk-sharp, 0.18)
+AM_INIT_AUTOMAKE(gtk-sharp, 0.91.1)
 AM_MAINTAINER_MODE
+
+API_VERSION=1.0.0.0
+AC_SUBST(API_VERSION)
 
 AC_CHECK_TOOL(CC, gcc, gcc)
 AC_PROG_CC
@@ -38,7 +41,6 @@ if test "x$PKG_CONFIG" = "xno"; then
 fi
 
 dnl for use on the build system
-dnl pkg-config is stupid
 BUILD_GTK_CFLAGS=`$PKG_CONFIG --cflags gtk+-2.0`
 BUILD_GTK_LIBS=`$PKG_CONFIG --libs gtk+-2.0`
 AC_SUBST(BUILD_GTK_CFLAGS)
@@ -57,65 +59,124 @@ AC_ARG_WITH(crosspkgdir, [  --with-crosspkgdir=/path/to/pkg-config/dir],
 	fi
 )
 
-PKG_CHECK_MODULES(MONO_DEPENDENCY, mono)
+MONO_REQUIRED_VERSION=0.90
+PKG_CHECK_MODULES(MONO_DEPENDENCY, mono >= $MONO_REQUIRED_VERSION, has_mono=true, has_mono=false)
 
-MONO=`which mono`
-AC_SUBST(MONO)
+if test "x$has_mono" = "xtrue"; then
+if test `uname -s` = "Darwin"; then
+	AC_PATH_PROG(RUNTIME, mint, no)
+	AC_PATH_PROG(CSC, mcs, no)
+	LIB_PREFIX=
+	LIB_SUFFIX=.dylib
+else
+	AC_PATH_PROG(RUNTIME, mono, no)
+	AC_PATH_PROG(CSC, mcs, no)
+	LIB_PREFIX=.so
+	LIB_SUFFIX=
+fi
+else
+AC_PATH_PROG(CSC, csc.exe, no)
+if test x$CSC = "xno"; then
+	AC_MSG_ERROR([You need to install either mono or .Net])
+else
+RUNTIME=
+LIB_PREFIX=
+LIB_SUFFIX=.dylib
+fi
+fi
+
+CS="C#"
+if test "x$CSC" = "xno" ; then
+	AC_MSG_ERROR([No $CS compiler found])
+fi
+
+AC_PATH_PROG(GACUTIL, gacutil, no)
+if test "x$GACUTIL" = "xno" ; then
+	AC_MSG_ERROR([No gacutil tool found])
+fi
+
+AC_SUBST(RUNTIME)
+AC_SUBST(CSC)
+AC_SUBST(GACUTIL)
+AC_SUBST(LIB_PREFIX)
+AC_SUBST(LIB_SUFFIX)
+
+MONODOC_REQUIRED_VERSION=0.12
+PKG_CHECK_MODULES(MONODOC_DEPENDENCY, monodoc >= $MONODOC_REQUIRED_VERSION, enable_monodoc=yes, enable_monodoc=no)
+
+if test "x$enable_monodoc" = "xyes"; then
+	AC_PATH_PROG(MONODOC, monodoc, no)
+	if x$MONODOC = xno; then
+	   enable_monodoc=no
+	fi
+else
+	MONODOC=
+fi
+
+AC_SUBST(MONODOC)
+
+PKG_CHECK_MODULES(GLIB, glib-2.0)
+AC_SUBST(GLIB_CFLAGS)
+AC_SUBST(GLIB_LIBS)
+
+PKG_CHECK_MODULES(GTK, gtk+-2.0)
+AC_SUBST(GTK_CFLAGS)
+AC_SUBST(GTK_LIBS)
+
+PKG_CHECK_MODULES(XML, libxml-2.0)
+AC_SUBST(XML_CFLAGS)
+AC_SUBST(XML_LIBS)
 
 ## Versions of dependencies
-GNOME_REQUIRED_VERSION=2.0.0
+GNOME_REQUIRED_VERSION=2.2.0
 GTK_REQUIRED_VERSION=2.2.0
-PKG_CHECK_MODULES(BASE_DEPENDENCIES, libgnomecanvas-2.0 >= $GNOME_REQUIRED_VERSION libgnomeui-2.0 >= $GNOME_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION gmodule-2.0 >= $GTK_REQUIRED_VERSION, enable_gnome=yes, enable_gnome=no)
 
-if test "x$enable_gnome" = "xno"; then
-	PKG_CHECK_MODULES(BASE_DEPENDENCIES, gtk+-2.0 >= $GTK_REQUIRED_VERSION gmodule-2.0 >= $GTK_REQUIRED_VERSION)
-fi
+PKG_CHECK_MODULES(LIBART, libart-2.0 >= $GNOME_REQUIRED_VERSION, enable_libart=yes, enable_libart=no)
+AC_SUBST(LIBART_CFLAGS)
+AC_SUBST(LIBART_LIBS)
+
+PKG_CHECK_MODULES(GNOME, libgnomecanvas-2.0 >= $GNOME_REQUIRED_VERSION libgnomeui-2.0 >= $GNOME_REQUIRED_VERSION gtk+-2.0 >= $GTK_REQUIRED_VERSION libgnomeprintui-2.2 >= $GNOME_REQUIRED_VERSION gmodule-2.0 >= $GTK_REQUIRED_VERSION, enable_gnome=yes, enable_gnome=no)
+AC_SUBST(GNOME_CFLAGS)
+AC_SUBST(GNOME_LIBS)
 
 GLADE_REQUIRED_VERSION=2.0.0
-PKG_CHECK_MODULES(GLADE_DEPENDENCIES, libglade-2.0 >= $GLADE_REQUIRED_VERSION, enable_glade=yes, enable_glade=no)
-if test "x$enable_glade" = "xyes"; then
-	BASE_DEPENDENCIES_CFLAGS="$BASE_DEPENDENCIES_CFLAGS $GLADE_DEPENDENCIES_CFLAGS"
-	BASE_DEPENDENCIES_LIBS="$BASE_DEPENDENCIES_LIBS $GLADE_DEPENDENCIES_LIBS"
-fi
+PKG_CHECK_MODULES(GLADE, libglade-2.0 >= $GLADE_REQUIRED_VERSION, enable_glade=yes, enable_glade=no)
+AC_SUBST(GLADE_CFLAGS)
+AC_SUBST(GLADE_LIBS)
 
 LIBGDA_REQUIRED_VERSION=1.0.0
 PKG_CHECK_MODULES(LIBGDA_DEPENDENCIES, libgda >= $LIBGDA_REQUIRED_VERSION, enable_gda=yes, enable_gda=no)
 enable_gnomedb=no
 if test "x$enable_gda" = "xyes"; then
-	BASE_DEPENDENCIES_CFLAGS="$BASE_DEPENDENCIES_CFLAGS $LIBGDA_DEPENDENCIES_CFLAGS"
-	BASE_DEPENDENCIES_LIBS="$BASE_DEPENDENCIES_LIBS $LIBGDA_DEPENDENCIES_LIBS"
-
 	PKG_CHECK_MODULES(LIBGNOMEDB_DEPENDENCIES, libgnomedb >= $LIBGDA_REQUIRED_VERSION, enable_gnomedb=yes, enable_gnomedb=no)
-	if test "x$enable_gnomedb" = "xyes"; then
-		BASE_DEPENDENCIES_CFLAGS="$BASE_DEPENDENCIES_CFLAGS $LIBGNOMEDB_DEPENDENCIES_CFLAGS"
-		BASE_DEPENDENCIES_LIBS="$BASE_DEPENDENCIES_LIBS $LIBGNOMEDB_DEPENDENCIES_LIBS"
-	fi
 fi
 
 RSVG_REQUIRED_VERSION=2.0.1
 PKG_CHECK_MODULES(RSVG_DEPENDENCIES, librsvg-2.0 >= $RSVG_REQUIRED_VERSION, enable_rsvg=yes, enable_rsvg=no)
-if test "x$enable_rsvg" = "xyes"; then
-	BASE_DEPENDENCIES_CFLAGS="$BASE_DEPENDENCIES_CFLAGS $RSVG_DEPENDENCIES_CFLAGS"
-	BASE_DEPENDENCIES_LIBS="$BASE_DEPENDENCIES_LIBS $RSVG_DEPENDENCIES_LIBS"
-fi
 
-GTKHTML_REQUIRED_VERSION=3.0
+GTKHTML_REQUIRED_VERSION=3.0.10
 PKG_CHECK_MODULES(GTKHTML_DEPENDENCIES, libgtkhtml-3.0 >= $GTKHTML_REQUIRED_VERSION, enable_gtkhtml=yes, enable_gtkhtml=no)
 if test "x$enable_gtkhtml" = "xyes"; then
-	BASE_DEPENDENCIES_CFLAGS="$BASE_DEPENDENCIES_CFLAGS $GTKHTML_DEPENDENCIES_CFLAGS"
-	BASE_DEPENDENCIES_LIBS="$BASE_DEPENDENCIES_LIBS $GTKHTML_DEPENDENCIES_LIBS"
+	GTKHTML_VERSION=3.0
+	GTKHTML_SOVERSION=4
+else
+	GTKHTML_REQUIRED_VERSION=3.1.12
+	PKG_CHECK_MODULES(GTKHTML_DEPENDENCIES, libgtkhtml-3.1 >= $GTKHTML_REQUIRED_VERSION, enable_gtkhtml=yes, enable_gtkhtml=no)
+	if test "x$enable_gtkhtml" = "xyes"; then
+		GTKHTML_VERSION=3.1
+		GTKHTML_SOVERSION=7
+	else
+		GTKHTML_VERSION=
+		GTKHTML_SOVERSION=
+	fi
 fi
+AC_SUBST(GTKHTML_VERSION)
+AC_SUBST(GTKHTML_SOVERSION)
 
 VTE_REQUIRED_VERSION=0.11.10
 PKG_CHECK_MODULES(VTE_DEPENDENCIES, vte >= $VTE_REQUIRED_VERSION, enable_vte=yes, enable_vte=no)
-if test "x$enable_vte" = "xyes"; then
-	BASE_DEPENDENCIES_CFLAGS="$BASE_DEPENDENCIES_CFLAGS $VTE_DEPENDENCIES_CFLAGS"
-	BASE_DEPENDENCIES_LIBS="$BASE_DEPENDENCIES_LIBS $VTE_DEPENDENCIES_LIBS"
-fi
 
-AC_SUBST(BASE_DEPENDENCIES_CFLAGS)
-AC_SUBST(BASE_DEPENDENCIES_LIBS)
-
+AM_CONDITIONAL(ENABLE_LIBART, test "x$enable_libart" = "xyes")
 AM_CONDITIONAL(ENABLE_GNOME, test "x$enable_gnome" = "xyes")
 AM_CONDITIONAL(ENABLE_GLADE, test "x$enable_glade" = "xyes")
 AM_CONDITIONAL(ENABLE_GDA, test "x$enable_gda" = "xyes")
@@ -123,36 +184,87 @@ AM_CONDITIONAL(ENABLE_GNOMEDB, test "x$enable_gnomedb" = "xyes")
 AM_CONDITIONAL(ENABLE_RSVG, test "x$enable_rsvg" = "xyes")
 AM_CONDITIONAL(ENABLE_GTKHTML, test "x$enable_gtkhtml" = "xyes")
 AM_CONDITIONAL(ENABLE_VTE, test "x$enable_vte" = "xyes")
+AM_CONDITIONAL(ENABLE_MONODOC, test "x$enable_monodoc" = "xyes")
 
 
 AC_SUBST(CFLAGS)
 
 AC_OUTPUT([
-glue/Makefile
+sources/Makefile
 parser/Makefile
+parser/GAPI/Makefile
 generator/Makefile
 generator/gapi-codegen
 glib/Makefile
+glib/AssemblyInfo.cs
+glib/glib-sharp.dll.config
+glib/glue/Makefile
 pango/Makefile
+pango/AssemblyInfo.cs
+pango/pango-sharp.dll.config
 atk/Makefile
+atk/AssemblyInfo.cs
+atk/atk-sharp.dll.config
 art/Makefile
+art/AssemblyInfo.cs
+art/art-sharp.dll.config
+art/art-sharp.pc
 gdk/Makefile
+gdk/AssemblyInfo.cs
+gdk/gdk-sharp.dll.config
+gdk/glue/Makefile
 gtk/Makefile
+gtk/AssemblyInfo.cs
+gtk/gtk-sharp.dll.config
+gtk/glue/Makefile
 glade/Makefile
+glade/AssemblyInfo.cs
+glade/glade-sharp.dll.config
+glade/glade-sharp.pc
+glade/glue/Makefile
 gnome/Makefile
+gnome/AssemblyInfo.cs
+gnome/gnome-sharp.dll.config
+gnome/gnome-sharp.pc
+gnome/glue/Makefile
 gnomevfs/Makefile
 gda/Makefile
+gda/AssemblyInfo.cs
+gda/gda-sharp.dll.config
+gda/gda-sharp.pc
 gnomedb/Makefile
+gnomedb/AssemblyInfo.cs
+gnomedb/gnomedb-sharp.dll.config
+gnomedb/gnomedb-sharp.pc
 gconf/Makefile
+gconf/doc/Makefile
 gconf/GConf/Makefile
+gconf/GConf/AssemblyInfo.cs
+gconf/GConf/gconf-sharp.dll.config
+gconf/GConf/gconf-sharp.pc
 gconf/GConf.PropertyEditors/Makefile
+gconf/GConf.PropertyEditors/AssemblyInfo.cs
 gconf/tools/Makefile
-gst/Makefile
+gconf/tools/gconfsharp-schemagen
 gtkhtml/Makefile
+gtkhtml/AssemblyInfo.cs
+gtkhtml/gtkhtml-sharp.dll.config
+gtkhtml/gtkhtml-sharp.pc
 rsvg/Makefile
+rsvg/AssemblyInfo.cs
+rsvg/rsvg-sharp.dll.config
+rsvg/rsvg-sharp.pc
 vte/Makefile
+vte/AssemblyInfo.cs
+vte/vte-sharp.dll.config
+vte/vte-sharp.pc
+doc/Makefile
+sample/GtkDemo/Makefile
 sample/Makefile
+sample/gconf/Makefile
+sample/pixmaps/Makefile
 sample/rsvg/Makefile
+sample/test/Makefile
 gtk-sharp.pc
 parser/gapi.pc
 parser/gapi-fixup
@@ -163,9 +275,12 @@ echo "---"
 echo "Configuration summary"
 echo ""
 echo "   * Installation prefix = $prefix"
+echo "   * $CS compiler: $CSC"
+echo "   * Documentation: $enable_monodoc ($MONODOC)"
 echo ""
 echo "   Optional assemblies included in the build:"
 echo ""
+echo "      * art-sharp.dll: $enable_libart"
 echo "      * gnome-sharp.dll: $enable_gnome"
 echo "      * glade-sharp.dll: $enable_glade"
 echo "      * gda-sharp.dll: $enable_gda"

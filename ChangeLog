@@ -1,3 +1,378 @@
+2004-05-06  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	Merge changes from HEAD to the jeroen-gtk-2-4 branch. The correct
+	gnome 2.6.0 & gtk+-2.4.1 sources are now also downloaded when you run
+	"make get-source-code". Some samples are disabled for now since they
+	use deprecated API and fail to build.
+
+2004-05-05  Mike Kestner  <mkestner@ximian.com>
+
+	* sample/gconf/Makefile.am : fix some whitespace.  I love you, auto*.
+
+2004-05-05  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : fix gtkhtml versioning *again*.
+	* sample/gconf/Makefile.am : conditional build on ENABLE_GNOME.
+
+2004-05-04  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : require gtkhtml-3.0.10 so we can use a single
+	so version (.4).
+	* sources/* : update to gtkhtml-3.0.10.  This produces zero change
+	in the generated API.
+
+2004-05-03  Todd Berman  <tberman@sevenl.net>
+
+	* */*.pc.in: change to use @PACKAGE@ where its needed, fixes pc bug
+
+2004-05-03  Todd Berman  <tberman@sevenl.net>
+
+	* configure.in: bump mono dep to 0.90
+
+2004-05-03  Todd Berman  <tberman@sevenl.net>
+
+	* configure.in: bump to 0.91, dont kill me mike.
+
+2004-05-03  Todd Berman  <tberman@sevenl.net>
+
+	* gtk-sharp.pc.in: add PACKAGE stuff here
+
+2004-05-03  Mike Kestner  <mkestner@ximian.com>
+
+	* */Makefile.am : fix gacutil for new package switch
+	* */*.pc.in : fix -libs var for new dll path
+
+2004-05-03  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : add some checks for gtkhtml-3.1 and use it if avail.
+	* gtkhtml/gtkhtml-sharp.dll.config.in : deal with 3.1 versioning.
+
+2004-05-03  Miguel de Icaza  <miguel@ximian.com>
+
+	* gtkhtml/Gtk.metadata: Patch from Mike Kestner: make
+	GtkHTMLStream opaque, to fix a bug that was found by running
+	Monodoc on MacOS X.  We were passing a pointer to a managed
+	object, instead of a pointer to a HTMLStream-allocated object.
+
+	* HTMLStream.custom: Update custom file to reflect change to
+	Opaque: use Handle instead of this.
+
+2004-04-30  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/glue/makefile.win32 : remove windowmanager.o for now. It
+	was breaking the build on win32.
+
+2004-04-30  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : lookup gacutil and error out if not found.
+	* */Makefile.am : add install-data-local and uninstall-local targets
+	for GAC installation.  Add gtk-sharp.pub target to cp the key in for
+	distcheck.
+	* */AssemblyInfo.cs.in : remove ../ from key path for VPATH build.
+
+2004-04-30  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : remove BASE_DEPENDENCIES LIBS and CFLAGS and
+	expose more specific versions for glue building.
+	* */glue/Makefile.am : use more specific versions of LIBS and CFLAGS
+	to reduce the ldd footprint.
+
+2004-04-30  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : AC_SUBST an API_VERSION=1.0.0.0 for the 
+	AssemblyVersionAttributes.
+	* */AssemblyInfo.cs.in : s/@VERSION@/@API_VERSION@/
+
+2004-04-30  Mike Kestner  <mkestner@ximian.com>
+
+	* */AssemblyInfo.cs.in : s/@VERSION@.0.0/@VERSION@/
+
+2004-04-30  Mike Kestner  <mkestner@ximian.com>
+
+	* sample/gconf/* : break System.Drawing dependency.
+
+2004-04-30  Owen Fraser-Green  <owen@discobabe.net>
+
+	* gconf/tools/gconfsharp-schemagen.in : fixed variables
+	* sources/Makefile.am : remove reference to old gst target
+
+2004-04-30  Erik Dasque  <edasque@ximian.com>
+
+	* gtk/Calendar.custom : new Date property with setter
+
+2004-04-29  Mike Kestner  <mkestner@ximian.com>
+
+	* mapdllnames.pl : remove unneccessary script
+
+2004-04-29  Mike Kestner  <mkestner@ximian.com>
+
+	* gst/* : kill.  it's been spun out the the gst-sharp module.
+	* sources/Makefile.am : remove gst source download target.
+	* sources/gtk-sharp-sources.xml : remove gst nodes.
+
+2004-04-29  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : expand the AssemblyInfo.cs files.
+	* */AssemblyInfo.cs.in : new assembly info files.
+	* */Makefile.am : dist, make, and clean assmbly info files.
+
+2004-04-29  Owen Fraser-Green  <owen@discobabe.net>
+
+	* generator/ClassBase.cs: added base case to Parent to avoid
+	infinite recursion.
+	* glib/Marshaller.cs: changed SizeOf(typeof's to int and long
+	instead of string.
+
+2004-04-29  Duncan Mak  <duncan@ximian.com>
+
+	* vte/vte-sharp.dll.config.in: Removed extra </configuration>
+	element.
+	
+2004-04-29  Owen Fraser-Green  <owen@discobabe.net>
+
+	* gnome/CanvasGroup.custom : added public constructor.
+
+2004-04-29  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : expand the new config files.
+	* */*config.in : the per-assembly config files.
+	* */Makefile.am : dist, clean, and install the configs.
+	* gnome/*.c* : fix some errant DllImports.
+
+2004-04-28  Mike Kestner  <mkestner@ximian.com>
+
+	[Expanded from patch by John Luke attached to bug.]
+	* gdk/Gdk.metadata : rename Atom.Name to GetName so it props.
+	* gdk/Atom.custom : new string cast operator.
+	* sample/TestDnd.cs : fix Atom.Name reference
+	* sample/GtkDemo/DemoEditableCell.cs : fix a ListStore.Remove
+	ref broken by last commit.
+	[Fixes #57721]
+
+2004-04-28  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Gtk.metadata : mark ListStore.Remove iter pass_as=ref.
+	[Fixes #56945]
+
+2004-04-28  Mike Kestner  <mkestner@ximian.com>
+
+	* Makefile.am : dist the public signing key baulig just added.
+
+2004-04-27  Mike Kestner  <mkestner@ximian.com>
+
+	* gnome/glue/canvaspoints.c : remove some g_prints spotted by
+	Jorge Garcia.
+
+2004-04-16  Rachel Hestilow  <rachel@nullenvoid.com>
+
+	* generator/GObjectGen.cs: Added new generatable to handle
+	plain GObjects the same way we do subclasses.
+	* generator/ManualGen.cs: Make FromNative/FromNativeReturn virtual
+	to allow overriding.
+	* generator/SymbolTable.cs: Use GObjectGen instead of
+	ManualGen for GObject.
+	* generator/Makefile.am: Add GObjectGen.cs.
+
+2004-04-16  Boyd Timothy  <btimothy@novell.com>
+
+	* gdk/Global.custom : properties to expose window manager spec
+	properties.
+	* gdk/glue/windowmanager.c : glue to retrieve window manager props
+	using gdk_property_get.
+	* gdk/glue/Makefile.am : add new file.
+	* gdk/glue/makefile.win32 : add new file.
+
+2004-04-13  Mike Kestner  <mkestner@ximian.com>
+
+	* glib/Value.cs : fix a csc-breaker.
+
+2004-04-12  Mike Kestner  <mkestner@ximian.com>
+
+	* gnome/Program.custom : add ArgumentException for app_id containing
+	spaces.  [fixes #56594]
+
+2004-04-12  Mike Kestner  <mkestner@ximian.com>
+
+	[Rework of a patch from Ben Maurer to turn GLib.Value
+	into a valuetype.]
+	* generator/BoxedGen.cs : fix operators for new valuetype GValues.
+	* generator/ByRefGen.cs : new generatable for byref value types.
+	* generator/Makefile.am : add ByRefGen.cs.
+	* generator/MethodBody.cs : remove GValue special casing.
+	* generator/Property.cs : rework value handling.
+	* generator/Signal.cs : fix base virtual method value passing.
+	* generator/SymbolTable.cs : map GValue to ByRefGen.
+	* glib/Object.cs : rework GetProperty and SetProperty.
+	* glib/Value.cs : make it a value type.
+	* glib/ValueArray.cs : fix GValue passing.
+	* glib/glue/value.c : rework for valuetype GValues.
+	* gnome/Program.custom : fix GValue passing
+	* gtk/Gtk.metadata : make TreeModel.GetValue value param pass_as=ref.
+	* gtk/ListStore.custom : fix GValue passing
+	* gtk/NodeStore.cs : fix GValue passing
+	* gtk/TextTag.custom : fix GValue passing
+	* gtk/TreeModelSort.custom : fix GValue passing
+	* gtk/TreeStore.custom : fix GValue passing
+
+2004-04-05  Larry Ewing  <lewing@ximian.com>
+
+	* gnome/Gnome.metadata: Make data an array type so that the image
+	functions can be used.
+	* gnome/Print.custom: add a custom handler to print Pixbufs.
+	* gnome/Makefile.am: add Print.custom.
+
+2004-04-07  Mike Kestner  <mkestner@ximian.com>
+
+	* generator/ClassBase.cs : remove default ctor generation and
+	hasDefaultConstructor field.
+	* generator/Ctor.cs : chain to base (IntPtr.Zero).
+	* generator/StructBase.cs : remove hasDefaultConstructor usage.
+	* glib/Object.cs : remove Object () ctor.  Add Ben's GetGType
+	method, although nothing uses it yet.  Still working on integrating
+	the remainder of Ben's patch.
+	* gtk/Gtk.metadata : remove all the disabledefaultctor rules.
+	* */*.custom : add base (IntPtr.Zero) or this (...) chaining for 
+	all ctors.
+
+2004-04-07  John Luke  <jluke@cfl.rr.com>
+
+	* gtk/Gtk.metadata: mark Gtk.Widget.ModifyFont font_desc null_ok
+
+2004-04-07  Gonzalo Paniagua Javier <gonzalo@ximian.com>
+
+	* glib/Value.cs: added StructLayout attribute as requested by the
+	runtime. Now --aot works again.
+
+2004-04-04  Mike Kestner  <mkestner@ximian.com>
+
+	* generator/SymbolTable.cs : don't use StringGen for gunichar.
+	* glib/glue/unichar.c : glue to fetch a gunichar as a utf8 string.
+	* glib/glue/Makefile.am : add unichar.c
+	* glib/glue/makefile.win32 : add unichar.c
+	* gtk/Gtk.metadata : hide TextIter.GetChar
+	* gtk/TextIter.custom : manually impl Char prop. [fixes #53425]
+
+2004-04-04  Mike Kestner  <mkestner@ximian.com>
+
+	* pango/Layout.custom : increment an indexer. thanks to Moritz Balz
+	for the bug report and candidate patch.
+
+2004-04-04  Mike Kestner  <mkestner@ximian.com>
+
+	* generator/BoxedGen.cs : DllImport glibsharpglue for value_create.
+
+2004-04-04  Mike Kestner  <mkestner@ximian.com>
+
+	* gnome/glue/canvasitem.c : add glue to override VMs.
+	* gnome/CanvasItem.cs : expose virtual methods for update, point,
+	realize, draw, and render.
+
+2004-04-04  John Luke  <jluke@cfl.rr.com>
+
+	* vte/Vte.metadata: mark argv and envv parameters to
+	Vte.Terminal.ForkCommand as arrays, it finally works
+	* sample/Vte-test.cs: adjust for above
+
+2004-04-02  Todd Berman  <tberman@sevenl.net>
+
+	* gtk/Gtk.metadata: fix Gtk.SelectionData.Set.
+
+2004-04-02  Todd Berman  <tberman@sevenl.net>
+
+	* configure.in: added new .pc files
+	* gtk-sharp.pc.in: modified to include Libs: line
+	* art/.cvsignore: added art-sharp.pc
+	* art/Makefile.am: added rules for installing .pc
+	* art/art-sharp.pc.in: new .pc file
+	* gconf/GConf/.cvsignore: added gconf-sharp.pc
+	* gconf/GConf/Makefile.am: added rules for installing .pc
+	* gconf/GConf/gconf-sharp.pc.in: new .pc file
+	* gda/.cvsignore: added gda-sharp.pc
+	* gda/Makefile.am: added rules for installing .pc
+	* gda/gda-sharp.pc.in: new .pc file
+	* glade/.cvsignore: added glade-sharp.pc
+	* glade/Makefile.am: added rules for installing .pc
+	* glade/glade-sharp.pc.in: new .pc file
+	* gnome/.cvsignore: added gnome-sharp.pc
+	* gnome/Makefile.am: added rules for installing .pc
+	* gnome/gnome-sharp.pc.in: new .pc file
+	* gnomedb/.cvsignore: added gnomedb-sharp.pc
+	* gnomedb/Makefile.am: added rules for installing .pc
+	* gnomedb/gnomedb-sharp.pc.in: new .pc file
+	* gtkhtml/.cvsignore: added gtkhtml-sharp.pc
+	* gtkhtml/Makefile.am: added rules for installing .pc
+	* gtkhtml/gtkhtml-sharp.pc.in: new .pc file
+	* rsvg/.cvsignore: added rsvg-sharp.pc
+	* rsvg/Makefile.am: added rules for installing .pc
+	* rsvg/rsvg-sharp.pc.in: new .pc file
+	* vte/.cvsignore: added vte-sharp.pc
+	* vte/Makefile.am: added rules for installing .pc
+	* vte/vte-sharp.pc.in: new .pc file
+
+2004-04-01  Mike Kestner  <mkestner@ximian.com>
+
+	* art/Art.metadata : mark dst pass_as=out on Affine.Point
+
+2004-04-01  Jorn Baayen  <jorn@nl.linux.org>
+
+	* gtk/Style.custom : wrappers for Text[] and Base[]
+	* gtk/glue/style.c : glue to access text[] and base[]
+	[fixes #54805]
+
+2004-04-01  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* gnome/IconTheme.custom : GetSearchPath impl [fixes #51599].
+
+2004-04-01  Joshua Tauberer  <tauberer@for.net>
+
+	* gdk/Gdk.metadata : hide Region.GetRectangles
+	* gdk/Region.custom : implement Rectangles prop [fixes #55811]
+
+2004-04-01  Mike Kestner  <mkestner@ximian.com>
+
+	* glib/Value.cs : NULL check for g_value_get_string Thanks to Jeroen
+	Zwartepoorte for the bug report with patch [fixes #54979].
+
+2004-03-31  Miguel de Icaza  <miguel@ximian.com>
+
+	* configure.in: If monodoc is not found, then turn off
+	enable_monodoc, so the value is properly propagated.
+
+2004-03-31  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : tagged for 0.18 and bumped release to 0.18.99
+	for cvs.
+
+2004-03-31  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : remove atk/glue/Makefile
+	* atk/Makefile.am : comment out subdirs for now
+	* atk/makefile.win32 : don't build glue
+	* */glue/Makefile.am : remove generated.c from sources
+	* */glue/makefile.win32 : remove generated.c from sources
+	* generator/ObjectGen.cs : disable vm glue generation for now.
+
+2004-03-30  John Luke  <jluke@cfl.rr.com>
+
+	[Reworked a bit by MK]
+	* Makefile.am : add doc dir
+	* configure.in : test for monodoc, expand doc/Makefile
+	* doc/Makefile.am : build and dist docs
+	* doc/makefile : kill
+
+2004-03-30  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Makefile.am : add the customs that miggie didn't add.
+
+2004-03-30  Mike Kestner  <mkestner@ximian.com>
+
+	* rsvg/Makefile.am : apply metadata to api
+	* rsvg/Rsvg.metadata : mark an array param
+
+2004-03-29  Todd Berman  <tberman@sevenl.net>
+
+	* sample/Makefile.am: small resource build fix for glade-test.exe
+
 2004-03-27  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* gnomevfs/Mime.cs:

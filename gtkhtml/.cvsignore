@@ -1,4 +1,10 @@
+gtkhtml-sharp.pc
+AssemblyInfo.cs
 *.dll
+*.dll.config
 generated
 generated-stamp
 Makefile
+Makefile.in
+*-api.xml
+gtk-sharp.pub

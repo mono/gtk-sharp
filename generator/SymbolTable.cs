@@ -66,7 +66,6 @@ namespace GtkSharp.Generation {
 			AddType (new StringGen ("char"));
 			AddType (new SimpleGen ("double", "double"));
 			AddType (new SimpleGen ("float", "float"));
-			AddType (new StringGen ("gunichar"));
 			AddType (new SimpleGen ("uint1", "bool"));
 			AddType (new SimpleGen ("GC", "IntPtr"));
 			AddType (new SimpleGen ("GPtrArray", "IntPtr[]"));
@@ -94,8 +93,8 @@ namespace GtkSharp.Generation {
 			AddType (new CustomMarshalerGen ("time_t", "System.DateTime", "GLib.time_t_CustomMarshaler"));
 			AddType (new ManualGen ("GSList", "GLib.SList"));
 			AddType (new ManualGen ("GList", "GLib.List"));
-			AddType (new ManualGen ("GValue", "GLib.Value"));
-			AddType (new ManualGen ("GObject", "GLib.Object"));
+			AddType (new ByRefGen ("GValue", "GLib.Value"));
+			AddType (new GObjectGen ());
 		}
 		
 		public void AddType (IGeneratable gen)

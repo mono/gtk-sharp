@@ -36,12 +36,12 @@
 			g_object_ref (Raw);
 		}
 		
-		public Pixbuf (System.IO.Stream stream)
+		public Pixbuf (System.IO.Stream stream) : base (IntPtr.Zero)
 		{
 			LoadFromStream (stream);
 		}
 
-		public Pixbuf (System.Reflection.Assembly assembly, string resource)
+		public Pixbuf (System.Reflection.Assembly assembly, string resource) : base (IntPtr.Zero)
 		{
 			if (assembly == null)
 				assembly = System.Reflection.Assembly.GetCallingAssembly ();
@@ -93,14 +93,14 @@
 		}
 
 		// overload to default the colorspace
-		public Pixbuf(byte [] data, bool has_alpha, int bits_per_sample, int width, int height, int rowstride, Gdk.PixbufDestroyNotify destroy_fn)
+		public Pixbuf(byte [] data, bool has_alpha, int bits_per_sample, int width, int height, int rowstride, Gdk.PixbufDestroyNotify destroy_fn) : base (IntPtr.Zero)
 		{
 			GdkSharp.PixbufDestroyNotifyWrapper destroy_fn_wrapper = null;
 			destroy_fn_wrapper = new GdkSharp.PixbufDestroyNotifyWrapper (destroy_fn, this);
 			Raw = gdk_pixbuf_new_from_data(data, (int) Gdk.Colorspace.Rgb, has_alpha, bits_per_sample, width, height, rowstride, destroy_fn_wrapper.NativeDelegate, IntPtr.Zero);
 		}
 
-		public unsafe Pixbuf(byte[] data, bool copy_pixels)
+		public unsafe Pixbuf(byte[] data, bool copy_pixels) : base (IntPtr.Zero)
 		{
 			IntPtr error = IntPtr.Zero;
 			Raw = gdk_pixbuf_new_from_inline(data.Length, data, copy_pixels, out error);
@@ -110,7 +110,7 @@
 		[DllImport("libgdk_pixbuf-2.0-0.dll")]
 		static extern unsafe IntPtr gdk_pixbuf_new_from_inline(int len, IntPtr data, bool copy_pixels, out IntPtr error);
 
-		public unsafe Pixbuf(int data_length, void *data, bool copy_pixels)
+		public unsafe Pixbuf(int data_length, void *data, bool copy_pixels) : base (IntPtr.Zero)
 		{
 			IntPtr error = IntPtr.Zero;
 			Raw = gdk_pixbuf_new_from_inline(data_length, (IntPtr) data, copy_pixels, out error);
@@ -136,23 +136,6 @@
 		public Gdk.Pixbuf CreateFromDrawable (Gdk.Drawable src, Gdk.Colormap cmap, int src_x, int src_y, int dest_x, int dest_y, int width, int height) {
 			IntPtr raw_ret = gdk_pixbuf_get_from_drawable((IntPtr) 0, src.Handle, cmap.Handle, src_x, src_y, dest_x, dest_y, width, height);
 			return new Pixbuf (raw_ret);
-		}
-
-//
-// Add an overload that takes System.Drawing.Color arguments instead of uint32 values for colors
-//
-		public void CompositeColor(Gdk.Pixbuf dest, int dest_x, int dest_y, int dest_width, int dest_height, 
-					   double offset_x, double offset_y, double scale_x, double scale_y, 
-					   Gdk.InterpType interp_type, int overall_alpha, int check_x, int check_y, 
-					   int check_size, System.Drawing.Color color1, System.Drawing.Color color2) 
-	 	{
-			gdk_pixbuf_composite_color(Handle, dest.Handle, dest_x, dest_y, dest_width, dest_height, offset_x, 
-				offset_y, scale_x, scale_y, (int) interp_type, overall_alpha, check_x, check_y, check_size, 
-				(uint) color1.ToArgb (), (uint) color2.ToArgb ());
-		}
-		
-		public Gdk.Pixbuf CompositeColorSimple(int dest_width, int dest_height, Gdk.InterpType interp_type, int overall_alpha, int check_size, System.Drawing.Color color1, System.Drawing.Color color2) {
-			return CompositeColorSimple (dest_width, dest_height, interp_type, overall_alpha, check_size, (uint) color1.ToArgb (), (uint) color2.ToArgb ());
 		}
 
 //

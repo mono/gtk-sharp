@@ -40,7 +40,6 @@ customs = 				\
 	Container.custom		\
 	Dialog.custom			\
 	Entry.custom			\
-	FileSelection.custom		\
 	Frame.custom			\
 	HBox.custom			\
 	IconFactory.custom		\
@@ -51,7 +50,6 @@ customs = 				\
 	MessageDialog.custom		\
 	Notebook.custom			\
 	Object.custom			\
-	Paned.custom			\
 	RadioButton.custom		\
 	RadioMenuItem.custom		\
 	ScrolledWindow.custom		\

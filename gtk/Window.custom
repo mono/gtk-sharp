@@ -17,6 +17,8 @@
 			}
 			set {
 				base.Raw = value;
+				if (value == IntPtr.Zero)
+					return;
 				g_object_ref (value);
 			}
 		}
@@ -51,17 +53,6 @@
 			}
 		}
 
-		public System.Drawing.Size DefaultSize {
-			get {
-				return new System.Drawing.Size (
-						DefaultWidth, DefaultHeight);
-			}
-			set {
-				DefaultWidth = value.Width;
-				DefaultHeight = value.Height;
-			}
-		}
-
 		[DllImport("libgtk-win32-2.0-0.dll")]
 		static extern IntPtr gtk_window_get_icon_list(IntPtr raw);
 
@@ -87,26 +78,6 @@
 			}
 		}
 
-		public System.Drawing.Size Position {
-			get {
-				int x, y;
-				GetPosition (out x, out y);
-				
-				return new System.Drawing.Size (
-						x, y);
-			}
-		}
-
-		public System.Drawing.Size Size {
-			get {
-				int x, y;
-				GetSize (out x, out y);
-				
-				return new System.Drawing.Size (
-						x, y);
-			}
-		}
-
 		[DllImport("libgtk-win32-2.0-0.dll")]
 		static extern IntPtr gtk_window_list_toplevels();
 
@@ -122,3 +93,14 @@
 				result [i] = list [i] as Window;
 			return result;
 		}
+
+		public Gdk.Size DefaultSize {
+			get {
+				return new Gdk.Size (DefaultWidth, DefaultHeight);
+			}
+			set {
+				DefaultWidth = value.Width;
+				DefaultHeight = value.Height;
+			}
+		}
+

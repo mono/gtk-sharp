@@ -8,22 +8,24 @@
 // This code is inserted after the automatically generated code.
 //
 	
-[DllImport("gobject-2.0")]
+[DllImport("libgobject-2.0-0.dll")]
 static extern void g_type_init ();
 
 [StructLayout(LayoutKind.Sequential)]
 struct PropertyArg {
 	public string name;
-	public IntPtr value;
+	public GLib.Value value;
 }
 
-[DllImport("gtksharpglue")]
+[DllImport("gnomesharpglue")]
 static extern System.IntPtr
 gtksharp_gnome_program_init (string app_id, string app_version, ref ModuleInfo module, int argc, string[] argv, int nargs, PropertyArg[] args);
 
-public Program (string app_id, string app_version, ModuleInfo module,
-                string[] argv, params object[] props)
+public Program (string app_id, string app_version, ModuleInfo module, string[] argv, params object[] props) : base (IntPtr.Zero)
 {
+	if (app_id.IndexOf (" ") > 0)
+		throw new ArgumentException ("app_id argument can't contain spaces.");
+
 	int nargs = props.Length / 2;
 	PropertyArg[] args = new PropertyArg[nargs];
 	GLib.Value[] vals = new GLib.Value[nargs];
@@ -43,9 +45,9 @@ public Program (string app_id, string app_version, ModuleInfo module,
 		else if (type == true.GetType ())
 			value = new GLib.Value ((bool) prop);
 		else
-			value = null;
+			value = GLib.Value.Empty;
 		vals[i] = value;
-		args[i].value = value.Handle; 
+		args[i].value = value; 
 	}
 	
 	/* FIXME: Is there a way to access this in .NET? */ 

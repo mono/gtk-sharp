@@ -1,2 +1,7 @@
+gconf-sharp.pc
+AssemblyInfo.cs
 Makefile
+Makefile.in
 *.dll
+*.dll.config
+gtk-sharp.pub

@@ -4,7 +4,7 @@
 #
 # Author: Mike Kestner <mkestner@speakeasy.net>
 #
-# <c> 2001-2003 Mike Kestner, <c> 2003 Novell, Inc.
+# <c> 2001-2003 Mike Kestner, <c> 2003-2004 Novell, Inc.
 ##############################################################
 
 $debug=0;
@@ -275,7 +275,7 @@ foreach $type (sort(keys(%ifaces))) {
 
 	$classdef = $sdefs{$1} if ($ifacetype =~ /struct\s+(\w+)/);
 	if ($initfunc) {
-		parseInitFunc($iface_el, $initfunc);
+		parseInitFunc($iface_el, $initfunc, 0);
 	} else {
 		warn "Don't have an init func for $inst.\n" if $debug;
 	}
@@ -323,7 +323,7 @@ foreach $type (sort(keys(%objects))) {
 
 	# Get the props from the class_init func.
 	if ($initfunc) {
-		parseInitFunc($obj_el, $initfunc);
+		parseInitFunc($obj_el, $initfunc, 1);
 	} else {
 		warn "Don't have an init func for $inst.\n" if $debug;
 	}
@@ -807,7 +807,6 @@ sub addSignalElem
 	my ($spec, $class, $node) = @_;
 	$spec =~ s/\n\s*//g; $class =~ s/\n\s*//g;
 
-
 	$sig_elem = $doc->createElement('signal');
 	$node->appendChild($sig_elem);
 
@@ -839,19 +838,42 @@ sub addSignalElem
 			$parm_elem->setAttribute('name', "p$idx");
 			$parm_elem->setAttribute('type', $argtype);
 		}
-		return;
+		return $class;
 	}
 
-	if ($class =~ /;\s*(\S+\s*\**)\s*\(\*\s*$method\)\s*\((.*?)\);/) {
-		$ret = $1; $parms = $2;
+	if ($class =~ /;\s*(G_CONST_RETURN)?\s*(\S+\s*\**)\s*\(\*\s*$method\)\s*\((.*?)\);/) {
+		$ret = $2; $parms = $3;
 		addReturnElem($sig_elem, $ret);
 		if ($parms && ($parms ne "void")) {
 			addParamsElem($sig_elem, split(/,/, $parms));
 		}
+		$class =~ s/;\s*(G_CONST_RETURN)?\s*\S+\s*\**\s*\(\*\s*$method\)\s*\(.*?\);/;/;
 	} else {
 		die "$method $class";
 	}
 
+	return $class;
+}
+
+sub addVirtualMethods
+{
+	my ($class, $node) = @_;
+	$class =~ s/\n\s*//g;
+
+	while ($class =~ /;\s*(\S+\s*\**)\s*\(\*\s*(\w+)\)\s*\((.*?)\);/) {
+		$ret = $1; $cname = $2; $parms = $3;
+		if ($cname !~ /reserved/) {
+			$vm_elem = $doc->createElement('virtual_method');
+			$node->appendChild($vm_elem);
+			$vm_elem->setAttribute('name', StudlyCaps($cname));
+			$vm_elem->setAttribute('cname', $cname);
+			addReturnElem($vm_elem, $ret);
+			if ($parms && ($parms ne "void")) {
+				addParamsElem($vm_elem, split(/,/, $parms));
+			}
+		}
+		$class =~ s/;\s*\S+\s*\**\s*\(\*\s*\w+\)\s*\(.*?\);//;
+	}
 }
 
 sub addImplementsElem
@@ -869,7 +891,7 @@ sub addImplementsElem
 
 sub parseInitFunc
 {
-	my ($obj_el, $initfunc) = @_;
+	my ($obj_el, $initfunc, $is_obj) = @_;
 
 	my @init_lines = split (/\n/, $initfunc);
 
@@ -892,10 +914,14 @@ sub parseInitFunc
 			do {
 				$sig .= $init_lines[++$linenum];
 			} until ($init_lines[$linenum] =~ /;/);
-			addSignalElem ($sig, $classdef, $obj_el);
+			$classdef = addSignalElem ($sig, $classdef, $obj_el);
 			$sigcnt++;
 		}
 		$linenum++;
+	}
+
+	if ($is_obj) {
+		addVirtualMethods ($classdef, $obj_el);
 	}
 }
 

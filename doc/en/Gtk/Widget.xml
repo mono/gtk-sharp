@@ -1426,25 +1426,6 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="State" Deprecated="true">
-      <MemberSignature Language="C#" Value="public Gtk.StateType State { set; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>Gtk.StateType</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary>Sets the state of a <paramref name="widget" /> (insensitive, prelighted, etc.).</summary>
-        <param name="value">New state for <paramref name="widget" />.</param>
-        <returns>The <see cref="T:Gtk.StateType" /> of the <paramref name="widget" />.</returns>
-        <remarks>
-          <para>
-          Usually you should set the state using wrapper fuctions such as <see cref="P:Gtk.Widget.Sensitive" />. This property is for use in widget implementations.
-         </para>
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Visual">
       <MemberSignature Language="C#" Value="public Gdk.Visual Visual { get; };" />
       <MemberType>Property</MemberType>
@@ -1521,11 +1502,30 @@
       <Parameters>
       </Parameters>
       <Docs>
-        <summary>Whether the <paramref name="widget" /> responds to input.</summary>
-        <param name="value">If <see langword="true" /> the <paramref name="widget" /> is set to respond to input.</param>
+        <summary>Sets the sensitivity of the <see cref="T:Gtk.Widget" />. A widget is sensitive if the user can interact with it, otherwise, it is grayed.</summary>
+        <param name="value">A System.Boolean value. Set to <see langword="true" /> to enable the <paramref name="widget" /> sensitivity, this is, whether the widget should respond to input or not.</param>
         <returns>
           <see langword="true" /> if the <paramref name="widget" /> responds to input.</returns>
-        <remarks />
+        <remarks>
+          <para>Insensitive widgets are "grayed out" and the user can't
+interact with them. Insensitive widgets are known as
+"inactive", "disabled", or "ghosted" in some other toolkits.
+The sensitivity of a widget determines whether it will receive
+certain events (e.g. button or key presses).</para>
+          <para>
+If the ancestor (parent) widget sesitivity is set to false,
+it does not matter what the sensitivity property have,
+the widget will not be sensitive. Use
+<c>widget.Parent.Sensitive</c>
+to check whether the ancestor widget is sensitive or not.
+</para>
+          <seealso cref="P:Gtk.Widget.Parent" />
+          <seealso cref="M:Gtk.Widget.GetAncestor(uint)" />
+          <para>
+When the sensitive property is set to false, the widget
+property <see cref="P:Gtk.Widget.CanDefault" /> will return false.
+</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Events">
@@ -1612,11 +1612,11 @@
       <Parameters>
       </Parameters>
       <Docs>
-        <summary>Whether the <paramref name="widget" /> is the default <paramref name="widget" />.</summary>
+        <summary>
+          <see langword="true" /> when the <paramref name="widget" /> currently is receiving the default action.</summary>
         <param name="value">If <paramref name="true" /> the <paramref name="widget" /> is the default <paramref name="widget" />.</param>
-        <returns>
-          <see langword="true" /> if the <paramref name="widget" /> is the default <paramref name="widget" />.</returns>
-        <remarks />
+        <returns>Evaluates to <see langword="true" />if the <paramref name="widget" /> currently is receiving the default action.</returns>
+        <remarks>When the <paramref name="widget" /> is focused will receive the default action, and HasDefault will be <see langword="true" /> even if there is a different widget set as default.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CompositeChild">
@@ -1641,11 +1641,41 @@
       <Parameters>
       </Parameters>
       <Docs>
-        <summary>Whether the <paramref name="widget" /> can be the default widget.</summary>
-        <param name="value">If <see langword="true" /> the <paramref name="widget" /> can be the default widget.</param>
+        <summary>Evaluates to <see langword="true" /> if the <paramref name="widget" /> is allowed to receive the default focus.</summary>
+        <param name="value">
+          <see cref="System.Boolean" /> value that get or set the capability of the widget to receive the default focus.</param>
         <returns>
-          <see langoword="true" /> if the <paramref name="widget" /> can be the default widget.</returns>
-        <remarks />
+          <see cref="System.Boolean" /> that indicates if the widget can grab the default focus, using <see cref="M:Gtk.Widget.GrabDefault()" />.</returns>
+        <remarks>
+          <para>
+When this property is set to true, the widget itself will reserve space to
+draw the default if possible.
+</para>
+          <para>
+If either the widget's <see cref="P:Gtk.Widget.Sensitive" /> property or
+the <see cref="P:Gtk.Widget.Parent" />'s <see cref="P:Gtk.Widget.Sensitive" /> property evaluates
+to false, the <see cref="P:Gtk.Widget.CanDefault" /> property will return false. Otherwise, the
+<see cref="P:Gtk.Widget.CanDefault" /> property will return its own value.
+</para>
+          <para>Typically, you'd like to set the default widget using
+		    <see cref="M:Gtk.Widget.GrabDefault()" />, but you must set the <see cref="P:Gtk.Widget.CanDefault" />
+			property to true before you call it, in order to force the focus to be grabbed
+			into the widget.
+		  </para>
+          <para>
+		    When certain conditions are met and the user press Enter, the default
+			widget will be focused. Conditions: the <see cref="P:Gtk.Widget.CanDefault" /> property is set
+			to true, the <see cref="M:Gtk.Widget.GrabDefault()" /> has been called and
+			the <see cref="T:Gtk.Window" /> containing the widget have the focus.
+			This state is common when your window is shown for the first time, and no
+			<see cref="M:Gtk.Widget.GrabFocus()" /> call has been made (or when by no
+			other means, the focus has been set to any particular widget).
+		  </para>
+          <para>
+            <see cref="M:Gtk.Widget.GrabDefault()" /> [FIXME] This is a seealso instead see</para>
+          <para>
+            <see cref="P:Gtk.Widget.HasDefault" /> [FIXME] This is a seealso instead see</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CanFocus">
@@ -1657,11 +1687,28 @@
       <Parameters>
       </Parameters>
       <Docs>
-        <summary>Whether the <paramref name="widget" /> can accept the input focus.</summary>
-        <param name="value">If <see langword="true" /> the <paramref name="widget" /> can accept the input focus.</param>
-        <returns>
-          <see langword="true" /> if the <paramref name="widget" /> can accept the input focus.</returns>
-        <remarks />
+        <summary>Determines whether the <paramref name="widget" /> is able to receive the focus.</summary>
+        <param name="value">Set to <see langword="true" /> to give focus capability to the <paramref name="widget" />.</param>
+        <returns>Evaluates to <see langword="true" /> if the <paramref name="widget" /> is able to
+handle focus grabs.</returns>
+        <remarks>
+          <para>
+		    If the widget property <see cref="P:Gtk.Widget.Sensitive" /> evaluates
+		    to <see langword="false" />, the <see cref="P:Gtk.Widget.CanFocus" /> property will also return
+			<see langword="false" />. widget
+		    must be a focusable widget, such as an <see cref="T:Gtk.Entry" />; something
+		    like <see cref="T:Gtk.Frame" /> won't work. More precisely, it must have the
+		    property <see cref="P:Gtk.Widget.CanFocus" /> set.
+		  </para>
+          <para>
+		    The <see cref="P:Gtk.Widget.CanFocus" /> property is just the helper that will tell you whether
+			the widget is focusable.
+		  </para>
+          <para>
+		    Evaluate it before you make a call to <see cref="M:Gtk.Widget.GrabFocus()" />,
+			if you are unsure about the "focusability" of the widget.
+		  </para>[FIXME] This two links are seealso instead see: <see cref="P:Gtk.Widget.HasFocus" /> and
+		  <see cref="M:Gtk.Widget.GrabFocus()" /></remarks>
       </Docs>
     </Member>
     <Member MemberName="HeightRequest">
@@ -3622,38 +3669,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OnDeleteEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnDeleteEvent (ref Gdk.EventAny evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventAny&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventAny&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnLeaveNotifyEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnLeaveNotifyEvent (ref Gdk.EventCrossing evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventCrossing&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventCrossing&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnDragDrop">
       <MemberSignature Language="C#" Value="protected virtual bool OnDragDrop (Gdk.DragContext context, int x, int y, uint time_);" />
       <MemberType>Method</MemberType>
@@ -3688,22 +3703,6 @@
       <Docs>
         <summary>To be added</summary>
         <param name="group_cycling">a <see cref="T:System.Boolean" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnSelectionClearEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnSelectionClearEvent (ref Gdk.EventSelection evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventSelection&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventSelection&amp;" /></param>
         <returns>a <see cref="T:System.Boolean" /></returns>
         <remarks>To be added</remarks>
       </Docs>
@@ -3747,22 +3746,6 @@
       <Docs>
         <summary>To be added</summary>
         <param name="pspec">a <see cref="T:System.IntPtr" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnFocusOutEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnFocusOutEvent (ref Gdk.EventFocus evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventFocus&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventFocus&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -3873,22 +3856,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OnEnterNotifyEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnEnterNotifyEvent (ref Gdk.EventCrossing evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventCrossing&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventCrossing&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnDragDataGet">
       <MemberSignature Language="C#" Value="protected virtual void OnDragDataGet (Gdk.DragContext context, Gtk.SelectionData selection_data, uint info, uint time_);" />
       <MemberType>Method</MemberType>
@@ -3927,70 +3894,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OnDestroyEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnDestroyEvent (ref Gdk.EventAny evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventAny&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventAny&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnProximityOutEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnProximityOutEvent (ref Gdk.EventProximity evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventProximity&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventProximity&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnProximityInEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnProximityInEvent (ref Gdk.EventProximity evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventProximity&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventProximity&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnClientEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnClientEvent (ref Gdk.EventClient evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventClient&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventClient&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnHelpShown">
       <MemberSignature Language="C#" Value="protected virtual bool OnHelpShown (Gtk.WidgetHelpType help_type);" />
       <MemberType>Method</MemberType>
@@ -4007,54 +3910,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OnButtonPressEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnButtonPressEvent (ref Gdk.EventButton evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventButton&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventButton&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnFocusInEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnFocusInEvent (ref Gdk.EventFocus evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventFocus&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventFocus&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnSelectionNotifyEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnSelectionNotifyEvent (ref Gdk.EventSelection evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventSelection&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventSelection&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnShown">
       <MemberSignature Language="C#" Value="protected virtual void OnShown ();" />
       <MemberType>Method</MemberType>
@@ -4064,22 +3919,6 @@
       <Parameters />
       <Docs>
         <summary>To be added</summary>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnExposeEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnExposeEvent (ref Gdk.EventExpose evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventExpose&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventExpose&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -4127,22 +3966,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OnButtonReleaseEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnButtonReleaseEvent (ref Gdk.EventButton evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventButton&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventButton&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnUnrealized">
       <MemberSignature Language="C#" Value="protected virtual void OnUnrealized ();" />
       <MemberType>Method</MemberType>
@@ -4174,22 +3997,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OnNoExposeEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnNoExposeEvent (ref Gdk.EventAny evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventAny&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventAny&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnStateChanged">
       <MemberSignature Language="C#" Value="protected virtual void OnStateChanged (Gtk.StateType previous_state);" />
       <MemberType>Method</MemberType>
@@ -4205,22 +4012,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OnMotionNotifyEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnMotionNotifyEvent (ref Gdk.EventMotion evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventMotion&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventMotion&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnFocusGrabbed">
       <MemberSignature Language="C#" Value="protected virtual void OnFocusGrabbed ();" />
       <MemberType>Method</MemberType>
@@ -4230,54 +4021,6 @@
       <Parameters />
       <Docs>
         <summary>To be added</summary>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnMapEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnMapEvent (ref Gdk.EventAny evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventAny&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventAny&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnKeyPressEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnKeyPressEvent (ref Gdk.EventKey evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventKey&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventKey&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnConfigureEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnConfigureEvent (ref Gdk.EventConfigure evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventConfigure&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventConfigure&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -4323,54 +4066,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OnWindowStateEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnWindowStateEvent (ref Gdk.EventWindowState evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventWindowState&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventWindowState&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnVisibilityNotifyEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnVisibilityNotifyEvent (ref Gdk.EventVisibility evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventVisibility&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventVisibility&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnScrollEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnScrollEvent (ref Gdk.EventScroll evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventScroll&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventScroll&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnDragLeave">
       <MemberSignature Language="C#" Value="protected virtual void OnDragLeave (Gdk.DragContext context, uint time_);" />
       <MemberType>Method</MemberType>
@@ -4385,22 +4080,6 @@
         <summary>To be added</summary>
         <param name="context">a <see cref="T:Gdk.DragContext" /></param>
         <param name="time_">a <see cref="T:System.UInt32" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnKeyReleaseEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnKeyReleaseEvent (ref Gdk.EventKey evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventKey&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventKey&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -4419,22 +4098,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OnSelectionRequestEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnSelectionRequestEvent (ref Gdk.EventSelection evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventSelection&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventSelection&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnHidden">
       <MemberSignature Language="C#" Value="protected virtual void OnHidden ();" />
       <MemberType>Method</MemberType>
@@ -4444,22 +4107,6 @@
       <Parameters />
       <Docs>
         <summary>To be added</summary>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnPropertyNotifyEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnPropertyNotifyEvent (ref Gdk.EventProperty evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventProperty&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventProperty&amp;" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -4490,22 +4137,6 @@
       <Docs>
         <summary>To be added</summary>
         <param name="direction">a <see cref="T:Gtk.DirectionType" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnUnmapEvent" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected virtual bool OnUnmapEvent (ref Gdk.EventAny evnt);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="evnt" Type="Gdk.EventAny&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">a <see cref="T:Gdk.EventAny&amp;" /></param>
         <returns>a <see cref="T:System.Boolean" /></returns>
         <remarks>To be added</remarks>
       </Docs>
@@ -4544,36 +4175,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AddAccelerator" Deprecated="true">
-      <MemberSignature Language="C#" Value="public void AddAccelerator (string accel_signal, Gtk.AccelGroup accel_group, Gtk.AccelKey accel_key, Gdk.ModifierType accel_mods, Gtk.AccelFlags accel_flags);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="accel_signal" Type="System.String" />
-        <Parameter Name="accel_group" Type="Gtk.AccelGroup" />
-        <Parameter Name="accel_key" Type="Gtk.AccelKey" />
-        <Parameter Name="accel_mods" Type="Gdk.ModifierType" />
-        <Parameter Name="accel_flags" Type="Gtk.AccelFlags" />
-      </Parameters>
-      <Docs>
-        <summary>Installs an accelerator for this <paramref name="widget" /> in <paramref name="accel-group" /> that causes <paramref name="accel_signal" /> to be emitted if the accelerator is activated.</summary>
-        <param name="accel_signal">Widget signal to emit on accelerator activation.</param>
-        <param name="accel_group">Accel group for this <paramref name="widget" />, added to its toplevel.</param>
-        <param name="accel_key">GDK keyval of the accelerator.</param>
-        <param name="accel_mods">Modifier key combination of the accelerator.</param>
-        <param name="accel_flags">Flag accelerators.</param>
-        <remarks>
-          <para>
-          The <paramref name="accel-group" /> needs to be added to the widget's toplevel via <see cref="M:Gtk.Window.AddAccelGroup" />, and the signal must be of type G_RUN_ACTION. Accelerators added through this method are not user changeable during runtime.
-         </para>
-          <para>
-          Accelerators added through this method are not user changeable during runtime. If you want to support accelerators that can be changed by the user, use <see cref="M:Gtk.Window.SetAccelPath" /> instead.
-         </para>
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="State">
       <MemberSignature Language="C#" Value="public Gtk.StateType State { set; get; };" />
       <MemberType>Property</MemberType>
@@ -4582,9 +4183,14 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <returns>a <see cref="T:Gtk.StateType" /></returns>
-        <remarks>To be added</remarks>
+        <summary>Sets or obtains the state of a <paramref name="widget" /> (insensitive, prelighted, etc.).</summary>
+        <param name="value">New state for <paramref name="widget" />.</param>
+        <returns>New state for <paramref name="widget" />.</returns>
+        <remarks>
+          <para>
+          Usually you should set the state using wrapper fuctions such as <see cref="P:Gtk.Widget.Sensitive" />. This property is for use in widget implementations.
+         </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AccelClosuresChanged">
@@ -5056,13 +4662,20 @@
         <Parameter Name="accel_flags" Type="Gtk.AccelFlags" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <param name="accel_signal">a <see cref="T:System.String" /></param>
-        <param name="accel_group">a <see cref="T:Gtk.AccelGroup" /></param>
-        <param name="accel_key">a <see cref="T:System.UInt32" /></param>
-        <param name="accel_mods">a <see cref="T:System.Int32" /></param>
-        <param name="accel_flags">a <see cref="T:System.Int32" /></param>
-        <remarks>To be added</remarks>
+        <summary>Installs an accelerator for this <paramref name="widget" /> in <paramref name="accel-group" /> that causes <paramref name="accel_signal" /> to be emitted if the accelerator is activated.</summary>
+        <param name="accel_signal">Widget signal to emit on accelerator activation.</param>
+        <param name="accel_group">Accel group for this <paramref name="widget" />, added to its toplevel.</param>
+        <param name="accel_key">GDK keyval of the accelerator.</param>
+        <param name="accel_mods">Modifier key combination of the accelerator.</param>
+        <param name="accel_flags">Flag accelerators.</param>
+        <remarks>
+          <para>
+          The <paramref name="accel-group" /> needs to be added to the widget's toplevel via <see cref="M:Gtk.Window.AddAccelGroup" />, and the signal must be of type G_RUN_ACTION. Accelerators added through this method are not user changeable during runtime.
+         </para>
+          <para>
+          Accelerators added through this method are not user changeable during runtime. If you want to support accelerators that can be changed by the user, use <see cref="M:Gtk.Window.SetAccelPath" /> instead.
+         </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddAccelerator">
@@ -5077,11 +4690,18 @@
         <Parameter Name="accel_key" Type="Gtk.AccelKey" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <param name="accel_signal">a <see cref="T:System.String" /></param>
-        <param name="accel_group">a <see cref="T:Gtk.AccelGroup" /></param>
-        <param name="accel_key">a <see cref="T:Gtk.AccelKey" /></param>
-        <remarks>To be added</remarks>
+        <summary>Installs an accelerator for this <paramref name="widget" /> in <paramref name="accel-group" /> that causes <paramref name="accel_signal" /> to be emitted if the accelerator is activated.</summary>
+        <param name="accel_signal">Widget signal to emit on accelerator activation.</param>
+        <param name="accel_group">Accel group for this <paramref name="widget" />, added to its toplevel.</param>
+        <param name="accel_key">GDK keyval of the accelerator.</param>
+        <remarks>
+          <para>
+          The <paramref name="accel-group" /> needs to be added to the widget's toplevel via <see cref="M:Gtk.Window.AddAccelGroup" />, and the signal must be of type G_RUN_ACTION. Accelerators added through this method are not user changeable during runtime.
+         </para>
+          <para>
+          Accelerators added through this method are not user changeable during runtime. If you want to support accelerators that can be changed by the user, use <see cref="M:Gtk.Window.SetAccelPath" /> instead.
+         </para>
+        </remarks>
       </Docs>
     </Member>
   </Members>

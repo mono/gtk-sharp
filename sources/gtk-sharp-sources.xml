@@ -1,128 +1,119 @@
 <gapi-parser-input>
-  <api filename="../atk/atk-api.xml">
+  <api filename="../atk/atk-api.raw">
     <library name="libatk-1.0-0.dll">
       <namespace name="Atk">
-        <dir>atk-1.2.4/atk</dir>
+        <dir>atk-1.6.0/atk</dir>
       </namespace>
     </library>
   </api>
-  <api filename="../pango/pango-api.xml">
+  <api filename="../pango/pango-api.raw">
     <library name="libpango-1.0-0.dll">
       <namespace name="Pango">
-        <dir>pango-1.2.3/pango</dir>
-	<exclude>pango-1.2.3/pango/pangox-fontcache.c</exclude>
-	<exclude>pango-1.2.3/pango/pangox-fontmap.c</exclude>
-	<exclude>pango-1.2.3/pango/pangox-private.h</exclude>
-	<exclude>pango-1.2.3/pango/pangox.h</exclude>
-	<exclude>pango-1.2.3/pango/pangox.c</exclude>
-	<exclude>pango-1.2.3/pango/pangoxft.h</exclude>
-	<exclude>pango-1.2.3/pango/pangoxft-font.h</exclude>
-	<exclude>pango-1.2.3/pango/pangoxft-fontmap.h</exclude>
-	<exclude>pango-1.2.3/pango/pangoxft-private.h</exclude>
+        <dir>pango-1.4.0/pango</dir>
+	<exclude>pango-1.4.0/pango/pangox-fontcache.c</exclude>
+	<exclude>pango-1.4.0/pango/pangox-fontmap.c</exclude>
+	<exclude>pango-1.4.0/pango/pangox-private.h</exclude>
+	<exclude>pango-1.4.0/pango/pangox.h</exclude>
+	<exclude>pango-1.4.0/pango/pangox.c</exclude>
+	<exclude>pango-1.4.0/pango/pangoxft.h</exclude>
+	<exclude>pango-1.4.0/pango/pangoxft-font.h</exclude>
+	<exclude>pango-1.4.0/pango/pangoxft-fontmap.h</exclude>
+	<exclude>pango-1.4.0/pango/pangoxft-private.h</exclude>
       </namespace>
     </library>
   </api>
-  <api filename="../gdk/gdk-api.xml">
+  <api filename="../gdk/gdk-api.raw">
     <library name="libgdk-win32-2.0-0.dll">
       <namespace name="Gdk">
-        <dir>gtk+-2.2.2/gdk</dir>
+        <dir>gtk+-2.4.1/gdk</dir>
       </namespace>
     </library>
     <library name="libgdk_pixbuf-2.0-0.dll">
       <namespace name="Gdk">
-        <dir>gtk+-2.2.2/gdk-pixbuf</dir>
+        <dir>gtk+-2.4.1/gdk-pixbuf</dir>
       </namespace>
     </library>
   </api>
-  <api filename="../gtk/gtk-api.xml">
+  <api filename="../gtk/gtk-api.raw">
     <library name="libgtk-win32-2.0-0.dll">
       <namespace name="Gtk">
-        <dir>gtk+-2.2.2/gtk</dir>
+        <dir>gtk+-2.4.1/gtk</dir>
+        <exclude>gtk+-2.4.1/gtk/gtkfilesystemmodel.c</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtkfilesystemmodel.h</exclude>
       </namespace>
     </library>
   </api>
-  <api filename="../gnome/gnome-api.xml">
+  <api filename="../gnome/gnome-api.raw">
     <library name="gnome-2">
       <namespace name="Gnome">
-        <dir>libgnome-2.2.3/libgnome</dir>
+        <dir>libgnome-2.6.0/libgnome</dir>
       </namespace>
     </library>
     <library name="gnomecanvas-2">
       <namespace name="Gnome">
-        <dir>libgnomecanvas-2.2.1/libgnomecanvas</dir>
+        <dir>libgnomecanvas-2.6.0/libgnomecanvas</dir>
       </namespace>
     </library>
     <library name="gnomeui-2">
       <namespace name="Gnome">
-        <dir>libgnomeui-2.2.2/libgnomeui</dir>
+        <dir>libgnomeui-2.6.0/libgnomeui</dir>
       </namespace>
     </library>
     <library name="gnomeprint-2-2">
       <namespace name="Gnome">
-        <dir>libgnomeprint-2.2.1.3/libgnomeprint</dir>
+        <dir>libgnomeprint-2.6.0/libgnomeprint</dir>
       </namespace>
     </library>
     <library name="gnomeprintui-2-2">
       <namespace name="Gnome">
-        <dir>libgnomeprintui-2.2.1.3/libgnomeprintui</dir>
-        <dir>libgnomeprintui-2.2.1.3/libgnomeprintui/gpaui</dir>
+        <dir>libgnomeprintui-2.6.0/libgnomeprintui</dir>
+        <dir>libgnomeprintui-2.6.0/libgnomeprintui/gpaui</dir>
       </namespace>
     </library>
   </api>
-  <api filename="../gtkhtml/gtkhtml-api.xml">
+  <api filename="../gtkhtml/gtkhtml-api.raw">
     <library name="gtkhtml-3.0">
       <namespace name="Gtk">
-        <dir>gtkhtml-3.0.8/src</dir>
+        <dir>gtkhtml-3.0.10/src</dir>
       </namespace>
     </library>
   </api>
-  <api filename="../glade/glade-api.xml">
+  <api filename="../glade/glade-api.raw">
     <library name="libglade-2.0-0.dll">
       <namespace name="Glade">
-        <dir>libglade-2.0.0/glade</dir>
+        <dir>libglade-2.3.6/glade</dir>
       </namespace>
     </library>
   </api>
-  <api filename="../art/art-api.xml">
+  <api filename="../art/art-api.raw">
     <library name="art_lgpl">
       <namespace name="Art">
-        <dir>libart_lgpl-2.3.10</dir>
+        <dir>libart_lgpl-2.3.16</dir>
       </namespace>
     </library>
   </api>
-  <api filename="../gda/gda-api.xml">
+  <api filename="../gda/gda-api.raw">
     <library name="gda-2">
       <namespace name="Gda">
         <dir>libgda-1.0.0/libgda</dir>
       </namespace>
     </library>
   </api>
-  <api filename="../gnomedb/gnomedb-api.xml">
+  <api filename="../gnomedb/gnomedb-api.raw">
     <library name="gnomedb-2">
       <namespace name="GnomeDb">
         <dir>libgnomedb-1.0.0/libgnomedb</dir>
       </namespace>
     </library>
   </api>
-  <api filename="../gst/gst-api.xml">
-    <library name="gstreamer">
-      <namespace name="Gst">
-        <dir>gstreamer-0.6.4/gst</dir>
-        <dir>gstreamer-0.6.4/gst/autoplug</dir>
-        <dir>gstreamer-0.6.4/gst/elements</dir>
-        <dir>gstreamer-0.6.4/gst/registries</dir>
-        <dir>gstreamer-0.6.4/gst/schedulers</dir>
-      </namespace>
-    </library>
-  </api>
-  <api filename="../rsvg/rsvg-api.xml">
+  <api filename="../rsvg/rsvg-api.raw">
     <library name="rsvg-2">
       <namespace name="Rsvg">
-        <dir>librsvg-2.2.5</dir>
+        <dir>librsvg-2.6.4</dir>
       </namespace>
     </library>
   </api>
-  <api filename="../vte/vte-api.xml">
+  <api filename="../vte/vte-api.raw">
     <library name="vte">
       <namespace name="Vte">
         <dir>vte-0.11.10/src</dir>

@@ -17,6 +17,53 @@
       <para>TreeSelection can check the selection status of the tree, as well as select and deselect individual rows. Selection is done completely on the view. As a result, multiple views of the same model can have completely different selections. Additionally, you cannot change the selection of a row that is not currently displayed by the view without expanding its parents first.</para>
       <para>One of the important things to remember when monitoring the selection of a view is that the <see cref="E:Gtk.TreeSelection.Changed" /> event is mostly a hint. For example, it may only fire once when a range of rows is selected. It may also fire when nothing has happened, such as when <see cref="M:Gtk.TreeSelection.SelectPath(Gtk.TreePath)" /> is called on a row that is already selected.</para>
     </remarks>
+	<example>
+	  <code lang="C#">
+using System;
+using Gtk;
+ 
+class Selection
+{
+        static void Main ()
+        {
+                Application.Init ();
+                Window win = new Window ("TreeSelection sample");
+                win.DeleteEvent += OnWinDelete;
+ 
+                TreeView tv = new TreeView ();
+                tv.AppendColumn ("Items", new CellRendererText (), "text", 0);
+ 
+                ListStore store = new ListStore (typeof (string));
+                store.AppendValues ("item 1");
+                store.AppendValues ("item 2");
+                tv.Model = store;
+ 
+                tv.Selection.Changed += OnSelectionChanged;
+ 
+                win.Add (tv);
+                win.ShowAll ();
+                Application.Run ();
+        }
+ 
+        static void OnSelectionChanged (object o, EventArgs args)
+        {
+                TreeIter iter;
+                TreeModel model;
+ 
+                if (((TreeSelection)o).GetSelected (out model, out iter))
+                {
+                        string val = (string) model.GetValue (iter, 0);
+                        Console.WriteLine ("{0} was selected", val);
+                }
+        }
+ 
+        static void OnWinDelete (object o, DeleteEventArgs args)
+        {
+                Application.Quit ();
+        }
+}
+	  </code>
+	</example>
   </Docs>
   <Base>
     <BaseTypeName>GLib.Object</BaseTypeName>
@@ -372,22 +419,6 @@ class TreeSelectionSample
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetSelectedRows" Deprecated="true">
-      <MemberSignature Language="C#" Value="public GLib.List GetSelectedRows (Gtk.TreeModel model);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>GLib.List</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="model" Type="Gtk.TreeModel" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="model">a <see cref="T:Gtk.TreeModel" /></param>
-        <returns>a <see cref="T:GLib.List" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="UnselectRange">
       <MemberSignature Language="C#" Value="public void UnselectRange (Gtk.TreePath start_path, Gtk.TreePath end_path);" />
       <MemberType>Method</MemberType>
@@ -399,9 +430,11 @@ class TreeSelectionSample
         <Parameter Name="end_path" Type="Gtk.TreePath" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <param name="start_path">a <see cref="T:Gtk.TreePath" /></param>
-        <param name="end_path">a <see cref="T:Gtk.TreePath" /></param>
+        <summary>Unselects everything from one path to another.</summary>
+        <param name="start_path">
+          <see cref="T:Gtk.TreePath" /> to begin range.</param>
+        <param name="end_path">
+          <see cref="T:Gtk.TreePath" /> to end range.</param>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -413,8 +446,8 @@ class TreeSelectionSample
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <returns>a <see cref="T:System.Int32" /></returns>
+        <summary>Get the number of selected rows.</summary>
+        <returns>The number of selected rows</returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -503,9 +536,9 @@ class TreeSelectionSample
         <Parameter Name="model" Type="Gtk.TreeModel&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <param name="model">a <see cref="T:Gtk.TreeModel" /></param>
-        <returns>a <see cref="T:Gtk.TreePath[]" /></returns>
+        <summary>Returns an array of <see cref="T:Gtk.TreePath" />s representing the selected rows.</summary>
+        <param name="model">The model the <see cref="T:Gtk.TreeView" /> is bound to.</param>
+        <returns>Selected rows in an array of <see cref="T:Gtk.TreePath" />s</returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>

@@ -133,22 +133,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetToggledTags" Deprecated="true">
-      <MemberSignature Language="C#" Value="public GLib.SList GetToggledTags (bool toggled_on);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>GLib.SList</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="toggled_on" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="toggled_on">To be added: an object of type 'bool'</param>
-        <returns>To be added: an object of type 'GLib.SList'</returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="BackwardLine">
       <MemberSignature Language="C#" Value="public bool BackwardLine ();" />
       <MemberType>Method</MemberType>
@@ -157,8 +141,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <returns>To be added: an object of type 'bool'</returns>
+        <summary>Moves the iterator backward one line</summary>
+        <returns>true if the operation succeeded.</returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -279,9 +263,9 @@
         <Parameter Name="count" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <param name="count">To be added: an object of type 'int'</param>
-        <returns>To be added: an object of type 'bool'</returns>
+        <summary>Moves the iterator back a number of lines.</summary>
+        <param name="count">number of lines to move backwards.</param>
+        <returns>true if the operation succeeded.</returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -293,8 +277,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <returns>To be added: an object of type 'bool'</returns>
+        <summary>Returns true if the iterator is at the end of a line.</summary>
+        <returns>true if the iterator is at the end of a line.</returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -545,9 +529,9 @@
         <Parameter Name="count" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <param name="count">To be added: an object of type 'int'</param>
-        <returns>To be added: an object of type 'bool'</returns>
+        <summary>Moves the iterator back a number of characters.</summary>
+        <param name="count">number of characters to move backwards.</param>
+        <returns>true if the operation succeeded</returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -704,8 +688,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <returns>To be added: an object of type 'bool'</returns>
+        <summary>Moves the iterator back one character</summary>
+        <returns>true if the operation succeeded</returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -868,9 +852,9 @@
       <Parameters>
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <param name="value">To be added: an object of type 'int'</param>
-        <returns>To be added: an object of type 'int'</returns>
+        <summary>Line number the iterator is currently on.</summary>
+        <param name="value">Moves the iterator to this line number.</param>
+        <returns>The line number the iterator is currently on.</returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -982,18 +966,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Marks" Deprecated="true">
-      <MemberSignature Language="C#" Value="public GLib.SList Marks { get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>GLib.SList</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added</summary>
-        <returns>To be added: an object of type 'GLib.SList'</returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Buffer">
       <MemberSignature Language="C#" Value="public Gtk.TextBuffer Buffer { get; };" />
       <MemberType>Property</MemberType>
@@ -1001,20 +973,8 @@
         <ReturnType>Gtk.TextBuffer</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added</summary>
-        <returns>To be added: an object of type 'Gtk.TextBuffer'</returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Tags" Deprecated="true">
-      <MemberSignature Language="C#" Value="public GLib.SList Tags { get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>GLib.SList</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added</summary>
-        <returns>To be added: an object of type 'GLib.SList'</returns>
+        <summary>Obtains the buffer the iter is in</summary>
+        <returns>containing buffer</returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -1074,8 +1034,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <returns>a <see cref="T:System.Boolean" /></returns>
+        <summary>Returns true if the iterator is at the end of the parent <see cref="T:Gtk.TextBuffer" /></summary>
+        <returns>true if the iterator is equal to Buffer.EndIter</returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -1100,9 +1060,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
+        <summary>returns true if the iter is at the caret</summary>
         <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>returns true if this iterator equals the iterator returned by Buffer.GetIterAtMark (Buffer.InsertMark)</remarks>
       </Docs>
     </Member>
     <Member MemberName="GType">

@@ -1,5 +1,10 @@
 *.dll
+*.dll.config
+AssemblyInfo.cs
 generated
 generated-stamp
 Makefile
+Makefile.in
+*-api.xml
+gtk-sharp.pub
 

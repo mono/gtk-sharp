@@ -12,6 +12,8 @@
   <attr path="/api/namespace/boxed[@cname='GtkSelectionData']" name="opaque">1</attr>
   <attr path="/api/namespace/boxed[@cname='GtkSelectionData']/method[@name='GetText']" name="hidden">1</attr>
   <attr path="/api/namespace/boxed[@cname='GtkSelectionData']/method[@name='SetText']" name="hidden">1</attr>
+  <attr path="/api/namespace/boxed[@cname='GtkSelectionData']/method[@name='Set']/*/*[@name='data']" name="type">guchar</attr>
+  <attr path="/api/namespace/boxed[@cname='GtkSelectionData']/method[@name='Set']/*/*[@name='data']" name="array">1</attr>
   <attr path="/api/namespace/boxed[@cname='GtkTextIter']/method[@name='BackwardSearch']/*/*[@type='GtkTextIter*']" name="pass_as">out</attr>
   <attr path="/api/namespace/boxed[@cname='GtkTextIter']/method[@name='BackwardToTagToggle']/*/*[@type='GtkTextTag*']" name="null_ok">1</attr>
   <attr path="/api/namespace/boxed[@cname='GtkTextIter']/method[@name='ForwardSearch']/*/*[@type='GtkTextIter*']" name="pass_as">out</attr>
@@ -49,6 +51,7 @@
   <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='GetIterFirst']/*/*[@name='iter']" name="pass_as">out</attr>
   <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='GetIterFromString']/*/*[@name='iter']" name="pass_as">out</attr>
   <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='GetIter']/*/*[@name='iter']" name="pass_as">out</attr>
+  <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='GetValue']/*/*[@name='value']" name="pass_as">ref</attr>
   <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='IterChildren']/*/*[@name='iter']" name="pass_as">out</attr>
   <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='IterNext']/*/*[@name='iter']" name="pass_as">out</attr>
   <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='IterNthChild']/*/*[@name='iter']" name="pass_as">out</attr>
@@ -112,7 +115,6 @@
   <attr path="/api/namespace/object[@cname='GtkExpander']/signal[@name='Activate']" name="name">Activated</attr>
   <attr path="/api/namespace/object[@cname='GtkFrame']/method[@name='GetLabelAlign']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkFrame']/method[@name='SetLabelAlign']" name="hidden">1</attr>
-  <attr path="/api/namespace/object[@cname='GtkFrame']" name="disabledefaultconstructor">1</attr>
   <attr path="/api/namespace/object[@cname='GtkHandleBox']/property[@name='ShadowType']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkHScale']/constructor[@cname='gtk_hscale_new']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkHScrollbar']/constructor[@cname='gtk_hscrollbar_new']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
@@ -127,7 +129,6 @@
   <attr path="/api/namespace/object[@cname='GtkItem']/signal[@name='Deselect']" name="name">Deselected</attr>
   <attr path="/api/namespace/object[@cname='GtkItem']/signal[@name='Select']" name="name">Selected</attr>
   <attr path="/api/namespace/object[@cname='GtkItem']/signal[@name='Toggle']" name="name">Toggled</attr>
-  <attr path="/api/namespace/object[@cname='GtkLabel']" name="disabledefaultconstructor">1</attr>
   <attr path="/api/namespace/object[@cname='GtkLabel']/constructor[@cname='gtk_label_new_with_mnemonic']" name="preferred">1</attr>
   <attr path="/api/namespace/object[@cname='GtkLayout']/constructor[@cname='gtk_layout_new']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkLayout']/method[@name='SetHadjustment']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
@@ -140,7 +141,7 @@
   <attr path="/api/namespace/object[@cname='GtkListStore']/method[@name='InsertBefore']/*/*[@name='iter']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkListStore']/method[@name='Insert']/*/*[@name='iter']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkListStore']/method[@name='Prepend']/*/*[@name='iter']" name="pass_as">out</attr>
-  <attr path="/api/namespace/object[@cname='GtkListStore']/method[@name='Remove']/*/*[@name='iter']" name="pass_as">out</attr>
+  <attr path="/api/namespace/object[@cname='GtkListStore']/method[@name='Remove']/*/*[@name='iter']" name="pass_as">ref</attr>
   <attr path="/api/namespace/object[@cname='GtkListStore']/method[@name='SetColumnTypes']/*/*[@name='types']" name="array">1</attr>
   <attr path="/api/namespace/object[@cname='GtkMenuItem']/constructor[@cname='gtk_menu_item_new_with_mnemonic']" name="preferred">1</attr>
   <attr path="/api/namespace/object[@cname='GtkMenuItem']/method[@name='SetSubmenu']/*/*[@type='GtkWidget*']" name="null_ok">1</attr>
@@ -177,7 +178,6 @@
   <attr path="/api/namespace/object[@cname='GtkReadyEvent']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkScrolledWindow']/constructor[@cname='gtk_scrolled_window_new']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkScrolledWindow']/method[@name='GetPolicy']/*/*[@type='GtkPolicyType*']" name="pass_as">out</attr>
-  <attr path="/api/namespace/object[@cname='GtkScrolledWindow']" name="disabledefaultconstructor">1</attr>
   <attr path="/api/namespace/object[@cname='GtkSpinButton']/constructor[@cname='gtk_spin_button_new']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkSpinButton']/method[@name='Configure']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkTable']/method[@name='AttachDefaults']" name="name">Attach</attr>
@@ -264,7 +264,6 @@
   <attr path="/api/namespace/object[@cname='GtkViewport']/constructor[@cname='gtk_viewport_new']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkViewport']/method[@name='SetHadjustment']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkViewport']/method[@name='SetVadjustment']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
-  <attr path="/api/namespace/object[@cname='GtkViewport']" name="disabledefaultconstructor">1</attr>
   <attr path="/api/namespace/object[@cname='GtkViewport']/signal[@name='SetScrollAdjustments']" name="name">ScrollAdjustmentsSet</attr>
   <attr path="/api/namespace/object[@cname='GtkVScale']/constructor[@cname='gtk_vscale_new']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkVScrollbar']/constructor[@cname='gtk_vscrollbar_new']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
@@ -275,6 +274,7 @@
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetDefaultColormap']" name="needs_ref">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetDefaultStyle']" name="needs_ref">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetDefaultVisual']" name="needs_ref">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetEvents']/return-type" name="type">GdkEventMask</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetModifierStyle']" name="needs_ref">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetParentWindow']" name="needs_ref">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetStyle']" name="needs_ref">1</attr>
@@ -284,6 +284,8 @@
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='ListAccelClosures']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='Path']/*/*[@type='gchar**']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='Ref']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='SetEvents']/*/*[@type='gint']" name="type">GdkEventMask</attr>
+  <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='ModifyFont']/parameters/parameter[@type='PangoFontDescription*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='SetScrollAdjustments']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='SetStyle']/*/*[@type='GtkStyle*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='SizeRequest']/*/*[@name='requisition']" name="pass_as">ref</attr>
@@ -314,6 +316,7 @@
   <attr path="/api/namespace/object[@cname='GtkWindow']/method[@name='ListToplevels']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWindow']/method[@name='SetDefaultIconList']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWindow']/method[@name='SetIconList']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkWindow']/method[@name='SetTransientFor']/*/*[@name='parent']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWindow']/property[@name='Screen']" name="new_flag">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWindow']/signal[@name='ActivateDefault']" name="name">DefaultActivated</attr>
   <attr path="/api/namespace/object[@cname='GtkWindow']/signal[@name='ActivateFocus']" name="name">FocusActivated</attr>

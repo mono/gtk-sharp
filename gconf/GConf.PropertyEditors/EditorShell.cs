@@ -53,8 +53,8 @@ namespace GConf.PropertyEditors
 			if (control == null)
 				throw new InvalidGladeKeyException (control_name);
 
-			if (control is Gnome.ColorPicker)
-				editor = new PropertyEditorColorPicker (key, (Gnome.ColorPicker) control);
+			//if (control is Gnome.ColorPicker)
+				//editor = new PropertyEditorColorPicker (key, (Gnome.ColorPicker) control);
 			else if (control is Gnome.FileEntry)
 				editor = new PropertyEditorFileEntry (key, (Gnome.FileEntry) control);
 			else if (control is Gtk.SpinButton)
@@ -65,8 +65,8 @@ namespace GConf.PropertyEditors
 				editor = new PropertyEditorToggleButton (key, (Gtk.ToggleButton) control);
 			else if (control is Gtk.Entry)
 				editor = new PropertyEditorEntry (key, (Gtk.Entry) control);
-			else if (control is Gtk.OptionMenu)
-				editor = new PropertyEditorOptionMenu (key, (Gtk.OptionMenu) control, enum_type, enum_values);
+			/*else if (control is Gtk.OptionMenu)
+				editor = new PropertyEditorOptionMenu (key, (Gtk.OptionMenu) control, enum_type, enum_values);*/
 			else
 				throw new EditorNotSupportedException ();
 
