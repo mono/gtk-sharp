@@ -356,20 +356,6 @@ void HandleDaySelected (object obj, EventArgs args)
         </remarks>
       </Docs>
     </Member>
-
-    <Member MemberName="Date">
-      <MemberSignature Language="C#" Value="public DateTime Date { get; set; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.DateTime</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>a DateTime that contains the current day for the Calendar widget</summary>
-        <returns>a <see cref="T:System.DateTime" /></returns>
-        <remarks>Setting the date fires Calendar changes events (Day, Mont/Year)</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="GType">
       <MemberSignature Language="C#" Value="public static GLib.GType GType { get; };" />
       <MemberType>Property</MemberType>
@@ -584,6 +570,19 @@ void HandleDaySelected (object obj, EventArgs args)
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
         <returns>a <see cref="T:Gtk.Calendar" /></returns>
         <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Date">
+      <MemberSignature Language="C#" Value="public DateTime Date { set; get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.DateTime</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>a DateTime that contains the current day for the Calendar widget</summary>
+        <returns>a <see cref="T:System.DateTime" /></returns>
+        <remarks>Setting the date fires Calendar changes events (Day, Month/Year)</remarks>
       </Docs>
     </Member>
   </Members>

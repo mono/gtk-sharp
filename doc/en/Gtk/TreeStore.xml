@@ -428,22 +428,6 @@
         <remarks>This should be called by models after a row has been removed. The location pointed to by <paramref name="path" /> should be the location that the row previously was at. It may not be a valid location anymore.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="IterNext">
-      <MemberSignature Language="C#" Value="public virtual bool IterNext (out Gtk.TreeIter iter);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="iter" Type="Gtk.TreeIter&amp;" RefType="out" />
-      </Parameters>
-      <Docs>
-        <summary>Sets <paramref name="iter" /> to point to the node following it at the current level.</summary>
-        <param name="iter">an object of type <see cref="T:Gtk.TreeIter" /></param>
-        <returns>an object of type <see cref="T:System.Boolean" /></returns>
-        <remarks>If there is no next iter, <see langword="false" /> is returned and iter is set to be invalid.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="GetValist">
       <MemberSignature Language="C#" Value="public virtual void GetValist (Gtk.TreeIter iter, IntPtr var_args);" />
       <MemberType>Method</MemberType>
@@ -585,17 +569,6 @@
         <remarks>
           <para>This is an internal constructor, and should not be used by user code.</para>
         </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected TreeStore ();" />
-      <MemberType>Constructor</MemberType>
-      <ReturnValue />
-      <Parameters />
-      <Docs>
-        <summary>Internal constructor</summary>
-        <returns>an object of type <see cref="T:Gtk.TreeStore" /></returns>
-        <remarks>This is an internal constructor, and should not be used by user code.</remarks>
       </Docs>
     </Member>
     <Member MemberName="NColumns">
@@ -1039,26 +1012,6 @@ store = new TreeStore (typeof (int), typeof (string));
         </example>
       </Docs>
     </Member>
-    <Member MemberName="GetValue">
-      <MemberSignature Language="C#" Value="public virtual void GetValue (Gtk.TreeIter iter, int column, GLib.Value value);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="iter" Type="Gtk.TreeIter" />
-        <Parameter Name="column" Type="System.Int32" />
-        <Parameter Name="value" Type="GLib.Value" />
-      </Parameters>
-      <Docs>
-        <summary>Gets a value at <paramref name="iter" /> and <paramref name="column" />.</summary>
-        <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
-        <param name="column">a <see cref="T:System.Int32" /></param>
-        <param name="value">a <see cref="T:GLib.Value" /></param>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="GetSortColumnId">
       <MemberSignature Language="C#" Value="public virtual bool GetSortColumnId (out int sort_column_id, out Gtk.SortType order);" />
       <MemberType>Method</MemberType>
@@ -1221,7 +1174,7 @@ store = new TreeStore (typeof (int), typeof (string));
         <Parameter Name="column" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Gets a value at <paramref name="iter" /> and <paramref name="column" />.</summary>
         <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
         <param name="column">a <see cref="T:System.Int32" /></param>
         <returns>a <see cref="T:System.Object" /></returns>
@@ -1646,6 +1599,41 @@ store = new TreeStore (typeof (int), typeof (string));
         <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
         <returns>a <see cref="T:System.Int32" /></returns>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="GetValue">
+      <MemberSignature Language="C#" Value="public virtual void GetValue (Gtk.TreeIter iter, int column, ref GLib.Value value);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iter" Type="Gtk.TreeIter" />
+        <Parameter Name="column" Type="System.Int32" />
+        <Parameter Name="value" Type="GLib.Value&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
+        <param name="column">a <see cref="T:System.Int32" /></param>
+        <param name="value">a <see cref="T:GLib.Value" /></param>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IterNext">
+      <MemberSignature Language="C#" Value="public virtual bool IterNext (ref Gtk.TreeIter iter);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iter" Type="Gtk.TreeIter&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <summary>Sets <paramref name="iter" /> to point to the node following it at the current level.</summary>
+        <param name="iter">an object of type <see cref="T:Gtk.TreeIter" /></param>
+        <returns>an object of type <see cref="T:System.Boolean" /></returns>
+        <remarks>If there is no next iter, <see langword="false" /> is returned and iter is set to be invalid.</remarks>
       </Docs>
     </Member>
   </Members>

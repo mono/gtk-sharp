@@ -1,5 +1,9 @@
 2004-05-31  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
+	* *: Merge changes from HEAD again.
+
+2004-05-31  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
 	* gtk/Container.custom: Merged fix for Container.Forall handler.
 	* gtk/Makefile.am: Added WidgetFlags.cs.
 	* gtk/Widget.custom: Added Flags property and setter to GdkWindow.
@@ -14,12 +18,85 @@
 	* sample/CustomWidget.cs: new sample for creating a custom Gtk widget.
 	* sample/Makefile.am: Added CustomWidget.cs sample.
 
+2004-05-29  Mike Kestner  <mkestner@ximian.com>
+
+	* gnome/CanvasItem.custom : for OnUpdate, Art.SVP can be NULL
+	so treat it as an IntPtr with Zero checks and manual marshaling.
+
+2004-05-28  Vladimir Vukicevic  <vladimir@pobox.com>
+
+	* gtk/CellRenderer.custom: fix GetSize_cb, cell_area can be NULL
+	coming from Gtk (so can't use ref Gdk.Rectangle, have to use
+	IntPtr)
+
+2004-05-28  Miguel de Icaza  <miguel@ximian.com>
+
+	* Added System.Drawing samples.
+
+2004-05-28  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : bump for next version, tagged 0.92.
+
+2004-05-28  Vladimir Vukicevic  <vladimir@pobox.com
+
+	* gtk/Gtk.metadata : s/out/ref on TreeModel.NextIter.
+
+2004-05-28  Mike Kestner  <mkestner@ximian.com>
+
+	* generator/ObjectGen.cs : adjust to ObjectManager ns change.
+	* glib/ManagedValue.cs : move to GLib and internalize.
+	* glib/Object.cs : adjust to ObjectManager ns change.
+	* glib/ObjectManager.cs : move to GLib.
+	* glib/TypeConverter.cs : move to GLib.  return ManagedValue.GType
+	when we can't match a type instead of GType.None.
+	* gtk/*.custom: adjust for new TypeConverter ns and behavior.
+
+2004-05-28  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Makefile.am : add new custom.
+	* gtk/Settings.custom: add props for unparsed API.
+
+2004-05-27  Mike Kestner  <mkestner@ximian.com>
+
+	* glib/Object.cs: mark GType property public.
+
+2004-05-27  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* gtk/Gtk.metadata: Hide the GtkCtree class (old gtk+ 1.x junk).
+
+2004-05-26  Mike Kestner  <mkestner@ximian.com>
+
+	* gtkhtml/Gtk.metadata : hide Gtk.HTML the ctors.
+	* gtkhtml/HTML.custom : new manual impl for ctors.
+	* gtkhtml/Makefile.am : add new custom [Fixes #59148]
+
 2004-05-25  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* gnome/Gnome.metadata: Don't hide the GtkEntry and GnomeEntry
 	properties.
 	* gtk/Accel.custom: Add custom methods for backwards compatibility of
 	the gtk_accel_map_* methods. [Fixes #58954]
+
+2004-05-25  Dan Winship  <danw@ximian.com>
+
+	* gtk/Gtk.metadata : mark a ref param in SizeRequested
+
+2004-05-25  Mike Kestner  <mkestner@ximian.com>
+
+	* */Makefile.am : rm generated/* in generated-stamp target.
+
+2004-05-25  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : don't expand the GAPI Makefile.
+	* parser/Makefile.am : remove SUBDIRS.
+	* parser/gapi2xml.pl : remove GAPI::Metadata usage.
+	* parser/GAPI/* : kill. long live gapi-fixup.
+
+2004-05-25  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Container.custom : use glue to invoke the GtkCallback in
+	Forall.
+	* gtk/glue/container.c : add gtksharp_container_invoke_gtk_callback.
 
 2004-05-23  Mike Kestner  <mkestner@ximian.com>
 

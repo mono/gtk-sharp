@@ -60,7 +60,7 @@
   <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='GetIter']/*/*[@name='iter']" name="pass_as">out</attr>
   <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='GetValue']/*/*[@name='value']" name="pass_as">ref</attr>
   <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='IterChildren']/*/*[@name='iter']" name="pass_as">out</attr>
-  <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='IterNext']/*/*[@name='iter']" name="pass_as">out</attr>
+  <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='IterNext']/*/*[@name='iter']" name="pass_as">ref</attr>
   <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='IterNthChild']/*/*[@name='iter']" name="pass_as">out</attr>
   <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='IterParent']/*/*[@name='iter']" name="pass_as">out</attr>
   <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='RowChanged']" name="name">EmitRowChanged</attr>
@@ -341,6 +341,7 @@
   <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='Show']" name="name">Shown</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='SizeAllocate']" name="name">SizeAllocated</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='SizeRequest']" name="name">SizeRequested</attr>
+  <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='SizeRequested']/*/*[@name='requisition']" name="pass_as">ref</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='Unmap']" name="name">Unmapped</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='Unrealize']" name="name">Unrealized</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='SetState']" name="hidden">1</attr>

@@ -2,8 +2,8 @@
 //
 // Authors: Mike Kestner <mkestner@speakeasy.net>
 //
-// (c) 2001-2003 Mike Kestner
-// (c) 2004 Novell, Inc.
+// Copyright (c) 2001-2003 Mike Kestner
+// Copyright (c) 2004 Novell, Inc.
 
 namespace GLib {
 
@@ -85,7 +85,7 @@ namespace GLib {
 				return obj;
 			}
 
-			obj = GtkSharp.ObjectManager.CreateObject(o); 
+			obj = GLib.ObjectManager.CreateObject(o); 
 			if (obj == null)
 				return null;
 
@@ -129,7 +129,7 @@ namespace GLib {
 		{
 			GType parent_gtype = LookupGType (t.BaseType);
 			string name = t.FullName.Replace(".", "_");
-			GtkSharp.ObjectManager.RegisterType (name, t.FullName, t.Assembly.GetName().Name);
+			GLib.ObjectManager.RegisterType (name, t.FullName, t.Assembly.GetName().Name);
 			GType gtype = new GType (gtksharp_register_type (name, parent_gtype.Val));
 			ConnectDefaultHandlers (gtype, t);
 			g_types[t] = gtype;

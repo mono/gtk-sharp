@@ -18,7 +18,7 @@ gtk-sharp-docs.zip gtk-sharp-docs.tree: $(srcdir)/en/*/*.xml $(srcdir)/en/*.xml
 
 update:
 	for i in $(DIRS); do                    		\
-		$(UPDATER) ../$$i/*.dll -o ./en -f || exit 1;	\
+		$(UPDATER) ../$$i/*.dll -o ./en || exit 1;	\
         done
 
 sources =			\
@@ -62,7 +62,3 @@ dist-hook:
 	cp $(srcdir)/en/GConf/*.xml $(distdir)/en/GConf/
 	mkdir -p $(distdir)/en/GConf.PropertyEditors
 	cp $(srcdir)/en/GConf.PropertyEditors/*.xml $(distdir)/en/GConf.PropertyEditors/
-	mkdir -p $(distdir)/en/GLibSharp
-	cp $(srcdir)/en/GLibSharp/*.xml $(distdir)/en/GLibSharp/
-	mkdir -p $(distdir)/en/GtkSharp
-	cp $(srcdir)/en/GtkSharp/*.xml $(distdir)/en/GtkSharp/

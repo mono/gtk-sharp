@@ -4,19 +4,11 @@
 //
 // (c) 2002 Rachel Hestilow
 
-namespace GLibSharp {
+namespace GLib {
 	using System;
 	using System.Collections;
 	using System.Reflection;
-	using GLib;
 
-	/// <summary>
-	///	Fundamental type converter 
-	/// </summary>
-	///
-	/// <remarks>
-	///  Utilities for converting between TypeFundamentals and System.Type
-	/// </remarks>
 	public class TypeConverter {
 
 		private TypeConverter () {}
@@ -47,7 +39,7 @@ namespace GLibSharp {
 			if (type.IsValueType)
 				return GType.Pointer;
 
-			return GType.None;
+			return ManagedValue.GType;
 		}
 	}
 }
