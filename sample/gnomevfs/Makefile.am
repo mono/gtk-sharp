@@ -1,6 +1,7 @@
 TARGETS =			\
 	TestInfo.exe		\
 	TestMime.exe		\
+	TestMonitor.exe		\
 	TestSync.exe		\
 	TestSyncCreate.exe	\
 	TestSyncWrite.exe	\
@@ -17,6 +18,7 @@ CLEANFILES = $(TARGETS)
 EXTRA_DIST = 			\
 	TestInfo.cs		\
 	TestMime.cs		\
+	TestMonitor.cs		\
 	TestSync.cs		\
 	TestSyncCreate.cs	\
 	TestSyncWrite.cs	\
@@ -29,6 +31,9 @@ TestInfo.exe: $(srcdir)/TestInfo.cs $(assemblies)
 
 TestMime.exe: $(srcdir)/TestMime.cs $(assemblies)
 	$(CSC) /out:TestMime.exe $(references) $(srcdir)/TestMime.cs
+
+TestMonitor.exe: $(srcdir)/TestMonitor.cs $(assemblies)
+	$(CSC) /out:TestMonitor.exe $(references) $(srcdir)/TestMonitor.cs
 
 TestSync.exe: $(srcdir)/TestSync.cs $(assemblies)
 	$(CSC) /out:TestSync.exe $(references) $(srcdir)/TestSync.cs

@@ -1,3 +1,12 @@
+2004-08-19  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* gnomevfs/Makefile.am: Add Monitor.cs.
+	* gnomevfs/Monitor.cs: New custom class wrapping the gnome_vfs_monitor_*
+	methods.
+	* sample/gnomevfs/Makefile.am: Added TestMonitor.cs.
+	* sample/gnomevfs/TestMonitor.cs: Test case for using the new Monitor
+	class.
+
 2004-08-14  Todd Berman  <tberman@off.net>
 
 	* gnomevfs/VfsStream.cs: if ErrorEof is returned in Read, return 0

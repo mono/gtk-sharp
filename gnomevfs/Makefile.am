@@ -26,6 +26,7 @@ sources = 				\
 	FileInfo.cs			\
 	Handle.cs			\
 	MimeType.cs			\
+	Monitor.cs			\
 	Sync.cs				\
 	Vfs.cs				\
 	VfsStream.cs			\
