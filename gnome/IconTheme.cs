@@ -50,7 +50,7 @@ namespace Gnome {
 
 		public string LookupIcon(string icon_name, int size, Gnome.IconData icon_data, out int base_size) {
 			IntPtr raw_ret = gnome_icon_theme_lookup_icon(Handle, icon_name, size, ref icon_data, out base_size);
-			string ret = GLibSharp.Marshaller.PtrToStringGFree(raw_ret);
+			string ret = GLib.Marshaller.PtrToStringGFree(raw_ret);
 			return ret;
 		}
 

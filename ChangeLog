@@ -1,5 +1,17 @@
 2004-05-23  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
+	* atk/atk-api.xml: Removed.
+	* gdk/gdk-api.xml: Idem.
+	* glade/glade-api.xml: Idem.
+	* gnome/IconTheme.cs: s/GLibSharp/GLib/
+	* gnome/gnome-api.xml: Removed.
+	* gtk/Adjustment.custom: Obsolete custom property code.
+	* gtk/glue/adjustment.c: (gtksharp_gtk_adjustment_set_bounds): Idem.
+	* gtk/gtk-api.xml: Removed.
+	* pango/pango-api.xml: Idem.
+
+2004-05-23  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
 	Merge changes from HEAD since yesterday.
 
 2004-05-22  Mike Kestner  <mkestner@ximian.com>
