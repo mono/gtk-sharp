@@ -1,5 +1,10 @@
 2004-05-31  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
+	* gdk/Gdk.metadata: Fix Gdk.WindowClass enum naming.
+	* sample/CustomWidget.cs: Update to changed WindowClass names.
+
+2004-05-31  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
 	* sample/CustomWidget.cs: The Gtk.Requisition is passed by reference in
 	the OnSizeRequested handler.
 

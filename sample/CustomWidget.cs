@@ -137,7 +137,7 @@ class CustomWidget : Container {
 	
 		Gdk.WindowAttr attr = new Gdk.WindowAttr ();
 		attr.WindowType = Gdk.WindowType.Child;
-		attr.Wclass = Gdk.WindowClass.Only;
+		attr.Wclass = Gdk.WindowClass.InputOnly;
 		attr.X = area.X;
 		attr.Y = area.Y;
 		attr.Width = area.Width;
