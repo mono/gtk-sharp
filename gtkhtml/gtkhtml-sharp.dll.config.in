@@ -1,0 +1,3 @@
+<configuration>
+  <dllmap dll="gtkhtml-3.0" target="libgtkhtml-@GTKHTML_VERSION@@LIB_PREFIX@.@GTKHTML_SOVERSION@@LIB_SUFFIX@"/>
+</configuration>
