@@ -1,3 +1,43 @@
+2003-02-24  Mike Kestner  <mkestner@speakeasy.net>
+
+	* sample/TreeViewDemo.cs : fix Type ambiguities
+
+2003-02-24  Mike Kestner  <mkestner@speakeasy.net>
+
+	* sample/Subclass.cs : rework the GType code.
+
+2003-02-24  Mike Kestner  <mkestner@speakeasy.net>
+
+	* generator/Parameters.cs : fix some ref/out bugs
+
+2003-02-24  Mike Kestner  <mkestner@speakeasy.net>
+
+	* generator/ObjectGen.cs : gen GLib.Value ctor, not uint
+	* glib/Object.cs : use GLib.Type in RegisterGType and 
+	  make the g_object_new ctor use GLib.Type.
+	* glib/Type.cs : new thin wrapper for GValue type
+	* glib/*.cs : s/Type/System.Type
+
+2003-02-23  Mike Kestner  <mkestner@speakeasy.net>
+
+	* generator/GenBase.cs : quote the custom filenames in 
+	#file directives.
+
+2003-02-23  Mike Kestner  <mkestner@speakeasy.net>
+
+	* generator/CallbackGen.cs : suppress len params from
+	  string/len pairs.
+	* generator/Parameters.cs : begin the refactoring to use
+	  Parameter class. Suppress len params from string/len pairs.
+	*/*.custom : remove all overrides of string/len pairs
+	*/*.cs : ditto.  Thanks to Alp Toker for the foundation
+	  patch that this change was built upon.
+
+2003-02-22  Mike Kestner  <mkestner@speakeasy.net>
+
+	* sources/makefile : patch from Charles Krempeaux to add
+	get-source-code target which wgets tarballs.
+
 2003-02-21  Mike Kestner  <mkestner@speakeasy.net>
 
 	* mapdllnames.pl : a little whitespace action
