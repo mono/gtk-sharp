@@ -20,5 +20,8 @@ public MessageDialog (Gtk.Window parent_window, DialogFlags flags, MessageType t
 {
 	IntPtr p = (parent_window != null) ? parent_window.Handle : ((IntPtr) 0);
 
+	if (msg.IndexOf ('%') != -1)
+		msg = msg.Replace ("%", "%%");
+
 	Raw = gtk_message_dialog_new (p, flags, type, bt, msg, null);
 }

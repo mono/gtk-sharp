@@ -1,3 +1,12 @@
+2005-01-20  Dan Winship  <danw@novell.com>
+
+	* gtk/MessageDialog.custom (MessageDialog): Escape any %s in the
+	string to display. (Simplified more ABI-compatible version of
+	#71405.)
+
+	* gtk/Gtk.metadata: hide the GtkMessageDialog ctor so we don't
+	get an ellipsis warning about it
+
 2005-01-18  Mike Kestner  <mkestner@novell.com>
 
 	* generator/Method.cs : deal with owned retvals.
