@@ -80,6 +80,7 @@ customs = 				\
 	TextIter.custom			\
 	TextTag.custom			\
 	TextView.custom			\
+	Toolbar.custom			\
 	TreeIter.custom			\
 	TreeModel.custom		\
 	TreeModelSort.custom		\

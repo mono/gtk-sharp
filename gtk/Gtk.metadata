@@ -249,7 +249,13 @@
   <attr path="/api/namespace/object[@cname='GtkTextView']/signal[@name='SetScrollAdjustments']" name="name">ScrollAdjustmentsSet</attr>
   <attr path="/api/namespace/object[@cname='GtkToggleButton']/constructor[@cname='gtk_toggle_button_new_with_mnemonic']" name="preferred">1</attr>
   <attr path="/api/namespace/object[@cname='GtkToggleButton']/method[@name='Toggled']" name="name">Toggle</attr>
-  <attr path="/api/namespace/object[@cname='GtkToolbar']/method[@name='AppendItem']/*/*[@type='gpointer']" name="null_ok">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkToolbar']/method[@name='AppendElement']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkToolbar']/method[@name='AppendItem']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkToolbar']/method[@name='InsertElement']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkToolbar']/method[@name='InsertItem']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkToolbar']/method[@name='InsertStock']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkToolbar']/method[@name='PrependElement']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkToolbar']/method[@name='PrependItem']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeModelSort']/constructor[@cname='gtk_tree_model_sort_new_with_model']/*/*[@name='child_model']" name="property_name">model</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeModelSort']/method[@name='ConvertChildIterToIter']/*/*[@name='sort_iter']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeModelSort']/method[@name='ConvertIterToChildIter']/*/*[@name='child_iter']" name="pass_as">out</attr>

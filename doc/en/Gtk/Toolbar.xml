@@ -575,5 +575,29 @@ If type == <see cref="T:Gtk.ToolbarChildType.Widget" />, widget is used as the n
         <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="InsertStock">
+      <MemberSignature Language="C#" Value="public Gtk.Widget InsertStock (string stock_id, string tooltip_text, string tooltip_private_text, Gtk.SignalFunc cb, int position);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Gtk.Widget</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stock_id" Type="System.String" />
+        <Parameter Name="tooltip_text" Type="System.String" />
+        <Parameter Name="tooltip_private_text" Type="System.String" />
+        <Parameter Name="cb" Type="Gtk.SignalFunc" />
+        <Parameter Name="position" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="stock_id">a <see cref="T:System.String" /></param>
+        <param name="tooltip_text">a <see cref="T:System.String" /></param>
+        <param name="tooltip_private_text">a <see cref="T:System.String" /></param>
+        <param name="cb">a <see cref="T:Gtk.SignalFunc" /></param>
+        <param name="position">a <see cref="T:System.Int32" /></param>
+        <returns>a <see cref="T:Gtk.Widget" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
   </Members>
 </Type>
