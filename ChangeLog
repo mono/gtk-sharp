@@ -1,3 +1,19 @@
+2004-05-31  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* gtk/Container.custom: Merged fix for Container.Forall handler.
+	* gtk/Makefile.am: Added WidgetFlags.cs.
+	* gtk/Widget.custom: Added Flags property and setter to GdkWindow.
+	* gtk/WidgetFlags.cs: Enumeration of widget flags (from widget.h).
+	* gtk/glue/container.c: (gtksharp_container_invoke_gtk_callback): Fixes
+	for Container.Forall handler.
+	* gtk/glue/widget.c: (gtksharp_gtk_widget_set_window),
+	(gtksharp_gtk_widget_get_state), (gtksharp_gtk_widget_get_flags),
+	(gtksharp_gtk_widget_set_flags): Added new API which is needed to write
+	custom gtk widgets.
+	* parser/gapi_pp.pl: Match #if !defined (*_DISABLE_DEPRECATED) properly.
+	* sample/CustomWidget.cs: new sample for creating a custom Gtk widget.
+	* sample/Makefile.am: Added CustomWidget.cs sample.
+
 2004-05-25  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* gnome/Gnome.metadata: Don't hide the GtkEntry and GnomeEntry

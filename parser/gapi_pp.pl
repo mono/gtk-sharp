@@ -11,7 +11,7 @@
 # <c> 2003 Novell, Inc.
 
 $private_regex = "^#if.*(ENABLE_BACKEND|ENABLE_ENGINE)";
-$eatit_regex = "^#if.*(__cplusplus|DEBUG|DISABLE_COMPAT|ENABLE_BROKEN|COMPILATION)";
+$eatit_regex = "^#if.*(__cplusplus|DEBUG|DISABLE_COMPAT|ENABLE_BROKEN)";
 $ignoreit_regex = '^\s+\*|#ident|#\s*include|#\s*else|#\s*undef|G_(BEGIN|END)_DECLS|extern|GDKVAR|GTKVAR|GTKMAIN_C_VAR|GTKTYPEUTILS_VAR|VARIABLE|GTKTYPEBUILTIN';
 
 foreach $arg (@ARGV) {
@@ -96,6 +96,8 @@ foreach $fname (@hdrs) {
 			$ifdeflevel++;
 			#print "#ifn?def ($ifdeflevel): $line\n";
 			if ($line =~ /#ifndef.*DISABLE_DEPRECATED/) {
+				$deprecated = $ifdeflevel;
+			} elsif ($line =~ /#if !defined.*DISABLE_DEPRECATED/) {
 				$deprecated = $ifdeflevel;
 			}
 		} elsif ($line =~ /^#\s*endif/) {
