@@ -1,3 +1,7 @@
+2004-08-10  Todd Berman  <tberman@off.net>
+
+	* gnomevfs/AssemblyInfo.cs.in: use the .snk, not the .pub.
+
 2004-08-10  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* glib/MainLoop.cs:
