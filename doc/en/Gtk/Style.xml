@@ -1298,7 +1298,7 @@ color or pixmap specified by this style for <paramref name="state" />.</summary>
         <summary>Returns the graphics context for anti-aliased text.</summary>
         <param name="state">a <see cref="T:System.Int32" />, the state of the widget to get the GC for</param>
         <returns>a <see cref="T:Gdk.GC" /></returns>
-        <remarks/>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetTextAAGC">
@@ -1315,7 +1315,7 @@ color or pixmap specified by this style for <paramref name="state" />.</summary>
         <summary>Set the graphics context for anti-aliased text.</summary>
         <param name="state">a <see cref="T:System.Int32" />, the state of the widget to set the GC for</param>
         <param name="gc">a <see cref="T:Gdk.GC" /></param>
-        <remarks/>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="LightGC">
@@ -1331,7 +1331,7 @@ color or pixmap specified by this style for <paramref name="state" />.</summary>
         <summary>Returns a graphics context for light-colored drawing</summary>
         <param name="state">a <see cref="T:System.Int32" />, the state of the widget to get the GC for</param>
         <returns>a <see cref="T:Gdk.GC" /></returns>
-        <remarks/>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetLightGC">
@@ -1348,7 +1348,7 @@ color or pixmap specified by this style for <paramref name="state" />.</summary>
         <summary>Set the graphics context for light-colored drawing</summary>
         <param name="state">a <see cref="T:System.Int32" />, the state of the widget to set the GC for</param>
         <param name="gc">a <see cref="T:Gdk.GC" /></param>
-        <remarks/>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="DarkGC">
@@ -1364,7 +1364,7 @@ color or pixmap specified by this style for <paramref name="state" />.</summary>
         <summary>Returns a graphics context for dark-colored drawing</summary>
         <param name="state">a <see cref="T:System.Int32" />, the state of the widget to get the GC for</param>
         <returns>a <see cref="T:Gdk.GC" /></returns>
-        <remarks/>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetDarkGC">
@@ -1381,7 +1381,7 @@ color or pixmap specified by this style for <paramref name="state" />.</summary>
         <summary>Set the graphics context for dark-colored drawing</summary>
         <param name="state">a <see cref="T:System.Int32" />, the state of the widget to set the GC for</param>
         <param name="gc">a <see cref="T:Gdk.GC" /></param>
-        <remarks/>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="MidGC">
@@ -1397,7 +1397,7 @@ color or pixmap specified by this style for <paramref name="state" />.</summary>
         <summary>Returns a graphics context for medium-colored drawing</summary>
         <param name="state">a <see cref="T:System.Int32" />, the state of the widget to get the GC for</param>
         <returns>a <see cref="T:Gdk.GC" /></returns>
-        <remarks/>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetMidGC">
@@ -1414,7 +1414,94 @@ color or pixmap specified by this style for <paramref name="state" />.</summary>
         <summary>Set the graphics context for medium-colored drawing</summary>
         <param name="state">a <see cref="T:System.Int32" />, the state of the widget to set the GC for</param>
         <param name="gc">a <see cref="T:Gdk.GC" /></param>
-        <remarks/>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="LightColors">
+      <MemberSignature Language="C#" Value="public Gdk.Color [] LightColors { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>Gdk.Color[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Color[]" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MidColors">
+      <MemberSignature Language="C#" Value="public Gdk.Color [] MidColors { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>Gdk.Color[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Color[]" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DarkColors">
+      <MemberSignature Language="C#" Value="public Gdk.Color [] DarkColors { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>Gdk.Color[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Color[]" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Light">
+      <MemberSignature Language="C#" Value="public Gdk.Color Light (Gtk.StateType state);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="state" Type="Gtk.StateType" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="state">a <see cref="T:System.Int32" /></param>
+        <returns>a <see cref="T:Gdk.Color" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Mid">
+      <MemberSignature Language="C#" Value="public Gdk.Color Mid (Gtk.StateType state);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="state" Type="Gtk.StateType" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="state">a <see cref="T:System.Int32" /></param>
+        <returns>a <see cref="T:Gdk.Color" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dark">
+      <MemberSignature Language="C#" Value="public Gdk.Color Dark (Gtk.StateType state);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="state" Type="Gtk.StateType" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="state">a <see cref="T:System.Int32" /></param>
+        <returns>a <see cref="T:Gdk.Color" /></returns>
+        <remarks>To be added</remarks>
       </Docs>
     </Member>
   </Members>

@@ -1,5 +1,12 @@
 2005-01-17  Mike Kestner  <mkestner@novell.com>
 
+	* gtk/Style.custom : implement Light, LightColors, Mid, MidColors,
+	Dark, and DarkColors.
+	* gtk/glue/style.c : add get_light and get_dark.
+	[Fixes #71258]
+
+2005-01-17  Mike Kestner  <mkestner@novell.com>
+
 	* gtk/glue/style.c : add missing get_text method.
 	[Fixes #71280]
 
