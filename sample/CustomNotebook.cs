@@ -314,8 +314,8 @@ class CustomNotebook : Container {
 		Console.WriteLine ("layout text = {0}", text);
 		Console.WriteLine ("line count: {0}", layout.LineCount);
 		Pango.LayoutLine line = layout.Lines[0];
-		Console.WriteLine ("layout = {0}", line.layout.Text);
-		Console.WriteLine ("line = {0}", line.Length);
+		//Console.WriteLine ("layout = {0}", line.layout.Text);
+		//Console.WriteLine ("line = {0}", line.Length);
 		int idx = 0, trailing = 0;
 		if (line.XToIndex (width * 1024, out idx, out trailing)) {
 			text = text.Substring (0, idx - 1);

@@ -260,66 +260,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideToggleSizeRequested">
-      <MemberSignature Language="C#" Value="protected static void OverrideToggleSizeRequested (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideToggleSizeAllocated">
-      <MemberSignature Language="C#" Value="protected static void OverrideToggleSizeAllocated (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideActivateItem">
-      <MemberSignature Language="C#" Value="protected static void OverrideActivateItem (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideActivated">
-      <MemberSignature Language="C#" Value="protected static void OverrideActivated (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnToggleSizeRequested">
       <MemberSignature Language="C#" Value="protected virtual void OnToggleSizeRequested (out int requisition);" />
       <MemberType>Method</MemberType>
@@ -330,9 +270,9 @@
         <Parameter Name="requisition" Type="System.Int32&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.MenuItem.ToggleSizeRequested" /> event.</summary>
         <param name="requisition">a <see cref="T:System.Int32&amp;" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.MenuItem.ToggleSizeRequested" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnToggleSizeAllocated">
@@ -345,9 +285,9 @@
         <Parameter Name="allocation" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.MenuItem.ToggleSizeAllocated" /> event.</summary>
         <param name="allocation">a <see cref="T:System.Int32" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.MenuItem.ToggleSizeAllocated" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnActivateItem">
@@ -358,8 +298,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gtk.MenuItem.ActivateItem" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.MenuItem.ActivateItem" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnActivated">
@@ -370,8 +310,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gtk.MenuItem.Activated" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.MenuItem.Activated" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

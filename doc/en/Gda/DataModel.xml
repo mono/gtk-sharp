@@ -551,111 +551,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideDataChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideDataChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideRowInsertedEvent">
-      <MemberSignature Language="C#" Value="protected static void OverrideRowInsertedEvent (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideRowRemovedEvent">
-      <MemberSignature Language="C#" Value="protected static void OverrideRowRemovedEvent (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideRowUpdatedEvent">
-      <MemberSignature Language="C#" Value="protected static void OverrideRowUpdatedEvent (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideCancelEditing">
-      <MemberSignature Language="C#" Value="protected static void OverrideCancelEditing (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideBeginEditing">
-      <MemberSignature Language="C#" Value="protected static void OverrideBeginEditing (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideEndEditing">
-      <MemberSignature Language="C#" Value="protected static void OverrideEndEditing (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnDataChanged">
       <MemberSignature Language="C#" Value="protected virtual void OnDataChanged ();" />
       <MemberType>Method</MemberType>
@@ -664,8 +559,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gda.DataModel.DataChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gda.DataModel.DataChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnRowInsertedEvent">
@@ -678,9 +573,9 @@
         <Parameter Name="row" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gda.DataModel.RowInsertedEvent" /> event.</summary>
         <param name="row">a <see cref="T:System.Int32" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gda.DataModel.RowInsertedEvent" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnRowRemovedEvent">
@@ -693,9 +588,9 @@
         <Parameter Name="row" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gda.DataModel.RowRemovedEvent" /> event.</summary>
         <param name="row">a <see cref="T:System.Int32" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gda.DataModel.RowRemovedEvent" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnRowUpdatedEvent">
@@ -708,9 +603,9 @@
         <Parameter Name="row" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gda.DataModel.RowUpdatedEvent" /> event.</summary>
         <param name="row">a <see cref="T:System.Int32" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gda.DataModel.RowUpdatedEvent" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnCancelEditing">
@@ -721,8 +616,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gda.DataModel.CancelEditing" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gda.DataModel.CancelEditing" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnBeginEditing">
@@ -733,8 +628,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gda.DataModel.BeginEditing" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gda.DataModel.BeginEditing" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnEndEditing">
@@ -745,8 +640,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gda.DataModel.EndEditing" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gda.DataModel.EndEditing" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

@@ -10,8 +10,9 @@
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
   <Docs>
-    <summary>To be added</summary>
-    <remarks>To be added</remarks>
+    <summary>A terminal widget implementation.
+</summary>
+    <remarks>A <see cref="T:Vte.Terminal" /> is a terminal emulator implemented as a <see cref="T:Gtk.Widget" /></remarks>
   </Docs>
   <Base>
     <BaseTypeName>Gtk.Widget</BaseTypeName>
@@ -29,411 +30,6 @@
   </Interfaces>
   <Attributes />
   <Members>
-    <Member MemberName="OverrideRestoreWindow">
-      <MemberSignature Language="C#" Value="protected static void OverrideRestoreWindow (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideLowerWindow">
-      <MemberSignature Language="C#" Value="protected static void OverrideLowerWindow (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideMaximizeWindow">
-      <MemberSignature Language="C#" Value="protected static void OverrideMaximizeWindow (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideIncreaseFontSize">
-      <MemberSignature Language="C#" Value="protected static void OverrideIncreaseFontSize (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideTextModified">
-      <MemberSignature Language="C#" Value="protected static void OverrideTextModified (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideRaiseWindow">
-      <MemberSignature Language="C#" Value="protected static void OverrideRaiseWindow (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideTextInserted">
-      <MemberSignature Language="C#" Value="protected static void OverrideTextInserted (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideStatusLineChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideStatusLineChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideIconifyWindow">
-      <MemberSignature Language="C#" Value="protected static void OverrideIconifyWindow (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideChildExited">
-      <MemberSignature Language="C#" Value="protected static void OverrideChildExited (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideTextDeleted">
-      <MemberSignature Language="C#" Value="protected static void OverrideTextDeleted (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideMoveWindow">
-      <MemberSignature Language="C#" Value="protected static void OverrideMoveWindow (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideRefreshWindow">
-      <MemberSignature Language="C#" Value="protected static void OverrideRefreshWindow (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideDeiconifyWindow">
-      <MemberSignature Language="C#" Value="protected static void OverrideDeiconifyWindow (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideIconTitleChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideIconTitleChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideDecreaseFontSize">
-      <MemberSignature Language="C#" Value="protected static void OverrideDecreaseFontSize (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideTextScrolled">
-      <MemberSignature Language="C#" Value="protected static void OverrideTextScrolled (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideCharSizeChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideCharSizeChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideEncodingChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideEncodingChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideWindowTitleChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideWindowTitleChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideContentsChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideContentsChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideCursorMoved">
-      <MemberSignature Language="C#" Value="protected static void OverrideCursorMoved (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideSelectionChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideSelectionChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideEof">
-      <MemberSignature Language="C#" Value="protected static void OverrideEof (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideEmulationChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideEmulationChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideResizeWindow">
-      <MemberSignature Language="C#" Value="protected static void OverrideResizeWindow (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideCommit">
-      <MemberSignature Language="C#" Value="protected static void OverrideCommit (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Finalize">
       <MemberSignature Language="C#" Value="protected override void Finalize ();" />
       <MemberType>Method</MemberType>
@@ -454,8 +50,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.RestoreWindow" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.RestoreWindow" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnLowerWindow">
@@ -466,8 +62,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.LowerWindow" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.LowerWindow" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnMaximizeWindow">
@@ -478,8 +74,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.MaximizeWindow" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.MaximizeWindow" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnIncreaseFontSize">
@@ -490,8 +86,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.IncreaseFontSize" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.IncreaseFontSize" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnTextModified">
@@ -502,8 +98,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.TextModified" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.TextModified" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnRaiseWindow">
@@ -514,8 +110,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.RaiseWindow" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.RaiseWindow" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnTextInserted">
@@ -526,8 +122,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.TextInserted" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.TextInserted" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnStatusLineChanged">
@@ -538,8 +134,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.StatusLineChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.StatusLineChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnIconifyWindow">
@@ -550,8 +146,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.IconifyWindow" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.IconifyWindow" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnChildExited">
@@ -562,8 +158,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.ChildExited" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.ChildExited" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnTextDeleted">
@@ -574,8 +170,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.TextDeleted" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.TextDeleted" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnMoveWindow">
@@ -589,10 +185,10 @@
         <Parameter Name="p1" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.MoveWindow" /> event.</summary>
         <param name="p0">a <see cref="T:System.UInt32" /></param>
         <param name="p1">a <see cref="T:System.UInt32" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.MoveWindow" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnRefreshWindow">
@@ -603,8 +199,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.RefreshWindow" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.RefreshWindow" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnDeiconifyWindow">
@@ -615,8 +211,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.DeiconifyWindow" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.DeiconifyWindow" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnIconTitleChanged">
@@ -627,8 +223,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.IconTitleChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.IconTitleChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnDecreaseFontSize">
@@ -639,8 +235,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.DecreaseFontSize" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.DecreaseFontSize" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnTextScrolled">
@@ -653,9 +249,9 @@
         <Parameter Name="p0" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.TextScrolled" /> event.</summary>
         <param name="p0">a <see cref="T:System.Int32" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.TextScrolled" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnCharSizeChanged">
@@ -669,10 +265,10 @@
         <Parameter Name="p1" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.CharSizeChanged" /> event.</summary>
         <param name="p0">a <see cref="T:System.UInt32" /></param>
         <param name="p1">a <see cref="T:System.UInt32" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.CharSizeChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnEncodingChanged">
@@ -683,8 +279,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.EncodingChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.EncodingChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnWindowTitleChanged">
@@ -695,8 +291,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.WindowTitleChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.WindowTitleChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnContentsChanged">
@@ -707,8 +303,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.ContentsChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.ContentsChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnCursorMoved">
@@ -719,8 +315,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.CursorMoved" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.CursorMoved" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnSelectionChanged">
@@ -731,8 +327,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.SelectionChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.SelectionChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnEof">
@@ -743,8 +339,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.Eof" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.Eof" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnEmulationChanged">
@@ -755,8 +351,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.EmulationChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.EmulationChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnResizeWindow">
@@ -770,10 +366,10 @@
         <Parameter Name="p1" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.ResizeWindow" /> event.</summary>
         <param name="p0">a <see cref="T:System.UInt32" /></param>
         <param name="p1">a <see cref="T:System.UInt32" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.ResizeWindow" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnCommit">
@@ -787,10 +383,10 @@
         <Parameter Name="p1" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.Commit" /> event.</summary>
         <param name="p0">a <see cref="T:System.String" /></param>
         <param name="p1">a <see cref="T:System.UInt32" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.Commit" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="MatchSetCursor">
@@ -822,34 +418,6 @@
       <Docs>
         <summary>To be added</summary>
         <param name="menushell">a <see cref="T:Gtk.MenuShell" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ForkCommand">
-      <MemberSignature Language="C#" Value="public int ForkCommand (string command, string argv, string envv, string directory, bool lastlog, bool utmp, bool wtmp);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="command" Type="System.String" />
-        <Parameter Name="argv" Type="System.String" />
-        <Parameter Name="envv" Type="System.String" />
-        <Parameter Name="directory" Type="System.String" />
-        <Parameter Name="lastlog" Type="System.Boolean" />
-        <Parameter Name="utmp" Type="System.Boolean" />
-        <Parameter Name="wtmp" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="command">a <see cref="T:System.String" /></param>
-        <param name="argv">a <see cref="T:System.String" /></param>
-        <param name="envv">a <see cref="T:System.String" /></param>
-        <param name="directory">a <see cref="T:System.String" /></param>
-        <param name="lastlog">a <see cref="T:System.Boolean" /></param>
-        <param name="utmp">a <see cref="T:System.Boolean" /></param>
-        <param name="wtmp">a <see cref="T:System.Boolean" /></param>
-        <returns>a <see cref="T:System.Int32" /></returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -916,22 +484,6 @@
       <Parameters />
       <Docs>
         <summary>To be added</summary>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="IsWordChar">
-      <MemberSignature Language="C#" Value="public bool IsWordChar (string c);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="c" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="c">a <see cref="T:System.String" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -1184,10 +736,10 @@
         <Parameter Name="gtype" Type="GLib.GType" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Internal Constructor.</summary>
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
         <returns>a <see cref="T:Vte.Terminal" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>This should not be called by normal applications.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -1198,10 +750,10 @@
         <Parameter Name="raw" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Internal Constructor.</summary>
         <param name="raw">a <see cref="T:System.IntPtr" /></param>
         <returns>a <see cref="T:Vte.Terminal" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>This should not be called by normal user code.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -1210,9 +762,9 @@
       <ReturnValue />
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default Constructor</summary>
         <returns>a <see cref="T:Vte.Terminal" /></returns>
-        <remarks>To be added</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="GType">
@@ -1999,6 +1551,47 @@
       <Parameters />
       <Docs>
         <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Font">
+      <MemberSignature Language="C#" Value="public Pango.FontDescription Font { set; get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>Pango.FontDescription</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Pango.FontDescription" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ForkCommand">
+      <MemberSignature Language="C#" Value="public int ForkCommand (string command, string [] argv, string [] envv, string directory, bool lastlog, bool utmp, bool wtmp);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="command" Type="System.String" />
+        <Parameter Name="argv" Type="System.String[]" />
+        <Parameter Name="envv" Type="System.String[]" />
+        <Parameter Name="directory" Type="System.String" />
+        <Parameter Name="lastlog" Type="System.Boolean" />
+        <Parameter Name="utmp" Type="System.Boolean" />
+        <Parameter Name="wtmp" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="command">a <see cref="T:System.String" /></param>
+        <param name="argv">a <see cref="T:System.String" /></param>
+        <param name="envv">a <see cref="T:System.String" /></param>
+        <param name="directory">a <see cref="T:System.String" /></param>
+        <param name="lastlog">a <see cref="T:System.Boolean" /></param>
+        <param name="utmp">a <see cref="T:System.Boolean" /></param>
+        <param name="wtmp">a <see cref="T:System.Boolean" /></param>
+        <returns>a <see cref="T:System.Int32" /></returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>

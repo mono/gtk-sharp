@@ -363,66 +363,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideDoubleClicked">
-      <MemberSignature Language="C#" Value="protected static void OverrideDoubleClicked (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideSelectionCleared">
-      <MemberSignature Language="C#" Value="protected static void OverrideSelectionCleared (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideRowSelected">
-      <MemberSignature Language="C#" Value="protected static void OverrideRowSelected (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideCreatePopupMenu">
-      <MemberSignature Language="C#" Value="protected static void OverrideCreatePopupMenu (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnDoubleClicked">
       <MemberSignature Language="C#" Value="protected virtual void OnDoubleClicked (int row);" />
       <MemberType>Method</MemberType>
@@ -433,9 +373,9 @@
         <Parameter Name="row" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:GnomeDb.Grid.DoubleClicked" /> event.</summary>
         <param name="row">a <see cref="T:System.Int32" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:GnomeDb.Grid.DoubleClicked" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnSelectionCleared">
@@ -446,8 +386,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:GnomeDb.Grid.SelectionCleared" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:GnomeDb.Grid.SelectionCleared" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnRowSelected">
@@ -460,9 +400,9 @@
         <Parameter Name="row" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:GnomeDb.Grid.RowSelected" /> event.</summary>
         <param name="row">a <see cref="T:System.Int32" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:GnomeDb.Grid.RowSelected" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnCreatePopupMenu">
@@ -475,9 +415,9 @@
         <Parameter Name="menu" Type="Gtk.Widget" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:GnomeDb.Grid.CreatePopupMenu" /> event.</summary>
         <param name="menu">a <see cref="T:Gtk.Widget" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:GnomeDb.Grid.CreatePopupMenu" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

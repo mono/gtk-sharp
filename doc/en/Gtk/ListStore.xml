@@ -1031,96 +1031,6 @@ The above example creates a new three columns list store. The types of the colum
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideRowsReordered">
-      <MemberSignature Language="C#" Value="protected static void OverrideRowsReordered (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideRowChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideRowChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideRowDeleted">
-      <MemberSignature Language="C#" Value="protected static void OverrideRowDeleted (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideRowInserted">
-      <MemberSignature Language="C#" Value="protected static void OverrideRowInserted (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideRowHasChildToggled">
-      <MemberSignature Language="C#" Value="protected static void OverrideRowHasChildToggled (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideSortColumnChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideSortColumnChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="SetColumnTypes">
       <MemberSignature Language="C#" Value="public void SetColumnTypes (GLib.GType[] types);" />
       <MemberType>Method</MemberType>
@@ -1164,11 +1074,11 @@ The above example creates a new three columns list store. The types of the colum
         <Parameter Name="new_order" Type="System.Int32&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.ListStore.RowsReordered" /> event.</summary>
         <param name="path">a <see cref="T:Gtk.TreePath" /></param>
         <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
         <param name="new_order">a <see cref="T:System.Int32&amp;" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.ListStore.RowsReordered" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnRowChanged">
@@ -1182,10 +1092,10 @@ The above example creates a new three columns list store. The types of the colum
         <Parameter Name="iter" Type="Gtk.TreeIter" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.ListStore.RowChanged" /> event.</summary>
         <param name="path">a <see cref="T:Gtk.TreePath" /></param>
         <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.ListStore.RowChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnRowDeleted">
@@ -1198,9 +1108,9 @@ The above example creates a new three columns list store. The types of the colum
         <Parameter Name="path" Type="Gtk.TreePath" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.ListStore.RowDeleted" /> event.</summary>
         <param name="path">a <see cref="T:Gtk.TreePath" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.ListStore.RowDeleted" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnRowInserted">
@@ -1214,10 +1124,10 @@ The above example creates a new three columns list store. The types of the colum
         <Parameter Name="iter" Type="Gtk.TreeIter" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.ListStore.RowInserted" /> event.</summary>
         <param name="path">a <see cref="T:Gtk.TreePath" /></param>
         <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.ListStore.RowInserted" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnRowHasChildToggled">
@@ -1231,10 +1141,10 @@ The above example creates a new three columns list store. The types of the colum
         <Parameter Name="iter" Type="Gtk.TreeIter" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.ListStore.RowHasChildToggled" /> event.</summary>
         <param name="path">a <see cref="T:Gtk.TreePath" /></param>
         <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.ListStore.RowHasChildToggled" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnSortColumnChanged">
@@ -1245,8 +1155,8 @@ The above example creates a new three columns list store. The types of the colum
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gtk.ListStore.SortColumnChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.ListStore.SortColumnChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -1274,6 +1184,162 @@ The above example creates a new three columns list store. The types of the colum
         <summary>To be added</summary>
         <param name="types">a <see cref="T:GLib.GType[]" /></param>
         <returns>a <see cref="T:Gtk.ListStore" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Reorder">
+      <MemberSignature Language="C#" Value="public int Reorder ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Int32" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Insert">
+      <MemberSignature Language="C#" Value="public Gtk.TreeIter Insert (int position);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Gtk.TreeIter</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="position" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="position">a <see cref="T:System.Int32" /></param>
+        <returns>a <see cref="T:Gtk.TreeIter" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Prepend">
+      <MemberSignature Language="C#" Value="public Gtk.TreeIter Prepend ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Gtk.TreeIter</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gtk.TreeIter" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InsertBefore">
+      <MemberSignature Language="C#" Value="public Gtk.TreeIter InsertBefore (Gtk.TreeIter sibling);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Gtk.TreeIter</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sibling" Type="Gtk.TreeIter" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="sibling">a <see cref="T:Gtk.TreeIter" /></param>
+        <returns>a <see cref="T:Gtk.TreeIter" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InsertAfter">
+      <MemberSignature Language="C#" Value="public Gtk.TreeIter InsertAfter (Gtk.TreeIter sibling);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Gtk.TreeIter</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sibling" Type="Gtk.TreeIter" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="sibling">a <see cref="T:Gtk.TreeIter" /></param>
+        <returns>a <see cref="T:Gtk.TreeIter" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Append">
+      <MemberSignature Language="C#" Value="public Gtk.TreeIter Append ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Gtk.TreeIter</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gtk.TreeIter" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmitRowsReordered">
+      <MemberSignature Language="C#" Value="public virtual int EmitRowsReordered (Gtk.TreePath path, Gtk.TreeIter iter);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="path" Type="Gtk.TreePath" />
+        <Parameter Name="iter" Type="Gtk.TreeIter" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="path">a <see cref="T:Gtk.TreePath" /></param>
+        <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
+        <returns>a <see cref="T:System.Int32" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Remove">
+      <MemberSignature Language="C#" Value="public bool Remove (ref Gtk.TreeIter iter);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iter" Type="Gtk.TreeIter&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <summary>Removes a row from the store.</summary>
+        <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>After being removed, iter is set to be the next valid row, or invalidated if it pointed to the last row in the store.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetValue">
+      <MemberSignature Language="C#" Value="public virtual void GetValue (Gtk.TreeIter iter, int column, ref GLib.Value value);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iter" Type="Gtk.TreeIter" />
+        <Parameter Name="column" Type="System.Int32" />
+        <Parameter Name="value" Type="GLib.Value&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
+        <param name="column">a <see cref="T:System.Int32" /></param>
+        <param name="value">a <see cref="T:GLib.Value" /></param>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IterNext">
+      <MemberSignature Language="C#" Value="public virtual bool IterNext (ref Gtk.TreeIter iter);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iter" Type="Gtk.TreeIter&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
+        <returns>a <see cref="T:System.Boolean" /></returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>

@@ -287,21 +287,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideDataChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideDataChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnDataChanged">
       <MemberSignature Language="C#" Value="protected virtual void OnDataChanged ();" />
       <MemberType>Method</MemberType>
@@ -310,8 +295,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gda.XmlDatabase.DataChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gda.XmlDatabase.DataChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

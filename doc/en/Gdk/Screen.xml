@@ -60,7 +60,17 @@
       <Docs>
         <summary>To be added</summary>
         <returns>a <see cref="T:System.Int32" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>
+          <para>Returns an <see cref="T:System.Int32" /> of the number of monitors attached to the current <see cref="T:Gdk.Screen" />.</para>
+          <para>The following example will print the number of monitors in the current display to the console.</para>
+          <example>
+            <code lang="C#">Display theDisplay = Display.OpenDefaultLibgtkOnly();
+Screen defaultScreen = theDisplay.DefaultScreen;
+int numMonitors = defaultScreen.NMonitors;
+Console.WriteLine("You have {0} monitors.",numMonitors);
+</code>
+          </example>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RootWindow">
@@ -327,21 +337,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideSizeChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideSizeChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnSizeChanged">
       <MemberSignature Language="C#" Value="protected virtual void OnSizeChanged ();" />
       <MemberType>Method</MemberType>
@@ -350,8 +345,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gdk.Screen.SizeChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gdk.Screen.SizeChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -364,6 +359,59 @@
       <Docs>
         <summary>To be added</summary>
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <returns>a <see cref="T:Gdk.Screen" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToplevelWindows">
+      <MemberSignature Language="C#" Value="public Gdk.Window [] ToplevelWindows { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>Gdk.Window[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Window[]" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ListVisuals">
+      <MemberSignature Language="C#" Value="public Gdk.Visual[] ListVisuals ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Gdk.Visual[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Visual[]" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMonitorGeometry">
+      <MemberSignature Language="C#" Value="public Gdk.Rectangle GetMonitorGeometry (int monitor_num);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Gdk.Rectangle</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="monitor_num" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="monitor_num">a <see cref="T:System.Int32" /></param>
+        <returns>a <see cref="T:Gdk.Rectangle" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Screen ();" />
+      <MemberType>Constructor</MemberType>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
         <returns>a <see cref="T:Gdk.Screen" /></returns>
         <remarks>To be added</remarks>
       </Docs>

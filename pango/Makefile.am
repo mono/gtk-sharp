@@ -1,3 +1,5 @@
+SUBDIRS = . glue
+
 API = pango-api.xml
 RAW_API = pango-api.raw
 METADATA = Pango.metadata
@@ -9,7 +11,7 @@ ASSEMBLY = $(ASSEMBLY_NAME).dll
 gapidir = $(datadir)/gapi
 noinst_DATA = $(ASSEMBLY) $(ASSEMBLY).config
 gapi_DATA = $(API)
-CLEANFILES = $(ASSEMBLY) generated-stamp generated/*.cs $(API) gtk-sharp.pub
+CLEANFILES = $(ASSEMBLY) generated-stamp generated/*.cs $(API) gtk-sharp.snk
 DISTCLEANFILES = $(ASSEMBLY).config AssemblyInfo.cs
 
 sources = 		\
@@ -21,7 +23,8 @@ dist_sources = $(sources)
 customs =			\
 	AttrIterator.custom	\
 	GlyphItem.custom	\
-	Layout.custom
+	Layout.custom		\
+	LayoutLine.custom
 
 build_customs = $(addprefix $(srcdir)/, $(customs))
 dist_customs = $(customs)
@@ -46,21 +49,21 @@ generated-stamp: $(API) ../generator/gapi_codegen.exe $(build_customs)
 	--outdir=generated --customdir=$(srcdir) --assembly-name=$(ASSEMBLY_NAME) \
 	&& touch generated-stamp
 
-gtk-sharp.pub: $(top_srcdir)/gtk-sharp.pub
-	cp $(top_srcdir)/gtk-sharp.pub .
+gtk-sharp.snk: $(top_srcdir)/gtk-sharp.snk
+	cp $(top_srcdir)/gtk-sharp.snk .
 
-$(ASSEMBLY): $(build_sources) generated-stamp gtk-sharp.pub
-	$(CSC) --unsafe /out:$(ASSEMBLY) /target:library $(references) $(build_sources) generated/*.cs
+$(ASSEMBLY): $(build_sources) generated-stamp gtk-sharp.snk
+	$(CSC) /unsafe /out:$(ASSEMBLY) /target:library $(references) $(build_sources) $(GENERATED_SOURCES)
 
 install-data-local:
 	@if test -n '$(TARGET)'; then						\
-	  echo "$(GACUTIL) /i $(ASSEMBLY) /f /package $(PACKAGE) /root $(DESTDIR)$(libdir)";	\
-	  $(GACUTIL) /i $(ASSEMBLY) /f /package $(PACKAGE) /root $(DESTDIR)$(libdir) || exit 1;	\
+	  echo "$(GACUTIL) /i $(ASSEMBLY) /f $(GACUTIL_FLAGS)";	\
+	  $(GACUTIL) /i $(ASSEMBLY) /f $(GACUTIL_FLAGS) || exit 1;	\
 	fi
 
 uninstall-local:
 	@if test -n '$(TARGET)'; then						\
-	  echo "$(GACUTIL) /u $(ASSEMBLY_NAME) /package $(PACKAGE) /root $(DESTDIR)$(libdir)";	\
-	  $(GACUTIL) /u $(ASSEMBLY_NAME) /package $(PACKAGE) /root $(DESTDIR)$(libdir) || exit 1;	\
+	  echo "$(GACUTIL) /u $(ASSEMBLY_NAME) $(GACUTIL_FLAGS)";	\
+	  $(GACUTIL) /u $(ASSEMBLY_NAME) $(GACUTIL_FLAGS) || exit 1;	\
 	fi
 

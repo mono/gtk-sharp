@@ -96,25 +96,6 @@
   </Interfaces>
   <Attributes />
   <Members>
-    <Member MemberName="AffineRelative">
-      <MemberSignature Language="C#" Value="public void AffineRelative (out double [] affine);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="affine" Type="System.Double []&amp;" RefType="out" />
-      </Parameters>
-      <Docs>
-        <summary>
-          Combines the specified affine transformation matrix with the
-          item's current transformation.
-        </summary>
-        <param name="affine">Return value for an affine transformation matrix.</param>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Lower">
       <MemberSignature Language="C#" Value="public void Lower (int positions);" />
       <MemberType>Method</MemberType>
@@ -310,25 +291,6 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="AffineAbsolute">
-      <MemberSignature Language="C#" Value="public void AffineAbsolute (out double [] affine);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="affine" Type="System.Double []&amp;" RefType="out" />
-      </Parameters>
-      <Docs>
-        <summary>
-          Makes the item's affine transformation matrix be equal to
-          the specified matrix.
-        </summary>
-        <param name="affine">Return value for an affine transformation matrix.</param>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Reparent">
       <MemberSignature Language="C#" Value="public void Reparent (Gnome.CanvasGroup new_group);" />
       <MemberType>Method</MemberType>
@@ -393,8 +355,7 @@
       </Parameters>
       <Docs>
         <summary>Gets the affine transform that converts from item-relative coordinates to canvas pixel coordinates.</summary>/
-        <param name="affine">Return value for an affine transformation matrix (return value).</param><remarks>
-        </remarks></Docs>
+        <param name="affine">Return value for an affine transformation matrix (return value).</param><remarks></remarks></Docs>
     </Member>
     <Member MemberName="Raise">
       <MemberSignature Language="C#" Value="public void Raise (int positions);" />
@@ -577,21 +538,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideCanvasEvent">
-      <MemberSignature Language="C#" Value="protected static void OverrideCanvasEvent (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnCanvasEvent">
       <MemberSignature Language="C#" Value="protected virtual bool OnCanvasEvent (Gdk.Event evnt);" />
       <MemberType>Method</MemberType>
@@ -602,10 +548,10 @@
         <Parameter Name="evnt" Type="Gdk.Event" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gnome.CanvasItem.CanvasEvent" /> event.</summary>
         <param name="evnt">a <see cref="T:Gdk.Event" /></param>
         <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gnome.CanvasItem.CanvasEvent" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -638,83 +584,19 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideRealize">
-      <MemberSignature Language="C#" Value="protected static void OverrideRealize (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected CanvasItem ();" />
+      <MemberType>Constructor</MemberType>
+      <ReturnValue />
+      <Parameters />
       <Docs>
         <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <returns>a <see cref="T:Gnome.CanvasItem" /></returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverridePoint">
-      <MemberSignature Language="C#" Value="protected static void OverridePoint (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideDraw">
-      <MemberSignature Language="C#" Value="protected static void OverrideDraw (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideRender">
-      <MemberSignature Language="C#" Value="protected static void OverrideRender (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideUpdate">
-      <MemberSignature Language="C#" Value="protected static void OverrideUpdate (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnRealize">
-      <MemberSignature Language="C#" Value="protected virtual void OnRealize ();" />
+    <Member MemberName="Realize">
+      <MemberSignature Language="C#" Value="protected virtual void Realize ();" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -725,8 +607,8 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OnPoint">
-      <MemberSignature Language="C#" Value="protected virtual double OnPoint (double x, double y, int cx, int cy, out Gnome.CanvasItem actual_item);" />
+    <Member MemberName="Point">
+      <MemberSignature Language="C#" Value="protected virtual double Point (double x, double y, int cx, int cy, out Gnome.CanvasItem actual_item);" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
@@ -749,8 +631,8 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OnDraw">
-      <MemberSignature Language="C#" Value="protected virtual void OnDraw (Gdk.Drawable drawable, int x, int y, int width, int height);" />
+    <Member MemberName="Draw">
+      <MemberSignature Language="C#" Value="protected virtual void Draw (Gdk.Drawable drawable, int x, int y, int width, int height);" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -772,8 +654,8 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OnRender">
-      <MemberSignature Language="C#" Value="protected virtual void OnRender (ref Gnome.CanvasBuf buf);" />
+    <Member MemberName="Render">
+      <MemberSignature Language="C#" Value="protected virtual void Render (ref Gnome.CanvasBuf buf);" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -787,8 +669,8 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OnUpdate">
-      <MemberSignature Language="C#" Value="protected virtual void OnUpdate (double [] affine, ref Art.SVP clip_path, int flags);" />
+    <Member MemberName="Update">
+      <MemberSignature Language="C#" Value="protected virtual void Update (double [] affine, ref Art.SVP clip_path, int flags);" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -806,15 +688,42 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CanvasItem ();" />
-      <MemberType>Constructor</MemberType>
-      <ReturnValue />
-      <Parameters />
+    <Member MemberName="AffineAbsolute">
+      <MemberSignature Language="C#" Value="public void AffineAbsolute (double [] affine);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="affine" Type="System.Double[]" />
+      </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <returns>a <see cref="T:Gnome.CanvasItem" /></returns>
-        <remarks>To be added</remarks>
+        <summary>
+          Makes the item's affine transformation matrix be equal to
+          the specified matrix.
+        </summary>
+        <param name="affine">The affine transformation set as the current transformation for the item.<see cref="T:System.Double" /></param>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AffineRelative">
+      <MemberSignature Language="C#" Value="public void AffineRelative (double [] affine);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="affine" Type="System.Double[]" />
+      </Parameters>
+      <Docs>
+        <summary>
+          Combines the specified affine transformation matrix with the
+          item's current transformation.
+        </summary>
+        <param name="affine">The affine transform to combine with the items current transform</param>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

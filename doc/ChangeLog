@@ -1,3 +1,43 @@
+2004-06-19  Larry Ewing  <lewing@ximian.com>
+
+	* en/Gnome/CanvasItem.xml: update the documentation no that
+	the binding has been fixed.
+
+	* en/Gdk/Pixdata.xml: fixup the Pixdata docs now that the binding
+	is fixed.
+
+2004-06-19  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/*.xml: fix examples so they compile, are children of
+	<remarks /> so they are editable and spaced right, and some
+	miscellaneous fixes and updates
+
+2004-06-17  Mike Kestner  <mkestner@ximian.com>
+
+	* en/Gtk/Window.xml : document remaining TBAs.
+
+2004-06-17  Mike Kestner  <mkestner@ximian.com>
+
+	* scan-deprecations.cs : kill value__ fields of enum types too.
+	* en/*/*.xml : remove value__ fields from enum types. 400 more tba's.
+
+2004-06-15  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : generated summary and remarks for all the On* virtual
+	default handler methods. 700 more To be addeds gone.
+
+2004-06-14  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : run updater to 0.98 API.
+
+2004-06-01  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : run updater to fix Rgb method sigs. And LayoutLine.
+
+2004-06-07  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* en/Gtk/Widget.xml: Documented the FocusLineWidth and Flags properties.
+
 2004-06-01  Mike Kestner  <mkestner@ximian.com>
 
 	* en/*/*.xml : run updater to add new protected ctor () 's.

@@ -1207,96 +1207,6 @@ store = new TreeStore (typeof (int), typeof (string));
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideRowsReordered">
-      <MemberSignature Language="C#" Value="protected static void OverrideRowsReordered (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideRowChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideRowChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideRowDeleted">
-      <MemberSignature Language="C#" Value="protected static void OverrideRowDeleted (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideRowInserted">
-      <MemberSignature Language="C#" Value="protected static void OverrideRowInserted (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideRowHasChildToggled">
-      <MemberSignature Language="C#" Value="protected static void OverrideRowHasChildToggled (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideSortColumnChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideSortColumnChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="SetColumnTypes">
       <MemberSignature Language="C#" Value="public void SetColumnTypes (GLib.GType[] types);" />
       <MemberType>Method</MemberType>
@@ -1340,11 +1250,11 @@ store = new TreeStore (typeof (int), typeof (string));
         <Parameter Name="new_order" Type="System.Int32&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.TreeStore.RowsReordered" /> event.</summary>
         <param name="path">a <see cref="T:Gtk.TreePath" /></param>
         <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
         <param name="new_order">a <see cref="T:System.Int32&amp;" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.TreeStore.RowsReordered" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnRowChanged">
@@ -1358,10 +1268,10 @@ store = new TreeStore (typeof (int), typeof (string));
         <Parameter Name="iter" Type="Gtk.TreeIter" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.TreeStore.RowChanged" /> event.</summary>
         <param name="path">a <see cref="T:Gtk.TreePath" /></param>
         <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.TreeStore.RowChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnRowDeleted">
@@ -1374,9 +1284,9 @@ store = new TreeStore (typeof (int), typeof (string));
         <Parameter Name="path" Type="Gtk.TreePath" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.TreeStore.RowDeleted" /> event.</summary>
         <param name="path">a <see cref="T:Gtk.TreePath" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.TreeStore.RowDeleted" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnRowInserted">
@@ -1390,10 +1300,10 @@ store = new TreeStore (typeof (int), typeof (string));
         <Parameter Name="iter" Type="Gtk.TreeIter" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.TreeStore.RowInserted" /> event.</summary>
         <param name="path">a <see cref="T:Gtk.TreePath" /></param>
         <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.TreeStore.RowInserted" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnRowHasChildToggled">
@@ -1407,10 +1317,10 @@ store = new TreeStore (typeof (int), typeof (string));
         <Parameter Name="iter" Type="Gtk.TreeIter" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.TreeStore.RowHasChildToggled" /> event.</summary>
         <param name="path">a <see cref="T:Gtk.TreePath" /></param>
         <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.TreeStore.RowHasChildToggled" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnSortColumnChanged">
@@ -1421,8 +1331,8 @@ store = new TreeStore (typeof (int), typeof (string));
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gtk.TreeStore.SortColumnChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.TreeStore.SortColumnChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

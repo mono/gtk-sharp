@@ -139,21 +139,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideFormatValue">
-      <MemberSignature Language="C#" Value="protected static void OverrideFormatValue (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnFormatValue">
       <MemberSignature Language="C#" Value="protected virtual string OnFormatValue (double value);" />
       <MemberType>Method</MemberType>
@@ -164,10 +149,10 @@
         <Parameter Name="value" Type="System.Double" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.Scale.FormatValue" /> event.</summary>
         <param name="value">a <see cref="T:System.Double" /></param>
         <returns>a <see cref="T:System.String" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Scale.FormatValue" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

@@ -32,9 +32,8 @@
 	switch between different groups of information to reduce
 	any flicker caused by widget relayout by the application.
       </para>
-    </remarks>
-    <example>
-      <code language="C#">
+      <example>
+        <code lang="C#">
 using System;
 using Gtk;
 
@@ -42,13 +41,12 @@ class NotebookSample
 {
 	static void Main ()
 	{
-		new NotebookSample ();	
+		new NotebookSample ();
 	}
-	
+
 	NotebookSample ()
 	{
 		Application.Init ();
-		
 		Window win = new Window ("NotebookSample");
 		win.DeleteEvent += new DeleteEventHandler (OnWinDelete);
 		win.SetDefaultSize (400, 400);
@@ -59,19 +57,20 @@ class NotebookSample
 			string label = String.Format ("Page {0}", i+1);
 			nb.AppendPage (new Button (label), new Label (label));
 		}
-		
+
 		win.Add (nb);
 		win.ShowAll ();
 		Application.Run ();
 	}
-	
+
 	void OnWinDelete (object obj, DeleteEventArgs args)
 	{
 		Application.Quit ();
 	}
-}      
-	  </code>
-    </example>
+} 
+  </code>
+      </example>
+    </remarks>
   </Docs>
   <Base>
     <BaseTypeName>Gtk.Container</BaseTypeName>
@@ -880,81 +879,6 @@ class NotebookSample
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideFocusTab">
-      <MemberSignature Language="C#" Value="protected static void OverrideFocusTab (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideChangeCurrentPage">
-      <MemberSignature Language="C#" Value="protected static void OverrideChangeCurrentPage (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideMoveFocusOut">
-      <MemberSignature Language="C#" Value="protected static void OverrideMoveFocusOut (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideSwitchPage">
-      <MemberSignature Language="C#" Value="protected static void OverrideSwitchPage (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideSelectPage">
-      <MemberSignature Language="C#" Value="protected static void OverrideSelectPage (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnFocusTab">
       <MemberSignature Language="C#" Value="protected virtual bool OnFocusTab (Gtk.NotebookTab type);" />
       <MemberType>Method</MemberType>
@@ -965,10 +889,10 @@ class NotebookSample
         <Parameter Name="type" Type="Gtk.NotebookTab" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.Notebook.FocusTab" /> event.</summary>
         <param name="type">a <see cref="T:Gtk.NotebookTab" /></param>
         <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Notebook.FocusTab" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnChangeCurrentPage">
@@ -981,9 +905,9 @@ class NotebookSample
         <Parameter Name="offset" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.Notebook.ChangeCurrentPage" /> event.</summary>
         <param name="offset">a <see cref="T:System.Int32" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Notebook.ChangeCurrentPage" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnMoveFocusOut">
@@ -996,9 +920,9 @@ class NotebookSample
         <Parameter Name="direction" Type="Gtk.DirectionType" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.Notebook.MoveFocusOut" /> event.</summary>
         <param name="direction">a <see cref="T:Gtk.DirectionType" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Notebook.MoveFocusOut" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnSwitchPage">
@@ -1012,10 +936,10 @@ class NotebookSample
         <Parameter Name="page_num" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.Notebook.SwitchPage" /> event.</summary>
         <param name="page">a <see cref="T:Gtk.NotebookPage" /></param>
         <param name="page_num">a <see cref="T:System.UInt32" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Notebook.SwitchPage" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnSelectPage">
@@ -1028,10 +952,10 @@ class NotebookSample
         <Parameter Name="move_focus" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.Notebook.SelectPage" /> event.</summary>
         <param name="move_focus">a <see cref="T:System.Boolean" /></param>
         <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Notebook.SelectPage" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

@@ -34,7 +34,10 @@ namespace GtkSharp.Docs {
 				while (iter.MoveNext ()) {
 					XmlElement elem = ((IHasXmlNode)iter.Current).GetNode () as XmlElement;
 					string member_type = elem["MemberType"].InnerText;
-					switch (member_type) { 
+					switch (member_type) {
+					case "Method":
+					case "Property":
+					case "Constructor":
 					case "Field":
 						string summary = elem["Docs"]["summary"].InnerText;
 						string remarks = elem["Docs"]["remarks"].InnerText;
@@ -47,6 +50,19 @@ namespace GtkSharp.Docs {
 					default:
 						ignores += " " + elem.GetAttribute ("MemberName") + "(" + member_type + ")";
 						break;
+					}
+				}
+
+				iter = api_nav.Select ("/Type/Base/BaseTypeName");
+				if (iter.MoveNext ()) {
+					XmlElement elem = ((IHasXmlNode)iter.Current).GetNode () as XmlElement;
+					if (elem.InnerText == "System.Enum") {
+						iter = api_nav.Select ("/Type/Members/Member[@MemberName='value__']");
+						if (iter.MoveNext ()) {
+							elem = ((IHasXmlNode)iter.Current).GetNode () as XmlElement;
+							kills += " " + elem.GetAttribute ("MemberName") + "(Field)";
+							kill_elems.Add (elem);
+						}
 					}
 				}
 
@@ -64,6 +80,7 @@ namespace GtkSharp.Docs {
 					if (nonstubs != "")
 						Console.WriteLine ("  Non-stubbed deprecates:" + nonstubs);
 				}
+
 			}
 			return 0;
 		}

@@ -107,21 +107,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideFinished">
-      <MemberSignature Language="C#" Value="protected static void OverrideFinished (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnFinished">
       <MemberSignature Language="C#" Value="protected virtual void OnFinished (bool error);" />
       <MemberType>Method</MemberType>
@@ -132,9 +117,9 @@
         <Parameter Name="error" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:GnomeDb.DsnConfigDruid.Finished" /> event.</summary>
         <param name="error">a <see cref="T:System.Boolean" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:GnomeDb.DsnConfigDruid.Finished" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

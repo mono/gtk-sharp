@@ -242,21 +242,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideColorChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideColorChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnColorChanged">
       <MemberSignature Language="C#" Value="protected virtual void OnColorChanged ();" />
       <MemberType>Method</MemberType>
@@ -265,8 +250,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gtk.ColorSelection.ColorChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.ColorSelection.ColorChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

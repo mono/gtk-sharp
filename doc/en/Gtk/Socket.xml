@@ -156,36 +156,6 @@ Console.WriteLine ("The ID of the sockets window is {0}", socket.Id);
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverridePlugRemoved">
-      <MemberSignature Language="C#" Value="protected static void OverridePlugRemoved (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverridePlugAdded">
-      <MemberSignature Language="C#" Value="protected static void OverridePlugAdded (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnPlugRemoved">
       <MemberSignature Language="C#" Value="protected virtual bool OnPlugRemoved ();" />
       <MemberType>Method</MemberType>
@@ -194,9 +164,9 @@ Console.WriteLine ("The ID of the sockets window is {0}", socket.Id);
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.Socket.PlugRemoved" /> event.</summary>
         <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Socket.PlugRemoved" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnPlugAdded">
@@ -207,8 +177,8 @@ Console.WriteLine ("The ID of the sockets window is {0}", socket.Id);
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gtk.Socket.PlugAdded" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Socket.PlugAdded" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

@@ -105,21 +105,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideDisplayOpened">
-      <MemberSignature Language="C#" Value="protected static void OverrideDisplayOpened (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnDisplayOpened">
       <MemberSignature Language="C#" Value="protected virtual void OnDisplayOpened (Gdk.Display display);" />
       <MemberType>Method</MemberType>
@@ -130,9 +115,9 @@
         <Parameter Name="display" Type="Gdk.Display" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gdk.DisplayManager.DisplayOpened" /> event.</summary>
         <param name="display">a <see cref="T:Gdk.Display" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gdk.DisplayManager.DisplayOpened" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -145,6 +130,30 @@
       <Docs>
         <summary>To be added</summary>
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <returns>a <see cref="T:Gdk.DisplayManager" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ListDisplays">
+      <MemberSignature Language="C#" Value="public Gdk.Display[] ListDisplays ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Gdk.Display[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Display[]" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected DisplayManager ();" />
+      <MemberType>Constructor</MemberType>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
         <returns>a <see cref="T:Gdk.DisplayManager" /></returns>
         <remarks>To be added</remarks>
       </Docs>

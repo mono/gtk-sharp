@@ -275,21 +275,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideAccelChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideAccelChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnAccelChanged">
       <MemberSignature Language="C#" Value="protected virtual void OnAccelChanged (uint keyval, Gdk.ModifierType modifier, IntPtr accel_closure);" />
       <MemberType>Method</MemberType>
@@ -302,11 +287,11 @@
         <Parameter Name="accel_closure" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.AccelGroup.AccelChanged" /> event.</summary>
         <param name="keyval">a <see cref="T:System.UInt32" /></param>
         <param name="modifier">a <see cref="T:Gdk.ModifierType" /></param>
         <param name="accel_closure">a <see cref="T:System.IntPtr" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.AccelGroup.AccelChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

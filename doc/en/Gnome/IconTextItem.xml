@@ -290,111 +290,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideEditingStarted">
-      <MemberSignature Language="C#" Value="protected static void OverrideEditingStarted (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideSelectionStarted">
-      <MemberSignature Language="C#" Value="protected static void OverrideSelectionStarted (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideWidthChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideWidthChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideEditingStopped">
-      <MemberSignature Language="C#" Value="protected static void OverrideEditingStopped (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideHeightChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideHeightChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideSelectionStopped">
-      <MemberSignature Language="C#" Value="protected static void OverrideSelectionStopped (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideTextChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideTextChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnEditingStarted">
       <MemberSignature Language="C#" Value="protected virtual void OnEditingStarted ();" />
       <MemberType>Method</MemberType>
@@ -403,8 +298,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gnome.IconTextItem.EditingStarted" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gnome.IconTextItem.EditingStarted" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnSelectionStarted">
@@ -415,8 +310,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gnome.IconTextItem.SelectionStarted" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gnome.IconTextItem.SelectionStarted" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnWidthChanged">
@@ -427,8 +322,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gnome.IconTextItem.WidthChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gnome.IconTextItem.WidthChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnEditingStopped">
@@ -439,8 +334,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gnome.IconTextItem.EditingStopped" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gnome.IconTextItem.EditingStopped" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnHeightChanged">
@@ -451,8 +346,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gnome.IconTextItem.HeightChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gnome.IconTextItem.HeightChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnSelectionStopped">
@@ -463,8 +358,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gnome.IconTextItem.SelectionStopped" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gnome.IconTextItem.SelectionStopped" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnTextChanged">
@@ -475,9 +370,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gnome.IconTextItem.TextChanged" /> event.</summary>
         <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gnome.IconTextItem.TextChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

@@ -474,21 +474,6 @@ class TreeSelectionSample
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnChanged">
       <MemberSignature Language="C#" Value="protected virtual void OnChanged ();" />
       <MemberType>Method</MemberType>
@@ -497,8 +482,8 @@ class TreeSelectionSample
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gtk.TreeSelection.Changed" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.TreeSelection.Changed" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -511,6 +496,33 @@ class TreeSelectionSample
       <Docs>
         <summary>To be added</summary>
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <returns>a <see cref="T:Gtk.TreeSelection" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSelectedRows">
+      <MemberSignature Language="C#" Value="public Gtk.TreePath[] GetSelectedRows (out Gtk.TreeModel model);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Gtk.TreePath[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="model" Type="Gtk.TreeModel&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <summary>Returns an array of <see cref="T:Gtk.TreePath" />s representing the selected rows.</summary>
+        <param name="model">The model the <see cref="T:Gtk.TreeView" /> is bound to.</param>
+        <returns>Selected rows in an array of <see cref="T:Gtk.TreePath" />s</returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected TreeSelection ();" />
+      <MemberType>Constructor</MemberType>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
         <returns>a <see cref="T:Gtk.TreeSelection" /></returns>
         <remarks>To be added</remarks>
       </Docs>

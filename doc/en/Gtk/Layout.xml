@@ -256,21 +256,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideScrollAdjustmentsSet">
-      <MemberSignature Language="C#" Value="protected static void OverrideScrollAdjustmentsSet (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnScrollAdjustmentsSet">
       <MemberSignature Language="C#" Value="protected virtual void OnScrollAdjustmentsSet (Gtk.Adjustment hadjustment, Gtk.Adjustment vadjustment);" />
       <MemberType>Method</MemberType>
@@ -282,10 +267,10 @@
         <Parameter Name="vadjustment" Type="Gtk.Adjustment" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.Layout.ScrollAdjustmentsSet" /> event.</summary>
         <param name="hadjustment">a <see cref="T:Gtk.Adjustment" /></param>
         <param name="vadjustment">a <see cref="T:Gtk.Adjustment" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Layout.ScrollAdjustmentsSet" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

@@ -28,7 +28,7 @@ public class ButtonApp  {
 	{
 		Application.Init ();
 		Window win = new Window ("Button Tester");
-		win.DefaultSize = new Size (200, 150);
+		win.SetDefaultSize (200, 150);
 		win.DeleteEvent += new DeleteEventHandler (Window_Delete);
 		Button btn = new Button ("Click Me");
 		btn.Clicked += new EventHandler (btn_click);
@@ -391,96 +391,6 @@ public class ButtonApp  {
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideEntered">
-      <MemberSignature Language="C#" Value="protected static void OverrideEntered (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideReleased">
-      <MemberSignature Language="C#" Value="protected static void OverrideReleased (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverridePressed">
-      <MemberSignature Language="C#" Value="protected static void OverridePressed (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideLeft">
-      <MemberSignature Language="C#" Value="protected static void OverrideLeft (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideClicked">
-      <MemberSignature Language="C#" Value="protected static void OverrideClicked (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideActivated">
-      <MemberSignature Language="C#" Value="protected static void OverrideActivated (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ActionGetType">
       <MemberSignature Language="C#" Value="public static GLib.GType ActionGetType ();" />
       <MemberType>Method</MemberType>
@@ -502,8 +412,8 @@ public class ButtonApp  {
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gtk.Button.Entered" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Button.Entered" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnReleased">
@@ -514,8 +424,8 @@ public class ButtonApp  {
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gtk.Button.Released" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Button.Released" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnPressed">
@@ -526,8 +436,8 @@ public class ButtonApp  {
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gtk.Button.Pressed" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Button.Pressed" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnLeft">
@@ -538,8 +448,8 @@ public class ButtonApp  {
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gtk.Button.Left" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Button.Left" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnClicked">
@@ -550,8 +460,8 @@ public class ButtonApp  {
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gtk.Button.Clicked" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Button.Clicked" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnActivated">
@@ -562,8 +472,8 @@ public class ButtonApp  {
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Gtk.Button.Activated" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Button.Activated" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

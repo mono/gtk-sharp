@@ -32,66 +32,6 @@
   </Interfaces>
   <Attributes />
   <Members>
-    <Member MemberName="OverrideTextCaretMoved">
-      <MemberSignature Language="C#" Value="protected static void OverrideTextCaretMoved (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideTextSelectionChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideTextSelectionChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideTextAttributesChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideTextAttributesChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideTextChanged">
-      <MemberSignature Language="C#" Value="protected static void OverrideTextChanged (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Finalize">
       <MemberSignature Language="C#" Value="protected override void Finalize ();" />
       <MemberType>Method</MemberType>
@@ -303,22 +243,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetCharacterAtOffset">
-      <MemberSignature Language="C#" Value="public virtual string GetCharacterAtOffset (int offset);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="offset" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="offset">a <see cref="T:System.Int32" /></param>
-        <returns>a <see cref="T:System.String" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="SetSelection">
       <MemberSignature Language="C#" Value="public virtual bool SetSelection (int selection_num, int start_offset, int end_offset);" />
       <MemberType>Method</MemberType>
@@ -369,9 +293,9 @@
         <Parameter Name="location" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Vte.TerminalAccessible.TextCaretMoved" /> event.</summary>
         <param name="location">a <see cref="T:System.Int32" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.TerminalAccessible.TextCaretMoved" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnTextSelectionChanged">
@@ -382,8 +306,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.TerminalAccessible.TextSelectionChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.TerminalAccessible.TextSelectionChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnTextAttributesChanged">
@@ -394,8 +318,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Default handler for the <see cref="M:Vte.TerminalAccessible.TextAttributesChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.TerminalAccessible.TextAttributesChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnTextChanged">
@@ -409,10 +333,10 @@
         <Parameter Name="length" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Vte.TerminalAccessible.TextChanged" /> event.</summary>
         <param name="position">a <see cref="T:System.Int32" /></param>
         <param name="length">a <see cref="T:System.Int32" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.TerminalAccessible.TextChanged" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RefAccessibleAtPoint">
@@ -658,17 +582,6 @@
       <Docs>
         <summary>To be added</summary>
         <param name="terminal">a <see cref="T:Vte.Terminal" /></param>
-        <returns>a <see cref="T:Vte.TerminalAccessible" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected TerminalAccessible ();" />
-      <MemberType>Constructor</MemberType>
-      <ReturnValue />
-      <Parameters />
-      <Docs>
-        <summary>To be added</summary>
         <returns>a <see cref="T:Vte.TerminalAccessible" /></returns>
         <remarks>To be added</remarks>
       </Docs>

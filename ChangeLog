@@ -1,3 +1,164 @@
+2004-06-20  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* *: Merge with HEAD.
+
+2004-06-17  Larry Ewing  <lewing@ximian.com>
+
+	* gdk/Makefile.am (sources): add Pixdata.custom
+
+	* gdk/Pixdata.custom: add new file to fix Serialize.
+
+	* gnome/CanvasItem.custom: remove the incorrect custom bindings.
+
+	* gnome/Gnome.metadata: stop hiding the AffineRelative and
+	AffineAbsolute the generator gets them right they are not out
+	params.
+
+	* gdk/Gdk.metadata: mark the Pixdata byte stream as and array hide
+	the broken serialize method.
+
+2004-06-18  John Luke  <jluke@cfl.rr.com>
+
+	* sample/rsvg/Makefile.am:  do not reference gnome-sharp and art-sharp
+	* sample/rsvg/svghelloworld.cs: rework with just gtk (no gnome deps)
+
+2004-06-15  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Gtk.metadata : hide the button_new_from_stock ctor.
+	* gtk/Button.custom : add a manual ctor implementation.
+
+2004-06-14  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : another "really frozen this time" release.
+	* gdk/Gdk.metadata : mark a couple array params on Pixbuf.Savev.
+	* gdk/Pixbuf.custom : add a Save implementation.
+
+2004-06-14  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : bump the version to 0.97, tag.
+
+2004-06-12  Todd Berman  <tberman@sevenl.net>
+
+	* glib/ObjectManager.cs: change CreateInstance overload being used
+	to properly pick up protected ctors.
+
+2004-06-11  Todd Berman  <tberman@sevenl.net>
+
+	* gtk/Container.custom:
+	* gtk/CellRenderer.custom:
+	* gnome/CanvasItem.custom: mark Override* private.
+	* doc/en/*/*.xml: update to remove Override* methods.
+
+2004-06-11  Mike Kestner  <mkestner@ximian.com>
+
+	* doc/en/*/*.xml : update to remove Override* methods.
+	* generator/Signal.cs : make the Override* methods private.  They
+	should not ever be called manually and it saves about 800 "do not
+	call this method" doc entries.
+
+2004-06-11  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : require mono-0.96, bump the version, tag.
+
+2004-06-11  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : remove the mint usage for darwin.
+
+2004-06-11  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : deal with a csc-ism in source paths.
+	* */Makefile.am : use the GENERATED_SOURCES var.
+	* */glue/Makefile.am : add -no-undefined for win32 dll builds.
+
+2004-06-10  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : break the monodoc dep, even though it was optional
+	it was a pain in the backside.
+	* doc/Makefile.am : add assemble target to build docs using monodoc.
+	we now have two manual targets which use monodoc, but aren't required
+	for the default build (update and assemble).
+
+2004-06-10  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : AC_SUBST GACUTIL_FLAGS. require mono-0.95 (though
+	it's really cvs bleeding edge.)
+	* * AssemblyInfo.cs.in : s/pub/snk.  delaysign=no.
+	* * Makefile.am : s/pub/snk.  portability fixes to csc from John 
+	Luke.  Switch to GACUTIL_FLAGS.
+	* doc/Makefile.am : don't build docs, install raw xml to the prefix.
+	
+2004-06-10  Todd Berman  <tberman@sevenl.net>
+
+	* gtk/Container.custom: add C# glue for virtualizing ChildType ()
+	* gtk/glue/container.c: add C glue for virtualizing ChildType ()
+	* gtk/Gtk.metadata: hide Container.ChildType ()
+	* gtk/Widget.custom: Add ClearFlag, and SetFlag convenience methods.
+	Also add various IsFlag bool properties for checking for flags.
+	* gtk/glue/widget.c: Fix setting flags.
+	* doc/*: updated Widget docs.
+
+2004-06-09  Todd Berman  <tberman@sevenl.net>
+
+	* gdk/Gdk.metadata: mark Window.SetBackPixmap as null_ok.
+	* glib/Object.cs: in set_Raw, if value == IntPtr.Zero, dont put that
+	in the weakref hashtable, as it creates later issues with gtk+
+	returning null and gtk# mistaking if for an object.
+
+2004-06-08  Mike Kestner  <mkestner@ximian.com>
+
+	* gnomedb/Application.cs : add a missing DllImport.
+
+2004-06-08  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : mark array param on Drawable.*Image.
+
+2004-06-08  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : mark array param on Drawable.DrawGrayImage.
+
+2004-06-07  Mike Kestner  <mkestner@ximian.com>
+
+	* */Makefile.am : s|--unsafe|/unsafe to remove a mcs-ism that jluke
+	exposed in his cygwin build patch.
+
+2004-06-07  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* configure.in: Add pango pkg-config check.
+	* pango/Layout.custom: Updated custom code to new opaque LayoutLine.
+	* pango/LayoutLine.custom: Properties for LayoutLine struct fields.
+	* pango/Makefile.am:
+	* pango/Pango.metadata: Make LayoutLine opaque [Fixes #59666].
+	* pango/glue/.cvsignore:
+	* pango/glue/Makefile.am:
+	* pango/glue/layoutline.c: glue for the LayoutLine struct fields.
+	* pango/glue/makefile.win32:
+	* pango/glue/win32dll.c:
+
+2004-06-07  Todd Berman  <tberman@sevenl.net>
+
+	* gtk/Widget.custom: expose some easy bool properties for checking
+	certain WidgetFlags. Make Allocation a settable property.
+	* gtk/glue/widget.c: bit of glue to make Allocation settable.
+	* gdk/Window.custom: expose UserData as a usable IntPtr property.
+	* gdk/Gdk.metadata: hide old GetUserData/SetUserData methods.
+	* doc/*: ran the updater.
+
+2004-06-07  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* gtk/Widget.custom: Add FocusLineWidth property.
+	* gtk/glue/widget.c: (gtksharp_gtk_widget_set_flags),
+	(gtksharp_gtk_widget_style_get_int): glue for getting an integer style
+	property.
+
+2004-06-07  John Luke  <jluke@cfl.rr.com>
+ 
+ 	* doc/Makefile.am: install the docs if monodoc is there
+ 
+2004-06-07  Peter Williams  <peter@newton.cx>
+
+	* configure.in (MONODOC_REQUIRED_VERSION): Fix missing 'test' in
+	shell if statement.
+
 2004-06-07  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* gtk/Widget.custom: Add the AddAccelerator method back which got
@@ -7,17 +168,6 @@
 2004-06-07  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* *: Merge with HEAD.
-
-2004-06-07  Peter Williams  <peter@newton.cx>
-
-	* configure.in (MONODOC_REQUIRED_VERSION): Fix missing 'test' in
-	shell if statement.
-
-2004-06-07  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
-
-	* gtk/Widget.custom: Add FocusLineWidth property.
-	* gtk/glue/widget.c: (gtksharp_gtk_widget_set_flags),
-	(gtksharp_gtk_widget_style_get_int): Code for retrieving style property.
 
 2004-06-04  Todd Berman  <tberman@sevenl.net>
 

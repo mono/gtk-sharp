@@ -18,9 +18,8 @@
       <para>Status bars in Gtk maintain a stack of messages. The message at the top of the each bar's stack is the one that will currently be displayed.</para>
       <para>Any messages added to a statusbar's stack must specify a <paramref name="context_id" /> that is used to uniquely identify the source of a message. This <paramref name="context_id" /> can be generated with <see cref="M:Gtk.Statusbar.GetContextId" />, given a message. Note that messages are stored in a stack, and when choosing which message to display, the stack structure is adhered to, regardless of the context identifier of a message.</para>
       <para>Messages are added to the bar's stack with <see cref="M:Gtk.Statusbar.Push" />, and the message at the top of the stack can be removed using <see cref="M:Gtk.Statusbar.Pop" />. A message can be removed from anywhere in the stack if it's <paramref name="message_id" /> was recorded at the time it was added. This is done using <see cref="M:Gtk.Statusbar.Remove" />.</para>
-    </remarks>
-    <example>
-      <code language="C#">
+      <example>
+        <code lang="C#">
 using System;
 using Gtk;
 
@@ -29,38 +28,36 @@ class StatusbarSample
 	Statusbar sb;
 	const int id = 1;
 	int count;
-	
+
 	static void Main ()
 	{
-		new StatusbarSample ();	
+		new StatusbarSample ();
 	}
-	
+
 	StatusbarSample ()
 	{
 		Application.Init ();
-		
 		count = 0;
-		
 		Window win = new Window ("StatusbarSample");
 		win.DeleteEvent += new DeleteEventHandler (OnWinDelete);
 		win.SetDefaultSize (150, 100);
-		
+
 		VBox vbox = new VBox (false, 1);
 		win.Add (vbox);
-		
+
 		Button btn = new Button ("Add to counter");
 		btn.Clicked += new EventHandler (OnButtonClicked);
 		vbox.Add (btn);
-		
+
 		sb = new Statusbar ();
 		sb.Push (id, "Welcome!");
 		sb.HasResizeGrip = false;
 		vbox.Add (sb);
-		
+
 		win.ShowAll ();
 		Application.Run ();
 	}
-	
+
 	void OnButtonClicked (object obj, EventArgs args)
 	{
 		count ++;
@@ -68,14 +65,15 @@ class StatusbarSample
 		sb.Pop (id);
 		sb.Push (id, message);
 	}
-	
+
 	void OnWinDelete (object obj, DeleteEventArgs args)
 	{
 		Application.Quit ();
 	}
-}      
-	  </code>
-    </example>
+}
+  </code>
+      </example>
+    </remarks>
   </Docs>
   <Base>
     <BaseTypeName>Gtk.HBox</BaseTypeName>
@@ -263,36 +261,6 @@ class StatusbarSample
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OverrideTextPopped">
-      <MemberSignature Language="C#" Value="protected static void OverrideTextPopped (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideTextPushed">
-      <MemberSignature Language="C#" Value="protected static void OverrideTextPushed (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnTextPopped">
       <MemberSignature Language="C#" Value="protected virtual void OnTextPopped (uint context_id, string text);" />
       <MemberType>Method</MemberType>
@@ -304,10 +272,10 @@ class StatusbarSample
         <Parameter Name="text" Type="System.String" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.Statusbar.TextPopped" /> event.</summary>
         <param name="context_id">a <see cref="T:System.UInt32" /></param>
         <param name="text">a <see cref="T:System.String" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Statusbar.TextPopped" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnTextPushed">
@@ -321,10 +289,10 @@ class StatusbarSample
         <Parameter Name="text" Type="System.String" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Default handler for the <see cref="M:Gtk.Statusbar.TextPushed" /> event.</summary>
         <param name="context_id">a <see cref="T:System.UInt32" /></param>
         <param name="text">a <see cref="T:System.String" /></param>
-        <remarks>To be added</remarks>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Statusbar.TextPushed" /> event.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
