@@ -9,15 +9,26 @@ class CustomWidgetTest {
 		Window win = new Window ("Custom Widget Test");
 		win.DeleteEvent += new DeleteEventHandler (OnQuit);
 		
-		VBox box = new VBox (false, 5);
+		VPaned paned = new VPaned ();
 		CustomWidget cw = new CustomWidget ();
-		cw.BorderWidth = 0;
-		box.PackStart (cw, true, true, 0);
+		cw.Label = "This one contains a button";
 		Button button = new Button ("Ordinary button");
-		button.BorderWidth = 0;
-		box.PackEnd (button, false, false, 0);
+		cw.Add (button);
+		paned.Pack1 (cw, true, false);
+
+		cw = new CustomWidget ();
+		cw.Label = "And this one a TextView";
+		cw.StockId = Stock.JustifyLeft;
+		ScrolledWindow sw = new ScrolledWindow (null, null);
+		sw.ShadowType = ShadowType.In;
+		sw.HscrollbarPolicy = PolicyType.Automatic;
+		sw.VscrollbarPolicy = PolicyType.Automatic;
+		TextView textView = new TextView ();
+		sw.Add (textView);
+		cw.Add (sw);
+		paned.Pack2 (cw, true, false);
 		
-		win.Add (box);
+		win.Add (paned);
 		win.ShowAll ();
 		Application.Run ();
 		return 0;
@@ -29,11 +40,12 @@ class CustomWidgetTest {
 	}
 }
 
-class CustomWidget : Container {
+class CustomWidget : Bin {
 	internal static GType customWidgetGType;
-	protected Button button;
-	protected Gdk.Pixbuf icon;
-	protected Pango.Layout layout;
+	private Gdk.Pixbuf icon;
+	private string label;
+	private Pango.Layout layout;
+	private string stockid;
 
 	internal static GType CustomWidgetGetType () {
 		if (customWidgetGType.Val == IntPtr.Zero)
@@ -42,83 +54,92 @@ class CustomWidget : Container {
 		return customWidgetGType;
 	}
 
-	static CustomWidget () {
-		OverrideForall (CustomWidgetGetType ());
-	}
-
 	public CustomWidget () : base (CustomWidgetGetType ())
 	{
 		icon = null;
+		label = "CustomWidget";
 		layout = null;
-	
-		button = new Button ("Custom widget");
-		button.Parent = this;
-		button.Show ();
+		stockid = Stock.Execute;
 		
 		Flags |= (int)WidgetFlags.NoWindow;
 	}
 
-	public Gdk.Rectangle TitleArea {
+	private Gdk.Pixbuf Icon {
 		get {
-			EnsureLayout ();
-		
+			if (icon == null)
+				icon = RenderIcon (stockid, IconSize.Menu, "");
+			return icon;
+		}
+	}
+
+	public string Label {
+		get {
+			return label;
+		}
+		set {
+			label = value;
+			layout = CreatePangoLayout (label);
+		}
+	}
+
+	private Pango.Layout Layout {
+		get {
+			if (layout == null)
+				layout = CreatePangoLayout (label);
+			return layout;
+		}
+	}
+
+	public string StockId {
+		get {
+			return stockid;
+		}
+		set {
+			stockid = value;
+			icon = RenderIcon (stockid, IconSize.Menu, "");
+		}
+	}
+
+	private Gdk.Rectangle TitleArea {
+		get {
 			Gdk.Rectangle area;
 			area.X = Allocation.X + (int)BorderWidth;
 			area.Y = Allocation.Y + (int)BorderWidth;
 			area.Width = (Allocation.Width - 2 * (int)BorderWidth);
 			
 			int layoutWidth, layoutHeight;
-			layout.GetPixelSize (out layoutWidth, out layoutHeight);
+			Layout.GetPixelSize (out layoutWidth, out layoutHeight);
 			area.Height = Math.Max (layoutHeight, icon.Height);
 			
 			return area;
 		}
 	}
 
-	private void EnsureLayout ()
-	{
-		if (layout == null) {
-			layout = CreatePangoLayout ("PangoLayout");
-			layout.SetText ("Pango drawn text...");
-		}
-		
-		if (icon == null) {
-			icon = RenderIcon (Stock.Execute, IconSize.Menu, "");
-		}
-	}
-
 	protected override bool OnExposeEvent (Gdk.EventExpose args)
 	{
-		EnsureLayout ();
-	
-		Gdk.Rectangle exposeArea = new Gdk.Rectangle ();
+		Gdk.Rectangle exposeArea;
 		Gdk.Rectangle titleArea = TitleArea;
 
-		if (args.Area.Intersect (titleArea, ref exposeArea))
-			GdkWindow.DrawPixbuf (Style.BackgroundGC (State), icon, 0, 0,
-					      titleArea.X, titleArea.Y, icon.Width,
-					      icon.Height, Gdk.RgbDither.None, 0, 0);
+		if (args.Area.Intersect (titleArea, out exposeArea))
+			GdkWindow.DrawPixbuf (Style.BackgroundGC (State), Icon, 0, 0,
+					      titleArea.X, titleArea.Y, Icon.Width,
+					      Icon.Height, Gdk.RgbDither.None, 0, 0);
 		
 		titleArea.X += icon.Width + 1;
 		titleArea.Width -= icon.Width - 1;
 		
-		if (args.Area.Intersect (titleArea, ref exposeArea)) {
+		if (args.Area.Intersect (titleArea, out exposeArea)) {
 			int layoutWidth, layoutHeight;
-			layout.GetPixelSize (out layoutWidth, out layoutHeight);
+			Layout.GetPixelSize (out layoutWidth, out layoutHeight);
 		
 			titleArea.Y += (titleArea.Height - layoutHeight) / 2;
 
 			Style.PaintLayout (Style, GdkWindow, State,
 					   true, exposeArea, this, null,
-					   titleArea.X, titleArea.Y, layout);
+					   titleArea.X, titleArea.Y, Layout);
 		}
 	
 		return base.OnExposeEvent (args);
-	}
-
-	protected override void OnForall (bool include_internals, CallbackInvoker invoker)
-	{
-		invoker.Invoke (button);
 	}
 
 	protected override void OnRealized ()
@@ -137,28 +158,27 @@ class CustomWidget : Container {
 
 		Gdk.Rectangle titleArea = TitleArea;
 
-		Gdk.Rectangle childAllocation;
-		childAllocation.X = allocation.X + bw;
-		childAllocation.Y = allocation.Y + bw + titleArea.Height;
-		childAllocation.Width = allocation.Width - 2 * bw;
-		childAllocation.Height = allocation.Height - 2 * bw - titleArea.Height;
-		button.SizeAllocate (childAllocation);
+		if (Child != null) {
+			Gdk.Rectangle childAllocation;
+			childAllocation.X = allocation.X + bw;
+			childAllocation.Y = allocation.Y + bw + titleArea.Height;
+			childAllocation.Width = allocation.Width - 2 * bw;
+			childAllocation.Height = allocation.Height - 2 * bw - titleArea.Height;
+			Child.SizeAllocate (childAllocation);
+		}
 	}
 
 	protected override void OnSizeRequested (ref Requisition requisition)
 	{
-		EnsureLayout ();
-	
 		requisition.Width = requisition.Height = (int)BorderWidth * 2;
-		requisition.Width += icon.Width + 1;
+		requisition.Width += Icon.Width + 1;
 	
 		int layoutWidth, layoutHeight;
-		layout.GetPixelSize (out layoutWidth, out layoutHeight);
+		Layout.GetPixelSize (out layoutWidth, out layoutHeight);
 		requisition.Height += layoutHeight;
 		
-		if (button.Visible) {
-			Requisition childReq = new Requisition ();
-			button.SizeRequest (ref childReq);
+		if (Child != null && Child.Visible) {
+			Requisition childReq = Child.SizeRequest ();
 			requisition.Height += childReq.Height;
 
 			requisition.Width += Math.Max (layoutWidth, childReq.Width);

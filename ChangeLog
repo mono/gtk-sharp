@@ -1,23 +1,49 @@
 2004-06-01  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
+	* configure.in: Merge with HEAD again.
+	* gdk/Gdk.metadata:
+	* gnome/CanvasItem.custom:
+	* gtk/Gtk.metadata:
+	* sample/.cvsignore:
+	* sample/CustomWidget.cs: Inherit from Gtk.Bin and make it a better
+	suited sample.
+
+2004-06-01  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Gtk.metadata : mark SizeRequest requisition as out, not ref.
+	[Fixes #59388]
+
+2004-06-01  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
 	* sample/CustomWidget.cs: Fixed Widget.SizeRequest usage. Works properly
 	now.
 
+2004-05-31  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : Bump version to 0.93 and tag.
+
 2004-05-31  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
-	* gdk/Gdk.metadata: Pass the destination parameters of Rectangle.Union()
-	and Intersect() as ref.
+	* gtk/Gtk.metadata: unhide WidgetFlags.
+	* gtk/Widget.custom: add setter for GdkWindow prop. Add Flags prop.
+        * gtk/glue/widget.custom: setter for window, accessors for flags.
+	[Fixes #59337]
+
+2004-05-31  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* gdk/Gdk.metadata: fix member names in WindowClass.
+	[Fixes #59336]
+
+2004-05-31  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* gdk/Gdk.metadata: mark dest rects as out for Intersect and Union.
+	[Fixes #59341]
 
 2004-05-31  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* gtk/Gtk.metadata: Unhide the GtkWidgetFlags enum.
 	* gtk/Makefile.am: Remove WidgetFlags.cs.
 	* gtk/WidgetFlags.cs: Obsolete.
-
-2004-05-31  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
-
-	* gdk/Gdk.metadata: Fix Gdk.WindowClass enum naming.
-	* sample/CustomWidget.cs: Update to changed WindowClass names.
 
 2004-05-31  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 

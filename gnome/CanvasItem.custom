@@ -210,3 +210,4 @@
 		{
 			gnomesharp_canvas_item_base_update (Handle, affine, ref clip_path, flags);
 		}
+
