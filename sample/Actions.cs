@@ -15,21 +15,22 @@ namespace GtkSamples {
 		static VBox box = null;
 		static Statusbar statusbar = null;
 
-/* XML description of the menus for the test app.  The parser understands
- * a subset of the Bonobo UI XML format, and uses GMarkup for parsing */
-static string ui_info = "  <menubar>\n" +
-"    <menu name=\"Menu _1\" action=\"Menu1Action\">\n" +
-"      <menuitem name=\"quit\" action=\"quit\" />\n" +
-"    </menu>\n" +
-"  </menubar>\n" +
-"  <toolbar name=\"toolbar\">\n" +
-"    <toolitem name=\"quit\" action=\"quit\" />\n" +
-"  </toolbar>\n";
+		/* XML description of the menus for the test app.  The parser understands
+		 * a subset of the Bonobo UI XML format, and uses GMarkup for parsing */
+		static string ui_info = 
+			"<menubar>" +
+			"  <menu name=\"Menu _1\" action=\"Menu1Action\">" +
+			"    <menuitem name=\"quit\" action=\"quit\" />" +
+			"  </menu>" +
+			"</menubar>" +
+			"<toolbar name=\"toolbar\">" +
+			"  <toolitem name=\"quit\" action=\"quit\" />" +
+			"</toolbar>";
 
 		public static int Main (string[] args)
 		{
 			Application.Init ();
-			Window win = new Window ("Action Tester");
+			Window win = new Window ("Action Demo");
 			win.DefaultSize = new Size (200, 150);
 			win.DeleteEvent += new DeleteEventHandler (OnWindowDelete);
 			
@@ -37,18 +38,12 @@ static string ui_info = "  <menubar>\n" +
 			win.Add (box);
 			
 			ActionGroup group = new ActionGroup ("TestGroup");
-			ActionEntry entry = new ActionEntry ();
-			entry.name = "quit";
-			entry.stock_id = Stock.Quit;
-			entry.accelerator = "<control>Q";
-			entry.tooltip = "Quit the program";
-			entry.ActionCallback = new GLib.Callback (OnQuit);
-			group.AddActions (entry, 1, IntPtr.Zero);
-			entry = new ActionEntry ();
-			entry.name = "Menu1Action";
-			entry.label = "_File";
-			entry.tooltip = "";
-			group.AddActions (entry, 1, IntPtr.Zero);
+			Action action = new Action ("quit", null, "Quit the program", Stock.Quit);
+			action.Activated += new EventHandler (OnQuit);
+			group.AddActionWithAccel (action, "<control>Q");
+			
+			action = new Action ("Menu1Action", "_File", null, null);
+			group.AddAction (action);
 
 			UIManager uim = new UIManager ();
 			uim.AddWidget += new AddWidgetHandler (OnWidgetAdd);
@@ -61,10 +56,10 @@ static string ui_info = "  <menubar>\n" +
 			Button button = new Button ("Blah");
 			box.PackEnd (button, true, true, 0);
 
-			GLib.List list = group.ListActions ();
-			foreach (Action action in list) {
-				action.ProxyConnected += new AddWidgetHandler (OnProxyConnected);
-			}
+			/*GLib.List list = group.ListActions ();
+			foreach (Action act in list) {
+				act.ProxyConnected += new AddWidgetHandler (OnProxyConnected);
+			}*/
 
 			win.ShowAll ();
 			Application.Run ();
@@ -105,7 +100,7 @@ static string ui_info = "  <menubar>\n" +
 			}
 		}
 
-		static void OnQuit (GLib.Object obj)
+		static void OnQuit (object obj, EventArgs args)
 		{
 			Console.WriteLine ("quit");
 		}

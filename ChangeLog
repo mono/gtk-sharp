@@ -1,3 +1,12 @@
+2004-02-28  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* gnome/PrintContext.custom: Added gnome_print_context_* methods.
+	* gtk/gtk-api.xml: Hide GtkActionEntry C-specific struct and methods.
+	* sample/Actions.cs: Updated.
+	* sample/Makefile.in: Reinclude print sample.
+	* sample/PrintSample.cs: Updated.
+	* sample/TestDnd.cs: Updated.
+
 2004-02-12  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* gtk/Gtk.metadata: Hide the various *ActionEntry classes since

@@ -2275,7 +2275,7 @@
           <parameter type="const-gchar*" name="accelerator" />
         </parameters>
       </method>
-      <method name="AddActions" cname="gtk_action_group_add_actions">
+      <method name="AddActions" cname="gtk_action_group_add_actions" hidden="1">
         <return-type type="void" />
         <parameters>
           <parameter type="GtkActionEntry*" name="entries" />
@@ -2283,7 +2283,7 @@
           <parameter type="gpointer" name="user_data" />
         </parameters>
       </method>
-      <method name="AddActionsFull" cname="gtk_action_group_add_actions_full">
+      <method name="AddActionsFull" cname="gtk_action_group_add_actions_full" hidden="1">
         <return-type type="void" />
         <parameters>
           <parameter type="GtkActionEntry*" name="entries" />
@@ -2292,7 +2292,7 @@
           <parameter type="GDestroyNotify" name="destroy" />
         </parameters>
       </method>
-      <method name="AddRadioActions" cname="gtk_action_group_add_radio_actions">
+      <method name="AddRadioActions" cname="gtk_action_group_add_radio_actions" hidden="1">
         <return-type type="void" />
         <parameters>
           <parameter type="GtkRadioActionEntry*" name="entries" />
@@ -2302,7 +2302,7 @@
           <parameter type="gpointer" name="user_data" />
         </parameters>
       </method>
-      <method name="AddRadioActionsFull" cname="gtk_action_group_add_radio_actions_full">
+      <method name="AddRadioActionsFull" cname="gtk_action_group_add_radio_actions_full" hidden="1">
         <return-type type="void" />
         <parameters>
           <parameter type="GtkRadioActionEntry*" name="entries" />
@@ -2313,7 +2313,7 @@
           <parameter type="GDestroyNotify" name="destroy" />
         </parameters>
       </method>
-      <method name="AddToggleActions" cname="gtk_action_group_add_toggle_actions">
+      <method name="AddToggleActions" cname="gtk_action_group_add_toggle_actions" hidden="1">
         <return-type type="void" />
         <parameters>
           <parameter type="GtkToggleActionEntry*" name="entries" />
@@ -2321,7 +2321,7 @@
           <parameter type="gpointer" name="user_data" />
         </parameters>
       </method>
-      <method name="AddToggleActionsFull" cname="gtk_action_group_add_toggle_actions_full">
+      <method name="AddToggleActionsFull" cname="gtk_action_group_add_toggle_actions_full" hidden="1">
         <return-type type="void" />
         <parameters>
           <parameter type="GtkToggleActionEntry*" name="entries" />
@@ -13234,7 +13234,7 @@
       <field cname="accel_mods" type="GdkModifierType" />
       <field cname="accel_flags" bits="16" type="GtkAccelFlags" />
     </struct>
-    <struct name="ActionEntry" cname="GtkActionEntry">
+    <struct name="ActionEntry" cname="GtkActionEntry" hidden="1">
       <field cname="name" type="const-gchar*" />
       <field cname="stock_id" type="const-gchar*" />
       <field cname="label" type="const-gchar*" />
@@ -13799,7 +13799,7 @@
       <field cname="parent_node" type="GtkRBNode*" />
     </struct>
     <struct name="RBTreeView" cname="GtkRBTreeView" opaque="true" />
-    <struct name="RadioActionEntry" cname="GtkRadioActionEntry">
+    <struct name="RadioActionEntry" cname="GtkRadioActionEntry" hidden="1">
       <field cname="name" type="const-gchar*" />
       <field cname="stock_id" type="const-gchar*" />
       <field cname="label" type="const-gchar*" />
@@ -14535,7 +14535,7 @@
       <field cname="inNodeCounts" type="gboolean" />
     </struct>
     <struct name="TextWindow" cname="GtkTextWindow" opaque="true" />
-    <struct name="ToggleActionEntry" cname="GtkToggleActionEntry">
+    <struct name="ToggleActionEntry" cname="GtkToggleActionEntry" hidden="1">
       <field cname="name" type="const-gchar*" />
       <field cname="stock_id" type="const-gchar*" />
       <field cname="label" type="const-gchar*" />
