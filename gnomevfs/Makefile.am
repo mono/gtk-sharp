@@ -11,7 +11,7 @@ TARGET = $(ASSEMBLY)
 ASSEMBLY = $(ASSEMBLY_NAME).dll
 gapidir = $(datadir)/gapi
 noinst_DATA = $(ASSEMBLY) $(ASSEMBLY).config
-gapi_DATA = $(API) $(ADDITIONAL_API)
+gapi_DATA = $(API)
 CLEANFILES = $(ASSEMBLY) generated-stamp generated/*.cs $(API) glue/generated.c gtk-sharp.snk
 DISTCLEANFILES = $(ASSEMBLY).config AssemblyInfo.cs gnome-vfs-sharp.pc
 
@@ -49,7 +49,6 @@ EXTRA_DIST =			\
 	AssemblyInfo.cs.in	\
 	filesize.diff		\
 	$(RAW_API)		\
-	$(ADDITIONAL_API)	\
 	$(METADATA)		\
 	$(customs)		\
 	$(sources)
@@ -60,7 +59,7 @@ $(API): $(srcdir)/$(RAW_API) $(srcdir)/$(METADATA)
 	chmod u+w $(API)
 	$(RUNTIME) ../parser/gapi-fixup.exe --api=$(API) --metadata=$(srcdir)/$(METADATA)
 
-generated-stamp: $(API) $(srcdir)/$(ADDITIONAL_API) ../generator/gapi_codegen.exe $(build_customs)
+generated-stamp: $(API) ../generator/gapi_codegen.exe $(build_customs)
 	rm -f generated/* &&	\
 	$(RUNTIME) ../generator/gapi_codegen.exe --generate $(API)			\
 	--outdir=generated --customdir=$(srcdir) --assembly-name=$(ASSEMBLY_NAME)	\

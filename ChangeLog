@@ -1,3 +1,7 @@
+2004-08-22  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* gnomevfs/Makefile.am: Remove ADDITIONAL_API variable.
+
 2004-08-19  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* gnomevfs/Makefile.am: Add Monitor.cs.
