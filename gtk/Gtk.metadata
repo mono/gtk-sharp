@@ -4,6 +4,9 @@
   <attr path="/api/namespace/struct[@cname='GtkAccelKey']/field[@cname='key']" name="cname">key</attr>
   <attr path="/api/namespace/struct[@cname='GtkAccelKey']/field[@cname='accel_mods']" name="type">GdkModifierType</attr>
   <attr path="/api/namespace/struct[@cname='GtkAccelKey']/field[@cname='accel_flags']" name="type">GtkAccelFlags</attr>
+  <attr path="/api/namespace/struct[@cname='GtkActionEntry']" name="hidden">1</attr>
+  <attr path="/api/namespace/struct[@cname='GtkRadioActionEntry']" name="hidden">1</attr>
+  <attr path="/api/namespace/struct[@cname='GtkToggleActionEntry']" name="hidden">1</attr>
   <attr path="/api/namespace/boxed[@cname='GtkBorder']" name="hidden">1</attr>
   <attr path="/api/namespace/boxed[@cname='GtkIconSet']/method[@name='GetSizes']" name="hidden">1</attr>
   <attr path="/api/namespace/boxed[@cname='GtkSelectionData']" name="opaque">1</attr>
@@ -52,6 +55,12 @@
   <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='RowsReordered']" name="name">EmitRowsReordered</attr>
   <attr path="/api/namespace/interface[@cname='GtkTreeSortable']/method[@name='SortColumnChanged']" name="name">ChangeSortColumn</attr>
   <attr path="/api/namespace/object[@cname='GtkAction']/signal[@name='Activate']" name="name">Activated</attr>
+  <attr path="/api/namespace/object[@cname='GtkActionGroup']/method[@name='AddActions']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkActionGroup']/method[@name='AddActionsFull']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkActionGroup']/method[@name='AddRadioActions']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkActionGroup']/method[@name='AddRadioActionsFull']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkActionGroup']/method[@name='AddToggleActions']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkActionGroup']/method[@name='AddToggleActionsFull']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkAdjustment']/method[@name='Changed']" name="name">Change</attr>
   <attr path="/api/namespace/object[@cname='GtkAdjustment']/method[@name='ValueChanged']" name="name">ChangeValue</attr>
   <attr path="/api/namespace/object[@cname='GtkArrow']/method[@name='Set']" name="hidden">1</attr>

@@ -1,23 +1,28 @@
+2004-02-12  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* gtk/Gtk.metadata: Hide the various *ActionEntry classes since
+	they're only meant to be used in C code.
+
 2004-02-11  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* atk/atk-api.xml: 
 	* gconf/GConf.PropertyEditors/Makefile.in:
 	* gdk/Gdk.metadata:
 	* gdk/gdk-api.xml:
-	* generator/CallbackGen.cs:
+	* generator/CallbackGen.cs: Set a GError pointer to IntPtr.Zero.
 	* gnome/Gnome.metadata:
 	* gnome/gnome-api.xml:
 	* gtk/Adjustment.custom:
-	* gtk/FileSelection.custom:
+	* gtk/FileSelection.custom: Deprecated, removed.
 	* gtk/FileSystemModel.custom:
 	* gtk/Gtk.metadata:
-	* gtk/IconTheme.custom:
-	* gtk/Paned.custom:
-	* gtk/TreeModelFilter.custom:
+	* gtk/IconTheme.custom: Custom SearchPath property (fixes #51599).
+	* gtk/Paned.custom: Deprecated, removed.
+	* gtk/TreeModelFilter.custom: New class in 2.4.
 	* gtk/gtk-api.xml:
 	* pango/pango-api.xml:
-	* sample/Actions.cs:
-	* sample/Makefile.in:
+	* sample/Actions.cs: Added new Action API sample.
+	* sample/Makefile.in: Don't build some samples for now.
 	
 	Updated everything to use gtk 2.3/2.4. Some samples commented out
 	because they use deprecated/changed API. More work to follow.
