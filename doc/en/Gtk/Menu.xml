@@ -141,11 +141,11 @@ public class MenuApp
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
-      <Parameters/>
+      <Parameters />
       <Docs>
         <summary>Displays a menu and makes it available for selection.</summary>
         <remarks>This is a convenience overload that calls
-	<see cref="M:Gtk.Menu.Popup(Gtk.Widget,Gtk.Widget,Gtk.MenuPositionFunc,System.IntPtr,System.UInt32,System.UInt32)"/> with some default arguments.</remarks>
+	<see cref="M:Gtk.Menu.Popup(Gtk.Widget,Gtk.Widget,Gtk.MenuPositionFunc,System.IntPtr,System.UInt32,System.UInt32)" /> with some default arguments.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Popup">
@@ -425,22 +425,20 @@ class PopupSample
         <summary>The title of this menu when it is torn off</summary>
         <param name="value">an object of type <see cref="T:System.String" /></param>
         <returns>an object of type <see cref="T:System.String" /></returns>
-        <remarks/>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Screen">
-      <MemberSignature Language="C#" Value="public Gdk.Screen Screen { set; };" />
+      <MemberSignature Language="C#" Value="public Gdk.Screen Screen { set; get; };" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>Gdk.Screen</ReturnType>
       </ReturnValue>
-      <Parameters>
-      </Parameters>
+      <Parameters />
       <Docs>
         <summary>The physical screen this menu is placed on.</summary>
-        <param name="value">a <see cref="T:Gdk.Screen" /></param>
         <returns>a <see cref="T:Gdk.Screen" /></returns>
-        <remarks/>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SetActive">
