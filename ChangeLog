@@ -1,5 +1,11 @@
 2004-02-28  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
+	* glib/Value.cs: Work around a GLib.Value having a null string (#54979).
+	* sample/Actions.cs: Updated.
+	* sample/Makefile.in: Added the action sample.
+
+2004-02-28  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
 	* gdk/gdk-api.xml: Updated to latest CVS.
 	* gnome/gnome-api.xml: Idem.
 	* gtk/gtk-api.xml: Idem.

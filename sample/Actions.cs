@@ -47,6 +47,7 @@ namespace GtkSamples {
 
 			UIManager uim = new UIManager ();
 			uim.AddWidget += new AddWidgetHandler (OnWidgetAdd);
+			uim.ConnectProxy += new ConnectProxyHandler (OnProxyConnect);
 			uim.InsertActionGroup (group, 0);
 			uim.AddUiFromString (ui_info);
 			
@@ -55,11 +56,6 @@ namespace GtkSamples {
 
 			Button button = new Button ("Blah");
 			box.PackEnd (button, true, true, 0);
-
-			/*GLib.List list = group.ListActions ();
-			foreach (Action act in list) {
-				act.ProxyConnected += new AddWidgetHandler (OnProxyConnected);
-			}*/
 
 			win.ShowAll ();
 			Application.Run ();
@@ -82,7 +78,8 @@ namespace GtkSamples {
 		static void OnSelect (object obj, EventArgs args)
 		{
 			Action action = ((GLib.Object)obj).Data["action"] as Action;
-			statusbar.Push (0, action.Tooltip);
+			if (action.Tooltip != null)
+				statusbar.Push (0, action.Tooltip);
 		}
 
 		static void OnDeselect (object obj, EventArgs args)
@@ -90,13 +87,13 @@ namespace GtkSamples {
 			statusbar.Pop (0);
 		}
 
-		static void OnProxyConnected (object obj, AddWidgetArgs args)
+		static void OnProxyConnect (object obj, ConnectProxyArgs args)
 		{
-			Console.WriteLine ("ProxyConnected {0}, {1}", obj, args.Widget.Name);
-			if (args.Widget is MenuItem) {
-				((GLib.Object)args.Widget).Data ["action"] = obj;
-				((Item)args.Widget).Selected += new EventHandler (OnSelect);
-				((Item)args.Widget).Deselected += new EventHandler (OnDeselect);
+			Console.WriteLine ("ProxyConnect {0}, {1}", args.Action, args.Proxy.Name);
+			if (args.Proxy is MenuItem) {
+				((GLib.Object)args.Proxy).Data ["action"] = args.Action;
+				((Item)args.Proxy).Selected += new EventHandler (OnSelect);
+				((Item)args.Proxy).Deselected += new EventHandler (OnDeselect);
 			}
 		}
 

@@ -581,7 +581,10 @@ namespace GLib {
 		{
 			// FIXME: Insert an appropriate exception here if
 			// _val.type indicates an error.
-			return Marshal.PtrToStringAnsi (g_value_get_string (val._val));
+			if (g_value_get_string (val._val) == IntPtr.Zero)
+				return null;
+			else
+				return Marshal.PtrToStringAnsi (g_value_get_string (val._val));
 		}
 
 		[DllImport("libgobject-2.0-0.dll")]
