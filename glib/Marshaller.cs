@@ -68,7 +68,7 @@ namespace GLib {
 		// [native pointer size] * [count] bytes.
 
 		[DllImport("libglib-2.0-0.dll")]
-		static extern IntPtr g_malloc(ulong size);
+		static extern IntPtr g_malloc(UIntPtr size);
 
 		static bool check_sixtyfour () {
 			int szint = Marshal.SizeOf (typeof (int));
@@ -90,8 +90,8 @@ namespace GLib {
 			for (int i = 0; i < args.Length; i++)
 				ptrs[i] = (int) Marshal.StringToHGlobalAuto (args[i]);
 
-			IntPtr buf = g_malloc ((ulong) Marshal.SizeOf(typeof(int)) * 
-					       (ulong) args.Length);
+			IntPtr buf = g_malloc (new UIntPtr ((ulong) Marshal.SizeOf(typeof(int)) * 
+					       (ulong) args.Length));
 			Marshal.Copy (ptrs, 0, buf, ptrs.Length);
 			return buf;
 		}
@@ -103,8 +103,8 @@ namespace GLib {
 			for (int i = 0; i < args.Length; i++)
 				ptrs[i] = (long) Marshal.StringToHGlobalAuto (args[i]);
 				
-			IntPtr buf = g_malloc ((ulong) Marshal.SizeOf(typeof(long)) * 
-					       (ulong) args.Length);
+			IntPtr buf = g_malloc (new UIntPtr ((ulong) Marshal.SizeOf(typeof(long)) * 
+					       (ulong) args.Length));
 			Marshal.Copy (ptrs, 0, buf, ptrs.Length);
 			return buf;
 		}
