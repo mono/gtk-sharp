@@ -313,6 +313,9 @@ namespace Gnome.Vfs {
 			
 			ulong bytesRead;
 			Result result = Sync.Read (handle, out buffer[offset], (ulong)count, out bytesRead);
+			if (result == Result.ErrorEof)
+				return 0;
+
 			Vfs.ThrowException (Uri, result);
 			return (int)bytesRead;
 		}
