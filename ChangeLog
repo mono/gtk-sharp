@@ -1,3 +1,9 @@
+2004-06-07  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* gtk/Widget.custom: Add FocusLineWidth property.
+	* gtk/glue/widget.c: (gtksharp_gtk_widget_set_flags),
+	(gtksharp_gtk_widget_style_get_int): Code for retrieving style property.
+
 2004-06-01  Jeroen Zwartepoorte  <jerone@xs4all.nl>
 
 	* sample/CustomWidget.cs: remove custom GType stuff.
