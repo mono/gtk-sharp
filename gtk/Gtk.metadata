@@ -42,6 +42,8 @@
   <attr path="/api/namespace/class[@cname='GtkTree_']/method[@name='GetRowDragData']/*/*[@name='tree_model']" name="pass_as">out</attr>
   <attr path="/api/namespace/class[@cname='GtkTree_']/method[@name='GetRowDragData']/*/*[@name='path']" name="pass_as">out</attr>
   <attr path="/api/namespace/enum[@cname='GtkDebugFlag']" name="hidden">1</attr>
+  <attr path="/api/namespace/enum[@cname='GtkIMPreeditStyle']" name="hidden">1</attr>
+  <attr path="/api/namespace/enum[@cname='GtkIMStatusStyle']" name="hidden">1</attr>
   <attr path="/api/namespace/enum[@cname='GtkObjectFlags']" name="hidden">1</attr>
   <attr path="/api/namespace/enum[@cname='GtkPathPriorityType']" name="hidden">1</attr>
   <attr path="/api/namespace/enum[@cname='GtkPathType']" name="hidden">1</attr>
@@ -359,6 +361,7 @@
   <attr path="/api/namespace/struct[@cname='GtkBindingSignal']" name="hidden">1</attr>
   <attr path="/api/namespace/struct[@cname='GtkBoxChild']" name="hidden">1</attr>
   <attr path="/api/namespace/struct[@cname='GtkFixedChild']" name="hidden">1</attr>
+  <attr path="/api/namespace/struct[@cname='GtkIMContextInfo']" name="hidden">1</attr>
   <attr path="/api/namespace/struct[@cname='GtkItemFactoryItem']" name="hidden">1</attr>
   <attr path="/api/namespace/struct[@cname='GtkKeyHash']" name="hidden">1</attr>
   <attr path="/api/namespace/struct[@cname='GtkLabelSelectionInfo']" name="hidden">1</attr>
