@@ -64,6 +64,22 @@ gtksharp_gtk_adjustment_set_lower (GtkAdjustment *adj, gdouble lower)
 gdouble
 gtksharp_gtk_adjustment_get_upper (GtkAdjustment *adj)
 {
+	adj->lower = lower;
+	
+	gtk_adjustment_changed (adj);
+}
+
+void
+gtksharp_gtk_adjustment_set_upper (GtkAdjustment *adj, gdouble upper)
+{
+	adj->upper = upper;
+	
+	gtk_adjustment_changed (adj);
+}
+
+gdouble
+gtksharp_gtk_adjustment_get_upper (GtkAdjustment *adj)
+{
 	return adj->upper;
 }
 

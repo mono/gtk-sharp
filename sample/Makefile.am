@@ -92,6 +92,9 @@ actions.exe: $(srcdir)/Actions.cs
 custom-cellrenderer.exe: $(srcdir)/CustomCellRenderer.cs $(assemblies)
 	$(CSC) -g -o custom-cellrenderer.exe $(references) $(srcdir)/CustomCellRenderer.cs
 
+custom-cellrenderer.exe: $(srcdir)/CustomCellRenderer.cs $(assemblies)
+	$(CSC) -g -o custom-cellrenderer.exe $(references) $(srcdir)/CustomCellRenderer.cs
+
 EXTRA_DIST = 				\
 	HelloWorld.cs			\
 	GnomeHelloWorld.cs		\

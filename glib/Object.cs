@@ -136,6 +136,7 @@ namespace GLib {
 			return gtype;
 		}
 
+
 		static Hashtable g_types = new Hashtable ();
 
 		protected GType LookupGType ()
