@@ -24,7 +24,7 @@ CLEANFILES = $(ASSEMBLY) generated-stamp generated/*.cs $(API) gtk-sharp.snk
 
 DISTCLEANFILES = panelapplet-sharp-2.0.pc $(ASSEMBLY).config AssemblyInfo.cs
 
-sources = AppletFactory.cs PanelApplet.cs ContextMenuItem.cs
+sources = AppletFactory.cs PanelApplet.cs BonoboUIVerb.cs
 
 build_sources = $(addprefix $(srcdir)/, $(sources)) AssemblyInfo.cs
 

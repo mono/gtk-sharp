@@ -1,9 +1,12 @@
-[DllImport ("panelappletsharpglue")]
-static extern void panelapplet_setup_menu (IntPtr handle, string xml, ContextMenuItem[] items, int itemcount);
+[DllImport ("panel-applet-2")]
+static extern void panel_applet_setup_menu (IntPtr handle, string xml, BonoboUIVerb[] items, IntPtr user_data);
 
-public void SetupMenu (string xml, ContextMenuItem[] items)
+public void SetupMenu (string xml, BonoboUIVerb[] items)
 {
-	panelapplet_setup_menu (Handle, xml, items, items.Length);
+	BonoboUIVerb[] nulled_items = new BonoboUIVerb[items.Length + 1];
+	Array.Copy (items, nulled_items, items.Length);
+	nulled_items[items.Length] = new BonoboUIVerb (null, null);
+	panel_applet_setup_menu (Handle, xml, nulled_items, IntPtr.Zero);
 }
 
 public abstract void Creation ();

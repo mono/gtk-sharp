@@ -7,15 +7,19 @@ namespace PanelApplet
 	public delegate void ContextMenuItemCallback ();
 
 	[StructLayout (LayoutKind.Sequential)]
-	public struct ContextMenuItem
+	public struct BonoboUIVerb
 	{
 		string verb;
 		ContextMenuItemCallback callback;
+		IntPtr user_data;
+		IntPtr dummy;
 
-		public ContextMenuItem (string name, ContextMenuItemCallback cb)
+		public BonoboUIVerb (string name, ContextMenuItemCallback cb)
 		{
 			verb = name;
 			callback = cb;
+			user_data = IntPtr.Zero;
+			dummy = IntPtr.Zero;
 		}
 	}
 }

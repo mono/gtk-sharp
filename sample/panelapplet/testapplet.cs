@@ -22,7 +22,7 @@ namespace AppletTest
 			this.Add (testLabel);
 			this.ShowAll ();
 			string xml = "<popup name=\"button3\"><menuitem name=\"Properties\" verb=\"LabelChange\" _label=\"_Change Label\" pixtype=\"stock\" pixname=\"gtk-properties\"/></popup>";
-			this.SetupMenu (xml, new ContextMenuItem[] { new ContextMenuItem ("LabelChange", new ContextMenuItemCallback (LabelChangeCB)) });
+			this.SetupMenu (xml, new BonoboUIVerb [] { new BonoboUIVerb ("LabelChange", new ContextMenuItemCallback (LabelChangeCB)) });
 		}
 
 		int i = 0;

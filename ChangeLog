@@ -1,3 +1,15 @@
+2004-08-23  Todd Berman  <tberman@off.net>
+
+	* panelapplet/BonoboUIVerb.cs:
+	* panelapplet/ContextMenuItem.cs:
+	* panelapplet/Makefile.am:
+	* panelapplet/PanelApplet.custom: Remove the ContextMenuItem and the
+	need for the glue. Add BonoboUIVerb to directly call the setup_menu
+	function. Leave the glue library for now, as I think getting the
+	proper orientation stuff setup will require some glue work.
+	* sample/panelapplet/testapplet.cs: Update sample to reflect new
+	api. Need to make this installable.
+
 2004-08-22  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* gnomevfs/Makefile.am: Remove ADDITIONAL_API variable.
