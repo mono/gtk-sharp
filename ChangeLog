@@ -1,3 +1,7 @@
+2004-10-29  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : bump version and tag for 1.0.4.
+
 2004-10-26  Dan Winship  <danw@novell.com>
 
 	* gdk/Gdk.metadata: Remap all "out Gdk.Bitmap" params to be

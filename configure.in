@@ -2,7 +2,7 @@
 AC_INIT(README)
 AC_CANONICAL_SYSTEM
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gtk-sharp, 1.0.2)
+AM_INIT_AUTOMAKE(gtk-sharp, 1.0.4)
 AM_MAINTAINER_MODE
 
 API_VERSION=1.0.0.0
@@ -64,7 +64,7 @@ MONO_REQUIRED_VERSION=0.96
 PKG_CHECK_MODULES(MONO_DEPENDENCY, mono >= $MONO_REQUIRED_VERSION, has_mono=true, has_mono=false)
 
 if test "x$has_mono" = "xtrue"; then
-GACUTIL_FLAGS='/package $(PACKAGE) /gacdir $(libdir)'
+GACUTIL_FLAGS='/package $(PACKAGE) /gacdir $(DESTDIR)$(libdir)'
 GENERATED_SOURCES=generated/*.cs
 AC_PATH_PROG(RUNTIME, mono, no)
 AC_PATH_PROG(CSC, mcs, no)
