@@ -228,6 +228,9 @@ gnome/gnome-sharp.dll.config
 gnome/gnome-sharp.pc
 gnome/glue/Makefile
 gnomevfs/Makefile
+gnomevfs/AssemblyInfo.cs
+gnomevfs/gnome-vfs-sharp.dll.config
+gnomevfs/gnome-vfs-sharp.pc
 gda/Makefile
 gda/AssemblyInfo.cs
 gda/gda-sharp.dll.config

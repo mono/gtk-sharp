@@ -9,7 +9,6 @@ namespace GtkSamples {
 	using Gtk;
 	using GtkSharp;
 	using System;
-	using System.Drawing;
 
 	public class Actions {
 		static VBox box = null;
@@ -31,7 +30,7 @@ namespace GtkSamples {
 		{
 			Application.Init ();
 			Window win = new Window ("Action Demo");
-			win.DefaultSize = new Size (200, 150);
+			win.DefaultSize = new Gdk.Size (200, 150);
 			win.DeleteEvent += new DeleteEventHandler (OnWindowDelete);
 			
 			box = new VBox (false, 0);

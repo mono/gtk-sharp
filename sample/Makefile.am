@@ -24,7 +24,7 @@ VTE_TARGETS=
 VTE_ASSEMBLY=
 endif
 
-TARGETS = gtk-hello-world.exe button.exe calendar.exe subclass.exe menu.exe size.exe scribble.exe treeviewdemo.exe managedtreeviewdemo.exe testdnd.exe $(GNOME_TARGETS) $(GLADE_TARGETS) $(VTE_TARGETS)
+TARGETS = gtk-hello-world.exe button.exe calendar.exe subclass.exe menu.exe size.exe scribble.exe treeviewdemo.exe managedtreeviewdemo.exe testdnd.exe actions.exe $(GNOME_TARGETS) $(GLADE_TARGETS) $(VTE_TARGETS)
 
 references=-r ../glib/glib-sharp.dll -r ../pango/pango-sharp.dll -r ../atk/atk-sharp.dll -r ../gdk/gdk-sharp.dll -r ../gtk/gtk-sharp.dll $(GNOME_ASSEMBLY) $(GLADE_ASSEMBLY) $(VTE_ASSEMBLY)
 
@@ -84,6 +84,9 @@ testdnd.exe: $(srcdir)/TestDnd.cs
 
 vte-example.exe: $(srcdir)/VteTest.cs
 	$(CSC) -g --unsafe -o vte-example.exe $(references) $(srcdir)/VteTest.cs
+	
+actions.exe: $(srcdir)/Actions.cs
+	$(CSC) -g --unsafe -o actions.exe $(references) $(srcdir)/Actions.cs
 
 EXTRA_DIST = 				\
 	HelloWorld.cs			\
@@ -104,5 +107,6 @@ EXTRA_DIST = 				\
 	test.glade			\
 	CairoSample.cs			\
 	TestDnd.cs			\
-	VteTest.cs
+	VteTest.cs			\
+	Actions.cs
 

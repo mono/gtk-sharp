@@ -1,5 +1,24 @@
 2004-05-06  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
+	* Makefile.in:
+	* configure.in:
+	* gconf/GConf.PropertyEditors/Makefile.in:
+	* glade/Makefile.in:
+	* gnomevfs/.cvsignore:
+	* gnomevfs/AssemblyInfo.cs.in:
+	* gnomevfs/Makefile.am:
+	* gnomevfs/Makefile.in:
+	* gnomevfs/gnome-vfs-sharp.dll.config.in:
+	* gnomevfs/gnome-vfs-sharp.pc.in:
+	* sample/Actions.cs: Remove System.Drawing.Size usage.
+	* sample/Makefile.am: Added actions.exe.
+	* sample/Makefile.in:
+	
+	Remove obsolete Makefile.in files from the repository. Auto*ify the
+	gnomevfs assembly.
+
+2004-05-06  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
 	Merge changes from HEAD to the jeroen-gtk-2-4 branch. The correct
 	gnome 2.6.0 & gtk+-2.4.1 sources are now also downloaded when you run
 	"make get-source-code". Some samples are disabled for now since they
