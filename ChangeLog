@@ -1,3 +1,7 @@
+2004-10-04  Todd Berman  <tberman@off.net>
+
+	* */*.pc.in: Fix the Requires to use -2.0
+
 2004-08-27  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* gnomevfs/Async.cs: Add Priority enum. Add methods which take an Uri

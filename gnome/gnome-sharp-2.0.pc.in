@@ -6,5 +6,5 @@ libdir=${exec_prefix}/lib
 Name: Gnome#
 Description: Gnome# - GNOME .NET Binding
 Version: @VERSION@
-Requires: gtk-sharp art-sharp
+Requires: gtk-sharp-2.0 art-sharp-2.0
 Libs: -r:${libdir}/mono/@PACKAGE@/gnome-sharp.dll
