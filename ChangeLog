@@ -1,5 +1,9 @@
 2004-02-28  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
+	* gtk/Gtk.metadata: Rename some AddAction* methods to just Add*.
+
+2004-02-28  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
 	* glib/Value.cs: Work around a GLib.Value having a null string (#54979).
 	* sample/Actions.cs: Updated.
 	* sample/Makefile.in: Added the action sample.

@@ -55,12 +55,15 @@
   <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='RowsReordered']" name="name">EmitRowsReordered</attr>
   <attr path="/api/namespace/interface[@cname='GtkTreeSortable']/method[@name='SortColumnChanged']" name="name">ChangeSortColumn</attr>
   <attr path="/api/namespace/object[@cname='GtkAction']/signal[@name='Activate']" name="name">Activated</attr>
+  <attr path="/api/namespace/object[@cname='GtkActionGroup']/method[@name='AddAction']" name="name">Add</attr>
   <attr path="/api/namespace/object[@cname='GtkActionGroup']/method[@name='AddActions']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkActionGroup']/method[@name='AddActionsFull']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkActionGroup']/method[@name='AddActionWithAccel']" name="name">Add</attr>
   <attr path="/api/namespace/object[@cname='GtkActionGroup']/method[@name='AddRadioActions']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkActionGroup']/method[@name='AddRadioActionsFull']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkActionGroup']/method[@name='AddToggleActions']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkActionGroup']/method[@name='AddToggleActionsFull']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkActionGroup']/method[@name='RemoveAction']" name="name">Remove</attr>
   <attr path="/api/namespace/object[@cname='GtkAdjustment']/method[@name='Changed']" name="name">Change</attr>
   <attr path="/api/namespace/object[@cname='GtkAdjustment']/method[@name='ValueChanged']" name="name">ChangeValue</attr>
   <attr path="/api/namespace/object[@cname='GtkArrow']/method[@name='Set']" name="hidden">1</attr>
