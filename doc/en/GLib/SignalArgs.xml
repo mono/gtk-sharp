@@ -1,0 +1,100 @@
+<Type Name="SignalArgs" FullName="GLib.SignalArgs">
+  <TypeSignature Language="C#" Value="public class SignalArgs : System.EventArgs" Maintainer="auto" />
+  <AssemblyInfo>
+    <AssemblyName>glib-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <AssemblyCulture>neutral</AssemblyCulture>
+    <Attributes />
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Docs>
+    <summary>Arguments and return value for signals.</summary>
+    <remarks>
+    </remarks>
+  </Docs>
+  <Base>
+    <BaseTypeName>System.EventArgs</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes />
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public SignalArgs ();" />
+      <MemberType>Constructor</MemberType>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Creates a SignalArgs object with no return value and no arguments.</summary>
+        <returns>an object of type <see cref="T:GLib.SignalArgs" /></returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public SignalArgs (object retval);" />
+      <MemberType>Constructor</MemberType>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="retval" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <summary>Creates a SignalArgs object with a return value and no arguments.</summary>
+        <param name="retval">an object of type <see cref="T:System.Object" /></param>
+        <returns>an object of type <see cref="T:GLib.SignalArgs" /></returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public SignalArgs (object retval, object [] args);" />
+      <MemberType>Constructor</MemberType>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="retval" Type="System.Object" />
+        <Parameter Name="args" Type="System.Object []" />
+      </Parameters>
+      <Docs>
+        <summary>Creates a SignalArgs object with a return value and a list of arguments.</summary>
+        <param name="retval">an object of type <see cref="T:System.Object" /></param>
+        <param name="args">an object of type <see cref="T:System.Object" /> []</param>
+        <returns>an object of type <see cref="T:GLib.SignalArgs" /></returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RetVal">
+      <MemberSignature Language="C#" Value="public object RetVal { set; get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The return value.</summary>
+        <param name="value">an object of type <see cref="T:System.Object" /></param>
+        <returns>an object of type <see cref="T:System.Object" /></returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Args">
+      <MemberSignature Language="C#" Value="public object [] Args { set; get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Object []</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>A list of arguments.</summary>
+        <param name="value">an object of type <see cref="T:System.Object" /> []</param>
+        <returns>an object of type <see cref="T:System.Object" /> []</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
