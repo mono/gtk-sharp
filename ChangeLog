@@ -1,5 +1,10 @@
 2005-03-10  Mike Kestner  <mkestner@novell.com>
 
+	* generator/SymbolTable.cs : fix gssize and gsize, they aren't 32 bit
+	like the docs say they are.
+
+2005-03-10  Mike Kestner  <mkestner@novell.com>
+
 	* gtk/Style.custom : add bg_pixmap accessors. remove IntPtr[] vars
 	and s/6/5 for array sizes.
 	* gtk/glue/style.c : add bg_pixmap field glue.

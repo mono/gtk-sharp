@@ -142,26 +142,6 @@ namespace GtkDemo
   </Interfaces>
   <Attributes />
   <Members>
-    <Member MemberName="Write">
-      <MemberSignature Language="C#" Value="public bool Write (byte [] buf, uint count);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="buf" Type="System.Byte []" />
-        <Parameter Name="count" Type="System.UInt32" />
-      </Parameters>
-      <Docs>
-        <summary>Parses the next count bytes of image data from buffer buf.</summary>
-        <param name="buf">array of bytes buffer to parse.</param>
-        <param name="count">number of bytes to parse.</param>
-        <returns>returns true if data was parsed and loaded succesfully.</returns>
-        <remarks>
-          <para>If the return value is false, the PixbufLoader will be closed.</para>
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Close">
       <MemberSignature Language="C#" Value="public bool Close ();" />
       <MemberType>Method</MemberType>
@@ -432,6 +412,26 @@ namespace GtkDemo
         <param name="bytes">a <see cref="T:System.Byte" /></param>
         <returns>a <see cref="T:System.Boolean" /></returns>
         <remarks>This is an overload to <see cref="M:Gdk.PixbufLoader.Write(System.Byte[],System.UInt32)" />, which determines the length automatically.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Write">
+      <MemberSignature Language="C#" Value="public bool Write (byte [] buf, ulong count);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="buf" Type="System.Byte[]" />
+        <Parameter Name="count" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <summary>Parses the next count bytes of image data from buffer buf.</summary>
+        <param name="buf">array of bytes buffer to parse.</param>
+        <param name="count">number of bytes to parse.</param>
+        <returns>returns true if data was parsed and loaded succesfully.</returns>
+        <remarks>
+          <para>If the return value is false, the PixbufLoader will be closed.</para>
+        </remarks>
       </Docs>
     </Member>
   </Members>

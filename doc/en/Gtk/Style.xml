@@ -1504,5 +1504,51 @@ color or pixmap specified by this style for <paramref name="state" />.</summary>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
+    <Member MemberName="BgPixmaps">
+      <MemberSignature Language="C#" Value="public Gdk.Pixmap [] BgPixmaps { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Pixmap[]" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BgPixmap">
+      <MemberSignature Language="C#" Value="public Gdk.Pixmap BgPixmap (Gtk.StateType state);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="state" Type="Gtk.StateType" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="state">a <see cref="T:System.Int32" /></param>
+        <returns>a <see cref="T:Gdk.Pixmap" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetBgPixmap">
+      <MemberSignature Language="C#" Value="public void SetBgPixmap (Gtk.StateType state, Gdk.Pixmap pixmap);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="state" Type="Gtk.StateType" />
+        <Parameter Name="pixmap" Type="Gdk.Pixmap" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="state">a <see cref="T:System.Int32" /></param>
+        <param name="pixmap">a <see cref="T:Gdk.Pixmap" /></param>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
   </Members>
 </Type>

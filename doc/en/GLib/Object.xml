@@ -318,23 +318,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CreateNativeObject" Deprecated="true">
-      <MemberSignature Language="C#" Value="protected void CreateNativeObject (string [] names, GLib.Value[] vals);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="names" Type="System.String[]" />
-        <Parameter Name="vals" Type="GLib.Value[]" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="names">a <see cref="T:System.String" /></param>
-        <param name="vals">a <see cref="T:GLib.Value" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="GetProperty">
       <MemberSignature Language="C#" Value="protected GLib.Value GetProperty (string name);" />
       <MemberType>Method</MemberType>
