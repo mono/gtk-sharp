@@ -1,5 +1,12 @@
 2005-01-25  Mike Kestner  <mkestner@novell.com>
 
+	* gnome/About.custom : implement a subclassable ctor.
+	* gnome/Gnome.metadata : hide About ctor, fix About.Construct parms.
+	* gnome/Makefile.am : add the new custom.
+	[Fixes #71271]
+
+2005-01-25  Mike Kestner  <mkestner@novell.com>
+
 	* gtk/Gtk.metadata : hide all the SignalFunc using Toolbar methods.
 	* gtk/Makefile.am : add the new custom.
 	* gtk/Toolbar.custom : implement the SignalFunc methods. Deal with

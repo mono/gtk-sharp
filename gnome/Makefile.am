@@ -34,6 +34,7 @@ sources =					\
 build_sources = $(addprefix $(srcdir)/, $(sources)) AssemblyInfo.cs
 
 customs =					\
+	About.custom				\
 	App.custom				\
 	DateEdit.custom				\
 	CanvasBpath.custom			\
