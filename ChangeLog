@@ -1,3 +1,7 @@
+2004-10-07  Todd Berman  <tberman@off.net>
+
+	* gtk/Gtk.metadata: Mark ComboBox.GetActiveIter as an out param.
+
 2004-10-06  John Luke  <john.luke@gmail.com>
 
 	* gtk/Action.custom: add overload for string, string, null, null
