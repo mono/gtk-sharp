@@ -247,6 +247,7 @@
   <attr path="/api/namespace/object[@cname='GtkTextView']/method[@name='GetIterAtLocation']/*/*[@type='GtkTextIter*']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkTextView']/method[@name='GetLineAtY']/*/*[@type='GtkTextIter*']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkTextView']/method[@name='GetIterLocation']/*/*[@type='GdkRectangle*']" name="pass_as">out</attr>
+  <attr path="/api/namespace/object[@cname='GtkTextView']/method[@name='GetVisibleRect']/*/*[@type='GdkRectangle*']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkTextView']/signal[@name='SetScrollAdjustments']" name="name">ScrollAdjustmentsSet</attr>
   <attr path="/api/namespace/object[@cname='GtkToggleButton']/constructor[@cname='gtk_toggle_button_new_with_mnemonic']" name="preferred">1</attr>
   <attr path="/api/namespace/object[@cname='GtkToggleButton']/method[@name='Toggled']" name="name">Toggle</attr>
