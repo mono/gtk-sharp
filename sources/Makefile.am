@@ -44,4 +44,4 @@ get-source-code: get-gtkhtml-code
 
 	ln -f -s gtkfilechooserprivate.h gtk+-2.4.1/gtk/gtkfilechooserpriv.h
 	patch -p0 atk-1.6.0/atk/atkhyperlink.h < atkhyperlink.patch
-
+	patch -p0 gtk+-2.4.1/gtk/gtktreemodel.c < gtk_tree_model_signal_fix.patch

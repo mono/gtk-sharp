@@ -483,13 +483,13 @@
       <member cname="GTK_STATE_SELECTED" name="Selected"/>
       <member cname="GTK_STATE_INSENSITIVE" name="Insensitive"/>
     </enum>
-    <enum name="SubmenuDirection" cname="GtkSubmenuDirection" type="enum">
-      <member cname="GTK_DIRECTION_LEFT" name="Left"/>
-      <member cname="GTK_DIRECTION_RIGHT" name="Right"/>
+    <enum name="SubmenuDirection" cname="GtkSubmenuDirection" deprecated="1" type="enum">
+      <member cname="_GTK_DIRECTION_LEFT" name="GtkDirectionLeft"/>
+      <member cname="_GTK_DIRECTION_RIGHT" name="GtkDirectionRight"/>
     </enum>
-    <enum name="SubmenuPlacement" cname="GtkSubmenuPlacement" type="enum">
-      <member cname="GTK_TOP_BOTTOM" name="TopBottom"/>
-      <member cname="GTK_LEFT_RIGHT" name="LeftRight"/>
+    <enum name="SubmenuPlacement" cname="GtkSubmenuPlacement" deprecated="1" type="enum">
+      <member cname="_GTK_TOP_BOTTOM" name="GtkTopBottom"/>
+      <member cname="_GTK_LEFT_RIGHT" name="GtkLeftRight"/>
     </enum>
     <enum name="TargetFlags" cname="GtkTargetFlags" type="flags">
       <member cname="GTK_TARGET_SAME_APP" name="App" value="1 &lt;&lt; 0"/>
@@ -780,12 +780,33 @@
         <parameter type="gpointer" name="data"/>
       </parameters>
     </callback>
+    <callback name="ItemFactoryCallback" cname="GtkItemFactoryCallback">
+      <return-type type="void"/>
+    </callback>
+    <callback name="ItemFactoryCallback1" cname="GtkItemFactoryCallback1">
+      <return-type type="void"/>
+      <parameters>
+        <parameter type="gpointer" name="callback_data"/>
+        <parameter type="guint" name="callback_action"/>
+        <parameter type="GtkWidget*" name="widget"/>
+      </parameters>
+    </callback>
+    <callback name="ItemFactoryCallback2" cname="GtkItemFactoryCallback2">
+      <return-type type=""/>
+    </callback>
     <callback name="KeySnoopFunc" cname="GtkKeySnoopFunc">
       <return-type type="gint"/>
       <parameters>
         <parameter type="GtkWidget*" name="grab_widget"/>
         <parameter type="GdkEventKey*" name="event"/>
         <parameter type="gpointer" name="func_data"/>
+      </parameters>
+    </callback>
+    <callback name="MenuCallback" cname="GtkMenuCallback">
+      <return-type type="void"/>
+      <parameters>
+        <parameter type="GtkWidget*" name="widget"/>
+        <parameter type="gpointer" name="user_data"/>
       </parameters>
     </callback>
     <callback name="MenuDetachFunc" cname="GtkMenuDetachFunc">
@@ -816,6 +837,13 @@
       <parameters>
         <parameter type="gint*" name="argc"/>
         <parameter type="gchar***" name="argv"/>
+      </parameters>
+    </callback>
+    <callback name="PrintFunc" cname="GtkPrintFunc">
+      <return-type type="void"/>
+      <parameters>
+        <parameter type="gpointer" name="func_data"/>
+        <parameter type="const-gchar*" name="str"/>
       </parameters>
     </callback>
     <callback name="RBTreeTraverseFunc" cname="GtkRBTreeTraverseFunc">
@@ -1677,9 +1705,9 @@
       <signal name="RowInserted" cname="row_inserted" when="FIRST">
         <return-type type="void"/>
         <parameters>
-          <parameter name="inst" type="GtkTreeModel*"/>
-          <parameter name="p0" type="RowInsertedParams);"/>
-          <parameter name="p1" type=""/>
+          <parameter type="GtkTreeModel*" name="tree_model"/>
+          <parameter type="GtkTreePath*" name="path"/>
+          <parameter type="GtkTreeIter*" name="iter"/>
         </parameters>
       </signal>
       <signal name="RowHasChildToggled" cname="row_has_child_toggled" when="LAST">
@@ -1693,17 +1721,17 @@
       <signal name="RowDeleted" cname="row_deleted" when="FIRST">
         <return-type type="void"/>
         <parameters>
-          <parameter name="inst" type="GtkTreeModel*"/>
-          <parameter name="p0" type="RowDeletedParams);"/>
+          <parameter type="GtkTreeModel*" name="tree_model"/>
+          <parameter type="GtkTreePath*" name="path"/>
         </parameters>
       </signal>
       <signal name="RowsReordered" cname="rows_reordered" when="FIRST">
         <return-type type="void"/>
         <parameters>
-          <parameter name="inst" type="GtkTreeModel*"/>
-          <parameter name="p0" type="RowsReorderedParams);"/>
-          <parameter name="p1" type=""/>
-          <parameter name="p2" type=""/>
+          <parameter type="GtkTreeModel*" name="tree_model"/>
+          <parameter type="GtkTreePath*" name="path"/>
+          <parameter type="GtkTreeIter*" name="iter"/>
+          <parameter type="gint*" name="new_order"/>
         </parameters>
       </signal>
       <method name="Foreach" cname="gtk_tree_model_foreach">
@@ -4985,6 +5013,11 @@
         </parameters>
       </method>
     </object>
+    <object name="FilePath" cname="GtkFilePath">
+      <method name="GetType" cname="gtk_file_path_get_type" shared="true">
+        <return-type type="GType"/>
+      </method>
+    </object>
     <object name="FileSelection" cname="GtkFileSelection" parent="GtkDialog">
       <field cname="dir_list" type="GtkWidget*"/>
       <field cname="file_list" type="GtkWidget*"/>
@@ -6138,6 +6171,13 @@
       <method name="Deselect" cname="gtk_item_deselect">
         <return-type type="void"/>
       </method>
+      <method name="FactoriesPathDelete" cname="gtk_item_factories_path_delete" deprecated="1" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-gchar*" name="ifactory_path"/>
+          <parameter type="const-gchar*" name="path"/>
+        </parameters>
+      </method>
       <method name="GetType" cname="gtk_item_get_type" shared="true">
         <return-type type="GType"/>
       </method>
@@ -6146,6 +6186,173 @@
       </method>
       <method name="Toggle" cname="gtk_item_toggle">
         <return-type type="void"/>
+      </method>
+    </object>
+    <object name="ItemFactory" cname="GtkItemFactory" deprecated="1" parent="GtkObject">
+      <field cname="path" type="gchar*"/>
+      <field cname="accel_group" type="GtkAccelGroup*"/>
+      <field cname="widget" type="GtkWidget*"/>
+      <field cname="items" type="GSList*"/>
+      <field cname="translate_func" type="GtkTranslateFunc"/>
+      <field cname="translate_data" type="gpointer"/>
+      <field cname="translate_notify" type="GtkDestroyNotify"/>
+      <method name="AddForeign" cname="gtk_item_factory_add_foreign" deprecated="1" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GtkWidget*" name="accel_widget"/>
+          <parameter type="const-gchar*" name="full_path"/>
+          <parameter type="GtkAccelGroup*" name="accel_group"/>
+          <parameter type="guint" name="keyval"/>
+          <parameter type="GdkModifierType" name="modifiers"/>
+        </parameters>
+      </method>
+      <method name="Construct" cname="gtk_item_factory_construct" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GType" name="container_type"/>
+          <parameter type="const-gchar*" name="path"/>
+          <parameter type="GtkAccelGroup*" name="accel_group"/>
+        </parameters>
+      </method>
+      <method name="CreateItem" cname="gtk_item_factory_create_item" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GtkItemFactoryEntry*" name="entry"/>
+          <parameter type="gpointer" name="callback_data"/>
+          <parameter type="guint" name="callback_type"/>
+        </parameters>
+      </method>
+      <method name="CreateItems" cname="gtk_item_factory_create_items" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="guint" name="n_entries"/>
+          <parameter type="GtkItemFactoryEntry*" name="entries"/>
+          <parameter type="gpointer" name="callback_data"/>
+        </parameters>
+      </method>
+      <method name="CreateItemsAc" cname="gtk_item_factory_create_items_ac" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="guint" name="n_entries"/>
+          <parameter type="GtkItemFactoryEntry*" name="entries"/>
+          <parameter type="gpointer" name="callback_data"/>
+          <parameter type="guint" name="callback_type"/>
+        </parameters>
+      </method>
+      <method name="CreateMenuEntries" cname="gtk_item_factory_create_menu_entries" deprecated="1" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="guint" name="n_entries"/>
+          <parameter type="GtkMenuEntry*" name="entries"/>
+        </parameters>
+      </method>
+      <method name="DeleteEntries" cname="gtk_item_factory_delete_entries" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="guint" name="n_entries"/>
+          <parameter type="GtkItemFactoryEntry*" name="entries"/>
+        </parameters>
+      </method>
+      <method name="DeleteEntry" cname="gtk_item_factory_delete_entry" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GtkItemFactoryEntry*" name="entry"/>
+        </parameters>
+      </method>
+      <method name="DeleteItem" cname="gtk_item_factory_delete_item" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-gchar*" name="path"/>
+        </parameters>
+      </method>
+      <method name="FromPath" cname="gtk_item_factory_from_path" deprecated="1" shared="true">
+        <return-type type="GtkItemFactory*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="path"/>
+        </parameters>
+      </method>
+      <method name="FromWidget" cname="gtk_item_factory_from_widget" deprecated="1" shared="true">
+        <return-type type="GtkItemFactory*"/>
+        <parameters>
+          <parameter type="GtkWidget*" name="widget"/>
+        </parameters>
+      </method>
+      <method name="GetItem" cname="gtk_item_factory_get_item" deprecated="1">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="path"/>
+        </parameters>
+      </method>
+      <method name="GetItemByAction" cname="gtk_item_factory_get_item_by_action" deprecated="1">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="guint" name="action"/>
+        </parameters>
+      </method>
+      <method name="GetType" cname="gtk_item_factory_get_type" deprecated="1" shared="true">
+        <return-type type="GType"/>
+      </method>
+      <method name="GetWidget" cname="gtk_item_factory_get_widget" deprecated="1">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="path"/>
+        </parameters>
+      </method>
+      <method name="GetWidgetByAction" cname="gtk_item_factory_get_widget_by_action" deprecated="1">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="guint" name="action"/>
+        </parameters>
+      </method>
+      <constructor cname="gtk_item_factory_new" deprecated="1">
+        <parameters>
+          <parameter type="GType" name="container_type"/>
+          <parameter type="const-gchar*" name="path"/>
+          <parameter type="GtkAccelGroup*" name="accel_group"/>
+        </parameters>
+      </constructor>
+      <method name="PathFromWidget" cname="gtk_item_factory_path_from_widget" deprecated="1" shared="true">
+        <return-type type="const-gchar*"/>
+        <parameters>
+          <parameter type="GtkWidget*" name="widget"/>
+        </parameters>
+      </method>
+      <method name="Popup" cname="gtk_item_factory_popup" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="guint" name="x"/>
+          <parameter type="guint" name="y"/>
+          <parameter type="guint" name="mouse_button"/>
+          <parameter type="guint32" name="time_"/>
+        </parameters>
+      </method>
+      <method name="PopupData" cname="gtk_item_factory_popup_data" deprecated="1">
+        <return-type type="gpointer"/>
+      </method>
+      <method name="PopupDataFromWidget" cname="gtk_item_factory_popup_data_from_widget" deprecated="1" shared="true">
+        <return-type type="gpointer"/>
+        <parameters>
+          <parameter type="GtkWidget*" name="widget"/>
+        </parameters>
+      </method>
+      <method name="PopupWithData" cname="gtk_item_factory_popup_with_data" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gpointer" name="popup_data"/>
+          <parameter type="GtkDestroyNotify" name="destroy"/>
+          <parameter type="guint" name="x"/>
+          <parameter type="guint" name="y"/>
+          <parameter type="guint" name="mouse_button"/>
+          <parameter type="guint32" name="time_"/>
+        </parameters>
+      </method>
+      <method name="SetTranslateFunc" cname="gtk_item_factory_set_translate_func" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GtkTranslateFunc" name="func"/>
+          <parameter type="gpointer" name="data"/>
+          <parameter type="GtkDestroyNotify" name="notify"/>
+        </parameters>
       </method>
     </object>
     <object name="Label" cname="GtkLabel" parent="GtkMisc">
@@ -7575,6 +7782,14 @@
         <return-type type="void"/>
         <parameters>
           <parameter type="GtkWidget*" name="child"/>
+        </parameters>
+      </method>
+      <method name="ComputePosition" cname="gtk_paned_compute_position" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gint" name="allocation"/>
+          <parameter type="gint" name="child1_req"/>
+          <parameter type="gint" name="child2_req"/>
         </parameters>
       </method>
       <method name="GetChild1" cname="gtk_paned_get_child1">
@@ -14183,7 +14398,11 @@
       <field cname="callback" type="GCallback"/>
     </struct>
     <alias name="Allocation" cname="GtkAllocation" type="GdkRectangle"/>
-    <struct name="Arg" cname="GtkArg" opaque="true"/>
+    <struct name="Arg" cname="GtkArg" deprecated="1">
+      <field cname="type" type="GtkType"/>
+      <field cname="name" type="gchar*"/>
+      <field cname="char_data" type="gchar"/>
+    </struct>
     <struct name="BindingArg" cname="GtkBindingArg">
       <field cname="arg_type" type="GType"/>
       <field cname="long_data" type="glong"/>
@@ -14383,11 +14602,6 @@
         <parameters>
           <parameter type="gint64" name="size"/>
         </parameters>
-      </method>
-    </boxed>
-    <boxed name="FilePath" cname="GtkFilePath" opaque="true">
-      <method name="GetType" cname="gtk_file_path_get_type" shared="true">
-        <return-type type="GType"/>
       </method>
     </boxed>
     <struct name="FileSystemVolume" cname="GtkFileSystemVolume" opaque="true">
@@ -14659,8 +14873,27 @@
     <struct name="ImageStockData" cname="GtkImageStockData">
       <field cname="stock_id" type="gchar*"/>
     </struct>
+    <struct name="ItemFactoryEntry" cname="GtkItemFactoryEntry" deprecated="1">
+      <field cname="path" type="gchar*"/>
+      <field cname="accelerator" type="gchar*"/>
+      <field cname="callback" type="GtkItemFactoryCallback"/>
+      <field cname="callback_action" type="guint"/>
+      <field cname="item_type" type="gchar*"/>
+      <field cname="extra_data" type="gconstpointer"/>
+    </struct>
+    <struct name="ItemFactoryItem" cname="GtkItemFactoryItem" deprecated="1">
+      <field cname="path" type="gchar*"/>
+      <field cname="widgets" type="GSList*"/>
+    </struct>
     <struct name="KeyHash" cname="GtkKeyHash" opaque="true"/>
     <struct name="LabelSelectionInfo" cname="GtkLabelSelectionInfo" opaque="true"/>
+    <struct name="MenuEntry" cname="GtkMenuEntry">
+      <field cname="path" type="gchar*"/>
+      <field cname="accelerator" type="gchar*"/>
+      <field cname="callback" type="GtkMenuCallback"/>
+      <field cname="callback_data" type="gpointer"/>
+      <field cname="widget" type="GtkWidget*"/>
+    </struct>
     <struct name="NotebookPage" cname="GtkNotebookPage" opaque="true">
       <method name="Num" cname="gtk_notebook_page_num" shared="true">
         <return-type type="gint"/>
@@ -17079,6 +17312,13 @@
           <parameter type="guint" name="ntargets"/>
         </parameters>
       </method>
+      <method name="Clear" cname="gtk_selection_clear" deprecated="1" shared="true">
+        <return-type type="gboolean"/>
+        <parameters>
+          <parameter type="GtkWidget*" name="widget"/>
+          <parameter type="GdkEventSelection*" name="event"/>
+        </parameters>
+      </method>
       <method name="ClearTargets" cname="gtk_selection_clear_targets" shared="true">
         <return-type type="void"/>
         <parameters>
@@ -17353,6 +17593,12 @@
         <return-type type="GtkFlagValue*"/>
         <parameters>
           <parameter type="GtkType" name="flags_type"/>
+        </parameters>
+      </method>
+      <method name="Init" cname="gtk_type_init" deprecated="1" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GTypeDebugFlags" name="debug_flags"/>
         </parameters>
       </method>
       <method name="New" cname="gtk_type_new" deprecated="1" shared="true">

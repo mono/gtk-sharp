@@ -130,6 +130,7 @@
   <attr path="/api/namespace/object[@cname='GtkEntry']/signal[@name='CutClipboard']" name="name">ClipboardCut</attr>
   <attr path="/api/namespace/object[@cname='GtkEntry']/signal[@name='PasteClipboard']" name="name">ClipboardPasted</attr>
   <attr path="/api/namespace/object[@cname='GtkFileSelection']/method[@name='GetSelections']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkFilePath']" name="parent">GObject</attr>
   <attr path="/api/namespace/object[@cname='GtkExpander']/signal[@name='Activate']" name="name">Activated</attr>
   <attr path="/api/namespace/object[@cname='GtkFrame']/method[@name='GetLabelAlign']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkFrame']/method[@name='SetLabelAlign']" name="hidden">1</attr>

@@ -1,5 +1,13 @@
 2004-07-06  Todd Berman  <tberman@off.net>
 
+	* sources/Makefile.am:
+	* sources/gtk_tree_model_signal_fix.patch: a new hacky patch to fix
+	the signal generation on the tree model structs.
+	* */*-api.raw: regen.
+	* glib/Object.cs: merge forward a small patch.
+
+2004-07-06  Todd Berman  <tberman@off.net>
+
 	* Makefile.am:
 	* configure.in:
 	* gtk-sharp-2.0.pc.in:

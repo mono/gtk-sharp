@@ -211,6 +211,10 @@
       <member cname="GDK_FILTER_TRANSLATE" name="Translate"/>
       <member cname="GDK_FILTER_REMOVE" name="Remove"/>
     </enum>
+    <enum name="FontType" cname="GdkFontType" deprecated="1" type="enum">
+      <member cname="_GDK_FONT_FONT" name="GdkFontFont"/>
+      <member cname="_GDK_FONT_FONTSET" name="GdkFontFontset"/>
+    </enum>
     <enum name="Function" cname="GdkFunction" type="enum">
       <member cname="GDK_COPY" name="Copy"/>
       <member cname="GDK_INVERT" name="Invert"/>
@@ -514,6 +518,12 @@
           <parameter type="gboolean" name="writeable"/>
           <parameter type="gboolean" name="best_match"/>
           <parameter type="gboolean*" name="success"/>
+        </parameters>
+      </method>
+      <method name="Change" cname="gdk_colormap_change" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gint" name="ncolors"/>
         </parameters>
       </method>
       <method name="FreeColors" cname="gdk_colormap_free_colors">
@@ -1222,6 +1232,38 @@
           <parameter type="GdkGC*" name="gc"/>
           <parameter type="GdkSegment*" name="segs"/>
           <parameter type="gint" name="nsegs"/>
+        </parameters>
+      </method>
+      <method name="DrawString" cname="gdk_draw_string" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="GdkGC*" name="gc"/>
+          <parameter type="gint" name="x"/>
+          <parameter type="gint" name="y"/>
+          <parameter type="const-gchar*" name="string"/>
+        </parameters>
+      </method>
+      <method name="DrawText" cname="gdk_draw_text" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="GdkGC*" name="gc"/>
+          <parameter type="gint" name="x"/>
+          <parameter type="gint" name="y"/>
+          <parameter type="const-gchar*" name="text"/>
+          <parameter type="gint" name="text_length"/>
+        </parameters>
+      </method>
+      <method name="DrawTextWc" cname="gdk_draw_text_wc" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="GdkGC*" name="gc"/>
+          <parameter type="gint" name="x"/>
+          <parameter type="gint" name="y"/>
+          <parameter type="const-GdkWChar*" name="text"/>
+          <parameter type="gint" name="text_length"/>
         </parameters>
       </method>
       <method name="CopyToImage" cname="gdk_drawable_copy_to_image">
@@ -2009,6 +2051,13 @@
           <parameter type="GdkWMDecoration*" name="decorations"/>
         </parameters>
       </method>
+      <method name="GetDeskrelativeOrigin" cname="gdk_window_get_deskrelative_origin" deprecated="1">
+        <return-type type="gboolean"/>
+        <parameters>
+          <parameter type="gint*" name="x"/>
+          <parameter type="gint*" name="y"/>
+        </parameters>
+      </method>
       <method name="GetEvents" cname="gdk_window_get_events">
         <return-type type="GdkEventMask"/>
       </method>
@@ -2756,9 +2805,56 @@
       <field cname="changed_mask" type="GdkWindowState"/>
       <field cname="new_window_state" type="GdkWindowState"/>
     </struct>
-    <boxed name="Font" cname="GdkFont" opaque="true">
-      <method name="TypeGetType" cname="gdk_font_type_get_type" shared="true">
+    <boxed name="Font" cname="GdkFont" deprecated="1">
+      <field cname="type" type="GdkFontType"/>
+      <field cname="ascent" type="gint"/>
+      <field cname="descent" type="gint"/>
+      <method name="Equal" cname="gdk_font_equal" deprecated="1">
+        <return-type type="gboolean"/>
+        <parameters>
+          <parameter type="const-GdkFont*" name="fontb"/>
+        </parameters>
+      </method>
+      <method name="FromDescription" cname="gdk_font_from_description" deprecated="1" shared="true">
+        <return-type type="GdkFont*"/>
+        <parameters>
+          <parameter type="PangoFontDescription*" name="font_desc"/>
+        </parameters>
+      </method>
+      <method name="FromDescriptionForDisplay" cname="gdk_font_from_description_for_display" deprecated="1" shared="true">
+        <return-type type="GdkFont*"/>
+        <parameters>
+          <parameter type="GdkDisplay*" name="display"/>
+          <parameter type="PangoFontDescription*" name="font_desc"/>
+        </parameters>
+      </method>
+      <method name="GetDisplay" cname="gdk_font_get_display" deprecated="1">
+        <return-type type="GdkDisplay*"/>
+      </method>
+      <method name="GetType" cname="gdk_font_get_type" deprecated="1" shared="true">
         <return-type type="GType"/>
+      </method>
+      <method name="Id" cname="gdk_font_id" deprecated="1">
+        <return-type type="gint"/>
+      </method>
+      <method name="Load" cname="gdk_font_load" deprecated="1" shared="true">
+        <return-type type="GdkFont*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="font_name"/>
+        </parameters>
+      </method>
+      <method name="LoadForDisplay" cname="gdk_font_load_for_display" deprecated="1" shared="true">
+        <return-type type="GdkFont*"/>
+        <parameters>
+          <parameter type="GdkDisplay*" name="display"/>
+          <parameter type="const-gchar*" name="font_name"/>
+        </parameters>
+      </method>
+      <method name="Ref" cname="gdk_font_ref" deprecated="1">
+        <return-type type="GdkFont*"/>
+      </method>
+      <method name="Unref" cname="gdk_font_unref" deprecated="1">
+        <return-type type="void"/>
       </method>
     </boxed>
     <struct name="GCValues" cname="GdkGCValues">
@@ -3089,14 +3185,6 @@
           <parameter type="gpointer" name="data"/>
         </parameters>
       </method>
-      <method name="ColorsStore" cname="gdk_colors_store" deprecated="1" shared="true">
-        <return-type type="void"/>
-        <parameters>
-          <parameter type="GdkColormap*" name="colormap"/>
-          <parameter type="GdkColor*" name="colors"/>
-          <parameter type="gint" name="ncolors"/>
-        </parameters>
-      </method>
       <method name="DevicesList" cname="gdk_devices_list" shared="true">
         <return-type type="GList*"/>
       </method>
@@ -3199,6 +3287,32 @@
           <parameter type="GValue*" name="value"/>
         </parameters>
       </method>
+      <method name="StringExtents" cname="gdk_string_extents" deprecated="1" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="const-gchar*" name="string"/>
+          <parameter type="gint*" name="lbearing"/>
+          <parameter type="gint*" name="rbearing"/>
+          <parameter type="gint*" name="width"/>
+          <parameter type="gint*" name="ascent"/>
+          <parameter type="gint*" name="descent"/>
+        </parameters>
+      </method>
+      <method name="StringHeight" cname="gdk_string_height" deprecated="1" shared="true">
+        <return-type type="gint"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="const-gchar*" name="string"/>
+        </parameters>
+      </method>
+      <method name="StringMeasure" cname="gdk_string_measure" deprecated="1" shared="true">
+        <return-type type="gint"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="const-gchar*" name="string"/>
+        </parameters>
+      </method>
       <method name="StringToCompoundText" cname="gdk_string_to_compound_text" shared="true">
         <return-type type="gint"/>
         <parameters>
@@ -3220,10 +3334,77 @@
           <parameter type="gint*" name="length"/>
         </parameters>
       </method>
+      <method name="StringWidth" cname="gdk_string_width" deprecated="1" shared="true">
+        <return-type type="gint"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="const-gchar*" name="string"/>
+        </parameters>
+      </method>
       <method name="UnicodeToKeyval" cname="gdk_unicode_to_keyval" shared="true">
         <return-type type="guint"/>
         <parameters>
           <parameter type="guint32" name="wc"/>
+        </parameters>
+      </method>
+    </class>
+    <class name="Char" cname="GdkChar_">
+      <method name="Height" cname="gdk_char_height" deprecated="1" shared="true">
+        <return-type type="gint"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="gchar" name="character"/>
+        </parameters>
+      </method>
+      <method name="Measure" cname="gdk_char_measure" deprecated="1" shared="true">
+        <return-type type="gint"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="gchar" name="character"/>
+        </parameters>
+      </method>
+      <method name="Width" cname="gdk_char_width" deprecated="1" shared="true">
+        <return-type type="gint"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="gchar" name="character"/>
+        </parameters>
+      </method>
+      <method name="WidthWc" cname="gdk_char_width_wc" deprecated="1" shared="true">
+        <return-type type="gint"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="GdkWChar" name="character"/>
+        </parameters>
+      </method>
+    </class>
+    <class name="Colors" cname="GdkColors_">
+      <method name="Alloc" cname="gdk_colors_alloc" deprecated="1" shared="true">
+        <return-type type="gint"/>
+        <parameters>
+          <parameter type="GdkColormap*" name="colormap"/>
+          <parameter type="gboolean" name="contiguous"/>
+          <parameter type="gulong*" name="planes"/>
+          <parameter type="gint" name="nplanes"/>
+          <parameter type="gulong*" name="pixels"/>
+          <parameter type="gint" name="npixels"/>
+        </parameters>
+      </method>
+      <method name="Free" cname="gdk_colors_free" deprecated="1" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GdkColormap*" name="colormap"/>
+          <parameter type="gulong*" name="pixels"/>
+          <parameter type="gint" name="npixels"/>
+          <parameter type="gulong" name="planes"/>
+        </parameters>
+      </method>
+      <method name="Store" cname="gdk_colors_store" deprecated="1" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GdkColormap*" name="colormap"/>
+          <parameter type="GdkColor*" name="colors"/>
+          <parameter type="gint" name="ncolors"/>
         </parameters>
       </method>
     </class>
@@ -3461,6 +3642,21 @@
         </parameters>
       </method>
     </class>
+    <class name="Fontset" cname="GdkFontset_">
+      <method name="Load" cname="gdk_fontset_load" deprecated="1" shared="true">
+        <return-type type="GdkFont*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="fontset_name"/>
+        </parameters>
+      </method>
+      <method name="LoadForDisplay" cname="gdk_fontset_load_for_display" deprecated="1" shared="true">
+        <return-type type="GdkFont*"/>
+        <parameters>
+          <parameter type="GdkDisplay*" name="display"/>
+          <parameter type="const-gchar*" name="fontset_name"/>
+        </parameters>
+      </method>
+    </class>
     <class name="Input" cname="GdkInput_">
       <method name="Add" cname="gdk_input_add" deprecated="1" shared="true">
         <return-type type="gint"/>
@@ -3469,6 +3665,16 @@
           <parameter type="GdkInputCondition" name="condition"/>
           <parameter type="GdkInputFunction" name="function"/>
           <parameter type="gpointer" name="data"/>
+        </parameters>
+      </method>
+      <method name="AddFull" cname="gdk_input_add_full" deprecated="1" shared="true">
+        <return-type type="gint"/>
+        <parameters>
+          <parameter type="gint" name="source"/>
+          <parameter type="GdkInputCondition" name="condition"/>
+          <parameter type="GdkInputFunction" name="function"/>
+          <parameter type="gpointer" name="data"/>
+          <parameter type="GdkDestroyNotify" name="destroy"/>
         </parameters>
       </method>
       <method name="Remove" cname="gdk_input_remove" deprecated="1" shared="true">
@@ -3938,6 +4144,48 @@
       </method>
     </class>
     <class name="Text" cname="GdkText_">
+      <method name="Extents" cname="gdk_text_extents" deprecated="1" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="const-gchar*" name="text"/>
+          <parameter type="gint" name="text_length"/>
+          <parameter type="gint*" name="lbearing"/>
+          <parameter type="gint*" name="rbearing"/>
+          <parameter type="gint*" name="width"/>
+          <parameter type="gint*" name="ascent"/>
+          <parameter type="gint*" name="descent"/>
+        </parameters>
+      </method>
+      <method name="ExtentsWc" cname="gdk_text_extents_wc" deprecated="1" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="const-GdkWChar*" name="text"/>
+          <parameter type="gint" name="text_length"/>
+          <parameter type="gint*" name="lbearing"/>
+          <parameter type="gint*" name="rbearing"/>
+          <parameter type="gint*" name="width"/>
+          <parameter type="gint*" name="ascent"/>
+          <parameter type="gint*" name="descent"/>
+        </parameters>
+      </method>
+      <method name="Height" cname="gdk_text_height" deprecated="1" shared="true">
+        <return-type type="gint"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="const-gchar*" name="text"/>
+          <parameter type="gint" name="text_length"/>
+        </parameters>
+      </method>
+      <method name="Measure" cname="gdk_text_measure" deprecated="1" shared="true">
+        <return-type type="gint"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="const-gchar*" name="text"/>
+          <parameter type="gint" name="text_length"/>
+        </parameters>
+      </method>
       <method name="PropertyToTextList" cname="gdk_text_property_to_text_list" shared="true">
         <return-type type="gint"/>
         <parameters>
@@ -3978,6 +4226,22 @@
           <parameter type="const-guchar*" name="text"/>
           <parameter type="gint" name="length"/>
           <parameter type="gchar***" name="list"/>
+        </parameters>
+      </method>
+      <method name="Width" cname="gdk_text_width" deprecated="1" shared="true">
+        <return-type type="gint"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="const-gchar*" name="text"/>
+          <parameter type="gint" name="text_length"/>
+        </parameters>
+      </method>
+      <method name="WidthWc" cname="gdk_text_width_wc" deprecated="1" shared="true">
+        <return-type type="gint"/>
+        <parameters>
+          <parameter type="GdkFont*" name="font"/>
+          <parameter type="const-GdkWChar*" name="text"/>
+          <parameter type="gint" name="text_length"/>
         </parameters>
       </method>
     </class>

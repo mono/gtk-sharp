@@ -192,7 +192,7 @@ namespace GLib {
 		[DllImport("glibsharpglue")]
 		private static extern IntPtr gtksharp_get_type_id (IntPtr obj);
 
-		protected static GLib.GType GType {
+		public static GLib.GType GType {
 			get {
 				return GType.Object;
 			}
