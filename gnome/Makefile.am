@@ -43,6 +43,7 @@ customs =					\
 	CanvasGroup.custom			\
 	CanvasItem.custom			\
 	CanvasLine.custom			\
+	CanvasPathDef.custom			\
 	CanvasPixbuf.custom			\
 	CanvasPoints.custom			\
 	CanvasPolygon.custom			\
@@ -56,6 +57,7 @@ customs =					\
 	DruidPageEdge.custom			\
 	Font.custom				\
 	FontFamily.custom			\
+	GPPath.custom				\
 	IconList.custom				\
 	IconTextItem.custom			\
 	IconTheme.custom			\

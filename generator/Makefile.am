@@ -30,6 +30,7 @@ sources = 				\
 	ManagedCallString.cs		\
 	ManualGen.cs			\
 	MarshalGen.cs			\
+	MethodBase.cs			\
 	MethodBody.cs			\
 	Method.cs			\
 	ObjectGen.cs			\
