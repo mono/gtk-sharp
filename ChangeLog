@@ -1,5 +1,11 @@
 2004-06-20  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
+	* gdk/Gdk.metadata: Fix merging errors.
+	* gnome/CanvasItem.custom: Idem.
+	* gtk/Widget.custom: Idem.
+
+2004-06-20  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
 	* *: Merge with HEAD.
 
 2004-06-17  Larry Ewing  <lewing@ximian.com>
