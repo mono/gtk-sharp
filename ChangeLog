@@ -1,3 +1,8 @@
+2005-02-02  Mike Kestner  <mkestner@novell.com>
+
+	* sample/Makefile.am : clean mdb files.
+	* sample/GtkDemo/Makefile.am : clean mdb files.
+
 2005-02-01  Fredrik Nilsson  <jymdman@home.se>
 
 	* glib/Marshaller.cs : DateTime marshaling fix.

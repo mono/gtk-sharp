@@ -29,8 +29,9 @@ TARGETS = custom-cellrenderer.exe gtk-hello-world.exe button.exe calendar.exe su
 assemblies=../glib/glib-sharp.dll ../pango/pango-sharp.dll ../atk/atk-sharp.dll ../gdk/gdk-sharp.dll ../gtk/gtk-sharp.dll $(GNOME_ASSEMBLY) $(GLADE_ASSEMBLY) $(VTE_ASSEMBLY)
 references=$(addprefix /r:, $(assemblies))
 
+DEBUGS=$(addsuffix .mdb, $(TARGETS))
 noinst_SCRIPTS = $(TARGETS)
-CLEANFILES = $(TARGETS)
+CLEANFILES = $(TARGETS) $(DEBUGS)
 
 gtk-hello-world.exe: $(srcdir)/HelloWorld.cs $(assemblies)
 	$(CSC)  /out:gtk-hello-world.exe $(references) $(srcdir)/HelloWorld.cs
