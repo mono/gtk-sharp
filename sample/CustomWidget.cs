@@ -201,7 +201,7 @@ class CustomWidget : Container {
 		}
 	}
 
-	protected override void OnSizeRequested (Requisition requisition)
+	protected override void OnSizeRequested (ref Requisition requisition)
 	{
 		Console.WriteLine ("OnSizeRequested");
 	

@@ -14,7 +14,7 @@ namespace WidgetViewer {
 	public class TestCombo
 	{
 		static Window window = null;	       
-		static Gtk.ComboBox combo = null;
+		static Gtk.Combo combo = null;
 		
 		public static Gtk.Window Create ()
 		{
