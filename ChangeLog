@@ -1,3 +1,25 @@
+2004-03-14  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* Makefile.in:
+	* configure.in:
+	* gnomevfs/AsyncCallback.cs:
+	* gnomevfs/AsyncCallbackNative.cs:
+	* gnomevfs/AsyncReadCallback.cs:
+	* gnomevfs/AsyncReadCallbackNative.cs:
+	* gnomevfs/AsyncWriteCallback.cs:
+	* gnomevfs/AsyncWriteCallbackNative.cs:
+	* gnomevfs/Handle.cs:
+	* gnomevfs/Makefile.in:
+	* gnomevfs/OpenMode.cs:
+	* gnomevfs/Result.cs:
+	* gnomevfs/SeekPosition.cs:
+	* gnomevfs/Vfs.cs:
+	* sample/Makefile.in:
+	* sample/TestVfs.cs:
+	
+	Added partial gnome-vfs bindings. Necessary now that can Gtk.FileChooser
+	return gnome-vfs uris.
+
 2004-03-03  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* atk/Atk.metadata:

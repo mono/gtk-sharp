@@ -1,0 +1,22 @@
+MCS=mcs
+DESTDIR=
+prefix=@prefix@
+
+all: linux
+
+windows:
+	$(CSC) /unsafe /target:library /out:gnome-vfs-sharp.dll /recurse:*.cs
+
+linux: gnome-vfs-sharp.dll
+
+gnome-vfs-sharp.dll: *.cs
+	$(MCS) --unsafe --target library -o gnome-vfs-sharp.dll -r:glib-sharp --recurse '*.cs'
+
+clean:
+	rm -f *.dll
+	rm -rf generated
+
+install: all
+	../mkinstalldirs $(DESTDIR)$(prefix)/lib && \
+	cp gnome-vfs-sharp.dll $(DESTDIR)$(prefix)/lib || exit 1
+

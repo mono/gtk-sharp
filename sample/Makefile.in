@@ -12,8 +12,8 @@ MCS=mcs -g
 @ENABLE_VTE_TRUE@ VTE_ASSEMBLY=-r vte-sharp.dll
 @ENABLE_VTE_TRUE@ VTE_TARGETS=vte-example.exe
 
-local_paths=-L ../glib -L ../pango -L ../atk -L ../gdk -L ../gtk $(GNOME_PATH) $(GLADE_PATH) $(VTE_PATH)
-all_assemblies=-r glib-sharp.dll -r pango-sharp.dll -r atk-sharp.dll -r gdk-sharp.dll -r gtk-sharp.dll $(GNOME_ASSEMBLY) $(GLADE_ASSEMBLY) $(VTE_ASSEMBLY) -r System.Drawing
+local_paths=-L ../glib -L ../pango -L ../atk -L ../gdk -L ../gtk -L ../gnomevfs $(GNOME_PATH) $(GLADE_PATH) $(VTE_PATH)
+all_assemblies=-r glib-sharp.dll -r pango-sharp.dll -r atk-sharp.dll -r gdk-sharp.dll -r gtk-sharp.dll -r gnome-vfs-sharp.dll $(GNOME_ASSEMBLY) $(GLADE_ASSEMBLY) $(VTE_ASSEMBLY) -r System.Drawing
 
 
 all: linux
@@ -22,7 +22,7 @@ windows:
 	$(CSC) /unsafe /out:gtk-hello-world.exe /r:../glib/glib-sharp.dll /r:../gtk/gtk-sharp.dll /r:../gdk/gdk-sharp.dll HelloWorld.cs
 	$(CSC) /unsafe /out:button.exe /r:../glib/glib-sharp.dll /r:../gtk/gtk-sharp.dll ButtonApp.cs
 
-linux: gtk-hello-world.exe button.exe calendar.exe subclass.exe menu.exe size.exe scribble.exe treeviewdemo.exe managedtreeviewdemo.exe testdnd.exe actions.exe $(GNOME_TARGETS) $(GLADE_TARGETS) $(VTE_TARGETS)
+linux: gtk-hello-world.exe button.exe calendar.exe subclass.exe menu.exe size.exe scribble.exe treeviewdemo.exe managedtreeviewdemo.exe testdnd.exe actions.exe testvfs.exe $(GNOME_TARGETS) $(GLADE_TARGETS) $(VTE_TARGETS)
 
 #@ENABLE_GNOME_TRUE@	$(MAKE) -C gconf 
 @ENABLE_GNOME_TRUE@	$(MAKE) -C rsvg
@@ -83,6 +83,9 @@ vte-example.exe: VteTest.cs
 
 actions.exe: Actions.cs
 	$(MCS) -out:actions.exe $(local_paths) $(all_assemblies) Actions.cs
+
+testvfs.exe: TestVfs.cs
+	$(MCS) -out:testvfs.exe $(local_paths) $(all_assemblies) TestVfs.cs
 
 clean:
 	rm -f *.exe

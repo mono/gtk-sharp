@@ -140,6 +140,7 @@ gdk/Makefile
 gtk/Makefile
 glade/Makefile
 gnome/Makefile
+gnomevfs/Makefile
 gda/Makefile
 gnomedb/Makefile
 gconf/Makefile
