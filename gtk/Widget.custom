@@ -36,10 +36,13 @@ public Gdk.Window GdkWindow {
 	}
 }
 
-public void AddAccelerator (string accel_signal, AccelGroup accel_group, AccelKey accel_key)
-{
-	this.AddAccelerator (accel_signal, accel_group, (uint) accel_key.Key, accel_key.AccelMods, accel_key.AccelFlags);
+[DllImport("gtksharpglue")]
+static extern int gtksharp_gtk_widget_style_get_int (IntPtr raw, string name);
 
+public int FocusLineWidth {
+	get {
+		return gtksharp_gtk_widget_style_get_int (Handle, "focus-line-width");
+	}
 }
 
 [DllImport("libgtk-win32-2.0-0.dll")]
@@ -69,14 +72,5 @@ public int Flags {
 	}
 	set {
 		gtksharp_gtk_widget_set_flags (Handle, (int) value);
-	}
-}
-
-[DllImport("gtksharpglue")]
-static extern int gtksharp_gtk_widget_style_get_int (IntPtr raw, string name);
-
-public int FocusLineWidth {
-	get {
-		return gtksharp_gtk_widget_style_get_int (Handle, "focus-line-width");
 	}
 }

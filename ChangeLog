@@ -1,8 +1,54 @@
 2004-06-07  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
+	* *: Merge with HEAD.
+
+2004-06-07  Peter Williams  <peter@newton.cx>
+
+	* configure.in (MONODOC_REQUIRED_VERSION): Fix missing 'test' in
+	shell if statement.
+
+2004-06-07  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
 	* gtk/Widget.custom: Add FocusLineWidth property.
 	* gtk/glue/widget.c: (gtksharp_gtk_widget_set_flags),
 	(gtksharp_gtk_widget_style_get_int): Code for retrieving style property.
+
+2004-06-04  Todd Berman  <tberman@sevenl.net>
+
+	* glib/Object.cs: ConnectDefaultHandlers needs to look at public api
+	as well	for virtual methods.
+	* gtk/CellRenderer.custom:
+	* gtk/Container.custom:
+	* gnome/CanvasItem.custom: Add DefaultSignalHandler to remove the need
+	for the static ctor.
+
+2004-06-04  Todd Berman  <tberman@sevenl.net>
+
+	* gnome/CanvasItem.custom: Changed from OnXXX vmethods to XXX vmethods
+	* gnome/CanvasProxy.cs: removed, unused code
+	* gnome/GtkSharp.BoundsHandler.cs: removed
+	* gnome/GtkSharp.DrawHandler.cs: removed
+	* gnome/GtkSharp.PointHandler.cs: removed
+	* gnome/GtkSharp.RenderHandler.cs: removed
+	* gnome/GtkSharp.UpdateHandler.cs: removed
+	* gnome/Makefile.am: updated to reflect removing of old files.
+	* gtk/CellRenderer.custom: Changed from OnXXX vmethods to XXX vmethods,
+	and added StartEditing vmethod
+	* gtk/Container.custom: Changed from OnForall to ForAll
+	* gtk/Gtk.metadata: hide CellRenderer.GetSize and StartEditing
+	* gtk/glue/cellrenderer.c: new glue for CellRenderer.StartEditing
+	override.
+	* sample/CustomCellRenderer.cs: updated signatures to reflect new
+	code.
+
+2004-06-02  Vladimir Vukicevic  <vladimir@pobox.com>
+
+	* gdk/Pixbuf.custom : Pixels prop isn't unsafe
+
+2004-06-02  Mike Kestner  <mkestner@ximian.com>
+
+	* generator/Field.cs : add field hiding, for manual impl.
+	* generator/StructBase.cs : support disable_new, for manual impl.
 
 2004-06-01  Jeroen Zwartepoorte  <jerone@xs4all.nl>
 
