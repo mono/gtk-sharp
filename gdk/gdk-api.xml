@@ -435,6 +435,8 @@
       <member cname="GDK_WINDOW_STATE_MAXIMIZED" name="Maximized" value="1 &lt;&lt; 2" />
       <member cname="GDK_WINDOW_STATE_STICKY" name="Sticky" value="1 &lt;&lt; 3" />
       <member cname="GDK_WINDOW_STATE_FULLSCREEN" name="Fullscreen" value="1 &lt;&lt; 4" />
+      <member cname="GDK_WINDOW_STATE_ABOVE" name="Above" value="1 &lt;&lt; 5" />
+      <member cname="GDK_WINDOW_STATE_BELOW" name="Below" value="1 &lt;&lt; 6" />
     </enum>
     <enum name="WindowType" cname="GdkWindowType" type="enum">
       <member cname="GDK_WINDOW_ROOT" name="Root" />
@@ -632,6 +634,9 @@
       <field cname="core_pointer" type="GdkDevice*" />
       <field cname="pointer_hooks" type="const-GdkDisplayPointerHooks*" />
       <field cname="closed" bits="1" type="guint" />
+      <field cname="double_click_distance" type="guint" />
+      <field cname="button_x" array_len="2" type="gint" />
+      <field cname="button_y" array_len="2" type="gint" />
       <signal name="Closed" cname="closed" when="LAST">
         <return-type type="void" />
         <parameters>
@@ -653,17 +658,33 @@
       <method name="Close" cname="gdk_display_close">
         <return-type type="void" />
       </method>
+      <method name="Flush" cname="gdk_display_flush">
+        <return-type type="void" />
+      </method>
       <method name="GetCorePointer" cname="gdk_display_get_core_pointer">
         <return-type type="GdkDevice*" />
       </method>
       <method name="GetDefault" cname="gdk_display_get_default" shared="true">
         <return-type type="GdkDisplay*" />
       </method>
+      <method name="GetDefaultCursorSize" cname="gdk_display_get_default_cursor_size">
+        <return-type type="guint" />
+      </method>
+      <method name="GetDefaultGroup" cname="gdk_display_get_default_group">
+        <return-type type="GdkWindow*" />
+      </method>
       <method name="GetDefaultScreen" cname="gdk_display_get_default_screen">
         <return-type type="GdkScreen*" />
       </method>
       <method name="GetEvent" cname="gdk_display_get_event">
         <return-type type="GdkEvent*" />
+      </method>
+      <method name="GetMaximalCursorSize" cname="gdk_display_get_maximal_cursor_size">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="guint*" name="width" />
+          <parameter type="guint*" name="height" />
+        </parameters>
       </method>
       <method name="GetNScreens" cname="gdk_display_get_n_screens">
         <return-type type="gint" />
@@ -732,6 +753,12 @@
           <parameter type="GdkEvent*" name="event" />
         </parameters>
       </method>
+      <method name="SetDoubleClickDistance" cname="gdk_display_set_double_click_distance">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="guint" name="distance" />
+        </parameters>
+      </method>
       <method name="SetDoubleClickTime" cname="gdk_display_set_double_click_time">
         <return-type type="void" />
         <parameters>
@@ -743,6 +770,12 @@
         <parameters>
           <parameter type="const-GdkDisplayPointerHooks*" name="new_hooks" />
         </parameters>
+      </method>
+      <method name="SupportsCursorAlpha" cname="gdk_display_supports_cursor_alpha">
+        <return-type type="gboolean" />
+      </method>
+      <method name="SupportsCursorColor" cname="gdk_display_supports_cursor_color">
+        <return-type type="gboolean" />
       </method>
       <method name="Sync" cname="gdk_display_sync">
         <return-type type="void" />
@@ -894,8 +927,8 @@
           <parameter type="gint" name="x" />
           <parameter type="gint" name="y" />
           <parameter type="PangoLayoutLine*" name="line" />
-          <parameter type="GdkColor*" name="foreground" />
-          <parameter type="GdkColor*" name="background" />
+          <parameter type="const-GdkColor*" name="foreground" />
+          <parameter type="const-GdkColor*" name="background" />
         </parameters>
       </method>
       <method name="DrawLayoutWithColors" cname="gdk_draw_layout_with_colors">
@@ -905,8 +938,8 @@
           <parameter type="gint" name="x" />
           <parameter type="gint" name="y" />
           <parameter type="PangoLayout*" name="layout" />
-          <parameter type="GdkColor*" name="foreground" />
-          <parameter type="GdkColor*" name="background" />
+          <parameter type="const-GdkColor*" name="foreground" />
+          <parameter type="const-GdkColor*" name="background" />
         </parameters>
       </method>
       <method name="DrawLine" cname="gdk_draw_line">
@@ -1043,6 +1076,18 @@
           <parameter type="gint" name="nsegs" />
         </parameters>
       </method>
+      <method name="CopyToImage" cname="gdk_drawable_copy_to_image">
+        <return-type type="GdkImage*" />
+        <parameters>
+          <parameter type="GdkImage*" name="image" />
+          <parameter type="gint" name="src_x" />
+          <parameter type="gint" name="src_y" />
+          <parameter type="gint" name="dest_x" />
+          <parameter type="gint" name="dest_y" />
+          <parameter type="gint" name="width" />
+          <parameter type="gint" name="height" />
+        </parameters>
+      </method>
       <method name="GetClipRegion" cname="gdk_drawable_get_clip_region">
         <return-type type="GdkRegion*" />
       </method>
@@ -1139,7 +1184,7 @@
       <method name="SetBackground" cname="gdk_gc_set_background">
         <return-type type="void" />
         <parameters>
-          <parameter type="GdkColor*" name="color" />
+          <parameter type="const-GdkColor*" name="color" />
         </parameters>
       </method>
       <method name="SetClipMask" cname="gdk_gc_set_clip_mask">
@@ -1196,7 +1241,7 @@
       <method name="SetForeground" cname="gdk_gc_set_foreground">
         <return-type type="void" />
         <parameters>
-          <parameter type="GdkColor*" name="color" />
+          <parameter type="const-GdkColor*" name="color" />
         </parameters>
       </method>
       <method name="SetFunction" cname="gdk_gc_set_function">
@@ -1217,13 +1262,13 @@
       <method name="SetRgbBgColor" cname="gdk_gc_set_rgb_bg_color">
         <return-type type="void" />
         <parameters>
-          <parameter type="GdkColor*" name="color" />
+          <parameter type="const-GdkColor*" name="color" />
         </parameters>
       </method>
       <method name="SetRgbFgColor" cname="gdk_gc_set_rgb_fg_color">
         <return-type type="void" />
         <parameters>
-          <parameter type="GdkColor*" name="color" />
+          <parameter type="const-GdkColor*" name="color" />
         </parameters>
       </method>
       <method name="SetStipple" cname="gdk_gc_set_stipple">
@@ -1380,7 +1425,7 @@
           <parameter type="GdkDrawable*" name="drawable" />
           <parameter type="GdkColormap*" name="colormap" />
           <parameter type="GdkBitmap**" name="mask" />
-          <parameter type="GdkColor*" name="transparent_color" />
+          <parameter type="const-GdkColor*" name="transparent_color" />
           <parameter type="const-gchar*" name="filename" />
         </parameters>
       </method>
@@ -1390,7 +1435,7 @@
           <parameter type="GdkDrawable*" name="drawable" />
           <parameter type="GdkColormap*" name="colormap" />
           <parameter type="GdkBitmap**" name="mask" />
-          <parameter type="GdkColor*" name="transparent_color" />
+          <parameter type="const-GdkColor*" name="transparent_color" />
           <parameter type="gchar**" name="data" />
         </parameters>
       </method>
@@ -1402,8 +1447,8 @@
           <parameter type="gint" name="width" />
           <parameter type="gint" name="height" />
           <parameter type="gint" name="depth" />
-          <parameter type="GdkColor*" name="fg" />
-          <parameter type="GdkColor*" name="bg" />
+          <parameter type="const-GdkColor*" name="fg" />
+          <parameter type="const-GdkColor*" name="bg" />
         </parameters>
       </method>
       <method name="CreateFromXpm" cname="gdk_pixmap_create_from_xpm" shared="true">
@@ -1411,7 +1456,7 @@
         <parameters>
           <parameter type="GdkDrawable*" name="drawable" />
           <parameter type="GdkBitmap**" name="mask" />
-          <parameter type="GdkColor*" name="transparent_color" />
+          <parameter type="const-GdkColor*" name="transparent_color" />
           <parameter type="const-gchar*" name="filename" />
         </parameters>
       </method>
@@ -1420,7 +1465,7 @@
         <parameters>
           <parameter type="GdkDrawable*" name="drawable" />
           <parameter type="GdkBitmap**" name="mask" />
-          <parameter type="GdkColor*" name="transparent_color" />
+          <parameter type="const-GdkColor*" name="transparent_color" />
           <parameter type="gchar**" name="data" />
         </parameters>
       </method>
@@ -1769,6 +1814,9 @@
           <parameter type="gint*" name="depth" />
         </parameters>
       </method>
+      <method name="GetGroup" cname="gdk_window_get_group">
+        <return-type type="GdkWindow*" />
+      </method>
       <method name="GetInternalPaintInfo" cname="gdk_window_get_internal_paint_info">
         <return-type type="void" />
         <parameters>
@@ -1962,6 +2010,12 @@
           <parameter type="gint" name="dy" />
         </parameters>
       </method>
+      <method name="SetAcceptFocus" cname="gdk_window_set_accept_focus">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="gboolean" name="accept_focus" />
+        </parameters>
+      </method>
       <method name="SetBackPixmap" cname="gdk_window_set_back_pixmap">
         <return-type type="void" />
         <parameters>
@@ -1972,7 +2026,7 @@
       <method name="SetBackground" cname="gdk_window_set_background">
         <return-type type="void" />
         <parameters>
-          <parameter type="GdkColor*" name="color" />
+          <parameter type="const-GdkColor*" name="color" />
         </parameters>
       </method>
       <method name="SetChildShapes" cname="gdk_window_set_child_shapes">
@@ -2039,6 +2093,18 @@
         <return-type type="void" />
         <parameters>
           <parameter type="const-gchar*" name="name" />
+        </parameters>
+      </method>
+      <method name="SetKeepAbove" cname="gdk_window_set_keep_above">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="gboolean" name="setting" />
+        </parameters>
+      </method>
+      <method name="SetKeepBelow" cname="gdk_window_set_keep_below">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="gboolean" name="setting" />
         </parameters>
       </method>
       <method name="SetModalHint" cname="gdk_window_set_modal_hint">
@@ -2219,12 +2285,20 @@
           <parameter type="GdkCursorType" name="cursor_type" />
         </parameters>
       </constructor>
+      <constructor cname="gdk_cursor_new_from_pixbuf">
+        <parameters>
+          <parameter type="GdkDisplay*" name="display" />
+          <parameter type="GdkPixbuf*" name="pixbuf" />
+          <parameter type="gint" name="x" />
+          <parameter type="gint" name="y" />
+        </parameters>
+      </constructor>
       <constructor cname="gdk_cursor_new_from_pixmap">
         <parameters>
           <parameter type="GdkPixmap*" name="source" />
           <parameter type="GdkPixmap*" name="mask" />
-          <parameter type="GdkColor*" name="fg" />
-          <parameter type="GdkColor*" name="bg" />
+          <parameter type="const-GdkColor*" name="fg" />
+          <parameter type="const-GdkColor*" name="bg" />
           <parameter type="gint" name="x" />
           <parameter type="gint" name="y" />
         </parameters>
@@ -2727,6 +2801,7 @@
       <field cname="input_only" bits="1" type="guint" />
       <field cname="modal_hint" bits="1" type="guint" />
       <field cname="destroyed" bits="2" type="guint" />
+      <field cname="accept_focus" bits="1" type="guint" />
       <field cname="event_mask" type="GdkEventMask" />
       <method name="GetType" cname="gdk_window_object_get_type" shared="true">
         <return-type type="GType" />
@@ -3227,102 +3302,6 @@
       </method>
     </class>
     <class name="Pixbuf" cname="GdkPixbuf_" hidden="1">
-      <method name="GetFromDrawable" cname="gdk_pixbuf_get_from_drawable" shared="true">
-        <return-type type="GdkPixbuf*" />
-        <parameters>
-          <parameter type="GdkPixbuf*" name="dest" />
-          <parameter type="GdkDrawable*" name="src" />
-          <parameter type="GdkColormap*" name="cmap" />
-          <parameter type="int" name="src_x" />
-          <parameter type="int" name="src_y" />
-          <parameter type="int" name="dest_x" />
-          <parameter type="int" name="dest_y" />
-          <parameter type="int" name="width" />
-          <parameter type="int" name="height" />
-        </parameters>
-      </method>
-      <method name="GetFromImage" cname="gdk_pixbuf_get_from_image" shared="true">
-        <return-type type="GdkPixbuf*" />
-        <parameters>
-          <parameter type="GdkPixbuf*" name="dest" />
-          <parameter type="GdkImage*" name="src" />
-          <parameter type="GdkColormap*" name="cmap" />
-          <parameter type="int" name="src_x" />
-          <parameter type="int" name="src_y" />
-          <parameter type="int" name="dest_x" />
-          <parameter type="int" name="dest_y" />
-          <parameter type="int" name="width" />
-          <parameter type="int" name="height" />
-        </parameters>
-      </method>
-      <method name="RenderPixmapAndMask" cname="gdk_pixbuf_render_pixmap_and_mask" shared="true">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="GdkPixbuf*" name="pixbuf" />
-          <parameter type="GdkPixmap**" name="pixmap_return" />
-          <parameter type="GdkBitmap**" name="mask_return" />
-          <parameter type="int" name="alpha_threshold" />
-        </parameters>
-      </method>
-      <method name="RenderPixmapAndMaskForColormap" cname="gdk_pixbuf_render_pixmap_and_mask_for_colormap" shared="true">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="GdkPixbuf*" name="pixbuf" />
-          <parameter type="GdkColormap*" name="colormap" />
-          <parameter type="GdkPixmap**" name="pixmap_return" />
-          <parameter type="GdkBitmap**" name="mask_return" />
-          <parameter type="int" name="alpha_threshold" />
-        </parameters>
-      </method>
-      <method name="RenderThresholdAlpha" cname="gdk_pixbuf_render_threshold_alpha" shared="true">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="GdkPixbuf*" name="pixbuf" />
-          <parameter type="GdkBitmap*" name="bitmap" />
-          <parameter type="int" name="src_x" />
-          <parameter type="int" name="src_y" />
-          <parameter type="int" name="dest_x" />
-          <parameter type="int" name="dest_y" />
-          <parameter type="int" name="width" />
-          <parameter type="int" name="height" />
-          <parameter type="int" name="alpha_threshold" />
-        </parameters>
-      </method>
-      <method name="RenderToDrawable" cname="gdk_pixbuf_render_to_drawable" shared="true">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="GdkPixbuf*" name="pixbuf" />
-          <parameter type="GdkDrawable*" name="drawable" />
-          <parameter type="GdkGC*" name="gc" />
-          <parameter type="int" name="src_x" />
-          <parameter type="int" name="src_y" />
-          <parameter type="int" name="dest_x" />
-          <parameter type="int" name="dest_y" />
-          <parameter type="int" name="width" />
-          <parameter type="int" name="height" />
-          <parameter type="GdkRgbDither" name="dither" />
-          <parameter type="int" name="x_dither" />
-          <parameter type="int" name="y_dither" />
-        </parameters>
-      </method>
-      <method name="RenderToDrawableAlpha" cname="gdk_pixbuf_render_to_drawable_alpha" shared="true">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="GdkPixbuf*" name="pixbuf" />
-          <parameter type="GdkDrawable*" name="drawable" />
-          <parameter type="int" name="src_x" />
-          <parameter type="int" name="src_y" />
-          <parameter type="int" name="dest_x" />
-          <parameter type="int" name="dest_y" />
-          <parameter type="int" name="width" />
-          <parameter type="int" name="height" />
-          <parameter type="GdkPixbufAlphaMode" name="alpha_mode" />
-          <parameter type="int" name="alpha_threshold" />
-          <parameter type="GdkRgbDither" name="dither" />
-          <parameter type="int" name="x_dither" />
-          <parameter type="int" name="y_dither" />
-        </parameters>
-      </method>
     </class>
     <class name="Pointer" cname="GdkPointer_">
       <method name="Grab" cname="gdk_pointer_grab" shared="true">
@@ -3507,6 +3486,47 @@
         </parameters>
       </method>
     </class>
+    <class name="Spawn" cname="GdkSpawn_">
+      <method name="CommandLineOnScreen" cname="gdk_spawn_command_line_on_screen" shared="true">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="GdkScreen*" name="screen" />
+          <parameter type="const-gchar*" name="command_line" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="OnScreen" cname="gdk_spawn_on_screen" shared="true">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="GdkScreen*" name="screen" />
+          <parameter type="const-gchar*" name="working_directory" />
+          <parameter type="gchar**" name="argv" />
+          <parameter type="gchar**" name="envp" />
+          <parameter type="GSpawnFlags" name="flags" />
+          <parameter type="GSpawnChildSetupFunc" name="child_setup" />
+          <parameter type="gpointer" name="user_data" />
+          <parameter type="gint*" name="child_pid" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="OnScreenWithPipes" cname="gdk_spawn_on_screen_with_pipes" shared="true">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="GdkScreen*" name="screen" />
+          <parameter type="const-gchar*" name="working_directory" />
+          <parameter type="gchar**" name="argv" />
+          <parameter type="gchar**" name="envp" />
+          <parameter type="GSpawnFlags" name="flags" />
+          <parameter type="GSpawnChildSetupFunc" name="child_setup" />
+          <parameter type="gpointer" name="user_data" />
+          <parameter type="gint*" name="child_pid" />
+          <parameter type="gint*" name="standard_input" />
+          <parameter type="gint*" name="standard_output" />
+          <parameter type="gint*" name="standard_error" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+    </class>
     <class name="Text" cname="GdkText_">
       <method name="PropertyToTextList" cname="gdk_text_property_to_text_list" shared="true">
         <return-type type="gint" />
@@ -3560,6 +3580,13 @@
       </method>
       <method name="Leave" cname="gdk_threads_leave" shared="true">
         <return-type type="void" />
+      </method>
+      <method name="SetLockFunctions" cname="gdk_threads_set_lock_functions" shared="true">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GCallback" name="enter_fn" />
+          <parameter type="GCallback" name="leave_fn" />
+        </parameters>
       </method>
     </class>
   </namespace>
@@ -3617,7 +3644,24 @@
         <parameter type="gpointer" name="data" />
       </parameters>
     </callback>
+    <callback name="PixbufSaveFunc" cname="GdkPixbufSaveFunc">
+      <return-type type="gboolean" />
+      <parameters>
+        <parameter type="const-gchar*" name="buf" />
+        <parameter type="gsize" name="count" />
+        <parameter type="GError**" name="error" />
+        <parameter type="gpointer" name="data" />
+      </parameters>
+    </callback>
     <object name="Pixbuf" cname="GdkPixbuf" parent="GObject">
+      <property name="NChannels" cname="n_channels" type="gint" readable="true" writeable="true" construct-only="true" />
+      <property name="Colorspace" cname="colorspace" type="GdkColorspace" readable="true" writeable="true" construct-only="true" />
+      <property name="HasAlpha" cname="has_alpha" type="gboolean" readable="true" writeable="true" construct-only="true" />
+      <property name="BitsPerSample" cname="bits_per_sample" type="gint" readable="true" writeable="true" construct-only="true" />
+      <property name="Width" cname="width" type="gint" readable="true" writeable="true" construct-only="true" />
+      <property name="Height" cname="height" type="gint" readable="true" writeable="true" construct-only="true" />
+      <property name="Rowstride" cname="rowstride" type="gint" readable="true" writeable="true" construct-only="true" />
+      <property name="Pixels" cname="pixels" type="gpointer" readable="true" writeable="true" construct-only="true" hidden="1" />
       <method name="AddAlpha" cname="gdk_pixbuf_add_alpha" hidden="1">
         <return-type type="GdkPixbuf*" />
         <parameters>
@@ -3714,34 +3758,16 @@
       <method name="GetColorspace" cname="gdk_pixbuf_get_colorspace">
         <return-type type="GdkColorspace" />
       </method>
+      <method name="GetFileInfo" cname="gdk_pixbuf_get_file_info" shared="true">
+        <return-type type="GdkPixbufFormat*" />
+        <parameters>
+          <parameter type="const-gchar*" name="filename" />
+          <parameter type="gint*" name="width" />
+          <parameter type="gint*" name="height" />
+        </parameters>
+      </method>
       <method name="GetFormats" cname="gdk_pixbuf_get_formats" shared="true">
         <return-type type="GSList*" />
-      </method>
-      <method name="GetFromDrawable" cname="gdk_pixbuf_get_from_drawable" library="libgdk-win32-2.0-0.dll">
-        <return-type type="GdkPixbuf*" />
-        <parameters>
-          <parameter type="GdkDrawable*" name="src" />
-          <parameter type="GdkColormap*" name="cmap" />
-          <parameter type="int" name="src_x" />
-          <parameter type="int" name="src_y" />
-          <parameter type="int" name="dest_x" />
-          <parameter type="int" name="dest_y" />
-          <parameter type="int" name="width" />
-          <parameter type="int" name="height" />
-        </parameters>
-      </method>
-      <method name="GetFromImage" cname="gdk_pixbuf_get_from_image" library="libgdk-win32-2.0-0.dll">
-        <return-type type="GdkPixbuf*" />
-        <parameters>
-          <parameter type="GdkImage*" name="src" />
-          <parameter type="GdkColormap*" name="cmap" />
-          <parameter type="int" name="src_x" />
-          <parameter type="int" name="src_y" />
-          <parameter type="int" name="dest_x" />
-          <parameter type="int" name="dest_y" />
-          <parameter type="int" name="width" />
-          <parameter type="int" name="height" />
-        </parameters>
       </method>
       <method name="GetHasAlpha" cname="gdk_pixbuf_get_has_alpha">
         <return-type type="gboolean" />
@@ -3798,6 +3824,14 @@
           <parameter type="GError**" name="error" />
         </parameters>
       </constructor>
+      <constructor cname="gdk_pixbuf_new_from_file_at_size">
+        <parameters>
+          <parameter type="const-char*" name="filename" />
+          <parameter type="int" name="width" />
+          <parameter type="int" name="height" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </constructor>
       <constructor cname="gdk_pixbuf_new_from_inline">
         <parameters>
           <parameter type="gint" name="data_length" />
@@ -3820,69 +3854,6 @@
           <parameter type="int" name="height" />
         </parameters>
       </constructor>
-      <method name="RenderPixmapAndMask" cname="gdk_pixbuf_render_pixmap_and_mask" library="libgdk-win32-2.0-0.dll">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="GdkPixmap**" name="pixmap_return" />
-          <parameter type="GdkBitmap**" name="mask_return" />
-          <parameter type="int" name="alpha_threshold" />
-        </parameters>
-      </method>
-      <method name="RenderPixmapAndMaskForColormap" cname="gdk_pixbuf_render_pixmap_and_mask_for_colormap" library="libgdk-win32-2.0-0.dll">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="GdkColormap*" name="colormap" />
-          <parameter type="GdkPixmap**" name="pixmap_return" />
-          <parameter type="GdkBitmap**" name="mask_return" />
-          <parameter type="int" name="alpha_threshold" />
-        </parameters>
-      </method>
-      <method name="RenderThresholdAlpha" cname="gdk_pixbuf_render_threshold_alpha" library="libgdk-win32-2.0-0.dll">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="GdkBitmap*" name="bitmap" />
-          <parameter type="int" name="src_x" />
-          <parameter type="int" name="src_y" />
-          <parameter type="int" name="dest_x" />
-          <parameter type="int" name="dest_y" />
-          <parameter type="int" name="width" />
-          <parameter type="int" name="height" />
-          <parameter type="int" name="alpha_threshold" />
-        </parameters>
-      </method>
-      <method name="RenderToDrawable" cname="gdk_pixbuf_render_to_drawable" library="libgdk-win32-2.0-0.dll">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="GdkDrawable*" name="drawable" />
-          <parameter type="GdkGC*" name="gc" />
-          <parameter type="int" name="src_x" />
-          <parameter type="int" name="src_y" />
-          <parameter type="int" name="dest_x" />
-          <parameter type="int" name="dest_y" />
-          <parameter type="int" name="width" />
-          <parameter type="int" name="height" />
-          <parameter type="GdkRgbDither" name="dither" />
-          <parameter type="int" name="x_dither" />
-          <parameter type="int" name="y_dither" />
-        </parameters>
-      </method>
-      <method name="RenderToDrawableAlpha" cname="gdk_pixbuf_render_to_drawable_alpha" library="libgdk-win32-2.0-0.dll">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="GdkDrawable*" name="drawable" />
-          <parameter type="int" name="src_x" />
-          <parameter type="int" name="src_y" />
-          <parameter type="int" name="dest_x" />
-          <parameter type="int" name="dest_y" />
-          <parameter type="int" name="width" />
-          <parameter type="int" name="height" />
-          <parameter type="GdkPixbufAlphaMode" name="alpha_mode" />
-          <parameter type="int" name="alpha_threshold" />
-          <parameter type="GdkRgbDither" name="dither" />
-          <parameter type="int" name="x_dither" />
-          <parameter type="int" name="y_dither" />
-        </parameters>
-      </method>
       <method name="SaturateAndPixelate" cname="gdk_pixbuf_saturate_and_pixelate">
         <return-type type="void" />
         <parameters>
@@ -3898,6 +3869,48 @@
           <parameter type="const-char*" name="type" />
           <parameter type="GError**" name="error" />
           <parameter ellipsis="true" />
+        </parameters>
+      </method>
+      <method name="SaveToBuffer" cname="gdk_pixbuf_save_to_buffer">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="gchar**" name="buffer" />
+          <parameter type="gsize*" name="buffer_size" />
+          <parameter type="const-char*" name="type" />
+          <parameter type="GError**" name="error" />
+          <parameter ellipsis="true" />
+        </parameters>
+      </method>
+      <method name="SaveToBufferv" cname="gdk_pixbuf_save_to_bufferv">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="gchar**" name="buffer" />
+          <parameter type="gsize*" name="buffer_size" />
+          <parameter type="const-char*" name="type" />
+          <parameter type="char**" name="option_keys" />
+          <parameter type="char**" name="option_values" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="SaveToCallback" cname="gdk_pixbuf_save_to_callback">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="GdkPixbufSaveFunc" name="save_func" />
+          <parameter type="gpointer" name="user_data" />
+          <parameter type="const-char*" name="type" />
+          <parameter type="GError**" name="error" />
+          <parameter ellipsis="true" />
+        </parameters>
+      </method>
+      <method name="SaveToCallbackv" cname="gdk_pixbuf_save_to_callbackv">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="GdkPixbufSaveFunc" name="save_func" />
+          <parameter type="gpointer" name="user_data" />
+          <parameter type="const-char*" name="type" />
+          <parameter type="char**" name="option_keys" />
+          <parameter type="char**" name="option_values" />
+          <parameter type="GError**" name="error" />
         </parameters>
       </method>
       <method name="Savev" cname="gdk_pixbuf_savev">
@@ -3931,6 +3944,67 @@
           <parameter type="int" name="dest_width" />
           <parameter type="int" name="dest_height" />
           <parameter type="GdkInterpType" name="interp_type" />
+        </parameters>
+      </method>
+      <method name="GetFromDrawable" cname="gdk_pixbuf_get_from_drawable" shared="true" library="libgdk-win32-2.0-0.dll">
+        <return-type type="GdkPixbuf*" />
+        <parameters>
+          <parameter type="GdkPixbuf*" name="dest" />
+          <parameter type="GdkDrawable*" name="src" />
+          <parameter type="GdkColormap*" name="cmap" />
+          <parameter type="int" name="src_x" />
+          <parameter type="int" name="src_y" />
+          <parameter type="int" name="dest_x" />
+          <parameter type="int" name="dest_y" />
+          <parameter type="int" name="width" />
+          <parameter type="int" name="height" />
+        </parameters>
+      </method>
+      <method name="GetFromImage" cname="gdk_pixbuf_get_from_image" shared="true" library="libgdk-win32-2.0-0.dll">
+        <return-type type="GdkPixbuf*" />
+        <parameters>
+          <parameter type="GdkPixbuf*" name="dest" />
+          <parameter type="GdkImage*" name="src" />
+          <parameter type="GdkColormap*" name="cmap" />
+          <parameter type="int" name="src_x" />
+          <parameter type="int" name="src_y" />
+          <parameter type="int" name="dest_x" />
+          <parameter type="int" name="dest_y" />
+          <parameter type="int" name="width" />
+          <parameter type="int" name="height" />
+        </parameters>
+      </method>
+      <method name="RenderPixmapAndMask" cname="gdk_pixbuf_render_pixmap_and_mask" shared="true" library="libgdk-win32-2.0-0.dll">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GdkPixbuf*" name="pixbuf" />
+          <parameter type="GdkPixmap**" name="pixmap_return" />
+          <parameter type="GdkBitmap**" name="mask_return" />
+          <parameter type="int" name="alpha_threshold" />
+        </parameters>
+      </method>
+      <method name="RenderPixmapAndMaskForColormap" cname="gdk_pixbuf_render_pixmap_and_mask_for_colormap" shared="true" library="libgdk-win32-2.0-0.dll">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GdkPixbuf*" name="pixbuf" />
+          <parameter type="GdkColormap*" name="colormap" />
+          <parameter type="GdkPixmap**" name="pixmap_return" />
+          <parameter type="GdkBitmap**" name="mask_return" />
+          <parameter type="int" name="alpha_threshold" />
+        </parameters>
+      </method>
+      <method name="RenderThresholdAlpha" cname="gdk_pixbuf_render_threshold_alpha" shared="true" library="libgdk-win32-2.0-0.dll">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GdkPixbuf*" name="pixbuf" />
+          <parameter type="GdkBitmap*" name="bitmap" />
+          <parameter type="int" name="src_x" />
+          <parameter type="int" name="src_y" />
+          <parameter type="int" name="dest_x" />
+          <parameter type="int" name="dest_y" />
+          <parameter type="int" name="width" />
+          <parameter type="int" name="height" />
+          <parameter type="int" name="alpha_threshold" />
         </parameters>
       </method>
     </object>
@@ -4090,6 +4164,12 @@
         <return-type type="GType" />
       </method>
       <constructor cname="gdk_pixbuf_loader_new" />
+      <constructor cname="gdk_pixbuf_loader_new_with_mime_type">
+        <parameters>
+          <parameter type="const-char*" name="mime_type" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </constructor>
       <constructor cname="gdk_pixbuf_loader_new_with_type">
         <parameters>
           <parameter type="const-char*" name="image_type" />

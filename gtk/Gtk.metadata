@@ -51,6 +51,7 @@
   <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='RowInserted']" name="name">EmitRowInserted</attr>
   <attr path="/api/namespace/interface[@cname='GtkTreeModel']/method[@name='RowsReordered']" name="name">EmitRowsReordered</attr>
   <attr path="/api/namespace/interface[@cname='GtkTreeSortable']/method[@name='SortColumnChanged']" name="name">ChangeSortColumn</attr>
+  <attr path="/api/namespace/object[@cname='GtkAction']/signal[@name='Activate']" name="name">Activated</attr>
   <attr path="/api/namespace/object[@cname='GtkAdjustment']/method[@name='Changed']" name="name">Change</attr>
   <attr path="/api/namespace/object[@cname='GtkAdjustment']/method[@name='ValueChanged']" name="name">ChangeValue</attr>
   <attr path="/api/namespace/object[@cname='GtkArrow']/method[@name='Set']" name="hidden">1</attr>
@@ -65,6 +66,7 @@
   <attr path="/api/namespace/object[@cname='GtkButton']/signal[@name='Enter']" name="name">Entered</attr>
   <attr path="/api/namespace/object[@cname='GtkButton']/signal[@name='Leave']" name="name">Left</attr>
   <attr path="/api/namespace/object[@cname='GtkCalendar']/method[@name='DisplayOptions']" name="name">SetDisplayOptions</attr>
+  <attr path="/api/namespace/object[@cname='GtkCellRenderer']/method[@name='EditingCanceled']" name="name">CancelEditing</attr>
   <attr path="/api/namespace/object[@cname='GtkCheckButton']/constructor[@cname='gtk_check_button_new_with_mnemonic']" name="preferred">1</attr>
   <attr path="/api/namespace/object[@cname='GtkCheckMenuItem']/constructor[@cname='gtk_check_menu_item_new_with_mnemonic']" name="preferred">1</attr>
   <attr path="/api/namespace/object[@cname='GtkCheckMenuItem']/method[@name='Toggled']" name="name">Toggle</attr>
@@ -86,13 +88,14 @@
   <attr path="/api/namespace/object[@cname='GtkEntry']/signal[@name='CopyClipboard']" name="name">ClipboardCopied</attr>
   <attr path="/api/namespace/object[@cname='GtkEntry']/signal[@name='CutClipboard']" name="name">ClipboardCut</attr>
   <attr path="/api/namespace/object[@cname='GtkEntry']/signal[@name='PasteClipboard']" name="name">ClipboardPasted</attr>
-  <attr path="/api/namespace/object[@cname='GtkFileSelection']/method[@name='GetSelections']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkExpander']/signal[@name='Activate']" name="name">Activated</attr>
   <attr path="/api/namespace/object[@cname='GtkFrame']/method[@name='GetLabelAlign']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkFrame']/method[@name='SetLabelAlign']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkFrame']" name="disabledefaultconstructor">1</attr>
   <attr path="/api/namespace/object[@cname='GtkHandleBox']/property[@name='ShadowType']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkHScale']/constructor[@cname='gtk_hscale_new']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkHScrollbar']/constructor[@cname='gtk_hscrollbar_new']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkIconTheme']/method[@name='GetSearchPath']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkImageMenuItem']/constructor[@cname='gtk_image_menu_item_new_with_mnemonic']" name="preferred">1</attr>
   <attr path="/api/namespace/object[@cname='GtkImage']/method[@name='SetFromPixmap']/*/*[@type='GdkBitmap*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkIMContext']/signal[@name='DeleteSurrounding']" name="name">SurroundingDeleted</attr>
@@ -132,6 +135,7 @@
   <attr path="/api/namespace/object[@cname='GtkMenu']/method[@name='Popup']/*/*[@type='GtkMenuPositionFunc']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkMenu']/method[@name='Popup']/*/*[@type='GtkWidget*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkMenu']/method[@name='SetScreen']" name="new_flag">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkMenuShell']/signal[@name='Cancel']" name="name">Canceled</attr>
   <attr path="/api/namespace/object[@cname='GtkMenuShell']/signal[@name='Deactivate']" name="name">Deactivated</attr>
   <attr path="/api/namespace/object[@cname='GtkMessageDialog']/constructor[@cname='gtk_message_dialog_new']/*/*[@type='GtkWindow*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkObject']/signal[@name='Destroy']" name="name">Destroyed</attr>
@@ -190,9 +194,11 @@
   <attr path="/api/namespace/object[@cname='GtkTextView']/method[@name='GetLineAtY']/*/*[@type='GtkTextIter*']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkTextView']/method[@name='GetIterLocation']/*/*[@type='GdkRectangle*']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkTextView']/signal[@name='SetScrollAdjustments']" name="name">ScrollAdjustmentsSet</attr>
+  <attr path="/api/namespace/object[@cname='GtkToggleAction']/method[@name='Toggled']" name="name">Toggle</attr>
   <attr path="/api/namespace/object[@cname='GtkToggleButton']/constructor[@cname='gtk_toggle_button_new_with_mnemonic']" name="preferred">1</attr>
   <attr path="/api/namespace/object[@cname='GtkToggleButton']/method[@name='Toggled']" name="name">Toggle</attr>
   <attr path="/api/namespace/object[@cname='GtkToolbar']/method[@name='AppendItem']/*/*[@type='gpointer']" name="null_ok">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkToolItem']/signal[@name='SetTooltip']" name="name">TooltipSet</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeModelSort']/method[@name='ConvertChildIterToIter']/*/*[@name='sort_iter']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeModelSort']/method[@name='ConvertIterToChildIter']/*/*[@name='child_iter']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeSelection']/method[@name='GetSelected']/*/*" name="pass_as">out</attr>
@@ -207,7 +213,12 @@
   <attr path="/api/namespace/object[@cname='GtkTreeStore']/method[@name='Prepend']/*/*[@name='iter']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeStore']/method[@name='Remove']/*/*[@name='iter']" name="pass_as">ref</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeStore']/method[@name='SetColumnTypes']/*/*[@name='types']" name="array">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkTreeViewColumn']/method[@name='AddAttribute']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkTreeViewColumn']/method[@name='Clear']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkTreeViewColumn']/method[@name='ClearAttributes']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeViewColumn']/method[@name='Clicked']" name="name">Click</attr>
+  <attr path="/api/namespace/object[@cname='GtkTreeViewColumn']/method[@name='PackEnd']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkTreeViewColumn']/method[@name='PackStart']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeView']/constructor[@cname='gtk_tree_view_new_with_model']/*/*[@type='GtkTreeModel*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeView']/method[@name='EnableModelDragDest']/*/*[@name='targets']" name="array">1</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeView']/method[@name='EnableModelDragSource']/*/*[@name='targets']" name="array">1</attr>
@@ -254,6 +265,7 @@
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='SetStyle']/*/*[@type='GtkStyle*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='SizeRequest']/*/*[@name='requisition']" name="pass_as">ref</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='Unref']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='CanActivateAccel']" name="name">AccelCanActivate</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='ChildNotify']" name="name">ChildNotified</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='Event']" name="name">WidgetEvent</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='Focus']" name="name">Focused</attr>
@@ -271,6 +283,8 @@
   <attr path="/api/namespace/object[@cname='GtkWindow']/method[@name='GetDefaultSize']/*/*[@type='gint*']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkWindow']/method[@name='GetPosition']/*/*[@type='gint*']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkWindow']/method[@name='GetSize']/*/*[@type='gint*']" name="pass_as">out</attr>
+  <attr path="/api/namespace/object[@cname='GtkWindow']/method[@name='HasToplevelFocus']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkWindow']/method[@name='IsActive']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWindow']/property[@name='Screen']" name="new_flag">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWindow']/signal[@name='ActivateDefault']" name="name">DefaultActivated</attr>
   <attr path="/api/namespace/object[@cname='GtkWindow']/signal[@name='ActivateFocus']" name="name">FocusActivated</attr>

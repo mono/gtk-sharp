@@ -25,14 +25,13 @@
   <attr path="//object[@cname='GdkPixbuf']/constructor[@cname='gdk_pixbuf_new_from_file']" name="preferred">1</attr>
   <attr path="//object[@cname='GdkPixbuf']/constructor[@cname='gdk_pixbuf_new_from_inline']/*/*[@name='data']" name="array">1</attr>
   <attr path="//object[@cname='GdkPixbuf']/constructor[@cname='gdk_pixbuf_new_from_xpm_data']/*/*[@name='data']" name="array">1</attr>
+  <attr path="//object[@cname='GdkPixbuf']/property[@name='Pixels']" name="hidden">1</attr>
   <attr path="//object[@cname='GdkPixbuf']/method[@name='AddAlpha']" name="hidden">1</attr>
   <attr path="//object[@cname='GdkPixbuf']/method[@name='CompositeColorSimple']" name="hidden">1</attr>
   <attr path="//object[@cname='GdkPixbuf']/method[@name='GetFromDrawable']" name="library">libgdk-win32-2.0-0.dll</attr>
   <attr path="//object[@cname='GdkPixbuf']/method[@name='GetFromImage']" name="library">libgdk-win32-2.0-0.dll</attr>
   <attr path="//object[@cname='GdkPixbuf']/method[@name='GetPixels']" name="hidden">1</attr>
   <attr path="//object[@cname='GdkPixbuf']/method[@name='RenderThresholdAlpha']" name="library">libgdk-win32-2.0-0.dll</attr>
-  <attr path="//object[@cname='GdkPixbuf']/method[@name='RenderToDrawable']" name="library">libgdk-win32-2.0-0.dll</attr>
-  <attr path="//object[@cname='GdkPixbuf']/method[@name='RenderToDrawableAlpha']" name="library">libgdk-win32-2.0-0.dll</attr>
   <attr path="//object[@cname='GdkPixbuf']/method[@name='RenderPixmapAndMaskForColormap']" name="library">libgdk-win32-2.0-0.dll</attr>
   <attr path="//object[@cname='GdkPixbuf']/method[@name='RenderPixmapAndMask']" name="library">libgdk-win32-2.0-0.dll</attr>
   <attr path="//object[@cname='GdkPixbuf']/method[@name='ScaleSimple']" name="hidden">1</attr>
@@ -53,5 +52,10 @@
   <attr path="//struct[@cname='GdkPixmapObject']" name="hidden">1</attr>
   <attr path="//struct[@cname='GdkTimeCoord']/field[@cname='axes']" name="array_len">128</attr>
   <attr path="//struct[@cname='GdkWindowObject']" name="hidden">1</attr>
+  <move-node path="/api/namespace/class[@cname='GdkPixbuf_']/method[@name='GetFromDrawable']">/api/namespace/object[@cname='GdkPixbuf']</move-node>
+  <move-node path="/api/namespace/class[@cname='GdkPixbuf_']/method[@name='GetFromImage']">/api/namespace/object[@cname='GdkPixbuf']</move-node>
+  <move-node path="/api/namespace/class[@cname='GdkPixbuf_']/method[@name='RenderPixmapAndMask']">/api/namespace/object[@cname='GdkPixbuf']</move-node>
+  <move-node path="/api/namespace/class[@cname='GdkPixbuf_']/method[@name='RenderPixmapAndMaskForColormap']">/api/namespace/object[@cname='GdkPixbuf']</move-node>
+  <move-node path="/api/namespace/class[@cname='GdkPixbuf_']/method[@name='RenderThresholdAlpha']">/api/namespace/object[@cname='GdkPixbuf']</move-node>
 </metadata>
 

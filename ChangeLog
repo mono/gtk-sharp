@@ -1,3 +1,27 @@
+2004-02-11  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* atk/atk-api.xml: 
+	* gconf/GConf.PropertyEditors/Makefile.in:
+	* gdk/Gdk.metadata:
+	* gdk/gdk-api.xml:
+	* generator/CallbackGen.cs:
+	* gnome/Gnome.metadata:
+	* gnome/gnome-api.xml:
+	* gtk/Adjustment.custom:
+	* gtk/FileSelection.custom:
+	* gtk/FileSystemModel.custom:
+	* gtk/Gtk.metadata:
+	* gtk/IconTheme.custom:
+	* gtk/Paned.custom:
+	* gtk/TreeModelFilter.custom:
+	* gtk/gtk-api.xml:
+	* pango/pango-api.xml:
+	* sample/Actions.cs:
+	* sample/Makefile.in:
+	
+	Updated everything to use gtk 2.3/2.4. Some samples commented out
+	because they use deprecated/changed API. More work to follow.
+
 2004-02-10  Mike Kestner  <mkestner@ximian.com>
 
 	* gconf/GConf.PropertyEditors/PropertyEditorColorPicker.cs :
