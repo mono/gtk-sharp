@@ -751,8 +751,9 @@ class Updater {
 	XmlElement AddDocsParamNode (XmlDocument document, ParameterInfo parameter)
 	{
 		Type param_type = parameter.ParameterType;
+		Type element_type = param_type.GetElementType();
 		XmlElement see_node = document.CreateElement ("see");
-		see_node.SetAttribute ("cref", "T:" + param_type.GetElementType().ToString());
+		see_node.SetAttribute ("cref", "T:" + (element_type == null ? param_type.ToString() : element_type.ToString()));
 
 		XmlElement param = document.CreateElement ("param");
 		param.SetAttribute ("name", parameter.Name);
@@ -1191,7 +1192,6 @@ class Updater {
 			sb.Append ('(');
 
 			int i = 0;
-			string modifier;
 			foreach (ParameterInfo parameter in pi) {
 				bool isPointer = false;
 				if (parameter.ParameterType.IsByRef) {
@@ -1213,7 +1213,6 @@ class Updater {
 
 	string GetParameterModifier (ParameterInfo parameter)
 	{
-		int a = (int) parameter.Attributes;
 		if (parameter.IsOut)
 			return "out ";
 
