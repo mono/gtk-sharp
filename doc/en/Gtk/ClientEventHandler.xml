@@ -1,0 +1,33 @@
+<Type Name="ClientEventHandler" FullName="Gtk.ClientEventHandler">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public sealed delegate void ClientEventHandler (object o, Gtk.ClientEventArgs args);" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <Attributes />
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Docs>
+    <summary>To be added</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.ICloneable</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.Runtime.Serialization.ISerializable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Attributes />
+  <Members />
+  <Parameters>
+    <Parameter Name="o" Type="System.Object" />
+    <Parameter Name="args" Type="Gtk.ClientEventArgs" />
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Void</ReturnType>
+  </ReturnValue>
+</Type>
