@@ -1,5 +1,9 @@
 2004-07-06  Todd Berman  <tberman@off.net>
 
+	* sources/gtk_tree_model_signal_fix.patch: duh, this is the real patch.
+
+2004-07-06  Todd Berman  <tberman@off.net>
+
 	* sources/Makefile.am:
 	* sources/gtk_tree_model_signal_fix.patch: a new hacky patch to fix
 	the signal generation on the tree model structs.
