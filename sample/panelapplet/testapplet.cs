@@ -13,25 +13,22 @@ namespace AppletTest
 		{
 			Gnome.Program p = new Gnome.Program ("CSharpTestApplet", "0.1", Gnome.Modules.UI, argv);
 			AppletFactory.Register (typeof (PanelAppletClass));
-			//new PanelAppletClass ();
 		}
 
-		/*public PanelAppletClass ()
-		{
-			FactoryMain ("OAFIID:CSharpTestApplet_Factory", GLib.Object.LookupGType (typeof (PanelAppletClass)), new FactoryCallback (Creationcb));
-		}
-
-		protected bool Creationcb (PanelApplet obj, string iid)
-		{
-			if (iid != "OAFIID:CSharpTestApplet")
-				return false;
-			return true;
-		}*/
-
+		Label testLabel;
 		public override void Creation ()
 		{
-			this.Add (new Gtk.Label ("MonoTest"));
+			testLabel = new Label ("MonoTest");
+			this.Add (testLabel);
 			this.ShowAll ();
+			string xml = "<popup name=\"button3\"><menuitem name=\"Properties\" verb=\"LabelChange\" _label=\"_Change Label\" pixtype=\"stock\" pixname=\"gtk-properties\"/></popup>";
+			this.SetupMenu (xml, new ContextMenuItem[] { new ContextMenuItem ("LabelChange", new ContextMenuItemCallback (LabelChangeCB)) });
+		}
+
+		int i = 0;
+		void LabelChangeCB ()
+		{
+			testLabel.Text = String.Format ("Changed {0} time(s).", ++i);
 		}
 
 		public override string IID {

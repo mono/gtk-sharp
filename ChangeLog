@@ -1,3 +1,15 @@
+2004-07-11  Todd Berman  <tberman@off.net>
+
+	* panelapplet/ContextMenuItem.cs: New struct to hold context menu
+	item information.
+	* panelapplet/Makefile.am: added new file.
+	* panelapplet/PanelApplet.custom: add glue accessor to set the context
+	menu.
+	* panelapplet/glue/panelapplet.c: new glue functionality to setup a
+	context menu.
+	* sample/panelapplet/testapplet.cs: expand sample to show context menu
+	code.
+
 2004-07-10  Todd Berman  <tberman@off.net>
 
 	* panelapplet/panelapplet-sharp-2.0.pc.in: fix path.

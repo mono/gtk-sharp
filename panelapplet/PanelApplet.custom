@@ -1,3 +1,11 @@
+[DllImport ("panelappletsharpglue")]
+static extern void panelapplet_setup_menu (IntPtr handle, string xml, ContextMenuItem[] items, int itemcount);
+
+public void SetupMenu (string xml, ContextMenuItem[] items)
+{
+	panelapplet_setup_menu (Handle, xml, items, items.Length);
+}
+
 public abstract void Creation ();
 
 public abstract string IID {
