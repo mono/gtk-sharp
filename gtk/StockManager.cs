@@ -69,7 +69,6 @@ namespace Gtk {
 
 		public static bool LookupItem (string stock_id, out Gtk.StockItem item) 
 		{
-			ConstStockItem const_item;
 			item = StockItem.Zero;
 			return Lookup (stock_id, ref item);
 		}
