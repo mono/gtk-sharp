@@ -1,3 +1,11 @@
+2004-03-27  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* gnomevfs/Mime.cs:
+	* gnomevfs/MimeActionType.cs:
+	* gnomevfs/Vfs.cs:
+
+	Implemented more gnome-vfs methods.
+
 2004-03-14  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* Makefile.in:
