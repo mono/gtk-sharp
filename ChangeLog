@@ -1,3 +1,8 @@
+2004-12-16  Tambet Ingo  <tambet@ximian.com>
+
+	* configure.in : bump version for cvs.
+	* glib/Opaque.cs : hold weakref in hash, not strong ref.
+
 2004-10-29  Mike Kestner  <mkestner@ximian.com>
 
 	* configure.in : bump version and tag for 1.0.4.
