@@ -25,7 +25,6 @@
 		if (resource == null)
 			throw new ArgumentNullException ("resource");
 		
-		byte[] buffer = null;
 		System.IO.Stream s = System.Reflection.Assembly.GetCallingAssembly ().GetManifestResourceStream (resource);
 		if (s == null)
 			throw new ArgumentException ("resource must be a valid resource name of 'assembly'.");
