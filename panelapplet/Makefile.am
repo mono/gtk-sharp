@@ -11,10 +11,10 @@ APIS =
 endif
 API = panelapplet-api.xml
 RAW_API = panelapplet-api.raw
-INCLUDE_API = ../pango/pango-api.xml ../atk/atk-api.xml ../gdk/gdk-api.xml $(top_srcdir)/gdk/gdk-symbols.xml ../gtk/gtk-api.xml $(top_srcdir)/gtk/gtk-symbols.xml ../gnome/gnome-api.xml
+INCLUDE_API = ../pango/pango-api.xml ../atk/atk-api.xml ../gdk/gdk-api.xml $(top_srcdir)/gdk/gdk-symbols.xml ../gtk/gtk-api.xml $(top_srcdir)/gtk/gtk-symbols.xml
 METADATA = PanelApplet.metadata
 ASSEMBLY_NAME = panelapplet-sharp
-references = /r:../glib/glib-sharp.dll /r:../pango/pango-sharp.dll /r:../atk/atk-sharp.dll /r:../gdk/gdk-sharp.dll /r:../gtk/gtk-sharp.dll /r:../gnome/gnome-sharp.dll
+references = /r:../glib/glib-sharp.dll /r:../pango/pango-sharp.dll /r:../atk/atk-sharp.dll /r:../gdk/gdk-sharp.dll /r:../gtk/gtk-sharp.dll
 
 ASSEMBLY = $(ASSEMBLY_NAME).dll
 gapidir = $(datadir)/gapi

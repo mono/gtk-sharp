@@ -1,3 +1,8 @@
+2004-07-18  Todd Berman  <tberman@off.net>
+
+	* panelapplet/Makefile.am: We dont actually use gnome-sharp.dll, remove
+	it.
+
 2004-07-11  Todd Berman  <tberman@off.net>
 
 	* panelapplet/ContextMenuItem.cs: New struct to hold context menu
