@@ -1,3 +1,10 @@
+2004-05-25  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* gnome/Gnome.metadata: Don't hide the GtkEntry and GnomeEntry
+	properties.
+	* gtk/Accel.custom: Add custom methods for backwards compatibility of
+	the gtk_accel_map_* methods. [Fixes #58954]
+
 2004-05-23  Mike Kestner  <mkestner@ximian.com>
 
 	* generator/SignalHandler.cs : put back the ObjectGen hack
