@@ -40,6 +40,9 @@
       <member cname="PANGO_DIRECTION_RTL" name="Rtl" />
       <member cname="PANGO_DIRECTION_TTB_LTR" name="TtbLtr" />
       <member cname="PANGO_DIRECTION_TTB_RTL" name="TtbRtl" />
+      <member cname="PANGO_DIRECTION_WEAK_LTR" name="WeakLtr" />
+      <member cname="PANGO_DIRECTION_WEAK_RTL" name="WeakRtl" />
+      <member cname="PANGO_DIRECTION_NEUTRAL" name="Neutral" />
     </enum>
     <enum name="FontMask" cname="PangoFontMask" type="flags">
       <member cname="PANGO_FONT_MASK_FAMILY" name="Family" value="1 &lt;&lt; 0" />
@@ -167,13 +170,6 @@
       <parameters>
         <parameter type="PangoFontset*" name="fontset" />
         <parameter type="PangoFont*" name="font" />
-        <parameter type="gpointer" name="data" />
-      </parameters>
-    </callback>
-    <callback name="XftSubstituteFunc" cname="PangoXftSubstituteFunc">
-      <return-type type="void" />
-      <parameters>
-        <parameter type="FcPattern*" name="pattern" />
         <parameter type="gpointer" name="data" />
       </parameters>
     </callback>
@@ -327,6 +323,13 @@
       <method name="GetType" cname="pango_font_face_get_type" shared="true">
         <return-type type="GType" />
       </method>
+      <method name="ListSizes" cname="pango_font_face_list_sizes">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="int**" name="sizes" />
+          <parameter type="int*" name="n_sizes" />
+        </parameters>
+      </method>
     </object>
     <object name="FontFamily" cname="PangoFontFamily" parent="GObject">
       <method name="GetName" cname="pango_font_family_get_name">
@@ -334,6 +337,9 @@
       </method>
       <method name="GetType" cname="pango_font_family_get_type" shared="true">
         <return-type type="GType" />
+      </method>
+      <method name="IsMonospace" cname="pango_font_family_is_monospace">
+        <return-type type="gboolean" />
       </method>
       <method name="ListFaces" cname="pango_font_family_list_faces">
         <return-type type="void" />
@@ -1495,6 +1501,13 @@
       </method>
     </class>
     <class name="Global" cname="PangoGlobal">
+      <method name="FindBaseDir" cname="pango_find_base_dir" shared="true">
+        <return-type type="PangoDirection" />
+        <parameters>
+          <parameter type="const-gchar*" name="text" />
+          <parameter type="gint" name="length" />
+        </parameters>
+      </method>
       <method name="FindParagraphBoundary" cname="pango_find_paragraph_boundary" shared="true">
         <return-type type="void" />
         <parameters>
@@ -1630,70 +1643,10 @@
           <parameter type="const-char*" name="str" />
         </parameters>
       </method>
-    </class>
-    <class name="Xft" cname="PangoXft_">
-      <method name="FontGetType" cname="pango_xft_font_get_type" shared="true">
-        <return-type type="GType" />
-      </method>
-      <method name="GetContext" cname="pango_xft_get_context" shared="true">
-        <return-type type="PangoContext*" />
+      <method name="UnicharDirection" cname="pango_unichar_direction" shared="true">
+        <return-type type="PangoDirection" />
         <parameters>
-          <parameter type="Display*" name="display" />
-          <parameter type="int" name="screen" />
-        </parameters>
-      </method>
-      <method name="GetFontMap" cname="pango_xft_get_font_map" shared="true">
-        <return-type type="PangoFontMap*" />
-        <parameters>
-          <parameter type="Display*" name="display" />
-          <parameter type="int" name="screen" />
-        </parameters>
-      </method>
-      <method name="PictureRender" cname="pango_xft_picture_render" shared="true">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="Display*" name="display" />
-          <parameter type="Picture" name="src_picture" />
-          <parameter type="Picture" name="dest_picture" />
-          <parameter type="PangoFont*" name="font" />
-          <parameter type="PangoGlyphString*" name="glyphs" />
-          <parameter type="gint" name="x" />
-          <parameter type="gint" name="y" />
-        </parameters>
-      </method>
-      <method name="Render" cname="pango_xft_render" shared="true">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="XftDraw*" name="draw" />
-          <parameter type="XftColor*" name="color" />
-          <parameter type="PangoFont*" name="font" />
-          <parameter type="PangoGlyphString*" name="glyphs" />
-          <parameter type="gint" name="x" />
-          <parameter type="gint" name="y" />
-        </parameters>
-      </method>
-      <method name="SetDefaultSubstitute" cname="pango_xft_set_default_substitute" shared="true">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="Display*" name="display" />
-          <parameter type="int" name="screen" />
-          <parameter type="PangoXftSubstituteFunc" name="func" />
-          <parameter type="gpointer" name="data" />
-          <parameter type="GDestroyNotify" name="notify" />
-        </parameters>
-      </method>
-      <method name="ShutdownDisplay" cname="pango_xft_shutdown_display" shared="true">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="Display*" name="display" />
-          <parameter type="int" name="screen" />
-        </parameters>
-      </method>
-      <method name="SubstituteChanged" cname="pango_xft_substitute_changed" shared="true">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="Display*" name="display" />
-          <parameter type="int" name="screen" />
+          <parameter type="gunichar" name="ch" />
         </parameters>
       </method>
     </class>

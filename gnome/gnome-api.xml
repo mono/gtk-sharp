@@ -2989,6 +2989,7 @@
       <property name="DefaultPath" cname="default_path" type="gchar*" readable="true" writeable="true" />
       <property name="GnomeEntry" cname="gnome_entry" type="GnomeEntry" readable="true" hidden="1" />
       <property name="GtkEntry" cname="gtk_entry" type="GtkEntry" readable="true" hidden="1" />
+      <property name="UseFilechooser" cname="use_filechooser" type="gboolean" readable="true" writeable="true" />
       <implements>
         <interface cname="GtkEditable" />
       </implements>
@@ -5018,6 +5019,16 @@
           <parameter type="gdouble" name="dpix" />
           <parameter type="gdouble" name="dpiy" />
           <parameter type="gint" name="band_height" />
+        </parameters>
+      </constructor>
+    </object>
+    <object name="PrintSvg" cname="GnomePrintSvg">
+      <method name="GetType" cname="gnome_print_svg_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <constructor cname="gnome_print_svg_new">
+        <parameters>
+          <parameter type="GnomePrintConfig*" name="config" />
         </parameters>
       </constructor>
     </object>

@@ -1,5 +1,13 @@
 2004-02-28  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
+	* gdk/gdk-api.xml: Updated to latest CVS.
+	* gnome/gnome-api.xml: Idem.
+	* gtk/gtk-api.xml: Idem.
+	* pango/pango-api.xml: Idem.
+	* sample/Makefile.in: Don't build the gconf sample for now.
+
+2004-02-28  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
 	* gnome/PrintContext.custom: Added gnome_print_context_* methods.
 	* gtk/gtk-api.xml: Hide GtkActionEntry C-specific struct and methods.
 	* sample/Actions.cs: Updated.

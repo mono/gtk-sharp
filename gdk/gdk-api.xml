@@ -1509,6 +1509,8 @@
     </object>
     <object name="Screen" cname="GdkScreen" parent="GObject">
       <field cname="closed" bits="1" type="guint" />
+      <field cname="normal_gcs" array_len="32" type="GdkGC*" />
+      <field cname="exposure_gcs" array_len="32" type="GdkGC*" />
       <signal name="SizeChanged" cname="size_changed" when="LAST">
         <return-type type="void" />
         <parameters>
@@ -3946,7 +3948,7 @@
           <parameter type="GdkInterpType" name="interp_type" />
         </parameters>
       </method>
-      <method name="GetFromDrawable" cname="gdk_pixbuf_get_from_drawable" shared="true" library="libgdk-win32-2.0-0.dll">
+      <method name="GetFromDrawable" cname="gdk_pixbuf_get_from_drawable" shared="true">
         <return-type type="GdkPixbuf*" />
         <parameters>
           <parameter type="GdkPixbuf*" name="dest" />
@@ -3960,7 +3962,7 @@
           <parameter type="int" name="height" />
         </parameters>
       </method>
-      <method name="GetFromImage" cname="gdk_pixbuf_get_from_image" shared="true" library="libgdk-win32-2.0-0.dll">
+      <method name="GetFromImage" cname="gdk_pixbuf_get_from_image" shared="true">
         <return-type type="GdkPixbuf*" />
         <parameters>
           <parameter type="GdkPixbuf*" name="dest" />
@@ -3974,7 +3976,7 @@
           <parameter type="int" name="height" />
         </parameters>
       </method>
-      <method name="RenderPixmapAndMask" cname="gdk_pixbuf_render_pixmap_and_mask" shared="true" library="libgdk-win32-2.0-0.dll">
+      <method name="RenderPixmapAndMask" cname="gdk_pixbuf_render_pixmap_and_mask" shared="true">
         <return-type type="void" />
         <parameters>
           <parameter type="GdkPixbuf*" name="pixbuf" />
@@ -3983,7 +3985,7 @@
           <parameter type="int" name="alpha_threshold" />
         </parameters>
       </method>
-      <method name="RenderPixmapAndMaskForColormap" cname="gdk_pixbuf_render_pixmap_and_mask_for_colormap" shared="true" library="libgdk-win32-2.0-0.dll">
+      <method name="RenderPixmapAndMaskForColormap" cname="gdk_pixbuf_render_pixmap_and_mask_for_colormap" shared="true">
         <return-type type="void" />
         <parameters>
           <parameter type="GdkPixbuf*" name="pixbuf" />
@@ -3993,7 +3995,7 @@
           <parameter type="int" name="alpha_threshold" />
         </parameters>
       </method>
-      <method name="RenderThresholdAlpha" cname="gdk_pixbuf_render_threshold_alpha" shared="true" library="libgdk-win32-2.0-0.dll">
+      <method name="RenderThresholdAlpha" cname="gdk_pixbuf_render_threshold_alpha" shared="true">
         <return-type type="void" />
         <parameters>
           <parameter type="GdkPixbuf*" name="pixbuf" />
