@@ -2,10 +2,10 @@
 AC_INIT(README)
 AC_CANONICAL_SYSTEM
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gtk-sharp, 0.98)
+AM_INIT_AUTOMAKE(gtk-sharp-2.0, 1.2.99)
 AM_MAINTAINER_MODE
 
-API_VERSION=1.0.0.0
+API_VERSION=2.0.0.0
 AC_SUBST(API_VERSION)
 
 AC_CHECK_TOOL(CC, gcc, gcc)
@@ -60,7 +60,7 @@ AC_ARG_WITH(crosspkgdir, [  --with-crosspkgdir=/path/to/pkg-config/dir],
 	fi
 )
 
-MONO_REQUIRED_VERSION=0.96
+MONO_REQUIRED_VERSION=1.0
 PKG_CHECK_MODULES(MONO_DEPENDENCY, mono >= $MONO_REQUIRED_VERSION, has_mono=true, has_mono=false)
 
 if test "x$has_mono" = "xtrue"; then
@@ -107,15 +107,15 @@ AC_SUBST(LIB_PREFIX)
 AC_SUBST(LIB_SUFFIX)
 AC_SUBST(GENERATED_SOURCES)
 
-PKG_CHECK_MODULES(GLIB, glib-2.0)
+PKG_CHECK_MODULES(GLIB, glib-2.0 >= 2.4)
 AC_SUBST(GLIB_CFLAGS)
 AC_SUBST(GLIB_LIBS)
 
-PKG_CHECK_MODULES(PANGO, pango)
+PKG_CHECK_MODULES(PANGO, pango >= 1.4)
 AC_SUBST(PANGO_CFLAGS)
 AC_SUBST(PANGO_LIBS)
 
-PKG_CHECK_MODULES(GTK, gtk+-2.0)
+PKG_CHECK_MODULES(GTK, gtk+-2.0 >= 2.4)
 AC_SUBST(GTK_CFLAGS)
 AC_SUBST(GTK_LIBS)
 
@@ -124,10 +124,11 @@ AC_SUBST(XML_CFLAGS)
 AC_SUBST(XML_LIBS)
 
 ## Versions of dependencies
-GNOME_REQUIRED_VERSION=2.2.0
-GTK_REQUIRED_VERSION=2.2.0
+GNOME_REQUIRED_VERSION=2.6.0
+GTK_REQUIRED_VERSION=2.4.0
+ART_REQUIRED_VERSION=2.3.16
 
-PKG_CHECK_MODULES(LIBART, libart-2.0 >= $GNOME_REQUIRED_VERSION, enable_libart=yes, enable_libart=no)
+PKG_CHECK_MODULES(LIBART, libart-2.0 >= $ART_REQUIRED_VERSION, enable_libart=yes, enable_libart=no)
 AC_SUBST(LIBART_CFLAGS)
 AC_SUBST(LIBART_LIBS)
 
@@ -135,7 +136,7 @@ PKG_CHECK_MODULES(GNOME, libgnomecanvas-2.0 >= $GNOME_REQUIRED_VERSION libgnomeu
 AC_SUBST(GNOME_CFLAGS)
 AC_SUBST(GNOME_LIBS)
 
-GLADE_REQUIRED_VERSION=2.0.0
+GLADE_REQUIRED_VERSION=2.3.6
 PKG_CHECK_MODULES(GLADE, libglade-2.0 >= $GLADE_REQUIRED_VERSION, enable_glade=yes, enable_glade=no)
 AC_SUBST(GLADE_CFLAGS)
 AC_SUBST(GLADE_LIBS)
@@ -205,7 +206,7 @@ atk/atk-sharp.dll.config
 art/Makefile
 art/AssemblyInfo.cs
 art/art-sharp.dll.config
-art/art-sharp.pc
+art/art-sharp-2.0.pc
 gdk/Makefile
 gdk/AssemblyInfo.cs
 gdk/gdk-sharp.dll.config
@@ -217,31 +218,31 @@ gtk/glue/Makefile
 glade/Makefile
 glade/AssemblyInfo.cs
 glade/glade-sharp.dll.config
-glade/glade-sharp.pc
+glade/glade-sharp-2.0.pc
 glade/glue/Makefile
 gnome/Makefile
 gnome/AssemblyInfo.cs
 gnome/gnome-sharp.dll.config
-gnome/gnome-sharp.pc
+gnome/gnome-sharp-2.0.pc
 gnome/glue/Makefile
 gnomevfs/Makefile
 gnomevfs/AssemblyInfo.cs
 gnomevfs/gnome-vfs-sharp.dll.config
-gnomevfs/gnome-vfs-sharp.pc
+gnomevfs/gnome-vfs-sharp-2.0.pc
 gda/Makefile
 gda/AssemblyInfo.cs
 gda/gda-sharp.dll.config
-gda/gda-sharp.pc
+gda/gda-sharp-2.0.pc
 gnomedb/Makefile
 gnomedb/AssemblyInfo.cs
 gnomedb/gnomedb-sharp.dll.config
-gnomedb/gnomedb-sharp.pc
+gnomedb/gnomedb-sharp-2.0.pc
 gconf/Makefile
 gconf/doc/Makefile
 gconf/GConf/Makefile
 gconf/GConf/AssemblyInfo.cs
 gconf/GConf/gconf-sharp.dll.config
-gconf/GConf/gconf-sharp.pc
+gconf/GConf/gconf-sharp-2.0.pc
 gconf/GConf.PropertyEditors/Makefile
 gconf/GConf.PropertyEditors/AssemblyInfo.cs
 gconf/tools/Makefile
@@ -249,15 +250,15 @@ gconf/tools/gconfsharp-schemagen
 gtkhtml/Makefile
 gtkhtml/AssemblyInfo.cs
 gtkhtml/gtkhtml-sharp.dll.config
-gtkhtml/gtkhtml-sharp.pc
+gtkhtml/gtkhtml-sharp-2.0.pc
 rsvg/Makefile
 rsvg/AssemblyInfo.cs
 rsvg/rsvg-sharp.dll.config
-rsvg/rsvg-sharp.pc
+rsvg/rsvg-sharp-2.0.pc
 vte/Makefile
 vte/AssemblyInfo.cs
 vte/vte-sharp.dll.config
-vte/vte-sharp.pc
+vte/vte-sharp-2.0.pc
 doc/Makefile
 sample/GtkDemo/Makefile
 sample/Makefile
@@ -266,7 +267,7 @@ sample/pixmaps/Makefile
 sample/rsvg/Makefile
 sample/test/Makefile
 sample/drawing-sample.exe.config
-gtk-sharp.pc
+gtk-sharp-2.0.pc
 parser/gapi.pc
 parser/gapi-fixup
 Makefile

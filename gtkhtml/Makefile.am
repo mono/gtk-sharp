@@ -2,7 +2,7 @@ if ENABLE_GTKHTML
 TARGET = $(ASSEMBLY) $(ASSEMBLY).config
 APIS = $(API)
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = gtkhtml-sharp.pc
+pkgconfig_DATA = gtkhtml-sharp-2.0.pc
 else
 TARGET = 
 APIS = 
@@ -20,7 +20,7 @@ noinst_DATA = $(TARGET)
 gapi_DATA = $(APIS)
 CLEANFILES = $(ASSEMBLY) generated-stamp generated/*.cs $(API) gtk-sharp.snk
 
-DISTCLEANFILES = gtkhtml-sharp.pc $(ASSEMBLY).config AssemblyInfo.cs
+DISTCLEANFILES = gtkhtml-sharp-2.0.pc $(ASSEMBLY).config AssemblyInfo.cs
 
 sources =
 
@@ -39,7 +39,7 @@ EXTRA_DIST =			\
 	$(METADATA)		\
 	$(customs)		\
 	$(sources)		\
-	gtkhtml-sharp.pc.in
+	gtkhtml-sharp-2.0.pc.in
 
 $(API): $(srcdir)/$(RAW_API) $(srcdir)/$(METADATA)
 	cp $(srcdir)/$(RAW_API) $(API)

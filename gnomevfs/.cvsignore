@@ -2,5 +2,5 @@ Makefile
 Makefile.in
 gnome-vfs-sharp.dll
 gnome-vfs-sharp.dll.config
-gnome-vfs-sharp.pc
+gnome-vfs-sharp-2.0.pc
 AssemblyInfo.cs

@@ -1,3 +1,61 @@
+2004-07-06  Todd Berman  <tberman@off.net>
+
+	* Makefile.am:
+	* configure.in:
+	* gtk-sharp-2.0.pc.in:
+	* gtk-sharp.pc.in:
+	* art/.cvsignore:
+	* art/Makefile.am:
+	* art/art-sharp-2.0.pc.in:
+	* art/art-sharp.pc.in:
+	* gconf/GConf/.cvsignore:
+	* gconf/GConf/Makefile.am:
+	* gconf/GConf/gconf-sharp-2.0.pc.in:
+	* gconf/GConf/gconf-sharp.pc.in:
+	* gda/.cvsignore:
+	* gda/Makefile.am:
+	* gda/gda-sharp-2.0.pc.in:
+	* gda/gda-sharp.pc.in:
+	* glade/.cvsignore:
+	* glade/Makefile.am:
+	* glade/glade-sharp-2.0.pc.in:
+	* glade/glade-sharp.pc.in:
+	* gnome/.cvsignore:
+	* gnome/Makefile.am:
+	* gnome/gnome-sharp-2.0.pc.in:
+	* gnome/gnome-sharp.pc.in:
+	* gnomedb/.cvsignore:
+	* gnomedb/Makefile.am:
+	* gnomedb/gnomedb-sharp-2.0.pc.in:
+	* gnomedb/gnomedb-sharp.pc.in:
+	* gnomevfs/.cvsignore:
+	* gnomevfs/gnome-vfs-sharp-2.0.pc.in:
+	* gnomevfs/gnome-vfs-sharp.pc.in:
+	* gtkhtml/.cvsignore:
+	* gtkhtml/Makefile.am:
+	* gtkhtml/gtkhtml-sharp-2.0.pc.in:
+	* gtkhtml/gtkhtml-sharp.pc.in:
+	* rsvg/.cvsignore:
+	* rsvg/Makefile.am:
+	* rsvg/rsvg-sharp-2.0.pc.in:
+	* rsvg/rsvg-sharp.pc.in:
+	* sample/rsvg/Makefile.am:
+	* vte/.cvsignore:
+	* vte/Makefile.am:
+	* vte/vte-sharp-2.0.pc.in:
+	* vte/vte-sharp.pc.in:
+	Make gtk-sharp-2.0 parallel installable with gtk-sharp. Now you can
+	install both and do -pkg:gtk-sharp-2.0 or similar to compile against
+	the gtk-sharp-2.0 assemblies.
+
+	Basically this change comprised some small configure.in changes to
+	change the $(PACKAGE) to gtk-sharp-2.0, and check for the appropriate
+	versions of the gnome 2.6 based libraries.
+
+	Also, every .pc file was renamed -2.0.pc to allow for the parallel
+	install, and the .cvsignore and Makefile.am rules were updated to
+	reflect this change.
+
 2004-06-20  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* gdk/Gdk.metadata: Fix merging errors.

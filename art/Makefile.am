@@ -2,7 +2,7 @@ if ENABLE_LIBART
 TARGET = $(ASSEMBLY) $(ASSEMBLY).config
 APIS = $(API) $(ADDITIONAL_API)
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = art-sharp.pc
+pkgconfig_DATA = art-sharp-2.0.pc
 else
 TARGET = 
 APIS = 
@@ -21,7 +21,7 @@ noinst_DATA = $(TARGET)
 api_DATA = $(APIS)
 CLEANFILES = $(ASSEMBLY) generated-stamp generated/*.cs $(API) gtk-sharp.snk
 
-DISTCLEANFILES = art-sharp.pc $(ASSEMBLY).config AssemblyInfo.cs
+DISTCLEANFILES = art-sharp-2.0.pc $(ASSEMBLY).config AssemblyInfo.cs
 
 sources =
 
@@ -41,7 +41,7 @@ EXTRA_DIST =			\
 	$(METADATA)		\
 	$(dist_customs)		\
 	$(dist_sources)		\
-	art-sharp.pc.in
+	art-sharp-2.0.pc.in
 
 $(API): $(srcdir)/$(RAW_API) $(srcdir)/$(METADATA)
 	cp $(srcdir)/$(RAW_API) $(API)

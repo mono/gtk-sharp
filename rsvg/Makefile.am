@@ -2,7 +2,7 @@ if ENABLE_RSVG
 TARGET = $(ASSEMBLY) $(ASSEMBLY).config
 APIS = $(API)
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = rsvg-sharp.pc
+pkgconfig_DATA = rsvg-sharp-2.0.pc
 else
 TARGET = 
 APIS = 
@@ -21,7 +21,7 @@ noinst_DATA = $(TARGET)
 gapi_DATA = $(APIS)
 CLEANFILES = $(ASSEMBLY) generated-stamp generated/*.cs $(API) gtk-sharp.snk
 
-DISTCLEANFILES = rsvg-sharp.pc $(ASSEMBLY).config AssemblyInfo.cs
+DISTCLEANFILES = rsvg-sharp-2.0.pc $(ASSEMBLY).config AssemblyInfo.cs
 
 sources =			\
 	Tool.cs
@@ -39,7 +39,7 @@ EXTRA_DIST =			\
 	$(METADATA)		\
 	$(customs)		\
 	$(sources)		\
-	rsvg-sharp.pc.in
+	rsvg-sharp-2.0.pc.in
 
 $(API): $(srcdir)/$(RAW_API) $(srcdir)/$(METADATA)
 	cp $(srcdir)/$(RAW_API) $(API)
