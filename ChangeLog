@@ -1,3 +1,37 @@
+2004-08-10  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* glib/MainLoop.cs:
+	* gnomevfs/.cvsignore:
+	* gnomevfs/Async.cs:
+	* gnomevfs/FileInfo.cs:
+	* gnomevfs/Gnomevfs.metadata:
+	* gnomevfs/Makefile.am:
+	* gnomevfs/MimeType.cs:
+	* gnomevfs/Sync.cs:
+	* gnomevfs/Uri.custom:
+	* gnomevfs/VfsStream.cs:
+	* gnomevfs/VfsStreamAsyncResult.cs:
+	* gnomevfs/VolumeMonitor.custom:
+	* gnomevfs/Xfer.cs:
+	* gnomevfs/XferProgressCallback.cs:
+	* gnomevfs/XferProgressCallbackNative.cs:
+	* gnomevfs/filesize.diff:
+	* gnomevfs/gnomevfs-api.raw:
+	* sample/gnomevfs/.cvsignore:
+	* sample/gnomevfs/Makefile.am:
+	* sample/gnomevfs/TestInfo.cs:
+	* sample/gnomevfs/TestMime.cs:
+	* sample/gnomevfs/TestSync.cs:
+	* sample/gnomevfs/TestSyncCreate.cs:
+	* sample/gnomevfs/TestSyncWrite.cs:
+	* sample/gnomevfs/TestUnlink.cs:
+	* sample/gnomevfs/TestVolumes.cs:
+	* sample/gnomevfs/TestXfer.cs:
+	
+	Commit new gnomevfs files and samples. Also the GLib.MainLoop addition
+	for programs which don't want to use Gtk.Application.Run (), but still
+	use the GLib main loop.
+
 2004-07-28  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* */*: merge from HEAD again.

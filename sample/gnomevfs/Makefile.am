@@ -1,0 +1,49 @@
+TARGETS =			\
+	TestInfo.exe		\
+	TestMime.exe		\
+	TestSync.exe		\
+	TestSyncCreate.exe	\
+	TestSyncWrite.exe	\
+	TestUnlink.exe		\
+	TestVolumes.exe		\
+	TestXfer.exe
+
+assemblies=../../glib/glib-sharp.dll ../../gnomevfs/gnome-vfs-sharp.dll
+references = $(addprefix /r:, $(assemblies)) /r:Mono.GetOptions
+
+noinst_SCRIPTS = $(TARGETS)
+CLEANFILES = $(TARGETS)
+
+EXTRA_DIST = 			\
+	TestInfo.cs		\
+	TestMime.cs		\
+	TestSync.cs		\
+	TestSyncCreate.cs	\
+	TestSyncWrite.cs	\
+	TestUnlink.cs		\
+	TestVolumes.cs		\
+	TestXfer.cs
+
+TestInfo.exe: $(srcdir)/TestInfo.cs $(assemblies)
+	$(CSC) /out:TestInfo.exe $(references) $(srcdir)/TestInfo.cs
+
+TestMime.exe: $(srcdir)/TestMime.cs $(assemblies)
+	$(CSC) /out:TestMime.exe $(references) $(srcdir)/TestMime.cs
+
+TestSync.exe: $(srcdir)/TestSync.cs $(assemblies)
+	$(CSC) /out:TestSync.exe $(references) $(srcdir)/TestSync.cs
+
+TestSyncCreate.exe: $(srcdir)/TestSyncCreate.cs $(assemblies)
+	$(CSC) /out:TestSyncCreate.exe $(references) $(srcdir)/TestSyncCreate.cs
+
+TestSyncWrite.exe: $(srcdir)/TestSyncWrite.cs $(assemblies)
+	$(CSC) /out:TestSyncWrite.exe $(references) $(srcdir)/TestSyncWrite.cs
+
+TestUnlink.exe: $(srcdir)/TestUnlink.cs $(assemblies)
+	$(CSC) /out:TestUnlink.exe $(references) $(srcdir)/TestUnlink.cs
+
+TestVolumes.exe: $(srcdir)/TestVolumes.cs $(assemblies)
+	$(CSC) /out:TestVolumes.exe $(references) $(srcdir)/TestVolumes.cs
+
+TestXfer.exe: $(srcdir)/TestXfer.cs $(assemblies)
+	$(CSC) /out:TestXfer.exe $(references) $(srcdir)/TestXfer.cs

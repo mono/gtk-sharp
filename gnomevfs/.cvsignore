@@ -1,6 +1,10 @@
+*.dll
+*.dll.config
+AssemblyInfo.cs
+generated
+generated-stamp
 Makefile
 Makefile.in
-gnome-vfs-sharp.dll
-gnome-vfs-sharp.dll.config
+*-api.xml
 gnome-vfs-sharp-2.0.pc
-AssemblyInfo.cs
+gtk-sharp.snk

@@ -1,0 +1,10 @@
+--- /home/jeroen/gnomevfs-api.xml	2004-07-16 12:10:15.263425536 +0200
++++ gnomevfs-api.xml	2004-07-16 12:14:41.095012992 +0200
+@@ -740,6 +740,7 @@
+         <return-type type="GnomeVFSSocketBuffer*"/>
+       </method>
+     </struct>
++    <alias name="GnomeVFSFileSize" cname="GnomeVFSFileSize" type="long"/>
+     <alias name="GnomeVFSInodeNumber" cname="GnomeVFSInodeNumber" type="GnomeVFSFileSize"/>
+     <struct name="GnomeVFSMethod" cname="GnomeVFSMethod">
+       <field cname="method_table_size" type="gsize"/>

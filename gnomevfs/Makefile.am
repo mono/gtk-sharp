@@ -46,6 +46,7 @@ EXTRA_DIST =			\
 	makefile.win32		\
 	$(ASSEMBLY).config.in	\
 	AssemblyInfo.cs.in	\
+	filesize.diff		\
 	$(RAW_API)		\
 	$(ADDITIONAL_API)	\
 	$(METADATA)		\
