@@ -1,3 +1,7 @@
+2005-03-03  Mike Kestner  <mkestner@novell.com>
+
+	* glade/XML.custom : backport the multiple autoconnect "fix".
+
 2005-02-28  Mike Kestner  <mkestner@novell.com>
 
 	* glib/Object.cs : mark CreateNativeObject virtual.
