@@ -1,3 +1,40 @@
+2004-07-09  Todd Berman  <tberman@off.net>
+
+	* Makefile.am:
+	* configure.in:
+	Add panelapplet stuff to configure.in and the subdirs.
+	* generator/ClassBase.cs:
+	* generator/ObjectGen.cs:
+	Add a new attribute 'abstract' to allow a class to be defined to be
+	abstract. PanelApplet.PanelApplet uses this.
+	* panelapplet/.cvsignore:
+	* panelapplet/AppletFactory.cs:
+	* panelapplet/AssemblyInfo.cs.in:
+	* panelapplet/Makefile.am:
+	* panelapplet/PanelApplet.cs:
+	* panelapplet/PanelApplet.custom:
+	* panelapplet/PanelApplet.metadata:
+	* panelapplet/panelapplet-api.raw:
+	* panelapplet/panelapplet-sharp-2.0.pc.in:
+	* panelapplet/panelapplet-sharp.dll.config.in:
+	* panelapplet/glue/.cvsignore:
+	* panelapplet/glue/Makefile.am:
+	* panelapplet/glue/panelapplet.c:
+	Initial import of the panelapplet code. This code is largely
+	untested, and will need a good amount of glue. For sure glue code is
+	needed for the context menu items.
+	* sample/panelapplet/CSharpTestApplet_Factory.server:
+	* sample/panelapplet/monodoc.png:
+	* sample/panelapplet/testapplet.cs:
+	A small testcase for the panelapplet. There is no makefile yet, and
+	the server needs some help as it uses an absolute path that will only
+	work on my box. When I get back to Toronto (so some point this weekend)
+	I will fix this code to build/install properly and add a README file
+	to help with any potential issues.
+	* sources/Makefile.am:
+	* sources/gtk-sharp-sources.xml:
+	Add the panelapplet-sharp stuff to the build here.
+
 2004-07-06  Todd Berman  <tberman@off.net>
 
 	* sources/gtk_tree_model_signal_fix.patch: duh, this is the real patch.

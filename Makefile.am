@@ -1,4 +1,4 @@
-SUBDIRS = sources generator parser glib pango atk gdk gtk glade art gnome gda gnomedb gtkhtml gconf rsvg vte sample doc
+SUBDIRS = sources generator parser glib pango atk gdk gtk glade art gnome gda gnomedb gtkhtml gconf rsvg vte panelapplet sample doc
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = gtk-sharp-2.0.pc

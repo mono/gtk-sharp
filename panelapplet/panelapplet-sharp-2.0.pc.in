@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+
+
+Name: PanelApplet#
+Description: PanelApplet# - libpanelapplet .NET Binding
+Requires: gnome-sharp
+Version: @VERSION@
+Libs: -r:${libdir}/mono/gtk-sharp/panelapplet-sharp.dll

@@ -24,6 +24,7 @@ namespace GtkSharp.Generation {
 		private bool ctors_initted = false;
 		private Hashtable clash_map;
 		private bool deprecated = false;
+		private bool isabstract = false;
 
 		public Hashtable Methods {
 			get {
@@ -52,6 +53,8 @@ namespace GtkSharp.Generation {
 					
 			if (elem.HasAttribute ("deprecated"))
 				deprecated = elem.GetAttribute ("deprecated") == "1";
+			if (elem.HasAttribute ("abstract"))
+				isabstract = elem.GetAttribute ("abstract") == "1";
 
 			foreach (XmlNode node in elem.ChildNodes) {
 				if (!(node is XmlElement)) continue;
@@ -99,6 +102,12 @@ namespace GtkSharp.Generation {
 		public bool IsDeprecated {
 			get {
 				return deprecated;
+			}
+		}
+
+		public bool IsAbstract {
+			get {
+				return isabstract;
 			}
 		}
 

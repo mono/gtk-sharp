@@ -1,0 +1,10 @@
+Makefile.in
+Makefile
+*.dll
+generated
+generated-stamp
+panelapplet-api.xml
+AssemblyInfo.cs
+panelapplet-sharp.dll.config
+panelapplet-sharp-2.0.pc
+gtk-sharp.snk

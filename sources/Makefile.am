@@ -18,7 +18,8 @@ DOWNLOADS = \
 	http://ftp.gnome.org/pub/GNOME/desktop/2.6/2.6.0/sources/librsvg-2.6.4.tar.gz         	\
 	http://ftp.gnome.org/pub/GNOME/sources/libgda/1.0/libgda-1.0.0.tar.gz			\
 	http://ftp.gnome.org/pub/GNOME/sources/libgnomedb/1.0/libgnomedb-1.0.0.tar.gz		\
-	http://ftp.gnome.org/pub/GNOME/desktop/2.6/2.6.0/sources/vte-0.11.10.tar.gz
+	http://ftp.gnome.org/pub/GNOME/desktop/2.6/2.6.0/sources/vte-0.11.10.tar.gz \
+	http://ftp.gnome.org/pub/GNOME/desktop/2.6/2.6.0/sources/gnome-panel-2.6.0.tar.gz
 	
 GTKHTML_SOURCEFILES = \
         gtkhtml-3.0.10/src/gtkhtml.c \

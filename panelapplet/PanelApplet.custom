@@ -1,0 +1,9 @@
+public abstract void Creation ();
+
+public abstract string IID {
+	get;
+}
+
+public abstract string FactoryIID {
+	get;
+}
