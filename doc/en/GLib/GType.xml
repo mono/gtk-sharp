@@ -317,5 +317,31 @@ public class MagrittesWindow : Window {
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="Int64">
+      <MemberSignature Language="C#" Value="public static GLib.GType Int64;" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UInt64">
+      <MemberSignature Language="C#" Value="public static GLib.GType UInt64;" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
   </Members>
 </Type>

@@ -204,9 +204,9 @@ class ComboSample
       </Parameters>
       <Docs>
         <summary>Does nothing. ---- REMOVE ---- See EnableArrowKeys.</summary>
-        <param name="value">A <see cref="T:System.Boolean"/>.</param>
-        <returns>a <see cref="T:System.Boolean"/></returns>
-        <remarks/>
+        <param name="value">A <see cref="T:System.Boolean" />.</param>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UseArrows">
@@ -234,10 +234,10 @@ class ComboSample
       <Parameters>
       </Parameters>
       <Docs>
-        <summary>See <see cref="P:Gtk.Combo.EnableArrowKeys"/></summary>
-        <param name="value">a <see cref="T:System.Boolean"/></param>
-        <returns>a <see cref="T:System.Boolean"/></returns>
-        <remarks/>
+        <summary>See <see cref="P:Gtk.Combo.EnableArrowKeys" /></summary>
+        <param name="value">a <see cref="T:System.Boolean" /></param>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ValueInList">
@@ -271,7 +271,7 @@ class ComboSample
           <see langword="true" /> if an empty value is considered valid.</param>
         <returns>
           <see langword="true" /> if an empty value is considered valid.</returns>
-        <remarks/>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="EnableArrowKeys">
@@ -345,6 +345,23 @@ class ComboSample
         <summary>Property to set all of the items in the popup list.</summary>
         <returns>An array of strings.</returns>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="SetValueInList">
+      <MemberSignature Language="C#" Value="public void SetValueInList (bool val, bool ok_if_empty);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="val" Type="System.Boolean" />
+        <Parameter Name="ok_if_empty" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="val">a <see cref="T:System.Boolean" /></param>
+        <param name="ok_if_empty">a <see cref="T:System.Boolean" /></param>
+        <remarks>To be added</remarks>
       </Docs>
     </Member>
   </Members>

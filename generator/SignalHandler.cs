@@ -23,7 +23,6 @@
 namespace GtkSharp.Generation {
 
 	using System;
-	using System.Collections;
 	using System.IO;
 	using System.Xml;
 
@@ -31,15 +30,14 @@ namespace GtkSharp.Generation {
 		
 		XmlElement sig;
 		string ns;
-		string retval = "";
-		string s_ret = "";
-		string p_ret = "";
+		ReturnValue retval;
 		Parameters parms = null;
 
 		public SignalHandler (XmlElement sig, string ns)
 		{
 			this.sig = sig;
 			this.ns = ns;
+			retval = new ReturnValue (sig["return-type"]);
 			XmlElement params_elem = sig["parameters"] as XmlElement;
 			if (params_elem != null)
 				parms = new Parameters (params_elem, ns);
@@ -47,22 +45,8 @@ namespace GtkSharp.Generation {
 
 		public bool Validate ()
 		{
-			XmlElement ret_elem = sig["return-type"];
-			if (ret_elem == null) {
-				Console.Write("Missing return-type ");
-				return false;
-			}
-			
-			retval = ret_elem.GetAttribute("type");
-			if (retval == "") {
-				Console.Write("Invalid return-type ");
-				return false;
-			}
-			
-			s_ret = SymbolTable.Table.GetCSType(retval);
-			p_ret = SymbolTable.Table.GetMarshalReturnType(retval);
-			if ((s_ret == "") || (p_ret == "")) {
-				Console.Write("Funky type: " + retval);
+			if (!retval.Validate ()) {
+				Console.Write(" in signal handler " + Name);
 				return false;
 			}
 			
@@ -81,22 +65,30 @@ namespace GtkSharp.Generation {
 					if (i > 0)
 						result += ", ";
 
+					if (parms[i].PassAs != "")
+						result += parms[i].PassAs + " ";
 					result += (parms[i].MarshalType + " arg" + i);
 				}
+
+				result = result.Replace ("out ref", "out");
+				result = result.Replace ("ref ref", "ref");
+
 				return result;
 			}
 		}
 				
 		private string BaseName {
 			get {
-				string result = SymbolTable.Table.GetName (retval);
+				string result = SymbolTable.Table.GetName (retval.CType);
 				for (int i = 0; i < parms.Count; i++) {
+					result += parms[i].PassAs;
 					if (parms[i].Generatable is ObjectGen || parms[i].Generatable is InterfaceGen) {
 						result += "Object";
 					} else {
 						result += SymbolTable.Table.GetName(parms[i].CType);
 					}
 				}		 
+				result = result.Replace ("[]", "Array");
 				return result;
 			}
 		}
@@ -130,21 +122,21 @@ namespace GtkSharp.Generation {
 			sw.WriteLine("\tusing System;");
 			sw.WriteLine("\tusing System.Runtime.InteropServices;");
 			sw.WriteLine();
-			sw.Write("\tinternal delegate " + p_ret + " ");
+			sw.Write("\tinternal delegate " + retval.MarshalType + " ");
 			sw.WriteLine(DelegateName + "(" + ISig + ", int key);");
 			sw.WriteLine();
 			sw.WriteLine("\tinternal class " + Name + " : GLib.SignalCallback {");
 			sw.WriteLine();
 			sw.WriteLine("\t\tprivate static " + DelegateName + " _Delegate;");
 			sw.WriteLine();
-			sw.Write("\t\tprivate static " + p_ret + " ");
+			sw.Write("\t\tprivate static " + retval.MarshalType + " ");
 			sw.WriteLine(CallbackName + "(" + ISig + ", int key)");
 			sw.WriteLine("\t\t{");
 			sw.WriteLine("\t\t\tif (!_Instances.Contains(key))");
 			sw.WriteLine("\t\t\t\tthrow new Exception(\"Unexpected signal key \" + key);");
 			sw.WriteLine();
 			sw.WriteLine("\t\t\t" + Name + " inst = (" + Name + ") _Instances[key];");
-			if ((s_ret == "void") && (parms.Count == 1)) {
+			if ((retval.CSType == "void") && (parms.Count == 1)) {
 				sw.WriteLine("\t\t\tEventHandler h = (EventHandler) inst._handler;");
 				sw.WriteLine("\t\t\th (inst._obj, new EventArgs ());");
 				sw.WriteLine("\t\t}");
@@ -155,6 +147,9 @@ namespace GtkSharp.Generation {
 					sw.WriteLine("\t\t\targs.Args = new object[" + (parms.Count-1) + "];");
 				}
 				for (int idx=1; idx < parms.Count; idx++) {
+					if (parms[idx].PassAs == "out")
+						continue;
+
 					string ctype = parms[idx].CType;
 					ClassBase wrapper = table.GetClassGen (ctype);
 					if ((wrapper != null && !(wrapper is StructBase)) || table.IsManuallyWrapped (ctype)) {
@@ -174,14 +169,19 @@ namespace GtkSharp.Generation {
 				sw.WriteLine("\t\t\targv[0] = inst._obj;");
 				sw.WriteLine("\t\t\targv[1] = args;");
 				sw.WriteLine("\t\t\tinst._handler.DynamicInvoke(argv);");
-				if (retval != "void") {
+				for (int idx=1; idx < parms.Count; idx++) {
+					if (parms[idx].PassAs != "") {
+						sw.WriteLine ("\t\t\targ" + idx + " = " + table.ToNativeReturn (parms[idx].CType, "((" + parms[idx].CSType + ")args.Args[" + (idx - 1) + "])") + ";");
+					}
+				}
+				if (retval.CSType != "void") {
 					sw.WriteLine ("\t\t\tif (args.RetVal == null)");
-					if (s_ret == "bool")
+					if (retval.CSType == "bool")
 						sw.WriteLine ("\t\t\t\treturn false;");
 					else
 						sw.WriteLine ("\t\t\t\tthrow new Exception(\"args.RetVal unset in callback\");");
 
-					sw.WriteLine("\t\t\treturn (" + p_ret + ") " + table.ToNativeReturn (retval, "((" + s_ret + ")args.RetVal)") + ";");
+					sw.WriteLine("\t\t\treturn (" + retval.MarshalType + ") " + table.ToNativeReturn (retval.CType, "((" + retval.CSType + ")args.RetVal)") + ";");
 				}
 				sw.WriteLine("\t\t}");
 				sw.WriteLine();

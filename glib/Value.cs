@@ -47,6 +47,9 @@ namespace GLib {
 		[DllImport("glibsharpglue")]
 		static extern IntPtr gtksharp_value_create_from_type_and_property(ref GLib.Value val, IntPtr gtype, string name);
 
+		[DllImport("glibsharpglue")]
+		static extern IntPtr gtksharp_value_create_from_type_name(ref GLib.Value val, string type_name);
+
 		public void Dispose () 
 		{
 			g_value_unset (ref this);
@@ -82,20 +85,15 @@ namespace GLib {
 		[DllImport("libgobject-2.0-0.dll")]
 		static extern void g_value_set_boxed (ref Value val, IntPtr data);
 
-/*
-		public Value (GLib.Boxed val)
+		public Value (Opaque val, string type_name)
 		{
-			_val = gtksharp_value_create(GType.Boxed);
-			//g_value_set_boxed (_val, val.Handle);
+			type = IntPtr.Zero;
+			pad_1 = pad_2 = 0;
+			gtksharp_value_create_from_type_name (ref this, type_name);
+			g_value_set_boxed (ref this, val.Handle);
 		}
 
-		public Value (IntPtr obj, string prop_name, Boxed val)
-		{
-			_val = gtksharp_value_create_from_property (obj, prop_name);
-			//g_value_set_boxed (_val, val.Handle);
-		}
-*/
-
+		[Obsolete]
 		public Value (IntPtr obj, string prop_name, Opaque val)
 		{
 			type = IntPtr.Zero;
@@ -127,6 +125,23 @@ namespace GLib {
 		{
 			g_value_set_int (ref this, val);
 		}
+
+		[DllImport("libgobject-2.0-0.dll")]
+		static extern void g_value_set_int64 (ref Value val, long data);
+
+		public Value (long val) : this (GType.Int64)
+		{
+			g_value_set_int64 (ref this, val);
+		}
+
+		[DllImport("libgobject-2.0-0.dll")]
+		static extern void g_value_set_uint64 (ref Value val, ulong data);
+
+		public Value (ulong val) : this (GType.UInt64)
+		{
+			g_value_set_uint64 (ref this, val);
+		}
+
 
 		[DllImport("libgobject-2.0-0.dll")]
 		static extern void g_value_set_object (ref Value val, IntPtr data);
@@ -172,6 +187,18 @@ namespace GLib {
 		[DllImport("libgobject-2.0-0.dll")]
 		static extern void g_value_set_char (ref Value val, char data);
 		
+		public Value (EnumWrapper wrap, string type_name)
+		{
+			type = IntPtr.Zero;
+			pad_1 = pad_2 = 0;
+			gtksharp_value_create_from_type_name (ref this, type_name);
+			if (wrap.flags)
+				g_value_set_flags (ref this, (uint) (int) wrap); 
+			else
+				g_value_set_enum (ref this, (int) wrap); 
+		}
+
+		[Obsolete]
 		public Value (GLib.Object obj, string prop_name, EnumWrapper wrap)
 		{
 			type = IntPtr.Zero;
@@ -244,6 +271,23 @@ namespace GLib {
 		}
 
 		[DllImport("libgobject-2.0-0.dll")]
+		static extern long g_value_get_int64 (ref Value val);
+
+		public static explicit operator long (Value val)
+		{
+			return g_value_get_int64 (ref val);
+		}
+
+		[DllImport("libgobject-2.0-0.dll")]
+		static extern ulong g_value_get_uint64 (ref Value val);
+
+		public static explicit operator ulong (Value val)
+		{
+			return g_value_get_uint64 (ref val);
+		}
+
+
+		[DllImport("libgobject-2.0-0.dll")]
 		static extern IntPtr g_value_get_object (ref Value val);
 
 		public static explicit operator GLib.Object (Value val)
@@ -290,11 +334,15 @@ namespace GLib {
 		static extern int g_value_get_enum (ref Value val);
 		[DllImport("libgobject-2.0-0.dll")]
 		static extern uint g_value_get_flags (ref Value val);
+		[DllImport("glibsharpglue")]
+		static extern bool glibsharp_value_holds_flags (ref Value val);
 
 		public static explicit operator EnumWrapper (Value val)
 		{
-			// FIXME: handle flags
-			return new EnumWrapper (g_value_get_enum (ref val), false);
+			if (glibsharp_value_holds_flags (ref val))
+				return new EnumWrapper ((int)g_value_get_flags (ref val), true);
+			else
+				return new EnumWrapper (g_value_get_enum (ref val), false);
 		}
 
 		[DllImport("glibsharpglue")]
@@ -303,6 +351,9 @@ namespace GLib {
 		[DllImport("libgobject-2.0-0.dll")]
 		static extern bool g_type_is_a (IntPtr type, IntPtr is_a_type);
 		
+		[DllImport("libgobject-2.0-0.dll")]
+		static extern void g_value_take_boxed (ref Value val, IntPtr data);
+
 		public object Val
 		{
 			get {
@@ -317,6 +368,10 @@ namespace GLib {
 					return (bool) this;
 				else if (type == GType.Int)
 					return (int) this;
+				else if (type == GType.Int64)
+					return (long) this;
+				else if (type == GType.UInt64)
+					return (ulong) this;
 				else if (type == GType.Double)
 					return (double) this;
 				else if (type == GType.Float)
@@ -341,6 +396,10 @@ namespace GLib {
 					g_value_set_boolean (ref this, (bool) value);
 				else if (type == GType.Int)
 					g_value_set_int (ref this, (int) value);
+				else if (type == GType.Int64)
+					g_value_set_int64 (ref this, (long) value);
+				else if (type == GType.UInt64)
+					g_value_set_uint64 (ref this, (ulong) value);
 				else if (type == GType.Double)
 					g_value_set_double (ref this, (double) value);
 				else if (type == GType.Float)

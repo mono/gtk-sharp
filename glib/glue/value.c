@@ -24,9 +24,11 @@
 /* Forward declarations */
 void gtksharp_value_create_from_property (GValue *value, GObject *obj, const gchar* name);
 void gtksharp_value_create_from_type_and_property (GValue *value, GType gtype, const gchar* name);
+void gtksharp_value_create_from_type_name (GValue *value, const gchar *type_name);
 GType gtksharp_value_get_value_type (GValue *value);
 gpointer glibsharp_value_get_boxed (GValue *value);
 void glibsharp_value_set_boxed (GValue *value, gpointer boxed);
+gboolean glibsharp_value_holds_flags (GValue *value);
 /* */
 
 void
@@ -41,6 +43,12 @@ gtksharp_value_create_from_type_and_property (GValue *value, GType gtype, const 
 {
 	GParamSpec *spec = g_object_class_find_property (g_type_class_ref (gtype), name);
 	g_value_init (value, spec->value_type);
+}
+
+void
+gtksharp_value_create_from_type_name (GValue *value, const gchar *type_name)
+{
+	g_value_init (value, g_type_from_name (type_name));
 }
 
 GType
@@ -63,3 +71,8 @@ glibsharp_value_set_boxed (GValue *value, gpointer boxed)
 	g_value_set_boxed (value, boxed);
 }
 
+gboolean
+glibsharp_value_holds_flags (GValue *value)
+{
+	return G_VALUE_HOLDS_FLAGS (value);
+}

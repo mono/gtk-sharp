@@ -51,18 +51,6 @@
         <remarks>Create a new <see cref="T:Gtk.RowsReorderedArgs" /> instance with this constructor if you need to invoke a <see cref="T:Gtk.RowsReorderedHandler" /> delegate.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NewOrder">
-      <MemberSignature Language="C#" Value="public int NewOrder { get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>The new order of the rows.</summary>
-        <returns>A <see cref="T:System.Int32" /></returns>
-        <remarks>FIXME: shouldn't this be an array?</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Iter">
       <MemberSignature Language="C#" Value="public Gtk.TreeIter Iter { get; };" />
       <MemberType>Property</MemberType>
@@ -70,8 +58,8 @@
         <ReturnType>Gtk.TreeIter</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets a pointer to the <see cref="T:Gtk.TreeNode"/> whose rows have been reordered.</summary>
-        <returns>A <see cref="Gtk.TreeIter"/></returns>
+        <summary>Gets a pointer to the <see cref="T:Gtk.TreeNode" /> whose rows have been reordered.</summary>
+        <returns>A <see cref="Gtk.TreeIter" /></returns>
         <remarks />
       </Docs>
     </Member>
@@ -82,9 +70,21 @@
         <ReturnType>Gtk.TreePath</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>A path for the <see cref="T:Gtk.TreeNode"/> whose rows have been reordered.</summary>
-        <returns>A <see cref="Gtk.TreePath"/></returns>
+        <summary>A path for the <see cref="T:Gtk.TreeNode" /> whose rows have been reordered.</summary>
+        <returns>A <see cref="Gtk.TreePath" /></returns>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="NewOrder">
+      <MemberSignature Language="C#" Value="public int NewOrder { set; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Int32" /></returns>
+        <remarks>To be added</remarks>
       </Docs>
     </Member>
   </Members>

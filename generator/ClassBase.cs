@@ -29,7 +29,7 @@ namespace GtkSharp.Generation {
 	using System.IO;
 	using System.Xml;
 
-	public class ClassBase : GenBase {
+	public abstract class ClassBase : GenBase {
 		protected Hashtable props = new Hashtable();
 		protected Hashtable sigs = new Hashtable();
 		protected Hashtable methods = new Hashtable();
@@ -38,6 +38,8 @@ namespace GtkSharp.Generation {
 
 		private bool ctors_initted = false;
 		private Hashtable clash_map;
+		private bool deprecated = false;
+		private bool isabstract = false;
 
 		public Hashtable Methods {
 			get {
@@ -64,12 +66,17 @@ namespace GtkSharp.Generation {
 
 		protected ClassBase (XmlElement ns, XmlElement elem) : base (ns, elem) {
 					
+			if (elem.HasAttribute ("deprecated"))
+				deprecated = elem.GetAttribute ("deprecated") == "1";
+			if (elem.HasAttribute ("abstract"))
+				isabstract = elem.GetAttribute ("abstract") == "1";
+
 			foreach (XmlNode node in elem.ChildNodes) {
 				if (!(node is XmlElement)) continue;
 				XmlElement member = (XmlElement) node;
 				if (member.HasAttribute ("hidden"))
 					continue;
-
+				
 				string name;
 				switch (node.Name) {
 				case "method":
@@ -107,6 +114,18 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public bool IsDeprecated {
+			get {
+				return deprecated;
+			}
+		}
+
+		public bool IsAbstract {
+			get {
+				return isabstract;
+			}
+		}
+
 		protected bool IsNodeNameHandled (string name)
 		{
 			switch (name) {
@@ -123,21 +142,13 @@ namespace GtkSharp.Generation {
 			}
 		}
 
-		public virtual string MarshalType {
-			get
-			{
+		public override string MarshalType {
+			get {
 				return "IntPtr";
 			}
 		}
 
-		public virtual string MarshalReturnType {
-			get
-			{
-				return "IntPtr";
-			}
-		}
-
-		public virtual string CallByName (string var_name)
+		public override string CallByName (string var_name)
 		{
 			return var_name + ".Handle";
 		}
@@ -151,29 +162,19 @@ namespace GtkSharp.Generation {
 			get { return "Raw"; }
 		}
 
-		public virtual string FromNative(string var)
+		public override string FromNative(string var)
 		{
 			return "(" + QualifiedName + ") GLib.Object.GetObject(" + var + ")";
 		}
 		
-		public virtual string FromNativeReturn(string var)
-		{
-			return FromNative (var);
-		}
-		
-		public virtual string ToNativeReturn(string var)
-		{
-			return CallByName (var);
-		}
-		
 		protected void GenProperties (GenerationInfo gen_info)
 		{		
-			if (props == null)
+			if (props.Count == 0)
 				return;
 
 			foreach (Property prop in props.Values) {
 				if (prop.Validate ())
-					prop.Generate (gen_info);
+					prop.Generate (gen_info, "\t\t");
 				else
 					Console.WriteLine("in Object " + QualifiedName);
 			}
@@ -209,8 +210,8 @@ namespace GtkSharp.Generation {
 		protected bool IgnoreMethod (Method method)
 		{	
 			string mname = method.Name;
-			return ((mname.StartsWith("Set") || mname.StartsWith("Get")) &&
-				     (props != null) && props.ContainsKey(mname.Substring(3)));
+			return ((method.IsSetter || (method.IsGetter && mname.StartsWith("Get"))) &&
+				(props != null) && props.ContainsKey(mname.Substring(3)));
 		}
 
 		public void GenMethods (GenerationInfo gen_info, Hashtable collisions, ClassBase implementor)

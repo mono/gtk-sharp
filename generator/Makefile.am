@@ -11,23 +11,25 @@ sources = 				\
 	BoxedGen.cs			\
 	ByRefGen.cs			\
 	CallbackGen.cs			\
+	ChildProperty.cs		\
 	ClassBase.cs			\
 	ClassGen.cs			\
 	CodeGenerator.cs		\
 	ConstStringGen.cs		\
 	Ctor.cs				\
-	CustomMarshalerGen.cs		\
 	EnumGen.cs			\
 	Field.cs			\
 	GenBase.cs			\
 	GenerationInfo.cs		\
 	GObjectGen.cs			\
-	GStringGen.cs			\
 	IGeneratable.cs			\
 	ImportSignature.cs		\
 	InterfaceGen.cs			\
+	LPGen.cs			\
+	LPUGen.cs			\
 	ManagedCallString.cs		\
 	ManualGen.cs			\
+	MarshalGen.cs			\
 	MethodBody.cs			\
 	Method.cs			\
 	ObjectGen.cs			\
@@ -35,16 +37,18 @@ sources = 				\
 	Parameters.cs			\
 	Parser.cs			\
 	Property.cs			\
+	ReturnValue.cs			\
 	Signal.cs			\
 	SignalHandler.cs		\
 	Signature.cs			\
+	SimpleBase.cs			\
 	SimpleGen.cs			\
 	Statistics.cs			\
 	StringGen.cs			\
 	StructBase.cs			\
 	StructGen.cs			\
 	SymbolTable.cs			\
-	TimeTGen.cs			\
+	VirtualMethod.cs		\
 	VMSignature.cs
 
 build_sources = $(addprefix $(srcdir)/, $(sources))

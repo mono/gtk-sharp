@@ -52,7 +52,7 @@ namespace GtkSharp.Generation {
 			string result = array.NullOk ? array.Name + " != null ? " : "";
 			result += CastFromInt (length.CSType) + array.Name + ".Length";
 			result += array.NullOk ? ": 0" : "";
-			return result;
+			return length.Generatable.CallByName (result);
 		}
 
 		public string GetCallString (bool is_set)
@@ -74,7 +74,7 @@ namespace GtkSharp.Generation {
 						continue;
 					}
 				} else if (i > 0 && parameters [i - 1].IsString && p.IsLength) {
-					result[i] = CastFromInt (p.CSType) + parameters [i - 1].Name + ".Length";
+					result[i] = igen.CallByName (CastFromInt (p.CSType) + parameters [i - 1].Name + ".Length");
 					continue;
 				} else if (p.IsArray && p.MarshalType != p.CSType) {
 					result[i] = (is_set && i == 0 ? "native_value" : "native_" + p.Name);
@@ -86,11 +86,13 @@ namespace GtkSharp.Generation {
 				if (p.CType == "GError**") {
 					result [i] += "out ";				
 				} else if (p.PassAs != "") {
-					if (!p.MarshalType.EndsWith ("IntPtr")) 
+					if (p.Generatable is LPGen || !p.MarshalType.EndsWith ("IntPtr")) 
 						result [i] += p.PassAs + " ";
 					
 					if (igen is EnumGen)
 						call_parm = p.Name + "_as_int";
+					else if (igen is LPUGen || igen is LPGen)
+						call_parm = p.Name + "_as_ptr";
 					else if (UsesHandle (igen)) {
 						call_parm = p.PassAs + " " + call_parm.Replace (".Handle", "_handle");
 					}
@@ -126,17 +128,14 @@ namespace GtkSharp.Generation {
 				if (is_set)
 					name = "value";
 
-				if (is_get) {
-					sw.WriteLine (indent + "\t\t\t" + p.CSType + " " + name + ";");
-					if (p.PassAs != "out" && UsesHandle (gen))
-						sw.WriteLine(indent + "\t\t\t" + name + " = new " + p.CSType + "();");
-				}
-
 				if ((is_get || p.PassAs == "out") && UsesHandle (gen))
 					sw.WriteLine(indent + "\t\t\tIntPtr " + name + "_handle;");
 
 				if (p.PassAs == "out" && gen is EnumGen)
 					sw.WriteLine(indent + "\t\t\tint " + name + "_as_int;");
+
+				if (p.PassAs == "out" && (gen is LPGen || gen is LPUGen))
+					sw.WriteLine(indent + "\t\t\t" + gen.MarshalType + " " + name + "_as_ptr;");
 
 				if (p.IsArray && p.MarshalType != p.CSType) {
 					sw.WriteLine(indent + "\t\t\t{0}[] native_{1} = new {0} [{1}.Length];", p.MarshalType.TrimEnd('[', ']'), name);
@@ -172,11 +171,13 @@ namespace GtkSharp.Generation {
 			for (int i = 0; i < parameters.Count; i++) {
 				Parameter p = parameters [i];
 
-				if (p.PassAs == "out" && p.Generatable is EnumGen) {
-					sw.WriteLine(indent + "\t\t\t" + p.Name + " = (" + p.CSType + ") " + p.Name + "_as_int;");
-				}
-
 				IGeneratable gen = p.Generatable;
+
+				if (p.PassAs == "out" && gen is EnumGen)
+					sw.WriteLine(indent + "\t\t\t" + p.Name + " = (" + p.CSType + ") " + p.Name + "_as_int;");
+
+				if (p.PassAs == "out" && (gen is LPGen || gen is LPUGen))
+					sw.WriteLine(indent + "\t\t\t" + p.Name + " = (" + p.CSType + ") " + p.Name + "_as_ptr;");
 
 				if (p.PassAs == "out" && UsesHandle (gen))
 					sw.WriteLine(indent + "\t\t\t" + p.Name + " = " + gen.FromNativeReturn (p.Name + "_handle") + ";");

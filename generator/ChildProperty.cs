@@ -1,9 +1,5 @@
-// GtkSharp.Generation.StringGen.cs - The String type Generatable.
+// GtkSharp.Generation.ChildProperty.cs - GtkContainer child properties
 //
-// Author: Rachel Hestilow <rachel@nullenvoid.com>
-//         Mike Kestner  <mkestner@novell.com>
-//
-// Copyright (c) 2003 Rachel Hestilow
 // Copyright (c) 2004 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
@@ -24,28 +20,26 @@
 namespace GtkSharp.Generation {
 
 	using System;
+	using System.Collections;
+	using System.IO;
+	using System.Xml;
 
-	public class StringGen : ConstStringGen {
+	public class ChildProperty : Property {
 
-		public StringGen (string ctype) : base (ctype)
-		{
-		}
-	
-		public override string ToNativeReturnType {
-			get {
-				return "IntPtr";
-			}
-		}
+		public ChildProperty (XmlElement elem, ClassBase container_type) : base (elem, container_type) {}
 
-		public override string FromNativeReturn(String var)
-		{
-			return "GLib.Marshaller.PtrToStringGFree(" + var + ")";
+		protected override string PropertyAttribute (string qpname) {
+			return "[Gtk.ChildProperty (" + qpname + ")]";
 		}
 
-		public override string ToNativeReturn(String var)
-		{
-			return "GLib.Marshaller.StringToPtrGStrdup(" + var + ")";
+		protected override string RawGetter (string qpname) {
+			return "parent.ChildGetProperty (child, " + qpname + ")";
 		}
+
+		protected override string RawSetter (string qpname) {
+			return "parent.ChildSetProperty(child, " + qpname + ", val)";
+		}
+
 	}
 }
 

@@ -33,15 +33,16 @@
       </Docs>
     </Member>
     <Member MemberName="Requisition">
-      <MemberSignature Language="C#" Value="public Gtk.Requisition Requisition { get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.Requisition Requisition { set; get; };" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>Gtk.Requisition</ReturnType>
       </ReturnValue>
+      <Parameters />
       <Docs>
-        <summary>The width and height this widget would like to have.</summary>
-        <returns>A <see cref="T:Gtk.Requisition"/></returns>
-        <remarks/>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gtk.Requisition" /></returns>
+        <remarks>To be added</remarks>
       </Docs>
     </Member>
   </Members>

@@ -51,18 +51,6 @@
         <remarks>Create a new <see cref="T:Gtk.TextInsertedArgs" /> instance with this constructor if you need to invoke a <see cref="T:Gtk.TextInsertedHandler" /> delegate.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Position">
-      <MemberSignature Language="C#" Value="public int Position { get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>The position within the widget text where the text was inserted.</summary>
-        <returns>An integer, the insert position.</returns>
-        <remarks />
-      </Docs>
-    </Member>
     <Member MemberName="Length">
       <MemberSignature Language="C#" Value="public int Length { get; };" />
       <MemberType>Property</MemberType>
@@ -85,6 +73,18 @@
         <summary>The text that was inserted.</summary>
         <returns>A string that was inserted.</returns>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Position">
+      <MemberSignature Language="C#" Value="public int Position { set; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Int32" /></returns>
+        <remarks>To be added</remarks>
       </Docs>
     </Member>
   </Members>

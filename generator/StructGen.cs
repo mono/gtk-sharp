@@ -25,21 +25,27 @@ namespace GtkSharp.Generation {
 	using System.IO;
 	using System.Xml;
 
-	public class StructGen : StructBase, IGeneratable  {
+	public class StructGen : StructBase {
 		
 		public StructGen (XmlElement ns, XmlElement elem) : base (ns, elem) {}
 		
-		public void Generate ()
-		{
-			GenerationInfo gen_info = new GenerationInfo (NSElem);
-			Generate (gen_info);
-		}
-
 		public override void Generate (GenerationInfo gen_info)
 		{
+			StreamWriter sw = gen_info.Writer = gen_info.OpenStream (Name);
 			base.Generate (gen_info);
+			if (GetMethod ("GetType") == null && GetMethod ("GetGType") == null) {
+				sw.WriteLine ("\t\tprivate static GLib.GType GType {");
+				sw.WriteLine ("\t\t\tget { return GLib.GType.Pointer; }");
+				sw.WriteLine ("\t\t}");
+			}
+			sw.WriteLine ("#endregion");
+			AppendCustom (sw, gen_info.CustomDir);
+			sw.WriteLine ("\t}");
+			sw.WriteLine ("}");
+			sw.Close ();
+			gen_info.Writer = null;
 			Statistics.StructCount++;
-		}		
+		}
 	}
 }
 

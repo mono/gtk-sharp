@@ -235,8 +235,8 @@ public Widget MakeTableTester()
       </ReturnValue>
       <Docs>
         <summary>The default number of pixels between columns.</summary>
-        <returns>A <see cref="T:System.UInt32"/>.</returns>
-        <remarks/>
+        <returns>A <see cref="T:System.UInt32" />.</returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ColumnSpacing">
@@ -249,9 +249,10 @@ public Widget MakeTableTester()
       </Parameters>
       <Docs>
         <summary>The number of pixels between columns if it isn't the default value.</summary>
-        <param name="value"><see cref="T:System.UInt32"/>.</param>
-        <returns>A <see cref="T:System.UInt32"/>.</returns>
-        <remarks/>
+        <param name="value">
+          <see cref="T:System.UInt32" />.</param>
+        <returns>A <see cref="T:System.UInt32" />.</returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="NColumns">
@@ -296,9 +297,10 @@ public Widget MakeTableTester()
       </Parameters>
       <Docs>
         <summary>The space between table rows.</summary>
-        <param name="value">A <see cref="T:System.UInt32"/>.</param>
-        <returns><see cref="T:System.UInt32"/>.</returns>
-        <remarks/>
+        <param name="value">A <see cref="T:System.UInt32" />.</param>
+        <returns>
+          <see cref="T:System.UInt32" />.</returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="NRows">
@@ -341,6 +343,39 @@ public Widget MakeTableTester()
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
         <returns>a <see cref="T:Gtk.Table" /></returns>
         <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetRowSpacing">
+      <MemberSignature Language="C#" Value="public void SetRowSpacing (uint row, uint spacing);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="row" Type="System.UInt32" />
+        <Parameter Name="spacing" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="row">a <see cref="T:System.UInt32" /></param>
+        <param name="spacing">a <see cref="T:System.UInt32" /></param>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowSpacing">
+      <MemberSignature Language="C#" Value="public uint GetRowSpacing (uint row);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="row" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="row">a <see cref="T:System.UInt32" /></param>
+        <returns>a <see cref="T:System.UInt32" /></returns>
+        <remarks>To be added</remarks>
       </Docs>
     </Member>
   </Members>

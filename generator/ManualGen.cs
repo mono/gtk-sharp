@@ -1,8 +1,9 @@
-// GtkSharp.Generation.ManualGen.cs - The Manually wrapped type Generatable.
+// GtkSharp.Generation.ManualGen.cs - Ungenerated handle type Generatable.
 //
-// Author: Mike Kestner <mkestner@speakeasy.net>
+// Author: Mike Kestner <mkestner@novell.com>
 //
 // Copyright (c) 2003 Mike Kestner
+// Copyright (c) 2004 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of version 2 of the GNU General Public
@@ -23,87 +24,34 @@ namespace GtkSharp.Generation {
 
 	using System;
 
-	public class ManualGen : IGeneratable  {
+	public class ManualGen : SimpleBase {
 		
-		string handle;
-		string ctype;
-		string type;
-		string ns = "";
+		string from_fmt;
 
-		public ManualGen (string ctype, string type) : this (ctype, type, "Handle") {}
-
-		public ManualGen (string ctype, string type, string handle)
+		public ManualGen (string ctype, string type) : base (ctype, type) 
 		{
-			string[] toks = type.Split('.');
-			this.handle = handle;
-			this.ctype = ctype;
-			this.type = toks[toks.Length - 1];
-			if (toks.Length > 2)
-				this.ns = String.Join (".", toks, 0, toks.Length - 2);
-			else if (toks.Length == 2)
-				this.ns = toks[0];
+			from_fmt = "new " + QualifiedName + "({0})";
+		}
+
+		public ManualGen (string ctype, string type, string from_fmt) : base (ctype, type)
+		{
+			this.from_fmt = from_fmt;
 		}
 		
-		public string CName {
-			get
-			{
-				return ctype;
-			}
-		}
-
-		public string Name {
-			get
-			{
-				return type;
-			}
-		}
-
-		public string QualifiedName {
-			get
-			{
-				return ns + "." + type;
-			}
-		}
-
-		public string MarshalType {
-			get
-			{
-				return "IntPtr";
-			}
-		}
-		public string MarshalReturnType {
-			get
-			{
+		public override string MarshalType {
+			get {
 				return "IntPtr";
 			}
 		}
 
-		public string CallByName (string var_name)
+		public override string CallByName (string var_name)
 		{
-			return var_name + "." + handle;
+			return var_name + ".Handle";
 		}
 		
-		public virtual string FromNative(string var)
+		public override string FromNative(string var)
 		{
-			return "new " + QualifiedName + "(" + var + ")";
-		}
-		
-		public virtual string FromNativeReturn(string var)
-		{
-			return FromNative (var);
-		}
-
-		public virtual string ToNativeReturn(string var)
-		{
-			return CallByName (var);
-		}
-		
-		public void Generate ()
-		{
-		}
-		
-		public void Generate (GenerationInfo gen_info)
-		{
+			return String.Format (from_fmt, var);
 		}
 	}
 }

@@ -1,8 +1,6 @@
-// HTMLStream.custom - customizations to Gtk.HTMLStream
+// PropertyAttribute.cs
 //
-// Author: Mike Kestner <mkestner@ximian.com> 
-//
-// Copyright (C) 2003 Novell, Inc.
+// Copyright (c) 2004 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of version 2 of the Lesser GNU General 
@@ -19,9 +17,25 @@
 // Boston, MA 02111-1307, USA.
 
 
-public void Write (string buffer)
-{
-	byte [] bytes = System.Text.Encoding.UTF8.GetBytes (buffer);
+namespace GLib {
 
-	gtk_html_stream_write (Handle, bytes, new UIntPtr ((uint)bytes.Length));
+	using System;
+
+	public sealed class PropertyAttribute : Attribute {
+		string name;
+
+		public PropertyAttribute (string name)
+		{
+			this.name = name;
+		}
+
+		public string Name {
+			get {
+				return name;
+			}
+			set {
+				name = value;
+			}
+		}
+	}
 }

@@ -1,6 +1,6 @@
-// GtkSharp.Generation.CustomMarshalerGen.cs - The CustomMarshaler type Generatable.
+// GtkSharp.Generation.SimpleBase.cs - base class for marshaling non-generated types.
 //
-// Author: Mike Kestner <mkestner@ximian.com>
+// Author: Mike Kestner <mkestner@novell.com>
 //
 // Copyright (c) 2004 Novell, Inc.
 //
@@ -23,17 +23,21 @@ namespace GtkSharp.Generation {
 
 	using System;
 
-	public class CustomMarshalerGen : IGeneratable  {
+	public abstract class SimpleBase : IGeneratable  {
 		
 		string type;
 		string ctype;
-		string marshaler;
+		string ns = String.Empty;
 
-		public CustomMarshalerGen (string ctype, string type, string marshaler)
+		public SimpleBase (string ctype, string type)
 		{
+			string[] toks = type.Split('.');
 			this.ctype = ctype;
-			this.type = type;
-			this.marshaler = marshaler;
+			this.type = toks[toks.Length - 1];
+			if (toks.Length > 2)
+				this.ns = String.Join (".", toks, 0, toks.Length - 2);
+			else if (toks.Length == 2)
+				this.ns = toks[0];
 		}
 		
 		public string CName {
@@ -50,39 +54,46 @@ namespace GtkSharp.Generation {
 
 		public string QualifiedName {
 			get {
-				return type;
+				return ns == String.Empty ? type : ns + "." + type;
 			}
 		}
 
-		public string MarshalType {
+		public virtual string MarshalType {
 			get {
-				return "[MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef=typeof(" + marshaler + "))] " + type;
+				return QualifiedName;
 			}
 		}
+
 		public virtual string MarshalReturnType {
 			get {
-				return "[return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef=typeof(" + marshaler + "))]";
+				return MarshalType;
 			}
 		}
 
-		public string CallByName (string var_name)
+		public virtual string ToNativeReturnType {
+			get {
+				return MarshalType;
+			}
+		}
+
+		public virtual string CallByName (string var)
 		{
-			return var_name;
+			return var;
 		}
 		
-		public string FromNative(string var)
+		public virtual string FromNative(string var)
 		{
-			return String.Empty;
+			return var;
 		}
 		
 		public virtual string FromNativeReturn(string var)
-		{	
-			return String.Empty;
+		{
+			return FromNative (var);
 		}
 
 		public virtual string ToNativeReturn(string var)
 		{
-			return String.Empty;
+			return CallByName (var);
 		}
 
 		public void Generate ()

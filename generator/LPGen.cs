@@ -1,9 +1,7 @@
-// GtkSharp.Generation.StringGen.cs - The String type Generatable.
+// GtkSharp.Generation.LPGen.cs - long/pointer Generatable.
 //
-// Author: Rachel Hestilow <rachel@nullenvoid.com>
-//         Mike Kestner  <mkestner@novell.com>
+// Author: Mike Kestner <mkestner@novell.com>
 //
-// Copyright (c) 2003 Rachel Hestilow
 // Copyright (c) 2004 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
@@ -25,26 +23,24 @@ namespace GtkSharp.Generation {
 
 	using System;
 
-	public class StringGen : ConstStringGen {
+	public class LPGen : SimpleGen {
+		
+		public LPGen (string ctype) : base (ctype, "long") {}
 
-		public StringGen (string ctype) : base (ctype)
-		{
-		}
-	
-		public override string ToNativeReturnType {
+		public override string MarshalType {
 			get {
 				return "IntPtr";
 			}
 		}
 
-		public override string FromNativeReturn(String var)
+		public override string CallByName (string var_name)
 		{
-			return "GLib.Marshaller.PtrToStringGFree(" + var + ")";
+			return "new IntPtr (" + var_name + ")";
 		}
-
-		public override string ToNativeReturn(String var)
+		
+		public override string FromNative(string var)
 		{
-			return "GLib.Marshaller.StringToPtrGStrdup(" + var + ")";
+			return "(long) " + var;
 		}
 	}
 }

@@ -470,5 +470,21 @@ If the <paramref name="boundary_type" /> is <see cref="F:Atk.TextBoundary.LineEn
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetCharacterAtOffset">
+      <MemberSignature Language="C#" Value="public virtual char GetCharacterAtOffset (int offset);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Char</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="offset" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="offset">a <see cref="T:System.Int32" /></param>
+        <returns>a <see cref="T:System.Char" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
   </Members>
 </Type>
