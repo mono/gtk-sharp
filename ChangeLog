@@ -1,3 +1,8 @@
+2004-06-01  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* sample/CustomWidget.cs: Fixed Widget.SizeRequest usage. Works properly
+	now.
+
 2004-05-31  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* gdk/Gdk.metadata: Pass the destination parameters of Rectangle.Union()
