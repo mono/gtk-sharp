@@ -7,4 +7,4 @@ Name: PanelApplet#
 Description: PanelApplet# - libpanelapplet .NET Binding
 Requires: gnome-sharp
 Version: @VERSION@
-Libs: -r:${libdir}/mono/gtk-sharp/panelapplet-sharp.dll
+Libs: -r:${libdir}/mono/gtk-sharp-2.0/panelapplet-sharp.dll

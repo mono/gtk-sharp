@@ -1,3 +1,7 @@
+2004-07-10  Todd Berman  <tberman@off.net>
+
+	* panelapplet/panelapplet-sharp-2.0.pc.in: fix path.
+
 2004-07-09  Todd Berman  <tberman@off.net>
 
 	* Makefile.am:
