@@ -47,14 +47,7 @@ class CustomWidget : Bin {
 	private Pango.Layout layout;
 	private string stockid;
 
-	internal static GType CustomWidgetGetType () {
-		if (customWidgetGType.Val == IntPtr.Zero)
-			customWidgetGType = GLib.Object.RegisterGType (typeof (CustomWidget));
-		
-		return customWidgetGType;
-	}
-
-	public CustomWidget () : base (CustomWidgetGetType ())
+	public CustomWidget () : base ()
 	{
 		icon = null;
 		label = "CustomWidget";
@@ -78,7 +71,7 @@ class CustomWidget : Bin {
 		}
 		set {
 			label = value;
-			layout = CreatePangoLayout (label);
+			Layout.SetText (label);
 		}
 	}
 
