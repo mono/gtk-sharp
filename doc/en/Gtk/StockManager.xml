@@ -30,17 +30,17 @@
         <Parameter Name="n_items" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <summary>Registers each of the stock items in <paramref name="items"/>. 
+        <summary>Registers each of the stock items in <paramref name="items" />. 
 	  If an item already exists with the same stock ID as one of the 
-	  <paramref name="items"/>, the old item gets replaced. The stock 
+	  <paramref name="items" />, the old item gets replaced. The stock 
 	  items are copied, so GTK+ does not hold any pointer into 
-	  <paramref name="items"/> and <paramref name="items"/> can be 
-	  freed. Use <see cref="M:Gtk.StockManager.AddStatic"/> if 
-	  <paramref name="items"/> is persistent and GTK# doesn't need to 
+	  <paramref name="items" /> and <paramref name="items" /> can be 
+	  freed. Use <see cref="M:Gtk.StockManager.AddStatic" /> if 
+	  <paramref name="items" /> is persistent and GTK# doesn't need to 
 	  copy the array.
 	</summary>
         <param name="items">a <see cref="T:Gtk.StockItem" /></param>
-        <param name="n_items">a <see cref="T:System.UInt32" />, the number of items in <paramref name="items"/></param>
+        <param name="n_items">a <see cref="T:System.UInt32" />, the number of items in <paramref name="items" /></param>
         <remarks>(TODO: This API doesn't make sense for the underlying C API, because the C API has an option of adding multiple items. Needs clarification.)</remarks>
       </Docs>
     </Member>
@@ -55,8 +55,8 @@
         <Parameter Name="n_items" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <summary>Same as <see cref="M:Gtk.StockManager.Add"/> but doesn't copy
-	  <paramref name="items"/>, so <paramref name="items"/> must persist
+        <summary>Same as <see cref="M:Gtk.StockManager.Add" /> but doesn't copy
+	  <paramref name="items" />, so <paramref name="items" /> must persist
 	  until application exit.</summary>
         <param name="items">a <see cref="T:Gtk.StockItem" /></param>
         <param name="n_items">a <see cref="T:System.UInt32" /></param>
@@ -90,6 +90,54 @@
         <param name="item">the <see cref="T:Gtk.StockItem" /> if found</param>
         <returns>returns <see langword="true" /> if a <see cref="T:Gtk.StockItem" />with the <paramref name="stock_id" />  exists, else returns <see langword="false" />.</returns>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="LookupItem">
+      <MemberSignature Language="C#" Value="public static bool LookupItem (string stock_id, out Gtk.StockItem item);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stock_id" Type="System.String" />
+        <Parameter Name="item" Type="Gtk.StockItem&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="stock_id">a <see cref="T:System.String" /></param>
+        <param name="item">a <see cref="T:Gtk.StockItem" /></param>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public static void Add (Gtk.StockItem item);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="item" Type="Gtk.StockItem" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="item">a <see cref="T:Gtk.StockItem" /></param>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public static void Add (Gtk.StockItem[] items);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="items" Type="Gtk.StockItem[]" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="items">a <see cref="T:Gtk.StockItem" /></param>
+        <remarks>To be added</remarks>
       </Docs>
     </Member>
   </Members>

@@ -20,6 +20,7 @@ sources = 				\
 	Application.cs			\
 	ITreeNode.cs			\
 	NodeStore.cs			\
+	StockManager.cs			\
 	ThreadNotify.cs			\
 	TreeNodeAttribute.cs		\
 	TreeNode.cs			\
