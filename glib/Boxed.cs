@@ -2,31 +2,29 @@
 //
 // Author: Mike Kestner <mkestner@speakeasy.net>
 //
-// (c) 2001-2002 Mike Kestner
+// Copyright (c) 2001-2002 Mike Kestner
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of version 2 of the Lesser GNU General 
+// Public License as published by the Free Software Foundation.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this program; if not, write to the
+// Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+// Boston, MA 02111-1307, USA.
 
 namespace GLib {
 
 	using System;
 
-	/// <summary> 
-	///	Boxed Class
-	/// </summary>
-	///
-	/// <remarks>
-	///	An abstract base class to derive structures and marshal them.
-	/// </remarks>
-
 	public class Boxed {
 		object obj;
 		IntPtr raw; 
-
-		/// <summary>
-		///	Boxed Constructor
-		/// </summary>
-		/// 
-		/// <remarks>
-		///	Constructs a Boxed type from a raw ref.
-		/// </remarks>
 
 		public Boxed (object o)
 		{
@@ -38,13 +36,6 @@ namespace GLib {
 			this.raw = ptr;
 		}
 
-		/// <summary>
-		///	Handle Property
-		/// </summary>
-		/// 
-		/// <remarks>
-		///	Gets a marshallable IntPtr.
-		/// </remarks>
 		public virtual IntPtr Handle {
 			get {
 				return raw;

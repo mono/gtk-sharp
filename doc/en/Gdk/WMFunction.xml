@@ -10,8 +10,8 @@
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
   <Docs>
-    <summary>To be added</summary>
-    <remarks>To be added</remarks>
+    <summary>These are hints originally defined by the Motif toolkit. The window manager can use them when determining the functions to offer for the window. The hint must be set before mapping the window.</summary>
+    <remarks>None.</remarks>
   </Docs>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -37,8 +37,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>All functions should be offered.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Resize">
@@ -49,8 +50,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>The window should be resizable.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Move">
@@ -61,8 +63,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>The window should be movable.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Minimize">
@@ -73,8 +76,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>The window should be minimizable.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Maximize">
@@ -85,8 +89,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>The window should be maximizable.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Close">
@@ -97,8 +102,22 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>The window should be closable.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="value__">
+      <MemberSignature Language="C#" Value="value__" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Internal field.</summary>
+        <remarks>Do not use.</remarks>
       </Docs>
     </Member>
   </Members>

@@ -10,8 +10,8 @@
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
   <Docs>
-    <summary>To be added</summary>
-    <remarks>To be added</remarks>
+    <summary>Specifies the type of a <see cref="T:Gdk.Image" />.</summary>
+    <remarks>None.</remarks>
   </Docs>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -37,8 +37,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>The original X image type, which is quite slow since the image has to be transferred from the client to the server to display it.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Shared">
@@ -49,8 +50,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>A faster image type, which uses shared memory to transfer the image data between the client and server. However this will only be available if the client and server are on the same machine and the shared memory extension is supported by the server.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Fastest">
@@ -61,8 +63,22 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Specifies that Shared should be tried first, and if that fails, then Normal will be used.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="value__">
+      <MemberSignature Language="C#" Value="value__" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Internal field.</summary>
+        <remarks>Do not use.</remarks>
       </Docs>
     </Member>
   </Members>

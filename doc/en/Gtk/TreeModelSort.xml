@@ -867,9 +867,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
+        <summary>GType Property.</summary>
         <returns>a <see cref="T:GLib.GType" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.TreeModelSort" />.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetColumnType">
@@ -993,95 +993,10 @@
         <Parameter Name="gtype" Type="GLib.GType" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Protected Constructor.</summary>
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
         <returns>a <see cref="T:Gtk.TreeModelSort" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ConvertChildIterToIter">
-      <MemberSignature Language="C#" Value="public Gtk.TreeIter ConvertChildIterToIter (Gtk.TreeIter child_iter);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>Gtk.TreeIter</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="child_iter" Type="Gtk.TreeIter" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="child_iter">a <see cref="T:Gtk.TreeIter" /></param>
-        <returns>a <see cref="T:Gtk.TreeIter" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ConvertIterToChildIter">
-      <MemberSignature Language="C#" Value="public Gtk.TreeIter ConvertIterToChildIter (Gtk.TreeIter sorted_iter);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>Gtk.TreeIter</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="sorted_iter" Type="Gtk.TreeIter" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="sorted_iter">a <see cref="T:Gtk.TreeIter" /></param>
-        <returns>a <see cref="T:Gtk.TreeIter" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="EmitRowsReordered">
-      <MemberSignature Language="C#" Value="public virtual int EmitRowsReordered (Gtk.TreePath path, Gtk.TreeIter iter);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="path" Type="Gtk.TreePath" />
-        <Parameter Name="iter" Type="Gtk.TreeIter" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="path">a <see cref="T:Gtk.TreePath" /></param>
-        <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
-        <returns>a <see cref="T:System.Int32" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetValue">
-      <MemberSignature Language="C#" Value="public virtual void GetValue (Gtk.TreeIter iter, int column, ref GLib.Value value);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="iter" Type="Gtk.TreeIter" />
-        <Parameter Name="column" Type="System.Int32" />
-        <Parameter Name="value" Type="GLib.Value&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
-        <param name="column">a <see cref="T:System.Int32" /></param>
-        <param name="value">a <see cref="T:GLib.Value" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="IterNext">
-      <MemberSignature Language="C#" Value="public virtual bool IterNext (ref Gtk.TreeIter iter);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="iter" Type="Gtk.TreeIter&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="iter">a <see cref="T:Gtk.TreeIter" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ConvertChildIterToIter">

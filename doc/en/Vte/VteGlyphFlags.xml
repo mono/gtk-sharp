@@ -43,7 +43,8 @@
       </Parameters>
       <Docs>
         <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Dim">
@@ -56,7 +57,8 @@
       </Parameters>
       <Docs>
         <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Underline">
@@ -69,7 +71,8 @@
       </Parameters>
       <Docs>
         <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Underline2">
@@ -82,7 +85,8 @@
       </Parameters>
       <Docs>
         <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Strikethrough">
@@ -95,7 +99,8 @@
       </Parameters>
       <Docs>
         <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Boxed">
@@ -108,7 +113,21 @@
       </Parameters>
       <Docs>
         <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="value__">
+      <MemberSignature Language="C#" Value="value__" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Internal field.</summary>
+        <remarks>Do not use.</remarks>
       </Docs>
     </Member>
   </Members>

@@ -6,4 +6,4 @@ libdir=${exec_prefix}/lib
 Name: GnomeVfs#
 Description: GnomeVfs# - GNOME-VFS .NET Binding
 Version: @VERSION@
-Libs: -lib:${libdir}/mono/@PACKAGE@ -r:gnome-vfs-sharp
+Libs: -r:${libdir}/mono/@PACKAGE@/gnome-vfs-sharp.dll

@@ -10,7 +10,7 @@
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
   <Docs>
-    <summary>To be added</summary>
+    <summary>This enumeration is used to distinguish between different types of attributes.</summary>
     <remarks>
       <para>
         This enumeration is used to distinguish between different
@@ -123,7 +123,8 @@
       <Parameters />
       <Docs>
         <summary>Font stretch (<see cref="T:Pango.AttrInt" />)</summary>
-        <remarks>To be added</remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Size">
@@ -138,7 +139,8 @@
           Font size in points divided by <see cref="T:Pango.Scale" />
           (<see cref="T:Pango.AttrInt" />)
         </summary>
-        <remarks>To be added</remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="FontDesc">
@@ -186,7 +188,8 @@
       <Parameters />
       <Docs>
         <summary>Whether the text has an underline (<see cref="T:Pango.AttrInt" />)</summary>
-        <remarks>To be added</remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Strikethrough">
@@ -198,7 +201,8 @@
       <Parameters />
       <Docs>
         <summary>Whether the text has an struck-through (<see cref="T:Pango.AttrInt" />)</summary>
-        <remarks>To be added</remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Rise">
@@ -236,7 +240,21 @@
         <summary>
           Font size scale factor (<see cref="T:Pango.AttrScale" />)
         </summary>
-        <remarks>To be added</remarks>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="value__">
+      <MemberSignature Language="C#" Value="value__" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Internal field.</summary>
+        <remarks>Do not use.</remarks>
       </Docs>
     </Member>
   </Members>

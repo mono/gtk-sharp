@@ -1,4 +1,4 @@
-SUBDIRS = gconf rsvg test GtkDemo pixmaps
+SUBDIRS = gconf rsvg test GtkDemo pixmaps gnomevfs
 
 if ENABLE_GNOME
 GNOME_TARGETS=gnome-hello-world.exe canvas-example.exe fifteen.exe print.exe
@@ -26,7 +26,7 @@ endif
 
 TARGETS = custom-notebook.exe drawing-sample.exe custom-widget.exe custom-cellrenderer.exe gtk-hello-world.exe button.exe calendar.exe subclass.exe menu.exe size.exe scribble.exe treeviewdemo.exe managedtreeviewdemo.exe testdnd.exe actions.exe $(GNOME_TARGETS) $(GLADE_TARGETS) $(VTE_TARGETS)
 
-assemblies=../glib/glib-sharp.dll ../pango/pango-sharp.dll ../atk/atk-sharp.dll ../gdk/gdk-sharp.dll ../gtk/gtk-sharp.dll $(GNOME_ASSEMBLY) $(GLADE_ASSEMBLY) $(VTE_ASSEMBLY)
+assemblies=../glib/glib-sharp.dll ../pango/pango-sharp.dll ../atk/atk-sharp.dll ../gdk/gdk-sharp.dll ../gtk/gtk-sharp.dll ../gnomevfs/gnome-vfs-sharp.dll $(GNOME_ASSEMBLY) $(GLADE_ASSEMBLY) $(VTE_ASSEMBLY)
 references=$(addprefix /r:, $(assemblies))
 
 noinst_SCRIPTS = $(TARGETS)
@@ -101,6 +101,9 @@ actions.exe: $(srcdir)/Actions.cs
 custom-notebook.exe: $(srcdir)/CustomNotebook.cs $(assemblies)
 	$(CSC) /debug /out:custom-notebook.exe $(references) $(srcdir)/CustomNotebook.cs
 
+testvfs.exe: $(srcdir)/TestVfs.cs
+	$(CSC) /debug /out:testvfs.exe $(references) $(srcdir)/TestVfs.cs
+
 EXTRA_DIST = 				\
 	HelloWorld.cs			\
 	GnomeHelloWorld.cs		\
@@ -127,4 +130,5 @@ EXTRA_DIST = 				\
 	sysdraw.cs			\
 	drawing-sample.exe.config	\
 	Actions.cs			\
-	CustomNotebook.cs
+	CustomNotebook.cs		\
+	TestVfs.cs

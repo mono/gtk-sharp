@@ -1166,7 +1166,7 @@ Console.WriteLine("Width: {0}, Height: {1}" , width , height);</code>
       <Parameters />
       <Docs>
         <summary>KeysChanged event.</summary>
-        <remarks>This event is emited when the <see cref="T:Gtk.AccelGroup"/> or mnemonic associated with the <see cref="T:Gtk.Window"/> is changed.</remarks>
+        <remarks>This event is emited when the <see cref="T:Gtk.AccelGroup" /> or mnemonic associated with the <see cref="T:Gtk.Window" /> is changed.</remarks>
       </Docs>
     </Member>
     <Member MemberName="MoveFocus">
@@ -1226,7 +1226,7 @@ Console.WriteLine("Width: {0}, Height: {1}" , width , height);</code>
       <Parameters />
       <Docs>
         <summary>FrameEvent event.</summary>
-        <remarks>This event is emited when <see cref="M:Gtk.Window.HasFrame"/> has been set to true and an event occurs on the resulting frame.</remarks>
+        <remarks>This event is emited when <see cref="M:Gtk.Window.HasFrame" /> has been set to true and an event occurs on the resulting frame.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AutoStartupNotification">
@@ -1419,7 +1419,7 @@ Console.WriteLine("Width: {0}, Height: {1}" , width , height);</code>
       <Docs>
         <summary>Raw Property</summary>
         <returns>a <see cref="T:System.IntPtr" /></returns>
-        <remarks>Returns the native object handle of this <see cref="T:Gtk.Window"/>.</remarks>
+        <remarks>Returns the native object handle of this <see cref="T:Gtk.Window" />.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GType">
@@ -1432,7 +1432,7 @@ Console.WriteLine("Width: {0}, Height: {1}" , width , height);</code>
       <Docs>
         <summary>GType Property</summary>
         <returns>a <see cref="T:GLib.GType" /></returns>
-        <remarks>Returns the native GObject type for <see cref="T:Gtk.Window"/>.</remarks>
+        <remarks>Returns the native GObject type for <see cref="T:Gtk.Window" />.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnFrameEvent">
@@ -1529,106 +1529,6 @@ Console.WriteLine("Width: {0}, Height: {1}" , width , height);</code>
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
         <returns>a <see cref="T:Gtk.Window" /></returns>
         <remarks>Chain to this constructor if you have manually registered a native GType for your subclass.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DefaultIconList">
-      <MemberSignature Language="C#" Value="public static Gdk.Pixbuf [] DefaultIconList { set; get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>Gdk.Pixbuf[]</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Sets or obtains the icon list to be used as fallback for windows that haven't had <see cref="M:Gtk.Window.IconList" /> called on them to set up a window-specific icon list.</summary>
-        <param name="value">An array of <see cref="T:Gdk.Pixbuf" />.</param>
-        <returns>An array of icons list.</returns>
-        <remarks>
-          <para>
-	  This method allows you to set up the icon for all windows in your app at once. 
-	 </para>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="IconList">
-      <MemberSignature Language="C#" Value="public Gdk.Pixbuf [] IconList { set; get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>Gdk.Pixbuf[]</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Sets or obtains the list of icons representing a <see cref="T:Gtk.Window" />.</summary>
-        <param name="value">An array of <see cref="T:Gdk.Pixbuf" />s.</param>
-        <returns>An array of <see cref="T:Gdk.Pixbuf[]" />s.</returns>
-        <remarks>
-          <para>
-	  The icon is used when <paramref name="window" /> is minimized (also known as iconified). Some window managers or desktop environments may also place it in the window frame, or display it in other contexts.
-	 </para>
-          <para>
-            <see cref="M:Gtk.Window.IconList" /> allows you to pass the same icon in several hand-drawn sizes. The list should contain the natural sizes your icon is available in; that is, don't scale the image before passing it to GTK#. Scaling is postponed unitl the last minute, when the desired final size is known, to allow best quality. By passing several sizes, you may improve the final image quality of the icon, by reducing or eliminating automatic image scaling.
-	 </para>
-          <para>
-	  Recommended sizes to provide: 16x16, 32x32, 48x48 at minimum, and larger images (64x64, 128x128) if you have them).
-	 </para>
-          <para>
-	  Note that transient windows (those who have been set transient for another <paramref name="window" /> using <see cref="P:Gtk.Window.TransientFor" /> will inherit their icon from their transient parent. So there's no need to explicity set the icon on transient windows.
-	 </para>
-          <para>
-	  When retrieving the list is copied, but the reference count on each won't be incremented.
-	 </para>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ListToplevels">
-      <MemberSignature Language="C#" Value="public static Gtk.Window[] ListToplevels ();" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>Gtk.Window[]</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Returns a list of all existing toplevel windows.</summary>
-        <returns>An array of toplevel widgets.</returns>
-        <remarks>
-          <para>
-	  The widgets in the list are not individually referenced.
-         </para>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DefaultSize">
-      <MemberSignature Language="C#" Value="public Gdk.Size DefaultSize { set; get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>Gdk.Size</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Sets or obtains the default size of <paramref name="window" />.</summary>
-        <returns>a <see cref="T:Gdk.Size" /></returns>
-        <remarks>
-          <para>
-         A value of -1 for the size indicates that a default size has not been explicitly set for that dimension, so the "natural" size of the <paramref name="window" /> will be used.
-        </para>
-          <para>
-         If the <paramref name="window" />'s "natural" size (its size request) is larger than the default, the default will be ignored. More generally, if the default size does not obey the geometry hints for the <paramref name="window" /> (<see cref="M:Gtk.Window.SetGeometryHints" /> can be used to set these explicitly), the default size will be clamped to the nearest permitted size.
-        </para>
-          <para>
-         Unlike <see cref="M:Gtk.Widget.SizeRequest" />, which sets a size request for a <paramref name="widget" /> and thus would keep users from shrinking the <paramref name="window" />, this method only sets the initial size, just as if the user had resized the <paramref name="window" /> themselves. Users can still shrink the <paramref name="window" /> again as they normally would. Setting a default size of -1 means to use the "natural" default size (the size request of the <paramref name="window" />).
-        </para>
-          <para>
-         For more control over a <paramref name="window" />'s initial size and how resizing works, read <see cref="M:Gtk.Window.SetGeometryHints" />.
-        </para>
-          <para>
-         For some uses, <see cref="M:Gtk.Window.Resize" /> is a more appropriate method. <see cref="M:Gtk.Window.Resize" /> changes the current size of the <paramref name="window" />, rather than the size to be used on initial display. <see cref="M:Gtk.Window.Resize" /> always affects the <paramref name="window" /> itself, not the geometry widget.
-        </para>
-          <para>
-         The default size of a <paramref name="window" /> only affects the first time a <paramref name="window" /> is shown; if a <paramref name="window" /> is hidden and re-shown, it will remember the size it had prior to hiding, rather than using the default size.
-        </para>
-          <para>
-         Windows can't actually be 0x0 in size, they must be at least 1x1, but passing 0 is OK, resulting in a 1x1 default size.
-        </para>
-        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DefaultIconList">

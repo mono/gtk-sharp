@@ -1,3 +1,96 @@
+2004-07-21  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/TextView.xml:
+	* en/Gtk/TextIter.xml: documented the rest
+
+2004-07-16  John Luke  <jluke@cfl.rr.com>
+
+	* en/Pango/*: doc'ed some more pango stuff
+
+2004-07-11  John Luke  <jluke@cfl.rr.com>
+
+	* en/Vte*: some Vte docs
+	* en/Pango/Context.xml: doc'ed
+
+2004-07-07  Jasper Van Putten <jaspervp@gmx.net>
+
+	* en/Gtk/*.xml : docs for Notebook and RadioButton.
+
+2004-07-06  Peter Johanson <latexer@gentoo.org>
+
+	* en/Gnome/*.xml : docs for ColorPicker.
+
+2004-07-02  Mike Kestner  <mkestner@ximian.com>
+
+	* en/GLib/*.xml : more glib docs.
+
+2004-07-02  Mike Kestner  <mkestner@ximian.com>
+
+	* en/GLib/*.xml : docs for Boxed, ConnectBeforeAttribute, and 
+	DefaultSignalHandlerAttribute.
+
+2004-07-02  Peter Johanson <latexer@gentoo.org>
+
+	* en/Art/*.xml : docs for some Art API.
+
+2004-06-29  Mike Kestner  <mkestner@ximian.com>
+
+	* en/Gdk/Key.xml : script fill summary tags.  There isn't a lot of
+	valuable information to be added here, so we're just using the member
+	name + " key value" for the summary.
+
+2004-06-29  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : remove To be added from enum <remarks> since they aren't
+	rendered.  Monodoc needs to be enhanced to render if they are there,
+	but we should normally put enum member docs in the summary, not remarks.
+
+2004-06-24  Mike Kestner  <mkestner@ximian.com>
+
+	* en/Gtk/Global.xml : finish.  there's a lot of crap in there.
+	* en/Gtk/IMContext.xml : docs for FilterKeypress ctors Reset and Commit.
+
+2004-06-24  Mike Kestner  <mkestner@ximian.com>
+
+	* en/Pango/Layout.xml : document IndexToPosition.
+
+2004-06-24  Mike Kestner  <mkestner@ximian.com>
+
+	* en/GLib/Timeout.xml : finish the class and Add docs.
+
+2004-06-24  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : add back the enumtype Value__ fields with "Do not use"
+	docs.  Monodoc doesn't show these nodes as fields, but needs them for
+	non-int enums.
+
+2004-06-24  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : kill all the dead files where types have been removed.
+	Mark several gtkhtml types as being in gtkhtml-sharp, not gtk-sharp.
+	Another 601 dead TBAs.
+
+2004-06-24  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : document event args classes and ctors via script-fu. 
+	Knocks off another 944 TBAs.
+
+2004-06-24  Jamin Philip Gray <jamin@pubcrawler.org>
+
+	* en/Gdk/EventButton.xml : documented members.
+
+2004-06-23  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : document event handler delegates via script-fu. 400 TBAs.
+
+2004-06-21  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : document ctor(GType) members via script-fu. 476 TBAs.
+
+2004-06-21  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : document GType props via script-fu. 620 TBAs killed.
+
 2004-06-19  Larry Ewing  <lewing@ximian.com>
 
 	* en/Gnome/CanvasItem.xml: update the documentation no that

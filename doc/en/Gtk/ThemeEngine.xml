@@ -91,9 +91,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
+        <summary>GType Property.</summary>
         <returns>a <see cref="T:GLib.GType" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.ThemeEngine" />.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -104,10 +104,10 @@
         <Parameter Name="gtype" Type="GLib.GType" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Protected Constructor.</summary>
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
         <returns>a <see cref="T:Gtk.ThemeEngine" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

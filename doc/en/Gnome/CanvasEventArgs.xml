@@ -1,5 +1,5 @@
 <Type Name="CanvasEventArgs" FullName="Gnome.CanvasEventArgs">
-  <TypeSignature Language="C#" Value="public class CanvasEventArgs : GtkSharp.SignalArgs" Maintainer="auto" />
+  <TypeSignature Language="C#" Value="public class CanvasEventArgs : GLib.SignalArgs" Maintainer="auto" />
   <AssemblyInfo>
     <AssemblyName>gnome-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -10,11 +10,15 @@
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
   <Docs>
-    <summary>To be added</summary>
-    <remarks>To be added</remarks>
+    <summary>Details of  events coming from CanvasItems. See <see cref="T:Gnome.CanvasItem" />.</summary>
+    <remarks>Contains mouse button clicks, motion, enter/leave, and key press events from CanvasItems. Use these  to create user interactive items. The x and y coordinates of the event structure have been converted to canvas world coordinates.
+<block subset="none" type="note">
+        <para>To signify that an event has been handled, and stop it from being further emitted, set <see cref="P:GLib.SignalArgs.Retval" /> to true.
+  </para>
+      </block></remarks>
   </Docs>
   <Base>
-    <BaseTypeName>GtkSharp.SignalArgs</BaseTypeName>
+    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
   </Base>
   <Interfaces />
   <Attributes />
@@ -25,9 +29,9 @@
       <ReturnValue />
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <returns>a <see cref="T:Gnome.CanvasEventArgs" /></returns>
-        <remarks>To be added</remarks>
+        <summary>Public Constructor.</summary>
+        <returns>A new <see cref="T:Gnome.CanvasEventArgs" />.</returns>
+        <remarks>Create a new <see cref="T:Gnome.CanvasEventArgs" /> instance with this constructor if you need to invoke a <see cref="T:Gnome.CanvasEventHandler" /> delegate.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Event">

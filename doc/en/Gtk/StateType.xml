@@ -10,7 +10,7 @@
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
   <Docs>
-    <summary>An enumeration used by Style.</summary>
+    <summary>An enumeration used to indicate the visual state of a <see cref="T:Gtk.Widget" />.</summary>
     <remarks>
       <para>
       This enumeration is used to indicate the current state of a widget; the state determines how the widget is draw.
@@ -114,6 +114,19 @@
           State indicating that the widget is unresponsive to user actions.
          </para>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="value__">
+      <MemberSignature Language="C#" Value="value__" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Internal field.</summary>
+        <remarks>Do not use.</remarks>
       </Docs>
     </Member>
   </Members>

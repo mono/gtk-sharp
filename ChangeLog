@@ -1,7 +1,36 @@
+2004-07-28  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* */*: merge from HEAD again.
+
+2004-07-24  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : hide Window.Destroy.
+	* gdk/Window.custom : manually impl Destroy since it releases our ref.
+	* glib/Object.cs : support unset of Raw values.
+
+2004-07-22  Mike Kestner  <mkestner@ximian.com>
+
+	* glib/Value.cs : allow null for ctor(GLib.Object).
+
 2004-07-18  Todd Berman  <tberman@off.net>
 
 	* panelapplet/Makefile.am: We dont actually use gnome-sharp.dll, remove
 	it.
+
+2004-07-16  John Luke  <jluke@cfl.rr.com>
+
+	* gtk/Gtk.metadata:
+	* glade/Glade.metadata: mark return type as const-gchar* for
+	Gtk.Global.CheckVersion and Glade.Global.ModuleCheckVersion
+	so Gtk# does not try to free them.  Thanks to
+	jaspervp@gmx.net (Jasper van Putten) for identifying the Glade
+	part. Fixes bugs #61329 and #60954
+
+2004-07-12  Martin Willemoes Hansen  <mwh@sysrq.dk>
+
+	* gnome/Gnome.metadata: Fixed typo i to 1
+	  Remove unnessesary disabledefaultconstructor
+	* gnome/PrintJob.custom: Change ctor to an overload ctor
 
 2004-07-11  Todd Berman  <tberman@off.net>
 
@@ -18,6 +47,10 @@
 2004-07-10  Todd Berman  <tberman@off.net>
 
 	* panelapplet/panelapplet-sharp-2.0.pc.in: fix path.
+
+2004-07-09  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : mark gc param of Drawable.DrawPixbuf null_ok.
 
 2004-07-09  Todd Berman  <tberman@off.net>
 
@@ -125,6 +158,53 @@
 	Also, every .pc file was renamed -2.0.pc to allow for the parallel
 	install, and the .cvsignore and Makefile.am rules were updated to
 	reflect this change.
+
+2004-07-05  John Luke  <jluke@cfl.rr.com>
+
+	* sample/VteTest.cs: improve the scrolling in the sample
+	and pass on the Environment variables
+
+2004-07-02  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : dist the HACKING file from now on.
+
+2004-07-01  Mike Kestner  <mkestner@ximian.com>
+
+	* sample/rsvg/Makefile.am : add an art-sharp /r.
+
+2004-06-30  John Luke  <jluke@cfl.rr.com>
+
+	* vte/Vte.metadata: remove unneeded metadata and add comments
+
+2004-06-29  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : bump version to 1.0 and tag.  Woot!
+
+2004-06-25  Mike Kestner  <mkestner@ximian.com>
+
+	* */*.cs : add lgpl license blurb and clean up (c)'s.
+	* */*.custom : add lgpl license blurb and clean up (c)'s.
+	* */glue/*.c : add lgpl license blurb and clean up (c)'s.
+	file adds without license from now on are punishable by wedgie.
+
+2004-06-25  Mike Kestner  <mkestner@ximian.com>
+
+	* generator/*.cs : add gpl license blurb and clean up (c)'s.
+	* parser/* : ditto
+	* doc/*.cs : ditto
+	* doc/gen-handlerargs-docs.cs : add little scripty.
+
+2004-06-25  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : tag and bump version to 0.99.
+
+2004-06-23  Todd Berman  <tberman@off.net>
+
+	* doc/*/*.xml: s/GtkSharp.SignalArgs/GLib.SignalArgs/;
+
+2004-06-22  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : GLIB check for gobject, not glib.
 
 2004-06-20  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 

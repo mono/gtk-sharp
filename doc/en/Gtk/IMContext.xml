@@ -78,10 +78,11 @@
         <Parameter Name="evnt" Type="Gdk.EventKey" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <param name="evnt">To be added: an object of type 'Gdk.EventKey'</param>
-        <returns>To be added: an object of type 'bool'</returns>
-        <remarks>To be added</remarks>
+        <summary>Allow an input method to handle a <see cref="T:Gdk.EventKey" />.</summary>
+        <param name="evnt">a <see cref="T:Gdk.EventKey" /> representing a key press.</param>
+        <returns>
+          <see langword="true" /> if the keypress was handled.</returns>
+        <remarks>If the method returns <see langword="true" />, no further processing should be done for <paramref name="evnt" />.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Reset">
@@ -92,8 +93,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Resets the state of the input method.</summary>
+        <remarks>Call this method if, for example, a change in cursor position has occurred.  The reset clears any existing pre-edit state.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Finalize">
@@ -213,8 +214,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Commit text event.</summary>
+        <remarks>The event is emitted when the input method has processed all the keystrokes for an individual text element, including pre-edit keystrokes.  The resulting text is located in <see cref="M:Gtk.CommitArgs.Str" /></remarks>
       </Docs>
     </Member>
     <Member MemberName="RetrieveSurrounding">
@@ -284,9 +285,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
+        <summary>GType Property.</summary>
         <returns>a <see cref="T:GLib.GType" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.IMContext" />.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnPreeditEnd">
@@ -379,10 +380,10 @@
         <Parameter Name="gtype" Type="GLib.GType" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Protected Constructor.</summary>
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
         <returns>a <see cref="T:Gtk.IMContext" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetPreeditString">
@@ -409,9 +410,9 @@
       <ReturnValue />
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
+        <summary>Protected Constructor.</summary>
         <returns>a <see cref="T:Gtk.IMContext" /></returns>
-        <remarks>To be added</remarks>
+        <remarks />
       </Docs>
     </Member>
   </Members>

@@ -8,6 +8,7 @@ DOWNLOADS = \
 	ftp://ftp.gtk.org/pub/gtk/v2.4/pango-1.4.0.tar.gz                                       \
 	ftp://ftp.gtk.org/pub/gtk/v2.4/atk-1.6.0.tar.gz                                         \
 	ftp://ftp.gtk.org/pub/gtk/v2.4/gtk+-2.4.1.tar.gz                                        \
+	http://ftp.gnome.org/pub/GNOME/desktop/2.6/2.6.0/sources/gnome-vfs-2.6.0.tar.gz		\
 	http://ftp.gnome.org/pub/GNOME/desktop/2.6/2.6.0/sources/libgnome-2.6.0.tar.gz       	\
 	http://ftp.gnome.org/pub/GNOME/desktop/2.6/2.6.0/sources/libgnomecanvas-2.6.0.tar.gz 	\
 	http://ftp.gnome.org/pub/GNOME/desktop/2.6/2.6.0/sources/libgnomeui-2.6.0.tar.gz     	\

@@ -412,9 +412,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
+        <summary>GType Property.</summary>
         <returns>a <see cref="T:GLib.GType" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.Container" />.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnResizeChecked">
@@ -512,10 +512,10 @@
         <Parameter Name="gtype" Type="GLib.GType" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Protected Constructor.</summary>
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
         <returns>a <see cref="T:Gtk.Container" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Children">
@@ -593,86 +593,6 @@
       <Docs>
         <summary>To be added</summary>
         <returns>a <see cref="T:GLib.GType" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Children">
-      <MemberSignature Language="C#" Value="public Gtk.Widget [] Children { get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>Gtk.Widget[]</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Obtains the the container's non-internal children.</summary>
-        <returns>An array of non-internal children.</returns>
-        <remarks>
-          <para>
-	  See <see cref="M:Gtk.Container.Forall" /> for details on what constitutes an "internal" child.
-	  </para>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="FocusChain">
-      <MemberSignature Language="C#" Value="public Gtk.Widget [] FocusChain { set; get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>Gtk.Widget[]</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Sets or obtains a focus chain of the container, overriding the one computed automatically by Gtk#.</summary>
-        <returns>An array of <paramref name="widgets" />.</returns>
-        <remarks>
-          <para>
-	  In principle each <see cref="T:Gtk.Widget" /> in the chain should be a descendant of the <see cref="T:Gtk.Container" />, but this is not enforced by this method, since it is allowed to set the focus chain before you pack the widgets, or have a widget in the chain that is not always packed. The necessary checks are done when the focus chain is actually traversed.	   
-	  </para>
-          <para>
-	  If no focus chain has been explicitly set, gtk# computes the focus chain based on the positions of the children. in that case, gtk# stores <see langword="null" /> in focusable_widgets and returns <see langword="false" />. 
-	  </para>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OverrideForall">
-      <MemberSignature Language="C#" Value="protected static void OverrideForall (GLib.GType gtype);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OnForall">
-      <MemberSignature Language="C#" Value="protected virtual void OnForall (bool include_internals, Gtk.Container+CallbackInvoker invoker);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="include_internals" Type="System.Boolean" />
-        <Parameter Name="invoker" Type="Gtk.Container+CallbackInvoker" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="include_internals">a <see cref="T:System.Boolean" /></param>
-        <param name="invoker">a <see cref="T:Gtk.Container+CallbackInvoker" /></param>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected Container ();" />
-      <MemberType>Constructor</MemberType>
-      <ReturnValue />
-      <Parameters />
-      <Docs>
-        <summary>To be added</summary>
-        <returns>a <see cref="T:Gtk.Container" /></returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>

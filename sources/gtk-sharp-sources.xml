@@ -68,6 +68,20 @@
         <exclude>gtk+-2.4.1/gtk/gtktreeitem.h</exclude>
       </namespace>
     </library>
+  </api>-->
+  <api filename="../gnomevfs/gnomevfs-api.raw">
+    <library name="gnomevfs-2">
+      <namespace name="Gnome.Vfs">
+        <dir>gnome-vfs-2.6.0/libgnomevfs</dir>
+        <!-- These files break the parser -->
+        <exclude>gnome-vfs-2.6.0/libgnomevfs/GNOME_VFS_Daemon-common.c</exclude>
+        <exclude>gnome-vfs-2.6.0/libgnomevfs/GNOME_VFS_Daemon.h</exclude>
+        <exclude>gnome-vfs-2.6.0/libgnomevfs/GNOME_VFS_Daemon-skels.c</exclude>
+        <exclude>gnome-vfs-2.6.0/libgnomevfs/GNOME_VFS_Daemon-stubs.c</exclude>
+        <exclude>gnome-vfs-2.6.0/libgnomevfs/gnome-vfs-job.c</exclude>
+        <exclude>gnome-vfs-2.6.0/libgnomevfs/gnome-vfs-job.h</exclude>
+      </namespace>
+    </library>
   </api>
   <api filename="../gnome/gnome-api.raw">
     <library name="gnome-2">

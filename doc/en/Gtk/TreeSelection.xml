@@ -469,9 +469,9 @@ class TreeSelectionSample
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
+        <summary>GType Property.</summary>
         <returns>a <see cref="T:GLib.GType" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.TreeSelection" />.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnChanged">
@@ -494,37 +494,10 @@ class TreeSelectionSample
         <Parameter Name="gtype" Type="GLib.GType" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Protected Constructor.</summary>
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
         <returns>a <see cref="T:Gtk.TreeSelection" /></returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetSelectedRows">
-      <MemberSignature Language="C#" Value="public Gtk.TreePath[] GetSelectedRows (out Gtk.TreeModel model);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>Gtk.TreePath[]</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="model" Type="Gtk.TreeModel&amp;" RefType="out" />
-      </Parameters>
-      <Docs>
-        <summary>Returns an array of <see cref="T:Gtk.TreePath" />s representing the selected rows.</summary>
-        <param name="model">The model the <see cref="T:Gtk.TreeView" /> is bound to.</param>
-        <returns>Selected rows in an array of <see cref="T:Gtk.TreePath" />s</returns>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected TreeSelection ();" />
-      <MemberType>Constructor</MemberType>
-      <ReturnValue />
-      <Parameters />
-      <Docs>
-        <summary>To be added</summary>
-        <returns>a <see cref="T:Gtk.TreeSelection" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetSelectedRows">

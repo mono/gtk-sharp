@@ -10,8 +10,8 @@
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
   <Docs>
-    <summary>To be added</summary>
-    <remarks>To be added</remarks>
+    <summary>Returned by <see cref="M:Gdk.Pointer.Grab" /> and <see cref="M:Gdk.Keyboard.Grab" /> to indicate success or the reason for the failure of the grab event.</summary>
+    <remarks>None.</remarks>
   </Docs>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -37,8 +37,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>The resource was successfully grabbed.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AlreadyGrabbed">
@@ -49,8 +50,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>The resource is actively grabbed by another client.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InvalidTime">
@@ -61,8 +63,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>The resource was grabbed more recently than the specified time.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="NotViewable">
@@ -73,8 +76,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>The grab window or the confine_to window are not viewable.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Frozen">
@@ -85,8 +89,22 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>The resource is frozen by an active grab of another client.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="value__">
+      <MemberSignature Language="C#" Value="value__" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Internal field.</summary>
+        <remarks>Do not use.</remarks>
       </Docs>
     </Member>
   </Members>

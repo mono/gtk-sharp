@@ -10,8 +10,8 @@
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
   <Docs>
-    <summary>To be added</summary>
-    <remarks>To be added</remarks>
+    <summary>This structure represents the common portions of all attributes</summary>
+    <remarks>Particular types of attributes include this structure as their initial portion. The common portion of the attribute holds the range to which the value in the type-specific part of the attribute applies.</remarks>
   </Docs>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -27,8 +27,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Returns an empty <see cref="T:Pango.Attribute" /></summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="New">
@@ -41,10 +41,10 @@
         <Parameter Name="raw" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <param name="raw">To be added: an object of type 'IntPtr'</param>
-        <returns>To be added: an object of type 'Pango.Attribute'</returns>
-        <remarks>To be added</remarks>
+        <summary>Internal method</summary>
+        <param name="raw">an object of type <see cref="T:System.IntPtr" /></param>
+        <returns>an object of type <see cref="T:Pango.Attribute" /></returns>
+        <remarks>This is an internal method, and should not be used by user code.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Equal">
@@ -57,10 +57,11 @@
         <Parameter Name="attr2" Type="Pango.Attribute" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <param name="attr2">To be added: an object of type 'Pango.Attribute'</param>
-        <returns>To be added: an object of type 'bool'</returns>
-        <remarks>To be added</remarks>
+        <summary>Compare two attributes for equality.</summary>
+        <param name="attr2">a <see cref="T:Pango.Attribute" /> to be tested for equality.</param>
+        <returns>
+          <see langword="true" /> if the two attributes have the same value.</returns>
+        <remarks>This compares only the actual value of the two attributes and not the ranges that the attributes apply to.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Destroy">
@@ -71,8 +72,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Destroy a <see cref="T:Pango.Attribute" /> and free all associated memory.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Copy">
@@ -83,9 +84,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <returns>To be added: an object of type 'Pango.Attribute'</returns>
-        <remarks>To be added</remarks>
+        <summary>Make a copy of an attribute.</summary>
+        <returns>a new <see cref="T:Pango.Attribute" /></returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="klass">
@@ -95,9 +96,9 @@
         <ReturnType>Pango.AttrClass</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added</summary>
-        <returns>To be added: an object of type 'Pango.AttrClass'</returns>
-        <remarks>To be added</remarks>
+        <summary>the class structure holding information about the type of the attribute</summary>
+        <returns>an object of type <see cref="T:Pango.AttrClass" /></returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="StartIndex">
@@ -109,8 +110,8 @@
       <Parameters>
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>the start index of the range (in bytes).</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="EndIndex">
@@ -122,8 +123,8 @@
       <Parameters>
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>end index of the range.</summary>
+        <remarks>The character containing this byte index is not included in the range. </remarks>
       </Docs>
     </Member>
   </Members>

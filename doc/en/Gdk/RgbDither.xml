@@ -10,8 +10,8 @@
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
   <Docs>
-    <summary>To be added</summary>
-    <remarks>To be added</remarks>
+    <summary>Selects whether or not <see cref="T:Gdk.Rgb" /> applies dithering to the image on display.</summary>
+    <remarks>Since <see cref="T:Gdk.Rgb" /> currently only handles images with 8 bits per component, dithering on 24 bit per pixel displays is a moot point.</remarks>
   </Docs>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -37,8 +37,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Never use dithering.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Normal">
@@ -49,8 +50,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Use dithering in 8 bits per pixel (and below) only.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Max">
@@ -61,8 +63,22 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Use dithering in 16 bits per pixel and below.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="value__">
+      <MemberSignature Language="C#" Value="value__" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Internal field.</summary>
+        <remarks>Do not use.</remarks>
       </Docs>
     </Member>
   </Members>

@@ -13,6 +13,17 @@
     <summary>A widget used for items in menus.</summary>
     <remarks>
       <para>The <see cref="T:Gtk.MenuItem" /> and derived widgets are the only valid children for menus. Their function is to correctly handle highlighting, alignment, events and submenus.</para>
+      <example>
+        <code lang="C#">
+               MenuBar mb = new MenuBar ();
+               Menu file_menu = new Menu ();
+               MenuItem exit_item = new MenuItem("Exit");
+               file_menu.Append (exit_item);
+               MenuItem file_item = new MenuItem("File");
+               file_item.Submenu = file_menu;
+               mb.Append (file_item);   
+  </code>
+      </example>
     </remarks>
   </Docs>
   <Base>
@@ -255,9 +266,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
+        <summary>GType Property.</summary>
         <returns>a <see cref="T:GLib.GType" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.MenuItem" />.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnToggleSizeRequested">
@@ -322,10 +333,10 @@
         <Parameter Name="gtype" Type="GLib.GType" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Protected Constructor.</summary>
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
         <returns>a <see cref="T:Gtk.MenuItem" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ToggleSizeRequest">

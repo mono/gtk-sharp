@@ -15,6 +15,44 @@
       <para>
       The result is a standard menu bar which can hold many menu items. <see cref="T:Gtk.MenuBar" /> allows for a shadow type to be set for aesthetic purposes.
      </para>
+      <example>
+        <code lang="C#">
+			
+	using System;
+	using Gtk;
+
+	public class MenuApp {
+
+		public static void Main (string[] args)
+		{
+			new MenuApp();
+		}
+
+		public MenuApp(){
+			Application.Init();
+			Window win = new Window ("Menu Sample App");
+			MenuBar mb = new MenuBar ();
+			Menu file_menu = new Menu ();
+			MenuItem exit_item = new MenuItem("Exit");
+			exit_item.Activated += new EventHandler (on_exit_item_activate);
+			file_menu.Append (exit_item);
+			MenuItem file_item = new MenuItem("File");
+			file_item.Submenu = file_menu;
+			mb.Append (file_item);		
+			win.Add (mb);
+			win.ShowAll ();
+			Application.Run ();
+		}
+
+
+
+		public void on_exit_item_activate(object o, EventArgs args)
+		{
+			Application.Quit ();
+		}
+
+  </code>
+      </example>
     </remarks>
   </Docs>
   <Base>
@@ -83,9 +121,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
+        <summary>GType Property.</summary>
         <returns>a <see cref="T:GLib.GType" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.MenuBar" />.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -96,10 +134,10 @@
         <Parameter Name="gtype" Type="GLib.GType" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Protected Constructor.</summary>
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
         <returns>a <see cref="T:Gtk.MenuBar" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
       </Docs>
     </Member>
   </Members>

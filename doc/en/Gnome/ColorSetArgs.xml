@@ -1,5 +1,5 @@
 <Type Name="ColorSetArgs" FullName="Gnome.ColorSetArgs">
-  <TypeSignature Language="C#" Value="public class ColorSetArgs : GtkSharp.SignalArgs" Maintainer="auto" />
+  <TypeSignature Language="C#" Value="public class ColorSetArgs : GLib.SignalArgs" Maintainer="auto" />
   <AssemblyInfo>
     <AssemblyName>gnome-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -10,11 +10,13 @@
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
   <Docs>
-    <summary>To be added</summary>
-    <remarks>To be added</remarks>
+    <summary>Event data.</summary>
+    <remarks>
+      <para>The <see cref="M:Gnome.ColorPicker.ColorSet" /> event invokes <see cref="T:Gnome.ColorSetHandler" /> delegates which pass event data via this class.</para>
+    </remarks>
   </Docs>
   <Base>
-    <BaseTypeName>GtkSharp.SignalArgs</BaseTypeName>
+    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
   </Base>
   <Interfaces />
   <Attributes />
@@ -25,9 +27,9 @@
       <ReturnValue />
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <returns>a <see cref="T:Gnome.ColorSetArgs" /></returns>
-        <remarks>To be added</remarks>
+        <summary>Public Constructor.</summary>
+        <returns>A new <see cref="T:Gnome.ColorSetArgs" />.</returns>
+        <remarks>Create a new <see cref="T:Gnome.ColorSetArgs" /> instance with this constructor if you need to invoke a <see cref="T:Gnome.ColorSetHandler" /> delegate.</remarks>
       </Docs>
     </Member>
     <Member MemberName="A">
@@ -37,7 +39,7 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added</summary>
+        <summary>The value of the alpha channel.</summary>
         <returns>To be added: an object of type 'uint'</returns>
         <remarks>To be added</remarks>
       </Docs>
@@ -49,7 +51,7 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added</summary>
+        <summary>The value of the blue channel.</summary>
         <returns>To be added: an object of type 'uint'</returns>
         <remarks>To be added</remarks>
       </Docs>
@@ -61,7 +63,7 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added</summary>
+        <summary>The value of the green channel.</summary>
         <returns>To be added: an object of type 'uint'</returns>
         <remarks>To be added</remarks>
       </Docs>
@@ -73,7 +75,7 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added</summary>
+        <summary>The value of the red channel.</summary>
         <returns>To be added: an object of type 'uint'</returns>
         <remarks>To be added</remarks>
       </Docs>

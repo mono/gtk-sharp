@@ -274,6 +274,7 @@ doc/Makefile
 sample/GtkDemo/Makefile
 sample/Makefile
 sample/gconf/Makefile
+sample/gnomevfs/Makefile
 sample/pixmaps/Makefile
 sample/rsvg/Makefile
 sample/test/Makefile

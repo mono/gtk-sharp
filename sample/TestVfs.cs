@@ -22,9 +22,10 @@ public class TestVfs {
 							       new Window ("test"),
 							       FileChooserAction.Open,
 							       "gnome-vfs");
+		fcd.LocalOnly = false;
 		fcd.AddButton (Stock.Cancel, ResponseType.Cancel);
 		fcd.AddButton (Stock.Open, ResponseType.Ok);
-		fcd.DefaultResponse = (int)ResponseType.Ok;
+		fcd.DefaultResponse = ResponseType.Ok;
 		int resp = fcd.Run ();
 		fcd.Hide ();
 		
@@ -32,20 +33,48 @@ public class TestVfs {
 			return;
 
 		Console.WriteLine ("Selected uri      = {0}", fcd.Uri);
-		string mimetype = Vfs.GetMimeType (fcd.Uri);
+		string mimetype = Mime.GetMimeType (fcd.Uri);
 		Console.WriteLine ("Mimetype          = {0}", mimetype);
+
+		FileInfoOptions options = FileInfoOptions.Default;
+		Gnome.Vfs.FileInfo info = new Gnome.Vfs.FileInfo (fcd.Uri, options);
+		Console.WriteLine ("isLocal = " + info.IsLocal);
+
+#if false
+		Gnome.Vfs.Uri uri = new Gnome.Vfs.Uri (fcd.Uri);
+		Console.WriteLine (uri.ToString ());
 		
-		Vfs.OpenAsync (fcd.Uri, OpenMode.Read, 0, new Gnome.Vfs.AsyncCallback (open_cb));
+		VfsStream vs = new VfsStream (fcd.Uri, FileMode.OpenOrCreate);
+		UTF8Encoding utf8 = new UTF8Encoding ();
+		byte[] buf = utf8.GetBytes ("Testing 1 2 3, asdjfaskjdhfkajshdf");
+		vs.Write (buf, 0, buf.Length);
+		/*for (int i = 0; i < 200; i++) {
+			int c = vs.ReadByte ();
+			if (c == -1) {
+				Console.WriteLine ("EOF");
+				break;
+			}
+			Console.Write ((char)c);
+		}*/
+		vs.Close ();
 		
-		Vfs.CreateAsync ("file://~/test.txt", OpenMode.Read | OpenMode.Write,
-				 false, 500, 0, new Gnome.Vfs.AsyncCallback (create_cb));
+		//Handle handle = Vfs.Open (fcd.Uri, OpenMode.Read);
 		
+		//Vfs.OpenAsync (fcd.Uri, OpenMode.Read, 0, new Gnome.Vfs.AsyncCallback (open_cb));
+		
+		/*FilePermission perms = FilePermission.UserRead |
+				       FilePermission.UserWrite |
+				       FilePermission.GroupRead |
+				       FilePermission.OtherRead;
+		Vfs.CreateAsync ("file:///home/jeroen/test.txt", OpenMode.Write,
+				 false, perms, 0, new Gnome.Vfs.AsyncCallback (create_cb));*/
+#endif
 		Application.Run ();
 	}
 	
 	static void open_cb (Handle handle, Result result)
 	{
-		Console.WriteLine ("OpenAsync result  = {0} ({1})", Vfs.ResultToString (result), result);
+		Console.WriteLine ("OpenAsync result = {0} ({1})", Vfs.ResultToString (result), result);
 
 		byte[] buffer = new byte[128];
 		Vfs.ReadAsync (handle, out buffer[0], 128, new AsyncReadCallback (read_cb));		
@@ -53,7 +82,7 @@ public class TestVfs {
 	
 	static void read_cb (Handle handle, Result result, byte[] buffer, ulong bytes_requested, ulong bytes_read)
 	{
-		Console.WriteLine ("ReadAsync result  = {0} ({1})", Vfs.ResultToString (result), result);
+		Console.WriteLine ("ReadAsync result = {0} ({1})", Vfs.ResultToString (result), result);
 
 		if (result == Result.Ok) {
 			Console.WriteLine ("bytes_requested   = {0}", bytes_requested);

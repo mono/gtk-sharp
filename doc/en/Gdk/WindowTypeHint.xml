@@ -16,7 +16,10 @@
       of function the window has. The window manager can use this when
       determining decoration and behaviour of the window. The hint
       must be set before mapping the window.
-    </remarks>
+    
+<para>
+These map to the FreeDesktop WM specification (http://freedesktop.org/Standards/wm-spec/)
+</para></remarks>
   </Docs>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -91,8 +94,9 @@
       <Parameters>
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Indicates that the window is a splash screen displayed as an application is starting up.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Utility">
@@ -104,8 +108,9 @@
       <Parameters>
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Indicates a small persistent utility window, such as a palette or toolbox. It is distinct from type Toolbar because it does not correspond to a toolbar torn off from the main application. It's distinct from type Dialog because it isn't a transient dialog, the user will probably keep it open while they're working. </summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Dock">
@@ -117,8 +122,9 @@
       <Parameters>
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Indicates a dock or panel feature. Typically a Window Manager would keep such windows on top of all other windows.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Desktop">
@@ -130,8 +136,22 @@
       <Parameters>
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Indicates a desktop feature. This can include a single window containing desktop icons with the same dimensions as the screen, allowing the desktop environment to have full control of the desktop, without the need for proxying root window clicks.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="value__">
+      <MemberSignature Language="C#" Value="value__" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Internal field.</summary>
+        <remarks>Do not use.</remarks>
       </Docs>
     </Member>
   </Members>

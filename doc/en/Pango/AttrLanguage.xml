@@ -10,8 +10,8 @@
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
   <Docs>
-    <summary>To be added</summary>
-    <remarks>To be added</remarks>
+    <summary>Used to represent attributes that are languages.</summary>
+    <remarks />
   </Docs>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -27,8 +27,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>Returns an empty <see cref="T:Pango.AttrLanguage" /></summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="New">
@@ -41,10 +41,10 @@
         <Parameter Name="language" Type="Pango.Language" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <param name="language">To be added: an object of type 'Pango.Language'</param>
-        <returns>To be added: an object of type 'Pango.AttrLanguage'</returns>
-        <remarks>To be added</remarks>
+        <summary>Create a new <see cref="T:Pango.AttrLanguage" /> from the provided <see cref="T:Pango.Language" /></summary>
+        <param name="language">a <see cref="T:Pango.Language" /></param>
+        <returns>a new <see cref="T:Pango.AttrLanguage" /></returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="New">
@@ -57,10 +57,10 @@
         <Parameter Name="raw" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <param name="raw">To be added: an object of type 'IntPtr'</param>
-        <returns>To be added: an object of type 'Pango.AttrLanguage'</returns>
-        <remarks>To be added</remarks>
+        <summary>Internal method</summary>
+        <param name="raw">an object of type <see cref="T:System.IntPtr" /></param>
+        <returns>an object of type <see cref="T:Pango.AttrLanguage" /></returns>
+        <remarks>This is an internal method, and should not be used by user code.</remarks>
       </Docs>
     </Member>
     <Member MemberName="value">
@@ -72,9 +72,9 @@
       <Parameters>
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <param name="value">To be added: an object of type 'Pango.Language'</param>
-        <returns>To be added: an object of type 'Pango.Language'</returns>
+        <summary>the PangoLanguage which is the value of the attribute</summary>
+        <param name="value">a <see cref="T:Pango.Language" /></param>
+        <returns>a <see cref="T:Pango.Language" /></returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -87,8 +87,8 @@
       <Parameters>
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
+        <summary>the common portion of the attribute</summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

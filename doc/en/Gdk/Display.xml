@@ -326,10 +326,8 @@
         <ReturnType>Gdk.Device</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>
-	      To be added
-        </summary>
-        <returns>a <see cref="T:Gdk.Device" /></returns>
+        <summary>Returns the core pointer device for the given display.</summary>
+        <returns>The core pointer <see cref="T:Gdk.Device" /> for the display.</returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
@@ -366,8 +364,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Gets the next <see cref="T:Gdk.Event" /> to be processed for display, fetching events from the windowing system if necessary.</summary>
-        <remarks>To be added</remarks>
+        <summary>This event is emitted when the connect to the windowing system is closed.</summary>
+        <remarks>None.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetPointer">
@@ -464,10 +462,10 @@
         <Parameter Name="gtype" Type="GLib.GType" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
+        <summary>Protected Constructor.</summary>
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
         <returns>a <see cref="T:Gdk.Display" /></returns>
-        <remarks>To be added</remarks>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ListDevices">
