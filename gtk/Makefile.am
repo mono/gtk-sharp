@@ -30,6 +30,7 @@ build_sources = $(addprefix $(srcdir)/, $(sources)) AssemblyInfo.cs
 customs = 				\
 	Accel.custom			\
 	AccelKey.custom			\
+	Action.custom			\
 	Adjustment.custom		\
 	Button.custom			\
 	Calendar.custom			\
@@ -81,6 +82,7 @@ customs = 				\
 	TreeStore.custom		\
 	TreeViewColumn.custom		\
 	TreeView.custom			\
+	UIManager.custom	\
 	VBox.custom			\
 	VScale.custom			\
 	Viewport.custom			\

@@ -7,7 +7,6 @@
 namespace GtkSamples {
 
 	using Gtk;
-	using GtkSharp;
 	using System;
 
 	public class Actions {
@@ -16,7 +15,7 @@ namespace GtkSamples {
 
 		/* XML description of the menus for the test app.  The parser understands
 		 * a subset of the Bonobo UI XML format, and uses GMarkup for parsing */
-		static string ui_info = 
+		const string ui_info = 
 			"<menubar>" +
 			"  <menu name=\"Menu _1\" action=\"Menu1Action\">" +
 			"    <menuitem name=\"quit\" action=\"quit\" />" +
@@ -99,6 +98,7 @@ namespace GtkSamples {
 		static void OnQuit (object obj, EventArgs args)
 		{
 			Console.WriteLine ("quit");
+			Application.Quit ();
 		}
 	}
 }

@@ -1,3 +1,10 @@
+2004-10-06  John Luke  <john.luke@gmail.com>
+
+	* gtk/Action.custom: add overload for string, string, null, null
+	* gtk/UIManager.custom: add overload to get the UI from a resource
+	* gtk/Makefile.am: add the 2 new custom files
+	* sample/Action.custom: remove using GtkSharp, make ui_info const, quit on Quit
+
 2004-10-05  Todd Berman  <tberman@off.net>
 
 	* gtk/ComboBox.custom: Add SetCellDataFunc to allow you to set a
