@@ -7,6 +7,7 @@
 // (C) Copyright Jeroen Zwartepoorte 2004
 //
 
+using GLib;
 using System;
 using System.IO;
 
@@ -21,8 +22,8 @@ namespace Gnome.Vfs {
 		private object state;
 		private VfsStreamAsyncResult asyncResult;
 		
-		public VfsStreamAsync (Handle handle, byte[] buffer, int offset, int count,
-				       System.AsyncCallback cback, object state)
+		public VfsStreamAsync (Handle handle, byte[] buffer, int offset,
+				       int count, System.AsyncCallback cback, object state)
 		{
 			this.handle = handle;
 			this.buffer = buffer;
@@ -46,19 +47,22 @@ namespace Gnome.Vfs {
 			return asyncResult;
 		}
 		
-		private void AsyncRead (Handle handle, Result result, byte[] buffer,
+		private void AsyncRead (Handle handle, Result result, byte[] buf,
 					ulong bytesRequested, ulong bytesRead)
 		{
 			if (result == Result.Ok) {
+				Array.Copy (buf, 0, buffer, offset + count - bytesRemaining, (int)bytesRead);
 				bytesRemaining -= (int)bytesRead;
 				if (bytesRemaining > 0) {
-					Async.Read (handle, out buffer[offset + count - bytesRemaining],
-						    (uint)bytesRemaining, new AsyncReadCallback (AsyncRead));
+					buf = new byte[bytesRemaining];
+					Async.Read (handle, out buf[0], (uint)bytesRemaining,
+						    new AsyncReadCallback (AsyncRead));
 				} else if (cback != null) {
 					asyncResult.SetComplete (null, count);
 					cback (asyncResult);
 				}
 			} else if (result == Result.ErrorEof) {
+				Array.Copy (buf, 0, buffer, offset + count - bytesRemaining, (int)bytesRead);
 				bytesRemaining -= (int)bytesRead;
 				asyncResult.SetComplete (null, count - bytesRemaining);
 				
@@ -104,11 +108,20 @@ namespace Gnome.Vfs {
 		private FileAccess access;
 		private bool async;
 		private bool canseek;
+		
+		// Async state variables.
+		private AsyncCallback callback;
+		private AsyncReadCallback readCallback;
+		private AsyncWriteCallback writeCallback;
+		private bool asyncCompleted = false;
+		private Result asyncResult;
+		private ulong asyncBytesRead;
+		private ulong asyncBytesWritten;
 
 		public VfsStream (string uri, FileMode mode)
 			: this (uri, mode, false) { }
 		
-		public VfsStream (string text_uri, FileMode mode, bool isAsync)
+		public VfsStream (string text_uri, FileMode mode, bool async)
 		{
 			if (text_uri == null)
 				throw new ArgumentNullException ("uri");
@@ -132,6 +145,12 @@ namespace Gnome.Vfs {
 				if (dname != "" && !Vfs.Exists (dname))
 					throw new DirectoryNotFoundException ("Could not find a part of " +
 									      "the path \"" + dname + "\".");
+			}
+			
+			if (async) {
+				callback = new AsyncCallback (OnAsyncCallback);
+				readCallback = new AsyncReadCallback (OnAsyncReadCallback);
+				writeCallback = new AsyncWriteCallback (OnAsyncWriteCallback);
 			}
 			
 			OpenMode om = OpenMode.None;
@@ -169,45 +188,106 @@ namespace Gnome.Vfs {
 			switch (mode) {
 				case FileMode.Append:
 					if (uri.Exists) {
-						handle = Sync.Open (uri, om);
-						result = Sync.Seek (handle, SeekPosition.End, 0);
-						Vfs.ThrowException (uri, result); 
+						if (async) {
+							handle = Async.Open (uri, om,
+									     (int)Async.Priority.Default,
+									     callback);
+							Wait ();
+							Async.Seek (handle, SeekPosition.End, 0, callback);
+							Wait ();
+						} else {
+							handle = Sync.Open (uri, om);
+							result = Sync.Seek (handle, SeekPosition.End, 0);
+							Vfs.ThrowException (uri, result);
+						}
 					} else {
-						handle = Sync.Create (uri, om, true, perms);
+						if (async) {
+							handle = Async.Create (uri, om, true, perms,
+									       (int)Async.Priority.Default,
+									       callback);
+							Wait ();
+						} else {
+							handle = Sync.Create (uri, om, true, perms);
+						}
 					}
 					break;
 				case FileMode.Create:
 					if (uri.Exists) {
-						handle = Sync.Open (uri, om);
-						result = Sync.Truncate (handle, 0);
-						Vfs.ThrowException (uri, result);
+						if (async) {
+							handle =  Async.Open (uri, om,
+									      (int)Async.Priority.Default,
+									      callback);
+							Wait ();
+						} else {
+							handle = Sync.Open (uri, om);
+							result = Sync.Truncate (handle, 0);
+							Vfs.ThrowException (uri, result);
+						}
 					} else {
 						handle = Sync.Create (uri, om, true, perms);
 					}
 					break;
 				case FileMode.CreateNew:
-					if (uri.Exists)
+					if (uri.Exists) {
 						throw new IOException ("Uri \"" + text_uri + "\" already exists.");
-					else
-						handle = Sync.Create (uri, om, true, perms);
+					} else {
+						if (async) {
+							handle = Async.Create (uri, om, true, perms,
+									       (int)Async.Priority.Default,
+									       callback);
+							Wait ();
+						} else {
+							handle = Sync.Create (uri, om, true, perms);
+						}
+					}
 					break;
 				case FileMode.Open:
-					if (uri.Exists)
-						handle = Sync.Open (uri, om);
-					else
+					if (uri.Exists) {
+						if (async) {
+							handle = Async.Open (uri, om,
+									     (int)Async.Priority.Default,
+									     callback);
+							Wait ();
+						} else {
+							handle = Sync.Open (uri, om);
+						}
+					} else {
 						throw new FileNotFoundException (text_uri);
+					}
 					break;
 				case FileMode.OpenOrCreate:
-					if (uri.Exists)
-						handle = Sync.Open (uri, om);
-					else
-						handle = Sync.Create (uri, om, true, perms);
+					if (uri.Exists) {
+						if (async) {
+							handle = Async.Open (uri, om,
+									     (int)Async.Priority.Default,
+									     callback);
+							Wait ();
+						} else {
+							handle = Sync.Open (uri, om);
+						}
+					} else {
+						if (async) {
+							handle = Async.Create (uri, om, true, perms,
+									       (int)Async.Priority.Default,
+									       callback);
+							Wait ();
+						} else {
+							handle = Sync.Create (uri, om, true, perms);
+						}
+					}
 					break;
 				case FileMode.Truncate:
 					if (uri.Exists) {
-						handle = Sync.Open (uri, om);
-						result = Sync.Truncate (handle, 0);
-						Vfs.ThrowException (uri, result);
+						result = Vfs.Truncate (uri, 0);
+						if (async) {
+							handle = Async.Open (uri, om,
+									     (int)Async.Priority.Default,
+									     callback);
+							Wait ();
+						} else {
+							handle = Sync.Open (uri, om);
+							Vfs.ThrowException (uri, result);
+						}
 					} else {
 						throw new FileNotFoundException (text_uri);
 					}
@@ -217,7 +297,7 @@ namespace Gnome.Vfs {
 			this.mode = mode;
 			this.access = access;
 			this.canseek = true;
-			async = isAsync;
+			this.async = async;
 		}
 
 		public override bool CanRead {
@@ -254,13 +334,15 @@ namespace Gnome.Vfs {
 
 		public override long Length {
 			get {
-				Seek (0, SeekOrigin.End);
-				return Position;
+				FileInfo info = uri.GetFileInfo ();
+				return info.Size;
 			}
 		}
 
 		public override long Position {
 			get {
+				if (IsAsync)
+					throw new NotSupportedException ("Cannot tell what the offset is in async mode");
 				ulong pos;
 				Result result = Sync.Tell (handle, out pos);
 				Vfs.ThrowException (Uri, result);
@@ -278,7 +360,14 @@ namespace Gnome.Vfs {
 			
 			byte[] buffer = new byte[1];
 			ulong bytesRead;
-			Result result = Sync.Read (handle, out buffer[0], 1UL, out bytesRead);
+			Result result;
+			if (async) {
+				Async.Read (handle, out buffer[0], 1, readCallback);
+				Wait ();
+				result = asyncResult;
+			} else {
+				result = Sync.Read (handle, out buffer[0], 1UL, out bytesRead);
+			}
 			if (result == Result.ErrorEof)
 				return -1;
 				
@@ -294,7 +383,14 @@ namespace Gnome.Vfs {
 			byte[] buffer = new byte[1];
 			buffer[0] = value;
 			ulong bytesWritten;
-			Result result = Sync.Write (handle, out buffer[0],  1UL, out bytesWritten);
+			Result result;
+			if (async) {
+				Async.Write (handle, out buffer[0], 1, writeCallback);
+				Wait ();
+				result = asyncResult;
+			} else {
+				result = Sync.Write (handle, out buffer[0],  1UL, out bytesWritten);
+			}
 			Vfs.ThrowException (Uri, result);
 		}
 
@@ -312,7 +408,15 @@ namespace Gnome.Vfs {
 				throw new NotSupportedException ("The stream does not support reading");
 			
 			ulong bytesRead;
-			Result result = Sync.Read (handle, out buffer[offset], (ulong)count, out bytesRead);
+			Result result;
+			if (async) {
+				Async.Read (handle, out buffer[offset], (uint)count, readCallback);
+				Wait ();
+				result = asyncResult;
+				bytesRead = asyncBytesRead;
+			} else {
+				result = Sync.Read (handle, out buffer[offset], (ulong)count, out bytesRead);
+			}
 			if (result == Result.ErrorEof)
 				return 0;
 
@@ -357,8 +461,8 @@ namespace Gnome.Vfs {
 				throw new InvalidOperationException ("EndRead already called");
 			asyncResult.Done = true;
 			
-			if (!asyncResult.IsCompleted)
-				asyncResult.AsyncWaitHandle.WaitOne ();
+			while (!asyncResult.IsCompleted)
+				MainContext.Iteration ();
 			
 			if (asyncResult.Exception != null)
 				throw asyncResult.Exception;
@@ -380,7 +484,15 @@ namespace Gnome.Vfs {
 				throw new NotSupportedException ("The stream does not support writing");
 
 			ulong bytesWritten;
-			Result result = Sync.Write (handle, out buffer[offset], (ulong)count, out bytesWritten);
+			Result result;
+			if (async) {
+				Async.Write (handle, out buffer[offset], (uint)count, writeCallback);
+				Wait ();
+				result = asyncResult;
+				bytesWritten = asyncBytesWritten;
+			} else {
+				result = Sync.Write (handle, out buffer[offset], (ulong)count, out bytesWritten);
+			}
 			Vfs.ThrowException (Uri, result);
 		}
 
@@ -421,8 +533,8 @@ namespace Gnome.Vfs {
 				throw new InvalidOperationException ("EndWrite already called");
 			asyncResult.Done = true;
 			
-			if (!asyncResult.IsCompleted)
-				asyncResult.AsyncWaitHandle.WaitOne ();
+			while (!asyncResult.IsCompleted)
+				MainContext.Iteration ();
 			
 			if (asyncResult.Exception != null)
 				throw asyncResult.Exception;
@@ -432,23 +544,35 @@ namespace Gnome.Vfs {
 		{
 			if (!CanSeek)
 				throw new NotSupportedException ("The stream does not support seeking");
+			if (IsAsync && origin == SeekOrigin.Current)
+				throw new NotSupportedException ("Cannot tell what the offset is in async mode");
 
 			SeekPosition seekPos = SeekPosition.Start;
+			long newOffset = -1;
 			switch (origin) {
 				case SeekOrigin.Begin:
 					seekPos = SeekPosition.Start;
+					newOffset = offset;
 					break;
 				case SeekOrigin.Current:
 					seekPos = SeekPosition.Current;
 					break;
 				case SeekOrigin.End:
 					seekPos = SeekPosition.End;
+					newOffset = Length + offset;
 					break;
 			}
 
-			Result result = Sync.Seek (handle, seekPos, offset);
+			Result result;
+			if (async) {
+				Async.Seek (handle, seekPos, offset, callback);
+				Wait ();
+				result = asyncResult;
+			} else {
+				result = Sync.Seek (handle, seekPos, offset);
+			}
 			Vfs.ThrowException (Uri, result);
-			return Position;			
+			return newOffset;
 		}
 
 		public override void SetLength (long length)
@@ -470,6 +594,37 @@ namespace Gnome.Vfs {
 		{
 			Result result = Sync.Close (handle);
 			Vfs.ThrowException (Uri, result);
+		}
+		
+		private void OnAsyncCallback (Handle handle, Result result)
+		{
+			asyncResult = result;
+			asyncCompleted = true;
+		}
+		
+		private void OnAsyncReadCallback (Handle handle, Result result,
+						  byte[] buffer, ulong bytes_requested,
+						  ulong bytes_read)
+		{
+			asyncResult = result;
+			asyncBytesRead = bytes_read;
+			asyncCompleted = true;
+		}
+		
+		private void OnAsyncWriteCallback (Handle handle, Result result,
+						   byte[] buffer, ulong bytes_requested,
+						   ulong bytes_written)
+		{
+			asyncResult = result;
+			asyncBytesWritten = bytes_written;
+			asyncCompleted = true;
+		}
+		
+		private void Wait ()
+		{
+			while (!asyncCompleted)
+				MainContext.Iteration ();
+			asyncCompleted = false;
 		}
 	}
 }

@@ -1,3 +1,19 @@
+2004-08-27  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* gnomevfs/Async.cs: Add Priority enum. Add methods which take an Uri
+	object (similar to Sync methods).
+	* gnomevfs/Vfs.cs: Add Truncate bindings.
+	* gnomevfs/VfsStream.cs: Major fixes. Don't use the AsyncWaitHandle for
+	blocking until an operation has finished. Fix (a)sync reading & writing.
+	You either use sync/async throughout the code. Can't mix sync and async
+	gnome-vfs method calls (different Handle objects).
+	* gnomevfs/VfsStreamAsyncResult.cs: Throw NotSupportedException when
+	AsyncWaitHandle property is accessed.
+	* sample/gnomevfs/Makefile.am: New test programs.
+	* sample/gnomevfs/TestAsync.cs:
+	* sample/gnomevfs/TestAsyncStream.cs:
+	* sample/gnomevfs/TestSyncStream.cs:
+
 2004-08-23  Todd Berman  <tberman@off.net>
 
 	* panelapplet/BonoboUIVerb.cs:

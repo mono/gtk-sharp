@@ -13,6 +13,12 @@ using System.Runtime.InteropServices;
 
 namespace Gnome.Vfs {
 	public class Async {
+		public enum Priority {
+			Min = -10,
+			Default = 0,
+			Max = 10
+		}
+	
 		[DllImport ("gnomevfs-2")]
 		private static extern void gnome_vfs_async_cancel (IntPtr handle);
 		
@@ -40,6 +46,11 @@ namespace Gnome.Vfs {
 			gnome_vfs_async_create (out handle, uri, mode, exclusive, (uint)perm, priority, wrapper.NativeDelegate, IntPtr.Zero);
 			return new Handle (handle);
 		}
+		
+		public static Handle Create (Uri uri, OpenMode mode, bool exclusive, FilePermissions perm, int priority, AsyncCallback callback)
+		{
+			return Create (uri.ToString (), mode, exclusive, perm, priority, callback);
+		}
 
 		[DllImport ("gnomevfs-2")]
 		private static extern void gnome_vfs_async_open (out IntPtr handle, string uri, OpenMode mode, int priority, AsyncCallbackNative callback, IntPtr data);
@@ -50,6 +61,11 @@ namespace Gnome.Vfs {
 			AsyncCallbackWrapper wrapper = new AsyncCallbackWrapper (callback, null);
 			gnome_vfs_async_open (out handle, uri, mode, priority, wrapper.NativeDelegate, IntPtr.Zero);
 			return new Handle (handle);
+		}
+		
+		public static Handle Open (Uri uri, OpenMode mode, int priority, AsyncCallback callback)
+		{
+			return Open (uri.ToString (), mode, priority, callback);
 		}
 
 		[DllImport ("gnomevfs-2")]

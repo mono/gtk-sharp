@@ -8,7 +8,6 @@ namespace Gnome.Vfs {
 		private bool done = false;
 		private Exception exception = null;
 		private int nbytes = -1;
-		private ManualResetEvent wh;
 
 		public VfsStreamAsyncResult (object state)
 		{
@@ -23,11 +22,14 @@ namespace Gnome.Vfs {
 		
 		public WaitHandle AsyncWaitHandle {
 			get {
-				lock (this) {
-					if (wh == null)
-						wh = new ManualResetEvent (completed);
-					return wh;
-				}
+				throw new NotSupportedException (
+					"Do NOT use the AsyncWaitHandle to " + 
+					"wait until a Begin[Read,Write] call " +
+					"has finished since it will also block " +
+					"the gnome-vfs callback which unlocks " +
+					"the WaitHandle, causing a deadlock. " +
+					"Instead, use \"while (!asyncResult.IsCompleted) " +
+					"GLib.MainContext.Iteration ();\"");
 			}
 		}
 		
@@ -68,10 +70,6 @@ namespace Gnome.Vfs {
 		{
 			exception = e;
 			completed = true;
-			lock (this) {
-				if (wh != null)
-					wh.Set ();
-			}
 		}
 		
 		public void SetComplete (Exception e, int nbytes)

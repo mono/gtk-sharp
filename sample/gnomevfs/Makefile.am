@@ -1,9 +1,12 @@
 TARGETS =			\
+	TestAsync.exe		\
+	TestAsyncStream.exe	\
 	TestInfo.exe		\
 	TestMime.exe		\
 	TestMonitor.exe		\
 	TestSync.exe		\
 	TestSyncCreate.exe	\
+	TestSyncStream.exe	\
 	TestSyncWrite.exe	\
 	TestUnlink.exe		\
 	TestVolumes.exe		\
@@ -16,15 +19,24 @@ noinst_SCRIPTS = $(TARGETS)
 CLEANFILES = $(TARGETS)
 
 EXTRA_DIST = 			\
+	TestAsync.cs		\
+	TestAsyncStream.cs	\
 	TestInfo.cs		\
 	TestMime.cs		\
 	TestMonitor.cs		\
 	TestSync.cs		\
 	TestSyncCreate.cs	\
+	TestSyncStream.cs	\
 	TestSyncWrite.cs	\
 	TestUnlink.cs		\
 	TestVolumes.cs		\
 	TestXfer.cs
+
+TestAsync.exe: $(srcdir)/TestAsync.cs $(assemblies)
+	$(CSC) /out:TestAsync.exe $(references) $(srcdir)/TestAsync.cs
+
+TestAsyncStream.exe: $(srcdir)/TestAsyncStream.cs $(assemblies)
+	$(CSC) /out:TestAsyncStream.exe $(references) $(srcdir)/TestAsyncStream.cs
 
 TestInfo.exe: $(srcdir)/TestInfo.cs $(assemblies)
 	$(CSC) /out:TestInfo.exe $(references) $(srcdir)/TestInfo.cs
@@ -34,6 +46,9 @@ TestMime.exe: $(srcdir)/TestMime.cs $(assemblies)
 
 TestMonitor.exe: $(srcdir)/TestMonitor.cs $(assemblies)
 	$(CSC) /out:TestMonitor.exe $(references) $(srcdir)/TestMonitor.cs
+
+TestSyncStream.exe: $(srcdir)/TestSyncStream.cs $(assemblies)
+	$(CSC) /out:TestSyncStream.exe $(references) $(srcdir)/TestSyncStream.cs
 
 TestSync.exe: $(srcdir)/TestSync.cs $(assemblies)
 	$(CSC) /out:TestSync.exe $(references) $(srcdir)/TestSync.cs

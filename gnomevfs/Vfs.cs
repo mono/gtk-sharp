@@ -96,6 +96,19 @@ namespace Gnome.Vfs {
 			return Marshal.PtrToStringAnsi (ptr);
 		}
 		
+		[DllImport ("gnomevfs-2")]
+		private static extern Result gnome_vfs_truncate (string uri, ulong length);
+		
+		public static Result Truncate (string uri, ulong length)
+		{
+			return gnome_vfs_truncate (uri, length);
+		}
+		
+		public static Result Truncate (Uri uri, ulong length)
+		{
+			return Truncate (uri.ToString (), length);
+		}
+		
 		public static void ThrowException (Result result)
 		{
 			ThrowException ((string)null, result);
