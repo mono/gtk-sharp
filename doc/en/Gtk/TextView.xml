@@ -16,7 +16,6 @@
         <code lang="C#">
 using System;
 using Gtk;
-using GtkSharp;
 
 class TextViewSample
 {
@@ -80,7 +79,7 @@ class TextViewSample
   </Interfaces>
   <Attributes />
   <Members>
-    <Member MemberName="GetIterLocation">
+    <Member MemberName="GetIterLocation" Deprecated="true">
       <MemberSignature Language="C#" Value="public void GetIterLocation (Gtk.TextIter iter, Gdk.Rectangle location);" />
       <MemberType>Method</MemberType>
       <ReturnValue>
@@ -918,10 +917,10 @@ class TextViewSample
       </Docs>
     </Member>
     <Member MemberName="ScrollAdjustmentsSet">
-      <MemberSignature Language="C#" Value="public event GtkSharp.ScrollAdjustmentsSetHandler ScrollAdjustmentsSet;" />
+      <MemberSignature Language="C#" Value="public event Gtk.ScrollAdjustmentsSetHandler ScrollAdjustmentsSet;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>GtkSharp.ScrollAdjustmentsSetHandler</ReturnType>
+        <ReturnType>Gtk.ScrollAdjustmentsSetHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -942,10 +941,10 @@ class TextViewSample
       </Docs>
     </Member>
     <Member MemberName="MoveCursor">
-      <MemberSignature Language="C#" Value="public event GtkSharp.MoveCursorHandler MoveCursor;" />
+      <MemberSignature Language="C#" Value="public event Gtk.MoveCursorHandler MoveCursor;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>GtkSharp.MoveCursorHandler</ReturnType>
+        <ReturnType>Gtk.MoveCursorHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -954,10 +953,10 @@ class TextViewSample
       </Docs>
     </Member>
     <Member MemberName="PopulatePopup">
-      <MemberSignature Language="C#" Value="public event GtkSharp.PopulatePopupHandler PopulatePopup;" />
+      <MemberSignature Language="C#" Value="public event Gtk.PopulatePopupHandler PopulatePopup;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>GtkSharp.PopulatePopupHandler</ReturnType>
+        <ReturnType>Gtk.PopulatePopupHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -966,10 +965,10 @@ class TextViewSample
       </Docs>
     </Member>
     <Member MemberName="DeleteFromCursor">
-      <MemberSignature Language="C#" Value="public event GtkSharp.DeleteFromCursorHandler DeleteFromCursor;" />
+      <MemberSignature Language="C#" Value="public event Gtk.DeleteFromCursorHandler DeleteFromCursor;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>GtkSharp.DeleteFromCursorHandler</ReturnType>
+        <ReturnType>Gtk.DeleteFromCursorHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -990,10 +989,10 @@ class TextViewSample
       </Docs>
     </Member>
     <Member MemberName="MoveFocus">
-      <MemberSignature Language="C#" Value="public event GtkSharp.MoveFocusHandler MoveFocus;" />
+      <MemberSignature Language="C#" Value="public event Gtk.MoveFocusHandler MoveFocus;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>GtkSharp.MoveFocusHandler</ReturnType>
+        <ReturnType>Gtk.MoveFocusHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -1002,10 +1001,10 @@ class TextViewSample
       </Docs>
     </Member>
     <Member MemberName="PageHorizontally">
-      <MemberSignature Language="C#" Value="public event GtkSharp.PageHorizontallyHandler PageHorizontally;" />
+      <MemberSignature Language="C#" Value="public event Gtk.PageHorizontallyHandler PageHorizontally;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>GtkSharp.PageHorizontallyHandler</ReturnType>
+        <ReturnType>Gtk.PageHorizontallyHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -1038,10 +1037,10 @@ class TextViewSample
       </Docs>
     </Member>
     <Member MemberName="InsertAtCursor">
-      <MemberSignature Language="C#" Value="public event GtkSharp.InsertAtCursorHandler InsertAtCursor;" />
+      <MemberSignature Language="C#" Value="public event Gtk.InsertAtCursorHandler InsertAtCursor;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>GtkSharp.InsertAtCursorHandler</ReturnType>
+        <ReturnType>Gtk.InsertAtCursorHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -1080,7 +1079,7 @@ class TextViewSample
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetIterAtLocation">
+    <Member MemberName="GetIterAtLocation" Deprecated="true">
       <MemberSignature Language="C#" Value="public void GetIterAtLocation (out Gtk.TextIter iter, int x, int y);" />
       <MemberType>Method</MemberType>
       <ReturnValue>
@@ -1518,6 +1517,40 @@ class TextViewSample
         <summary>To be added</summary>
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
         <returns>a <see cref="T:Gtk.TextView" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetIterAtLocation">
+      <MemberSignature Language="C#" Value="public Gtk.TextIter GetIterAtLocation (int x, int y);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Gtk.TextIter</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Int32" />
+        <Parameter Name="y" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="x">a <see cref="T:System.Int32" /></param>
+        <param name="y">a <see cref="T:System.Int32" /></param>
+        <returns>a <see cref="T:Gtk.TextIter" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetIterLocation">
+      <MemberSignature Language="C#" Value="public Gdk.Rectangle GetIterLocation (Gtk.TextIter iter);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Gdk.Rectangle</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iter" Type="Gtk.TextIter" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="iter">a <see cref="T:Gtk.TextIter" /></param>
+        <returns>a <see cref="T:Gdk.Rectangle" /></returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>

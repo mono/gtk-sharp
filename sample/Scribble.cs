@@ -47,16 +47,12 @@ namespace GtkSamples {
 
 		static void ExposeEvent (object obj, ExposeEventArgs args)
 		{
-			Gdk.EventExpose ev = args.Event;
-			Gdk.Window window = ev.window;
-			// FIXME: mcs bug
-			Gdk.Rectangle area = ev.Area;
-			// FIXME: array marshalling not done yet so no FG */
-			window.DrawDrawable (darea.Style.BlackGC,
-									   pixmap,
-									   area.X, area.Y,
-									   area.X, area.Y,
-									   area.Width, area.Height);
+			Gdk.Rectangle area = args.Event.Area;
+			args.Event.Window.DrawDrawable (darea.Style.BlackGC,
+							pixmap,
+							area.X, area.Y,
+							area.X, area.Y,
+							area.Width, area.Height);
 
 			args.RetVal = false;
 		}
@@ -64,17 +60,12 @@ namespace GtkSamples {
 		static void ConfigureEvent (object obj, ConfigureEventArgs args)
 		{
 			Gdk.EventConfigure ev = args.Event;
-			Gdk.Window window = ev.window;
+			Gdk.Window window = ev.Window;
 			Gdk.Rectangle allocation = darea.Allocation;
 
-		Console.WriteLine ("Darea=[{0}]" , darea);
-			pixmap = new Gdk.Pixmap (window,
-									       allocation.Width,
-									       allocation.Height,
-											 -1);
-			Console.WriteLine ("Darea.Style={0}", darea.Style);
+			pixmap = new Gdk.Pixmap (window, allocation.Width, allocation.Height, -1);
 			pixmap.DrawRectangle (darea.Style.WhiteGC, true, 0, 0,
-									    allocation.Width, allocation.Height);
+					      allocation.Width, allocation.Height);
 
 			args.RetVal = true;
 		}
@@ -108,16 +99,16 @@ namespace GtkSamples {
 			int x, y;
 			Gdk.ModifierType state;
 			Gdk.EventMotion ev = args.Event;
-			Gdk.Window window = ev.window;
+			Gdk.Window window = ev.Window;
 
-			if (ev.IsHint != 0) {
+			if (ev.IsHint) {
 				Gdk.ModifierType s;
 				window.GetPointer (out x, out y, out s);
 				state = s;
 			} else {
 				x = (int) ev.X;
 				y = (int) ev.Y;
-				state = (Gdk.ModifierType) ev.State;
+				state = ev.State;
 			}
 
 			if ((state & Gdk.ModifierType.Button1Mask) != 0 && pixmap != null)

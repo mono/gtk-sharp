@@ -32,84 +32,6 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="super">
-      <MemberSignature Language="C#" Value="public Rsvg.DefVal super;" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Rsvg.DefVal</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="x1">
-      <MemberSignature Language="C#" Value="public double x1;" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="y1">
-      <MemberSignature Language="C#" Value="public double y1;" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="x2">
-      <MemberSignature Language="C#" Value="public double x2;" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="y2">
-      <MemberSignature Language="C#" Value="public double y2;" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="spread">
-      <MemberSignature Language="C#" Value="public Art.GradientSpread spread;" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Art.GradientSpread</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="New">
       <MemberSignature Language="C#" Value="public static Rsvg.LinearGradient New (IntPtr raw);" />
       <MemberType>Method</MemberType>
@@ -139,11 +61,102 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="obj_bbox">
-      <MemberSignature Language="C#" Value="public bool obj_bbox;" />
+    <Member MemberName="Super">
+      <MemberSignature Language="C#" Value="public Rsvg.DefVal Super;" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>Rsvg.DefVal</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObjBbox">
+      <MemberSignature Language="C#" Value="public bool ObjBbox;" />
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Affine">
+      <MemberSignature Language="C#" Value="public double [] Affine;" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Double[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Spread">
+      <MemberSignature Language="C#" Value="public Art.GradientSpread Spread;" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>Art.GradientSpread</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="X1">
+      <MemberSignature Language="C#" Value="public double X1;" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Y1">
+      <MemberSignature Language="C#" Value="public double Y1;" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="X2">
+      <MemberSignature Language="C#" Value="public double X2;" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Y2">
+      <MemberSignature Language="C#" Value="public double Y2;" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Parameters>
       </Parameters>

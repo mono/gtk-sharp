@@ -40,10 +40,10 @@ namespace GtkSamples {
 			ActionGroup group = new ActionGroup ("TestGroup");
 			Action action = new Action ("quit", null, "Quit the program", Stock.Quit);
 			action.Activated += new EventHandler (OnQuit);
-			group.AddActionWithAccel (action, "<control>Q");
+			group.Add (action, "<control>Q");
 			
 			action = new Action ("Menu1Action", "_File", null, null);
-			group.AddAction (action);
+			group.Add (action);
 
 			UIManager uim = new UIManager ();
 			uim.AddWidget += new AddWidgetHandler (OnWidgetAdd);

@@ -1,3 +1,111 @@
+2004-03-03  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* atk/Atk.metadata:
+	* atk/atk-api.xml:
+	* configure.in:
+	* gdk/Display.custom:
+	* gdk/DisplayManager.custom:
+	* gdk/Event.cs:
+	* gdk/EventAny.custom:
+	* gdk/EventButton.cs:
+	* gdk/EventButton.custom:
+	* gdk/EventClient.cs:
+	* gdk/EventClient.custom:
+	* gdk/EventConfigure.cs:
+	* gdk/EventConfigure.custom:
+	* gdk/EventCrossing.cs:
+	* gdk/EventCrossing.custom:
+	* gdk/EventDND.cs:
+	* gdk/EventDND.custom:
+	* gdk/EventExpose.cs:
+	* gdk/EventExpose.custom:
+	* gdk/EventFocus.cs:
+	* gdk/EventFocus.custom:
+	* gdk/EventKey.cs:
+	* gdk/EventKey.custom:
+	* gdk/EventMotion.cs:
+	* gdk/EventMotion.custom:
+	* gdk/EventNoExpose.custom:
+	* gdk/EventProperty.cs:
+	* gdk/EventProperty.custom:
+	* gdk/EventProximity.cs:
+	* gdk/EventProximity.custom:
+	* gdk/EventScroll.cs:
+	* gdk/EventScroll.custom:
+	* gdk/EventSelection.cs:
+	* gdk/EventSelection.custom:
+	* gdk/EventSetting.cs:
+	* gdk/EventSetting.custom:
+	* gdk/EventVisibility.cs:
+	* gdk/EventVisibility.custom:
+	* gdk/EventWindowState.cs:
+	* gdk/EventWindowState.custom:
+	* gdk/Gdk.metadata:
+	* gdk/Global.custom:
+	* gdk/Pixbuf.custom:
+	* gdk/Screen.custom:
+	* gdk/Window.custom:
+	* gdk/gdk-api.xml:
+	* gdk/gdk-symbols.xml:
+	* glade/Glade.metadata:
+	* glade/Makefile.in:
+	* glade/XML.custom:
+	* glade/glade-api.xml:
+	* glib/TypeConverter.cs:
+	* glib/Value.cs:
+	* glib/time_t_CustomMarshaler.cs:
+	* glue/event.c:
+	* glue/widget.c: (gtksharp_gtk_widget_get_state):
+	* gnome/CanvasProxy.cs:
+	* gnome/Font.custom:
+	* gnome/FontFamily.custom:
+	* gnome/Gnome.metadata:
+	* gnome/GtkSharp.BoundsHandler.cs:
+	* gnome/GtkSharp.DrawHandler.cs:
+	* gnome/GtkSharp.PointHandler.cs:
+	* gnome/GtkSharp.RenderHandler.cs:
+	* gnome/GtkSharp.UpdateHandler.cs:
+	* gnome/IconList.custom:
+	* gnome/IconTheme.custom:
+	* gnome/gnome-api.xml:
+	* gnome/voidObjectAffineSVPintSignal.cs:
+	* gtk/Accel.custom:
+	* gtk/Application.cs:
+	* gtk/Combo.custom:
+	* gtk/Container.custom:
+	* gtk/FileChooserDialog.custom: Added a second custom constructor for
+	gtk_file_chooser_dialog_new_with_backend.
+	* gtk/Gtk.metadata:
+	* gtk/SelectionData.custom:
+	* gtk/Stock.custom:
+	* gtk/TextBuffer.custom:
+	* gtk/TextChildAnchor.custom:
+	* gtk/TextIter.custom:
+	* gtk/TreeIter.custom:
+	* gtk/TreeSelection.custom:
+	* gtk/TreeView.custom:
+	* gtk/TreeViewColumn.custom:
+	* gtk/Widget.custom:
+	* gtk/Window.custom:
+	* gtk/gtk-api.xml:
+	* pango/AttrIterator.custom:
+	* pango/GlyphItem.custom:
+	* pango/Layout.custom:
+	* pango/Pango.metadata:
+	* pango/pango-api.xml:
+	* sample/Actions.cs: Updated the ActionGroup method calls to the
+	latest API.
+	* sample/CanvasExample.cs:
+	* sample/GladeViewer.cs:
+	* sample/GnomeHelloWorld.cs:
+	* sample/GtkDemo/DemoImages.cs:
+	* sample/GtkDemo/DemoMain.cs:
+	* sample/Scribble.cs:
+	* sources/.cvsignore:
+	
+	Merged changes from HEAD. Rebuilt the *-api.xml's against the latest
+	CVS HEAD sources for atk, pango, gtk+, libgnome* (libgnomedb excluded).
+
 2004-02-29  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* gtk/FileChooserDialog.custom: Implement the
@@ -30,6 +138,252 @@
 	* sample/PrintSample.cs: Updated.
 	* sample/TestDnd.cs: Updated.
 
+2004-02-26  Mike Kestner  <mkestner@ximian.com>
+
+	* configure.in : tagged 0.17 and bumped cvs version.
+
+2004-02-26  Mike Kestner  <mkestner@ximian.com>
+
+	* atk/Atk.metadata : hide some funky api
+	* atk/atk-api.xml : regen
+
+2004-02-26  Mike Kestner  <mkestner@ximian.com>
+
+	* gnome/GtkSharp.* : move to Gnome namespace
+	* gnome/CanvasProxy.cs : update event handler namespaces
+	* gnome/voidObject*.cs : internalize
+
+2004-02-24  Mike Kestner  <mkestner@ximian.com>
+
+	* pango/AttrIterator.custom : manually implement SList method.
+	* pango/GlyphItem.custom : manually implement SList method.
+	* pango/Layout.custom : manually implement SList method.
+	* pango/Pango.metadata : hide some SList methods.
+	* pango/pango-api.xml : regen.
+
+2004-02-23  Mike Kestner  <mkestner@ximian.com>
+
+	* pango/Pango.metadata : mark some out params on Layout.
+	* pango/pango-api.xml : regen
+	[fixes #54720]
+
+2004-02-23  Thiago Milczarek Sayão  <sayao@brturbo.com>
+
+	* gtk/TextBuffer.custom : add TextIter parm to InsertWithTags method.
+
+2004-02-21  Mike Kestner  <mkestner@ximian.com>
+
+	* pango/Pango.metadata : mark some out params on Layout.
+	* pango/pango-api.xml : regen
+	[fixes #54696]
+
+2004-02-21  Mike Kestner  <mkestner@ximian.com>
+
+	* pango/Pango.metadata : mark some out params on ParseMarkup.
+	* pango/pango-api.xml : regen
+	[fixes #54695]
+
+2004-02-20  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : hide NoExpose, Client, Setting, WindowState, 
+	and Proximity events.
+	* gdk/EventClient.cs : glue-based manual implementation.
+	* gdk/EventClient.custom : kill
+	* gdk/EventNoExpose.custom : kill
+	* gdk/EventProximity.cs : glue-based manual implementation.
+	* gdk/EventProximity.custom : kill
+	* gdk/EventSetting.cs : glue-based manual implementation.
+	* gdk/EventSetting.custom : kill
+	* gdk/EventWindowState.cs : glue-based manual implementation.
+	* gdk/EventWindowState.custom : kill
+	* gdk/gdk-api.xml : regen
+	* gdk/gdk-symbols.xml : manual mappings.
+	* glue/event.cs : expose event struct fields.
+	* gtk/Application.cs : simplify CurrentEvent prop.
+
+2004-02-20  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : hide Property, Selection, and DND events
+	* gdk/EventDND.cs : glue-based manual implementation.
+	* gdk/EventDND.custom : kill
+	* gdk/EventProperty.cs : glue-based manual implementation.
+	* gdk/EventProperty.custom : kill
+	* gdk/EventSelection.cs : glue-based manual implementation.
+	* gdk/EventSelection.custom : kill
+	* gdk/gdk-api.xml : regen
+	* gdk/gdk-symbols.xml : manual mappings.
+	* glue/event.cs : expose DND, Property and Selection struct fields.
+
+2004-02-19  Thiago Milczarek Sayão  <sayao@brturbo.com>
+
+	* gtk/TextBuffer.custom : new InsertWithTags method.
+
+2004-02-18  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : hide EventFocus and EventConfigure. 
+	* gdk/EventConfigure.cs : glue-based manual implementation.
+	* gdk/EventConfigure.custom : kill
+	* gdk/EventFocus.cs : glue-based manual implementation.
+	* gdk/EventFocus.custom : kill
+	* gdk/gdk-api.xml : regen
+	* gdk/gdk-symbols.xml : manual mappings.
+	* glue/event.cs : expose Focus and Configure struct fields.
+	* sample/Scribble.cs : fix EventConfigure api breakage
+
+2004-02-18  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : hide EventCrossing. 
+	* gdk/EventCrossing.cs : glue-based manual implementation.
+	* gdk/EventCrossing.custom : kill
+	* gdk/gdk-api.xml : regen
+	* gdk/gdk-symbols.xml : manual mapping for EventCrossing.
+	* glue/event.cs : expose Crossing struct fields.
+
+2004-02-18  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : hide EventVisibility. 
+	* gdk/EventVisibility.cs : glue-based manual implementation.
+	* gdk/EventVisibility.custom : kill
+	* gdk/gdk-api.xml : regen
+	* gdk/gdk-symbols.xml : manual mapping for EventVisibility.
+	* glue/event.cs : expose Visibility struct fields.
+
+2004-02-18  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : hide EventExpose. make Region opaque.
+	* gdk/EventExpose.cs : glue-based manual implementation.
+	* gdk/EventExpose.custom : kill
+	* gdk/gdk-api.xml : regen
+	* gdk/gdk-symbols.xml : manual mapping for EventExpose.
+	* glue/event.cs : expose Expose struct fields.
+	* sample/Scribble.cs : fix some EventExpose api breakage
+
+2004-02-18  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : hide EventMotion
+	* gdk/EventMotion.cs : glue-based manual implementation.
+	* gdk/EventMotion.custom : kill
+	* gdk/gdk-api.xml : regen
+	* gdk/gdk-symbols.xml : manual mapping for EventMotion.
+	* glue/event.cs : expose Motion struct fields.
+	* sample/Scribble.cs : fix some EventMotion api breakage
+
+2004-02-18  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : hide EventScroll
+	* gdk/EventScroll.cs : glue-based manual implementation.
+	* gdk/EventScroll.custom : kill
+	* gdk/gdk-api.xml : regen
+	* gdk/gdk-symbols.xml : manual mapping for EventScroll.
+	* glue/event.cs : expose Scroll struct fields.
+
+2004-02-18  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : hide EventButton
+	* gdk/EventButton.cs : glue-based manual implementation.
+	* gdk/EventButton.custom : kill
+	* gdk/gdk-api.xml : regen
+	* gdk/gdk-symbols.xml : manual mapping for EventButton.
+	* glue/event.cs : expose Button struct fields.
+	* sample/CanvasExample.cs : fix EventButton ctor
+	* sample/GnomeHelloWorld.cs : fix EventButton ctor
+
+2004-02-17  Radek Doulik  <rodo@ximian.com>
+
+	* glib/Value.cs: use g_value_set_pointer for
+	GType.Pointer/IWrapper objects
+
+	* glib/TypeConverter.cs: return GType.Pointer for Opaque objects
+	which do not have GType property
+
+2004-02-17  John Luke  <jluke@cfl.rr.com>
+
+	* gdk/Gdk.metadata: set Gdk.Window.Cursor null_ok
+	* gdk/gdk-api.xml: regen
+
+2004-02-17   Jorn Baayen  <jorn@nl.linux.org>
+
+	* gtk/SelectionData.custom : fix get_data_pointer glue method name.
+
+2004-02-16  Mike Kestner  <mkestner@ximian.com>
+
+	* glib/TypeConverter.cs : check for GType prop on all types,
+	not just value types, before we fall back to managed values.
+	* glib/Value.cs : use handle to set_boxed for IWrappers.
+
+2004-02-16  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/EventKey.cs : add a Key prop to return casted KeyVals.
+
+2004-02-16  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : hide EventKey
+	* gdk/EventKey.cs : glue-based manual implementation.
+	* gdk/gdk-api.xml : regen
+	* gdk/gdk-symbols.xml : manual mapping for EventKey.
+	* glue/event.cs : expose key struct fields.
+
+2004-02-16  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : hide EventAny
+	* gdk/Event.cs : make this a full EventAny implementation.
+	* gdk/gdk-api.xml : regen
+	* gdk/gdk-symbols.xml : map EventAny to Gdk.Event.
+	* glue/event.cs : expose window and send_event fields.
+
+2004-02-14  Todd Berman  <tberman@sevenl.net>
+
+	* gtk/Gtk.metadata : hide Widget.SetState
+	* gtk/Widget.custom : add State get; set; property
+	* glue/widget.c : add glue for get_State ();
+	* gtk/gtk-api.xml : regen
+
+2004-02-12  Mike Kestner  <mkestner@ximian.com>
+
+	* sample/GladeViewer.cs : fix a broken api usage.
+
+2004-02-12  Mike Kestner  <mkestner@ximian.com>
+
+	* gnome/Gnome.metadata : hide the GList API
+	* gnome/*.custom : manually wrap GList api using typed arrays
+	* gnome/gnome-api.xml : regen.
+
+2004-02-12  Mike Kestner  <mkestner@ximian.com>
+
+	* glade/Glade.metadata : hide a GList method.
+	* glade/Makefile.in : run gapi-fixup
+	* glade/XML.custom : return Widget[] from GetWidgetPrefix.
+	* glade/glade-api.xml : regen
+	* pango/Pango.metadata : hide a dubious GList method.
+	* pango/pango-api.xml : regen
+
+2004-02-12 Ben Maurer  <bmaurer@users.sourceforge.net>
+
+	* gtk/TreeIter.custom: Make the hash here not collide.
+
+2004-02-12  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : hide the GList API
+	* gdk/*.custom : manually wrap GList api using typed arrays
+	* gdk/gdk-api.xml : regen.
+
+2004-02-12  Mike Kestner  <mkestner@ximian.com>
+
+	* gdk/Gdk.metadata : hide the GSList API
+	* gdk/*.custom : manually wrap GSList api using typed arrays
+	* gdk/gdk-api.xml : regen.
+
+2004-02-12  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Accel.custom : s/List/SList
+	* gtk/Stock.custom : ditto
+	* gtk/TextIter.custom : ditto
+
+2004-02-12  Zoltan Varga  <vargaz@freemail.hu>
+
+	* glib/time_t_CustomMarshaler.cs: Update after custom marshaling
+	changes.
+
 2004-02-12  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* gtk/Gtk.metadata: Hide the various *ActionEntry classes since
@@ -58,6 +412,26 @@
 	
 	Updated everything to use gtk 2.3/2.4. Some samples commented out
 	because they use deprecated/changed API. More work to follow.
+
+2004-02-11  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Gtk.metadata : hide the GSList API
+	* gtk/*.custom : manually wrap GSList api using typed arrays
+	* gtk/gtk-api.xml : regen.
+
+2004-02-11  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/*.custom : don't use element_type ctor for GObject lists.
+
+2004-02-11  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/*.custom : return 0 length arrays, not null.
+
+2004-02-11  Mike Kestner  <mkestner@ximian.com>
+
+	* gtk/Gtk.metadata : hide the GList API
+	* gtk/*.custom : manually wrap GList api using typed arrays
+	* gtk/gtk-api.xml : regen.
 
 2004-02-10  Mike Kestner  <mkestner@ximian.com>
 

@@ -22,7 +22,6 @@
         <code lang="C#">
 using System;
 using Gtk;
-using GtkSharp;
 
 namespace GtkDialogSample
 {
@@ -316,10 +315,10 @@ namespace GtkDialogSample
       </Docs>
     </Member>
     <Member MemberName="Response">
-      <MemberSignature Language="C#" Value="public event GtkSharp.ResponseHandler Response;" />
+      <MemberSignature Language="C#" Value="public event Gtk.ResponseHandler Response;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>GtkSharp.ResponseHandler</ReturnType>
+        <ReturnType>Gtk.ResponseHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -459,6 +458,38 @@ namespace GtkDialogSample
             Adds an activatable <see cref="T:Gtk.Widget" /> to the <see cref="T:Gtk.Dialog.ActionArea" /> of a <see cref="T:Gtk.Dialog" />, connecting a signal handler that will <see cref="E:Gtk.Dialog.Response" /> on the <see cref="T:Gtk.Dialog" /> when the <see cref="T:Gtk.Widget" /> is activated.
             The <see cref="T:Gtk.Widget" /> is appended to the end of the <see cref="T:Gtk.Dialog.ActionArea" />. If you want to add a non-activatable <see cref="T:Gtk.Widget" />, simply pack it into the <see cref="T:Gtk.Dialog.ActionArea" /> field of the <see cref="T:Gtk.Dialog" />.
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddButton">
+      <MemberSignature Language="C#" Value="public void AddButton (string button_text, Gtk.ResponseType response);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="button_text" Type="System.String" />
+        <Parameter Name="response" Type="Gtk.ResponseType" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="button_text">a <see cref="T:System.String" /></param>
+        <param name="response">a <see cref="T:System.Int32" /></param>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Respond">
+      <MemberSignature Language="C#" Value="public void Respond (Gtk.ResponseType response);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="response" Type="Gtk.ResponseType" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="response">a <see cref="T:System.Int32" /></param>
+        <remarks>To be added</remarks>
       </Docs>
     </Member>
   </Members>

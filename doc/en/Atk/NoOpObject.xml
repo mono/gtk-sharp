@@ -1142,10 +1142,10 @@
       </Docs>
     </Member>
     <Member MemberName="TextChanged">
-      <MemberSignature Language="C#" Value="public virtual event AtkSharp.TextChangedHandler TextChanged;" />
+      <MemberSignature Language="C#" Value="public virtual event Atk.TextChangedHandler TextChanged;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>AtkSharp.TextChangedHandler</ReturnType>
+        <ReturnType>Atk.TextChangedHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -1166,10 +1166,10 @@
       </Docs>
     </Member>
     <Member MemberName="TextCaretMoved">
-      <MemberSignature Language="C#" Value="public virtual event AtkSharp.TextCaretMovedHandler TextCaretMoved;" />
+      <MemberSignature Language="C#" Value="public virtual event Atk.TextCaretMovedHandler TextCaretMoved;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>AtkSharp.TextCaretMovedHandler</ReturnType>
+        <ReturnType>Atk.TextCaretMovedHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -1178,10 +1178,10 @@
       </Docs>
     </Member>
     <Member MemberName="RowDeleted">
-      <MemberSignature Language="C#" Value="public virtual event AtkSharp.RowDeletedHandler RowDeleted;" />
+      <MemberSignature Language="C#" Value="public virtual event Atk.RowDeletedHandler RowDeleted;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>AtkSharp.RowDeletedHandler</ReturnType>
+        <ReturnType>Atk.RowDeletedHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -1190,10 +1190,10 @@
       </Docs>
     </Member>
     <Member MemberName="RowInserted">
-      <MemberSignature Language="C#" Value="public virtual event AtkSharp.RowInsertedHandler RowInserted;" />
+      <MemberSignature Language="C#" Value="public virtual event Atk.RowInsertedHandler RowInserted;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>AtkSharp.RowInsertedHandler</ReturnType>
+        <ReturnType>Atk.RowInsertedHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -1214,10 +1214,10 @@
       </Docs>
     </Member>
     <Member MemberName="ColumnInserted">
-      <MemberSignature Language="C#" Value="public virtual event AtkSharp.ColumnInsertedHandler ColumnInserted;" />
+      <MemberSignature Language="C#" Value="public virtual event Atk.ColumnInsertedHandler ColumnInserted;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>AtkSharp.ColumnInsertedHandler</ReturnType>
+        <ReturnType>Atk.ColumnInsertedHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -1238,10 +1238,10 @@
       </Docs>
     </Member>
     <Member MemberName="ColumnDeleted">
-      <MemberSignature Language="C#" Value="public virtual event AtkSharp.ColumnDeletedHandler ColumnDeleted;" />
+      <MemberSignature Language="C#" Value="public virtual event Atk.ColumnDeletedHandler ColumnDeleted;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>AtkSharp.ColumnDeletedHandler</ReturnType>
+        <ReturnType>Atk.ColumnDeletedHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -1392,7 +1392,7 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InsertText">
+    <Member MemberName="InsertText" Deprecated="true">
       <MemberSignature Language="C#" Value="public virtual void InsertText (string str1ng, out int position);" />
       <MemberType>Method</MemberType>
       <ReturnValue>
@@ -1985,6 +1985,22 @@
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
         <returns>a <see cref="T:Atk.NoOpObject" /></returns>
         <remarks>This is a constructor used by derivative types of <see cref="T:Atk.NoOpObject" /> that would have their own GLib.GType assigned to it.  This is not typically used by C# code.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InsertText">
+      <MemberSignature Language="C#" Value="public virtual int InsertText (string str1ng);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="str1ng" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="str1ng">a <see cref="T:System.String" /></param>
+        <returns>a <see cref="T:System.Int32" /></returns>
+        <remarks>To be added</remarks>
       </Docs>
     </Member>
   </Members>

@@ -205,10 +205,10 @@
       </Docs>
     </Member>
     <Member MemberName="SurroundingDeleted">
-      <MemberSignature Language="C#" Value="public event GtkSharp.SurroundingDeletedHandler SurroundingDeleted;" />
+      <MemberSignature Language="C#" Value="public event Gtk.SurroundingDeletedHandler SurroundingDeleted;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>GtkSharp.SurroundingDeletedHandler</ReturnType>
+        <ReturnType>Gtk.SurroundingDeletedHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -217,10 +217,10 @@
       </Docs>
     </Member>
     <Member MemberName="Commit">
-      <MemberSignature Language="C#" Value="public event GtkSharp.CommitHandler Commit;" />
+      <MemberSignature Language="C#" Value="public event Gtk.CommitHandler Commit;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>GtkSharp.CommitHandler</ReturnType>
+        <ReturnType>Gtk.CommitHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -229,10 +229,10 @@
       </Docs>
     </Member>
     <Member MemberName="RetrieveSurrounding">
-      <MemberSignature Language="C#" Value="public event GtkSharp.RetrieveSurroundingHandler RetrieveSurrounding;" />
+      <MemberSignature Language="C#" Value="public event Gtk.RetrieveSurroundingHandler RetrieveSurrounding;" />
       <MemberType>Event</MemberType>
       <ReturnValue>
-        <ReturnType>GtkSharp.RetrieveSurroundingHandler</ReturnType>
+        <ReturnType>Gtk.RetrieveSurroundingHandler</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -269,7 +269,7 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetPreeditString">
+    <Member MemberName="GetPreeditString" Deprecated="true">
       <MemberSignature Language="C#" Value="public void GetPreeditString (string str, Pango.AttrList attrs, out int cursor_pos);" />
       <MemberType>Method</MemberType>
       <ReturnValue>
@@ -502,6 +502,24 @@
         <summary>To be added</summary>
         <param name="gtype">a <see cref="T:GLib.GType" /></param>
         <returns>a <see cref="T:Gtk.IMContext" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetPreeditString">
+      <MemberSignature Language="C#" Value="public int GetPreeditString (string str, Pango.AttrList attrs);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="attrs" Type="Pango.AttrList" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="str">a <see cref="T:System.String" /></param>
+        <param name="attrs">a <see cref="T:Pango.AttrList" /></param>
+        <returns>a <see cref="T:System.Int32" /></returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
