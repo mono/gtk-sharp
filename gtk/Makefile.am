@@ -39,6 +39,7 @@ customs = 				\
 	ColorSelection.custom		\
 	ColorSelectionDialog.custom	\
 	Combo.custom			\
+	ComboBox.custom			\
 	Container.custom		\
 	Dialog.custom			\
 	Entry.custom			\

@@ -1,3 +1,8 @@
+2004-10-05  Todd Berman  <tberman@off.net>
+
+	* gtk/ComboBox.custom: new file, to allow get/set access to 'model'.
+	* gtk/Makefile.am: add ComboBox.custom.
+
 2004-10-04  Todd Berman  <tberman@off.net>
 
 	* Merge forward patch from Miguel to fix delegate marshalling in
