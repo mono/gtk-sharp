@@ -1,3 +1,8 @@
+2005-02-25  Mike Kestner  <mkestner@novell.com>
+
+	* glib/Source.cs : remove from the hash by key.
+	* glib/Idle.cs : remove from the hash by key.
+
 2005-02-18  Mike Kestner  <mkestner@novell.com>
 
 	* gtk/Gtk.metadata : remove an incorrect and harmful rule on 
