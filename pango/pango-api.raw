@@ -410,6 +410,9 @@
       <method name="CreateContext" cname="pango_ft2_font_map_create_context">
         <return-type type="PangoContext*"/>
       </method>
+      <method name="ForDisplay" cname="pango_ft2_font_map_for_display" deprecated="1" shared="true">
+        <return-type type="PangoFontMap*"/>
+      </method>
       <method name="GetType" cname="pango_ft2_font_map_get_type" shared="true">
         <return-type type="GType"/>
       </method>

@@ -58,7 +58,7 @@ namespace GtkDemo
 		private void LoadFile(string filename)
 		{
 
-			Stream file = File.OpenRead(filename);
+			Stream file = System.IO.File.OpenRead(filename);
 			StreamReader sr = new StreamReader(file);
 			string s = sr.ReadToEnd();
 			sr.Close();

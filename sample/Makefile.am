@@ -1,4 +1,4 @@
-SUBDIRS = gconf rsvg test pixmaps
+SUBDIRS = gconf rsvg test GtkDemo pixmaps
 
 if ENABLE_GNOME
 GNOME_TARGETS=gnome-hello-world.exe canvas-example.exe fifteen.exe print.exe

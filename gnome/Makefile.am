@@ -34,6 +34,8 @@ sources =					\
 	GtkSharp.PointHandler.cs		\
 	GtkSharp.RenderHandler.cs		\
 	GtkSharp.UpdateHandler.cs		\
+	IconData.cs				\
+	IconTheme.cs				\
 	Modules.cs				\
 	voidObjectAffineSVPintSignal.cs
 
@@ -60,7 +62,6 @@ customs =					\
 	FontFamily.custom			\
 	IconList.custom				\
 	IconTextItem.custom			\
-	IconTheme.custom			\
 	Print.custom				\
 	PrintDialog.custom			\
 	PrintJob.custom				\

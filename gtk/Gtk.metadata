@@ -7,6 +7,7 @@
   <attr path="/api/namespace/struct[@cname='GtkActionEntry']" name="hidden">1</attr>
   <attr path="/api/namespace/struct[@cname='GtkRadioActionEntry']" name="hidden">1</attr>
   <attr path="/api/namespace/struct[@cname='GtkToggleActionEntry']" name="hidden">1</attr>
+  <attr path="/api/namespace/struct[@cname='GtkTypeInfo']" name="hidden">1</attr>
   <attr path="/api/namespace/boxed[@cname='GtkBorder']" name="hidden">1</attr>
   <attr path="/api/namespace/boxed[@cname='GtkIconSet']/method[@name='GetSizes']" name="hidden">1</attr>
   <attr path="/api/namespace/boxed[@cname='GtkSelectionData']" name="opaque">1</attr>
@@ -32,6 +33,7 @@
   <attr path="/api/namespace/class[@cname='GtkIdle_']" name="hidden">1</attr>
   <attr path="/api/namespace/class[@cname='GtkStock_']" name="name">StockManager</attr>
   <attr path="/api/namespace/class[@cname='GtkStock_']/method[@name='ListIds']" name="hidden">1</attr>
+  <attr path="/api/namespace/class[@cname='GtkType_']" name="hidden">1</attr>
   <attr path="/api/namespace/enum[@cname='GtkDebugFlag']" name="hidden">1</attr>
   <attr path="/api/namespace/enum[@cname='GtkExpanderStyle']" name="hidden">1</attr>
   <attr path="/api/namespace/enum[@cname='GtkObjectFlags']" name="hidden">1</attr>
@@ -108,6 +110,8 @@
   <attr path="/api/namespace/object[@cname='GtkContainer']/signal[@name='SetFocusChild']" name="name">FocusChildSet</attr>
   <attr path="/api/namespace/object[@cname='GtkDialog']/constructor[@cname='gtk_dialog_new_with_buttons']/*/*[@type='GtkWindow*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkDialog']/method[@name='Response']" name="name">Respond</attr>
+  <attr path="/api/namespace/object[@cname='GtkEntry']/method[@name='SetPosition']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkEntry']/method[@name='SelectRegion']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkEntry']/signal[@name='Activate']" name="name">Activated</attr>
   <attr path="/api/namespace/object[@cname='GtkEntry']/signal[@name='CopyClipboard']" name="name">ClipboardCopied</attr>
   <attr path="/api/namespace/object[@cname='GtkEntry']/signal[@name='CutClipboard']" name="name">ClipboardCut</attr>
@@ -119,6 +123,7 @@
   <attr path="/api/namespace/object[@cname='GtkHScale']/constructor[@cname='gtk_hscale_new']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkHScrollbar']/constructor[@cname='gtk_hscrollbar_new']/*/*[@type='GtkAdjustment*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkIconTheme']/method[@name='GetSearchPath']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkIconTheme']/method[@name='ListIcons']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkImageMenuItem']/constructor[@cname='gtk_image_menu_item_new_with_mnemonic']" name="preferred">1</attr>
   <attr path="/api/namespace/object[@cname='GtkImage']/method[@name='SetFromPixmap']/*/*[@type='GdkBitmap*']" name="null_ok">1</attr>
   <attr path="/api/namespace/object[@cname='GtkIMContext']/signal[@name='DeleteSurrounding']" name="name">SurroundingDeleted</attr>

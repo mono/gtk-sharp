@@ -88,16 +88,22 @@ namespace GtkDemo
 		}
 
 		// Convenience function to create an option menu holding a number of strings
-		private ComboBox CreateComboBox (string [] strings)
+		private OptionMenu CreateOptionMenu (string [] strings)
 		{
-			ComboBox comboBox = new ComboBox.NewText ();
-		
+			Menu menu = new Menu ();
+			MenuItem menuItem;
+
 			foreach (string str in strings)
 			{
-				comboBox.AppendText (str);
+				menuItem = new MenuItem (str);
+				menuItem.Show ();
+				menu.Append (menuItem);
 			}
 
-			return comboBox;
+			OptionMenu optionMenu = new OptionMenu ();
+			optionMenu.Menu = menu;
+
+			return optionMenu;
 		}
 
  		private void AddRow (Table table, uint row, SizeGroup sizeGroup, string labelText, string [] options)

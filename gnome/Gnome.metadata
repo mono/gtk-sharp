@@ -46,11 +46,15 @@
   <attr path="/api/namespace/object[@cname='GnomeCanvasShape']/property[@name='Dash']" name="type">ArtVpathDash</attr>
   <attr path="/api/namespace/object[@cname='GnomeClient']/signal[@name='Connect']" name="name">Connected</attr>
   <attr path="/api/namespace/object[@cname='GnomeClient']/signal[@name='Disconnect']" name="name">Disconnected</attr>
+  <attr path="/api/namespace/object[@cname='GnomeDialog']/method[@name='Close']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GnomeDialog']/method[@name='SetClose']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GnomeDruidPage']/signal[@name='Back']" name="name">BackClicked</attr>
   <attr path="/api/namespace/object[@cname='GnomeDruidPage']/signal[@name='Cancel']" name="name">CancelClicked</attr>
   <attr path="/api/namespace/object[@cname='GnomeDruidPage']/signal[@name='Finish']" name="name">FinishClicked</attr>
   <attr path="/api/namespace/object[@cname='GnomeDruidPage']/signal[@name='Next']" name="name">NextClicked</attr>
   <attr path="/api/namespace/object[@cname='GnomeDruidPage']/signal[@name='Prepare']" name="name">Prepared</attr>
+  <attr path="/api/namespace/object[@cname='GnomeEntry']/method[@name='GtkEntry']" name="name">GetGtkEntry</attr>
+  <attr path="/api/namespace/object[@cname='GnomeEntry']/signal[@name='Activate']" name="name">Activated</attr>
   <attr path="/api/namespace/object[@cname='GnomeFileEntry']/method[@name='GnomeEntry']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GnomeFileEntry']/method[@name='GtkEntry']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GnomeFileEntry']/property[@name='GnomeEntry']" name="hidden">1</attr>
@@ -78,8 +82,7 @@
   <attr path="/api/namespace/object[@cname='GnomeIconList']/signal[@name='FocusIcon']" name="name">IconFocused</attr>
   <attr path="/api/namespace/object[@cname='GnomeIconList']/signal[@name='SelectIcon']" name="name">IconSelected</attr>
   <attr path="/api/namespace/object[@cname='GnomeIconList']/signal[@name='UnselectIcon']" name="name">IconUnselected</attr>
-  <attr path="/api/namespace/object[@cname='GnomeIconTheme']/method[@name='GetSearchPath']" name="hidden">1</attr>
-  <attr path="/api/namespace/object[@cname='GnomeIconTheme']/method[@name='ListIcons']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GnomeIconTheme']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GnomePrintConfig']/method/*/*[@type='const-guchar*']" name="type">const-gchar*</attr>
   <attr path="/api/namespace/object[@cname='GnomePrintConfig']/method[@name='Get']/return-type" name="type">gchar*</attr>
   <attr path="/api/namespace/object[@cname='GnomePrintDialog']/method/*/*[@type='const-guchar*']" name="type">const-gchar*</attr>

@@ -38,8 +38,34 @@
     <library name="libgtk-win32-2.0-0.dll">
       <namespace name="Gtk">
         <dir>gtk+-2.4.1/gtk</dir>
+        <!-- Internal class used by GtkFileChooser implementation -->
         <exclude>gtk+-2.4.1/gtk/gtkfilesystemmodel.c</exclude>
         <exclude>gtk+-2.4.1/gtk/gtkfilesystemmodel.h</exclude>
+        <!-- Exclude all pre gtk+-2.2 deprecated widgets -->
+        <exclude>gtk+-2.4.1/gtk/gtkclist.c</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtkclist.h</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtkctree.c</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtkctree.h</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtklist.c</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtklist.h</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtklistitem.c</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtklistitem.h</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtkoldeditable.c</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtkoldeditable.h</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtkpixmap.c</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtkpixmap.h</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtkpreview.c</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtkpreview.h</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtkprogress.c</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtkprogress.h</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtktext.c</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtktext.h</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtktipsquery.c</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtktipsquery.h</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtktree.c</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtktree.h</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtktreeitem.c</exclude>
+        <exclude>gtk+-2.4.1/gtk/gtktreeitem.h</exclude>
       </namespace>
     </library>
   </api>

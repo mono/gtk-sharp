@@ -1751,6 +1751,12 @@
       <member cname="GNOME_EDGE_OTHER" name="Other"/>
       <member cname="GNOME_EDGE_LAST" name="Last"/>
     </enum>
+    <enum name="FontPickerMode" cname="GnomeFontPickerMode" deprecated="1" type="enum">
+      <member cname="_GNOME_FONT_PICKER_MODE_PIXMAP" name="GnomeFontPickerModePixmap"/>
+      <member cname="_GNOME_FONT_PICKER_MODE_FONT_INFO" name="GnomeFontPickerModeFontInfo"/>
+      <member cname="_GNOME_FONT_PICKER_MODE_USER_WIDGET" name="GnomeFontPickerModeUserWidget"/>
+      <member cname="_GNOME_FONT_PICKER_MODE_UNKNOWN" name="GnomeFontPickerModeUnknown"/>
+    </enum>
     <enum name="IconListMode" cname="GnomeIconListMode" type="enum">
       <member cname="GNOME_ICON_LIST_ICONS" name="Icons"/>
       <member cname="GNOME_ICON_LIST_TEXT_BELOW" name="TextBelow"/>
@@ -1854,6 +1860,18 @@
       <member cname="GNOME_APP_PIXMAP_DATA" name="Data"/>
       <member cname="GNOME_APP_PIXMAP_FILENAME" name="Filename"/>
     </enum>
+    <callback name="AppProgressCancelFunc" cname="GnomeAppProgressCancelFunc">
+      <return-type type="void"/>
+      <parameters>
+        <parameter type="gpointer" name="data"/>
+      </parameters>
+    </callback>
+    <callback name="AppProgressFunc" cname="GnomeAppProgressFunc">
+      <return-type type="gdouble"/>
+      <parameters>
+        <parameter type="gpointer" name="data"/>
+      </parameters>
+    </callback>
     <callback name="GdkPixbufDoneCallback" cname="GnomeGdkPixbufDoneCallback">
       <return-type type="void"/>
       <parameters>
@@ -2076,6 +2094,12 @@
           <parameter type="gboolean" name="enable"/>
         </parameters>
       </method>
+      <method name="Error" cname="gnome_app_error" deprecated="1">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="error"/>
+        </parameters>
+      </method>
       <method name="FillMenu" cname="gnome_app_fill_menu" shared="true">
         <return-type type="void"/>
         <parameters>
@@ -2140,6 +2164,12 @@
           <parameter type="GtkWidget*" name="parent"/>
           <parameter type="const-gchar*" name="path"/>
           <parameter type="gint*" name="pos"/>
+        </parameters>
+      </method>
+      <method name="Flash" cname="gnome_app_flash" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-gchar*" name="flash"/>
         </parameters>
       </method>
       <method name="GetDock" cname="gnome_app_get_dock">
@@ -2213,12 +2243,74 @@
           <parameter type="GnomeUIInfo*" name="uiinfo"/>
         </parameters>
       </method>
+      <method name="Message" cname="gnome_app_message" deprecated="1">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="message"/>
+        </parameters>
+      </method>
       <constructor cname="gnome_app_new">
         <parameters>
           <parameter type="const-gchar*" name="appname"/>
           <parameter type="const-gchar*" name="title"/>
         </parameters>
       </constructor>
+      <method name="OkCancel" cname="gnome_app_ok_cancel" deprecated="1">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="message"/>
+          <parameter type="GnomeReplyCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+        </parameters>
+      </method>
+      <method name="OkCancelModal" cname="gnome_app_ok_cancel_modal" deprecated="1">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="message"/>
+          <parameter type="GnomeReplyCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+        </parameters>
+      </method>
+      <method name="ProgressDone" cname="gnome_app_progress_done" deprecated="1" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomeAppProgressKey" name="key"/>
+        </parameters>
+      </method>
+      <method name="ProgressManual" cname="gnome_app_progress_manual" deprecated="1">
+        <return-type type="GnomeAppProgressKey"/>
+        <parameters>
+          <parameter type="const-gchar*" name="description"/>
+          <parameter type="GnomeAppProgressCancelFunc" name="cancel_cb"/>
+          <parameter type="gpointer" name="data"/>
+        </parameters>
+      </method>
+      <method name="ProgressTimeout" cname="gnome_app_progress_timeout" deprecated="1">
+        <return-type type="GnomeAppProgressKey"/>
+        <parameters>
+          <parameter type="const-gchar*" name="description"/>
+          <parameter type="guint32" name="interval"/>
+          <parameter type="GnomeAppProgressFunc" name="percentage_cb"/>
+          <parameter type="GnomeAppProgressCancelFunc" name="cancel_cb"/>
+          <parameter type="gpointer" name="data"/>
+        </parameters>
+      </method>
+      <method name="Question" cname="gnome_app_question" deprecated="1">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="question"/>
+          <parameter type="GnomeReplyCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+        </parameters>
+      </method>
+      <method name="QuestionModal" cname="gnome_app_question_modal" deprecated="1">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="question"/>
+          <parameter type="GnomeReplyCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+        </parameters>
+      </method>
       <method name="RemoveMenuRange" cname="gnome_app_remove_menu_range">
         <return-type type="void"/>
         <parameters>
@@ -2234,6 +2326,22 @@
           <parameter type="gint" name="items"/>
         </parameters>
       </method>
+      <method name="RequestPassword" cname="gnome_app_request_password" deprecated="1">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="prompt"/>
+          <parameter type="GnomeStringCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+        </parameters>
+      </method>
+      <method name="RequestString" cname="gnome_app_request_string" deprecated="1">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="prompt"/>
+          <parameter type="GnomeStringCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+        </parameters>
+      </method>
       <method name="SetContents" cname="gnome_app_set_contents">
         <return-type type="void"/>
         <parameters>
@@ -2244,6 +2352,13 @@
         <return-type type="void"/>
         <parameters>
           <parameter type="GtkMenuBar*" name="menubar"/>
+        </parameters>
+      </method>
+      <method name="SetProgress" cname="gnome_app_set_progress" deprecated="1" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomeAppProgressKey" name="key"/>
+          <parameter type="gdouble" name="percent"/>
         </parameters>
       </method>
       <method name="SetStatusbar" cname="gnome_app_set_statusbar">
@@ -2276,6 +2391,12 @@
         <return-type type="void"/>
         <parameters>
           <parameter type="GnomeUIInfo*" name="uiinfo"/>
+        </parameters>
+      </method>
+      <method name="Warning" cname="gnome_app_warning" deprecated="1">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="warning"/>
         </parameters>
       </method>
     </object>
@@ -2437,6 +2558,9 @@
         </parameters>
       </method>
       <method name="Connect" cname="gnome_client_connect">
+        <return-type type="void"/>
+      </method>
+      <method name="DisableMasterConnection" cname="gnome_client_disable_master_connection" deprecated="1" shared="true">
         <return-type type="void"/>
       </method>
       <method name="Disconnect" cname="gnome_client_disconnect">
@@ -2604,6 +2728,111 @@
         </parameters>
       </method>
     </object>
+    <object name="ColorPicker" cname="GnomeColorPicker" deprecated="1" parent="GtkButton">
+      <field cname="_priv" type="GnomeColorPickerPrivate*"/>
+      <signal name="ColorSet" cname="color_set" when="FIRST">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomeColorPicker*" name="cp"/>
+          <parameter type="guint" name="r"/>
+          <parameter type="guint" name="g"/>
+          <parameter type="guint" name="b"/>
+          <parameter type="guint" name="a"/>
+        </parameters>
+      </signal>
+      <property name="Dither" cname="dither" type="gboolean" readable="true" writeable="true"/>
+      <property name="UseAlpha" cname="use_alpha" type="gboolean" readable="true" writeable="true"/>
+      <property name="Title" cname="title" type="gchar*" readable="true" writeable="true"/>
+      <property name="Red" cname="red" type="guint" readable="true" writeable="true"/>
+      <property name="Green" cname="green" type="guint" readable="true" writeable="true"/>
+      <property name="Blue" cname="blue" type="guint" readable="true" writeable="true"/>
+      <property name="Alpha" cname="alpha" type="guint" readable="true" writeable="true"/>
+      <method name="GetD" cname="gnome_color_picker_get_d" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gdouble*" name="r"/>
+          <parameter type="gdouble*" name="g"/>
+          <parameter type="gdouble*" name="b"/>
+          <parameter type="gdouble*" name="a"/>
+        </parameters>
+      </method>
+      <method name="GetDither" cname="gnome_color_picker_get_dither" deprecated="1">
+        <return-type type="gboolean"/>
+      </method>
+      <method name="GetI16" cname="gnome_color_picker_get_i16" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gushort*" name="r"/>
+          <parameter type="gushort*" name="g"/>
+          <parameter type="gushort*" name="b"/>
+          <parameter type="gushort*" name="a"/>
+        </parameters>
+      </method>
+      <method name="GetI8" cname="gnome_color_picker_get_i8" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="guint8*" name="r"/>
+          <parameter type="guint8*" name="g"/>
+          <parameter type="guint8*" name="b"/>
+          <parameter type="guint8*" name="a"/>
+        </parameters>
+      </method>
+      <method name="GetTitle" cname="gnome_color_picker_get_title" deprecated="1">
+        <return-type type="const-char*"/>
+      </method>
+      <method name="GetType" cname="gnome_color_picker_get_type" deprecated="1" shared="true">
+        <return-type type="GType"/>
+      </method>
+      <method name="GetUseAlpha" cname="gnome_color_picker_get_use_alpha" deprecated="1">
+        <return-type type="gboolean"/>
+      </method>
+      <constructor cname="gnome_color_picker_new" deprecated="1"/>
+      <method name="SetD" cname="gnome_color_picker_set_d" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gdouble" name="r"/>
+          <parameter type="gdouble" name="g"/>
+          <parameter type="gdouble" name="b"/>
+          <parameter type="gdouble" name="a"/>
+        </parameters>
+      </method>
+      <method name="SetDither" cname="gnome_color_picker_set_dither" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gboolean" name="dither"/>
+        </parameters>
+      </method>
+      <method name="SetI16" cname="gnome_color_picker_set_i16" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gushort" name="r"/>
+          <parameter type="gushort" name="g"/>
+          <parameter type="gushort" name="b"/>
+          <parameter type="gushort" name="a"/>
+        </parameters>
+      </method>
+      <method name="SetI8" cname="gnome_color_picker_set_i8" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="guint8" name="r"/>
+          <parameter type="guint8" name="g"/>
+          <parameter type="guint8" name="b"/>
+          <parameter type="guint8" name="a"/>
+        </parameters>
+      </method>
+      <method name="SetTitle" cname="gnome_color_picker_set_title" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-gchar*" name="title"/>
+        </parameters>
+      </method>
+      <method name="SetUseAlpha" cname="gnome_color_picker_set_use_alpha" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gboolean" name="use_alpha"/>
+        </parameters>
+      </method>
+    </object>
     <object name="DateEdit" cname="GnomeDateEdit" parent="GtkHBox">
       <field cname="_priv" type="GnomeDateEditPrivate*"/>
       <property name="Time" cname="time" type="ulong" readable="true" writeable="true"/>
@@ -2629,6 +2858,9 @@
           <parameter type="time_t" name="the_time"/>
           <parameter type="GnomeDateEditFlags" name="flags"/>
         </parameters>
+      </method>
+      <method name="GetDate" cname="gnome_date_edit_get_date" deprecated="1">
+        <return-type type="time_t"/>
       </method>
       <method name="GetFlags" cname="gnome_date_edit_get_flags">
         <return-type type="int"/>
@@ -2672,6 +2904,165 @@
         <return-type type="void"/>
         <parameters>
           <parameter type="time_t" name="the_time"/>
+        </parameters>
+      </method>
+    </object>
+    <object name="Dialog" cname="GnomeDialog" deprecated="1" parent="GtkWindow">
+      <field cname="vbox" type="GtkWidget*"/>
+      <field cname="buttons" type="GList*"/>
+      <field cname="action_area" type="GtkWidget*"/>
+      <field cname="accelerators" type="GtkAccelGroup*"/>
+      <field cname="click_closes" bits="1" type="unsigned int"/>
+      <field cname="just_hide" bits="1" type="unsigned int"/>
+      <signal name="Close" cname="close" when="LAST">
+        <return-type type="gboolean"/>
+        <parameters>
+          <parameter type="GnomeDialog*" name="dialog"/>
+        </parameters>
+      </signal>
+      <signal name="Clicked" cname="clicked" when="LAST">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomeDialog*" name="dialog"/>
+          <parameter type="gint" name="button_number"/>
+        </parameters>
+      </signal>
+      <method name="AppendButton" cname="gnome_dialog_append_button" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-gchar*" name="button_name"/>
+        </parameters>
+      </method>
+      <method name="AppendButtonWithPixmap" cname="gnome_dialog_append_button_with_pixmap" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-gchar*" name="button_name"/>
+          <parameter type="const-gchar*" name="pixmap_name"/>
+        </parameters>
+      </method>
+      <method name="AppendButtons" cname="gnome_dialog_append_buttons" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-gchar*" name="first"/>
+          <parameter ellipsis="true"/>
+        </parameters>
+      </method>
+      <method name="AppendButtonsWithPixmaps" cname="gnome_dialog_append_buttons_with_pixmaps" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-gchar**" name="names"/>
+          <parameter type="const-gchar**" name="pixmaps"/>
+        </parameters>
+      </method>
+      <method name="AppendButtonsv" cname="gnome_dialog_append_buttonsv" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-gchar**" name="buttons"/>
+        </parameters>
+      </method>
+      <method name="ButtonConnect" cname="gnome_dialog_button_connect" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gint" name="button"/>
+          <parameter type="GCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+        </parameters>
+      </method>
+      <method name="ButtonConnectObject" cname="gnome_dialog_button_connect_object" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gint" name="button"/>
+          <parameter type="GCallback" name="callback"/>
+          <parameter type="GtkObject*" name="obj"/>
+        </parameters>
+      </method>
+      <method name="Close" cname="gnome_dialog_close" deprecated="1">
+        <return-type type="void"/>
+      </method>
+      <method name="CloseHides" cname="gnome_dialog_close_hides" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gboolean" name="just_hide"/>
+        </parameters>
+      </method>
+      <method name="Construct" cname="gnome_dialog_construct" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-gchar*" name="title"/>
+          <parameter type="va_list" name="ap"/>
+        </parameters>
+      </method>
+      <method name="Constructv" cname="gnome_dialog_constructv" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-gchar*" name="title"/>
+          <parameter type="const-gchar**" name="buttons"/>
+        </parameters>
+      </method>
+      <method name="EditableEnters" cname="gnome_dialog_editable_enters" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GtkEditable*" name="editable"/>
+        </parameters>
+      </method>
+      <method name="GetType" cname="gnome_dialog_get_type" deprecated="1" shared="true">
+        <return-type type="GType"/>
+      </method>
+      <method name="GrabFocus" cname="gnome_dialog_grab_focus" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gint" name="button"/>
+        </parameters>
+      </method>
+      <constructor cname="gnome_dialog_new" deprecated="1">
+        <parameters>
+          <parameter type="const-gchar*" name="title"/>
+          <parameter ellipsis="true"/>
+        </parameters>
+      </constructor>
+      <constructor cname="gnome_dialog_newv" deprecated="1">
+        <parameters>
+          <parameter type="const-gchar*" name="title"/>
+          <parameter type="const-gchar**" name="buttons"/>
+        </parameters>
+      </constructor>
+      <method name="Run" cname="gnome_dialog_run" deprecated="1">
+        <return-type type="gint"/>
+      </method>
+      <method name="RunAndClose" cname="gnome_dialog_run_and_close" deprecated="1">
+        <return-type type="gint"/>
+      </method>
+      <method name="SetAccelerator" cname="gnome_dialog_set_accelerator" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gint" name="button"/>
+          <parameter type="const-guchar" name="accelerator_key"/>
+          <parameter type="guint8" name="accelerator_mods"/>
+        </parameters>
+      </method>
+      <method name="SetClose" cname="gnome_dialog_set_close" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gboolean" name="click_closes"/>
+        </parameters>
+      </method>
+      <method name="SetDefault" cname="gnome_dialog_set_default" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gint" name="button"/>
+        </parameters>
+      </method>
+      <method name="SetParent" cname="gnome_dialog_set_parent" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GtkWindow*" name="parent"/>
+        </parameters>
+      </method>
+      <method name="SetSensitive" cname="gnome_dialog_set_sensitive" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gint" name="button"/>
+          <parameter type="gboolean" name="setting"/>
         </parameters>
       </method>
     </object>
@@ -3021,6 +3412,72 @@
         </parameters>
       </method>
     </object>
+    <object name="Entry" cname="GnomeEntry" deprecated="1" parent="GtkCombo">
+      <field cname="_priv" type="GnomeEntryPrivate*"/>
+      <signal name="Activate" cname="activate" when="LAST">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomeEntry*" name="entry"/>
+        </parameters>
+      </signal>
+      <property name="HistoryId" cname="history_id" type="gchar*" readable="true" writeable="true"/>
+      <property name="GtkEntry" cname="gtk_entry" type="GtkEntry" readable="true"/>
+      <implements>
+        <interface cname="GtkEditable"/>
+      </implements>
+      <method name="AppendHistory" cname="gnome_entry_append_history" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gboolean" name="save"/>
+          <parameter type="const-gchar*" name="text"/>
+        </parameters>
+      </method>
+      <method name="ClearHistory" cname="gnome_entry_clear_history" deprecated="1">
+        <return-type type="void"/>
+      </method>
+      <method name="Construct" cname="gnome_entry_construct" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-gchar*" name="history_id"/>
+        </parameters>
+      </method>
+      <method name="GetHistoryId" cname="gnome_entry_get_history_id" deprecated="1">
+        <return-type type="const-gchar*"/>
+      </method>
+      <method name="GetMaxSaved" cname="gnome_entry_get_max_saved" deprecated="1">
+        <return-type type="guint"/>
+      </method>
+      <method name="GetType" cname="gnome_entry_get_type" deprecated="1" shared="true">
+        <return-type type="GType"/>
+      </method>
+      <method name="GtkEntry" cname="gnome_entry_gtk_entry" deprecated="1">
+        <return-type type="GtkWidget*"/>
+      </method>
+      <constructor cname="gnome_entry_new" deprecated="1">
+        <parameters>
+          <parameter type="const-gchar*" name="history_id"/>
+        </parameters>
+      </constructor>
+      <method name="PrependHistory" cname="gnome_entry_prepend_history" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gboolean" name="save"/>
+          <parameter type="const-gchar*" name="text"/>
+        </parameters>
+      </method>
+      <method name="SetHistoryId" cname="gnome_entry_set_history_id" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-gchar*" name="history_id"/>
+        </parameters>
+      </method>
+      <method name="SetMaxSaved" cname="gnome_entry_set_max_saved" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="guint" name="max_saved"/>
+        </parameters>
+      </method>
+    </object>
     <object name="FileEntry" cname="GnomeFileEntry" parent="GtkVBox">
       <field cname="fsw" type="GtkWidget*"/>
       <field cname="default_path" type="char*"/>
@@ -3090,6 +3547,12 @@
           <parameter type="const-char*" name="path"/>
         </parameters>
       </method>
+      <method name="SetDirectory" cname="gnome_file_entry_set_directory" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gboolean" name="directory_entry"/>
+        </parameters>
+      </method>
       <method name="SetDirectoryEntry" cname="gnome_file_entry_set_directory_entry">
         <return-type type="void"/>
         <parameters>
@@ -3115,6 +3578,89 @@
         </parameters>
       </method>
     </object>
+    <object name="FontPicker" cname="GnomeFontPicker" deprecated="1" parent="GtkButton">
+      <field cname="_priv" type="GnomeFontPickerPrivate*"/>
+      <property name="Title" cname="title" type="gchar*" readable="true" writeable="true"/>
+      <property name="Mode" cname="mode" type="GnomeFontPickerMode" readable="true" writeable="true"/>
+      <property name="FontName" cname="font_name" type="gchar*" readable="true" writeable="true"/>
+      <property name="Font" cname="font" type="gpointer" readable="true"/>
+      <property name="PreviewText" cname="preview_text" type="gchar*" readable="true" writeable="true"/>
+      <property name="UseFontInLabel" cname="use-font-in-label" type="gboolean" readable="true" writeable="true"/>
+      <property name="LabelFontSize" cname="label-font-size" type="gint" readable="true" writeable="true"/>
+      <property name="ShowSize" cname="show-size" type="gboolean" readable="true" writeable="true"/>
+      <signal name="FontSet" cname="font_set" when="FIRST">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomeFontPicker*" name="gfp"/>
+          <parameter type="const-gchar*" name="font_name"/>
+        </parameters>
+      </signal>
+      <method name="FiSetShowSize" cname="gnome_font_picker_fi_set_show_size" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gboolean" name="show_size"/>
+        </parameters>
+      </method>
+      <method name="FiSetUseFontInLabel" cname="gnome_font_picker_fi_set_use_font_in_label" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gboolean" name="use_font_in_label"/>
+          <parameter type="gint" name="size"/>
+        </parameters>
+      </method>
+      <method name="GetFont" cname="gnome_font_picker_get_font" deprecated="1">
+        <return-type type="GdkFont*"/>
+      </method>
+      <method name="GetFontName" cname="gnome_font_picker_get_font_name" deprecated="1">
+        <return-type type="const-gchar*"/>
+      </method>
+      <method name="GetMode" cname="gnome_font_picker_get_mode" deprecated="1">
+        <return-type type="GnomeFontPickerMode"/>
+      </method>
+      <method name="GetPreviewText" cname="gnome_font_picker_get_preview_text" deprecated="1">
+        <return-type type="const-gchar*"/>
+      </method>
+      <method name="GetTitle" cname="gnome_font_picker_get_title" deprecated="1">
+        <return-type type="const-gchar*"/>
+      </method>
+      <method name="GetType" cname="gnome_font_picker_get_type" deprecated="1" shared="true">
+        <return-type type="GType"/>
+      </method>
+      <constructor cname="gnome_font_picker_new" deprecated="1"/>
+      <method name="SetFontName" cname="gnome_font_picker_set_font_name" deprecated="1">
+        <return-type type="gboolean"/>
+        <parameters>
+          <parameter type="const-gchar*" name="fontname"/>
+        </parameters>
+      </method>
+      <method name="SetMode" cname="gnome_font_picker_set_mode" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomeFontPickerMode" name="mode"/>
+        </parameters>
+      </method>
+      <method name="SetPreviewText" cname="gnome_font_picker_set_preview_text" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-gchar*" name="text"/>
+        </parameters>
+      </method>
+      <method name="SetTitle" cname="gnome_font_picker_set_title" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-gchar*" name="title"/>
+        </parameters>
+      </method>
+      <method name="UwGetWidget" cname="gnome_font_picker_uw_get_widget" deprecated="1">
+        <return-type type="GtkWidget*"/>
+      </method>
+      <method name="UwSetWidget" cname="gnome_font_picker_uw_set_widget" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GtkWidget*" name="widget"/>
+        </parameters>
+      </method>
+    </object>
     <object name="HRef" cname="GnomeHRef" parent="GtkButton">
       <field cname="_priv" type="GnomeHRefPrivate*"/>
       <property name="Url" cname="url" type="gchar*" readable="true" writeable="true"/>
@@ -3125,6 +3671,9 @@
           <parameter type="const-gchar*" name="url"/>
           <parameter type="const-gchar*" name="text"/>
         </parameters>
+      </method>
+      <method name="GetLabel" cname="gnome_href_get_label" deprecated="1">
+        <return-type type="const-gchar*"/>
       </method>
       <method name="GetText" cname="gnome_href_get_text">
         <return-type type="const-gchar*"/>
@@ -3141,6 +3690,12 @@
           <parameter type="const-gchar*" name="text"/>
         </parameters>
       </constructor>
+      <method name="SetLabel" cname="gnome_href_set_label" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-gchar*" name="label"/>
+        </parameters>
+      </method>
       <method name="SetText" cname="gnome_href_set_text">
         <return-type type="void"/>
         <parameters>
@@ -3676,95 +4231,76 @@
         </parameters>
       </method>
     </object>
-    <object name="PasswordDialog" cname="GnomePasswordDialog" parent="GtkDialog">
-      <field cname="details" type="GnomePasswordDialogDetails*"/>
-      <method name="GetDomain" cname="gnome_password_dialog_get_domain">
-        <return-type type="char*"/>
-      </method>
-      <method name="GetPassword" cname="gnome_password_dialog_get_password">
-        <return-type type="char*"/>
-      </method>
-      <method name="GetRemember" cname="gnome_password_dialog_get_remember">
-        <return-type type="GnomePasswordDialogRemember"/>
-      </method>
-      <method name="GetType" cname="gnome_password_dialog_get_type" shared="true">
-        <return-type type="GtkType"/>
-      </method>
-      <method name="GetUsername" cname="gnome_password_dialog_get_username">
-        <return-type type="char*"/>
-      </method>
-      <constructor cname="gnome_password_dialog_new">
+    <object name="IconTheme" cname="GnomeIconTheme">
+      <signal name="Changed" cname="changed" when="LAST">
+        <return-type type="void"/>
         <parameters>
-          <parameter type="const-char*" name="dialog_title"/>
-          <parameter type="const-char*" name="message"/>
-          <parameter type="const-char*" name="username"/>
-          <parameter type="const-char*" name="password"/>
-          <parameter type="gboolean" name="readonly_username"/>
+          <parameter type="GnomeIconTheme*" name="icon_theme"/>
+        </parameters>
+      </signal>
+    </object>
+    <object name="Pixmap" cname="GnomePixmap" deprecated="1" parent="GtkImage">
+      <field cname="_priv" type="GnomePixmapPrivate*"/>
+      <method name="GetType" cname="gnome_pixmap_get_type" deprecated="1" shared="true">
+        <return-type type="GType"/>
+      </method>
+      <method name="LoadFile" cname="gnome_pixmap_load_file" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-char*" name="filename"/>
+        </parameters>
+      </method>
+      <method name="LoadFileAtSize" cname="gnome_pixmap_load_file_at_size" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-char*" name="filename"/>
+          <parameter type="int" name="width"/>
+          <parameter type="int" name="height"/>
+        </parameters>
+      </method>
+      <method name="LoadXpmD" cname="gnome_pixmap_load_xpm_d" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-char**" name="xpm_data"/>
+        </parameters>
+      </method>
+      <method name="LoadXpmDAtSize" cname="gnome_pixmap_load_xpm_d_at_size" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="const-char**" name="xpm_data"/>
+          <parameter type="int" name="width"/>
+          <parameter type="int" name="height"/>
+        </parameters>
+      </method>
+      <constructor cname="gnome_pixmap_new_from_file" deprecated="1">
+        <parameters>
+          <parameter type="const-gchar*" name="filename"/>
         </parameters>
       </constructor>
-      <method name="RunAndBlock" cname="gnome_password_dialog_run_and_block">
-        <return-type type="gboolean"/>
-      </method>
-      <method name="SetDomain" cname="gnome_password_dialog_set_domain">
-        <return-type type="void"/>
+      <constructor cname="gnome_pixmap_new_from_file_at_size" deprecated="1">
         <parameters>
-          <parameter type="const-char*" name="domain"/>
+          <parameter type="const-gchar*" name="filename"/>
+          <parameter type="gint" name="width"/>
+          <parameter type="gint" name="height"/>
         </parameters>
-      </method>
-      <method name="SetPassword" cname="gnome_password_dialog_set_password">
-        <return-type type="void"/>
+      </constructor>
+      <constructor cname="gnome_pixmap_new_from_gnome_pixmap" deprecated="1">
         <parameters>
-          <parameter type="const-char*" name="password"/>
+          <parameter type="GnomePixmap*" name="gpixmap"/>
         </parameters>
-      </method>
-      <method name="SetReadonlyDomain" cname="gnome_password_dialog_set_readonly_domain">
-        <return-type type="void"/>
+      </constructor>
+      <constructor cname="gnome_pixmap_new_from_xpm_d" deprecated="1">
         <parameters>
-          <parameter type="gboolean" name="readonly"/>
+          <parameter type="const-gchar**" name="xpm_data"/>
         </parameters>
-      </method>
-      <method name="SetReadonlyUsername" cname="gnome_password_dialog_set_readonly_username">
-        <return-type type="void"/>
+      </constructor>
+      <constructor cname="gnome_pixmap_new_from_xpm_d_at_size" deprecated="1">
         <parameters>
-          <parameter type="gboolean" name="readonly"/>
+          <parameter type="const-gchar**" name="xpm_data"/>
+          <parameter type="gint" name="width"/>
+          <parameter type="gint" name="height"/>
         </parameters>
-      </method>
-      <method name="SetRemember" cname="gnome_password_dialog_set_remember">
-        <return-type type="void"/>
-        <parameters>
-          <parameter type="GnomePasswordDialogRemember" name="remember"/>
-        </parameters>
-      </method>
-      <method name="SetShowDomain" cname="gnome_password_dialog_set_show_domain">
-        <return-type type="void"/>
-        <parameters>
-          <parameter type="gboolean" name="show"/>
-        </parameters>
-      </method>
-      <method name="SetShowPassword" cname="gnome_password_dialog_set_show_password">
-        <return-type type="void"/>
-        <parameters>
-          <parameter type="gboolean" name="show"/>
-        </parameters>
-      </method>
-      <method name="SetShowRemember" cname="gnome_password_dialog_set_show_remember">
-        <return-type type="void"/>
-        <parameters>
-          <parameter type="gboolean" name="show_remember"/>
-        </parameters>
-      </method>
-      <method name="SetShowUsername" cname="gnome_password_dialog_set_show_username">
-        <return-type type="void"/>
-        <parameters>
-          <parameter type="gboolean" name="show"/>
-        </parameters>
-      </method>
-      <method name="SetUsername" cname="gnome_password_dialog_set_username">
-        <return-type type="void"/>
-        <parameters>
-          <parameter type="const-char*" name="username"/>
-        </parameters>
-      </method>
+      </constructor>
     </object>
     <object name="PixmapEntry" cname="GnomePixmapEntry" parent="GnomeFileEntry">
       <field cname="_priv" type="GnomePixmapEntryPrivate*"/>
@@ -3782,6 +4318,15 @@
       </method>
       <method name="GetType" cname="gnome_pixmap_entry_get_type" shared="true">
         <return-type type="GType"/>
+      </method>
+      <method name="GnomeEntry" cname="gnome_pixmap_entry_gnome_entry" deprecated="1">
+        <return-type type="GtkWidget*"/>
+      </method>
+      <method name="GnomeFileEntry" cname="gnome_pixmap_entry_gnome_file_entry" deprecated="1">
+        <return-type type="GtkWidget*"/>
+      </method>
+      <method name="GtkEntry" cname="gnome_pixmap_entry_gtk_entry" deprecated="1">
+        <return-type type="GtkWidget*"/>
       </method>
       <constructor cname="gnome_pixmap_entry_new">
         <parameters>
@@ -3813,6 +4358,54 @@
         <parameters>
           <parameter type="gint" name="preview_w"/>
           <parameter type="gint" name="preview_h"/>
+        </parameters>
+      </method>
+    </object>
+    <object name="PropertyBox" cname="GnomePropertyBox" deprecated="1" parent="GnomeDialog">
+      <field cname="notebook" type="GtkWidget*"/>
+      <field cname="ok_button" type="GtkWidget*"/>
+      <field cname="apply_button" type="GtkWidget*"/>
+      <field cname="cancel_button" type="GtkWidget*"/>
+      <field cname="help_button" type="GtkWidget*"/>
+      <field cname="reserved" type="gpointer"/>
+      <signal name="Apply" cname="apply" when="LAST">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomePropertyBox*" name="propertybox"/>
+          <parameter type="gint" name="page_num"/>
+        </parameters>
+      </signal>
+      <signal name="Help" cname="help" when="LAST">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomePropertyBox*" name="propertybox"/>
+          <parameter type="gint" name="page_num"/>
+        </parameters>
+      </signal>
+      <method name="AppendPage" cname="gnome_property_box_append_page" deprecated="1">
+        <return-type type="gint"/>
+        <parameters>
+          <parameter type="GtkWidget*" name="child"/>
+          <parameter type="GtkWidget*" name="tab_label"/>
+        </parameters>
+      </method>
+      <method name="Changed" cname="gnome_property_box_changed" deprecated="1">
+        <return-type type="void"/>
+      </method>
+      <method name="GetType" cname="gnome_property_box_get_type" deprecated="1" shared="true">
+        <return-type type="GType"/>
+      </method>
+      <constructor cname="gnome_property_box_new" deprecated="1"/>
+      <method name="SetModified" cname="gnome_property_box_set_modified" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gboolean" name="state"/>
+        </parameters>
+      </method>
+      <method name="SetState" cname="gnome_property_box_set_state" deprecated="1">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="gboolean" name="state"/>
         </parameters>
       </method>
     </object>
@@ -3968,8 +4561,17 @@
       </method>
     </object>
     <struct name="AppBarMsg" cname="GnomeAppBarMsg" opaque="true"/>
+    <alias name="AppProgressKey" cname="GnomeAppProgressKey" type="gpointer"/>
     <struct name="GdkPixbufAsyncHandle" cname="GnomeGdkPixbufAsyncHandle" opaque="true"/>
-    <struct name="PasswordDialogDetails" cname="GnomePasswordDialogDetails" opaque="true"/>
+    <struct name="IconDataPoint" cname="GnomeIconDataPoint">
+      <field cname="x" type="int"/>
+      <field cname="y" type="int"/>
+    </struct>
+    <struct name="MDIMode" cname="GnomeMDIMode" opaque="true">
+      <method name="GetType" cname="gnome_mdi_mode_get_type" shared="true">
+        <return-type type="GType"/>
+      </method>
+    </struct>
     <struct name="ThemeFile" cname="GnomeThemeFile" opaque="true">
       <method name="ForeachKey" cname="gnome_theme_file_foreach_key">
         <return-type type="void"/>
@@ -4063,14 +4665,20 @@
       <method name="AuthenticationManagerInit" cname="gnome_authentication_manager_init" shared="true">
         <return-type type="void"/>
       </method>
-      <method name="FontPickerModeGetType" cname="gnome_font_picker_mode_get_type" shared="true">
-        <return-type type="GType"/>
-      </method>
-      <method name="GtkModuleInfoGet" cname="gnome_gtk_module_info_get" shared="true">
-        <return-type type="const-GnomeModuleInfo*"/>
-      </method>
       <method name="IceInit" cname="gnome_ice_init" shared="true">
         <return-type type="void"/>
+      </method>
+      <method name="InitWithPoptTable" cname="gnome_init_with_popt_table" deprecated="1" shared="true">
+        <return-type type="int"/>
+        <parameters>
+          <parameter type="const-char*" name="app_id"/>
+          <parameter type="const-char*" name="app_version"/>
+          <parameter type="int" name="argc"/>
+          <parameter type="char**" name="argv"/>
+          <parameter type="poptOption*" name="options"/>
+          <parameter type="int" name="flags"/>
+          <parameter type="poptContext*" name="return_ctx"/>
+        </parameters>
       </method>
       <method name="InteractionKeyReturn" cname="gnome_interaction_key_return" shared="true">
         <return-type type="void"/>
@@ -4082,9 +4690,6 @@
       <method name="MasterClient" cname="gnome_master_client" shared="true">
         <return-type type="GnomeClient*"/>
       </method>
-      <method name="MdiModeGetType" cname="gnome_mdi_mode_get_type" shared="true">
-        <return-type type="GType"/>
-      </method>
       <method name="TypeInit" cname="gnome_type_init" shared="true">
         <return-type type="void"/>
       </method>
@@ -4094,6 +4699,21 @@
           <parameter type="const-char*" name="url"/>
           <parameter type="GdkScreen*" name="screen"/>
           <parameter type="GError**" name="error"/>
+        </parameters>
+      </method>
+    </class>
+    <class name="Error" cname="GnomeError_">
+      <method name="Dialog" cname="gnome_error_dialog" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="error"/>
+        </parameters>
+      </method>
+      <method name="DialogParented" cname="gnome_error_dialog_parented" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="error"/>
+          <parameter type="GtkWindow*" name="parent"/>
         </parameters>
       </method>
     </class>
@@ -4117,6 +4737,19 @@
         <return-type type="void"/>
         <parameters>
           <parameter type="GnomeGdkPixbufAsyncHandle*" name="handle"/>
+        </parameters>
+      </method>
+    </class>
+    <class name="Gtk" cname="GnomeGtk_">
+      <method name="ModuleInfoGet" cname="gnome_gtk_module_info_get" shared="true">
+        <return-type type="const-GnomeModuleInfo*"/>
+      </method>
+      <method name="WidgetAddPopupItems" cname="gnome_gtk_widget_add_popup_items" deprecated="1" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GtkWidget*" name="widget"/>
+          <parameter type="GnomeUIInfo*" name="uiinfo"/>
+          <parameter type="gpointer" name="user_data"/>
         </parameters>
       </method>
     </class>
@@ -4187,6 +4820,312 @@
         </parameters>
       </method>
     </class>
+    <class name="Ok" cname="GnomeOk_">
+      <method name="CancelDialog" cname="gnome_ok_cancel_dialog" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="message"/>
+          <parameter type="GnomeReplyCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+        </parameters>
+      </method>
+      <method name="CancelDialogModal" cname="gnome_ok_cancel_dialog_modal" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="message"/>
+          <parameter type="GnomeReplyCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+        </parameters>
+      </method>
+      <method name="CancelDialogModalParented" cname="gnome_ok_cancel_dialog_modal_parented" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="message"/>
+          <parameter type="GnomeReplyCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+          <parameter type="GtkWindow*" name="parent"/>
+        </parameters>
+      </method>
+      <method name="CancelDialogParented" cname="gnome_ok_cancel_dialog_parented" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="message"/>
+          <parameter type="GnomeReplyCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+          <parameter type="GtkWindow*" name="parent"/>
+        </parameters>
+      </method>
+      <method name="Dialog" cname="gnome_ok_dialog" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="message"/>
+        </parameters>
+      </method>
+      <method name="DialogParented" cname="gnome_ok_dialog_parented" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="message"/>
+          <parameter type="GtkWindow*" name="parent"/>
+        </parameters>
+      </method>
+    </class>
+    <class name="Password" cname="GnomePassword_">
+      <method name="DialogGetDomain" cname="gnome_password_dialog_get_domain" shared="true">
+        <return-type type="char*"/>
+        <parameters>
+          <parameter type="GnomePasswordDialog*" name="password_dialog"/>
+        </parameters>
+      </method>
+      <method name="DialogGetPassword" cname="gnome_password_dialog_get_password" shared="true">
+        <return-type type="char*"/>
+        <parameters>
+          <parameter type="GnomePasswordDialog*" name="password_dialog"/>
+        </parameters>
+      </method>
+      <method name="DialogGetRemember" cname="gnome_password_dialog_get_remember" shared="true">
+        <return-type type="GnomePasswordDialogRemember"/>
+        <parameters>
+          <parameter type="GnomePasswordDialog*" name="password_dialog"/>
+        </parameters>
+      </method>
+      <method name="DialogGetType" cname="gnome_password_dialog_get_type" shared="true">
+        <return-type type="GtkType"/>
+      </method>
+      <method name="DialogGetUsername" cname="gnome_password_dialog_get_username" shared="true">
+        <return-type type="char*"/>
+        <parameters>
+          <parameter type="GnomePasswordDialog*" name="password_dialog"/>
+        </parameters>
+      </method>
+      <method name="DialogNew" cname="gnome_password_dialog_new" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-char*" name="dialog_title"/>
+          <parameter type="const-char*" name="message"/>
+          <parameter type="const-char*" name="username"/>
+          <parameter type="const-char*" name="password"/>
+          <parameter type="gboolean" name="readonly_username"/>
+        </parameters>
+      </method>
+      <method name="DialogRunAndBlock" cname="gnome_password_dialog_run_and_block" shared="true">
+        <return-type type="gboolean"/>
+        <parameters>
+          <parameter type="GnomePasswordDialog*" name="password_dialog"/>
+        </parameters>
+      </method>
+      <method name="DialogSetDomain" cname="gnome_password_dialog_set_domain" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomePasswordDialog*" name="password_dialog"/>
+          <parameter type="const-char*" name="domain"/>
+        </parameters>
+      </method>
+      <method name="DialogSetPassword" cname="gnome_password_dialog_set_password" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomePasswordDialog*" name="password_dialog"/>
+          <parameter type="const-char*" name="password"/>
+        </parameters>
+      </method>
+      <method name="DialogSetReadonlyDomain" cname="gnome_password_dialog_set_readonly_domain" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomePasswordDialog*" name="password_dialog"/>
+          <parameter type="gboolean" name="readonly"/>
+        </parameters>
+      </method>
+      <method name="DialogSetReadonlyUsername" cname="gnome_password_dialog_set_readonly_username" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomePasswordDialog*" name="password_dialog"/>
+          <parameter type="gboolean" name="readonly"/>
+        </parameters>
+      </method>
+      <method name="DialogSetRemember" cname="gnome_password_dialog_set_remember" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomePasswordDialog*" name="password_dialog"/>
+          <parameter type="GnomePasswordDialogRemember" name="remember"/>
+        </parameters>
+      </method>
+      <method name="DialogSetShowDomain" cname="gnome_password_dialog_set_show_domain" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomePasswordDialog*" name="password_dialog"/>
+          <parameter type="gboolean" name="show"/>
+        </parameters>
+      </method>
+      <method name="DialogSetShowPassword" cname="gnome_password_dialog_set_show_password" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomePasswordDialog*" name="password_dialog"/>
+          <parameter type="gboolean" name="show"/>
+        </parameters>
+      </method>
+      <method name="DialogSetShowRemember" cname="gnome_password_dialog_set_show_remember" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomePasswordDialog*" name="password_dialog"/>
+          <parameter type="gboolean" name="show_remember"/>
+        </parameters>
+      </method>
+      <method name="DialogSetShowUsername" cname="gnome_password_dialog_set_show_username" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomePasswordDialog*" name="password_dialog"/>
+          <parameter type="gboolean" name="show"/>
+        </parameters>
+      </method>
+      <method name="DialogSetUsername" cname="gnome_password_dialog_set_username" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GnomePasswordDialog*" name="password_dialog"/>
+          <parameter type="const-char*" name="username"/>
+        </parameters>
+      </method>
+    </class>
+    <class name="Popup" cname="GnomePopup_">
+      <method name="MenuAppend" cname="gnome_popup_menu_append" deprecated="1" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GtkWidget*" name="popup"/>
+          <parameter type="GnomeUIInfo*" name="uiinfo"/>
+        </parameters>
+      </method>
+      <method name="MenuAttach" cname="gnome_popup_menu_attach" deprecated="1" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GtkWidget*" name="popup"/>
+          <parameter type="GtkWidget*" name="widget"/>
+          <parameter type="gpointer" name="user_data"/>
+        </parameters>
+      </method>
+      <method name="MenuDoPopup" cname="gnome_popup_menu_do_popup" deprecated="1" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GtkWidget*" name="popup"/>
+          <parameter type="GtkMenuPositionFunc" name="pos_func"/>
+          <parameter type="gpointer" name="pos_data"/>
+          <parameter type="GdkEventButton*" name="event"/>
+          <parameter type="gpointer" name="user_data"/>
+          <parameter type="GtkWidget*" name="for_widget"/>
+        </parameters>
+      </method>
+      <method name="MenuDoPopupModal" cname="gnome_popup_menu_do_popup_modal" deprecated="1" shared="true">
+        <return-type type="int"/>
+        <parameters>
+          <parameter type="GtkWidget*" name="popup"/>
+          <parameter type="GtkMenuPositionFunc" name="pos_func"/>
+          <parameter type="gpointer" name="pos_data"/>
+          <parameter type="GdkEventButton*" name="event"/>
+          <parameter type="gpointer" name="user_data"/>
+          <parameter type="GtkWidget*" name="for_widget"/>
+        </parameters>
+      </method>
+      <method name="MenuGetAccelGroup" cname="gnome_popup_menu_get_accel_group" deprecated="1" shared="true">
+        <return-type type="GtkAccelGroup*"/>
+        <parameters>
+          <parameter type="GtkMenu*" name="menu"/>
+        </parameters>
+      </method>
+      <method name="MenuNew" cname="gnome_popup_menu_new" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="GnomeUIInfo*" name="uiinfo"/>
+        </parameters>
+      </method>
+      <method name="MenuNewWithAccelgroup" cname="gnome_popup_menu_new_with_accelgroup" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="GnomeUIInfo*" name="uiinfo"/>
+          <parameter type="GtkAccelGroup*" name="accelgroup"/>
+        </parameters>
+      </method>
+    </class>
+    <class name="Question" cname="GnomeQuestion_">
+      <method name="Dialog" cname="gnome_question_dialog" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="question"/>
+          <parameter type="GnomeReplyCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+        </parameters>
+      </method>
+      <method name="DialogModal" cname="gnome_question_dialog_modal" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="question"/>
+          <parameter type="GnomeReplyCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+        </parameters>
+      </method>
+      <method name="DialogModalParented" cname="gnome_question_dialog_modal_parented" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="question"/>
+          <parameter type="GnomeReplyCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+          <parameter type="GtkWindow*" name="parent"/>
+        </parameters>
+      </method>
+      <method name="DialogParented" cname="gnome_question_dialog_parented" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="question"/>
+          <parameter type="GnomeReplyCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+          <parameter type="GtkWindow*" name="parent"/>
+        </parameters>
+      </method>
+    </class>
+    <class name="Request" cname="GnomeRequest_">
+      <method name="Dialog" cname="gnome_request_dialog" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="gboolean" name="password"/>
+          <parameter type="const-gchar*" name="prompt"/>
+          <parameter type="const-gchar*" name="default_text"/>
+          <parameter type="const-guint16" name="max_length"/>
+          <parameter type="GnomeStringCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+          <parameter type="GtkWindow*" name="parent"/>
+        </parameters>
+      </method>
+      <method name="PasswordDialog" cname="gnome_request_password_dialog" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="prompt"/>
+          <parameter type="GnomeStringCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+        </parameters>
+      </method>
+      <method name="PasswordDialogParented" cname="gnome_request_password_dialog_parented" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="prompt"/>
+          <parameter type="GnomeStringCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+          <parameter type="GtkWindow*" name="parent"/>
+        </parameters>
+      </method>
+      <method name="StringDialog" cname="gnome_request_string_dialog" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="prompt"/>
+          <parameter type="GnomeStringCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+        </parameters>
+      </method>
+      <method name="StringDialogParented" cname="gnome_request_string_dialog_parented" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="prompt"/>
+          <parameter type="GnomeStringCallback" name="callback"/>
+          <parameter type="gpointer" name="data"/>
+          <parameter type="GtkWindow*" name="parent"/>
+        </parameters>
+      </method>
+    </class>
     <class name="Thumbnail" cname="GnomeThumbnail_">
       <method name="HasUri" cname="gnome_thumbnail_has_uri" shared="true">
         <return-type type="gboolean"/>
@@ -4225,6 +5164,21 @@
         </parameters>
       </method>
     </class>
+    <class name="Warning" cname="GnomeWarning_">
+      <method name="Dialog" cname="gnome_warning_dialog" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="warning"/>
+        </parameters>
+      </method>
+      <method name="DialogParented" cname="gnome_warning_dialog_parented" deprecated="1" shared="true">
+        <return-type type="GtkWidget*"/>
+        <parameters>
+          <parameter type="const-gchar*" name="warning"/>
+          <parameter type="GtkWindow*" name="parent"/>
+        </parameters>
+      </method>
+    </class>
     <class name="Window" cname="GnomeWindow_">
       <method name="IconInit" cname="gnome_window_icon_init" shared="true">
         <return-type type="void"/>
@@ -4259,6 +5213,15 @@
         <parameters>
           <parameter type="GtkWindow*" name="w"/>
           <parameter type="const-char**" name="filenames"/>
+        </parameters>
+      </method>
+      <method name="ToplevelSetTitle" cname="gnome_window_toplevel_set_title" deprecated="1" shared="true">
+        <return-type type="void"/>
+        <parameters>
+          <parameter type="GtkWindow*" name="window"/>
+          <parameter type="const-gchar*" name="doc_name"/>
+          <parameter type="const-gchar*" name="app_name"/>
+          <parameter type="const-gchar*" name="extension"/>
         </parameters>
       </method>
     </class>

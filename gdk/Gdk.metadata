@@ -85,10 +85,5 @@
   <attr path="//struct[@cname='GdkWindowObject']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GdkWindow']/method[@name='SetCursor']/parameters/parameter[@name='cursor']" name="null_ok">1</attr>
   <attr path="/api/namespace/struct[@cname='GdkAtom']/method[@name='Name']" name="name">GetName</attr>
-  <move-node path="/api/namespace/class[@cname='GdkPixbuf_']/method[@name='GetFromDrawable']">/api/namespace/object[@cname='GdkPixbuf']</move-node>
-  <move-node path="/api/namespace/class[@cname='GdkPixbuf_']/method[@name='GetFromImage']">/api/namespace/object[@cname='GdkPixbuf']</move-node>
-  <move-node path="/api/namespace/class[@cname='GdkPixbuf_']/method[@name='RenderPixmapAndMask']">/api/namespace/object[@cname='GdkPixbuf']</move-node>
-  <move-node path="/api/namespace/class[@cname='GdkPixbuf_']/method[@name='RenderPixmapAndMaskForColormap']">/api/namespace/object[@cname='GdkPixbuf']</move-node>
-  <move-node path="/api/namespace/class[@cname='GdkPixbuf_']/method[@name='RenderThresholdAlpha']">/api/namespace/object[@cname='GdkPixbuf']</move-node>
 </metadata>
 

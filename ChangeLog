@@ -1,3 +1,51 @@
+2004-05-08  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* gconf/GConf.PropertyEditors/Makefile.am: Reinclude the OptionMenu
+	property editor.
+	* gdk/Gdk.metadata:
+	* gdk/Pixbuf.custom: Add backwards compatible implementations of
+	GetFromDrawable, RenderPixmapAndMask and a couple of others which are 
+	now static in gtk+ 2.4. These methods have the same API as the ones 
+	generate for gtk+ 2.2.
+	* gdk/gdk-api.raw:
+	* generator/ClassBase.cs: Generate an [Obsolete] tag for deprecated
+	code.
+	* generator/ClassGen.cs: Idem.
+	* generator/Method.cs: Idem.
+	* generator/ObjectGen.cs: Idem.
+	* gnome/Gnome.metadata:
+	* gnome/IconData.cs:
+	* gnome/IconTheme.cs: GnomeIconTheme inherits directly from GtkIconTheme
+	in libgnomeui-2.6. This breaks the parser, so it won't generate the
+	proper code. This is a manual class implementation for backward
+	compatibility with gtk+ 2.2 version of gtk#.
+	* gnome/IconTheme.custom: Removed
+	* gnome/Makefile.am:
+	* gnome/gnome-api.raw:
+	* gtk/Gtk.metadata:
+	* gtk/IconTheme.custom: Added custom methods previously found in
+	../gnome/IconTheme.custom.
+	* gtk/gtk-api.raw:
+	* pango/pango-api.raw:
+	* parser/gapi2xml.pl: Check for "deprecated" prefixes and add a
+	deprecated attribute to the appropriate elements when found.
+	* parser/gapi_pp.pl: Prefix everything that's in a #ifndef
+	*_DISABLE_DEPRECATED block with "deprecated".
+	* sample/GtkDemo/DemoMain.cs: s/File/System.IO.File/ since there's now
+	also a Gtk.File class.
+	* sample/GtkDemo/DemoSizeGroup.cs: Use the original OptioMenu code.
+	* sample/GtkDemo/DemoTextView.cs: s/File/System.IO.File/.
+	* sample/Makefile.am:
+	* sources/gtk-sharp-sources.xml: Add a bunch of <exclude>s to the Gtk
+	namespace so it won't generate API for _really_ old deprecated widgets
+	like GtkCList, GtkCTree etc.
+	
+	This commit adds support for deprecated widgets to gtk#. This is
+	necessary since some widgets have been deprecated from gtk+ 2.2->2.4,
+	but are still in use (any program that uses Gtk.OptionMenu, Gtk.Combo
+	and methods in Gtk.Toolbar to name a few). This is done in C# by using
+	the [Obsolete] metadata tag.
+
 2004-05-06  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* Makefile.in:

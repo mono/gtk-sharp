@@ -265,7 +265,7 @@ namespace GtkDemo
 			// Error handling here, check for file existence, etc.
 			Pixbuf pixbuf = null;
 			
-			if (File.Exists ("images/gtk-logo-rgb.gif"))
+			if (System.IO.File.Exists ("images/gtk-logo-rgb.gif"))
 			{
 				pixbuf = new Pixbuf ("images/gtk-logo-rgb.gif");
 				pixbuf.ScaleSimple (32, 32, InterpType.Bilinear);
