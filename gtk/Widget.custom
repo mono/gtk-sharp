@@ -23,6 +23,23 @@
 // Boston, MA 02111-1307, USA.
 
 		
+protected override void CreateNativeObject (string[] names, GLib.Value[] vals)
+{
+	base.CreateNativeObject (names, vals);
+	ParentSet += new ParentSetHandler (Widget_ParentSet);
+}
+
+private static Hashtable ParentedWidgets = new Hashtable ();
+
+private static void Widget_ParentSet (object o, ParentSetArgs args)
+{
+	Widget w = o as Widget;
+	if (w.Parent != null && args.PreviousParent == null)
+		ParentedWidgets[w] = w;
+	else if (w.Parent == null && args.PreviousParent != null)
+		ParentedWidgets.Remove (w);
+}
+
 [DllImport("gtksharpglue")]
 static extern IntPtr gtksharp_gtk_widget_get_allocation (IntPtr style);
 

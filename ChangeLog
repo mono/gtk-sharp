@@ -1,5 +1,10 @@
 2005-02-28  Mike Kestner  <mkestner@novell.com>
 
+	* glib/Object.cs : mark CreateNativeObject virtual.
+	* gtk/Widget.custom : add the parent-set hack from trunk.
+
+2005-02-28  Mike Kestner  <mkestner@novell.com>
+
 	* glib/Idle.cs : add locking on the source_handlers.
 	* glib/Source.cs : add locking on the source_handlers.
 	* glib/Timeout.cs : add locking on the source_handlers.
