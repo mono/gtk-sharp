@@ -23,8 +23,7 @@ sources = 				\
 	ThreadNotify.cs			\
 	TreeNodeAttribute.cs		\
 	TreeNode.cs			\
-	TreeNodeValueAttribute.cs	\
-	WidgetFlags.cs
+	TreeNodeValueAttribute.cs
 
 build_sources = $(addprefix $(srcdir)/, $(sources)) AssemblyInfo.cs
 
