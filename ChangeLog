@@ -1,3 +1,9 @@
+2005-02-11  Mike Kestner  <mkestner@novell.com>
+
+	* configure.in : bump version to 1.0.6 and make vte depend on gnome.
+	* gtk/Gtk.metadata : hide Menu.SetScreen.
+	* gtk/Menu.custom : manually implement Screen prop.
+
 2005-02-03  Mike Kestner  <mkestner@novell.com>
 
 	* glib/ObjectManager.cs (GetValidParentType): return null if

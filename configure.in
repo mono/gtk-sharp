@@ -2,7 +2,7 @@
 AC_INIT(README)
 AC_CANONICAL_SYSTEM
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(gtk-sharp, 1.0.5)
+AM_INIT_AUTOMAKE(gtk-sharp, 1.0.6)
 AM_MAINTAINER_MODE
 
 API_VERSION=1.0.0.0
@@ -172,8 +172,12 @@ fi
 AC_SUBST(GTKHTML_VERSION)
 AC_SUBST(GTKHTML_SOVERSION)
 
+if test "x$enable_gnome" = "xyes"; then
 VTE_REQUIRED_VERSION=0.11.10
 PKG_CHECK_MODULES(VTE_DEPENDENCIES, vte >= $VTE_REQUIRED_VERSION, enable_vte=yes, enable_vte=no)
+else
+enable_vte=no
+fi
 
 AM_CONDITIONAL(ENABLE_LIBART, test "x$enable_libart" = "xyes")
 AM_CONDITIONAL(ENABLE_GNOME, test "x$enable_gnome" = "xyes")
