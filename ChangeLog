@@ -1,3 +1,9 @@
+2004-05-09  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* gdk/Gdk.metadata: Misc fixes for getting Muine to build & run.
+	* gtk/FileSelection.custom: Add this back.
+	* gtk/Gtk.metadata: Misc fixes for getting Muine to build & run.
+
 2004-05-08  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
 
 	* gconf/GConf.PropertyEditors/Makefile.am: Reinclude the OptionMenu
