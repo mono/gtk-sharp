@@ -1,3 +1,7 @@
+2005-04-27  Ben Maurer  <bmaurer@ximian.com>
+
+	* configure.in: amd64 fix.
+
 2005-04-27  Sebastian Faltoni  <sebastian.faltoni@gmail.com>
 
 	* gtkdotnet/Graphics.cs: suport for Graphics.FromDrawable on win32.
