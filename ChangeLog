@@ -1,5 +1,8 @@
 2005-04-27  Ben Maurer  <bmaurer@ximian.com>
 
+	* configure.in: gacdir is $DESTDIR/$prefix/lib, not
+	$DESTDIR/$libdir. Fixes 64 bit builds.
+	
 	* configure.in: Add a check for an older gtkhtml. Needed on rhel.
 
 2005-03-30  Anthony Taranto  <voltron@emptyrhetoric.com>
