@@ -1,3 +1,7 @@
+2005-05-03  Ben Maurer  <bmaurer@ximian.com>
+
+	* configure.in: 1.0.9
+
 2005-04-27  Ben Maurer  <bmaurer@ximian.com>
 
 	* configure.in: gacdir is $DESTDIR/$prefix/lib, not
