@@ -1,10 +1,4 @@
-// Gtk.TreeSortable.Custom - Gtk TreeSortable interface customizations
-//
-// Author: Mike Kestner  <mkestner@novell.com>
-//
 // Copyright (c) 2005 Novell, Inc.
-//
-// This code is inserted after the automatically generated code.
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of version 2 of the Lesser GNU General 
@@ -20,9 +14,8 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-		[Obsolete ("Replaced by SetDefaultSortFunc (TreeIterCompareFunc) overload.")]
-		void SetDefaultSortFunc (TreeIterCompareFunc sort_func, IntPtr user_data, Gtk.DestroyNotify destroy);
-
-		[Obsolete ("Replaced by SetSortFunc (int, TreeIterCompareFunc) overload.")]
-		void SetSortFunc (int sort_column_id, TreeIterCompareFunc sort_func, IntPtr user_data, Gtk.DestroyNotify destroy); 
-
+[Obsolete ("Replaced by Test property.")]
+public void SetText (string text)
+{
+	Text = text;
+}

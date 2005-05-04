@@ -171,7 +171,7 @@ namespace GLib {
 			return LookupGType (GetType ());
 		}
 
-		protected static GType LookupGType (System.Type t)
+		public static GType LookupGType (System.Type t)
 		{
 			if (g_types.Contains (t))
 				return (GType) g_types [t];
