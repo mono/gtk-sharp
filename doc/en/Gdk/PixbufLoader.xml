@@ -434,5 +434,23 @@ namespace GtkDemo
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="Write">
+      <MemberSignature Language="C#" Value="public bool Write (byte [] bytes, uint count);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="bytes" Type="System.Byte[]" />
+        <Parameter Name="count" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="bytes">a <see cref="T:System.Byte" /></param>
+        <param name="count">a <see cref="T:System.UInt32" /></param>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
   </Members>
 </Type>

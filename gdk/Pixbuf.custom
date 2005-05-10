@@ -41,7 +41,7 @@
 			int n;
 
 			while ((n = input.Read (buffer, 0, 8192)) != 0)
-				loader.Write (buffer, (uint) n);
+				loader.Write (buffer, (ulong) n);
 		
 			loader.Close ();
 			Raw = loader.PixbufHandle;
