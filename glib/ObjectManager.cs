@@ -62,7 +62,7 @@ namespace GLib {
 
 			GLib.Object obj;
 			try {
-				obj = (GLib.Object) Activator.CreateInstance (t,BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | BindingFlags.CreateInstance, null, new object[] {raw}, null);
+				obj = Activator.CreateInstance (t,BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | BindingFlags.CreateInstance, null, new object[] {raw}, null) as GLib.Object;
 			} catch (MissingMethodException) {
 				throw new GLib.MissingIntPtrCtorException ("GLib.Object subclass " + t + " must provide a protected or public IntPtr ctor to support wrapping of native object handles.");
 			}

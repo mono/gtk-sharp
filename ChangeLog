@@ -1,3 +1,7 @@
+2005-09-15  Mike Kestner  <mkestner@novell.com>
+
+	* glib/ObjectManager.cs : backport a fix for an InvalidCaseException.
+
 2005-05-21  Mike Kestner  <mkestner@novell.com>
 
 	* audit : add a compatibility auditing framework.
