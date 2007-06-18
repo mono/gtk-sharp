@@ -1,3 +1,9 @@
+2007-06-05  Mike Kestner  <mkestner@novell.com>
+
+	* glib/ManagedValue.cs (ReleaseWrapper): new method.
+	* glib/Value.cs : release the ManagedValue wrapper to avoid leaks.
+	[Fixes #81799]
+
 2006-07-15  Mike Kestner  <mkestner@novell.com>
 
 	* parser/gapi2xml.pl : regex fix needed for vfs 2.15.3 parse.
