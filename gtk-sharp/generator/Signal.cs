@@ -1,9 +1,9 @@
 // GtkSharp.Generation.Signal.cs - The Signal Generatable.
 //
-// Author: Mike Kestner <mkestner@speakeasy.net>
+// Author: Mike Kestner <mkestner@novell.com>
 //
 // Copyright (c) 2001-2003 Mike Kestner 
-// Copyright (c) 2003-2005 Novell, Inc.
+// Copyright (c) 2003-2007 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of version 2 of the GNU General Public
@@ -154,6 +154,16 @@ namespace GtkSharp.Generation {
                         }
                 }
 
+		private bool HasOutParams {
+			get {
+				foreach (Parameter p in parms) {
+					if (p.PassAs == "out")
+						return true;
+				}
+				return false;
+			}
+		}
+
 		public bool IsEventHandler {
 			get {
 				return retval.CSType == "void" && parms.Count == 1 && (parms [0].Generatable is ObjectGen || parms [0].Generatable is InterfaceGen);
@@ -199,42 +209,58 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ();
 			sw.WriteLine ("\t\tstatic " + retval.ToNativeType + " " + CallbackName + " (" + CallbackSig + ")");
 			sw.WriteLine("\t\t{");
-			sw.WriteLine("\t\t\tGLib.Signal sig = ((GCHandle) gch).Target as GLib.Signal;");
-			sw.WriteLine("\t\t\tif (sig == null)");
-			sw.WriteLine("\t\t\t\tthrow new Exception(\"Unknown signal GC handle received \" + gch);");
-			sw.WriteLine();
 			sw.WriteLine("\t\t\t{0} args = new {0} ();", EventArgsQualifiedName);
+			sw.WriteLine("\t\t\ttry {");
+			sw.WriteLine("\t\t\t\tGLib.Signal sig = ((GCHandle) gch).Target as GLib.Signal;");
+			sw.WriteLine("\t\t\t\tif (sig == null)");
+			sw.WriteLine("\t\t\t\t\tthrow new Exception(\"Unknown signal GC handle received \" + gch);");
+			sw.WriteLine();
 			if (parms.Count > 1)
-				sw.WriteLine("\t\t\targs.Args = new object[" + (parms.Count - 1) + "];");
+				sw.WriteLine("\t\t\t\targs.Args = new object[" + (parms.Count - 1) + "];");
 			string finish = "";
 			for (int idx = 1; idx < parms.Count; idx++) {
 				Parameter p = parms [idx];
 				IGeneratable igen = p.Generatable;
 				if (p.PassAs != "out") {
 					if (igen is ManualGen) {
-						sw.WriteLine("\t\t\tif (arg{0} == IntPtr.Zero)", idx);
-						sw.WriteLine("\t\t\t\targs.Args[{0}] = null;", idx - 1);
-						sw.WriteLine("\t\t\telse {");
-						sw.WriteLine("\t\t\t\targs.Args[" + (idx - 1) + "] = " + p.FromNative ("arg" + idx)  + ";");
-						sw.WriteLine("\t\t\t}");
+						sw.WriteLine("\t\t\t\tif (arg{0} == IntPtr.Zero)", idx);
+						sw.WriteLine("\t\t\t\t\targs.Args[{0}] = null;", idx - 1);
+						sw.WriteLine("\t\t\t\telse {");
+						sw.WriteLine("\t\t\t\t\targs.Args[" + (idx - 1) + "] = " + p.FromNative ("arg" + idx)  + ";");
+						sw.WriteLine("\t\t\t\t}");
 					} else
-						sw.WriteLine("\t\t\targs.Args[" + (idx - 1) + "] = " + p.FromNative ("arg" + idx)  + ";");
+						sw.WriteLine("\t\t\t\targs.Args[" + (idx - 1) + "] = " + p.FromNative ("arg" + idx)  + ";");
 				}
 				if (p.PassAs != "")
-					finish += "\t\t\targ" + idx + " = " + igen.ToNativeReturn ("((" + p.CSType + ")args.Args[" + (idx - 1) + "])") + ";\n";
+					finish += "\t\t\t\targ" + idx + " = " + igen.ToNativeReturn ("((" + p.CSType + ")args.Args[" + (idx - 1) + "])") + ";\n";
 			}
-			sw.WriteLine("\t\t\t{0} handler = ({0}) sig.Handler;", EventHandlerQualifiedName);
-			sw.WriteLine("\t\t\thandler (GLib.Object.GetObject (arg0), args);");
+			sw.WriteLine("\t\t\t\t{0} handler = ({0}) sig.Handler;", EventHandlerQualifiedName);
+			sw.WriteLine("\t\t\t\thandler (GLib.Object.GetObject (arg0), args);");
+			sw.WriteLine("\t\t\t} catch (Exception e) {");
+			sw.WriteLine("\t\t\t\tGLib.ExceptionManager.RaiseUnhandledException (e, false);");
+			sw.WriteLine("\t\t\t}");
+
+			if (IsVoid && finish.Length == 0) {
+				sw.WriteLine("\t\t}\n");
+				return;
+			}
+
+			sw.WriteLine("\n\t\t\ttry {");
 			sw.WriteLine (finish);
 			if (!IsVoid) {
-				sw.WriteLine ("\t\t\tif (args.RetVal == null)");
-				if (retval.CSType == "bool")
-					sw.WriteLine ("\t\t\t\treturn false;");
-				else
-					sw.WriteLine ("\t\t\t\tthrow new Exception(\"args.RetVal unset in callback\");");
-
-				sw.WriteLine("\t\t\treturn " + table.ToNativeReturn (retval.CType, "((" + retval.CSType + ")args.RetVal)") + ";");
+				if (retval.CSType == "bool") {
+					sw.WriteLine ("\t\t\t\tif (args.RetVal == null)");
+					sw.WriteLine ("\t\t\t\t\treturn false;");
+				}
+				sw.WriteLine("\t\t\t\treturn " + table.ToNativeReturn (retval.CType, "((" + retval.CSType + ")args.RetVal)") + ";");
 			}
+
+			sw.WriteLine("\t\t\t} catch (Exception) {");
+			sw.WriteLine ("\t\t\t\tException ex = new Exception (\"args.RetVal or 'out' property unset or set to incorrect type in " + EventHandlerQualifiedName + " callback\");");
+			sw.WriteLine("\t\t\t\tGLib.ExceptionManager.RaiseUnhandledException (ex, true);");
+			sw.WriteLine ("\t\t\t\t// NOTREACHED: above call doesn't return.");
+			sw.WriteLine ("\t\t\t\tthrow ex;");
+			sw.WriteLine("\t\t\t}");
 			sw.WriteLine("\t\t}");
 			sw.WriteLine();
 		}
@@ -352,13 +378,22 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\t\tstatic {0} {1};\n", Name + "VMDelegate", Name + "VMCallback");
 			sw.WriteLine ("\t\tstatic " + retval.ToNativeType + " " + Name.ToLower() + "_cb (" + isig.ToString () + ")");
 			sw.WriteLine ("\t\t{");
-			sw.WriteLine ("\t\t\t{0} {1}_managed = GLib.Object.GetObject ({1}, false) as {0};", implementor != null ? implementor.Name : container_type.Name, parms[0].Name);
-			sw.Write (call.Setup ("\t\t\t"));
-			sw.Write ("\t\t\t{0}", IsVoid ? "" : retval.CSType == retval.ToNativeType ? "return " : retval.CSType + " raw_ret = ");
+			sw.WriteLine ("\t\t\ttry {");
+			sw.WriteLine ("\t\t\t\t{0} {1}_managed = GLib.Object.GetObject ({1}, false) as {0};", implementor != null ? implementor.Name : container_type.Name, parms[0].Name);
+			sw.Write (call.Setup ("\t\t\t\t"));
+			sw.Write ("\t\t\t\t{0}", IsVoid ? "" : retval.CSType == retval.ToNativeType ? "return " : retval.CSType + " raw_ret = ");
 			sw.WriteLine ("{2}_managed.{0} ({1});", "On" + Name, call.ToString (), parms[0].Name);
-			sw.Write (call.Finish ("\t\t\t"));
+			sw.Write (call.Finish ("\t\t\t\t"));
 			if (!IsVoid && retval.CSType != retval.ToNativeType)
-				sw.WriteLine ("\t\t\treturn {0};", SymbolTable.Table.ToNativeReturn (retval.CType, "raw_ret"));
+				sw.WriteLine ("\t\t\t\treturn {0};", SymbolTable.Table.ToNativeReturn (retval.CType, "raw_ret"));
+			sw.WriteLine ("\t\t\t} catch (Exception e) {");
+			bool fatal = HasOutParams || !IsVoid;
+			sw.WriteLine ("\t\t\t\tGLib.ExceptionManager.RaiseUnhandledException (e, " + (fatal ? "true" : "false") + ");");
+			if (fatal) {
+				sw.WriteLine ("\t\t\t\t// NOTREACHED: above call doesn't return");
+				sw.WriteLine ("\t\t\t\tthrow e;");
+			}
+			sw.WriteLine ("\t\t\t}\n");
 			sw.WriteLine ("\t\t}\n");
 			sw.WriteLine ("\t\tprivate static void Override" + Name + " (GLib.GType gtype)");
 			sw.WriteLine ("\t\t{");
