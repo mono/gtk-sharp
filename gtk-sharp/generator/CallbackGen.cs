@@ -107,8 +107,10 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ();
 			sw.WriteLine ("\t\tpublic " + retval.MarshalType + " NativeCallback (" + isig + ")");
 			sw.WriteLine ("\t\t{");
+			sw.WriteLine ("\t\t\ttry {");
 
 			bool need_sep = false;
+			bool throws_error = false;
 			string call_str = "";
 			string cleanup_str = "";
 			for (int i = 0, idx = 0; i < parms.Count; i++)
@@ -116,17 +118,18 @@ namespace GtkSharp.Generation {
 				Parameter p = parms [i];
 
 				if (p.CType == "GError**") {
-					sw.WriteLine ("\t\t\t" + p.Name + " = IntPtr.Zero;");
+					sw.WriteLine ("\t\t\t\t" + p.Name + " = IntPtr.Zero;");
+					throws_error = true;
 					continue;
 				} else if (parms.IsHidden (p))
 					continue;
 
 				IGeneratable gen = p.Generatable;
 
-				sw.Write("\t\t\t" + p.CSType + " _arg" + idx);
+				sw.Write("\t\t\t\t" + p.CSType + " _arg" + idx);
 				if (p.PassAs == "out") {
 					sw.WriteLine(";");
-					cleanup_str += "\t\t\t" + p.Name + " = " + gen.CallByName ("_arg" + idx) + ";\n";
+					cleanup_str += "\t\t\t\t" + p.Name + " = " + gen.CallByName ("_arg" + idx) + ";\n";
 				} else
 					sw.WriteLine(" = " + gen.FromNative (p.Name) + ";");
 
@@ -138,7 +141,8 @@ namespace GtkSharp.Generation {
 				idx++;
 			}
 
-			sw.Write ("\t\t\t");
+			sw.Write ("\t\t\t\t");
+			bool has_out_params = cleanup_str.Length > 0;
 			string invoke = "managed (" + call_str + ")";
 			if (retval.MarshalType != "void") {
 				if (cleanup_str == "")
@@ -165,6 +169,18 @@ namespace GtkSharp.Generation {
 
 			if (cleanup_str != "")
 				sw.Write (cleanup_str);
+			bool fatal = (retval.MarshalType != "void" && retval.MarshalType != "bool") || has_out_params;
+			sw.WriteLine ("\t\t\t} catch (Exception e) {");
+			sw.WriteLine ("\t\t\t\tGLib.ExceptionManager.RaiseUnhandledException (e, " + (fatal ? "true" : "false") + ");");
+			if (fatal) {
+				sw.WriteLine ("\t\t\t\t// NOTREACHED: Above call does not return.");
+				sw.WriteLine ("\t\t\t\tthrow e;");
+			} else if (retval.MarshalType == "bool") {
+				if (throws_error)
+					sw.WriteLine ("\t\t\t\terror = IntPtr.Zero;");
+				sw.WriteLine ("\t\t\t\treturn false;");
+			}
+			sw.WriteLine ("\t\t\t}");
 			sw.WriteLine ("\t\t}");
 			sw.WriteLine ();
 

@@ -1,5 +1,10 @@
 2007-06-21  Mike Kestner  <mkestner@novell.com>
 
+	* generator/CallbackGen.cs : backport exception handling for native
+	callback generation from trunk.
+
+2007-06-21  Mike Kestner  <mkestner@novell.com>
+
 	* glib/Value.cs : backport Boxed value mapping fix from trunk.
 
 2007-06-21  Mike Kestner  <mkestner@novell.com>
