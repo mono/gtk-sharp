@@ -56,11 +56,15 @@ namespace GLib {
 		delegate void SignalDestroyNotify (IntPtr data, IntPtr obj);
 		static void OnNativeDestroy (IntPtr data, IntPtr obj)
 		{
-			GCHandle gch = (GCHandle) data;
-			Signal s = gch.Target as Signal;
-			s.DisconnectHandler (s.before_id);
-			s.DisconnectHandler (s.after_id);
-			gch.Free ();
+			try {
+				GCHandle gch = (GCHandle) data;
+				Signal s = gch.Target as Signal;
+				s.DisconnectHandler (s.before_id);
+				s.DisconnectHandler (s.after_id);
+				gch.Free ();
+			} catch (Exception e) {
+				ExceptionManager.RaiseUnhandledException (e, false);
+			}
 		}
 
 		private Signal (GLib.Object obj, string signal_name, Delegate marshaler)
@@ -173,12 +177,20 @@ namespace GLib {
 
 		static void voidObjectCallback (IntPtr handle, IntPtr gch)
 		{
-			Signal sig = ((GCHandle) gch).Target as Signal;
-			if (sig == null)
-				throw new Exception ("Unknown signal class GC handle received.");
+			try {
+				if (gch == IntPtr.Zero)
+					return;
+				Signal sig = ((GCHandle) gch).Target as Signal;
+				if (sig == null) {
+					ExceptionManager.RaiseUnhandledException (new Exception ("Unknown signal class GC handle received."), false);
+					return;
+				}
 
-			EventHandler handler = (EventHandler) sig.Handler;
-			handler (Object.GetObject (handle), EventArgs.Empty);
+				EventHandler handler = (EventHandler) sig.Handler;
+				handler (Object.GetObject (handle), EventArgs.Empty);
+			} catch (Exception e) {
+				ExceptionManager.RaiseUnhandledException (e, false);
+			}
 		}
 
 		static voidObjectDelegate event_handler_delegate;
