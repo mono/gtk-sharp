@@ -1,5 +1,9 @@
 2007-06-21  Mike Kestner  <mkestner@novell.com>
 
+	* glib/Value.cs : backport Boxed value mapping fix from trunk.
+
+2007-06-21  Mike Kestner  <mkestner@novell.com>
+
 	* (glib|gdk|gtk)/* : port ExceptionManager feature back from trunk.
 	Adds try/catch blocks for all native to managed callbacks.
 
