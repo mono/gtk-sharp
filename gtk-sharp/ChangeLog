@@ -1,5 +1,9 @@
 2007-06-21  Mike Kestner  <mkestner@novell.com>
 
+	* gtk/TreePath.cs : port Equals fix back from trunk.
+
+2007-06-21  Mike Kestner  <mkestner@novell.com>
+
 	* gtk/Application.cs : port g_set_prgname fix back from trunk.
 
 2007-06-19  Mike Kestner  <mkestner@novell.com>
