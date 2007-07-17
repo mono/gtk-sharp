@@ -1,3 +1,8 @@
+2007-07-17  Mike Kestner  <mkestner@novell.com>
+
+	* generator/CallbackGen.cs : make GError** signatures fatal to
+	avoid compilation errors in gmime-sharp.
+
 2007-06-25  Ankit Jain  <jankit@novell.com>
 
 	* gdk/Gdk.metadata : hide Property.Get for manual impl.

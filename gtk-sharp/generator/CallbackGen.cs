@@ -169,7 +169,7 @@ namespace GtkSharp.Generation {
 
 			if (cleanup_str != "")
 				sw.Write (cleanup_str);
-			bool fatal = (retval.MarshalType != "void" && retval.MarshalType != "bool") || has_out_params;
+			bool fatal = (retval.MarshalType != "void" && retval.MarshalType != "bool") || has_out_params || throws_error;
 			sw.WriteLine ("\t\t\t} catch (Exception e) {");
 			sw.WriteLine ("\t\t\t\tGLib.ExceptionManager.RaiseUnhandledException (e, " + (fatal ? "true" : "false") + ");");
 			if (fatal) {
