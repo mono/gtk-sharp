@@ -1,3 +1,9 @@
+2007-08-02  Mike Kestner  <mkestner@novell.com>
+
+	* generator/OpaqueGen.cs : #if out the Copy override generation 
+	since it breaks Drag and Drop somehow in f-spot.  Will fix 
+	properly later.  [Fixes #82287]
+
 2007-07-27  Mike Kestner  <mkestner@novell.com>
 
 	* generator/OpaqueGen.cs : only generate Copy override for methods
