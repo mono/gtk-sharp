@@ -24,7 +24,7 @@ sample.exe: $(SCHEMA) $(srcdir)/sample.glade $(FILES) $(ASSEMBLIES)
 Settings.cs: $(SCHEMA)
 	MONO_PATH=$(top_builddir)/gconf/GConf/gconf-sharp.dll:${MONO_PATH} $(RUNTIME) $(GCONFDIR)/tools/gconfsharp-schemagen.exe Sample $(SCHEMA) > Settings.cs
 
-install-hook: 
+install-data-hook: 
 	GCONF_CONFIG_SOURCE="" gconftool-2 --makefile-install-rule $(SCHEMA)
 
 CLEANFILES = sample.exe Settings.cs

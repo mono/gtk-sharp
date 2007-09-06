@@ -1,3 +1,8 @@
+2007-09-06  Mike Kestner  <mkestner@novell.com>
+
+	bootstrap-generic : use automake --foreign for newer automakes.
+	sample/gconf/Makefile.am : install-data-hook for newer am too.
+
 2007-07-17  Mike Kestner  <mkestner@novell.com>
 
 	* gtk/Gtk.metadata : map TreeModelFilter ctor param to prop to
