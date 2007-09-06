@@ -155,7 +155,19 @@ namespace GLib {
 		private static void InvokeClassInitializers (GType gtype, System.Type t)
 		{
 			object[] parms = {gtype, t};
-			BindingFlags flags = BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy;
+
+			BindingFlags flags = BindingFlags.Static | BindingFlags.NonPublic;
+
+			foreach (TypeInitializerAttribute tia in t.GetCustomAttributes (typeof (TypeInitializerAttribute), true)) {
+				MethodInfo m = tia.Type.GetMethod (tia.MethodName, flags);
+				if (m != null)
+					m.Invoke (null, parms);
+			}
+
+			if (t.Assembly.GetCustomAttributes (typeof (IgnoreClassInitializersAttribute), false).Length != 0)
+				return;
+
+			flags |= BindingFlags.FlattenHierarchy;
 			foreach (MethodInfo minfo in t.GetMethods(flags))
 				if (minfo.IsDefined (typeof (ClassInitializerAttribute), true))
 					minfo.Invoke (null, parms);

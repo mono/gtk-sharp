@@ -1,7 +1,21 @@
 2007-09-06  Mike Kestner  <mkestner@novell.com>
 
-	bootstrap-generic : use automake --foreign for newer automakes.
-	sample/gconf/Makefile.am : install-data-hook for newer am too.
+	* AssemblyInfo.cs.in : add IgnoreClassInitializers attr to all.
+	* generator/ObjectGen.cs : add custom-attr generation for objects.
+	* glib/ClassInitializerAttribute.cs : obsolete
+	* glib/IgnoreClassInitializersAttribute.cs : new assembly attr
+	to avoid a blind GetMethods reflection.
+	* glib/Makefile.am : add files
+	* glib/TypeInitializerAttribute.cs : new attr to specify init
+	method to be run at type registration.
+	* gtk/Widget.custom : remove the ClassInitializerAttr.
+	* gtk/Gtk.metadata : add a custom-attr node to GtkWidget.
+	* sample/Subclass.cs : use the IgnoreClassInitializers attr.
+	
+2007-09-06  Mike Kestner  <mkestner@novell.com>
+
+	* bootstrap-generic : use automake --foreign for newer automakes.
+	* sample/gconf/Makefile.am : install-data-hook for newer am too.
 
 2007-07-17  Mike Kestner  <mkestner@novell.com>
 
