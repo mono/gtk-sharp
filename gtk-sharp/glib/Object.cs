@@ -110,11 +110,13 @@ namespace GLib {
 				obj = Objects[o] as Object;
 
 			if (obj != null && obj._obj == o) {
-				lock (PendingDestroys)
-					PendingDestroys.Remove (obj);
+				if (obj.disposed) {
+					lock (PendingDestroys)
+						PendingDestroys.Remove (obj);
+					obj.disposed = false;
+				}
 				if (owned_ref)
 					g_object_unref (obj._obj);
-				obj.disposed = false;
 				return obj;
 			}
 

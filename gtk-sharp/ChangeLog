@@ -1,3 +1,8 @@
+2007-09-07  Lluis Sanchez Gual  <lluis@novell.com>
+
+	* glib/Object.cs: In GetObject(), avoid unneeded calls to
+	PendingDestroys.Remove().
+
 2007-09-06  Mike Kestner  <mkestner@novell.com>
 
 	* AssemblyInfo.cs.in : add IgnoreClassInitializers attr to all.
