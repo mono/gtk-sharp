@@ -165,14 +165,16 @@ namespace GLib {
 				if (m != null)
 					m.Invoke (null, parms);
 			}
+			
+			for (Type curType = t; curType != typeof(object); curType = curType.BaseType) {
 
-			if (t.Assembly.GetCustomAttributes (typeof (IgnoreClassInitializersAttribute), false).Length != 0)
-				return;
+				if (curType.Assembly.IsDefined (typeof (IgnoreClassInitializersAttribute), false))
+					continue;
 
-			flags |= BindingFlags.FlattenHierarchy;
-			foreach (MethodInfo minfo in t.GetMethods(flags))
-				if (minfo.IsDefined (typeof (ClassInitializerAttribute), true))
-					minfo.Invoke (null, parms);
+				foreach (MethodInfo minfo in curType.GetMethods(flags))
+					if (minfo.IsDefined (typeof (ClassInitializerAttribute), true))
+						minfo.Invoke (null, parms);
+			}
 		}
 
 		[DllImport("glibsharpglue-2")]

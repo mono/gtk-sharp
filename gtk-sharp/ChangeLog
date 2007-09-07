@@ -1,3 +1,10 @@
+2007-09-07  Lluis Sanchez Gual  <lluis@novell.com> 
+
+	* glib/Object.cs: In InvokeClassInitializers, look for initializers
+	in every type in the type hierarchy, and check
+	IgnoreClassInitializersAttribute on each of them. It avoids
+	checking inherited methods that don't need to be checked.
+
 2007-09-07  Lluis Sanchez Gual  <lluis@novell.com>
 
 	* glib/Object.cs: In GetObject(), avoid unneeded calls to
