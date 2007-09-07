@@ -166,12 +166,12 @@ namespace GLib {
 					m.Invoke (null, parms);
 			}
 			
-			for (Type curType = t; curType != typeof(object); curType = curType.BaseType) {
+			for (Type curr = t; curr != typeof(GLib.Object); curr = curr.BaseType) {
 
-				if (curType.Assembly.IsDefined (typeof (IgnoreClassInitializersAttribute), false))
+				if (curr.Assembly.IsDefined (typeof (IgnoreClassInitializersAttribute), false))
 					continue;
 
-				foreach (MethodInfo minfo in curType.GetMethods(flags))
+				foreach (MethodInfo minfo in curr.GetMethods(flags))
 					if (minfo.IsDefined (typeof (ClassInitializerAttribute), true))
 						minfo.Invoke (null, parms);
 			}

@@ -1,3 +1,9 @@
+2007-09-07  Mike Kestner  <mkestner@novell.com>
+
+	* glib/Object.cs (InvokeClassInitializers): Stop iterating at 
+	GLib.Object, since it doesn't expose any ClassInitializers.  Fix 
+	a variable naming style.
+
 2007-09-07  Lluis Sanchez Gual  <lluis@novell.com> 
 
 	* glib/Object.cs: In InvokeClassInitializers, look for initializers
