@@ -40,7 +40,19 @@ namespace GLib {
 
 		~Object ()
 		{
-			Dispose ();
+			lock (PendingDestroys){
+				lock (Objects) {
+					if (Objects[Handle] is ToggleRef)
+						PendingDestroys.Add (Objects[Handle]);
+					else
+						PendingDestroys.Add (Handle);
+					Objects.Remove(Handle);
+				}
+				if (!idle_queued){
+					Timeout.Add (50, new TimeoutHandler (PerformQueuedUnrefs));
+					idle_queued = true;
+				}
+			}
 		}
 
 		[DllImport("libgobject-2.0-0.dll")]
@@ -48,28 +60,20 @@ namespace GLib {
 		
 		static bool PerformQueuedUnrefs ()
 		{
-			Object [] objects;
+			object[] references;
 
 			lock (PendingDestroys){
-				objects = new Object [PendingDestroys.Count];
-				PendingDestroys.CopyTo (objects, 0);
+				references = new object [PendingDestroys.Count];
+				PendingDestroys.CopyTo (references, 0);
 				PendingDestroys.Clear ();
-			}
-			lock (typeof (Object))
 				idle_queued = false;
+			}
 
-			foreach (Object o in objects){
-				if (o._obj == IntPtr.Zero)
-					continue;
-
-				try {
-					g_object_unref (o._obj);
-				} catch (Exception e) {
-					Console.WriteLine ("Exception while disposing a " + o + " in Gtk#");
-					throw e;
-				}
-				Objects.Remove (o._obj);
-				o._obj = IntPtr.Zero;
+			foreach (object r in references){
+				if (r is ToggleRef)
+					(r as ToggleRef).Free ();
+				else if (((IntPtr)r) != IntPtr.Zero)
+					g_object_unref ((IntPtr)r);
 			}
 			return false;
 		}
@@ -80,15 +84,19 @@ namespace GLib {
 				return;
 
 			disposed = true;
-			lock (PendingDestroys){
-				PendingDestroys.Add (this);
-				lock (typeof (Object)){
-					if (!idle_queued){
-						Timeout.Add (50, new TimeoutHandler (PerformQueuedUnrefs));
-						idle_queued = true;
-					}
-				}
+			try {
+				ToggleRef toggle_ref = Objects [_obj] as ToggleRef;
+				if (toggle_ref == null) {
+					if (_obj != IntPtr.Zero)
+						g_object_unref (_obj);
+				} else
+					toggle_ref.Free ();
+			} catch (Exception e) {
+				Console.WriteLine ("Exception while disposing a " + this + " in Gtk#");
+				throw e;
 			}
+			Objects.Remove (_obj);
+			_obj = IntPtr.Zero;
 			GC.SuppressFinalize (this);
 		}
 
@@ -101,20 +109,19 @@ namespace GLib {
 				return null;
 
 			Object obj = null;
-			WeakReference weak_ref = Objects[o] as WeakReference;
+			object reference = Objects[o];
 
-			if (weak_ref != null && weak_ref.IsAlive)
+			if (reference is WeakReference) {
+				WeakReference weak_ref = reference as WeakReference;
+				if (weak_ref.IsAlive)
 				obj = weak_ref.Target as Object;
-
-			if (obj == null)
-				obj = Objects[o] as Object;
+			} else if (reference is ToggleRef) {
+				ToggleRef toggle_ref = reference as ToggleRef;
+				if (toggle_ref.IsAlive)
+					obj = toggle_ref.Target;
+			}
 
 			if (obj != null && obj._obj == o) {
-				if (obj.disposed) {
-					lock (PendingDestroys)
-						PendingDestroys.Remove (obj);
-					obj.disposed = false;
-				}
 				if (owned_ref)
 					g_object_unref (obj._obj);
 				return obj;
@@ -180,7 +187,6 @@ namespace GLib {
 		[DllImport("glibsharpglue-2")]
 		static extern IntPtr gtksharp_register_type (IntPtr name, IntPtr parent_type);
 
-
 		static int type_uid;
 		static string BuildEscapedName (System.Type t)
 		{
@@ -245,6 +251,11 @@ namespace GLib {
 			Raw = raw;
 		}
 
+		protected Object ()
+		{
+			CreateNativeObject (new string [0], new GLib.Value [0]);
+		}
+
 		[DllImport("libgobject-2.0-0.dll")]
 		static extern IntPtr g_object_new (IntPtr gtype, IntPtr dummy);
 
@@ -263,7 +274,7 @@ namespace GLib {
 			for (int i = 0; i < names.Length; i++)
 				native_names [i] = GLib.Marshaller.StringToPtrGStrdup (names [i]);
 			Raw = gtksharp_object_newv (LookupGType ().Val, names.Length, native_names, vals);
-			Objects [_obj] = this;
+			Objects [_obj] = new ToggleRef (this);
 			foreach (IntPtr p in native_names)
 				GLib.Marshaller.Free (p);
 		}

@@ -1,3 +1,14 @@
+2007-10-11  Mike Kestner  <mkestner@novell.com>
+
+	* glib/Object.cs: finalization and toggle ref rework.  Queue handles
+	and ToggleRefs for disposal in finalizer instead of Object references.
+	Not even sure how that worked.
+	* glib/ToggleRef.cs : backport from trunk. Class for GObject
+	toggle ref management.
+	* gtk/Object.custom: backport destroy signal implementation from
+	trunk.
+	* gtk/Gtk.metadata: hide Object:destroy signal.
+
 2007-09-21  Mike Kestner  <mkestner@novell.com>
 
 	* bootstrap-2.8: bump version for a performance and bugfix
