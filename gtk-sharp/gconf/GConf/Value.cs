@@ -58,17 +58,19 @@ namespace GConf
 		[DllImport("gconf-2")]
 		static extern void gconf_value_set_bool (IntPtr value, bool data);
 
-		ValueType LookupType (object data)
+		ValueType LookupType (System.Type t)
 		{
-			if (data is string) {
+			if (t.IsArray) {
+				return ValueType.List;
+			} else if (t == typeof (string)) {
 				return ValueType.String;
-			} else if (data is int) {
+			} else if (t == typeof (int)) {
 				return ValueType.Int;
-			} else if (data is double) {
+			} else if (t == typeof (double)) {
 				return ValueType.Float;
-			} else if (data is bool) {
+			} else if (t == typeof (bool)) {
 				return ValueType.Bool;
-			} else if (data is ICollection) {
+			} else if (t == typeof (ICollection)) {
 				return ValueType.List;
 			} else {
 				return ValueType.Invalid;
@@ -80,7 +82,7 @@ namespace GConf
 			if (data == null)
 				throw new NullReferenceException ();
 			
-			ValueType type = LookupType (data);
+			ValueType type = LookupType (data.GetType ());
 			Set (data, type);
 		}
 
@@ -129,8 +131,16 @@ namespace GConf
 			GLib.SList list = new GLib.SList (IntPtr.Zero);
 			GC.SuppressFinalize (list);
 
+			if (arr.Length == 0) {
+				if (data is Array)
+					listType = LookupType (data.GetType ().GetElementType ());
+				else
+					throw new InvalidValueTypeException ();
+				return list;
+			}
+
 			foreach (object o in arr) {
-				ValueType type = LookupType (o);
+				ValueType type = LookupType (o.GetType ());
 				if (listType == ValueType.Invalid)
 					listType = type;
 
@@ -254,7 +264,7 @@ namespace GConf
 */
 		public Value (object val)
 		{
-			Initialize (val, LookupType (val));
+			Initialize (val, LookupType (val.GetType ()));
 		}
 		public bool Managed
 		{

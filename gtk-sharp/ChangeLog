@@ -1,5 +1,11 @@
 2007-10-11  Mike Kestner  <mkestner@novell.com>
 
+	* gconf/GConf/Value.cs: Deal with zero length arrays gracefully.
+	Thanks to Sebastian Dröge <slomo@circular-chaos.org> for a
+	patch this one was derived from.  [Fixes #325516]
+
+2007-10-11  Mike Kestner  <mkestner@novell.com>
+
 	* glib/Object.cs: finalization and toggle ref rework.  Queue handles
 	and ToggleRefs for disposal in finalizer instead of Object references.
 	Not even sure how that worked.
