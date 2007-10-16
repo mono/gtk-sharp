@@ -23,13 +23,13 @@
 // Boston, MA 02111-1307, USA.
 	
                 [DllImport("gnomecanvas-2")]
-                static extern System.IntPtr gnome_canvas_item_new (IntPtr group, GLib.GType type, IntPtr null_terminator);
+                static extern System.IntPtr gnome_canvas_item_new (IntPtr group, IntPtr type, IntPtr null_terminator);
                 
                 [DllImport("libgobject-2.0-0.dll")]
                 static extern void g_object_ref (IntPtr raw);
                 
                 public CanvasItem (Gnome.CanvasGroup group, GLib.GType type)
-                	: base (gnome_canvas_item_new (group.Handle, type, IntPtr.Zero))
+                	: base (gnome_canvas_item_new (group.Handle, type.Val, IntPtr.Zero))
                 {
                 	g_object_ref (Handle);
                 }
@@ -54,7 +54,7 @@
 		static extern void gnomesharp_canvas_item_base_realize (IntPtr handle);
 
 		[DllImport("gnomesharpglue-2")]
-		static extern void gnomesharp_canvas_item_override_realize (GLib.GType gtype, RealizeDelegate cb);
+		static extern void gnomesharp_canvas_item_override_realize (IntPtr gtype, RealizeDelegate cb);
 
 		[GLib.CDeclCallback]
 		delegate void RealizeDelegate (IntPtr item);
@@ -71,7 +71,7 @@
                 {
                         if (RealizeCallback == null)
                                 RealizeCallback = new RealizeDelegate (Realize_cb);
-                        gnomesharp_canvas_item_override_realize (gtype, RealizeCallback);
+                        gnomesharp_canvas_item_override_realize (gtype.Val, RealizeCallback);
                 }
 
 		[GLib.DefaultSignalHandler (Type=typeof(Gnome.CanvasItem), ConnectionMethod="OverrideRealize")]
@@ -84,7 +84,7 @@
 		static extern double gnomesharp_canvas_item_base_point (IntPtr handle, double x, double y, int cx, int cy, out IntPtr actual_item_handle);
 
 		[DllImport("gnomesharpglue-2")]
-		static extern void gnomesharp_canvas_item_override_point (GLib.GType gtype, PointDelegate cb);
+		static extern void gnomesharp_canvas_item_override_point (IntPtr gtype, PointDelegate cb);
 
 		[GLib.CDeclCallback]
 		delegate double PointDelegate (IntPtr item, double x, double y, int cx, int cy, out IntPtr actual_item_handle);
@@ -104,7 +104,7 @@
                 {
                         if (PointCallback == null)
                                 PointCallback = new PointDelegate (Point_cb);
-                        gnomesharp_canvas_item_override_point (gtype, PointCallback);
+                        gnomesharp_canvas_item_override_point (gtype.Val, PointCallback);
                 }
 
 		[GLib.DefaultSignalHandler (Type=typeof(Gnome.CanvasItem), ConnectionMethod="OverridePoint")]
@@ -120,7 +120,7 @@
 		static extern void gnomesharp_canvas_item_base_draw (IntPtr handle, IntPtr drawable, int x, int y, int width, int height);
 
 		[DllImport("gnomesharpglue-2")]
-		static extern void gnomesharp_canvas_item_override_draw (GLib.GType gtype, DrawDelegate cb);
+		static extern void gnomesharp_canvas_item_override_draw (IntPtr gtype, DrawDelegate cb);
 
 		[GLib.CDeclCallback]
 		delegate void DrawDelegate (IntPtr handle, IntPtr drawable, int x, int y, int width, int height);
@@ -138,7 +138,7 @@
                 {
                         if (DrawCallback == null)
                                 DrawCallback = new DrawDelegate (Draw_cb);
-                        gnomesharp_canvas_item_override_draw (gtype, DrawCallback);
+                        gnomesharp_canvas_item_override_draw (gtype.Val, DrawCallback);
                 }
 
 		[GLib.DefaultSignalHandler (Type=typeof(Gnome.CanvasItem), ConnectionMethod="OverrideDraw")]
@@ -151,7 +151,7 @@
 		static extern void gnomesharp_canvas_item_base_render (IntPtr handle, ref CanvasBuf buf);
 
 		[DllImport("gnomesharpglue-2")]
-		static extern void gnomesharp_canvas_item_override_render (GLib.GType gtype, RenderDelegate cb);
+		static extern void gnomesharp_canvas_item_override_render (IntPtr gtype, RenderDelegate cb);
 
 		[GLib.CDeclCallback]
 		delegate void RenderDelegate (IntPtr handle, ref CanvasBuf buf);
@@ -169,7 +169,7 @@
                 {
                         if (RenderCallback == null)
                                 RenderCallback = new RenderDelegate (Render_cb);
-                        gnomesharp_canvas_item_override_render (gtype, RenderCallback);
+                        gnomesharp_canvas_item_override_render (gtype.Val, RenderCallback);
                 }
 
 		protected virtual void Render (ref CanvasBuf buf)
@@ -181,7 +181,7 @@
 		static extern void gnomesharp_canvas_item_base_update (IntPtr handle, double[] affine, ref Art.SVP clip_path, int flags);
 
 		[DllImport("gnomesharpglue-2")]
-		static extern void gnomesharp_canvas_item_override_update (GLib.GType gtype, UpdateDelegate cb);
+		static extern void gnomesharp_canvas_item_override_update (IntPtr gtype, UpdateDelegate cb);
 
 		[GLib.CDeclCallback]
 		delegate void UpdateDelegate (IntPtr item, IntPtr affine_ptr, IntPtr clip_path, int flags);
@@ -205,7 +205,7 @@
                 {
                         if (UpdateCallback == null)
                                 UpdateCallback = new UpdateDelegate (Update_cb);
-                        gnomesharp_canvas_item_override_update (gtype, UpdateCallback);
+                        gnomesharp_canvas_item_override_update (gtype.Val, UpdateCallback);
                 }
 
 		[GLib.DefaultSignalHandler (Type=typeof(Gnome.CanvasItem), ConnectionMethod="OverrideUpdate")]

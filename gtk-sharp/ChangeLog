@@ -1,3 +1,10 @@
+2007-10-16  Mike Kestner  <mkestner@novell.com>
+
+	* gnome/CanvasItem.custom:
+	* gtk/CellRenderer.custom:
+	* gtk/Container.custom: 
+	marshal GType as IntPtr. [Fixes comment #8 on 327058]
+
 2007-10-11  Mike Kestner  <mkestner@novell.com>
 
 	* gconf/GConf/Value.cs: Deal with zero length arrays gracefully.
