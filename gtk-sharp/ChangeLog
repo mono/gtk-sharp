@@ -1,3 +1,11 @@
+2007-11-15  Mike Kestner  <mkestner@novell.com>
+
+	* glib/Object.cs: always use toggle ref. de-obsolete Data prop.
+	Add internal Signals hash.
+	* glib/WeakObject.cs: not needed with toggle_ref'd objects.
+	* glib/Signal.cs: switch to Weak gchandles to avoid collection
+	problems in circular reference scenarios.
+
 2007-11-08  Mike Kestner  <mkestner@novell.com>
 
 	* glib/Marshaller.cs: new null-terminated string[] marshaler from

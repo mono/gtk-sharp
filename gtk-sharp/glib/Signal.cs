@@ -45,38 +45,24 @@ namespace GLib {
 	public class Signal {
 
 		GCHandle gc_handle;
-		IntPtr handle;
+		GLib.Object obj;
 		string name;
 		uint before_id = UInt32.MaxValue;
 		uint after_id = UInt32.MaxValue;
 		Delegate marshaler;
 
-		static SignalDestroyNotify notify = new SignalDestroyNotify (OnNativeDestroy);
-		[CDeclCallback]
-		delegate void SignalDestroyNotify (IntPtr data, IntPtr obj);
-		static void OnNativeDestroy (IntPtr data, IntPtr obj)
+		~Signal ()
 		{
-			try {
-				GCHandle gch = (GCHandle) data;
-				Signal s = gch.Target as Signal;
-				s.DisconnectHandler (s.before_id);
-				s.DisconnectHandler (s.after_id);
-				gch.Free ();
-			} catch (Exception e) {
-				ExceptionManager.RaiseUnhandledException (e, false);
-			}
+			gc_handle.Free ();
 		}
 
 		private Signal (GLib.Object obj, string signal_name, Delegate marshaler)
 		{
-			handle = obj.Handle;
+			this.obj = obj;
 			name = signal_name;
 			this.marshaler = marshaler;
-			gc_handle = GCHandle.Alloc (this);
-			IntPtr native_key = GLib.Marshaller.StringToPtrGStrdup (name + "_signal_marshaler");
-			if (handle != IntPtr.Zero)
-				g_object_set_data_full (handle, native_key, (IntPtr) gc_handle, notify);
-			GLib.Marshaller.Free (native_key);
+			gc_handle = GCHandle.Alloc (this, GCHandleType.Weak);
+			obj.Signals [name] = this;
 		}
 
 		public static Signal Lookup (GLib.Object obj, string name)
@@ -86,18 +72,10 @@ namespace GLib {
 
 		public static Signal Lookup (GLib.Object obj, string name, Delegate marshaler)
 		{
-			IntPtr native_key = GLib.Marshaller.StringToPtrGStrdup (name + "_signal_marshaler");
-			IntPtr data;
-			if (obj.Handle == IntPtr.Zero)
-				data = IntPtr.Zero;
-			else
-				data = g_object_get_data (obj.Handle, native_key);
-			GLib.Marshaller.Free (native_key);
-			if (data == IntPtr.Zero)
-				return new Signal (obj, name, marshaler);
-
-			GCHandle gch = (GCHandle) data;
-			return gch.Target as Signal;
+			Signal result = obj.Signals [name] as Signal;
+			if (result == null)
+				result = new Signal (obj, name, marshaler);
+			return result as Signal;
 		}
 
 		Delegate before_handler;
@@ -105,7 +83,7 @@ namespace GLib {
 
 		public Delegate Handler {
 			get {
-				InvocationHint hint = (InvocationHint) Marshal.PtrToStructure (g_signal_get_invocation_hint (handle), typeof (InvocationHint));
+				InvocationHint hint = (InvocationHint) Marshal.PtrToStructure (g_signal_get_invocation_hint (obj.Handle), typeof (InvocationHint));
 				if (hint.run_type == SignalFlags.RunFirst)
 					return before_handler;
 				else
@@ -116,7 +94,7 @@ namespace GLib {
 		uint Connect (int flags)
 		{
 			IntPtr native_name = GLib.Marshaller.StringToPtrGStrdup (name);
-			uint id = g_signal_connect_data (handle, native_name, marshaler, (IntPtr) gc_handle, IntPtr.Zero, flags);
+			uint id = g_signal_connect_data (obj.Handle, native_name, marshaler, (IntPtr) gc_handle, IntPtr.Zero, flags);
 			GLib.Marshaller.Free (native_name);
 			return id;
 		}
@@ -155,21 +133,13 @@ namespace GLib {
 			}
 
 			if (after_id == UInt32.MaxValue && before_id == UInt32.MaxValue)
-				DisconnectObject ();
-		}
-
-		void DisconnectObject ()
-		{
-			IntPtr native_key = GLib.Marshaller.StringToPtrGStrdup (name + "_signal_marshaler");
-			if (handle != IntPtr.Zero)
-				g_object_set_data (handle, native_key, IntPtr.Zero);
-			GLib.Marshaller.Free (native_key);
+				obj.Signals.Remove (name);
 		}
 
 		void DisconnectHandler (uint handler_id)
 		{
-			if (handler_id != UInt32.MaxValue && g_signal_handler_is_connected (handle, handler_id))
-				g_signal_handler_disconnect (handle, handler_id);
+			if (handler_id != UInt32.MaxValue && g_signal_handler_is_connected (obj.Handle, handler_id))
+				g_signal_handler_disconnect (obj.Handle, handler_id);
 		}
 
 		[CDeclCallback]
@@ -201,15 +171,6 @@ namespace GLib {
 				return event_handler_delegate;
 			}
 		}
-
-		[DllImport("libgobject-2.0-0.dll")]
-		static extern IntPtr g_object_get_data (IntPtr instance, IntPtr key);
-
-		[DllImport("libgobject-2.0-0.dll")]
-		static extern void g_object_set_data (IntPtr instance, IntPtr key, IntPtr data);
-
-		[DllImport("libgobject-2.0-0.dll")]
-		static extern void g_object_set_data_full (IntPtr instance, IntPtr key, IntPtr data, SignalDestroyNotify notify);
 
 		[DllImport("libgobject-2.0-0.dll")]
 		static extern uint g_signal_connect_data(IntPtr obj, IntPtr name, Delegate cb, IntPtr gc_handle, IntPtr dummy, int flags);
