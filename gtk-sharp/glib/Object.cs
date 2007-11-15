@@ -467,7 +467,6 @@ namespace GLib {
 
 		protected static void OverrideVirtualMethod (GType gtype, string name, Delegate cb)
 		{
-			Console.WriteLine ("overridevm: " + name);
 			IntPtr native_name = GLib.Marshaller.StringToPtrGStrdup (name);
 			gtksharp_override_virtual_method (gtype.Val, native_name, cb);
 			GLib.Marshaller.Free (native_name);
