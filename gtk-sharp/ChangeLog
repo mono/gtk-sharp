@@ -1,3 +1,8 @@
+2007-11-16  Eskil Bylund  <eskil@letterboxes.org>
+
+	* gtk/ListStore.custom: Implement InsertWithValues.
+	* gtk/Gtk.metadata: Deprecate the old generated method.
+
 2007-11-15  Mike Kestner  <mkestner@novell.com>
 
 	* glib/Object.cs: always use toggle ref. de-obsolete Data prop.
