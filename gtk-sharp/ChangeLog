@@ -1,3 +1,8 @@
+2007-11-29  Mike Kestner  <mkestner@novell.com>
+
+	* glib/Signal.cs: ignore null targets in GCHandles since the
+	signal has been collected.
+
 2007-11-16  Eskil Bylund  <eskil@letterboxes.org>
 
 	* gtk/ListStore.custom: Implement InsertWithValues.
