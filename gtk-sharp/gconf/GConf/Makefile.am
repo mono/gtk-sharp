@@ -1,10 +1,6 @@
-if ENABLE_GNOME
 TARGET = $(ASSEMBLY) $(ASSEMBLY).config
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = gconf-sharp-2.0.pc
-else
-TARGET = 
-endif
 noinst_DATA = $(TARGET) $(POLICY_ASSEMBLIES)
 CLEANFILES = $(ASSEMBLY) $(ASSEMBLY).mdb gtk-sharp.snk $(POLICY_ASSEMBLIES) $(POLICY_CONFIGS)
 DISTCLEANFILES = gconf-sharp-2.0.pc $(ASSEMBLY).config

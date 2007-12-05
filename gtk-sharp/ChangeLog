@@ -1,3 +1,8 @@
+2007-12-04  Mike Kestner  <mkestner@novell.com>
+
+	* gconf/GConf/Makefile.am: remove GNOME condition.  It's
+	not necessary on this assembly. [Enables #345910]
+
 2007-11-29  Mike Kestner  <mkestner@novell.com>
 
 	* glib/Signal.cs: ignore null targets in GCHandles since the
