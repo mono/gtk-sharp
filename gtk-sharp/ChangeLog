@@ -1,3 +1,8 @@
+2007-12-07  Wade Berrier  <wberrier@novell.com>
+
+	* gconf/GConf/Makefile.am: Copy AssemblyInfo.cs to the current dir so
+	that csc can find it.  (csc doesn't understand ../..)
+
 2007-12-04  Mike Kestner  <mkestner@novell.com>
 
 	* gconf/GConf/Makefile.am: remove GNOME condition.  It's
