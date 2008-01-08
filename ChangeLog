@@ -1,3 +1,8 @@
+2008-01-08  Mike Kestner  <mkestner@novell.com>
+
+	* gtk/CellRenderer.custom: backport GType marshaling fix.
+	* gtk/Container.custom: backport GType marshaling fix.
+
 2007-11-08  Mike Kestner  <mkestner@novell.com>
 
 	* glib/Marshaller.cs: new null-terminated string[] marshaler from
