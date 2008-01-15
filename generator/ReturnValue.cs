@@ -52,6 +52,14 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public string DefaultValue {
+			get {
+				if (IGen == null)
+					return String.Empty;
+				return IGen.DefaultValue;
+			}
+		}
+
 		string ElementCType {
 			get {
 				if (elem != null && elem.HasAttribute ("element_type"))
@@ -137,6 +145,22 @@ namespace GtkSharp.Generation {
 				return IGen.FromNativeReturn (var);
 		}
 			
+		public string ToNative (string var)
+		{
+			if (IGen == null)
+				return String.Empty;
+
+			if (ElementType.Length > 0) {
+				string args = ", typeof (" + ElementType + "), " + (Owned ? "true" : "false") + ", " + (ElementsOwned ? "true" : "false");
+				var = "new " + IGen.QualifiedName + "(" + var + args + ")";
+			}
+
+			if (IGen is IManualMarshaler)
+				return (IGen as IManualMarshaler).AllocNative (var);
+			else
+				return IGen.ToNativeReturn (var);
+		}
+
 		public bool Validate ()
 		{
 			if (MarshalType == "" || CSType == "") {

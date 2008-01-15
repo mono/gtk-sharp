@@ -63,12 +63,6 @@ namespace GtkSharp.Generation {
 
 		public abstract string MarshalType { get; }
 
-		public virtual string NativeCallbackType { 
-			get {
-				return MarshalType;
-			}
-		}
-
 		public string Name {
 			get {
 				return elem.GetAttribute ("name");
@@ -80,6 +74,8 @@ namespace GtkSharp.Generation {
 				return ns.GetAttribute ("name");
 			}
 		}
+
+		public abstract string DefaultValue { get; }
 
 		public string QualifiedName {
 			get {

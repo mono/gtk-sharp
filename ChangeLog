@@ -1,3 +1,11 @@
+2008-01-15  Mike Kestner  <mkestner@novell.com>
+
+	* generator, glib, gtk:
+	backport all changes from 2.10.2 thru the checkin
+	of the interface changes, plus the entire generator
+	changeset through trunk with interface implementation 
+	disabled.
+
 2008-01-08  Mike Kestner  <mkestner@novell.com>
 
 	* gtk/CellRenderer.custom: backport GType marshaling fix.

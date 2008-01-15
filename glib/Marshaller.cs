@@ -37,6 +37,12 @@ namespace GLib {
 			g_free (ptr);
 		}
 
+		public static void Free (IntPtr[] ptrs)
+		{
+			for (int i = 0; i < ptrs.Length; i++)
+				g_free (ptrs [i]);
+		}
+
 		[DllImport("libglib-2.0-0.dll")]
 		static extern IntPtr g_filename_to_utf8 (IntPtr mem, int len, IntPtr read, out IntPtr written, out IntPtr error);
 
@@ -149,6 +155,17 @@ namespace GLib {
 			}
 			GLib.Marshaller.Free (string_array);
 			return members;
+		}
+
+		public static IntPtr[] StringArrayToNullTermPointer (string[] strs)
+		{
+			if (strs == null)
+				return new IntPtr [0];
+			IntPtr[] result = new IntPtr [strs.Length + 1];
+			for (int i = 0; i < strs.Length; i++)
+				result [i] = StringToPtrGStrdup (strs [i]);
+			result [strs.Length] = IntPtr.Zero;
+			return result;
 		}
 
 		// Argv marshalling -- unpleasantly complex, but

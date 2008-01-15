@@ -26,22 +26,34 @@ namespace GtkSharp.Generation {
 
 	public class LPGen : SimpleGen, IAccessor {
 		
-		public LPGen (string ctype) : base (ctype, "long") {}
+		public LPGen (string ctype) : base (ctype, "long", "0L") {}
 
 		public override string MarshalType {
 			get {
+#if WIN64LONGS
+				return "int";
+#else
 				return "IntPtr";
+#endif
 			}
 		}
 
 		public override string CallByName (string var_name)
 		{
+#if WIN64LONGS
+			return "(int) " + var_name;
+#else
 			return "new IntPtr (" + var_name + ")";
+#endif
 		}
 		
 		public override string FromNative(string var)
 		{
+#if WIN64LONGS
+			return var;
+#else
 			return "(long) " + var;
+#endif
 		}
 
 		public void WriteAccessors (StreamWriter sw, string indent, string var)

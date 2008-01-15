@@ -6,6 +6,8 @@ ASSEMBLY_NAME = glib-sharp
 noinst_DATA = $(ASSEMBLY) $(ASSEMBLY).config $(POLICY_ASSEMBLIES)
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = glib-sharp-2.0.pc
+gapidir = $(datadir)/gapi-2.0
+gapi_DATA = glib-api.xml
 
 CLEANFILES = $(ASSEMBLY) $(ASSEMBLY).mdb gtk-sharp.snk AssemblyInfo.cs $(POLICY_ASSEMBLIES) $(POLICY_CONFIGS)
 DISTCLEANFILES = $(ASSEMBLY).config
@@ -32,7 +34,9 @@ sources =		 			\
 	GType.cs				\
 	GTypeAttribute.cs			\
 	Idle.cs					\
+	IgnoreClassInitializersAttribute.cs	\
 	InitiallyUnowned.cs			\
+	IOChannel.cs				\
 	IWrapper.cs				\
 	ListBase.cs				\
 	List.cs					\
@@ -54,15 +58,16 @@ sources =		 			\
 	SignalCallback.cs			\
 	SList.cs				\
 	Source.cs				\
+	Spawn.cs				\
 	Thread.cs				\
 	Timeout.cs				\
 	ToggleRef.cs				\
 	TypeConverter.cs			\
 	TypeFundamentals.cs			\
+	TypeInitializerAttribute.cs		\
 	UnwrappedObject.cs			\
 	ValueArray.cs				\
-	Value.cs				\
-	WeakObject.cs
+	Value.cs
 
 build_sources = $(addprefix $(srcdir)/, $(sources)) AssemblyInfo.cs
 dist_sources = $(sources)
@@ -71,6 +76,7 @@ EXTRA_DIST =				\
 	$(dist_sources)			\
 	$(ASSEMBLY).config.in		\
 	glib-sharp-2.0.pc.in		\
+	glib-api.xml			\
 	makefile.win32
 
 gtk-sharp.snk: $(top_srcdir)/gtk-sharp.snk

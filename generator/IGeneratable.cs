@@ -37,10 +37,6 @@ namespace GtkSharp.Generation {
 		// signature when passing this generatable to unmanaged code
 		string MarshalType {get;}
 
-		// The type to use in the native delegate signature when marshaling to
-		// managed code from a native callback.
-		string NativeCallbackType {get;}
-
 		// The type to use as the return type in an import signature when
 		// receiving this generatable back from unmanaged code
 		string MarshalReturnType {get;}
@@ -48,6 +44,11 @@ namespace GtkSharp.Generation {
 		// The type to use in a managed callback signature when returning this
 		// generatable to unmanaged code
 		string ToNativeReturnType {get;}
+
+		// The value returned by callbacks that are interrupted prematurely
+		// by managed exceptions or other conditions where an appropriate
+		// value can't be otherwise obtained.
+		string DefaultValue {get;}
 
 		// Generates an expression to convert var_name to MarshalType
 		string CallByName (string var_name);

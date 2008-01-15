@@ -23,6 +23,7 @@ namespace GLib {
 
 	using System;
 
+	[Obsolete ("Replaced by TypeInitializerAttribute")]
 	public sealed class ClassInitializerAttribute : Attribute 
 	{
 		public ClassInitializerAttribute () {}

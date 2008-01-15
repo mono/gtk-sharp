@@ -3,7 +3,7 @@
 // Author: Mike Kestner <mkestner@speakeasy.net>
 //
 // Copyright (c) 2001-2003 Mike Kestner
-// Copyright (c) 2004 Novell, Inc.
+// Copyright (c) 2004, 2007 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of version 2 of the GNU General Public
@@ -29,11 +29,13 @@ namespace GtkSharp.Generation {
 
 	public class InterfaceGen : ObjectBase {
 
+		bool consume_only;
 		ArrayList vms = new ArrayList ();
 		ArrayList members = new ArrayList ();
 
 		public InterfaceGen (XmlElement ns, XmlElement elem) : base (ns, elem) 
 		{
+			consume_only = elem.HasAttribute ("consume_only");
 			foreach (XmlNode node in elem.ChildNodes) {
 				switch (node.Name) {
 				case "virtual_method":
@@ -42,7 +44,10 @@ namespace GtkSharp.Generation {
 					members.Add (vm);
 					break;
 				case "signal":
-					members.Add ((node as XmlElement).GetAttribute ("cname").Replace ('-', '_'));
+					object sig = sigs [(node as XmlElement).GetAttribute ("name")];
+					if (sig == null)
+						sig = new Signal (node as XmlElement, this);
+					members.Add (sig);
 					break;
 				default:
 					if (!IsNodeNameHandled (node.Name))
@@ -50,6 +55,17 @@ namespace GtkSharp.Generation {
 					break;
 				}
 			}
+		}
+
+		public bool IsConsumeOnly {
+			get {
+				return consume_only;
+			}
+		}
+
+		public override string FromNative (string var, bool owned)
+		{
+			return "GLib.Object.GetObject (" + var + ", " + (owned ? "true" : "false") + ") as " + QualifiedName;
 		}
 
 		public override bool ValidateForSubclass ()
@@ -75,20 +91,9 @@ namespace GtkSharp.Generation {
 			}
 		}
 
-		void GenerateDelegates (StreamWriter sw)
-		{
-			if (vms.Count == 0)
-				return;
-
-			foreach (VirtualMethod vm in vms) {
-				sw.WriteLine ("\t\t" + vm.NativeDelegate);
-			}
-			sw.WriteLine ();
-		}
-
 		void GenerateIfaceStruct (StreamWriter sw)
 		{
-			sw.WriteLine ("\t\t" + IfaceName + " iface;");
+			sw.WriteLine ("\t\tstatic " + IfaceName + " iface;");
 			sw.WriteLine ();
 			sw.WriteLine ("\t\tstruct " + IfaceName + " {");
 			sw.WriteLine ("\t\t\tpublic IntPtr gtype;");
@@ -96,11 +101,16 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ();
 
 			foreach (object member in members) {
-				if (member is System.String)
-					sw.WriteLine ("\t\t\tpublic IntPtr " + member + ";");
-				else if (member is VirtualMethod) {
+				if (member is Signal) {
+					Signal sig = member as Signal;
+					sw.WriteLine ("\t\t\tpublic IntPtr {0};", sig.ClassFieldName);
+				} else if (member is VirtualMethod) {
 					VirtualMethod vm = member as VirtualMethod;
-					sw.WriteLine ("\t\t\tpublic " + vm.Name + "Delegate " + vm.CName + ";");
+					bool has_target = methods [vm.Name] != null;
+					if (!has_target)
+						Console.WriteLine ("Interface " + QualifiedName + " virtual method " + vm.Name + " has no matching method to invoke.");
+					string type = has_target && vm.IsValid ? vm.Name + "Delegate" : "IntPtr";
+					sw.WriteLine ("\t\t\tpublic " + type + " " + vm.CName + ";");
 				}
 			}
 
@@ -108,51 +118,109 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ();
 		}
 
-		void GenerateCtor (StreamWriter sw)
+		void GenerateStaticCtor (StreamWriter sw)
 		{
-			sw.WriteLine ("\t\tprivate " + Name + "Adapter ()");
+			sw.WriteLine ("\t\tstatic " + Name + "Adapter ()");
 			sw.WriteLine ("\t\t{");
-			foreach (VirtualMethod vm in vms)
-				sw.WriteLine ("\t\t\tiface.{0} = new {1}Delegate ({1}Callback);", vm.CName, vm.Name);
-			sw.WriteLine ("\t\t}");
-			sw.WriteLine ();
-		}
-
-		void GenerateAdapterProp (StreamWriter sw)
-		{
-			sw.WriteLine ("\t\tstatic " + Name + "Adapter singleton;");
-			sw.WriteLine ();
-			sw.WriteLine ("\t\tinternal " + Name + "Adapter Adapter {");
-			sw.WriteLine ("\t\t\tget {");
-			sw.WriteLine ("\t\t\t\tif (singleton == null)");
-			sw.WriteLine ("\t\t\t\t\tsingleton = new " + Name + "Adapter ();");
-			sw.WriteLine ("\t\t\t\treturn singleton;");
-			sw.WriteLine ("\t\t\t}");
+			foreach (VirtualMethod vm in vms) {
+				bool has_target = methods [vm.Name] != null;
+				if (has_target && vm.IsValid)
+					sw.WriteLine ("\t\t\tiface.{0} = new {1}Delegate ({1}Callback);", vm.CName, vm.Name);
+			}
 			sw.WriteLine ("\t\t}");
 			sw.WriteLine ();
 		}
 
 		void GenerateInitialize (StreamWriter sw)
 		{
-			sw.WriteLine ("\t\tpublic void Initialize (IntPtr ifaceptr, IntPtr data)");
+			sw.WriteLine ("\t\tstatic void Initialize (IntPtr ifaceptr, IntPtr data)");
 			sw.WriteLine ("\t\t{");
-			sw.WriteLine ("\t\t\t" + IfaceName + " iface = (" + IfaceName + ") Marshal.PtrToStructure (ifaceptr, typeof (" + IfaceName + "));");
+			sw.WriteLine ("\t\t\t" + IfaceName + " native_iface = (" + IfaceName + ") Marshal.PtrToStructure (ifaceptr, typeof (" + IfaceName + "));");
 			foreach (VirtualMethod vm in vms)
-				sw.WriteLine ("\t\t\tiface." + vm.CName + " = this.iface." + vm.CName + ";");
-			sw.WriteLine ("\t\t\tMarshal.StructureToPtr (iface, ifaceptr, false);");
+				sw.WriteLine ("\t\t\tnative_iface." + vm.CName + " = iface." + vm.CName + ";");
+			sw.WriteLine ("\t\t\tMarshal.StructureToPtr (native_iface, ifaceptr, false);");
+			sw.WriteLine ("\t\t\tGCHandle gch = (GCHandle) data;");
+			sw.WriteLine ("\t\t\tgch.Free ();");
 			sw.WriteLine ("\t\t}");
+			sw.WriteLine ();
 		}
 
 		void GenerateCallbacks (StreamWriter sw)
 		{
 			foreach (VirtualMethod vm in vms) {
-				sw.WriteLine ();
-				vm.GenerateCallback (sw);
+				if (methods [vm.Name] != null) {
+					sw.WriteLine ();
+					vm.GenerateCallback (sw);
+				}
 			}
+		}
+
+		void GenerateCtors (StreamWriter sw)
+		{
+			sw.WriteLine ("\t\tpublic " + Name + "Adapter ()");
+			sw.WriteLine ("\t\t{");
+			sw.WriteLine ("\t\t\tInitHandler = new GLib.GInterfaceInitHandler (Initialize);");
+			sw.WriteLine ("\t\t}");
+			sw.WriteLine ();
+			sw.WriteLine ("\t\t{0}Implementor implementor;", Name);
+			sw.WriteLine ();
+			sw.WriteLine ("\t\tpublic {0}Adapter ({0}Implementor implementor)", Name);
+			sw.WriteLine ("\t\t{");
+			sw.WriteLine ("\t\t\tthis.implementor = implementor;");
+			sw.WriteLine ("\t\t}");
+			sw.WriteLine ();
+		}
+
+		void GenerateGType (StreamWriter sw)
+		{
+			Method m = GetMethod ("GetType");
+			m.GenerateImport (sw);
+			sw.WriteLine ("\t\tpublic override GLib.GType GType {");
+			sw.WriteLine ("\t\t\tget {");
+			sw.WriteLine ("\t\t\t\treturn new GLib.GType (" + m.CName +  " ());");
+			sw.WriteLine ("\t\t\t}");
+			sw.WriteLine ("\t\t}");
+			sw.WriteLine ();
+		}
+
+		void GenerateHandleProp (StreamWriter sw)
+		{
+			sw.WriteLine ("\t\tpublic override IntPtr Handle {");
+			sw.WriteLine ("\t\t\tget {");
+			sw.WriteLine ("\t\t\t\treturn implementor == null ? IntPtr.Zero : implementor.Handle;");
+			sw.WriteLine ("\t\t\t}");
+			sw.WriteLine ("\t\t}");
+			sw.WriteLine ();
+		}
+
+		void GenerateGetObject (StreamWriter sw)
+		{
+			sw.WriteLine ("\t\tpublic static " + Name + " GetObject (IntPtr handle, bool owned)");
+			sw.WriteLine ("\t\t{");
+			sw.WriteLine ("\t\t\tGLib.Object obj = GLib.Object.GetObject (handle, owned);");
+			sw.WriteLine ("\t\t\tif (obj is " + Name + "Implementor)");
+			sw.WriteLine ("\t\t\t\treturn new {0}Adapter (obj as {0}Implementor);", Name);
+			sw.WriteLine ("\t\t\telse");
+			sw.WriteLine ("\t\t\t\treturn obj as {0};", Name);
+			sw.WriteLine ("\t\t}");
+			sw.WriteLine ();
+		}
+
+		void GenerateImplementorProp (StreamWriter sw)
+		{
+			sw.WriteLine ("\t\tpublic " + Name + "Implementor Implementor {");
+			sw.WriteLine ("\t\t\tget {");
+			sw.WriteLine ("\t\t\t\treturn implementor;");
+			sw.WriteLine ("\t\t\t}");
+			sw.WriteLine ("\t\t}");
+			sw.WriteLine ();
 		}
 
 		void GenerateAdapter (GenerationInfo gen_info)
 		{
+			if (IsConsumeOnly)
+				return;
+
 			StreamWriter sw = gen_info.Writer = gen_info.OpenStream (Name + "Adapter");
 
 			sw.WriteLine ("namespace " + NS + " {");
@@ -161,112 +229,87 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\tusing System.Runtime.InteropServices;");
 			sw.WriteLine ();
 			sw.WriteLine ("#region Autogenerated code");
-			sw.WriteLine ("\tinternal class " + Name + "Adapter : GLib.GInterfaceAdapter {");
+			sw.WriteLine ("\tpublic class " + Name + "Adapter : GLib.GInterfaceAdapter, " + QualifiedName + " {");
 			sw.WriteLine ();
 
-			GenerateDelegates (sw);
 			GenerateIfaceStruct (sw);
-			GenerateCtor (sw);
-			GenerateAdapterProp (sw);
-			GenerateInitialize (sw);
+			GenerateStaticCtor (sw);
 			GenerateCallbacks (sw);
+			GenerateInitialize (sw);
+			GenerateCtors (sw);
+			GenerateGType (sw);
+			GenerateHandleProp (sw);
+			GenerateGetObject (sw);
+			GenerateImplementorProp (sw);
 
-			sw.WriteLine ("\t}");
-			sw.WriteLine ("#endregion");
-			sw.WriteLine ("}");
-			sw.Close ();
-			gen_info.Writer = null;
-		}
+			GenProperties (gen_info, null);
 
-		void GenSignals (GenerationInfo gen_info)
-		{
-			if (sigs.Count == 0)
-				return;
-
-			StreamWriter sw = gen_info.Writer;
-
-			sw.WriteLine ();
-			sw.WriteLine ("\t\t// signals");
 			foreach (Signal sig in sigs.Values) {
-				sig.GenerateDecl (sw);
-				sig.GenEventHandler (gen_info);
+				sig.GenCallback (sw);
+				sig.GenEvent (sw, null, "GLib.Object.GetObject (Handle)");
 			}
-		}
 
-		Hashtable GenVMDecls (StreamWriter sw)
-		{
-			if (vms.Count == 0)
-				return new Hashtable ();
+			Method temp = methods ["GetType"] as Method;
+			if (temp != null)
+				methods.Remove ("GetType");
+			GenMethods (gen_info, new Hashtable (), this);
+			if (temp != null)
+				methods ["GetType"] = temp;
 
-			sw.WriteLine ();
-			sw.WriteLine ("\t\t// virtual methods");
-			Hashtable vm_decls = new Hashtable ();
-			foreach (VirtualMethod vm in vms) {
-				sw.WriteLine ("\t\t" + vm.Declaration);
-				vm_decls [vm.Declaration] = vm;
+			sw.WriteLine ("#endregion");
+
+			string custom = Path.Combine (gen_info.CustomDir, Name + "Adapter.custom");
+			if (File.Exists (custom)) {
+				sw.WriteLine ("#region Customized extensions");
+				sw.WriteLine ("#line 1 \"" + Name + "Adapter.custom\"");
+				using (StreamReader sr = new StreamReader(new FileStream (custom, FileMode.Open, FileAccess.Read)))
+					sw.WriteLine (sr.ReadToEnd ());
+				
+				sw.WriteLine ("#endregion");
 			}
-			return vm_decls;
-		}
-
-		void GenMethodDecls (StreamWriter sw, Hashtable vm_decls)
-		{
-			if (methods.Count == 0)
-				return;
-
-			bool need_comment = true;
-			foreach (Method method in methods.Values) {
-				//if (IgnoreMethod (method))
-					//continue;
-
-				if (!vm_decls.Contains (method.Declaration) && method.Name != "GetGType") {
-					if (need_comment) {
-						sw.WriteLine ();
-						sw.WriteLine ("\t\t// non-virtual methods");
-						need_comment = false;
-					}
-					method.GenerateDecl (sw);
-				}
-			}
-		}
-
-		void GenerateInterface (GenerationInfo gen_info)
-		{
-			StreamWriter sw = gen_info.Writer = gen_info.OpenStream (Name);
-
-			sw.WriteLine ("namespace " + NS + " {");
-			sw.WriteLine ();
-			sw.WriteLine ("\tusing System;");
-			sw.WriteLine ();
-			sw.WriteLine ("#region Autogenerated code");
-			sw.WriteLine ("\tpublic interface " + Name + " : GLib.GInterface {");
-
-			GenSignals (gen_info);
-			GenMethodDecls (sw, GenVMDecls (sw));
-
-			AppendCustom (sw, gen_info.CustomDir);
 
 			sw.WriteLine ("\t}");
-			sw.WriteLine ("#endregion");
 			sw.WriteLine ("}");
 			sw.Close ();
 			gen_info.Writer = null;
-			Statistics.IFaceCount++;
 		}
 
-		public void GenerateNotQuiteReadyYet (GenerationInfo gen_info)
+		void GenerateImplementorIface (StreamWriter sw)
 		{
-			ArrayList tmp = new ArrayList ();
+			if (IsConsumeOnly)
+				return;
+
+			sw.WriteLine ();
+			sw.WriteLine ("\t[GLib.GInterface (typeof (" + Name + "Adapter))]");
+			sw.WriteLine ("\tpublic interface " + Name + "Implementor : GLib.IWrapper {");
+			sw.WriteLine ();
+			Hashtable vm_table = new Hashtable ();
+			foreach (VirtualMethod vm in vms)
+				vm_table [vm.Name] = vm;
 			foreach (VirtualMethod vm in vms) {
-				if (vm.Validate())
-					tmp.Add (vm);
-				else {
-					members.Remove (vm);
-					Console.WriteLine ("of interface " + QualifiedName);
+				if (vm_table [vm.Name] == null)
+					continue;
+				else if (!vm.IsValid) {
+					vm_table.Remove (vm.Name);
+					continue;
+				} else if (vm.IsGetter || vm.IsSetter) {
+					string cmp_name = (vm.IsGetter ? "Set" : "Get") + vm.Name.Substring (3);
+					VirtualMethod cmp = vm_table [cmp_name] as VirtualMethod;
+					if (cmp != null && (cmp.IsGetter || cmp.IsSetter)) {
+						if (vm.IsSetter)
+							cmp.GenerateDeclaration (sw, vm);
+						else
+							vm.GenerateDeclaration (sw, cmp);
+						vm_table.Remove (cmp.Name);
+					} else 
+						vm.GenerateDeclaration (sw, null);
+					vm_table.Remove (vm.Name);
+				} else {
+					vm.GenerateDeclaration (sw, null);
+					vm_table.Remove (vm.Name);
 				}
 			}
-			vms = tmp;
-			GenerateAdapter (gen_info);
-			GenerateInterface (gen_info);
+			sw.WriteLine ("\t}");
 		}
 
 		public override void Generate (GenerationInfo gen_info)
@@ -287,7 +330,7 @@ namespace GtkSharp.Generation {
 			}
 
 			foreach (Method method in methods.Values) {
-				if (IgnoreMethod (method))
+				if (IgnoreMethod (method, this))
 					continue;
 				method.GenerateDecl (sw);
 			}

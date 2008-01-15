@@ -72,11 +72,12 @@ namespace GtkSharp.Generation {
 				result [i] += call_parm;
 			}
 
-			string call_string = String.Join (", ", result);
-			call_string = call_string.Replace ("out ref", "out");
-			call_string = call_string.Replace ("out out ", "out ");
-			call_string = call_string.Replace ("ref ref", "ref");
-			return call_string;
+			return String.Join (", ", result);
+		}
+
+		public void Initialize (GenerationInfo gen_info)
+		{
+			Initialize (gen_info, false, false, String.Empty);
 		}
 
 		public void Initialize (GenerationInfo gen_info, bool is_get, bool is_set, string indent)
@@ -94,7 +95,7 @@ namespace GtkSharp.Generation {
 					name = "value";
 
 				p.CallName = name;
-				foreach (string prep in p.CallPreparation)
+				foreach (string prep in p.Prepare)
 					sw.WriteLine (indent + "\t\t\t" + prep);
 
 				if (gen is CallbackGen) {
@@ -128,7 +129,6 @@ namespace GtkSharp.Generation {
 						sw.WriteLine (indent + "\t\t\t{0} {1}_wrapper = new {0} ({1});", wrapper, name);
 						break;
 					}
-						
 				}
 			}
 
@@ -143,19 +143,9 @@ namespace GtkSharp.Generation {
 
 		public void Finish (StreamWriter sw, string indent)
 		{
-			for (int i = 0; i < parameters.Count; i++) {
-				Parameter p = parameters [i];
-
-				IGeneratable gen = p.Generatable;
-
-				if (p.PassAs == "out" && p.CSType != p.MarshalType && !(gen is StructBase || gen is ByRefGen))
-					sw.WriteLine(indent + "\t\t\t" + p.Name + " = " + p.FromNative (p.Name + "_as_native") + ";");
-				else if (p.IsArray && gen is IManualMarshaler) {
-					sw.WriteLine(indent + "\t\t\tfor (int i = 0; i < native_" + p.CallName + ".Length; i++)");
-					sw.WriteLine(indent + "\t\t\t\t" + (gen as IManualMarshaler).ReleaseNative ("native_" + p.CallName + "[i]") + ";");
-				} else if (gen is IManualMarshaler)
-					sw.WriteLine(indent + "\t\t\t" + (gen as IManualMarshaler).ReleaseNative (p.CallName + "_as_native") + ";");
-			}
+			foreach (Parameter p in parameters)
+				foreach (string s in p.Finish)
+					sw.WriteLine(indent + "\t\t\t" + s);
 		}
 
 		public void FinishAccessor (StreamWriter sw, Signature sig, string indent)
@@ -172,10 +162,17 @@ namespace GtkSharp.Generation {
 		
 		public bool ThrowsException {
 			get {
-				if (parameters.Count < 1)
-					return false;
+				int idx = parameters.Count - 1;
 
-				return parameters [parameters.Count - 1].CType == "GError**";
+				while (idx >= 0) {
+					if (parameters [idx].IsUserData)
+						idx--;
+					else if (parameters [idx].CType == "GError**")
+						return true;
+					else
+						break;
+				}
+				return false;
 			}
 		}
 	}

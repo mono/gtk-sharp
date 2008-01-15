@@ -26,7 +26,6 @@ sources = 				\
 	IAccessor.cs			\
 	IGeneratable.cs			\
 	IManualMarshaler.cs		\
-	ImportSignature.cs		\
 	InterfaceGen.cs			\
 	LPGen.cs			\
 	LPUGen.cs			\
@@ -36,7 +35,6 @@ sources = 				\
 	MethodBase.cs			\
 	MethodBody.cs			\
 	Method.cs			\
-	NativeCallbackSignature.cs	\
 	ObjectField.cs			\
 	ObjectBase.cs			\
 	ObjectGen.cs			\
@@ -66,5 +64,5 @@ EXTRA_DIST =					\
 	$(dist_sources)
 
 gapi_codegen.exe: $(build_sources)
-	$(CSC) /out:gapi_codegen.exe $(references) $(build_sources)
+	$(CSC) /out:gapi_codegen.exe $(OFF_T_FLAGS) $(references) $(build_sources)
 

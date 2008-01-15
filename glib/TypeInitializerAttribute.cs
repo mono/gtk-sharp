@@ -1,8 +1,8 @@
-// GLib.DestroyNotify.cs - internal DestroyNotify helper
+// TypeInitializerAttribute.cs
 //
-// Author: Mike Kestner <mkestner@novell.com>
+// Author:   Mike Kestner  <mkestner@novell.com>
 //
-// Copyright (c) 2005 Novell, Inc.
+// Copyright (c) 2007 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of version 2 of the Lesser GNU General 
@@ -18,35 +18,31 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
+
 namespace GLib {
 
 	using System;
-	using System.Runtime.InteropServices;
 
-	[CDeclCallback]
-	public delegate void DestroyNotify (IntPtr data);
+	[AttributeUsage (AttributeTargets.Class)]
+	public sealed class TypeInitializerAttribute : Attribute 
+	{
+		string method_name;
+		Type type;
 
-	public class DestroyHelper {
-
-		private DestroyHelper () {}
-		
-		static void ReleaseGCHandle (IntPtr data)
+		public TypeInitializerAttribute (Type type, string method_name) 
 		{
-			if (data == IntPtr.Zero)
-				return;
-			GCHandle gch = (GCHandle) data;
-			gch.Free ();
+			this.type = type;
+			this.method_name = method_name;
 		}
 
-		static DestroyNotify release_gchandle;
+		public string MethodName {
+			get { return method_name; }
+			set { method_name = value; }
+		}
 
-		public static DestroyNotify NotifyHandler {
-			get {
-				if (release_gchandle == null)
-					release_gchandle = new DestroyNotify (ReleaseGCHandle);
-				return release_gchandle;
-			}
+		public Type Type {
+			get { return type; }
+			set { type = value; }
 		}
 	}
 }
-
