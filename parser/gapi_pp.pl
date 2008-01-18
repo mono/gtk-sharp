@@ -126,11 +126,23 @@ foreach $fname (@hdrs) {
 				$deprecated = -1;
 			}
 			$ifdeflevel--;
-		} elsif ($line =~ /typedef struct\s*\{/) {
+		} elsif ($line =~ /typedef struct\s*\{?\s*$/) {
+			while ($line !~ /{/) {
+				chomp ($line);
+				$line .= <INFILE>;
+			}
 			my $first_line = $line;
 			my @lines = ();
 			$line = <INFILE>;
 			while ($line !~ /^}\s*(\w+);/) {
+				if ($line =~ /\(.*\).*\(/) {
+					while ($line !~ /;/) {
+						chomp ($line);
+						$nxt = <INFILE>;
+						$nxt =~ s/^\s+/ /;
+						$line .= $nxt;
+					}
+				}
 				push @lines, $line;
 				$line = <INFILE>;
 			}

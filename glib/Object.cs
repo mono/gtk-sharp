@@ -40,10 +40,10 @@ namespace GLib {
 
 		~Object ()
 		{
-			lock (PendingDestroys){
-				lock (Objects){
+			lock (PendingDestroys) {
+				lock (Objects) {
 					if (Objects[Handle] is ToggleRef)
-						PendingDestroys.Add (Objects[Handle]);
+						PendingDestroys.Add (Objects [Handle]);
 					Objects.Remove (Handle);
 				}
 				if (!idle_queued){
@@ -153,7 +153,9 @@ namespace GLib {
 		private static void InvokeClassInitializers (GType gtype, System.Type t)
 		{
 			object[] parms = {gtype, t};
+
 			BindingFlags flags = BindingFlags.Static | BindingFlags.NonPublic;
+
 			foreach (TypeInitializerAttribute tia in t.GetCustomAttributes (typeof (TypeInitializerAttribute), true)) {
 				MethodInfo m = tia.Type.GetMethod (tia.MethodName, flags);
 				if (m != null)
@@ -433,6 +435,7 @@ namespace GLib {
 			get {
 				if (persistent_data == null)
 					persistent_data = new Hashtable ();
+				
 				return persistent_data;
 			}
 		}

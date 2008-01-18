@@ -1,5 +1,39 @@
 2008-01-17  Mike Kestner  <mkestner@novell.com>
 
+	* parser/gapi2xml.pl: fix tightloop in single-line prop declarations.
+	backported from trunk r91136.
+	* configure.in.in: check for default off_t size
+	backported from trunk r90727.
+	* parser/gapi_pp.pl: collapse embedded multiline function fields 
+	to a single line.  [Fixes #344853]
+	backported from trunk r90461.
+	* pango/Pango.metadata: workaround Has/Hash collision with
+	the old broken getter check. [Fixes #344954]
+	backported from trunk r90458.
+	* configure.in.in: win64 checks for LP define
+	backported from trunk r87922.
+	* glib/DestroyNotify.cs: add CDeclCallback to the delegate.
+	* glib/Signal.cs: use DestroyHelper.
+	* gdk/Input.custom: use DestroyHelper.
+	* gtk/Quit.custom: remove new on DestroyHelper handler.
+	* gtk/TreeModelFilter.custom: remove new on DestroyHelper handler.
+	* gtk/TreeViewColumn.custom: remove new on DestroyHelper handler.
+	backported from trunk r86897.
+
+2008-01-17  Eskil Bylund  <eskil@letterboxes.org>
+
+	* gtk/ListStore.custom:
+	* gtk/TreeStore.custom: Implement InsertWithValues.
+	* gtk/Gtk.metadata: Deprecate the old generated method.  [Fixes #325040]
+	backported from trunk r89770.
+
+2008-01-17  Peter Johanson  <peter@peterjohanson.com>
+
+	* gtk/Gtk.metadata: Make the public fields on Gtk.Rcstyle writeable.
+	backported from trunk r86911.
+
+2008-01-17  Mike Kestner  <mkestner@novell.com>
+
 	* glib/Object.cs: remove ref from Objects hash prior to releasing it.
 
 2008-01-17  Mike Kestner  <mkestner@novell.com>

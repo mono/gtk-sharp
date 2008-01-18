@@ -398,6 +398,8 @@
   <attr path="/api/namespace/object[@cname='GtkListStore']/method[@name='InsertAfter']/*/*[@name='iter']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkListStore']/method[@name='InsertBefore']/*/*[@name='iter']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkListStore']/method[@name='Insert']/*/*[@name='iter']" name="pass_as">out</attr>
+  <attr path="/api/namespace/object[@cname='GtkListStore']/method[@name='InsertWithValues']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkListStore']/method[@name='InsertWithValuesv']" name="deprecated">1</attr>
   <attr path="/api/namespace/object[@cname='GtkListStore']/method[@name='Prepend']/*/*[@name='iter']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkListStore']/method[@name='Remove']/*/*[@name='iter']" name="pass_as">ref</attr>
   <attr path="/api/namespace/object[@cname='GtkListStore']/method[@name='Set']" name="hidden">1</attr>
@@ -453,6 +455,16 @@
   <attr path="/api/namespace/object[@cname='GtkRadioToolButton']/constructor[@cname='gtk_radio_tool_button_new_from_stock']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkRcStyle']/method[@name='Ref']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkRcStyle']/method[@name='Unref']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkRcStyle']/field[@name='Name']" name="writeable">true</attr>
+  <attr path="/api/namespace/object[@cname='GtkRcStyle']/field[@name='BgPixmapName']" name="writeable">true</attr>
+  <attr path="/api/namespace/object[@cname='GtkRcStyle']/field[@name='FontDesc']" name="writeable">true</attr>
+  <attr path="/api/namespace/object[@cname='GtkRcStyle']/field[@name='ColorFlags']" name="writeable">true</attr>
+  <attr path="/api/namespace/object[@cname='GtkRcStyle']/field[@name='Fg']" name="writeable">true</attr>
+  <attr path="/api/namespace/object[@cname='GtkRcStyle']/field[@name='Bg']" name="writeable">true</attr>
+  <attr path="/api/namespace/object[@cname='GtkRcStyle']/field[@name='Text']" name="writeable">true</attr>
+  <attr path="/api/namespace/object[@cname='GtkRcStyle']/field[@name='Base']" name="writeable">true</attr>
+  <attr path="/api/namespace/object[@cname='GtkRcStyle']/field[@name='Xthickness']" name="writeable">true</attr>
+  <attr path="/api/namespace/object[@cname='GtkRcStyle']/field[@name='Ythickness']" name="writeable">true</attr>
   <attr path="/api/namespace/object[@cname='GtkReadyEvent']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkRecentChooserMenu']/method[@name='GetShowNumbers']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkRecentChooserMenu']/method[@name='SetShowNumbers']" name="hidden">1</attr>
@@ -591,6 +603,7 @@
   <attr path="/api/namespace/object[@cname='GtkTreeStore']/method[@name='Append']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeStore']/method[@name='InsertAfter']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeStore']/method[@name='InsertBefore']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkTreeStore']/method[@name='InsertWithValues']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeStore']/method[@name='InsertWithValuesv']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeStore']/method[@name='Insert']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeStore']/method[@name='Prepend']" name="hidden">1</attr>
