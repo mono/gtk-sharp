@@ -32,6 +32,7 @@ namespace GLib {
 	public class Object : IWrapper, IDisposable {
 
 		IntPtr handle;
+		ToggleRef tref;
 		bool disposed = false;
 		Hashtable data;
 		static Hashtable Objects = new Hashtable();
@@ -40,11 +41,11 @@ namespace GLib {
 
 		~Object ()
 		{
-			lock (PendingDestroys){
+			lock (PendingDestroys) {
 				lock (Objects) {
 					if (Objects[Handle] is ToggleRef)
-						PendingDestroys.Add (Objects[Handle]);
-					Objects.Remove(Handle);
+						PendingDestroys.Add (Objects [Handle]);
+					Objects.Remove (Handle);
 				}
 				if (!idle_queued){
 					Timeout.Add (50, new TimeoutHandler (PerformQueuedUnrefs));
@@ -58,7 +59,7 @@ namespace GLib {
 		
 		static bool PerformQueuedUnrefs ()
 		{
-			object[] references;
+			object [] references;
 
 			lock (PendingDestroys){
 				references = new object [PendingDestroys.Count];
@@ -79,15 +80,15 @@ namespace GLib {
 				return;
 
 			disposed = true;
+			ToggleRef toggle_ref = Objects [Handle] as ToggleRef;
+			Objects.Remove (Handle);
 			try {
-				ToggleRef toggle_ref = Objects [Handle] as ToggleRef;
 				if (toggle_ref != null)
 					toggle_ref.Free ();
 			} catch (Exception e) {
 				Console.WriteLine ("Exception while disposing a " + this + " in Gtk#");
 				throw e;
 			}
-			Objects.Remove (Handle);
 			handle = IntPtr.Zero;
 			GC.SuppressFinalize (this);
 		}
@@ -117,7 +118,7 @@ namespace GLib {
 			if (!owned_ref)
 				g_object_ref (o);
 
-			obj = GLib.ObjectManager.CreateObject (o); 
+			obj = GLib.ObjectManager.CreateObject(o); 
 			if (obj == null) {
 				g_object_unref (o);
 				return null;
@@ -161,7 +162,7 @@ namespace GLib {
 				if (m != null)
 					m.Invoke (null, parms);
 			}
-			
+
 			for (Type curr = t; curr != typeof(GLib.Object); curr = curr.BaseType) {
 
 				if (curr.Assembly.IsDefined (typeof (IgnoreClassInitializersAttribute), false))
@@ -276,14 +277,17 @@ namespace GLib {
 					return;
 
 				if (handle != IntPtr.Zero) {
-					ToggleRef tref = Objects [handle] as ToggleRef;
-					if (tref != null)
-						tref.Free ();
 					Objects.Remove (handle);
+					if (tref != null) {
+						tref.Free ();
+						tref = null;
+					}
 				}
 				handle = value;
-				if (value != IntPtr.Zero)
-					Objects [value] = new ToggleRef (this);
+				if (value != IntPtr.Zero) {
+					tref = new ToggleRef (this);
+					Objects [value] = tref;
+				}
 			}
 		}	
 
@@ -308,23 +312,19 @@ namespace GLib {
 			}
 		}
 
+		internal ToggleRef ToggleRef {
+			get {
+				return tref;
+			}
+		}
+
 		public IntPtr Handle {
 			get {
 				return handle;
 			}
 		}
 
-		Hashtable signals;
-		internal Hashtable Signals {
-			get {
-				if (signals == null)
-					signals = new Hashtable ();
-				return signals;
-			}
-		}
-
 		Hashtable before_signals;
-
 		[Obsolete ("Replaced by GLib.Signal marshaling mechanism.")]
 		protected Hashtable BeforeSignals {
 			get {

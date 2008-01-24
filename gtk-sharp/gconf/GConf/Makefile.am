@@ -2,7 +2,7 @@ TARGET = $(ASSEMBLY) $(ASSEMBLY).config
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = gconf-sharp-2.0.pc
 noinst_DATA = $(TARGET) $(POLICY_ASSEMBLIES)
-CLEANFILES = $(ASSEMBLY) $(ASSEMBLY).mdb gtk-sharp.snk $(POLICY_ASSEMBLIES) $(POLICY_CONFIGS)
+CLEANFILES = $(ASSEMBLY) $(ASSEMBLY).mdb gtk-sharp.snk $(POLICY_ASSEMBLIES) $(POLICY_CONFIGS) AssemblyInfo.cs
 DISTCLEANFILES = gconf-sharp-2.0.pc $(ASSEMBLY).config
 
 POLICY_ASSEMBLIES = $(addsuffix .$(ASSEMBLY), $(addprefix policy., $(POLICY_VERSIONS)))
