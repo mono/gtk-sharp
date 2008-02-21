@@ -1,3 +1,10 @@
+2008-02-21  Mike Kestner  <mkestner@novell.com>
+
+	* glib/Source.cs: rework proxy removal to avoid boxing profile.
+	* glib/Idle.cs: save src_id in proxy to facilitate removal.
+	* glib/Timeout.cs: save src_id in proxy to facilitate removal.
+	[Fixes #359561]
+
 2008-01-24  Lluis Sanchez Gual  <lluis@novell.com>
 
 	* glade/XML.custom: due to a recent Mono fix (bug #322762),
