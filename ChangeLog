@@ -1,5 +1,9 @@
 2008-02-26  Mike Kestner  <mkestner@novell.com>
 
+	* bootstrap-2.10: bump version to 2.10.4 and tag.
+
+2008-02-26  Mike Kestner  <mkestner@novell.com>
+
 	* generator/ByRefGen.cs: fix mismatched alloc/free.
 
 2008-02-21  Mike Kestner  <mkestner@novell.com>
