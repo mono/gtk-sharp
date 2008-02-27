@@ -1,3 +1,13 @@
+2008-02-27  Mike Kestner  <mkestner@novell.com>
+
+	* configure.in.in: add --enable-ginterface-registration option
+	with message of doom warning that it's unsupported and for testing.
+	* generator/InterfaceGen.cs: conditionally enable implementation
+	and registration code.
+	* glib/GInterface*.cs: backport from trunk.
+	* gtk/*Adapter.custom: backport from trunk.
+	* gtk/Gtk.metadata: backport interface changes.
+
 2008-02-26  Mike Kestner  <mkestner@novell.com>
 
 	* bootstrap-2.10: bump version to 2.10.4 and tag.

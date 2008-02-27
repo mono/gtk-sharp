@@ -65,7 +65,14 @@ namespace GtkSharp.Generation {
 
 		public override string FromNative (string var, bool owned)
 		{
+#if GINTERFACE_REGISTRATION
+			if (IsConsumeOnly)
+				return "GLib.Object.GetObject (" + var + ", " + (owned ? "true" : "false") + ") as " + QualifiedName;
+			else
+				return QualifiedName + "Adapter.GetObject (" + var + ", " + (owned ? "true" : "false") + ")";
+#else
 			return "GLib.Object.GetObject (" + var + ", " + (owned ? "true" : "false") + ") as " + QualifiedName;
+#endif
 		}
 
 		public override bool ValidateForSubclass ()
@@ -314,6 +321,9 @@ namespace GtkSharp.Generation {
 
 		public override void Generate (GenerationInfo gen_info)
 		{
+#if GINTERFACE_REGISTRATION
+			GenerateAdapter (gen_info);
+#endif
 			StreamWriter sw = gen_info.Writer = gen_info.OpenStream (Name);
 
 			sw.WriteLine ("namespace " + NS + " {");
@@ -341,6 +351,9 @@ namespace GtkSharp.Generation {
 			AppendCustom (sw, gen_info.CustomDir);
 
 			sw.WriteLine ("\t}");
+#if GINTERFACE_REGISTRATION
+			GenerateImplementorIface (sw);
+#endif
 			sw.WriteLine ("#endregion");
 			sw.WriteLine ("}");
 			sw.Close ();

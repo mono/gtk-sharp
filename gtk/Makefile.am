@@ -40,6 +40,7 @@ customs = 				\
 	Bin.custom			\
 	Button.custom			\
 	Calendar.custom			\
+	CellLayoutAdapter.custom	\
 	CellRenderer.custom		\
 	CellRendererAccel.custom	\
 	CellRendererCombo.custom	\
@@ -115,11 +116,13 @@ customs = 				\
 	TooltipsData.custom		\
 	TreeIter.custom			\
 	TreeModel.custom		\
+	TreeModelAdapter.custom		\
 	TreeModelFilter.custom		\
 	TreeModelSort.custom		\
 	TreePath.custom			\
 	TreeSelection.custom		\
 	TreeSortable.custom		\
+	TreeSortableAdapter.custom	\
 	TreeStore.custom		\
 	TreeViewColumn.custom		\
 	TreeView.custom			\

@@ -17,7 +17,16 @@ POLICY_CONFIGS = $(addsuffix .config, $(addprefix policy., $(POLICY_VERSIONS)))
 
 references = 
 
+if ENABLE_GINTERFACE_REGISTRATION
+ginterface_sources =				\
+	GInterfaceAdapter.cs			\
+	GInterfaceAttribute.cs
+else
+ginterface_sources =
+endif
+
 sources =		 			\
+	$(ginterface_sources)			\
 	Argv.cs					\
 	Boxed.cs				\
 	CDeclCallbackAttribute.cs		\

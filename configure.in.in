@@ -78,9 +78,17 @@ AC_ARG_ENABLE(debug, [  --enable-debug          Build debugger (.mdb) files for 
 )
 fi
 
+GINTERFACE_FLAGS=
+AC_ARG_ENABLE(ginterface-registration, [  --enable-ginterface-registration          Generate GInterface Registration API],
+	GINTERFACE_FLAGS='-define:GINTERFACE_REGISTRATION'
+)
+
 CSDEFINES='@VERSIONCSDEFINES@'
 CSFLAGS="$DEBUG_FLAGS $CSDEFINES $WIN64DEFINES"
 AC_SUBST(CSFLAGS)
+
+GENERATOR_CSFLAGS="$GINTERFACE_FLAGS"
+AC_SUBST(GENERATOR_CSFLAGS)
 
 GTK_SHARP_VERSION_CFLAGS='@VERSIONCFLAGS@'
 AC_SUBST(GTK_SHARP_VERSION_CFLAGS)
@@ -207,6 +215,7 @@ AM_CONDITIONAL(ENABLE_GLADE, test "x$enable_glade" = "xyes")
 AM_CONDITIONAL(ENABLE_DOTNET, test "x$enable_dotnet" = "xyes")
 AM_CONDITIONAL(ENABLE_MONODOC, test "x$enable_monodoc" = "xyes")
 AM_CONDITIONAL(ENABLE_MONOGETOPTIONS, test "x$has_mono" = "xtrue")
+AM_CONDITIONAL(ENABLE_GINTERFACE_REGISTRATION, test -n "$GINTERFACE_FLAGS")
 
 AC_SUBST(CFLAGS)
 
@@ -275,6 +284,13 @@ echo "   * Documentation build enabled: $enable_monodoc "
 if test "x$enable_monodoc" = "xyes" -a "x$doc_sources_dir" != "x$prefix/lib/monodoc/sources"; then
   echo "      WARNING: The install prefix is different than the monodoc prefix."
   echo "               Monodoc will not be able to load the documentation."
+fi
+if test -n "$GINTERFACE_FLAGS"; then
+  echo ""
+  echo "WARNING!!! MESSAGE OF DOOM FOLLOWS..."
+  echo "Use of --enable-ginterface-registration is unsupported."
+  echo "Do not package gtk-sharp with this option.  It is provided only to"
+  echo "facilitate testing on this release."
 fi
 echo "---"
 
