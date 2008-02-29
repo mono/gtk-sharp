@@ -1,3 +1,9 @@
+2008-02-29  Mike Kestner  <mkestner@novell.com>
+
+	* sample/Action.cs: qualify Action usage.
+	* sample/GtkDemo/DemoApplicationWindow.cs: qualify Action usage.
+	* sample/GtkDemo/DemoUIManager.cs: qualify Action usage.
+
 2008-02-21  Mike Kestner  <mkestner@novell.com>
 
 	* glib/Source.cs: rework proxy removal to avoid boxing profile.
