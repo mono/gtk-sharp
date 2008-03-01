@@ -1,5 +1,9 @@
 2008-02-29  Mike Kestner  <mkestner@novell.com>
 
+	* gdk/Pixbuf.custom: backport of destroy_notified byte[] ctors.
+
+2008-02-29  Mike Kestner  <mkestner@novell.com>
+
 	* sample/Action.cs: qualify Action usage.
 	* sample/GtkDemo/DemoApplicationWindow.cs: qualify Action usage.
 	* sample/GtkDemo/DemoUIManager.cs: qualify Action usage.
