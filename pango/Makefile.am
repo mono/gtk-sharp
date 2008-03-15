@@ -34,6 +34,7 @@ sources =			\
 customs =			\
 	Analysis.custom		\
 	AttrIterator.custom	\
+	AttrList.custom		\
 	Context.custom		\
 	Coverage.custom		\
 	FontFamily.custom	\
