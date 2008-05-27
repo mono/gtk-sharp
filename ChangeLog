@@ -1,3 +1,9 @@
+2008-05-27  Mike Kestner  <mkestner@novell.com>
+
+	* generator/Method.cs (GenerateBody): demarshal the 'this'
+	structure before any out/ref parameters to avoid problems when
+	'this' is passed as a parameter to a method.
+
 2008-05-21  Mike Kestner  <mkestner@novell.com>
 
 	* gtk/Object.custom (OnDestroyed): ensure Dispose runs even if
