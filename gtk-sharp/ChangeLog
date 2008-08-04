@@ -1,3 +1,7 @@
+2008-08-04  Mike Kestner  <mkestner@novell.com>
+
+	* gtk/Gtk.metadata: mark IconTheme.LoadIcon return as owned.
+
 2008-03-14  Mike Kestner  <mkestner@novell.com>
 
 	* pango/AttrList.custom: pass copies of the attrs to insert*
