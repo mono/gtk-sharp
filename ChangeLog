@@ -1,5 +1,9 @@
 2008-08-20  Mike Kestner  <mkestner@novell.com>
 
+	* bootstrap-2.10: bump svn version like I should have done months ago.
+
+2008-08-20  Mike Kestner  <mkestner@novell.com>
+
 	* generator/ReturnValue.cs: use new ListPtrToArray marshaler for
 	lists with known element types.
 	* glib/Marshaller.cs: new ListPtrToArray marshaller with more
