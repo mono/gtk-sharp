@@ -1,3 +1,7 @@
+2008-10-06  Mike Kestner  <mkestner@novell.com>
+
+	* gnome/gnome-sharp.dll.config.in: add dllmap for panel.
+
 2008-08-04  Mike Kestner  <mkestner@novell.com>
 
 	* gtk/IconTheme.custom: elements and the list returned by
