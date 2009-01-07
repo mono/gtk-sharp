@@ -1,5 +1,9 @@
 2009-01-07  Mike Kestner  <mkestner@novell.com>
 
+	* doc/gtk-sharp-docs.source: add node element for new monodoc.
+
+2009-01-07  Mike Kestner  <mkestner@novell.com>
+
 	* generator/MethodBody.cs: avoid null ref when passing null to
 	destroy notified callback parameters. [Fixes #464120]
 
