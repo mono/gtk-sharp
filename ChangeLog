@@ -1,3 +1,8 @@
+2009-01-07  Mike Kestner  <mkestner@novell.com>
+
+	* generator/MethodBody.cs: avoid null ref when passing null to
+	destroy notified callback parameters. [Fixes #464120]
+
 2008-12-12  Mike Kestner  <mkestner@novell.com>
 
 	* bootstrap-2.12: tagged for 2.12.7.  Bump svn version.
