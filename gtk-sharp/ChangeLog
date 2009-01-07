@@ -1,3 +1,8 @@
+2009-01-07  Mike Kestner  <mkestner@novell.com>
+
+	* generator/MethodBody.cs: avoid null ref when passing null to
+	destroy notified callback parameters. [Fixes #464120]
+
 2008-11-21  Mike Kestner  <mkestner@novell.com>
 
 	* glib/ManagedValue.cs: rework to ref count a ManagedValue instance
