@@ -1,3 +1,13 @@
+2009-01-08  Mike Kestner  <mkestner@novell.com>
+
+	* configure.in.in: improve cairo config message.
+	* mono.snk: copied for compatible Mono.Cairo.dll build.
+	* Makefile.am: dist the snk.
+	* cairo/AssemblyInfo.cs: use a hardcoded file.
+	* cairo/Makefile.am: use mono.snk to sign the Mono.Cairo assembly
+	so that it's compatible with mono built versions.  Initial patch
+	from Christian Hoff with a few tweaks.
+
 2009-01-07  Mike Kestner  <mkestner@novell.com>
 
 	* doc/gtk-sharp-docs.source: add node element for new monodoc.

@@ -270,7 +270,11 @@ echo "   Optional assemblies included in the build:"
 echo ""
 echo "      * glade-sharp.dll: $enable_glade"
 echo "      * gtk-dotnet.dll: $enable_dotnet "
-echo "      * Mono.Cairo.dll: $enable_mono_cairo "
+if test "x$enable_mono_cairo" = "xyes"; then
+  echo "      * Mono.Cairo.dll: building local assembly"
+else
+  echo "      * Mono.Cairo.dll: using system assembly"
+fi
 echo ""
 echo "      NOTE: if any of the above say 'no' you may install the"
 echo "            corresponding development packages for them, rerun"
