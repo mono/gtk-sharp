@@ -1,3 +1,8 @@
+2009-01-21  Mike Kestner  <mkestner@novell.com>
+
+	* configure.in.in: cross-compile fixes for CC assignment
+	* gapi-cdecl-insert: use monodis if ildasm isn't available
+
 2009-01-13  Brad Taylor  <brad@getcoded.net>
 
 	* atk/Atk.metadata: Bind GetRunAttributes and GetDefaultAttributes as
