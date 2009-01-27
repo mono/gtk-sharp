@@ -1,3 +1,8 @@
+2009-01-27  Mike Kestner  <mkestner@novell.com>
+
+	* glib/Opaque.cs:  ensure we are running on the gui thread when we
+	dispose from the finalizer.  [Fixes #419777]
+
 2009-01-23  Mike Kestner  <mkestner@novell.com>
 
 	* Makefile.include:
