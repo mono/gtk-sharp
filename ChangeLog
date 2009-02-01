@@ -1,3 +1,20 @@
+2009-01-29  Mike Kestner  <mkestner@novell.com>
+
+	* Makefile.am: add installer-bundle target. This creates a versioned
+	subdir containing all the binaries, wxs, license.rtf, and a
+	build-installer script.
+	* README: add installer build instructions.
+	* configure.in.in: move the evil cygwin libname sed hack after
+	AC_OUTPUT since newer autoconf apparently changed the behavior
+	of when libtool is created.
+	* gtk-sharp-2.0-wxs.in: add 2.10 policy components and update
+	paths for installer-bundle build. This used to be -lib.wxs.in,
+	but we are moving to a single installer without C devel. No
+	longer produces an msm.  It's an msi which merges the gtk, glade
+	and mono-cairo msm modules from win32-installers.
+	* gtk-sharp-2.0-dev.wxs.in: killed.
+	* license.rtf: copied from win32-installers module.
+
 2009-01-29  Andrés G. Aragoneses  <aaragoneses@novell.com>
 
 	* atk/Object.custom: add binding for "focus-event" signal:

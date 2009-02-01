@@ -28,9 +28,30 @@ Building & Installing Gtk#:
     something similar.)
 
     If you are compiling from SVN, you will need libtool and the auto* tools
-    and will need to replace the configure above with bootstrap for the 2.5.x
-    version or bootstrap-2.4 for the 1.9.x version.
+    and will need to replace the configure above with bootstrap-2.n for whichever
+    API version you are building.
 
+    To build a win32 installer, cygwin is required.  Use the mingw-gcc compiler
+    and ensure that the autotools are installed, but do not install any of the
+    gtk+ libraries from cygwin.  You will need to get the zip bundles for gtk+
+    and dependencies, along with libglade and libxml2 from:
+
+    ftp.gnome.org/pub/gnome/binaries
+
+    for the platform you are building.  Extract all these zips, including the devel
+    zips into a single directory and setup your path so that it can access the
+    pkg-config tool provided.  You will also want to edit the lib/pkgconfig/*.pc
+    files to specify the prefix you installed to.
+
+    Once all that is done, configure away.
+
+    There is a special make target which supports the process of building msi
+    installers.  You can make installer-bundle to create a subdirectory named
+    gtk-sharp-binaries-<version> which will contain a wxs script and all the
+    binaries from the build.  You will also need to copy into this directory the
+    msm modules for gtk+, libglade, and mono-cairo.  These can be built
+    from svn trunk module win32-installers.  Once those msm's are in place,
+    execute the build-installer script to produce the msi.
 
 Discussion & Support:
 ---------------------
