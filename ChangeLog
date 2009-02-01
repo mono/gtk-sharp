@@ -1,4 +1,4 @@
-2009-01-29  Mike Kestner  <mkestner@novell.com>
+2009-01-31  Mike Kestner  <mkestner@novell.com>
 
 	* Makefile.am: add installer-bundle target. This creates a versioned
 	subdir containing all the binaries, wxs, license.rtf, and a
