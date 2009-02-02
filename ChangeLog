@@ -1,3 +1,9 @@
+2009-02-02  Mike Kestner  <mkestner@novell.com>
+
+	* gtk-sharp-2.0-wxs.in: switch the VS assembly reference registry
+	magic to HKLM/SOFTWARE/Microsoft/.NetFramework/AssemblyFolders. Add
+	a single key there to get all versions of VS.
+
 2009-01-31  Mike Kestner  <mkestner@novell.com>
 
 	* Makefile.am: add installer-bundle target. This creates a versioned

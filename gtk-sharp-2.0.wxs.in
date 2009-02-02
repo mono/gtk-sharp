@@ -6,12 +6,6 @@
     <Condition Message="This setup requires the .NET Framework 1.1 or higher.">
       <![CDATA[MsiNetAssemblySupport >= "1.1.4322"]]>
     </Condition>
-    <Property Id="VS2003INSTALLED">
-      <RegistrySearch Id="VS2003Search" Root="HKLM" Type="raw" Key="SOFTWARE\Microsoft\VisualStudio\7.1\Projects\{FAE04EC0-301F-11d3-BF4B-00C04F79EFBC}" Name="ProjectTemplatesDir" />
-    </Property>
-    <Property Id="VS2008INSTALLED">
-      <RegistrySearch Id="VS2008Search" Root="HKLM" Type="raw" Key="SOFTWARE\Microsoft\VisualStudio\SxS\VS7\8.0" />
-    </Property>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder" Name="PFiles">
         <Directory Id="GtkSharp" Name="GtkSharp">
@@ -196,7 +190,7 @@
                   <RegistryKey Root='HKLM' Key='SOFTWARE\Novell\GtkSharp\Version' Action="createAndRemoveOnUninstall">
                     <RegistryValue Type="string" Value="[ProductVersion]" />
                   </RegistryKey>
-                  <RegistryKey Root='HKLM' Key='SOFTWARE\Novell\GtkSharp\AssemblyFolder' Action="createAndRemoveOnUninstall">
+                  <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\AssemblyFolders\GtkSharp' Action="createAndRemoveOnUninstall">
                     <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0" />
                   </RegistryKey>
                   <File Id="glibsharpdll_inst" Name="glib-sharp.dll" Source="glib\glib-sharp.dll" Vital="yes" />
@@ -206,54 +200,6 @@
                   <File Id="gtksharpdll_inst" Name="gtk-sharp.dll" Source="gtk\gtk-sharp.dll" Vital="yes" />
                   <File Id="gladesharpdll_inst" Name="glade-sharp.dll" Source="glade\glade-sharp.dll" Vital="yes" />
                   <File Id="gtkdotnetdll_inst" Name="gtk-dotnet.dll" Source="gtkdotnet\gtk-dotnet.dll" Vital="yes" />
-                </Component>
-                <Component Id="vs2003_keys" Guid="c0ac0c22-0a53-11dd-9af8-001a6bce76fb">
-                  <Condition><![CDATA[VS2003INSTALLED <> "" OR Installed]]></Condition>
-                  <RegistryKey Root="HKLM" Action="createAndRemoveOnUninstall" Key="SOFTWARE\Microsoft\VisualStudio\7.1\AssemblyFolders\atk-sharp">
-                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0\atk" />
-                  </RegistryKey>
-                  <RegistryKey Root="HKLM" Action="createAndRemoveOnUninstall" Key="SOFTWARE\Microsoft\VisualStudio\7.1\AssemblyFolders\gdk-sharp">
-                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0\gdk" />
-                  </RegistryKey>
-                  <RegistryKey Root="HKLM" Action="createAndRemoveOnUninstall" Key="SOFTWARE\Microsoft\VisualStudio\7.1\AssemblyFolders\glade-sharp">
-                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0\glade" />
-                  </RegistryKey>
-                  <RegistryKey Root="HKLM" Action="createAndRemoveOnUninstall" Key="SOFTWARE\Microsoft\VisualStudio\7.1\AssemblyFolders\glib-sharp">
-                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0\glib" />
-                  </RegistryKey>
-                  <RegistryKey Root="HKLM" Action="createAndRemoveOnUninstall" Key="SOFTWARE\Microsoft\VisualStudio\7.1\AssemblyFolders\gtk-sharp">
-                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0\gtk" />
-                  </RegistryKey>
-                  <RegistryKey Root="HKLM" Action="createAndRemoveOnUninstall" Key="SOFTWARE\Microsoft\VisualStudio\7.1\AssemblyFolders\gtk-dotnet">
-                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0\gtk-dotnet" />
-                  </RegistryKey>
-                  <RegistryKey Root="HKLM" Action="createAndRemoveOnUninstall" Key="SOFTWARE\Microsoft\VisualStudio\7.1\AssemblyFolders\pango-sharp">
-                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0\pango" />
-                  </RegistryKey>
-                </Component>
-                <Component Id="vs2008_keys" Guid="287a7bec-0a5c-11dd-9af8-001a6bce76fb">
-                  <Condition><![CDATA[VS2008INSTALLED <> "" OR Installed]]></Condition>
-                  <RegistryKey Root="HKLM" Action="createAndRemoveOnUninstall" Key="SOFTWARE\Microsoft\.NETFramework\v2.0.50727\AssemblyFoldersEx\atk-sharp">
-                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0\atk" />
-                  </RegistryKey>
-                  <RegistryKey Root="HKLM" Action="createAndRemoveOnUninstall" Key="SOFTWARE\Microsoft\.NETFramework\v2.0.50727\AssemblyFoldersEx\gdk-sharp">
-                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0\gdk" />
-                  </RegistryKey>
-                  <RegistryKey Root="HKLM" Action="createAndRemoveOnUninstall" Key="SOFTWARE\Microsoft\.NETFramework\v2.0.50727\AssemblyFoldersEx\glade-sharp">
-                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0\glade" />
-                  </RegistryKey>
-                  <RegistryKey Root="HKLM" Action="createAndRemoveOnUninstall" Key="SOFTWARE\Microsoft\.NETFramework\v2.0.50727\AssemblyFoldersEx\glib-sharp">
-                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0\glib" />
-                  </RegistryKey>
-                  <RegistryKey Root="HKLM" Action="createAndRemoveOnUninstall" Key="SOFTWARE\Microsoft\.NETFramework\v2.0.50727\AssemblyFoldersEx\gtk-sharp">
-                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0\gtk" />
-                  </RegistryKey>
-                  <RegistryKey Root="HKLM" Action="createAndRemoveOnUninstall" Key="SOFTWARE\Microsoft\.NETFramework\v2.0.50727\AssemblyFoldersEx\gtk-dotnet">
-                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0\gtk-dotnet" />
-                  </RegistryKey>
-                  <RegistryKey Root="HKLM" Action="createAndRemoveOnUninstall" Key="SOFTWARE\Microsoft\.NETFramework\v2.0.50727\AssemblyFoldersEx\pango-sharp">
-                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0\pango" />
-                  </RegistryKey>
                 </Component>
               </Directory>
             </Directory>
@@ -307,8 +253,6 @@
       <ComponentRef Id="gtkdotnet_policy.2.8" />
       <ComponentRef Id="gtkdotnet_policy.2.10" />
       <ComponentRef Id="gtksharpinstassembly" />
-      <ComponentRef Id="vs2003_keys" />
-      <ComponentRef Id="vs2008_keys" />
     </Feature>
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" />
     <UIRef Id="WixUI_InstallDir" />
