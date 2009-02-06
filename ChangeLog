@@ -1,3 +1,7 @@
+2009-02-06 Christian Hoff  <christian_hoff@gmx.net>
+
+	* gtk/Gtk.metadata: Fix TreeModel.EmitRowsReordered signature
+
 2009-02-02  Mike Kestner  <mkestner@novell.com>
 
 	* gtk-sharp-2.0-wxs.in: switch the VS assembly reference registry
