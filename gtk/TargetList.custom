@@ -35,16 +35,20 @@
 			Remove(Gdk.Atom.Intern (target, false));
 		}
 
-		[DllImport("gtksharpglue-2")]
-		static extern int gtksharp_target_list_length (IntPtr list);
-
-		[DllImport("gtksharpglue-2")]
-		static extern void gtksharp_target_list_to_entry_array (IntPtr list, [In, Out] TargetEntry[] entries);
+		[DllImport("libgtk-win32-2.0-0.dll")]
+		static extern void gtk_target_table_free (IntPtr list, int n_targets);
+		[DllImport("libgtk-win32-2.0-0.dll")]
+		static extern IntPtr gtk_target_table_new_from_list (IntPtr list, out int n_targets);
 
 		public static explicit operator TargetEntry[] (TargetList list)
 		{
-			int length = gtksharp_target_list_length (list.Handle);
+			int length;
+			IntPtr ret = gtk_target_table_new_from_list (list.Handle, out length);
 			TargetEntry[] entries = new TargetEntry[length];
-			gtksharp_target_list_to_entry_array (list.Handle, entries);
+			for (int i = 0; i < length; i++) {
+				entries [i] = (TargetEntry) Marshal.PtrToStructure (new IntPtr (ret.ToInt64 () + Marshal.SizeOf (typeof (TargetEntry))), typeof (TargetEntry));
+			}
+			if (ret != IntPtr.Zero)
+				gtk_target_table_free (ret, length);
 			return entries;
 		}
