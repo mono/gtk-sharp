@@ -193,6 +193,9 @@
                   <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\AssemblyFolders\GtkSharp' Action="createAndRemoveOnUninstall">
                     <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0" />
                   </RegistryKey>
+                  <RegistryKey Root='HKLM' Key='SOFTWARE\Novell\GtkSharp\InstallFolder' Action="createAndRemoveOnUninstall">
+                    <RegistryValue Type="string" Value="[INSTALLLOCATION]" />
+                  </RegistryKey>
                   <File Id="glibsharpdll_inst" Name="glib-sharp.dll" Source="glib\glib-sharp.dll" Vital="yes" />
                   <File Id="pangosharpdll_inst" Name="pango-sharp.dll" Source="pango\pango-sharp.dll" Vital="yes" />
                   <File Id="atksharpdll_inst" Name="atk-sharp.dll" Source="atk\atk-sharp.dll" Vital="yes" />
