@@ -1,3 +1,8 @@
+2009-05-05  Mike Kestner  <mkestner@novell.com>
+
+	* glib/GType.cs: ensure threading is initialized in cctor.
+	* gtk/Application.cs: ditto.
+
 2009-04-27  Mike Kestner  <mkestner@novell.com>
 
 	* gtk-sharp-2.0.wxs.in: add an InstallFolder key. [Fixes #498298]
