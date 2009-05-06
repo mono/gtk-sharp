@@ -1,3 +1,7 @@
+2009-05-06  Mike Kestner  <mkestner@novell.com>
+
+	* gtk/TargetList.custom: fix intptr indexing in cast.
+
 2009-05-05  Mike Kestner  <mkestner@novell.com>
 
 	* glib/GType.cs: ensure threading is initialized in cctor.
