@@ -6,6 +6,13 @@
     <Condition Message="This setup requires the .NET Framework 1.1 or higher.">
       <![CDATA[MsiNetAssemblySupport >= "1.1.4322"]]>
     </Condition>
+    <Property Id="PREVIOUSVERSIONSINSTALLED" Secure="yes" />
+    <Upgrade Id="6AAF2A04-27B0-4D70-8EBB-3EB225794B3F">
+      <UpgradeVersion OnlyDetect="no" Maximum="@VERSION@" Property="PREVIOUSVERSIONSINSTALLED" IncludeMaximum="no" />
+    </Upgrade>
+    <InstallExecuteSequence>
+      <RemoveExistingProducts Before="InstallInitialize" />
+    </InstallExecuteSequence>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder" Name="PFiles">
         <Directory Id="GtkSharp" Name="GtkSharp">
@@ -13,6 +20,7 @@
 	    <Merge Id="gtk-2-lib" Language="1033" SourceFile="gtk+-2.0-lib.msm" DiskId="1" />
 	    <Merge Id="glade-2-lib" Language="1033" SourceFile="glade-2-lib.msm" DiskId="1" />
 	    <Merge Id="mono-cairo-lib" Language="1033" SourceFile="mono-cairo-lib.msm" DiskId="1" />
+	    <Merge Id="mono-posix-lib" Language="1033" SourceFile="mono-posix-lib.msm" DiskId="1" />
             <Directory Id="bin" Name="bin">
               <Component Id="glibsharp_glue" Guid="9AFADFAB-0BD8-449e-B121-C9DB71EBECDC">
                 <File Id="glibsharpglue" Name="glibsharpglue-2.dll" Source="glibsharpglue-2.dll" KeyPath="yes" Vital="yes" />
@@ -193,6 +201,12 @@
                   <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\AssemblyFolders\GtkSharp' Action="createAndRemoveOnUninstall">
                     <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0" />
                   </RegistryKey>
+                  <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\AssemblyFolders\MonoPosix' Action="createAndRemoveOnUninstall">
+                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\Mono.Posix" />
+                  </RegistryKey>
+                  <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\AssemblyFolders\MonoCairo' Action="createAndRemoveOnUninstall">
+                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\Mono.Cairo" />
+                  </RegistryKey>
                   <RegistryKey Root='HKLM' Key='SOFTWARE\Novell\GtkSharp\InstallFolder' Action="createAndRemoveOnUninstall">
                     <RegistryValue Type="string" Value="[INSTALLLOCATION]" />
                   </RegistryKey>
@@ -214,6 +228,7 @@
       <MergeRef Id="gtk-2-lib" />
       <MergeRef Id="glade-2-lib" />
       <MergeRef Id="mono-cairo-lib" />
+      <MergeRef Id="mono-posix-lib" />
       <ComponentRef Id="glibsharp_glue" />
       <ComponentRef Id="pangosharp_glue" />
       <ComponentRef Id="atksharp_glue" />

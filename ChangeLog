@@ -1,3 +1,9 @@
+2009-05-27  Mike Kestner  <mkestner@novell.com>
+
+	* bootstrap-2.12: bump version to 2.12.9.
+	* gtk-sharp-2.0.wxs.in: merge mono-posix-lib module.  Add update
+	element so that we remove existing older installs.
+
 2009-05-12  Mike Kestner  <mkestner@novell.com>
 
 	* gtk/Application.cs: add the theme initialization workaround for 
