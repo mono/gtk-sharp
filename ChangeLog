@@ -1,3 +1,9 @@
+2009-05-31  Mike Kestner  <mkestner@novell.com>
+
+	* gtk-sharp-2.0.wxs.in: move the RemoveExistingVersions action
+	after InstallFinalize to avoid a problem where the GAC assemblies
+	disappear.  [Fixes #508580]
+
 2009-05-27  Mike Kestner  <mkestner@novell.com>
 
 	* bootstrap-2.12: bump version to 2.12.9.

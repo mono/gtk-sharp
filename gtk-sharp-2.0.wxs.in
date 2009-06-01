@@ -11,7 +11,7 @@
       <UpgradeVersion OnlyDetect="no" Maximum="@VERSION@" Property="PREVIOUSVERSIONSINSTALLED" IncludeMaximum="no" />
     </Upgrade>
     <InstallExecuteSequence>
-      <RemoveExistingProducts Before="InstallInitialize" />
+      <RemoveExistingProducts After="InstallFinalize" />
     </InstallExecuteSequence>
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder" Name="PFiles">
