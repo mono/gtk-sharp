@@ -1,8 +1,9 @@
 // ObjectFactory.custom - Atk ObjectFactory class customizations
 //
-// Author: Mike Gorse <mgorse@novell.com>
+// Authors: Mike Gorse <mgorse@novell.com>
+//          Mike Kestner <mkestner@novell.com>
 //
-// Copyright (c) 2008 Novell, Inc.
+// Copyright (c) 2008-2009 Novell, Inc.
 //
 // This code is inserted after the automatically generated code.
 //
@@ -21,68 +22,138 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-		[DllImport("atksharpglue-2")]
-		static extern void atksharp_object_factory_override_create_accessible (IntPtr type, CreateAccessibleDelegate cb);
-		
+		static Hashtable instances = new Hashtable ();
+
+		protected override IntPtr Raw {
+			get { return base.Raw; }
+			set {
+				base.Raw = value;
+				if (value != IntPtr.Zero)
+					instances [LookupGType (GetType ())] = this;
+			}
+		}
+
+		static Hashtable marshalers = new Hashtable ();
+
+		static Marshaler GetMarshaler (GLib.GType gtype)
+		{
+			Marshaler marshaler = marshalers [gtype] as Marshaler;
+			if (marshaler == null) {
+				marshaler = new Marshaler (gtype);
+				marshalers [gtype] = marshaler;
+			}
+			return marshaler;
+		}
+
 		[GLib.CDeclCallback]
 		delegate IntPtr CreateAccessibleDelegate (IntPtr raw);
-		
-		static CreateAccessibleDelegate CreateAccessibleCallback;
-		
-		[DllImport("libgobject-2.0-0.dll")]
-		static extern IntPtr g_object_ref (IntPtr handle);
-
-		static IntPtr CreateAccessible_cb (IntPtr raw)
-		{
-			try {
-				Atk.ObjectFactory obj = GLib.Object.GetObject (raw, false) as Atk.ObjectFactory;
-				Atk.Object ret = obj.OnCreateAccessible ();
-				if (ret != null)
-					g_object_ref (ret.Handle);
-				return ret == null ? IntPtr.Zero : ret.Handle;
-			} catch (Exception e) {
-				GLib.ExceptionManager.RaiseUnhandledException (e, false);
-			}
-		
-			return IntPtr.Zero;
-		}
-		
-		static void OverrideCreateAccessible (GLib.GType gtype)
-		{
-			if (CreateAccessibleCallback == null)
-				CreateAccessibleCallback = new CreateAccessibleDelegate (CreateAccessible_cb);
-			atksharp_object_factory_override_create_accessible (gtype.Val, CreateAccessibleCallback);
-		}
-		
-		[GLib.DefaultSignalHandler (Type=typeof(Atk.ObjectFactory), ConnectionMethod="OverrideCreateAccessible")]
-		protected virtual Atk.Object OnCreateAccessible ()
-		{
-			return null;
-		}
-		
-		[DllImport("atksharpglue-2")]
-		static extern void atksharp_object_factory_override_invalidate (IntPtr type, InvalidateDelegate cb);
 		
 		[GLib.CDeclCallback]
 		delegate void InvalidateDelegate (IntPtr raw);
 		
-		static InvalidateDelegate InvalidateCallback;
+		[GLib.CDeclCallback]
+		delegate IntPtr GetAccessibleTypeDelegate (IntPtr raw);
 		
-		static void Invalidate_cb (IntPtr raw)
-		{
-			try {
-				Atk.ObjectFactory obj = GLib.Object.GetObject (raw, false) as Atk.ObjectFactory;
-				obj.OnInvalidate ();
-			} catch (Exception e) {
-				GLib.ExceptionManager.RaiseUnhandledException (e, false);
+		class Marshaler {
+
+			GLib.GType gtype;
+			CreateAccessibleDelegate create_cb;
+			InvalidateDelegate invalidate_cb;
+			GetAccessibleTypeDelegate gettype_cb;
+
+			public Marshaler (GLib.GType gtype)
+			{
+				this.gtype = gtype;
+			}
+
+			[DllImport("libgobject-2.0-0.dll")]
+			static extern IntPtr g_object_ref (IntPtr handle);
+
+			IntPtr CreateAccessible_cb (IntPtr raw)
+			{
+				try {
+					Atk.ObjectFactory obj = instances [gtype] as Atk.ObjectFactory;
+					if (obj == null)
+						return IntPtr.Zero;
+					Atk.Object ret = obj.OnCreateAccessible (GLib.Object.GetObject (raw, false));
+					if (ret != null)
+						g_object_ref (ret.Handle);
+					return ret == null ? IntPtr.Zero : ret.Handle;
+				} catch (Exception e) {
+					GLib.ExceptionManager.RaiseUnhandledException (e, false);
+				}
+
+				return IntPtr.Zero;
+			}
+		
+			void Invalidate_cb (IntPtr raw)
+			{
+				try {
+					Atk.ObjectFactory obj = GLib.Object.GetObject (raw, false) as Atk.ObjectFactory;
+					obj.OnInvalidate ();
+					instances.Remove (gtype);
+					marshalers.Remove (gtype);
+				} catch (Exception e) {
+					GLib.ExceptionManager.RaiseUnhandledException (e, false);
+				}
+			}
+
+			IntPtr GetAccessibleType_cb (IntPtr raw)
+			{
+				try {
+					Atk.ObjectFactory obj = instances [gtype] as Atk.ObjectFactory;
+					if (obj == null)
+						return GLib.GType.Invalid.Val;
+					return obj.OnGetAccessibleType ().Val;
+				} catch (Exception e) {
+					GLib.ExceptionManager.RaiseUnhandledException (e, false);
+				}
+
+				return GLib.GType.Invalid.Val;
+			}
+		
+			[DllImport("atksharpglue-2")]
+			static extern void atksharp_object_factory_override_create_accessible (IntPtr type, CreateAccessibleDelegate cb);
+		
+			public void ConnectCreateAccessible ()
+			{
+				create_cb = new CreateAccessibleDelegate (CreateAccessible_cb);
+				atksharp_object_factory_override_create_accessible (gtype.Val, create_cb);
+			}
+
+			[DllImport("atksharpglue-2")]
+			static extern void atksharp_object_factory_override_invalidate (IntPtr type, InvalidateDelegate cb);
+		
+			public void ConnectInvalidate ()
+			{
+				invalidate_cb = new InvalidateDelegate (Invalidate_cb);
+				atksharp_object_factory_override_invalidate (gtype.Val, invalidate_cb);
+			}
+
+			[DllImport("atksharpglue-2")]
+			static extern void atksharp_object_factory_override_get_accessible_type (IntPtr type, GetAccessibleTypeDelegate cb);
+		
+			public void ConnectGetAccessibleType ()
+			{
+				gettype_cb = new GetAccessibleTypeDelegate (GetAccessibleType_cb);
+				atksharp_object_factory_override_get_accessible_type (gtype.Val, gettype_cb);
 			}
 		}
+
+		static void OverrideCreateAccessible (GLib.GType gtype)
+		{
+			GetMarshaler (gtype).ConnectCreateAccessible ();
+		}
 		
+		[GLib.DefaultSignalHandler (Type=typeof(Atk.ObjectFactory), ConnectionMethod="OverrideCreateAccessible")]
+		protected virtual Atk.Object OnCreateAccessible (GLib.Object obj)
+		{
+			return null;
+		}
+
 		static void OverrideInvalidate (GLib.GType gtype)
 		{
-			if (InvalidateCallback == null)
-				InvalidateCallback = new InvalidateDelegate (Invalidate_cb);
-			atksharp_object_factory_override_invalidate (gtype.Val, InvalidateCallback);
+			GetMarshaler (gtype).ConnectInvalidate ();
 		}
 		
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.ObjectFactory), ConnectionMethod="OverrideInvalidate")]
@@ -90,35 +161,13 @@
 		{
 		}
 		
-		[DllImport("atksharpglue-2")]
-		static extern void atksharp_object_factory_override_get_accessible_type (IntPtr type, GetAccessibleTypeDelegate cb);
-		
-		[GLib.CDeclCallback]
-		delegate IntPtr GetAccessibleTypeDelegate (IntPtr raw);
-		
-		static GetAccessibleTypeDelegate GetAccessibleTypeCallback;
-		
-		static IntPtr GetAccessibleType_cb (IntPtr raw)
-		{
-			try {
-				Atk.ObjectFactory obj = GLib.Object.GetObject (raw, false) as Atk.ObjectFactory;
-				return obj.OnGetAccessibleType ().Val;
-			} catch (Exception e) {
-				GLib.ExceptionManager.RaiseUnhandledException (e, false);
-			}
-
-			return IntPtr.Zero;
-		}
-		
 		static void OverrideGetAccessibleType (GLib.GType gtype)
 		{
-			if (GetAccessibleTypeCallback == null)
-				GetAccessibleTypeCallback = new GetAccessibleTypeDelegate (GetAccessibleType_cb);
-			atksharp_object_factory_override_get_accessible_type (gtype.Val, GetAccessibleTypeCallback);
+			GetMarshaler (gtype).ConnectGetAccessibleType ();
 		}
 		
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.ObjectFactory), ConnectionMethod="OverrideGetAccessibleType")]
 		protected virtual GLib.GType OnGetAccessibleType ()
-	{
+		{
 			return GLib.GType.Invalid;
 		}

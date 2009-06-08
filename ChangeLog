@@ -1,3 +1,8 @@
+2009-06-08  Christian Hoff  <christian_hoff@gmx.net>
+
+	* atk/ObjectFactory.custom: Reimplement ObjectFactory virtual
+	methods. Patch provided by Mike Kestner and Gabriel Burt.
+
 2009-05-31  Mike Kestner  <mkestner@novell.com>
 
 	* gtk-sharp-2.0.wxs.in: move the RemoveExistingVersions action
