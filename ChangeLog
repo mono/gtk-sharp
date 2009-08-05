@@ -1,5 +1,10 @@
 2009-08-05  Christian Hoff  <christian_hoff@gmx.net>
 
+	* sample/CustomcellRenderer.cs: Use GObject property registration
+	instead of a CellDataFunc.
+
+2009-08-05  Christian Hoff  <christian_hoff@gmx.net>
+
 	* glib/glue/object.c: Use -G_MINFLOAT and -G_MINDOUBLE since
 	these constants return the minumum positive values for this type.
 
