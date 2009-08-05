@@ -121,10 +121,10 @@ gtksharp_register_property(GType declaring_type, const gchar *name, const gchar 
 	* My problem: Both g_param_spec_enum and g_param_spec_flags expect default property values and the members of the enum seemingly cannot be enumerated
 	*/
 	case G_TYPE_FLOAT:
-		param_spec = g_param_spec_float (name, nick, blurb, G_MINFLOAT, G_MAXFLOAT, 0, flags);
+		param_spec = g_param_spec_float (name, nick, blurb, -G_MINFLOAT, G_MAXFLOAT, 0, flags);
 		break;
 	case G_TYPE_DOUBLE:
-		param_spec = g_param_spec_double (name, nick, blurb, G_MINDOUBLE, G_MAXDOUBLE, 0, flags);
+		param_spec = g_param_spec_double (name, nick, blurb, -G_MINDOUBLE, G_MAXDOUBLE, 0, flags);
 		break;
 	case G_TYPE_STRING:
 		param_spec = g_param_spec_string (name, nick, blurb, NULL, flags);

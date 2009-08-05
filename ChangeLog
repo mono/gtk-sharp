@@ -1,3 +1,8 @@
+2009-08-05  Christian Hoff  <christian_hoff@gmx.net>
+
+	* glib/glue/object.c: Use -G_MINFLOAT and -G_MINDOUBLE since
+	these constants return the minumum positive values for this type.
+
 2009-07-30  Mike Kestner  <mkestner@novell.com>
 
 	* generator/InterfaceGen.cs: remove var keyword usage to fix build
