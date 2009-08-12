@@ -190,6 +190,9 @@ PKG_CHECK_MODULES(GLADE, libglade-2.0 >= $GLADE_REQUIRED_VERSION, enable_glade=y
 AC_SUBST(GLADE_CFLAGS)
 AC_SUBST(GLADE_LIBS)
 
+GDK_BACKEND=`pkg-config --variable=target gtk+-2.0`
+AC_SUBST(GDK_BACKEND)
+
 AC_PATH_PROG(MDASSEMBLER, mdassembler, no)
 AC_PATH_PROG(MONODOCER, monodocer, no)
 if test "x$MONODOCER" = "xno" -o "x$MDASSEMBLER" = "xno"; then
