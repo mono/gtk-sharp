@@ -80,7 +80,7 @@
 		}
 
 		[DllImport("gtksharpglue-2")]
-		static extern void gtksharp_cellrenderer_base_render (IntPtr handle, IntPtr window, IntPtr widget, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, Gdk.Rectangle expose_area, Gtk.CellRendererState flags);
+		static extern void gtksharp_cellrenderer_base_render (IntPtr handle, IntPtr window, IntPtr widget, ref Gdk.Rectangle background_area, ref Gdk.Rectangle cell_area, ref Gdk.Rectangle expose_area, Gtk.CellRendererState flags);
 
 		[DllImport("gtksharpglue-2")]
 		static extern void gtksharp_cellrenderer_override_render (IntPtr gtype, RenderDelegate cb);
@@ -112,15 +112,15 @@
 		[GLib.DefaultSignalHandler (Type=typeof(Gtk.CellRenderer), ConnectionMethod="OverrideRender")]
 		protected virtual void Render (Gdk.Drawable window, Gtk.Widget widget, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, Gdk.Rectangle expose_area, Gtk.CellRendererState flags)
 		{
-			gtksharp_cellrenderer_base_render (Handle, window.Handle, widget.Handle, background_area, cell_area, expose_area, flags);
+			gtksharp_cellrenderer_base_render (Handle, window.Handle, widget.Handle, ref background_area, ref cell_area, ref expose_area, flags);
 		}
 
 		[DllImport("gtksharpglue-2")]
-		static extern void gtksharp_cellrenderer_invoke_render (IntPtr gtype, IntPtr handle, IntPtr window, IntPtr widget, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, Gdk.Rectangle expose_area, Gtk.CellRendererState flags);
+		static extern void gtksharp_cellrenderer_invoke_render (IntPtr gtype, IntPtr handle, IntPtr window, IntPtr widget, ref Gdk.Rectangle background_area, ref Gdk.Rectangle cell_area, ref Gdk.Rectangle expose_area, Gtk.CellRendererState flags);
 
 		internal static void InternalRender (GLib.GType gtype, Gtk.CellRenderer cell, Gdk.Drawable window, Gtk.Widget widget, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, Gdk.Rectangle expose_area, Gtk.CellRendererState flags)
 		{
-			gtksharp_cellrenderer_invoke_render (gtype.Val, cell.Handle, window.Handle, widget.Handle, background_area, cell_area, expose_area, flags);
+			gtksharp_cellrenderer_invoke_render (gtype.Val, cell.Handle, window.Handle, widget.Handle, ref background_area, ref cell_area, ref expose_area, flags);
 		}
 
 		[DllImport("gtksharpglue-2")]
