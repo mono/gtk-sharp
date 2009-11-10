@@ -1,3 +1,22 @@
+2009-11-10  Gabriel Burt  <gabriel.burt@gmail.com>
+
+	* atk/atk-table.patch:
+	* atk/ColumnDeletedHandler.cs:
+	* atk/Table.cs:
+	* atk/TableAdapter.cs:
+	* atk/ColumnInsertedHandler.cs:
+	* atk/Atk.metadata:
+	* atk/RowDeletedHandler.cs:
+	* atk/RowInsertedHandler.cs: We have to implement AtkTable's
+	GetSelectedRows/Columns methods manually, and the only way to do that is
+	to not generate those classes.  So these files are the generated files
+	with the necessary modifications (see atk-table.patch).  This fixes
+	support for custom widgets to add AtkTable a11y (BNC #512477)
+
+	* atk/NoOpObject.custom: Manually implement Atk.Table iface
+
+	* atk/Makefile.am: Add new files to build
+
 2009-10-30  Mike Kestner  <mkestner@novell.com>
 
 	* glib/GType.cs: avoid another exception on bogus assm.Locations.

@@ -1,0 +1,611 @@
+// This file's code was originally part of the generated NoOpObject implementation
+// of the Atk.Table interface, but as part of https://bugzilla.novell.com/show_bug.cgi?id=512477
+// it was pulled out here so that the SelectedRows/Columns properties could be manually implemented.
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern int atk_table_get_n_rows(IntPtr raw);
+
+		public int NRows { 
+			get {
+				int raw_ret = atk_table_get_n_rows(Handle);
+				int ret = raw_ret;
+				return ret;
+			}
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern bool atk_table_add_row_selection(IntPtr raw, int row);
+
+		public bool AddRowSelection(int row) {
+			bool raw_ret = atk_table_add_row_selection(Handle, row);
+			bool ret = raw_ret;
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern int atk_table_get_column_extent_at(IntPtr raw, int row, int column);
+
+		public int GetColumnExtentAt(int row, int column) {
+			int raw_ret = atk_table_get_column_extent_at(Handle, row, column);
+			int ret = raw_ret;
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern IntPtr atk_table_get_column_header(IntPtr raw, int column);
+
+		public Atk.Object GetColumnHeader(int column) {
+			IntPtr raw_ret = atk_table_get_column_header(Handle, column);
+			Atk.Object ret = GLib.Object.GetObject(raw_ret) as Atk.Object;
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern bool atk_table_is_selected(IntPtr raw, int row, int column);
+
+		public bool IsSelected(int row, int column) {
+			bool raw_ret = atk_table_is_selected(Handle, row, column);
+			bool ret = raw_ret;
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern IntPtr atk_table_get_summary(IntPtr raw);
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern void atk_table_set_summary(IntPtr raw, IntPtr accessible);
+
+		public Atk.Object Summary { 
+			get {
+				IntPtr raw_ret = atk_table_get_summary(Handle);
+				Atk.Object ret = GLib.Object.GetObject(raw_ret) as Atk.Object;
+				return ret;
+			}
+			set {
+				atk_table_set_summary(Handle, value == null ? IntPtr.Zero : value.Handle);
+			}
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern IntPtr atk_table_get_column_description(IntPtr raw, int column);
+
+		public string GetColumnDescription(int column) {
+			IntPtr raw_ret = atk_table_get_column_description(Handle, column);
+			string ret = GLib.Marshaller.Utf8PtrToString (raw_ret);
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern bool atk_table_add_column_selection(IntPtr raw, int column);
+
+		public bool AddColumnSelection(int column) {
+			bool raw_ret = atk_table_add_column_selection(Handle, column);
+			bool ret = raw_ret;
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern void atk_table_set_row_header(IntPtr raw, int row, IntPtr header);
+
+		public void SetRowHeader(int row, Atk.Object header) {
+			atk_table_set_row_header(Handle, row, header == null ? IntPtr.Zero : header.Handle);
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern IntPtr atk_table_get_row_description(IntPtr raw, int row);
+
+		public string GetRowDescription(int row) {
+			IntPtr raw_ret = atk_table_get_row_description(Handle, row);
+			string ret = GLib.Marshaller.Utf8PtrToString (raw_ret);
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern IntPtr atk_table_ref_at(IntPtr raw, int row, int column);
+
+		public Atk.Object RefAt(int row, int column) {
+			IntPtr raw_ret = atk_table_ref_at(Handle, row, column);
+			Atk.Object ret = GLib.Object.GetObject(raw_ret, true) as Atk.Object;
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern void atk_table_set_column_description(IntPtr raw, int column, IntPtr description);
+
+		public void SetColumnDescription(int column, string description) {
+			IntPtr native_description = GLib.Marshaller.StringToPtrGStrdup (description);
+			atk_table_set_column_description(Handle, column, native_description);
+			GLib.Marshaller.Free (native_description);
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern int atk_table_get_index_at(IntPtr raw, int row, int column);
+
+		public int GetIndexAt(int row, int column) {
+			int raw_ret = atk_table_get_index_at(Handle, row, column);
+			int ret = raw_ret;
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern IntPtr atk_table_get_row_header(IntPtr raw, int row);
+
+		public Atk.Object GetRowHeader(int row) {
+			IntPtr raw_ret = atk_table_get_row_header(Handle, row);
+			Atk.Object ret = GLib.Object.GetObject(raw_ret) as Atk.Object;
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern bool atk_table_is_column_selected(IntPtr raw, int column);
+
+		public bool IsColumnSelected(int column) {
+			bool raw_ret = atk_table_is_column_selected(Handle, column);
+			bool ret = raw_ret;
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern int atk_table_get_selected_rows(IntPtr raw, out int [] selected);
+
+		public int [] SelectedRows {
+            get {
+                int [] selected = null;
+                int raw_ret = atk_table_get_selected_rows(Handle, out selected);
+                return raw_ret == 0 ? new int[0] : selected;
+            }
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern void atk_table_set_row_description(IntPtr raw, int row, IntPtr description);
+
+		public void SetRowDescription(int row, string description) {
+			IntPtr native_description = GLib.Marshaller.StringToPtrGStrdup (description);
+			atk_table_set_row_description(Handle, row, native_description);
+			GLib.Marshaller.Free (native_description);
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern bool atk_table_is_row_selected(IntPtr raw, int row);
+
+		public bool IsRowSelected(int row) {
+			bool raw_ret = atk_table_is_row_selected(Handle, row);
+			bool ret = raw_ret;
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern int atk_table_get_row_extent_at(IntPtr raw, int row, int column);
+
+		public int GetRowExtentAt(int row, int column) {
+			int raw_ret = atk_table_get_row_extent_at(Handle, row, column);
+			int ret = raw_ret;
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern int atk_table_get_selected_columns(IntPtr raw, out int [] selected);
+
+		public int [] SelectedColumns {
+            get {
+                int [] selected = null;
+                int raw_ret = atk_table_get_selected_columns(Handle, out selected);
+                return raw_ret == 0 ? new int[0] : selected;
+            }
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern int atk_table_get_column_at_index(IntPtr raw, int index_);
+
+		public int GetColumnAtIndex(int index_) {
+			int raw_ret = atk_table_get_column_at_index(Handle, index_);
+			int ret = raw_ret;
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern int atk_table_get_row_at_index(IntPtr raw, int index_);
+
+		public int GetRowAtIndex(int index_) {
+			int raw_ret = atk_table_get_row_at_index(Handle, index_);
+			int ret = raw_ret;
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern IntPtr atk_table_get_caption(IntPtr raw);
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern void atk_table_set_caption(IntPtr raw, IntPtr caption);
+
+		public Atk.Object Caption { 
+			get {
+				IntPtr raw_ret = atk_table_get_caption(Handle);
+				Atk.Object ret = GLib.Object.GetObject(raw_ret) as Atk.Object;
+				return ret;
+			}
+			set {
+				atk_table_set_caption(Handle, value == null ? IntPtr.Zero : value.Handle);
+			}
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern int atk_table_get_n_columns(IntPtr raw);
+
+		public int NColumns { 
+			get {
+				int raw_ret = atk_table_get_n_columns(Handle);
+				int ret = raw_ret;
+				return ret;
+			}
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern bool atk_table_remove_row_selection(IntPtr raw, int row);
+
+		public bool RemoveRowSelection(int row) {
+			bool raw_ret = atk_table_remove_row_selection(Handle, row);
+			bool ret = raw_ret;
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern bool atk_table_remove_column_selection(IntPtr raw, int column);
+
+		public bool RemoveColumnSelection(int column) {
+			bool raw_ret = atk_table_remove_column_selection(Handle, column);
+			bool ret = raw_ret;
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll")]
+		static extern void atk_table_set_column_header(IntPtr raw, int column, IntPtr header);
+
+		public void SetColumnHeader(int column, Atk.Object header) {
+			atk_table_set_column_header(Handle, column, header == null ? IntPtr.Zero : header.Handle);
+		}
+
+		[GLib.CDeclCallback]
+		delegate void ColumnReorderedVMDelegate (IntPtr table);
+
+		static ColumnReorderedVMDelegate ColumnReorderedVMCallback;
+
+		static void columnreordered_cb (IntPtr table)
+		{
+			try {
+				NoOpObject table_managed = GLib.Object.GetObject (table, false) as NoOpObject;
+				table_managed.OnColumnReordered ();
+			} catch (Exception e) {
+				GLib.ExceptionManager.RaiseUnhandledException (e, false);
+			}
+		}
+
+		private static void OverrideColumnReordered (GLib.GType gtype)
+		{
+			if (ColumnReorderedVMCallback == null)
+				ColumnReorderedVMCallback = new ColumnReorderedVMDelegate (columnreordered_cb);
+			OverrideVirtualMethod (gtype, "column_reordered", ColumnReorderedVMCallback);
+		}
+
+		[GLib.DefaultSignalHandler(Type=typeof(Atk.NoOpObject), ConnectionMethod="OverrideColumnReordered")]
+		protected virtual void OnColumnReordered ()
+		{
+			GLib.Value ret = GLib.Value.Empty;
+			GLib.ValueArray inst_and_params = new GLib.ValueArray (1);
+			GLib.Value[] vals = new GLib.Value [1];
+			vals [0] = new GLib.Value (this);
+			inst_and_params.Append (vals [0]);
+			g_signal_chain_from_overridden (inst_and_params.ArrayPtr, ref ret);
+			foreach (GLib.Value v in vals)
+				v.Dispose ();
+		}
+
+		[GLib.Signal("column_reordered")]
+		public event System.EventHandler ColumnReordered {
+			add {
+				GLib.Signal sig = GLib.Signal.Lookup (this, "column_reordered");
+				sig.AddDelegate (value);
+			}
+			remove {
+				GLib.Signal sig = GLib.Signal.Lookup (this, "column_reordered");
+				sig.RemoveDelegate (value);
+			}
+		}
+
+		[GLib.CDeclCallback]
+		delegate void ColumnDeletedVMDelegate (IntPtr table, int column, int num_deleted);
+
+		static ColumnDeletedVMDelegate ColumnDeletedVMCallback;
+
+		static void columndeleted_cb (IntPtr table, int column, int num_deleted)
+		{
+			try {
+				NoOpObject table_managed = GLib.Object.GetObject (table, false) as NoOpObject;
+				table_managed.OnColumnDeleted (column, num_deleted);
+			} catch (Exception e) {
+				GLib.ExceptionManager.RaiseUnhandledException (e, false);
+			}
+		}
+
+		private static void OverrideColumnDeleted (GLib.GType gtype)
+		{
+			if (ColumnDeletedVMCallback == null)
+				ColumnDeletedVMCallback = new ColumnDeletedVMDelegate (columndeleted_cb);
+			OverrideVirtualMethod (gtype, "column_deleted", ColumnDeletedVMCallback);
+		}
+
+		[GLib.DefaultSignalHandler(Type=typeof(Atk.NoOpObject), ConnectionMethod="OverrideColumnDeleted")]
+		protected virtual void OnColumnDeleted (int column, int num_deleted)
+		{
+			GLib.Value ret = GLib.Value.Empty;
+			GLib.ValueArray inst_and_params = new GLib.ValueArray (3);
+			GLib.Value[] vals = new GLib.Value [3];
+			vals [0] = new GLib.Value (this);
+			inst_and_params.Append (vals [0]);
+			vals [1] = new GLib.Value (column);
+			inst_and_params.Append (vals [1]);
+			vals [2] = new GLib.Value (num_deleted);
+			inst_and_params.Append (vals [2]);
+			g_signal_chain_from_overridden (inst_and_params.ArrayPtr, ref ret);
+			foreach (GLib.Value v in vals)
+				v.Dispose ();
+		}
+
+		[GLib.Signal("column_deleted")]
+		public event Atk.ColumnDeletedHandler ColumnDeleted {
+			add {
+				GLib.Signal sig = GLib.Signal.Lookup (this, "column_deleted", typeof (Atk.ColumnDeletedArgs));
+				sig.AddDelegate (value);
+			}
+			remove {
+				GLib.Signal sig = GLib.Signal.Lookup (this, "column_deleted", typeof (Atk.ColumnDeletedArgs));
+				sig.RemoveDelegate (value);
+			}
+		}
+
+		[GLib.CDeclCallback]
+		delegate void RowReorderedVMDelegate (IntPtr table);
+
+		static RowReorderedVMDelegate RowReorderedVMCallback;
+
+		static void rowreordered_cb (IntPtr table)
+		{
+			try {
+				NoOpObject table_managed = GLib.Object.GetObject (table, false) as NoOpObject;
+				table_managed.OnRowReordered ();
+			} catch (Exception e) {
+				GLib.ExceptionManager.RaiseUnhandledException (e, false);
+			}
+		}
+
+		private static void OverrideRowReordered (GLib.GType gtype)
+		{
+			if (RowReorderedVMCallback == null)
+				RowReorderedVMCallback = new RowReorderedVMDelegate (rowreordered_cb);
+			OverrideVirtualMethod (gtype, "row_reordered", RowReorderedVMCallback);
+		}
+
+		[GLib.DefaultSignalHandler(Type=typeof(Atk.NoOpObject), ConnectionMethod="OverrideRowReordered")]
+		protected virtual void OnRowReordered ()
+		{
+			GLib.Value ret = GLib.Value.Empty;
+			GLib.ValueArray inst_and_params = new GLib.ValueArray (1);
+			GLib.Value[] vals = new GLib.Value [1];
+			vals [0] = new GLib.Value (this);
+			inst_and_params.Append (vals [0]);
+			g_signal_chain_from_overridden (inst_and_params.ArrayPtr, ref ret);
+			foreach (GLib.Value v in vals)
+				v.Dispose ();
+		}
+
+		[GLib.Signal("row_reordered")]
+		public event System.EventHandler RowReordered {
+			add {
+				GLib.Signal sig = GLib.Signal.Lookup (this, "row_reordered");
+				sig.AddDelegate (value);
+			}
+			remove {
+				GLib.Signal sig = GLib.Signal.Lookup (this, "row_reordered");
+				sig.RemoveDelegate (value);
+			}
+		}
+
+		[GLib.CDeclCallback]
+		delegate void ColumnInsertedVMDelegate (IntPtr table, int column, int num_inserted);
+
+		static ColumnInsertedVMDelegate ColumnInsertedVMCallback;
+
+		static void columninserted_cb (IntPtr table, int column, int num_inserted)
+		{
+			try {
+				NoOpObject table_managed = GLib.Object.GetObject (table, false) as NoOpObject;
+				table_managed.OnColumnInserted (column, num_inserted);
+			} catch (Exception e) {
+				GLib.ExceptionManager.RaiseUnhandledException (e, false);
+			}
+		}
+
+		private static void OverrideColumnInserted (GLib.GType gtype)
+		{
+			if (ColumnInsertedVMCallback == null)
+				ColumnInsertedVMCallback = new ColumnInsertedVMDelegate (columninserted_cb);
+			OverrideVirtualMethod (gtype, "column_inserted", ColumnInsertedVMCallback);
+		}
+
+		[GLib.DefaultSignalHandler(Type=typeof(Atk.NoOpObject), ConnectionMethod="OverrideColumnInserted")]
+		protected virtual void OnColumnInserted (int column, int num_inserted)
+		{
+			GLib.Value ret = GLib.Value.Empty;
+			GLib.ValueArray inst_and_params = new GLib.ValueArray (3);
+			GLib.Value[] vals = new GLib.Value [3];
+			vals [0] = new GLib.Value (this);
+			inst_and_params.Append (vals [0]);
+			vals [1] = new GLib.Value (column);
+			inst_and_params.Append (vals [1]);
+			vals [2] = new GLib.Value (num_inserted);
+			inst_and_params.Append (vals [2]);
+			g_signal_chain_from_overridden (inst_and_params.ArrayPtr, ref ret);
+			foreach (GLib.Value v in vals)
+				v.Dispose ();
+		}
+
+		[GLib.Signal("column_inserted")]
+		public event Atk.ColumnInsertedHandler ColumnInserted {
+			add {
+				GLib.Signal sig = GLib.Signal.Lookup (this, "column_inserted", typeof (Atk.ColumnInsertedArgs));
+				sig.AddDelegate (value);
+			}
+			remove {
+				GLib.Signal sig = GLib.Signal.Lookup (this, "column_inserted", typeof (Atk.ColumnInsertedArgs));
+				sig.RemoveDelegate (value);
+			}
+		}
+
+		[GLib.CDeclCallback]
+		delegate void ModelChangedVMDelegate (IntPtr table);
+
+		static ModelChangedVMDelegate ModelChangedVMCallback;
+
+		static void modelchanged_cb (IntPtr table)
+		{
+			try {
+				NoOpObject table_managed = GLib.Object.GetObject (table, false) as NoOpObject;
+				table_managed.OnModelChanged ();
+			} catch (Exception e) {
+				GLib.ExceptionManager.RaiseUnhandledException (e, false);
+			}
+		}
+
+		private static void OverrideModelChanged (GLib.GType gtype)
+		{
+			if (ModelChangedVMCallback == null)
+				ModelChangedVMCallback = new ModelChangedVMDelegate (modelchanged_cb);
+			OverrideVirtualMethod (gtype, "model_changed", ModelChangedVMCallback);
+		}
+
+		[GLib.DefaultSignalHandler(Type=typeof(Atk.NoOpObject), ConnectionMethod="OverrideModelChanged")]
+		protected virtual void OnModelChanged ()
+		{
+			GLib.Value ret = GLib.Value.Empty;
+			GLib.ValueArray inst_and_params = new GLib.ValueArray (1);
+			GLib.Value[] vals = new GLib.Value [1];
+			vals [0] = new GLib.Value (this);
+			inst_and_params.Append (vals [0]);
+			g_signal_chain_from_overridden (inst_and_params.ArrayPtr, ref ret);
+			foreach (GLib.Value v in vals)
+				v.Dispose ();
+		}
+
+		[GLib.Signal("model_changed")]
+		public event System.EventHandler ModelChanged {
+			add {
+				GLib.Signal sig = GLib.Signal.Lookup (this, "model_changed");
+				sig.AddDelegate (value);
+			}
+			remove {
+				GLib.Signal sig = GLib.Signal.Lookup (this, "model_changed");
+				sig.RemoveDelegate (value);
+			}
+		}
+
+		[GLib.CDeclCallback]
+		delegate void RowInsertedVMDelegate (IntPtr table, int row, int num_inserted);
+
+		static RowInsertedVMDelegate RowInsertedVMCallback;
+
+		static void rowinserted_cb (IntPtr table, int row, int num_inserted)
+		{
+			try {
+				NoOpObject table_managed = GLib.Object.GetObject (table, false) as NoOpObject;
+				table_managed.OnRowInserted (row, num_inserted);
+			} catch (Exception e) {
+				GLib.ExceptionManager.RaiseUnhandledException (e, false);
+			}
+		}
+
+		private static void OverrideRowInserted (GLib.GType gtype)
+		{
+			if (RowInsertedVMCallback == null)
+				RowInsertedVMCallback = new RowInsertedVMDelegate (rowinserted_cb);
+			OverrideVirtualMethod (gtype, "row_inserted", RowInsertedVMCallback);
+		}
+
+		[GLib.DefaultSignalHandler(Type=typeof(Atk.NoOpObject), ConnectionMethod="OverrideRowInserted")]
+		protected virtual void OnRowInserted (int row, int num_inserted)
+		{
+			GLib.Value ret = GLib.Value.Empty;
+			GLib.ValueArray inst_and_params = new GLib.ValueArray (3);
+			GLib.Value[] vals = new GLib.Value [3];
+			vals [0] = new GLib.Value (this);
+			inst_and_params.Append (vals [0]);
+			vals [1] = new GLib.Value (row);
+			inst_and_params.Append (vals [1]);
+			vals [2] = new GLib.Value (num_inserted);
+			inst_and_params.Append (vals [2]);
+			g_signal_chain_from_overridden (inst_and_params.ArrayPtr, ref ret);
+			foreach (GLib.Value v in vals)
+				v.Dispose ();
+		}
+
+		[GLib.Signal("row_inserted")]
+		public event Atk.RowInsertedHandler RowInserted {
+			add {
+				GLib.Signal sig = GLib.Signal.Lookup (this, "row_inserted", typeof (Atk.RowInsertedArgs));
+				sig.AddDelegate (value);
+			}
+			remove {
+				GLib.Signal sig = GLib.Signal.Lookup (this, "row_inserted", typeof (Atk.RowInsertedArgs));
+				sig.RemoveDelegate (value);
+			}
+		}
+
+		[GLib.CDeclCallback]
+		delegate void RowDeletedVMDelegate (IntPtr table, int row, int num_deleted);
+
+		static RowDeletedVMDelegate RowDeletedVMCallback;
+
+		static void rowdeleted_cb (IntPtr table, int row, int num_deleted)
+		{
+			try {
+				NoOpObject table_managed = GLib.Object.GetObject (table, false) as NoOpObject;
+				table_managed.OnRowDeleted (row, num_deleted);
+			} catch (Exception e) {
+				GLib.ExceptionManager.RaiseUnhandledException (e, false);
+			}
+		}
+
+		private static void OverrideRowDeleted (GLib.GType gtype)
+		{
+			if (RowDeletedVMCallback == null)
+				RowDeletedVMCallback = new RowDeletedVMDelegate (rowdeleted_cb);
+			OverrideVirtualMethod (gtype, "row_deleted", RowDeletedVMCallback);
+		}
+
+		[GLib.DefaultSignalHandler(Type=typeof(Atk.NoOpObject), ConnectionMethod="OverrideRowDeleted")]
+		protected virtual void OnRowDeleted (int row, int num_deleted)
+		{
+			GLib.Value ret = GLib.Value.Empty;
+			GLib.ValueArray inst_and_params = new GLib.ValueArray (3);
+			GLib.Value[] vals = new GLib.Value [3];
+			vals [0] = new GLib.Value (this);
+			inst_and_params.Append (vals [0]);
+			vals [1] = new GLib.Value (row);
+			inst_and_params.Append (vals [1]);
+			vals [2] = new GLib.Value (num_deleted);
+			inst_and_params.Append (vals [2]);
+			g_signal_chain_from_overridden (inst_and_params.ArrayPtr, ref ret);
+			foreach (GLib.Value v in vals)
+				v.Dispose ();
+		}
+
+		[GLib.Signal("row_deleted")]
+		public event Atk.RowDeletedHandler RowDeleted {
+			add {
+				GLib.Signal sig = GLib.Signal.Lookup (this, "row_deleted", typeof (Atk.RowDeletedArgs));
+				sig.AddDelegate (value);
+			}
+			remove {
+				GLib.Signal sig = GLib.Signal.Lookup (this, "row_deleted", typeof (Atk.RowDeletedArgs));
+				sig.RemoveDelegate (value);
+			}
+		}
