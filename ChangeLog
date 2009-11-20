@@ -1,3 +1,19 @@
+2009-11-20  Gabriel Burt  <gabriel.burt@gmail.com>
+
+	Make TextBufferSerializeFunc return byte []
+
+	* gtk/Makefile.am:
+	* gtk/textbuffer-serializefunc.patch:
+	* gtk/GtkSharp.TextBufferSerializeFuncNative.cs:
+	* gtk/TextBufferSerializeFunc.cs: Copy of generated bindings, fixed to
+	be usable. [Fixes #555495]
+
+	* gtk/TextBuffer.custom: Add binding of RegisterSerializeFormat since no
+	longer generated.
+
+	* gtk/Gtk.metadata: Remove GtkTextBufferSerializeFunc and
+	RegisterSerializeFormat so bindings not generated.
+
 2009-11-10  Gabriel Burt  <gabriel.burt@gmail.com>
 
 	* atk/atk-table.patch:

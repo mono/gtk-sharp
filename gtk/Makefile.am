@@ -31,6 +31,8 @@ sources = 				\
 	RadioActionEntry.cs		\
 	RowsReorderedHandler.cs		\
 	StockManager.cs			\
+	TextBufferSerializeFunc.cs		\
+	GtkSharp.TextBufferSerializeFuncNative.cs \
 	ThreadNotify.cs			\
 	ToggleActionEntry.cs		\
 	Timeout.cs			\
