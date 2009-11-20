@@ -1,5 +1,9 @@
 2009-11-20  Gabriel Burt  <gabriel.burt@gmail.com>
 
+	* bootstrap-2.12: Bump GTK_SHARP_VERSION to 2.12.10
+
+2009-11-20  Gabriel Burt  <gabriel.burt@gmail.com>
+
 	Make TextBufferSerializeFunc return byte []
 
 	* gtk/Makefile.am:
