@@ -73,7 +73,11 @@ namespace GLib {
 			IntPtr native_filename = Marshaller.StringToPtrGStrdup (filename);
 			IntPtr native_mode = Marshaller.StringToPtrGStrdup (mode);
 			IntPtr error;
-			handle = g_io_channel_new_file(native_filename, native_mode, out error);
+
+			if (Global.IsWindowsPlatform)
+				handle = g_io_channel_new_file_utf8(native_filename, native_mode, out error);
+			else
+				handle = g_io_channel_new_file(native_filename, native_mode, out error);
 			Marshaller.Free (native_filename);
 			Marshaller.Free (native_mode);
 			if (error != IntPtr.Zero) throw new GException (error);
@@ -326,6 +330,9 @@ namespace GLib {
 
 		[DllImport (libname)]
 		static extern IntPtr g_io_channel_new_file (IntPtr filename, IntPtr mode, out IntPtr error);
+
+		[DllImport (libname)]
+		static extern IntPtr g_io_channel_new_file_utf8 (IntPtr filename, IntPtr mode, out IntPtr error);
 
 		[DllImport (libname)]
 		static extern int g_io_channel_error_quark ();
