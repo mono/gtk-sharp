@@ -77,8 +77,21 @@ AC_ARG_ENABLE(debug, [  --enable-debug          Build debugger (.mdb) files for 
 )
 fi
 
+if test "x$platform_win32" = "xyes"; then
+	PLATFORM_FLAGS="-platform:x86"
+	AC_PATH_PROG(WIX, candle, no)
+	if test "x$WIX" = "xno" ; then
+		enable_msi = no
+	else
+		enable_msi = yes
+	fi
+else
+	PLATFORM_FLAGS=
+	enable_msi = no
+fi
+
 CSDEFINES='@VERSIONCSDEFINES@'
-CSFLAGS="$DEBUG_FLAGS $CSDEFINES $WIN64DEFINES"
+CSFLAGS="$DEBUG_FLAGS $CSDEFINES $WIN64DEFINES $PLATFORM_FLAGS"
 AC_SUBST(CSFLAGS)
 
 GTK_SHARP_VERSION_CFLAGS='@VERSIONCFLAGS@'
@@ -209,6 +222,7 @@ AM_CONDITIONAL(ENABLE_MONO_CAIRO, test "x$enable_mono_cairo" = "xyes")
 AM_CONDITIONAL(ENABLE_GLADE, test "x$enable_glade" = "xyes")
 AM_CONDITIONAL(ENABLE_DOTNET, test "x$enable_dotnet" = "xyes")
 AM_CONDITIONAL(ENABLE_MONODOC, test "x$enable_monodoc" = "xyes")
+AM_CONDITIONAL(ENABLE_MSI, test "x$enable_msi" = "xyes")
 AM_CONDITIONAL(ENABLE_MONOGETOPTIONS, test "x$has_mono" = "xtrue")
 
 AC_SUBST(CFLAGS)
@@ -217,7 +231,15 @@ AC_OUTPUT([
 AssemblyInfo.cs
 Makefile
 policy.config
-gtk-sharp-2.0.wxs
+msi/gtk-sharp-2.0.wxs
+msi/Makefile
+msi/unmanaged/Makefile
+msi/unmanaged/custom/Makefile
+msi/unmanaged/custom/etc/Makefile
+msi/unmanaged/custom/etc/gtk-2.0/Makefile
+msi/unmanaged/custom/share/Makefile
+msi/unmanaged/custom/share/icons/Makefile
+msi/unmanaged/custom/share/icons/hicolor/Makefile
 sources/Makefile
 parser/Makefile
 parser/gapi-2.0.pc

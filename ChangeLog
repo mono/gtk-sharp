@@ -1,3 +1,16 @@
+2010-01-11  Mike Kestner  <mkestner@novell.com>
+
+	* configure.in.in: checks for wix and add platform switch to win32
+	builds to ensure 32BIT+ and PE32 are set. [Fixes #473566]
+	* gtk-sharp-2.0.wxs.in: moved to msi dir and enhanced. see below.
+	* license.rtf: moved to msi dir
+	* Makefile.am: add new dir, move installer target to msi Makefile.
+	* msi/*: new installer building framework.  conditionally builds on wix
+	availability.  downloads official binary bundles to build an unmanaged
+	module. adds the .mo files to support translation [Fixes #513017]
+	updated gtk+ version to 2.16.6.  still depends on win32-installers build
+	for mono-posix and mono-cairo modules.
+
 2009-11-30  Mike Kestner  <mkestner@novell.com>
 
 	* generator/Method.cs: support win32_utf8_variant attribute on methods.
