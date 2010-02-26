@@ -101,3 +101,12 @@ atksharp_object_base_ref_relation_set (AtkObject *atk_obj)
 	return NULL;
 }
 
+
+void
+atksharp_object_override_get_attributes (GType gtype, gpointer cb)
+{
+	AtkObjectClass *klass = g_type_class_peek (gtype);
+	if (!klass)
+		klass = g_type_class_ref (gtype);
+	((AtkObjectClass *) klass)->get_attributes = cb;
+}

@@ -1,3 +1,7 @@
+2010-02-26  Mike Gorse  <mgorse@novell.com>
+
+	* atk/Object.custom, atk/glue/object.c: Bind GetAttributes.
+
 2010-01-11  Mike Kestner  <mkestner@novell.com>
 
 	* configure.in.in: checks for wix and add platform switch to win32

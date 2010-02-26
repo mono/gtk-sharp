@@ -227,8 +227,45 @@
 			return GLib.Object.GetObject (raw, true) as RelationSet;
 		}
 		
+		[DllImport("atksharpglue-2")]
+		static extern void atksharp_object_override_get_attributes (IntPtr type, GetAttributesDelegate cb);
+
+		[GLib.CDeclCallback]
+		delegate IntPtr GetAttributesDelegate (IntPtr raw);
+
+		static GetAttributesDelegate GetAttributesCallback;
+
+		static IntPtr GetAttributes_cb (IntPtr raw)
+		{
+			try {
+				Atk.Object obj = GLib.Object.GetObject (raw, false) as Atk.Object;
+				Attribute [] attribute_set = obj.OnGetAttributes ();
+				if (attribute_set == null)
+					return IntPtr.Zero;
+				return new GLib.SList (attribute_set, typeof (Attribute), false, false).Handle;
+			} catch (Exception e) {
+				GLib.ExceptionManager.RaiseUnhandledException (e, false);
+			}
+
+			return IntPtr.Zero;
+		}
+
+
+		static void OverrideGetAttributes (GLib.GType gtype)
+		{
+			if (GetAttributesCallback == null)
+				GetAttributesCallback = new GetAttributesDelegate (GetAttributes_cb);
+			atksharp_object_override_get_attributes (gtype.Val, GetAttributesCallback);
+		}
+
+		[GLib.DefaultSignalHandler (Type=typeof(Atk.Object), ConnectionMethod="OverrideGetAttributes")]
+		protected virtual Attribute [] OnGetAttributes () 
+		{
+			return new Attribute [0];
+		}
+
 		protected void EmitFocusEvent (bool gained)
 		{
 			GLib.Signal.Emit (this, "focus-event", gained);
 		}
-		
+
