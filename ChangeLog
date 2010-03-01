@@ -1,3 +1,9 @@
+2010-03-01  Mike Kestner  <mkestner@novell.com>
+
+	* msi/gtk-sharp-2.0.wxs.in: use the netfx runtime version checks.
+	Check for version 2.0 or greater.
+	* msi/Makefile.am: ref the netfx extension.
+
 2010-02-26  Mike Kestner  <mkestner@novell.com>
 
 	* configure.in.in: backport the mono-2 configure fallback.

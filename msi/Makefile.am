@@ -22,6 +22,6 @@ gtk-sharp-2.0.msi: gtk-sharp-2.0.wxs
 	done
 	cp $(top_builddir)/sample/GtkDemo/GtkDemo.exe binaries
 	candle -ext WixUIExtension gtk-sharp-2.0.wxs
-	light -cultures:en-us -ext WixUIExtension gtk-sharp-2.0.wixobj
+	light -cultures:en-us -ext WixUIExtension -ext WixNetFxExtension gtk-sharp-2.0.wixobj
 
 EXTRA_DIST = license.rtf

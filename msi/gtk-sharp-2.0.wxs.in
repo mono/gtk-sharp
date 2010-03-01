@@ -3,8 +3,9 @@
   <Product Id="*" Name="Gtk# for .Net @VERSION@" Language="1033" Version="@VERSION@" Manufacturer="Novell, Inc." UpgradeCode="6AAF2A04-27B0-4D70-8EBB-3EB225794B3F">
     <Package InstallerVersion="200" Compressed="yes" Description="Gtk# for .Net @VERSION@" Comments="Provides Gtk# and dependencies." />
     <Media Id="1" Cabinet="WixProject1.cab" EmbedCab="yes" />
-    <Condition Message="This setup requires the .NET Framework 1.1 or higher.">
-      <![CDATA[MsiNetAssemblySupport >= "1.1.4322"]]>
+    <PropertyRef Id="NETFRAMEWORK20" />
+    <Condition Message="This setup requires the .NET Framework 2.0 or higher.">
+      Installed or NETFRAMEWORK20
     </Condition>
     <Property Id="PREVIOUSVERSIONSINSTALLED" Secure="yes" />
     <Upgrade Id="6AAF2A04-27B0-4D70-8EBB-3EB225794B3F">
