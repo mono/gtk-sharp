@@ -1,3 +1,8 @@
+2010-03-08  Mike Kestner  <mkestner@novell.com>
+
+	* configure.in.in: revert the -platform flag usage on windows until
+	we can figure out why it breaks Gtk# on mono.
+
 2010-03-01  Mike Kestner  <mkestner@novell.com>
 
 	* msi/gtk-sharp-2.0.wxs.in: use the netfx runtime version checks.
