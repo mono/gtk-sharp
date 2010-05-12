@@ -1,3 +1,7 @@
+2010-05-12  Mike Kestner  <mkestner@novell.com>
+
+	* gtk/Gtk.metadata: mark a few more pango object retvals as owned.
+
 2010-05-10  Mike Kestner  <mkestner@novell.com>
 
 	* gtk/Gtk.metadata: mark Widget.CreatePangoLayout retval as owned.
