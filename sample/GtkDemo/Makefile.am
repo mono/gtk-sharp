@@ -76,7 +76,7 @@ image_names = \
 
 build_sources = $(addprefix $(srcdir)/, $(sources))
 build_images = $(addprefix $(srcdir)/, $(images))
-resources = $(addprefix /resource:, $(build_sources), $(build_images))
+resources = $(addprefix /resource:, $(build_images))
 
 GtkDemo.exe: $(build_sources) $(assemblies)
 	$(CSC) $(CSFLAGS) /out:GtkDemo.exe $(build_sources) $(references) $(resources)
