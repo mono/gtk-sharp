@@ -1115,9 +1115,10 @@
             <File Id="gspawnwin32helperconsole.exe" Name="gspawn-win32-helper-console.exe" Source="source\bin\gspawn-win32-helper-console.exe" Vital="yes"/>
             <File Id="gtkqueryimmodules2.0.exe" Name="gtk-query-immodules-2.0.exe" Source="source\bin\gtk-query-immodules-2.0.exe" Vital="yes"/>
             <File Id="intl.dll" Name="intl.dll" Source="source\bin\intl.dll" Vital="yes"/>
-            <File Id="libjpeg7.dll" Name="libjpeg7.dll" Source="source\bin\libjpeg-7.dll" Vital="yes"/>
+            <File Id="libjpeg7.dll" Name="libjpeg-7.dll" Source="source\bin\libjpeg-7.dll" Vital="yes"/>
             <File Id="libatk1.00.dll" Name="libatk-1.0-0.dll" Source="source\bin\libatk-1.0-0.dll" Vital="yes"/>
             <File Id="libcairo2.dll" Name="libcairo-2.dll" Source="source\bin\libcairo-2.dll" Vital="yes"/>
+            <File Id="libcroco.dll" Name="libcroco-0.6-3.dll" Source="source\bin\libcroco-0.6-3.dll" Vital="yes"/>
             <File Id="libfontconfig1.dll" Name="libfontconfig-1.dll" Source="source\bin\libfontconfig-1.dll" Vital="yes"/>
             <File Id="libgailutil18.dll" Name="libgailutil-18.dll" Source="source\bin\libgailutil-18.dll" Vital="yes"/>
             <File Id="libgdkwin322.00.dll" Name="libgdk-win32-2.0-0.dll" Source="source\bin\libgdk-win32-2.0-0.dll" Vital="yes"/>
@@ -1134,7 +1135,7 @@
             <File Id="libpangowin321.00.dll" Name="libpangowin32-1.0-0.dll" Source="source\bin\libpangowin32-1.0-0.dll" Vital="yes"/>
             <File Id="libpng120.dll" Name="libpng12-0.dll" Source="source\bin\libpng12-0.dll" Vital="yes"/>
             <File Id="librsvg22.dll" Name="librsvg-2-2.dll" Source="source\bin\librsvg-2-2.dll" Vital="yes"/>
-            <File Id="libtiff3.dll" Name="libtiff3.dll" Source="source\bin\libtiff-3.dll" Vital="yes"/>
+            <File Id="libtiff3.dll" Name="libtiff-3.dll" Source="source\bin\libtiff-3.dll" Vital="yes"/>
             <File Id="libtiffxx3.dll" Name="libtiffxx3.dll" Source="source\bin\libtiffxx-3.dll" Vital="yes"/>
             <File Id="libxml2.dll" Name="libxml2-2.dll" Source="source\bin\libxml2-2.dll" Vital="yes"/>
             <File Id="pangoquerymodules.exe" Name="pango-querymodules.exe" Source="source\bin\pango-querymodules.exe" Vital="yes"/>
