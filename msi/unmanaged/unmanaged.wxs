@@ -1119,6 +1119,7 @@
             <File Id="libatk1.00.dll" Name="libatk-1.0-0.dll" Source="source\bin\libatk-1.0-0.dll" Vital="yes"/>
             <File Id="libcairo2.dll" Name="libcairo-2.dll" Source="source\bin\libcairo-2.dll" Vital="yes"/>
             <File Id="libcroco.dll" Name="libcroco-0.6-3.dll" Source="source\bin\libcroco-0.6-3.dll" Vital="yes"/>
+            <File Id="libgsf.dll" Name="libgsf-1-114.dll" Source="source\bin\libgsf-1-114.dll" Vital="yes"/>
             <File Id="libfontconfig1.dll" Name="libfontconfig-1.dll" Source="source\bin\libfontconfig-1.dll" Vital="yes"/>
             <File Id="libgailutil18.dll" Name="libgailutil-18.dll" Source="source\bin\libgailutil-18.dll" Vital="yes"/>
             <File Id="libgdkwin322.00.dll" Name="libgdk-win32-2.0-0.dll" Source="source\bin\libgdk-win32-2.0-0.dll" Vital="yes"/>
