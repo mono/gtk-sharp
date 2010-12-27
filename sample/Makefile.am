@@ -27,87 +27,87 @@ TARGETS = polarfixed.exe custom-widget.exe custom-cellrenderer.exe gtk-hello-wor
 DEBUGS = $(addsuffix .mdb, $(TARGETS))
 
 assemblies=$(top_builddir)/glib/glib-sharp.dll $(top_builddir)/pango/pango-sharp.dll $(top_builddir)/atk/atk-sharp.dll $(top_builddir)/gdk/gdk-sharp.dll $(top_builddir)/gtk/gtk-sharp.dll $(GLADE_ASSEMBLY)
-references=$(addprefix /r:, $(assemblies))
+references=$(addprefix -r:, $(assemblies))
 
 noinst_SCRIPTS = $(TARGETS)
 CLEANFILES = $(TARGETS) $(DEBUGS)
 
 gtk-hello-world.exe: $(srcdir)/HelloWorld.cs $(assemblies)
-	$(CSC)  /out:gtk-hello-world.exe $(references) $(srcdir)/HelloWorld.cs
+	$(CSC)  -out:gtk-hello-world.exe $(references) $(srcdir)/HelloWorld.cs
 
 button.exe: $(srcdir)/ButtonApp.cs $(assemblies)
-	$(CSC)  /out:button.exe $(references) $(srcdir)/ButtonApp.cs
+	$(CSC)  -out:button.exe $(references) $(srcdir)/ButtonApp.cs
 
 calendar.exe: $(srcdir)/CalendarApp.cs $(assemblies)
-	$(CSC)  /out:calendar.exe $(references) $(srcdir)/CalendarApp.cs
+	$(CSC)  -out:calendar.exe $(references) $(srcdir)/CalendarApp.cs
 
 subclass.exe: $(srcdir)/Subclass.cs $(assemblies)
-	$(CSC)  /out:subclass.exe $(references) $(srcdir)/Subclass.cs
+	$(CSC)  -out:subclass.exe $(references) $(srcdir)/Subclass.cs
 
 menu.exe: $(srcdir)/Menu.cs $(assemblies)
-	$(CSC)  /out:menu.exe $(references) $(srcdir)/Menu.cs
+	$(CSC)  -out:menu.exe $(references) $(srcdir)/Menu.cs
 
 size.exe: $(srcdir)/Size.cs $(assemblies)
-	$(CSC)  /out:size.exe $(references) $(srcdir)/Size.cs
+	$(CSC)  -out:size.exe $(references) $(srcdir)/Size.cs
 
 scribble.exe: $(srcdir)/Scribble.cs $(assemblies)
-	$(CSC)  /out:scribble.exe $(references) $(srcdir)/Scribble.cs
+	$(CSC)  -out:scribble.exe $(references) $(srcdir)/Scribble.cs
 
 scribble-xinput.exe: $(srcdir)/ScribbleXInput.cs $(assemblies)
-	$(CSC)  /out:scribble-xinput.exe $(references) $(srcdir)/ScribbleXInput.cs
+	$(CSC)  -out:scribble-xinput.exe $(references) $(srcdir)/ScribbleXInput.cs
 
 treeviewdemo.exe: $(srcdir)/TreeViewDemo.cs $(assemblies)
-	$(CSC)  /out:treeviewdemo.exe $(references) $(srcdir)/TreeViewDemo.cs
+	$(CSC)  -out:treeviewdemo.exe $(references) $(srcdir)/TreeViewDemo.cs
 
 managedtreeviewdemo.exe: $(srcdir)/ManagedTreeViewDemo.cs $(assemblies)
-	$(CSC)  /out:managedtreeviewdemo.exe $(references) $(srcdir)/ManagedTreeViewDemo.cs
+	$(CSC)  -out:managedtreeviewdemo.exe $(references) $(srcdir)/ManagedTreeViewDemo.cs
 
 nodeviewdemo.exe: $(srcdir)/NodeViewDemo.cs $(assemblies)
-	$(CSC)  /out:nodeviewdemo.exe $(references) $(srcdir)/NodeViewDemo.cs
+	$(CSC)  -out:nodeviewdemo.exe $(references) $(srcdir)/NodeViewDemo.cs
 
 treemodeldemo.exe: $(srcdir)/TreeModelDemo.cs $(assemblies)
-	$(CSC)  /out:treemodeldemo.exe $(references) $(srcdir)/TreeModelDemo.cs
+	$(CSC)  -out:treemodeldemo.exe $(references) $(srcdir)/TreeModelDemo.cs
 
 glade-viewer.exe: $(srcdir)/GladeViewer.cs $(assemblies)
-	$(CSC)  /out:glade-viewer.exe $(references) $(srcdir)/GladeViewer.cs
+	$(CSC)  -out:glade-viewer.exe $(references) $(srcdir)/GladeViewer.cs
 
 glade-test.exe: $(srcdir)/GladeTest.cs $(srcdir)/test.glade $(assemblies)
-	$(CSC)  /resource:$(srcdir)/test.glade,test.glade /out:glade-test.exe $(references) $(srcdir)/GladeTest.cs
+	$(CSC)  -resource:$(srcdir)/test.glade,test.glade -out:glade-test.exe $(references) $(srcdir)/GladeTest.cs
 
 cairo-sample.exe: $(srcdir)/CairoSample.cs $(assemblies)
-	$(CSC) /out:cairo-sample.exe $(references) $(cairo_ref) $(srcdir)/CairoSample.cs
+	$(CSC) -out:cairo-sample.exe $(references) $(cairo_ref) $(srcdir)/CairoSample.cs
 
 testdnd.exe: $(srcdir)/TestDnd.cs $(assemblies)
-	$(CSC) /debug /unsafe /out:testdnd.exe $(references) $(srcdir)/TestDnd.cs
+	$(CSC) -debug -unsafe -out:testdnd.exe $(references) $(srcdir)/TestDnd.cs
 
 custom-cellrenderer.exe: $(srcdir)/CustomCellRenderer.cs $(assemblies)
-	$(CSC) /debug /out:custom-cellrenderer.exe $(references) $(srcdir)/CustomCellRenderer.cs
+	$(CSC) -debug -out:custom-cellrenderer.exe $(references) $(srcdir)/CustomCellRenderer.cs
 
 dotnet_references = $(references) $(addprefix -r:, $(DOTNET_ASSEMBLY)) -r:System.Drawing.dll
 
 drawing-sample.exe: $(srcdir)/DrawingSample.cs $(assemblies) $(DOTNET_ASSEMBLIES)
-	$(CSC) /debug /out:drawing-sample.exe $(dotnet_references) $(srcdir)/DrawingSample.cs
+	$(CSC) -debug -out:drawing-sample.exe $(dotnet_references) $(srcdir)/DrawingSample.cs
 
 custom-widget.exe: $(srcdir)/CustomWidget.cs $(assemblies)
-	$(CSC) /debug /out:custom-widget.exe $(references) $(srcdir)/CustomWidget.cs
+	$(CSC) -debug -out:custom-widget.exe $(references) $(srcdir)/CustomWidget.cs
 
 actions.exe: $(srcdir)/Actions.cs
-	$(CSC) /debug /unsafe /out:actions.exe $(references) $(srcdir)/Actions.cs
+	$(CSC) -debug -unsafe -out:actions.exe $(references) $(srcdir)/Actions.cs
 
 polarfixed.exe: $(srcdir)/PolarFixed.cs $(assemblies)
-	$(CSC) /debug /out:polarfixed.exe $(references) $(srcdir)/PolarFixed.cs
+	$(CSC) -debug -out:polarfixed.exe $(references) $(srcdir)/PolarFixed.cs
 
 spawn.exe: $(srcdir)/SpawnTests.cs $(assemblies)
-	$(CSC)  /out:spawn.exe $(references) $(srcdir)/SpawnTests.cs
+	$(CSC)  -out:spawn.exe $(references) $(srcdir)/SpawnTests.cs
 
 assistant.exe: $(srcdir)/Assistant.cs $(assemblies)
-	$(CSC)  /out:assistant.exe $(references) $(srcdir)/Assistant.cs
+	$(CSC)  -out:assistant.exe $(references) $(srcdir)/Assistant.cs
 
 registerprop.exe: $(srcdir)/PropertyRegistration.cs $(assemblies)
-	$(CSC)  /out:registerprop.exe $(references) $(srcdir)/PropertyRegistration.cs
+	$(CSC)  -out:registerprop.exe $(references) $(srcdir)/PropertyRegistration.cs
 
 gexceptiontest.exe: $(srcdir)/GExceptionTest.cs $(assemblies)
-	$(CSC)  /out:gexceptiontest.exe $(references) $(srcdir)/GExceptionTest.cs
+	$(CSC)  -out:gexceptiontest.exe $(references) $(srcdir)/GExceptionTest.cs
 
 EXTRA_DIST = 				\
 	HelloWorld.cs			\
