@@ -8,10 +8,10 @@ else
 pkg = 
 endif
 
-INCLUDE_API = ../pango/pango-api.xml ../atk/atk-api.xml ../gdk/gdk-api.xml ../gtk/gtk-api.xml
+INCLUDE_API = $(top_builddir)/pango/pango-api.xml $(top_builddir)/atk/atk-api.xml $(top_builddir)/gdk/gdk-api.xml $(top_builddir)/gtk/gtk-api.xml
 METADATA = Glade.metadata
 SYMBOLS =
-references = ../glib/glib-sharp.dll ../pango/pango-sharp.dll ../atk/atk-sharp.dll ../gdk/gdk-sharp.dll ../gtk/gtk-sharp.dll
+references = $(top_builddir)/glib/glib-sharp.dll $(top_builddir)/pango/pango-sharp.dll $(top_builddir)/atk/atk-sharp.dll $(top_builddir)/gdk/gdk-sharp.dll $(top_builddir)/gtk/gtk-sharp.dll
 glue_includes = glade/glade.h,glade/glade-parser.h
 
 sources =				\
@@ -25,5 +25,5 @@ customs =				\
 
 add_dist = glade-sharp-2.0.pc.in
 
-include ../Makefile.include
+include $(top_srcdir)/Makefile.include
 

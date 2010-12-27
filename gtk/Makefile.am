@@ -11,9 +11,9 @@ pkgconfigdir=$(libdir)/pkgconfig
 pkgconfig_DATA=gtk-sharp-2.0.pc
 
 SYMBOLS = gtk-symbols.xml
-INCLUDE_API = $(srcdir)/../glib/glib-api.xml ../pango/pango-api.xml ../atk/atk-api.xml ../gdk/gdk-api.xml
+INCLUDE_API = $(top_srcdir)/glib/glib-api.xml $(top_builddir)/pango/pango-api.xml $(top_builddir)/atk/atk-api.xml $(top_builddir)/gdk/gdk-api.xml
 METADATA = Gtk.metadata
-references = ../glib/glib-sharp.dll ../pango/pango-sharp.dll ../atk/atk-sharp.dll ../gdk/gdk-sharp.dll $(local_mono_cairo)
+references = $(top_builddir)/glib/glib-sharp.dll $(top_builddir)/pango/pango-sharp.dll $(top_builddir)/atk/atk-sharp.dll $(top_builddir)/gdk/gdk-sharp.dll $(local_mono_cairo)
 glue_includes = gtk/gtk.h
 
 sources = 				\
@@ -148,5 +148,5 @@ customs = 				\
 
 add_dist = gtk-sharp-2.0.pc.in
 
-include ../Makefile.include
+include $(top_srcdir)/Makefile.include
 

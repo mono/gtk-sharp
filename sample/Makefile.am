@@ -8,7 +8,7 @@ endif
 
 if ENABLE_GLADE
 GLADE_TARGETS=glade-viewer.exe glade-test.exe
-GLADE_ASSEMBLY=../glade/glade-sharp.dll
+GLADE_ASSEMBLY=$(top_builddir)/glade/glade-sharp.dll
 else
 GLADE_TARGETS=
 GLADE_ASSEMBLY=
@@ -16,7 +16,7 @@ endif
 
 if ENABLE_DOTNET
 DOTNET_TARGETS=drawing-sample.exe
-DOTNET_ASSEMBLY=../gtkdotnet/gtk-dotnet.dll
+DOTNET_ASSEMBLY=$(top_builddir)/gtkdotnet/gtk-dotnet.dll
 else
 DOTNET_TARGETS=
 DOTNET_ASSEMBLY=
@@ -26,7 +26,7 @@ TARGETS = polarfixed.exe custom-widget.exe custom-cellrenderer.exe gtk-hello-wor
 
 DEBUGS = $(addsuffix .mdb, $(TARGETS))
 
-assemblies=../glib/glib-sharp.dll ../pango/pango-sharp.dll ../atk/atk-sharp.dll ../gdk/gdk-sharp.dll ../gtk/gtk-sharp.dll $(GLADE_ASSEMBLY)
+assemblies=$(top_builddir)/glib/glib-sharp.dll $(top_builddir)/pango/pango-sharp.dll $(top_builddir)/atk/atk-sharp.dll $(top_builddir)/gdk/gdk-sharp.dll $(top_builddir)/gtk/gtk-sharp.dll $(GLADE_ASSEMBLY)
 references=$(addprefix /r:, $(assemblies))
 
 noinst_SCRIPTS = $(TARGETS)

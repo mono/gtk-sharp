@@ -9,7 +9,7 @@ endif
 pkg = pango
 METADATA = Pango.metadata
 SYMBOLS = pango-symbols.xml
-references = ../glib/glib-sharp.dll $(local_mono_cairo)
+references = $(top_builddir)/glib/glib-sharp.dll $(local_mono_cairo)
 glue_includes = pango/pango.h
 
 sources =			\
@@ -59,5 +59,5 @@ customs =			\
 
 add_dist =
 
-include ../Makefile.include
+include $(top_srcdir)/Makefile.include
 

@@ -3,7 +3,7 @@ SUBDIRS = . glue
 pkg = atk
 METADATA = Atk.metadata
 SYMBOLS =
-references = ../glib/glib-sharp.dll
+references = $(top_builddir)/glib/glib-sharp.dll
 
 glue_includes = atk/atk.h
 
@@ -29,4 +29,4 @@ customs =			\
 
 add_dist =
 
-include ../Makefile.include
+include $(top_srcdir)/Makefile.include
