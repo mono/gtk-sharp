@@ -77,11 +77,11 @@ AC_ARG_ENABLE(debug, [  --enable-debug          Build debugger (.mdb) files for 
 )
 fi
 
-enable_msi = no
+enable_msi="no"
 if test "x$platform_win32" = "xyes"; then
 	AC_PATH_PROG(WIX, candle, no)
 	if test "x$WIX" != "xno" ; then
-		enable_msi = yes
+		enable_msi="yes"
 	fi
 fi
 
@@ -124,7 +124,7 @@ if test "x$AL" = "xno" ; then
 fi
 
 if test "x$has_mono" = "xtrue"; then
-GACUTIL_FLAGS='/package $(PACKAGE_VERSION) /gacdir $(DESTDIR)$(prefix)/lib'
+GACUTIL_FLAGS='-package $(PACKAGE_VERSION) -gacdir $(DESTDIR)$(prefix)/lib'
 GENERATED_SOURCES=generated/*.cs
 AC_PATH_PROG(RUNTIME, mono, no)
 
@@ -141,7 +141,7 @@ else
 	LIB_PREFIX=.so
 	LIB_SUFFIX=
 fi
-SDCHECK="`$GACUTIL /l |grep ^System.Drawing, | head -n1 |cut -f1 -d','`"
+SDCHECK="`$GACUTIL -l |grep ^System.Drawing, | head -n1 |cut -f1 -d','`"
 if test "x$SDCHECK" = "xSystem.Drawing"; then
 	enable_dotnet=yes
 else
