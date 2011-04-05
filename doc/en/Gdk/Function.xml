@@ -1,5 +1,6 @@
 <Type Name="Function" FullName="Gdk.Function">
   <TypeSignature Language="C#" Maintainer="auto" Value="public enum Function" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed Function extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>gdk-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -7,10 +8,6 @@
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
-  <Docs>
-    <summary>Determines how bit values for the source pixels are combine with the bit values for destination pixels to produce the final result.</summary>
-    <remarks>The sixteen values here correspond to the 16 different possible 2x2 truth tables. Only a couple of these values are usually useful; for colored images, only Copy, Xor and Invert are generally useful. For bitmaps, And and Or are also useful.</remarks>
-  </Docs>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
@@ -19,62 +16,18 @@
       <AttributeName>GLib.GType(typeof(Gdk.FunctionGType))</AttributeName>
     </Attribute>
   </Attributes>
+  <Docs>
+    <summary>Determines how bit values for the source pixels are combine with the bit values for destination pixels to produce the final result.</summary>
+    <remarks>The sixteen values here correspond to the 16 different possible 2x2 truth tables. Only a couple of these values are usually useful; for colored images, only Copy, Xor and Invert are generally useful. For bitmaps, And and Or are also useful.</remarks>
+  </Docs>
   <Members>
-    <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="Copy" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gdk.Function</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Copy</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Invert">
-      <MemberSignature Language="C#" Value="Invert" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gdk.Function</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Invert</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Xor">
-      <MemberSignature Language="C#" Value="Xor" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gdk.Function</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Xor</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Clear">
-      <MemberSignature Language="C#" Value="Clear" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gdk.Function</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Clear</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="And">
       <MemberSignature Language="C#" Value="And" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Function And = int32(4)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gdk.Function</ReturnType>
       </ReturnValue>
@@ -85,22 +38,13 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="AndReverse">
-      <MemberSignature Language="C#" Value="AndReverse" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gdk.Function</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>And Reverse</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AndInvert">
       <MemberSignature Language="C#" Value="AndInvert" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Function AndInvert = int32(6)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gdk.Function</ReturnType>
       </ReturnValue>
@@ -111,61 +55,64 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="Noop">
-      <MemberSignature Language="C#" Value="Noop" />
+    <Member MemberName="AndReverse">
+      <MemberSignature Language="C#" Value="AndReverse" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Function AndReverse = int32(5)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gdk.Function</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>No op</summary>
+        <summary>And Reverse</summary>
         <remarks>
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="Or">
-      <MemberSignature Language="C#" Value="Or" />
+    <Member MemberName="Clear">
+      <MemberSignature Language="C#" Value="Clear" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Function Clear = int32(3)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gdk.Function</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Or</summary>
+        <summary>Clear</summary>
         <remarks>
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="Equiv">
-      <MemberSignature Language="C#" Value="Equiv" />
+    <Member MemberName="Copy">
+      <MemberSignature Language="C#" Value="Copy" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Function Copy = int32(0)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gdk.Function</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Equiv</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OrReverse">
-      <MemberSignature Language="C#" Value="OrReverse" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gdk.Function</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Or Reverse</summary>
+        <summary>Copy</summary>
         <remarks>
         </remarks>
       </Docs>
     </Member>
     <Member MemberName="CopyInvert">
       <MemberSignature Language="C#" Value="CopyInvert" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Function CopyInvert = int32(11)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gdk.Function</ReturnType>
       </ReturnValue>
@@ -176,22 +123,47 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="OrInvert">
-      <MemberSignature Language="C#" Value="OrInvert" />
+    <Member MemberName="Equiv">
+      <MemberSignature Language="C#" Value="Equiv" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Function Equiv = int32(9)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gdk.Function</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Or Invert</summary>
+        <summary>Equiv</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Invert">
+      <MemberSignature Language="C#" Value="Invert" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Function Invert = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Function</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Invert</summary>
         <remarks>
         </remarks>
       </Docs>
     </Member>
     <Member MemberName="Nand">
       <MemberSignature Language="C#" Value="Nand" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Function Nand = int32(13)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gdk.Function</ReturnType>
       </ReturnValue>
@@ -202,9 +174,30 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="Noop">
+      <MemberSignature Language="C#" Value="Noop" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Function Noop = int32(7)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Function</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>No op</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Nor">
       <MemberSignature Language="C#" Value="Nor" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Function Nor = int32(14)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gdk.Function</ReturnType>
       </ReturnValue>
@@ -215,15 +208,87 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="Or">
+      <MemberSignature Language="C#" Value="Or" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Function Or = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Function</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Or</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OrInvert">
+      <MemberSignature Language="C#" Value="OrInvert" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Function OrInvert = int32(12)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Function</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Or Invert</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OrReverse">
+      <MemberSignature Language="C#" Value="OrReverse" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Function OrReverse = int32(10)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Function</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Or Reverse</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Set">
       <MemberSignature Language="C#" Value="Set" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Function Set = int32(15)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gdk.Function</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
         <summary>Set</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Xor">
+      <MemberSignature Language="C#" Value="Xor" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Function Xor = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Function</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Xor</summary>
         <remarks>
         </remarks>
       </Docs>

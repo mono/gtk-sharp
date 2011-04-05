@@ -1,5 +1,6 @@
 <Type Name="PageSetup" FullName="Gtk.PageSetup">
   <TypeSignature Language="C#" Value="public class PageSetup : GLib.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PageSetup extends GLib.Object" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -8,10 +9,19 @@
     <BaseTypeName>GLib.Object</BaseTypeName>
   </Base>
   <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+    <since version="Gtk# 2.10" />
+  </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public PageSetup ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -20,7 +30,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="protected PageSetup (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Obsolete</AttributeName>
@@ -37,7 +51,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public PageSetup (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="raw" Type="System.IntPtr" />
       </Parameters>
@@ -47,9 +65,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public PageSetup (string file_name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string file_name) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="file_name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="file_name">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Copy">
       <MemberSignature Language="C#" Value="public Gtk.PageSetup Copy ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gtk.PageSetup Copy() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.PageSetup</ReturnType>
       </ReturnValue>
@@ -62,7 +100,11 @@
     </Member>
     <Member MemberName="GetBottomMargin">
       <MemberSignature Language="C#" Value="public double GetBottomMargin (Gtk.Unit unit);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64 GetBottomMargin(valuetype Gtk.Unit unit) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -78,7 +120,11 @@
     </Member>
     <Member MemberName="GetLeftMargin">
       <MemberSignature Language="C#" Value="public double GetLeftMargin (Gtk.Unit unit);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64 GetLeftMargin(valuetype Gtk.Unit unit) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -94,7 +140,11 @@
     </Member>
     <Member MemberName="GetPageHeight">
       <MemberSignature Language="C#" Value="public double GetPageHeight (Gtk.Unit unit);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64 GetPageHeight(valuetype Gtk.Unit unit) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -110,7 +160,11 @@
     </Member>
     <Member MemberName="GetPageWidth">
       <MemberSignature Language="C#" Value="public double GetPageWidth (Gtk.Unit unit);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64 GetPageWidth(valuetype Gtk.Unit unit) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -126,7 +180,11 @@
     </Member>
     <Member MemberName="GetPaperHeight">
       <MemberSignature Language="C#" Value="public double GetPaperHeight (Gtk.Unit unit);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64 GetPaperHeight(valuetype Gtk.Unit unit) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -142,7 +200,11 @@
     </Member>
     <Member MemberName="GetPaperWidth">
       <MemberSignature Language="C#" Value="public double GetPaperWidth (Gtk.Unit unit);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64 GetPaperWidth(valuetype Gtk.Unit unit) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -158,7 +220,11 @@
     </Member>
     <Member MemberName="GetRightMargin">
       <MemberSignature Language="C#" Value="public double GetRightMargin (Gtk.Unit unit);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64 GetRightMargin(valuetype Gtk.Unit unit) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -174,7 +240,11 @@
     </Member>
     <Member MemberName="GetTopMargin">
       <MemberSignature Language="C#" Value="public double GetTopMargin (Gtk.Unit unit);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64 GetTopMargin(valuetype Gtk.Unit unit) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -189,8 +259,12 @@
       </Docs>
     </Member>
     <Member MemberName="GType">
-      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; };" />
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.GType</ReturnType>
       </ReturnValue>
@@ -201,8 +275,12 @@
       </Docs>
     </Member>
     <Member MemberName="Orientation">
-      <MemberSignature Language="C#" Value="public Gtk.PageOrientation Orientation { set; get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.PageOrientation Orientation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.PageOrientation Orientation" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.PageOrientation</ReturnType>
       </ReturnValue>
@@ -213,8 +291,12 @@
       </Docs>
     </Member>
     <Member MemberName="PaperSize">
-      <MemberSignature Language="C#" Value="public Gtk.PaperSize PaperSize { set; get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.PaperSize PaperSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.PaperSize PaperSize" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.PaperSize</ReturnType>
       </ReturnValue>
@@ -225,8 +307,12 @@
       </Docs>
     </Member>
     <Member MemberName="PaperSizeAndDefaultMargins">
-      <MemberSignature Language="C#" Value="public Gtk.PaperSize PaperSizeAndDefaultMargins { set; };" />
+      <MemberSignature Language="C#" Value="public Gtk.PaperSize PaperSizeAndDefaultMargins { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.PaperSize PaperSizeAndDefaultMargins" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.PaperSize</ReturnType>
       </ReturnValue>
@@ -238,7 +324,11 @@
     </Member>
     <Member MemberName="SetBottomMargin">
       <MemberSignature Language="C#" Value="public void SetBottomMargin (double margin, Gtk.Unit unit);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetBottomMargin(float64 margin, valuetype Gtk.Unit unit) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -255,7 +345,11 @@
     </Member>
     <Member MemberName="SetLeftMargin">
       <MemberSignature Language="C#" Value="public void SetLeftMargin (double margin, Gtk.Unit unit);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetLeftMargin(float64 margin, valuetype Gtk.Unit unit) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -272,7 +366,11 @@
     </Member>
     <Member MemberName="SetRightMargin">
       <MemberSignature Language="C#" Value="public void SetRightMargin (double margin, Gtk.Unit unit);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetRightMargin(float64 margin, valuetype Gtk.Unit unit) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -289,7 +387,11 @@
     </Member>
     <Member MemberName="SetTopMargin">
       <MemberSignature Language="C#" Value="public void SetTopMargin (double margin, Gtk.Unit unit);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTopMargin(float64 margin, valuetype Gtk.Unit unit) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -304,21 +406,13 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public PageSetup (string file_name);" />
-      <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="file_name" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="file_name">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ToFile">
       <MemberSignature Language="C#" Value="public bool ToFile (string file_name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool ToFile(string file_name) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -333,9 +427,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
-    <since version="Gtk# 2.10" />
-  </Docs>
 </Type>

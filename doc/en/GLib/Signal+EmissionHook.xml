@@ -1,0 +1,25 @@
+<Type Name="Signal+EmissionHook" FullName="GLib.Signal+EmissionHook">
+  <TypeSignature Language="C#" Value="public delegate bool Signal.EmissionHook(Signal.InvocationHint ihint, object[] inst_and_param_values);" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi sealed Signal/EmissionHook extends System.MulticastDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>glib-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="ihint" Type="GLib.Signal+InvocationHint" />
+    <Parameter Name="inst_and_param_values" Type="System.Object[]" />
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Boolean</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <param name="ihint">To be added.</param>
+    <param name="inst_and_param_values">To be added.</param>
+    <summary>To be added.</summary>
+    <returns>To be added.</returns>
+    <remarks>To be added.</remarks>
+  </Docs>
+</Type>

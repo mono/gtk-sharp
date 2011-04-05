@@ -1,5 +1,6 @@
 <Type Name="EditableTextImplementor" FullName="Atk.EditableTextImplementor">
   <TypeSignature Language="C#" Value="public interface EditableTextImplementor : GLib.IWrapper" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract EditableTextImplementor implements class GLib.IWrapper" />
   <AssemblyInfo>
     <AssemblyName>atk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -14,10 +15,19 @@
       <AttributeName>GLib.GInterface(typeof(Atk.EditableTextAdapter))</AttributeName>
     </Attribute>
   </Attributes>
+  <Docs>
+    <summary>EditableText implementor interface.</summary>
+    <remarks>The implementable portion of the <see cref="T:Atk.EditableText" /> interface.</remarks>
+    <since version="Gtk# 2.12" />
+  </Docs>
   <Members>
     <Member MemberName="CopyText">
       <MemberSignature Language="C#" Value="public void CopyText (int start_pos, int end_pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void CopyText(int32 start_pos, int32 end_pos) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -34,7 +44,11 @@
     </Member>
     <Member MemberName="CutText">
       <MemberSignature Language="C#" Value="public void CutText (int start_pos, int end_pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void CutText(int32 start_pos, int32 end_pos) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -51,7 +65,11 @@
     </Member>
     <Member MemberName="DeleteText">
       <MemberSignature Language="C#" Value="public void DeleteText (int start_pos, int end_pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DeleteText(int32 start_pos, int32 end_pos) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -68,7 +86,11 @@
     </Member>
     <Member MemberName="InsertText">
       <MemberSignature Language="C#" Value="public void InsertText (string str1ng, ref int position);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void InsertText(string str1ng, int32 position) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -85,7 +107,11 @@
     </Member>
     <Member MemberName="PasteText">
       <MemberSignature Language="C#" Value="public void PasteText (int position);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void PasteText(int32 position) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -100,7 +126,11 @@
     </Member>
     <Member MemberName="SetRunAttributes">
       <MemberSignature Language="C#" Value="public bool SetRunAttributes (GLib.SList attrib_set, int start_offset, int end_offset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetRunAttributes(class GLib.SList attrib_set, int32 start_offset, int32 end_offset) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -119,8 +149,12 @@
       </Docs>
     </Member>
     <Member MemberName="TextContents">
-      <MemberSignature Language="C#" Value="public string TextContents { set; };" />
+      <MemberSignature Language="C#" Value="public string TextContents { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string TextContents" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -131,9 +165,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>EditableText implementor interface.</summary>
-    <remarks>The implementable portion of the <see cref="T:Atk.EditableText" /> interface.</remarks>
-    <since version="Gtk# 2.12" />
-  </Docs>
 </Type>

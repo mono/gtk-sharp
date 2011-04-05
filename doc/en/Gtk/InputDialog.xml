@@ -1,5 +1,6 @@
 <Type Name="InputDialog" FullName="Gtk.InputDialog">
   <TypeSignature Language="C#" Maintainer="John Luke" Value="public class InputDialog : Gtk.Dialog" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit InputDialog extends Gtk.Dialog" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -7,6 +8,11 @@
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Dialog</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
   <Docs>
     <summary>Configure devices for the XInput extension.</summary>
     <remarks>
@@ -26,30 +32,14 @@
 			</para>
     </remarks>
   </Docs>
-  <Base>
-    <BaseTypeName>Gtk.Dialog</BaseTypeName>
-  </Base>
-  <Interfaces>
-  </Interfaces>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public InputDialog (IntPtr raw);" />
-      <MemberType>Constructor</MemberType>
-      <ReturnValue />
-      <Parameters>
-        <Parameter Name="raw" Type="System.IntPtr" />
-      </Parameters>
-      <Docs>
-        <summary>Internal constructor</summary>
-        <param name="raw">Pointer to the C object.</param>
-        <remarks>
-          <para>This is an internal constructor, and should not be used by user code.</para>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public InputDialog ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue />
       <Parameters />
       <Docs>
@@ -57,9 +47,76 @@
         <remarks>Creates an instance of <see cref="T:Gtk.InputDialog" /></remarks>
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected InputDialog (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public InputDialog (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CloseButton">
+      <MemberSignature Language="C#" Value="public Gtk.Button CloseButton { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Button CloseButton" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Button</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "close window" button in this dialog.</summary>
+        <value>a <see cref="T:Gtk.Button" /></value>
+        <remarks />
+      </Docs>
+    </Member>
     <Member MemberName="DisableDevice">
       <MemberSignature Language="C#" Value="public event Gtk.DisableDeviceHandler DisableDevice;" />
+      <MemberSignature Language="ILAsm" Value=".event class Gtk.DisableDeviceHandler DisableDevice" />
       <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("disable_device")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>Gtk.DisableDeviceHandler</ReturnType>
       </ReturnValue>
@@ -70,15 +127,19 @@
 					This signal is emitted when the user changes the mode of a device from a GDK_MODE_SCREEN or GDK_MODE_WINDOW to GDK_MODE_ENABLED.
 				</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Signal("disable_device")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="EnableDevice">
       <MemberSignature Language="C#" Value="public event Gtk.EnableDeviceHandler EnableDevice;" />
+      <MemberSignature Language="ILAsm" Value=".event class Gtk.EnableDeviceHandler EnableDevice" />
       <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("enable_device")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>Gtk.EnableDeviceHandler</ReturnType>
       </ReturnValue>
@@ -89,15 +150,14 @@
 					This signal is emitted when the user changes the mode of a device from GDK_MODE_DISABLED to a GDK_MODE_SCREEN or GDK_MODE_WINDOW.
 				</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Signal("enable_device")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="GType">
-      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; };" />
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.GType</ReturnType>
       </ReturnValue>
@@ -108,24 +168,18 @@
         <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.InputDialog" />.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OnEnableDevice">
-      <MemberSignature Language="C#" Value="protected virtual void OnEnableDevice (Gdk.Device device);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="device" Type="Gdk.Device" />
-      </Parameters>
-      <Docs>
-        <summary>Default handler for the <see cref="M:Gtk.InputDialog.EnableDevice" /> event.</summary>
-        <param name="device">a <see cref="T:Gdk.Device" /></param>
-        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.InputDialog.EnableDevice" /> event.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnDisableDevice">
       <MemberSignature Language="C#" Value="protected virtual void OnDisableDevice (Gdk.Device device);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnDisableDevice(class Gdk.Device device) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideDisableDevice", Type=typeof(Gtk.InputDialog))</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -133,51 +187,48 @@
         <Parameter Name="device" Type="Gdk.Device" />
       </Parameters>
       <Docs>
-        <summary>Default handler for the <see cref="M:Gtk.InputDialog.DisableDevice" /> event.</summary>
         <param name="device">a <see cref="T:Gdk.Device" /></param>
+        <summary>Default handler for the <see cref="M:Gtk.InputDialog.DisableDevice" /> event.</summary>
         <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.InputDialog.DisableDevice" /> event.</remarks>
       </Docs>
     </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected InputDialog (GLib.GType gtype);" />
-      <MemberType>Constructor</MemberType>
-      <ReturnValue />
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>Protected Constructor.</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
-      </Docs>
+    <Member MemberName="OnEnableDevice">
+      <MemberSignature Language="C#" Value="protected virtual void OnEnableDevice (Gdk.Device device);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnEnableDevice(class Gdk.Device device) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.Obsolete</AttributeName>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideEnableDevice", Type=typeof(Gtk.InputDialog))</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="device" Type="Gdk.Device" />
+      </Parameters>
+      <Docs>
+        <param name="device">a <see cref="T:Gdk.Device" /></param>
+        <summary>Default handler for the <see cref="M:Gtk.InputDialog.EnableDevice" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.InputDialog.EnableDevice" /> event.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="SaveButton">
-      <MemberSignature Language="C#" Value="public Gtk.Button SaveButton { get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.Button SaveButton { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Button SaveButton" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.Button</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
         <summary>The save button in this dialog.</summary>
-        <value>a <see cref="T:Gtk.Button" /></value>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="CloseButton">
-      <MemberSignature Language="C#" Value="public Gtk.Button CloseButton { get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>Gtk.Button</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>The "close window" button in this dialog.</summary>
         <value>a <see cref="T:Gtk.Button" /></value>
         <remarks />
       </Docs>

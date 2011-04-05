@@ -1,5 +1,6 @@
 <Type Name="PolicyType" FullName="Gtk.PolicyType">
   <TypeSignature Language="C#" Maintainer="Duncan Mak" Value="public enum PolicyType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed PolicyType extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -7,10 +8,6 @@
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
-  <Docs>
-    <summary>Determines when a <see cref="T:Gtk.Scrollbar" /> will be visible.</summary>
-    <remarks />
-  </Docs>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
@@ -19,10 +16,18 @@
       <AttributeName>GLib.GType(typeof(Gtk.PolicyTypeGType))</AttributeName>
     </Attribute>
   </Attributes>
+  <Docs>
+    <summary>Determines when a <see cref="T:Gtk.Scrollbar" /> will be visible.</summary>
+    <remarks />
+  </Docs>
   <Members>
     <Member MemberName="Always">
       <MemberSignature Language="C#" Value="Always" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.PolicyType Always = int32(0)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.PolicyType</ReturnType>
       </ReturnValue>
@@ -34,7 +39,11 @@
     </Member>
     <Member MemberName="Automatic">
       <MemberSignature Language="C#" Value="Automatic" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.PolicyType Automatic = int32(1)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.PolicyType</ReturnType>
       </ReturnValue>
@@ -46,7 +55,11 @@
     </Member>
     <Member MemberName="Never">
       <MemberSignature Language="C#" Value="Never" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.PolicyType Never = int32(2)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.PolicyType</ReturnType>
       </ReturnValue>

@@ -1,5 +1,6 @@
 <Type Name="TerminalAntiAlias" FullName="Vte.TerminalAntiAlias">
   <TypeSignature Language="C#" Value="public enum TerminalAntiAlias" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed TerminalAntiAlias extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>vte-sharp</AssemblyName>
     <AssemblyVersion>0.16.0.0</AssemblyVersion>
@@ -12,20 +13,19 @@
       <AttributeName>GLib.GType(typeof(Vte.TerminalAntiAliasGType))</AttributeName>
     </Attribute>
   </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+    <since version="Gnome# 2.16" />
+  </Docs>
   <Members>
     <Member MemberName="ForceDisable">
       <MemberSignature Language="C#" Value="ForceDisable" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vte.TerminalAntiAlias ForceDisable = int32(2)" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Vte.TerminalAntiAlias</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="UseDefault">
-      <MemberSignature Language="C#" Value="UseDefault" />
-      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vte.TerminalAntiAlias</ReturnType>
       </ReturnValue>
@@ -35,7 +35,25 @@
     </Member>
     <Member MemberName="ForceEnable">
       <MemberSignature Language="C#" Value="ForceEnable" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vte.TerminalAntiAlias ForceEnable = int32(1)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vte.TerminalAntiAlias</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="UseDefault">
+      <MemberSignature Language="C#" Value="UseDefault" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Vte.TerminalAntiAlias UseDefault = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Vte.TerminalAntiAlias</ReturnType>
       </ReturnValue>
@@ -44,9 +62,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
-    <since version="Gnome# 2.16" />
-  </Docs>
 </Type>

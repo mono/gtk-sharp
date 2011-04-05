@@ -1,5 +1,6 @@
 <Type Name="DrawingArea" FullName="Gtk.DrawingArea">
   <TypeSignature Language="C#" Maintainer="Hector Gomez M" Value="public class DrawingArea : Gtk.Widget" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit DrawingArea extends Gtk.Widget" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -7,6 +8,11 @@
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Widget</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
   <Docs>
     <summary>The <see cref="T:Gtk.DrawingArea" /> widget is used for creating custom user interface elements.</summary>
     <remarks>
@@ -67,30 +73,14 @@ class LayoutSample : DrawingArea
 	  </code>
     </example>
   </Docs>
-  <Base>
-    <BaseTypeName>Gtk.Widget</BaseTypeName>
-  </Base>
-  <Interfaces>
-  </Interfaces>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public DrawingArea (IntPtr raw);" />
-      <MemberType>Constructor</MemberType>
-      <ReturnValue />
-      <Parameters>
-        <Parameter Name="raw" Type="System.IntPtr" />
-      </Parameters>
-      <Docs>
-        <summary>Internal constructor</summary>
-        <param name="raw">Pointer to the C object.</param>
-        <remarks>
-          <para>This is an internal constructor, and should not be used by user code.</para>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public DrawingArea ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue />
       <Parameters />
       <Docs>
@@ -98,9 +88,54 @@ class LayoutSample : DrawingArea
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected DrawingArea (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public DrawingArea (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GType">
-      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; };" />
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.GType</ReturnType>
       </ReturnValue>
@@ -111,27 +146,18 @@ class LayoutSample : DrawingArea
         <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.DrawingArea" />.</remarks>
       </Docs>
     </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected DrawingArea (GLib.GType gtype);" />
-      <MemberType>Constructor</MemberType>
-      <ReturnValue />
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>Protected Constructor.</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
-      </Docs>
+    <Member MemberName="Size">
+      <MemberSignature Language="C#" Value="public void Size (int width, int height);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Size(int32 width, int32 height) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Obsolete</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="Size">
-      <MemberSignature Language="C#" Value="public void Size (int width, int height);" />
-      <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -140,9 +166,9 @@ class LayoutSample : DrawingArea
         <Parameter Name="height" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <summary>Sets the size of the drawing area.</summary>
         <param name="width">a <see cref="T:System.Int32" /></param>
         <param name="height">a <see cref="T:System.Int32" /></param>
+        <summary>Sets the size of the drawing area.</summary>
         <remarks>
         </remarks>
         <since version="Gtk# 2.4" />

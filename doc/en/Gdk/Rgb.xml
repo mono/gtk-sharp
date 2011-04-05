@@ -1,5 +1,6 @@
 <Type Name="Rgb" FullName="Gdk.Rgb">
   <TypeSignature Language="C#" Value="public class Rgb" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Rgb extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>gdk-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -7,6 +8,10 @@
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
   <Docs>
     <summary>
       <para>
@@ -18,35 +23,65 @@ GdkRGB allocates a color cube to use when rendering images. You can set the thre
     </summary>
     <remarks />
   </Docs>
-  <Base>
-    <BaseTypeName>System.Object</BaseTypeName>
-  </Base>
-  <Interfaces />
   <Members>
-    <Member MemberName="FindColor">
-      <MemberSignature Language="C#" Value="public static void FindColor (Gdk.Colormap colormap, ref Gdk.Color color);" />
-      <MemberType>Method</MemberType>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Rgb ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Basic constructor.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Colormap">
+      <MemberSignature Language="C#" Value="public static Gdk.Colormap Colormap { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class Gdk.Colormap Colormap" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>Gdk.Colormap</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Get preferred colormap for using Gdk.RGB</summary>
+        <value>The preferred <see cref="T:Gdk.Colormap" />.</value>
+        <remarks>Get the preferred colormap for rendering image data. Not a very useful function; historically, GDK could only render RGB image data to one colormap and visual, but in the current version it can render to any colormap and visual. So there's no need to call this function.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColormapDitherable">
+      <MemberSignature Language="C#" Value="public static bool ColormapDitherable (Gdk.Colormap cmap);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool ColormapDitherable(class Gdk.Colormap cmap) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="colormap" Type="Gdk.Colormap" />
-        <Parameter Name="color" Type="Gdk.Color&amp;" RefType="ref" />
+        <Parameter Name="cmap" Type="Gdk.Colormap" />
       </Parameters>
       <Docs>
-        <summary>Fetches a color to be used on the given colormap.</summary>
-        <param name="colormap">Tthe colormap for the graphics context and drawable you're using to draw. If you're drawing to a <see cref="T:Gtk.Widget" />, use the <see cref="P:Gtk.Widget.Colormap" /> property.</param>
-        <param name="color">Color should have its red, green, and blue fields initialized.</param>
-        <remarks>This routine will fill in the pixel field with the best matching pixel from a color cube. The color is then ready to be used for drawing, e.g. you can use <see cref="P:Gtk.GC.Foreground" /> which expects the pixel to be initialized.
-
-<para>
-In many cases, you can avoid this whole issue by setting the <see cref="P:Gdk.GC.RgbFgColor" /> or <see cref="P:Gdk.GC.RgbBgColor" />, which do not expect pixel to be initialized in advance. If you use those functions, there's no need for using FindColor.
-</para></remarks>
+        <param name="cmap">a <see cref="T:Gdk.Colormap" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.6" />
       </Docs>
     </Member>
     <Member MemberName="Ditherable">
       <MemberSignature Language="C#" Value="public static bool Ditherable ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool Ditherable() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -58,45 +93,114 @@ In many cases, you can avoid this whole issue by setting the <see cref="P:Gdk.GC
         <remarks>Determines whether the visual is ditherable. This function may be useful for presenting a user interface choice to the user about which dither mode is desired; if the display is not ditherable, it may make sense to gray out or hide the corresponding UI widget.</remarks>
       </Docs>
     </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public Rgb ();" />
-      <MemberType>Constructor</MemberType>
-      <ReturnValue />
-      <Parameters />
-      <Docs>
-        <summary>Basic constructor.</summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="MinColors">
-      <MemberSignature Language="C#" Value="public static int MinColors { set; };" />
-      <MemberType>Property</MemberType>
+    <Member MemberName="FindColor">
+      <MemberSignature Language="C#" Value="public static void FindColor (Gdk.Colormap colormap, ref Gdk.Color color);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void FindColor(class Gdk.Colormap colormap, valuetype Gdk.Color color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
+        <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
+        <Parameter Name="colormap" Type="Gdk.Colormap" />
+        <Parameter Name="color" Type="Gdk.Color&amp;" RefType="ref" />
       </Parameters>
       <Docs>
-        <summary>The minimum number of colors for this colormap.</summary>
-        <value>a <see cref="T:System.Int32" /></value>
-        <remarks>Sets the minimum number of colors for the color cube. Generally, GdkRGB tries to allocate the largest color cube it can. If it can't allocate a color cube at least as large as min_colors, it installs a private colormap.</remarks>
+        <param name="colormap">Tthe colormap for the graphics context and drawable you're using to draw. If you're drawing to a <see cref="T:Gtk.Widget" />, use the <see cref="P:Gtk.Widget.Colormap" /> property.</param>
+        <param name="color">Color should have its red, green, and blue fields initialized.</param>
+        <summary>Fetches a color to be used on the given colormap.</summary>
+        <remarks>This routine will fill in the pixel field with the best matching pixel from a color cube. The color is then ready to be used for drawing, e.g. you can use <see cref="P:Gtk.GC.Foreground" /> which expects the pixel to be initialized.
+
+<para>
+In many cases, you can avoid this whole issue by setting the <see cref="P:Gdk.GC.RgbFgColor" /> or <see cref="P:Gdk.GC.RgbBgColor" />, which do not expect pixel to be initialized in advance. If you use those functions, there's no need for using FindColor.
+</para></remarks>
       </Docs>
     </Member>
-    <Member MemberName="Visual">
-      <MemberSignature Language="C#" Value="public static Gdk.Visual Visual { get; };" />
-      <MemberType>Property</MemberType>
+    <Member MemberName="GcSetBackground">
+      <MemberSignature Language="C#" Value="public static void GcSetBackground (Gdk.GC gc, uint rgb);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void GcSetBackground(class Gdk.GC gc, unsigned int32 rgb) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
-        <ReturnType>Gdk.Visual</ReturnType>
+        <ReturnType>System.Void</ReturnType>
       </ReturnValue>
+      <Parameters>
+        <Parameter Name="gc" Type="Gdk.GC" />
+        <Parameter Name="rgb" Type="System.UInt32" />
+      </Parameters>
       <Docs>
-        <summary>The preferred visual for GdkRGB operations.</summary>
-        <value>a <see cref="T:Gdk.Visual" /></value>
-        <remarks>Gets a "preferred visual" chosen by GdkRGB for rendering image data on the default screen. In previous versions of GDK, this was the only visual GdkRGB could use for rendering. In current versions, it's simply the visual GdkRGB would have chosen as the optimal one in those previous versions. GdkRGB can now render to drawables with any visual.</remarks>
+        <param name="gc">a <see cref="T:Gdk.GC" /></param>
+        <param name="rgb">a <see cref="T:System.UInt32" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="GcSetForeground">
+      <MemberSignature Language="C#" Value="public static void GcSetForeground (Gdk.GC gc, uint rgb);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void GcSetForeground(class Gdk.GC gc, unsigned int32 rgb) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gc" Type="Gdk.GC" />
+        <Parameter Name="rgb" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="gc">a <see cref="T:Gdk.GC" /></param>
+        <param name="rgb">a <see cref="T:System.UInt32" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public static void Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
       </Docs>
     </Member>
     <Member MemberName="Install">
-      <MemberSignature Language="C#" Value="public static bool Install { set; };" />
+      <MemberSignature Language="C#" Value="public static bool Install { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property bool Install" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -111,21 +215,31 @@ A private colormap has more colors, leading to better quality display, but also 
 </para></remarks>
       </Docs>
     </Member>
-    <Member MemberName="Colormap">
-      <MemberSignature Language="C#" Value="public static Gdk.Colormap Colormap { get; };" />
+    <Member MemberName="MinColors">
+      <MemberSignature Language="C#" Value="public static int MinColors { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property int32 MinColors" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Gdk.Colormap</ReturnType>
+        <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
+      <Parameters>
+      </Parameters>
       <Docs>
-        <summary>Get preferred colormap for using Gdk.RGB</summary>
-        <value>The preferred <see cref="T:Gdk.Colormap" />.</value>
-        <remarks>Get the preferred colormap for rendering image data. Not a very useful function; historically, GDK could only render RGB image data to one colormap and visual, but in the current version it can render to any colormap and visual. So there's no need to call this function.</remarks>
+        <summary>The minimum number of colors for this colormap.</summary>
+        <value>a <see cref="T:System.Int32" /></value>
+        <remarks>Sets the minimum number of colors for the color cube. Generally, GdkRGB tries to allocate the largest color cube it can. If it can't allocate a color cube at least as large as min_colors, it installs a private colormap.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Verbose">
-      <MemberSignature Language="C#" Value="public static bool Verbose { set; };" />
+      <MemberSignature Language="C#" Value="public static bool Verbose { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property bool Verbose" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -137,45 +251,34 @@ A private colormap has more colors, leading to better quality display, but also 
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="GcSetForeground">
-      <MemberSignature Language="C#" Value="public static void GcSetForeground (Gdk.GC gc, uint rgb);" />
-      <MemberType>Method</MemberType>
+    <Member MemberName="Visual">
+      <MemberSignature Language="C#" Value="public static Gdk.Visual Visual { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class Gdk.Visual Visual" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>Gdk.Visual</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="gc" Type="Gdk.GC" />
-        <Parameter Name="rgb" Type="System.UInt32" />
-      </Parameters>
       <Docs>
-        <summary>To be added</summary>
-        <param name="gc">a <see cref="T:Gdk.GC" /></param>
-        <param name="rgb">a <see cref="T:System.UInt32" /></param>
-        <remarks>To be added</remarks>
-        <since version="Gtk# 2.4" />
-      </Docs>
-    </Member>
-    <Member MemberName="GcSetBackground">
-      <MemberSignature Language="C#" Value="public static void GcSetBackground (Gdk.GC gc, uint rgb);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gc" Type="Gdk.GC" />
-        <Parameter Name="rgb" Type="System.UInt32" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="gc">a <see cref="T:Gdk.GC" /></param>
-        <param name="rgb">a <see cref="T:System.UInt32" /></param>
-        <remarks>To be added</remarks>
-        <since version="Gtk# 2.4" />
+        <summary>The preferred visual for GdkRGB operations.</summary>
+        <value>a <see cref="T:Gdk.Visual" /></value>
+        <remarks>Gets a "preferred visual" chosen by GdkRGB for rendering image data on the default screen. In previous versions of GDK, this was the only visual GdkRGB could use for rendering. In current versions, it's simply the visual GdkRGB would have chosen as the optimal one in those previous versions. GdkRGB can now render to drawables with any visual.</remarks>
       </Docs>
     </Member>
     <Member MemberName="XpixelFromRgb">
       <MemberSignature Language="C#" Value="public static ulong XpixelFromRgb (uint rgb);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int64 XpixelFromRgb(unsigned int32 rgb) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.UInt64</ReturnType>
       </ReturnValue>
@@ -183,41 +286,11 @@ A private colormap has more colors, leading to better quality display, but also 
         <Parameter Name="rgb" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
         <param name="rgb">a <see cref="T:System.UInt32" /></param>
+        <summary>To be added</summary>
         <returns>a <see cref="T:System.UInt64" /></returns>
         <remarks>To be added</remarks>
         <since version="Gtk# 2.4" />
-      </Docs>
-    </Member>
-    <Member MemberName="Init">
-      <MemberSignature Language="C#" Value="public static void Init ();" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added</summary>
-        <remarks>To be added</remarks>
-        <since version="Gtk# 2.4" />
-      </Docs>
-    </Member>
-    <Member MemberName="ColormapDitherable">
-      <MemberSignature Language="C#" Value="public static bool ColormapDitherable (Gdk.Colormap cmap);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="cmap" Type="Gdk.Colormap" />
-      </Parameters>
-      <Docs>
-        <summary>To be added</summary>
-        <param name="cmap">a <see cref="T:Gdk.Colormap" /></param>
-        <returns>a <see cref="T:System.Boolean" /></returns>
-        <remarks>To be added</remarks>
-        <since version="Gtk# 2.6" />
       </Docs>
     </Member>
   </Members>

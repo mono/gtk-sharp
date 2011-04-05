@@ -1,5 +1,6 @@
 <Type Name="RecentManager" FullName="Gtk.RecentManager">
   <TypeSignature Language="C#" Value="public class RecentManager : GLib.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit RecentManager extends GLib.Object" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -8,10 +9,19 @@
     <BaseTypeName>GLib.Object</BaseTypeName>
   </Base>
   <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+    <since version="Gtk# 2.10" />
+  </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public RecentManager ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -20,7 +30,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="protected RecentManager (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Obsolete</AttributeName>
@@ -37,7 +51,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public RecentManager (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="raw" Type="System.IntPtr" />
       </Parameters>
@@ -49,7 +67,11 @@
     </Member>
     <Member MemberName="AddFull">
       <MemberSignature Language="C#" Value="public bool AddFull (string uri, Gtk.RecentData recent_data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool AddFull(string uri, valuetype Gtk.RecentData recent_data) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -67,7 +89,11 @@
     </Member>
     <Member MemberName="AddItem">
       <MemberSignature Language="C#" Value="public bool AddItem (string uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool AddItem(string uri) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -83,7 +109,11 @@
     </Member>
     <Member MemberName="Changed">
       <MemberSignature Language="C#" Value="public event EventHandler Changed;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Changed" />
       <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Signal("changed")</AttributeName>
@@ -98,8 +128,12 @@
       </Docs>
     </Member>
     <Member MemberName="Default">
-      <MemberSignature Language="C#" Value="public static Gtk.RecentManager Default { get; };" />
+      <MemberSignature Language="C#" Value="public static Gtk.RecentManager Default { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class Gtk.RecentManager Default" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.RecentManager</ReturnType>
       </ReturnValue>
@@ -111,7 +145,11 @@
     </Member>
     <Member MemberName="ErrorQuark">
       <MemberSignature Language="C#" Value="public static int ErrorQuark ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 ErrorQuark() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -123,8 +161,12 @@
       </Docs>
     </Member>
     <Member MemberName="Filename">
-      <MemberSignature Language="C#" Value="public string Filename { get; };" />
+      <MemberSignature Language="C#" Value="public string Filename { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Filename" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("filename")</AttributeName>
@@ -141,7 +183,16 @@
     </Member>
     <Member MemberName="GetForScreen">
       <MemberSignature Language="C#" Value="public static Gtk.RecentManager GetForScreen (Gdk.Screen screen);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gtk.RecentManager GetForScreen(class Gdk.Screen screen) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>Gtk.RecentManager</ReturnType>
       </ReturnValue>
@@ -156,8 +207,12 @@
       </Docs>
     </Member>
     <Member MemberName="GType">
-      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; };" />
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.GType</ReturnType>
       </ReturnValue>
@@ -169,7 +224,11 @@
     </Member>
     <Member MemberName="HasItem">
       <MemberSignature Language="C#" Value="public bool HasItem (string uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool HasItem(string uri) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -184,8 +243,12 @@
       </Docs>
     </Member>
     <Member MemberName="Items">
-      <MemberSignature Language="C#" Value="public GLib.List Items { get; };" />
+      <MemberSignature Language="C#" Value="public GLib.List Items { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class GLib.List Items" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.List</ReturnType>
       </ReturnValue>
@@ -196,8 +259,12 @@
       </Docs>
     </Member>
     <Member MemberName="Limit">
-      <MemberSignature Language="C#" Value="public int Limit { set; get; };" />
+      <MemberSignature Language="C#" Value="public int Limit { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Limit" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("limit")</AttributeName>
@@ -214,7 +281,11 @@
     </Member>
     <Member MemberName="LookupItem">
       <MemberSignature Language="C#" Value="public Gtk.RecentInfo LookupItem (string uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gtk.RecentInfo LookupItem(string uri) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.RecentInfo</ReturnType>
       </ReturnValue>
@@ -230,7 +301,11 @@
     </Member>
     <Member MemberName="MoveItem">
       <MemberSignature Language="C#" Value="public bool MoveItem (string uri, string new_uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool MoveItem(string uri, string new_uri) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -248,7 +323,16 @@
     </Member>
     <Member MemberName="OnChanged">
       <MemberSignature Language="C#" Value="protected virtual void OnChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnChanged() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideChanged", Type=typeof(Gtk.RecentManager))</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -260,7 +344,11 @@
     </Member>
     <Member MemberName="PurgeItems">
       <MemberSignature Language="C#" Value="public int PurgeItems ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 PurgeItems() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -273,7 +361,11 @@
     </Member>
     <Member MemberName="RemoveItem">
       <MemberSignature Language="C#" Value="public bool RemoveItem (string uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool RemoveItem(string uri) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -288,8 +380,17 @@
       </Docs>
     </Member>
     <Member MemberName="Screen">
-      <MemberSignature Language="C#" Value="public Gdk.Screen Screen { set; };" />
+      <MemberSignature Language="C#" Value="public Gdk.Screen Screen { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Screen Screen" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>Gdk.Screen</ReturnType>
       </ReturnValue>
@@ -298,15 +399,14 @@
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Obsolete</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Size">
-      <MemberSignature Language="C#" Value="public int Size { get; };" />
+      <MemberSignature Language="C#" Value="public int Size { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Size" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("size")</AttributeName>
@@ -322,9 +422,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
-    <since version="Gtk# 2.10" />
-  </Docs>
 </Type>

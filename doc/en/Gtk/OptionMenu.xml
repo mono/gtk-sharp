@@ -1,5 +1,6 @@
 <Type Name="OptionMenu" FullName="Gtk.OptionMenu">
   <TypeSignature Language="C#" Maintainer="John Luke" Value="public class OptionMenu : Gtk.Button" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit OptionMenu extends Gtk.Button" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -7,6 +8,16 @@
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Button</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Obsolete</AttributeName>
+    </Attribute>
+  </Attributes>
   <Docs>
     <summary>A widget used to choose from a list of valid choices.</summary>
     <remarks>
@@ -79,47 +90,14 @@ class OptionMenuSample
 	  </code>
     </example>
   </Docs>
-  <Base>
-    <BaseTypeName>Gtk.Button</BaseTypeName>
-  </Base>
-  <Interfaces>
-  </Interfaces>
-  <Attributes>
-    <Attribute>
-      <AttributeName>System.Obsolete</AttributeName>
-    </Attribute>
-  </Attributes>
   <Members>
-    <Member MemberName="RemoveMenu">
-      <MemberSignature Language="C#" Value="public void RemoveMenu ();" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Removes the menu from the <see cref="T:Gtk.OptionMenu" />.</summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public OptionMenu (IntPtr raw);" />
-      <MemberType>Constructor</MemberType>
-      <ReturnValue />
-      <Parameters>
-        <Parameter Name="raw" Type="System.IntPtr" />
-      </Parameters>
-      <Docs>
-        <summary>Internal constructor</summary>
-        <param name="raw">Pointer to the C object.</param>
-        <remarks>
-          <para>This is an internal constructor, and should not be used by user code.</para>
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public OptionMenu ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue />
       <Parameters />
       <Docs>
@@ -127,40 +105,59 @@ class OptionMenuSample
         <remarks>This is the default constructor for <see cref="T:Gtk.OptionMenu" /></remarks>
       </Docs>
     </Member>
-    <Member MemberName="History">
-      <MemberSignature Language="C#" Value="public int History { get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Retrieves the index of the currently selected <see cref="T:Gtk.MenuItem" />.</summary>
-        <value>an object of type <see cref="T:System.Int32" /></value>
-        <remarks>The <see cref="T:Gtk.MenuItem" />s are numbered from top to bottom, starting with 0.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Menu">
-      <MemberSignature Language="C#" Value="public Gtk.Widget Menu { set; get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>Gtk.Widget</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary>The menu of options.</summary>
-        <value>an object of type <see cref="T:Gtk.Widget" /></value>
-        <remarks />
-      </Docs>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected OptionMenu (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>GLib.Property("menu")</AttributeName>
+          <AttributeName>System.Obsolete</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public OptionMenu (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
     </Member>
     <Member MemberName="Changed">
       <MemberSignature Language="C#" Value="public event EventHandler Changed;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Changed" />
       <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("changed")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
@@ -169,30 +166,14 @@ class OptionMenuSample
         <summary>Emitted when the <see cref="T:Gtk.OptionMenu" /> selection is changed.</summary>
         <remarks />
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Signal("changed")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="SetHistory">
-      <MemberSignature Language="C#" Value="public void SetHistory (uint index_);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="index_" Type="System.UInt32" />
-      </Parameters>
-      <Docs>
-        <summary>Selects the menu item specified by <paramref name="index_" /> making it the newly selected value for the <see cref="T:Gtk.OptionMenu" />.</summary>
-        <param name="index_">a <see cref="T:System.UInt32" /></param>
-        <remarks />
-      </Docs>
     </Member>
     <Member MemberName="GType">
-      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; };" />
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.GType</ReturnType>
       </ReturnValue>
@@ -203,9 +184,57 @@ class OptionMenuSample
         <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.OptionMenu" />.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="History">
+      <MemberSignature Language="C#" Value="public int History { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 History" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Retrieves the index of the currently selected <see cref="T:Gtk.MenuItem" />.</summary>
+        <value>an object of type <see cref="T:System.Int32" /></value>
+        <remarks>The <see cref="T:Gtk.MenuItem" />s are numbered from top to bottom, starting with 0.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Menu">
+      <MemberSignature Language="C#" Value="public Gtk.Widget Menu { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Widget Menu" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("menu")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.Widget</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The menu of options.</summary>
+        <value>an object of type <see cref="T:Gtk.Widget" /></value>
+        <remarks />
+      </Docs>
+    </Member>
     <Member MemberName="OnChanged">
       <MemberSignature Language="C#" Value="protected virtual void OnChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnChanged() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideChanged", Type=typeof(Gtk.OptionMenu))</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -215,23 +244,40 @@ class OptionMenuSample
         <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.OptionMenu.Changed" /> event.</remarks>
       </Docs>
     </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected OptionMenu (GLib.GType gtype);" />
-      <MemberType>Constructor</MemberType>
-      <ReturnValue />
+    <Member MemberName="RemoveMenu">
+      <MemberSignature Language="C#" Value="public void RemoveMenu ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveMenu() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Removes the menu from the <see cref="T:Gtk.OptionMenu" />.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="SetHistory">
+      <MemberSignature Language="C#" Value="public void SetHistory (uint index_);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetHistory(unsigned int32 index_) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
       <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
+        <Parameter Name="index_" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <summary>Protected Constructor.</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+        <param name="index_">a <see cref="T:System.UInt32" /></param>
+        <summary>Selects the menu item specified by <paramref name="index_" /> making it the newly selected value for the <see cref="T:Gtk.OptionMenu" />.</summary>
+        <remarks />
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Obsolete</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
   </Members>
 </Type>

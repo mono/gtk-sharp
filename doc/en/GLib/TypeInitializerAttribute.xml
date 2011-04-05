@@ -1,5 +1,6 @@
 <Type Name="TypeInitializerAttribute" FullName="GLib.TypeInitializerAttribute">
   <TypeSignature Language="C#" Value="public sealed class TypeInitializerAttribute : Attribute" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit TypeInitializerAttribute extends System.Attribute" />
   <AssemblyInfo>
     <AssemblyName>glib-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -13,10 +14,18 @@
       <AttributeName>System.AttributeUsage(System.AttributeTargets.Class)</AttributeName>
     </Attribute>
   </Attributes>
+  <Docs>
+    <summary>TypeInitializer Attribute.</summary>
+    <remarks>Replaces the <see cref="T:GLib.ClassInitializerAttribute" /> to allow for more efficient reflection memory usage.</remarks>
+  </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public TypeInitializerAttribute (Type type, string method_name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Type type, string method_name) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="type" Type="System.Type" />
         <Parameter Name="method_name" Type="System.String" />
@@ -29,8 +38,12 @@
       </Docs>
     </Member>
     <Member MemberName="MethodName">
-      <MemberSignature Language="C#" Value="public string MethodName { set; get; };" />
+      <MemberSignature Language="C#" Value="public string MethodName { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string MethodName" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -41,8 +54,12 @@
       </Docs>
     </Member>
     <Member MemberName="Type">
-      <MemberSignature Language="C#" Value="public Type Type { set; get; };" />
+      <MemberSignature Language="C#" Value="public Type Type { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Type Type" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Type</ReturnType>
       </ReturnValue>
@@ -53,8 +70,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>TypeInitializer Attribute.</summary>
-    <remarks>Replaces the <see cref="T:GLib.ClassInitializerAttribute" /> to allow for more efficient reflection memory usage.</remarks>
-  </Docs>
 </Type>

@@ -1,5 +1,6 @@
 <Type Name="RecentFilter" FullName="Gtk.RecentFilter">
   <TypeSignature Language="C#" Value="public class RecentFilter : Gtk.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit RecentFilter extends Gtk.Object" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -8,10 +9,19 @@
     <BaseTypeName>Gtk.Object</BaseTypeName>
   </Base>
   <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+    <since version="Gtk# 2.10" />
+  </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public RecentFilter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -20,7 +30,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="protected RecentFilter (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Obsolete</AttributeName>
@@ -37,7 +51,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public RecentFilter (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="raw" Type="System.IntPtr" />
       </Parameters>
@@ -49,7 +67,11 @@
     </Member>
     <Member MemberName="AddAge">
       <MemberSignature Language="C#" Value="public void AddAge (int days);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddAge(int32 days) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -64,7 +86,11 @@
     </Member>
     <Member MemberName="AddApplication">
       <MemberSignature Language="C#" Value="public void AddApplication (string application);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddApplication(string application) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -79,7 +105,11 @@
     </Member>
     <Member MemberName="AddCustom">
       <MemberSignature Language="C#" Value="public void AddCustom (Gtk.RecentFilterFlags needed, Gtk.RecentFilterFunc func);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddCustom(valuetype Gtk.RecentFilterFlags needed, class Gtk.RecentFilterFunc func) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -96,7 +126,11 @@
     </Member>
     <Member MemberName="AddGroup">
       <MemberSignature Language="C#" Value="public void AddGroup (string group);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddGroup(string group) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -111,7 +145,11 @@
     </Member>
     <Member MemberName="AddMimeType">
       <MemberSignature Language="C#" Value="public void AddMimeType (string mime_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddMimeType(string mime_type) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -126,7 +164,11 @@
     </Member>
     <Member MemberName="AddPattern">
       <MemberSignature Language="C#" Value="public void AddPattern (string pattern);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddPattern(string pattern) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -141,7 +183,11 @@
     </Member>
     <Member MemberName="AddPixbufFormats">
       <MemberSignature Language="C#" Value="public void AddPixbufFormats ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddPixbufFormats() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -153,7 +199,11 @@
     </Member>
     <Member MemberName="Filter">
       <MemberSignature Language="C#" Value="public bool Filter (Gtk.RecentFilterInfo filter_info);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Filter(valuetype Gtk.RecentFilterInfo filter_info) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -168,8 +218,12 @@
       </Docs>
     </Member>
     <Member MemberName="GType">
-      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; };" />
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.GType</ReturnType>
       </ReturnValue>
@@ -180,8 +234,12 @@
       </Docs>
     </Member>
     <Member MemberName="Name">
-      <MemberSignature Language="C#" Value="public string Name { set; get; };" />
+      <MemberSignature Language="C#" Value="public string Name { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -192,8 +250,12 @@
       </Docs>
     </Member>
     <Member MemberName="Needed">
-      <MemberSignature Language="C#" Value="public Gtk.RecentFilterFlags Needed { get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.RecentFilterFlags Needed { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.RecentFilterFlags Needed" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.RecentFilterFlags</ReturnType>
       </ReturnValue>
@@ -204,9 +266,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
-    <since version="Gtk# 2.10" />
-  </Docs>
 </Type>

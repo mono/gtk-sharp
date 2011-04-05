@@ -1,5 +1,6 @@
 <Type Name="TextImplementor" FullName="Atk.TextImplementor">
   <TypeSignature Language="C#" Value="public interface TextImplementor : GLib.IWrapper" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract TextImplementor implements class GLib.IWrapper" />
   <AssemblyInfo>
     <AssemblyName>atk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -14,10 +15,19 @@
       <AttributeName>GLib.GInterface(typeof(Atk.TextAdapter))</AttributeName>
     </Attribute>
   </Attributes>
+  <Docs>
+    <summary>Text implementor interface.</summary>
+    <remarks>The implementable portion of the <see cref="T:Atk.Text" /> interface.</remarks>
+    <since version="Gtk# 2.12" />
+  </Docs>
   <Members>
     <Member MemberName="AddSelection">
       <MemberSignature Language="C#" Value="public bool AddSelection (int start_offset, int end_offset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool AddSelection(int32 start_offset, int32 end_offset) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -34,8 +44,12 @@
       </Docs>
     </Member>
     <Member MemberName="CaretOffset">
-      <MemberSignature Language="C#" Value="public int CaretOffset { get; };" />
+      <MemberSignature Language="C#" Value="public int CaretOffset { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 CaretOffset" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -46,8 +60,12 @@
       </Docs>
     </Member>
     <Member MemberName="CharacterCount">
-      <MemberSignature Language="C#" Value="public int CharacterCount { get; };" />
+      <MemberSignature Language="C#" Value="public int CharacterCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 CharacterCount" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -58,10 +76,14 @@
       </Docs>
     </Member>
     <Member MemberName="DefaultAttributes">
-      <MemberSignature Language="C#" Value="public GLib.SList DefaultAttributes { get; };" />
+      <MemberSignature Language="C#" Value="public Atk.Attribute[] DefaultAttributes { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Atk.Attribute[] DefaultAttributes" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>GLib.SList</ReturnType>
+        <ReturnType>Atk.Attribute[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -71,7 +93,11 @@
     </Member>
     <Member MemberName="GetBoundedRanges">
       <MemberSignature Language="C#" Value="public Atk.TextRange GetBoundedRanges (Atk.TextRectangle rect, Atk.CoordType coord_type, Atk.TextClipType x_clip_type, Atk.TextClipType y_clip_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype Atk.TextRange GetBoundedRanges(valuetype Atk.TextRectangle rect, valuetype Atk.CoordType coord_type, valuetype Atk.TextClipType x_clip_type, valuetype Atk.TextClipType y_clip_type) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Atk.TextRange</ReturnType>
       </ReturnValue>
@@ -93,7 +119,11 @@
     </Member>
     <Member MemberName="GetCharacterAtOffset">
       <MemberSignature Language="C#" Value="public char GetCharacterAtOffset (int offset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance char GetCharacterAtOffset(int32 offset) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Char</ReturnType>
       </ReturnValue>
@@ -109,7 +139,11 @@
     </Member>
     <Member MemberName="GetCharacterExtents">
       <MemberSignature Language="C#" Value="public void GetCharacterExtents (int offset, out int x, out int y, out int width, out int height, Atk.CoordType coords);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void GetCharacterExtents(int32 offset, int32 x, int32 y, int32 width, int32 height, valuetype Atk.CoordType coords) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -134,7 +168,11 @@
     </Member>
     <Member MemberName="GetOffsetAtPoint">
       <MemberSignature Language="C#" Value="public int GetOffsetAtPoint (int x, int y, Atk.CoordType coords);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 GetOffsetAtPoint(int32 x, int32 y, valuetype Atk.CoordType coords) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -153,8 +191,12 @@
       </Docs>
     </Member>
     <Member MemberName="GetRangeExtents">
-      <MemberSignature Language="C#" Value="public void GetRangeExtents (int start_offset, int end_offset, Atk.CoordType coord_type, Atk.TextRectangle rect);" />
+      <MemberSignature Language="C#" Value="public void GetRangeExtents (int start_offset, int end_offset, Atk.CoordType coord_type, out Atk.TextRectangle rect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void GetRangeExtents(int32 start_offset, int32 end_offset, valuetype Atk.CoordType coord_type, valuetype Atk.TextRectangle rect) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -162,7 +204,7 @@
         <Parameter Name="start_offset" Type="System.Int32" />
         <Parameter Name="end_offset" Type="System.Int32" />
         <Parameter Name="coord_type" Type="Atk.CoordType" />
-        <Parameter Name="rect" Type="Atk.TextRectangle" />
+        <Parameter Name="rect" Type="Atk.TextRectangle&amp;" RefType="out" />
       </Parameters>
       <Docs>
         <param name="start_offset">To be added.</param>
@@ -174,10 +216,14 @@
       </Docs>
     </Member>
     <Member MemberName="GetRunAttributes">
-      <MemberSignature Language="C#" Value="public GLib.SList GetRunAttributes (int offset, out int start_offset, out int end_offset);" />
+      <MemberSignature Language="C#" Value="public Atk.Attribute[] GetRunAttributes (int offset, out int start_offset, out int end_offset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype Atk.Attribute[] GetRunAttributes(int32 offset, int32 start_offset, int32 end_offset) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>GLib.SList</ReturnType>
+        <ReturnType>Atk.Attribute[]</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="offset" Type="System.Int32" />
@@ -195,7 +241,11 @@
     </Member>
     <Member MemberName="GetSelection">
       <MemberSignature Language="C#" Value="public string GetSelection (int selection_num, out int start_offset, out int end_offset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetSelection(int32 selection_num, int32 start_offset, int32 end_offset) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -215,7 +265,11 @@
     </Member>
     <Member MemberName="GetText">
       <MemberSignature Language="C#" Value="public string GetText (int start_offset, int end_offset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetText(int32 start_offset, int32 end_offset) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -233,7 +287,11 @@
     </Member>
     <Member MemberName="GetTextAfterOffset">
       <MemberSignature Language="C#" Value="public string GetTextAfterOffset (int offset, Atk.TextBoundary boundary_type, out int start_offset, out int end_offset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetTextAfterOffset(int32 offset, valuetype Atk.TextBoundary boundary_type, int32 start_offset, int32 end_offset) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -255,7 +313,11 @@
     </Member>
     <Member MemberName="GetTextAtOffset">
       <MemberSignature Language="C#" Value="public string GetTextAtOffset (int offset, Atk.TextBoundary boundary_type, out int start_offset, out int end_offset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetTextAtOffset(int32 offset, valuetype Atk.TextBoundary boundary_type, int32 start_offset, int32 end_offset) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -277,7 +339,11 @@
     </Member>
     <Member MemberName="GetTextBeforeOffset">
       <MemberSignature Language="C#" Value="public string GetTextBeforeOffset (int offset, Atk.TextBoundary boundary_type, out int start_offset, out int end_offset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetTextBeforeOffset(int32 offset, valuetype Atk.TextBoundary boundary_type, int32 start_offset, int32 end_offset) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -298,8 +364,12 @@
       </Docs>
     </Member>
     <Member MemberName="NSelections">
-      <MemberSignature Language="C#" Value="public int NSelections { get; };" />
+      <MemberSignature Language="C#" Value="public int NSelections { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 NSelections" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -311,7 +381,11 @@
     </Member>
     <Member MemberName="RemoveSelection">
       <MemberSignature Language="C#" Value="public bool RemoveSelection (int selection_num);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool RemoveSelection(int32 selection_num) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -327,7 +401,11 @@
     </Member>
     <Member MemberName="SetCaretOffset">
       <MemberSignature Language="C#" Value="public bool SetCaretOffset (int offset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetCaretOffset(int32 offset) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -343,7 +421,11 @@
     </Member>
     <Member MemberName="SetSelection">
       <MemberSignature Language="C#" Value="public bool SetSelection (int selection_num, int start_offset, int end_offset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetSelection(int32 selection_num, int32 start_offset, int32 end_offset) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -362,9 +444,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>Text implementor interface.</summary>
-    <remarks>The implementable portion of the <see cref="T:Atk.Text" /> interface.</remarks>
-    <since version="Gtk# 2.12" />
-  </Docs>
 </Type>

@@ -1,5 +1,6 @@
 <Type Name="Assistant" FullName="Gtk.Assistant">
   <TypeSignature Language="C#" Value="public class Assistant : Gtk.Window" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Assistant extends Gtk.Window" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -8,15 +9,19 @@
     <BaseTypeName>Gtk.Window</BaseTypeName>
   </Base>
   <Interfaces />
-  <Attributes>
-    <Attribute>
-      <AttributeName>System.Reflection.DefaultMember("Item")</AttributeName>
-    </Attribute>
-  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+    <since version="Gtk# 2.10" />
+  </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public Assistant ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -25,7 +30,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="protected Assistant (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Obsolete</AttributeName>
@@ -42,7 +51,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public Assistant (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="raw" Type="System.IntPtr" />
       </Parameters>
@@ -54,7 +67,11 @@
     </Member>
     <Member MemberName="AddActionWidget">
       <MemberSignature Language="C#" Value="public void AddActionWidget (Gtk.Widget child);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddActionWidget(class Gtk.Widget child) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -69,7 +86,11 @@
     </Member>
     <Member MemberName="AppendPage">
       <MemberSignature Language="C#" Value="public int AppendPage (Gtk.Widget page);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 AppendPage(class Gtk.Widget page) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -85,7 +106,11 @@
     </Member>
     <Member MemberName="Apply">
       <MemberSignature Language="C#" Value="public event EventHandler Apply;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Apply" />
       <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Signal("apply")</AttributeName>
@@ -101,7 +126,11 @@
     </Member>
     <Member MemberName="Cancel">
       <MemberSignature Language="C#" Value="public event EventHandler Cancel;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Cancel" />
       <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Signal("cancel")</AttributeName>
@@ -117,7 +146,11 @@
     </Member>
     <Member MemberName="Close">
       <MemberSignature Language="C#" Value="public event EventHandler Close;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Close" />
       <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Signal("close")</AttributeName>
@@ -132,8 +165,12 @@
       </Docs>
     </Member>
     <Member MemberName="CurrentPage">
-      <MemberSignature Language="C#" Value="public int CurrentPage { set; get; };" />
+      <MemberSignature Language="C#" Value="public int CurrentPage { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 CurrentPage" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -144,8 +181,12 @@
       </Docs>
     </Member>
     <Member MemberName="ForwardPageFunc">
-      <MemberSignature Language="C#" Value="public Gtk.AssistantPageFunc ForwardPageFunc { set; };" />
+      <MemberSignature Language="C#" Value="public Gtk.AssistantPageFunc ForwardPageFunc { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.AssistantPageFunc ForwardPageFunc" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.AssistantPageFunc</ReturnType>
       </ReturnValue>
@@ -157,7 +198,11 @@
     </Member>
     <Member MemberName="GetNthPage">
       <MemberSignature Language="C#" Value="public Gtk.Widget GetNthPage (int page_num);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gtk.Widget GetNthPage(int32 page_num) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.Widget</ReturnType>
       </ReturnValue>
@@ -173,7 +218,11 @@
     </Member>
     <Member MemberName="GetPageComplete">
       <MemberSignature Language="C#" Value="public bool GetPageComplete (Gtk.Widget page);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool GetPageComplete(class Gtk.Widget page) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -189,7 +238,11 @@
     </Member>
     <Member MemberName="GetPageHeaderImage">
       <MemberSignature Language="C#" Value="public Gdk.Pixbuf GetPageHeaderImage (Gtk.Widget page);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gdk.Pixbuf GetPageHeaderImage(class Gtk.Widget page) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gdk.Pixbuf</ReturnType>
       </ReturnValue>
@@ -205,7 +258,11 @@
     </Member>
     <Member MemberName="GetPageSideImage">
       <MemberSignature Language="C#" Value="public Gdk.Pixbuf GetPageSideImage (Gtk.Widget page);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gdk.Pixbuf GetPageSideImage(class Gtk.Widget page) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gdk.Pixbuf</ReturnType>
       </ReturnValue>
@@ -221,7 +278,11 @@
     </Member>
     <Member MemberName="GetPageTitle">
       <MemberSignature Language="C#" Value="public string GetPageTitle (Gtk.Widget page);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string GetPageTitle(class Gtk.Widget page) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -237,7 +298,11 @@
     </Member>
     <Member MemberName="GetPageType">
       <MemberSignature Language="C#" Value="public Gtk.AssistantPageType GetPageType (Gtk.Widget page);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Gtk.AssistantPageType GetPageType(class Gtk.Widget page) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.AssistantPageType</ReturnType>
       </ReturnValue>
@@ -252,8 +317,12 @@
       </Docs>
     </Member>
     <Member MemberName="GType">
-      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; };" />
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.GType</ReturnType>
       </ReturnValue>
@@ -265,7 +334,11 @@
     </Member>
     <Member MemberName="InsertPage">
       <MemberSignature Language="C#" Value="public int InsertPage (Gtk.Widget page, int position);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 InsertPage(class Gtk.Widget page, int32 position) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -281,9 +354,33 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NPages">
-      <MemberSignature Language="C#" Value="public int NPages { get; };" />
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public override Gtk.Container.ContainerChild this[Gtk.Widget child] { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Container/ContainerChild Item(class Gtk.Widget)" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Container+ContainerChild</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Gtk.Widget" />
+      </Parameters>
+      <Docs>
+        <param name="child">To be added.</param>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NPages">
+      <MemberSignature Language="C#" Value="public int NPages { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 NPages" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -295,7 +392,16 @@
     </Member>
     <Member MemberName="OnApply">
       <MemberSignature Language="C#" Value="protected virtual void OnApply ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnApply() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideApply", Type=typeof(Gtk.Assistant))</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -307,7 +413,16 @@
     </Member>
     <Member MemberName="OnCancel">
       <MemberSignature Language="C#" Value="protected virtual void OnCancel ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnCancel() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideCancel", Type=typeof(Gtk.Assistant))</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -319,7 +434,16 @@
     </Member>
     <Member MemberName="OnClose">
       <MemberSignature Language="C#" Value="protected virtual void OnClose ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnClose() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideClose", Type=typeof(Gtk.Assistant))</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -331,7 +455,16 @@
     </Member>
     <Member MemberName="OnPrepare">
       <MemberSignature Language="C#" Value="protected virtual void OnPrepare (Gtk.Widget page);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnPrepare(class Gtk.Widget page) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverridePrepare", Type=typeof(Gtk.Assistant))</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -346,7 +479,11 @@
     </Member>
     <Member MemberName="Prepare">
       <MemberSignature Language="C#" Value="public event Gtk.PrepareHandler Prepare;" />
+      <MemberSignature Language="ILAsm" Value=".event class Gtk.PrepareHandler Prepare" />
       <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Signal("prepare")</AttributeName>
@@ -362,7 +499,11 @@
     </Member>
     <Member MemberName="PrependPage">
       <MemberSignature Language="C#" Value="public int PrependPage (Gtk.Widget page);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 PrependPage(class Gtk.Widget page) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -378,7 +519,11 @@
     </Member>
     <Member MemberName="RemoveActionWidget">
       <MemberSignature Language="C#" Value="public void RemoveActionWidget (Gtk.Widget child);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveActionWidget(class Gtk.Widget child) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -393,7 +538,11 @@
     </Member>
     <Member MemberName="SetPageComplete">
       <MemberSignature Language="C#" Value="public void SetPageComplete (Gtk.Widget page, bool complete);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetPageComplete(class Gtk.Widget page, bool complete) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -410,7 +559,11 @@
     </Member>
     <Member MemberName="SetPageHeaderImage">
       <MemberSignature Language="C#" Value="public void SetPageHeaderImage (Gtk.Widget page, Gdk.Pixbuf pixbuf);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetPageHeaderImage(class Gtk.Widget page, class Gdk.Pixbuf pixbuf) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -427,7 +580,11 @@
     </Member>
     <Member MemberName="SetPageSideImage">
       <MemberSignature Language="C#" Value="public void SetPageSideImage (Gtk.Widget page, Gdk.Pixbuf pixbuf);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetPageSideImage(class Gtk.Widget page, class Gdk.Pixbuf pixbuf) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -444,7 +601,11 @@
     </Member>
     <Member MemberName="SetPageTitle">
       <MemberSignature Language="C#" Value="public void SetPageTitle (Gtk.Widget page, string title);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetPageTitle(class Gtk.Widget page, string title) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -461,7 +622,11 @@
     </Member>
     <Member MemberName="SetPageType">
       <MemberSignature Language="C#" Value="public void SetPageType (Gtk.Widget page, Gtk.AssistantPageType type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetPageType(class Gtk.Widget page, valuetype Gtk.AssistantPageType type) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -478,7 +643,11 @@
     </Member>
     <Member MemberName="UpdateButtonsState">
       <MemberSignature Language="C#" Value="public void UpdateButtonsState ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateButtonsState() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -489,9 +658,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
-    <since version="Gtk# 2.10" />
-  </Docs>
 </Type>

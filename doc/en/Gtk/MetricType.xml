@@ -1,5 +1,6 @@
 <Type Name="MetricType" FullName="Gtk.MetricType">
   <TypeSignature Language="C#" Maintainer="Jonathan Kessler (Jwkpiano1@comcast.net)" Value="public enum MetricType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed MetricType extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -7,10 +8,6 @@
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
-  <Docs>
-    <summary>An enumeration used to determine which unit of measurement is currently being used.</summary>
-    <remarks>This enumeration is used by <see cref="T:Gtk.HRuler" />, <see cref="T:Gtk.VRuler" />, and <see cref="T:Gtk.Ruler" />.</remarks>
-  </Docs>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
@@ -19,23 +16,35 @@
       <AttributeName>GLib.GType(typeof(Gtk.MetricTypeGType))</AttributeName>
     </Attribute>
   </Attributes>
+  <Docs>
+    <summary>An enumeration used to determine which unit of measurement is currently being used.</summary>
+    <remarks>This enumeration is used by <see cref="T:Gtk.HRuler" />, <see cref="T:Gtk.VRuler" />, and <see cref="T:Gtk.Ruler" />.</remarks>
+  </Docs>
   <Members>
-    <Member MemberName="Pixels">
-      <MemberSignature Language="C#" Value="Pixels" />
+    <Member MemberName="Centimeters">
+      <MemberSignature Language="C#" Value="Centimeters" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.MetricType Centimeters = int32(2)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.MetricType</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>The pixel unit of measurement.</summary>
+        <summary>The centimeter unit of measurement.</summary>
         <remarks>
         </remarks>
       </Docs>
     </Member>
     <Member MemberName="Inches">
       <MemberSignature Language="C#" Value="Inches" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.MetricType Inches = int32(1)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.MetricType</ReturnType>
       </ReturnValue>
@@ -46,15 +55,19 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="Centimeters">
-      <MemberSignature Language="C#" Value="Centimeters" />
+    <Member MemberName="Pixels">
+      <MemberSignature Language="C#" Value="Pixels" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.MetricType Pixels = int32(0)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.MetricType</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>The centimeter unit of measurement.</summary>
+        <summary>The pixel unit of measurement.</summary>
         <remarks>
         </remarks>
       </Docs>

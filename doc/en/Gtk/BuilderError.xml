@@ -1,5 +1,6 @@
 <Type Name="BuilderError" FullName="Gtk.BuilderError">
   <TypeSignature Language="C#" Value="public enum BuilderError" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed BuilderError extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -12,10 +13,19 @@
       <AttributeName>GLib.GType(typeof(Gtk.BuilderErrorGType))</AttributeName>
     </Attribute>
   </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+    <since version="Gtk# 2.12" />
+  </Docs>
   <Members>
     <Member MemberName="InvalidAttribute">
       <MemberSignature Language="C#" Value="InvalidAttribute" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.BuilderError InvalidAttribute = int32(3)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.BuilderError</ReturnType>
       </ReturnValue>
@@ -25,7 +35,11 @@
     </Member>
     <Member MemberName="InvalidTag">
       <MemberSignature Language="C#" Value="InvalidTag" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.BuilderError InvalidTag = int32(4)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.BuilderError</ReturnType>
       </ReturnValue>
@@ -35,7 +49,11 @@
     </Member>
     <Member MemberName="InvalidTypeFunction">
       <MemberSignature Language="C#" Value="InvalidTypeFunction" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.BuilderError InvalidTypeFunction = int32(0)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.BuilderError</ReturnType>
       </ReturnValue>
@@ -45,7 +63,11 @@
     </Member>
     <Member MemberName="InvalidValue">
       <MemberSignature Language="C#" Value="InvalidValue" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.BuilderError InvalidValue = int32(6)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.BuilderError</ReturnType>
       </ReturnValue>
@@ -55,7 +77,11 @@
     </Member>
     <Member MemberName="MissingAttribute">
       <MemberSignature Language="C#" Value="MissingAttribute" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.BuilderError MissingAttribute = int32(2)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.BuilderError</ReturnType>
       </ReturnValue>
@@ -65,7 +91,11 @@
     </Member>
     <Member MemberName="MissingPropertyValue">
       <MemberSignature Language="C#" Value="MissingPropertyValue" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.BuilderError MissingPropertyValue = int32(5)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.BuilderError</ReturnType>
       </ReturnValue>
@@ -75,7 +105,11 @@
     </Member>
     <Member MemberName="UnhandledTag">
       <MemberSignature Language="C#" Value="UnhandledTag" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.BuilderError UnhandledTag = int32(1)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.BuilderError</ReturnType>
       </ReturnValue>
@@ -84,9 +118,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
-    <since version="Gtk# 2.12" />
-  </Docs>
 </Type>

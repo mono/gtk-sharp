@@ -1,8 +1,10 @@
 <Type Name="AsyncCreateCallback" FullName="Gnome.Vfs.AsyncCreateCallback">
   <TypeSignature Language="C#" Value="public delegate void AsyncCreateCallback(AsyncHandle handle, Result result);" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed AsyncCreateCallback extends System.MulticastDelegate" />
   <AssemblyInfo>
     <AssemblyName>gnome-vfs-sharp</AssemblyName>
     <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Delegate</BaseTypeName>

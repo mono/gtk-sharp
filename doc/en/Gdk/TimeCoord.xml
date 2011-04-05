@@ -1,5 +1,6 @@
 <Type Name="TimeCoord" FullName="Gdk.TimeCoord">
   <TypeSignature Language="C#" Maintainer="auto" Value="public struct TimeCoord" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit TimeCoord extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>gdk-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -7,22 +8,27 @@
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
-  <Docs>
-    <summary>To be added</summary>
-    <remarks>To be added</remarks>
-  </Docs>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
   <Interfaces />
+  <Docs>
+    <summary>To be added</summary>
+    <remarks>To be added</remarks>
+  </Docs>
   <Members>
-    <Member MemberName="Zero">
-      <MemberSignature Language="C#" Value="public static Gdk.TimeCoord Zero;" />
+    <Member MemberName="Axes">
+      <MemberSignature Language="C#" Value="public double[] Axes;" />
+      <MemberSignature Language="ILAsm" Value=".field public float64[] Axes" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Gdk.TimeCoord</ReturnType>
+        <ReturnType>System.Double[]</ReturnType>
       </ReturnValue>
-      <Parameters />
+      <Parameters>
+      </Parameters>
       <Docs>
         <summary>To be added</summary>
         <remarks>To be added</remarks>
@@ -30,7 +36,11 @@
     </Member>
     <Member MemberName="New">
       <MemberSignature Language="C#" Value="public static Gdk.TimeCoord New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gdk.TimeCoord New(native int raw) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gdk.TimeCoord</ReturnType>
       </ReturnValue>
@@ -38,15 +48,19 @@
         <Parameter Name="raw" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <summary>To be added</summary>
         <param name="raw">To be added: an object of type 'IntPtr'</param>
+        <summary>To be added</summary>
         <returns>To be added: an object of type 'Gdk.TimeCoord'</returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
     <Member MemberName="Time">
       <MemberSignature Language="C#" Value="public uint Time;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 Time" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
@@ -57,14 +71,17 @@
         <remarks>To be added</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Axes">
-      <MemberSignature Language="C#" Value="public double[] Axes;" />
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Gdk.TimeCoord Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Gdk.TimeCoord Zero" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Double[]</ReturnType>
+        <ReturnType>Gdk.TimeCoord</ReturnType>
       </ReturnValue>
-      <Parameters>
-      </Parameters>
+      <Parameters />
       <Docs>
         <summary>To be added</summary>
         <remarks>To be added</remarks>

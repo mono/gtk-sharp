@@ -1,5 +1,6 @@
 <Type Name="ObjectInsertedArgs" FullName="Gtk.ObjectInsertedArgs">
   <TypeSignature Language="C#" Value="public class ObjectInsertedArgs : GLib.SignalArgs" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ObjectInsertedArgs extends GLib.SignalArgs" />
   <AssemblyInfo>
     <AssemblyName>gtkhtml-sharp</AssemblyName>
     <AssemblyVersion>3.16.0.0</AssemblyVersion>
@@ -8,10 +9,19 @@
     <BaseTypeName>GLib.SignalArgs</BaseTypeName>
   </Base>
   <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+    <since version="GtkHtml# 3.14" />
+  </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public ObjectInsertedArgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -19,8 +29,12 @@
       </Docs>
     </Member>
     <Member MemberName="Len">
-      <MemberSignature Language="C#" Value="public int Len { get; };" />
+      <MemberSignature Language="C#" Value="public int Len { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Len" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -31,8 +45,12 @@
       </Docs>
     </Member>
     <Member MemberName="Pos">
-      <MemberSignature Language="C#" Value="public int Pos { get; };" />
+      <MemberSignature Language="C#" Value="public int Pos { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Pos" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -43,9 +61,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
-    <since version="GtkHtml# 3.14" />
-  </Docs>
 </Type>

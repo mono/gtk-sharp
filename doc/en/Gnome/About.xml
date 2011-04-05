@@ -1,12 +1,24 @@
 <Type Name="About" FullName="Gnome.About">
   <TypeSignature Language="C#" Maintainer="John Luke" Value="public class About : Gtk.Dialog" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit About extends Gtk.Dialog" />
   <AssemblyInfo>
     <AssemblyName>gnome-sharp</AssemblyName>
     <AssemblyPublicKey>
     </AssemblyPublicKey>
     <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Dialog</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Obsolete</AttributeName>
+    </Attribute>
+  </Attributes>
   <Docs>
     <summary>Display author, documenter and translator credits for an application.</summary>
     <remarks>
@@ -81,204 +93,55 @@ class GnomeAboutSample
 	  </code>
     </example>
   </Docs>
-  <Base>
-    <BaseTypeName>Gtk.Dialog</BaseTypeName>
-  </Base>
-  <Interfaces>
-  </Interfaces>
   <Members>
-    <Member MemberName="Construct">
-      <MemberSignature Language="C#" Value="public void Construct (string name, string version, string copyright, string comments, string[] authors, string[] documenters, string translator_credits, Gdk.Pixbuf logo_pixbuf);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="name" Type="System.String" />
-        <Parameter Name="version" Type="System.String" />
-        <Parameter Name="copyright" Type="System.String" />
-        <Parameter Name="comments" Type="System.String" />
-        <Parameter Name="authors" Type="System.String[]" />
-        <Parameter Name="documenters" Type="System.String[]" />
-        <Parameter Name="translator_credits" Type="System.String" />
-        <Parameter Name="logo_pixbuf" Type="Gdk.Pixbuf" />
-      </Parameters>
-      <Docs>
-        <summary>Construct a credits box for an <see cref="T:Gnome.Application" />.</summary>
-        <param name="name">a <see cref="T:System.String" /></param>
-        <param name="version">a <see cref="T:System.String" /></param>
-        <param name="copyright">a <see cref="T:System.String" /></param>
-        <param name="comments">a <see cref="T:System.String" /></param>
-        <param name="authors">a <see cref="T:System.String" /></param>
-        <param name="documenters">a <see cref="T:System.String" /></param>
-        <param name="translator_credits">a <see cref="T:System.String" /></param>
-        <param name="logo_pixbuf">a <see cref="T:Gdk.Pixbuf" /></param>
-        <remarks>The <paramref name="authors" /> array cannot be empty.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public About (IntPtr raw);" />
-      <MemberType>Constructor</MemberType>
-      <ReturnValue />
-      <Parameters>
-        <Parameter Name="raw" Type="System.IntPtr" />
-      </Parameters>
-      <Docs>
-        <summary>Internal constructor</summary>
-        <param name="raw">Pointer to the C object.</param>
-        <remarks>
-          <para>This is an internal constructor, and should not be used by user code.</para>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Name">
-      <MemberSignature Language="C#" Value="public string Name { set; get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary>The name of the application.</summary>
-        <value>an object of type <see cref="T:System.String" /></value>
-        <remarks />
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("name")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="TranslatorCredits">
-      <MemberSignature Language="C#" Value="public string TranslatorCredits { set; get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary>The translator for the current locale.</summary>
-        <value>an object of type <see cref="T:System.String" /></value>
-        <remarks />
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("translator_credits")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="Copyright">
-      <MemberSignature Language="C#" Value="public string Copyright { set; get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary> The copyright statement of the application.</summary>
-        <value>an object of type <see cref="T:System.String" /></value>
-        <remarks />
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("copyright")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="Logo">
-      <MemberSignature Language="C#" Value="public Gdk.Pixbuf Logo { set; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>Gdk.Pixbuf</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary> The logo for the application.</summary>
-        <value>an object of type <see cref="T:Gdk.Pixbuf" /></value>
-        <remarks />
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("logo")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="Version">
-      <MemberSignature Language="C#" Value="public string Version { set; get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary>The version string of the application.</summary>
-        <value>an object of type <see cref="T:System.String" /></value>
-        <remarks />
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("version")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="Comments">
-      <MemberSignature Language="C#" Value="public string Comments { set; get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary>A short miscellaneous string.</summary>
-        <value>an object of type <see cref="T:System.String" /></value>
-        <remarks />
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("comments")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="GType">
-      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>GLib.GType</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>GType Property.</summary>
-        <value>a <see cref="T:GLib.GType" /></value>
-        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gnome.About" />.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="protected About (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
       <MemberType>Constructor</MemberType>
-      <ReturnValue />
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>Protected Constructor.</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
-      </Docs>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Obsolete</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public About (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public About (string name, string version, string copyright, string comments, string[] authors, string[] documenters, string translator_credits, Gdk.Pixbuf logo_pixbuf);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string name, string version, string copyright, string comments, string[] authors, string[] documenters, string translator_credits, class Gdk.Pixbuf logo_pixbuf) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="name" Type="System.String" />
         <Parameter Name="version" Type="System.String" />
@@ -302,10 +165,193 @@ class GnomeAboutSample
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Comments">
+      <MemberSignature Language="C#" Value="public string Comments { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Comments" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("comments")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>A short miscellaneous string.</summary>
+        <value>an object of type <see cref="T:System.String" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Construct">
+      <MemberSignature Language="C#" Value="public void Construct (string name, string version, string copyright, string comments, string[] authors, string[] documenters, string translator_credits, Gdk.Pixbuf logo_pixbuf);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Construct(string name, string version, string copyright, string comments, string[] authors, string[] documenters, string translator_credits, class Gdk.Pixbuf logo_pixbuf) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="version" Type="System.String" />
+        <Parameter Name="copyright" Type="System.String" />
+        <Parameter Name="comments" Type="System.String" />
+        <Parameter Name="authors" Type="System.String[]" />
+        <Parameter Name="documenters" Type="System.String[]" />
+        <Parameter Name="translator_credits" Type="System.String" />
+        <Parameter Name="logo_pixbuf" Type="Gdk.Pixbuf" />
+      </Parameters>
+      <Docs>
+        <param name="name">a <see cref="T:System.String" /></param>
+        <param name="version">a <see cref="T:System.String" /></param>
+        <param name="copyright">a <see cref="T:System.String" /></param>
+        <param name="comments">a <see cref="T:System.String" /></param>
+        <param name="authors">a <see cref="T:System.String" /></param>
+        <param name="documenters">a <see cref="T:System.String" /></param>
+        <param name="translator_credits">a <see cref="T:System.String" /></param>
+        <param name="logo_pixbuf">a <see cref="T:Gdk.Pixbuf" /></param>
+        <summary>Construct a credits box for an <see cref="T:Gnome.Application" />.</summary>
+        <remarks>The <paramref name="authors" /> array cannot be empty.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Copyright">
+      <MemberSignature Language="C#" Value="public string Copyright { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Copyright" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("copyright")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary> The copyright statement of the application.</summary>
+        <value>an object of type <see cref="T:System.String" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gnome.About" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Logo">
+      <MemberSignature Language="C#" Value="public Gdk.Pixbuf Logo { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Pixbuf Logo" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("logo")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixbuf</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary> The logo for the application.</summary>
+        <value>an object of type <see cref="T:Gdk.Pixbuf" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("name")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The name of the application.</summary>
+        <value>an object of type <see cref="T:System.String" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="TranslatorCredits">
+      <MemberSignature Language="C#" Value="public string TranslatorCredits { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string TranslatorCredits" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("translator_credits")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The translator for the current locale.</summary>
+        <value>an object of type <see cref="T:System.String" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Version">
+      <MemberSignature Language="C#" Value="public string Version { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Version" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("version")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The version string of the application.</summary>
+        <value>an object of type <see cref="T:System.String" /></value>
+        <remarks />
+      </Docs>
+    </Member>
   </Members>
-  <Attributes>
-    <Attribute>
-      <AttributeName>System.Obsolete</AttributeName>
-    </Attribute>
-  </Attributes>
 </Type>

@@ -1,5 +1,6 @@
 <Type Name="List" FullName="GLib.List">
   <TypeSignature Language="C#" Maintainer="miguel" Value="public class List : GLib.ListBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit List extends GLib.ListBase" />
   <AssemblyInfo>
     <AssemblyName>glib-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -7,6 +8,11 @@
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.ListBase</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
   <Docs>
     <summary>A list class used by Gtk</summary>
     <remarks>
@@ -41,22 +47,21 @@
       </example>
     </remarks>
   </Docs>
-  <Base>
-    <BaseTypeName>GLib.ListBase</BaseTypeName>
-  </Base>
-  <Interfaces>
-  </Interfaces>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public List (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue />
       <Parameters>
         <Parameter Name="raw" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <summary>Constructs a List</summary>
         <param name="raw">A handle to a <see cref="T:GLib.List" />.</param>
+        <summary>Constructs a List</summary>
         <remarks>
           <para>
             <see cref="T:GLib.List" /> objects are constructed by passing an unmanaged
@@ -72,8 +77,40 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public List (IntPtr raw, Type element_type);" />
+      <MemberSignature Language="C#" Value="public List (Type element_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Type element_type) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="element_type" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="element_type">a <see cref="T:System.Type" /></param>
+        <summary>Constructs a list of objects of a given type.</summary>
+        <remarks>
+          <example>
+            <code lang="C#">
+	Gtk.Widget a = new Gtk.Widget((IntPtr) 0);
+		Gtk.Widget b = new Gtk.Widget((IntPtr) 0);
+		
+		GLib.List l = new GLib.List (typeof (Gtk.Widget));
+        l.Append (a.Handle);
+        l.Append (b.Handle);
+  </code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public List (IntPtr raw, Type element_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw, class System.Type element_type) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue />
       <Parameters>
         <Parameter Name="raw" Type="System.IntPtr" />
@@ -99,32 +136,34 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public List (Type element_type);" />
+      <MemberSignature Language="C#" Value="public List (Array elements, Type element_type, bool owned, bool elements_owned);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Array elements, class System.Type element_type, bool owned, bool elements_owned) cil managed" />
       <MemberType>Constructor</MemberType>
-      <ReturnValue />
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
+        <Parameter Name="elements" Type="System.Array" />
         <Parameter Name="element_type" Type="System.Type" />
+        <Parameter Name="owned" Type="System.Boolean" />
+        <Parameter Name="elements_owned" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <summary>Constructs a list of objects of a given type.</summary>
-        <param name="element_type">a <see cref="T:System.Type" /></param>
-        <remarks>
-          <example>
-            <code lang="C#">
-	Gtk.Widget a = new Gtk.Widget((IntPtr) 0);
-		Gtk.Widget b = new Gtk.Widget((IntPtr) 0);
-		
-		GLib.List l = new GLib.List (typeof (Gtk.Widget));
-        l.Append (a.Handle);
-        l.Append (b.Handle);
-  </code>
-          </example>
-        </remarks>
+        <param name="elements">Array on elements to build the list.</param>
+        <param name="element_type">The Type of the elements.</param>
+        <param name="owned">Indicates if the list reference must be released on finalization.</param>
+        <param name="elements_owned">Indicates if the list members must be released on finalization.</param>
+        <summary>Public constructor.</summary>
+        <remarks>Constructs a native GList containing a set of member objects.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public List (IntPtr raw, Type element_type, bool owned, bool elements_owned);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw, class System.Type element_type, bool owned, bool elements_owned) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="raw" Type="System.IntPtr" />
         <Parameter Name="element_type" Type="System.Type" />
@@ -144,7 +183,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public List (object[] elements, Type element_type, bool owned, bool elements_owned);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(object[] elements, class System.Type element_type, bool owned, bool elements_owned) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="elements" Type="System.Object[]" />
         <Parameter Name="element_type" Type="System.Type" />
@@ -160,22 +203,21 @@
         <remarks>Constructs a native GList containing a set of member objects.</remarks>
       </Docs>
     </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public List (Array elements, Type element_type, bool owned, bool elements_owned);" />
-      <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="elements" Type="System.Array" />
-        <Parameter Name="element_type" Type="System.Type" />
-        <Parameter Name="owned" Type="System.Boolean" />
-        <Parameter Name="elements_owned" Type="System.Boolean" />
-      </Parameters>
+    <Member MemberName="Clone">
+      <MemberSignature Language="C#" Value="public override object Clone ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Clone() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Parameters />
       <Docs>
-        <param name="elements">Array on elements to build the list.</param>
-        <param name="element_type">The Type of the elements.</param>
-        <param name="owned">Indicates if the list reference must be released on finalization.</param>
-        <param name="elements_owned">Indicates if the list members must be released on finalization.</param>
-        <summary>Public constructor.</summary>
-        <remarks>Constructs a native GList containing a set of member objects.</remarks>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

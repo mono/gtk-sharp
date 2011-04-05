@@ -1,12 +1,22 @@
 <Type Name="FileDomain" FullName="Gnome.FileDomain">
   <TypeSignature Language="C#" Maintainer="auto" Value="public enum FileDomain" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed FileDomain extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>gnome-sharp</AssemblyName>
     <AssemblyPublicKey>
     </AssemblyPublicKey>
     <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gnome.FileDomainGType))</AttributeName>
+    </Attribute>
+  </Attributes>
   <Docs>
     <summary>The types of files a GNOME application needs to access.</summary>
     <remarks>
@@ -18,161 +28,14 @@
     App* types, which specify locations relative to AppDatadir.
     </remarks>
   </Docs>
-  <Base>
-    <BaseTypeName>System.Enum</BaseTypeName>
-  </Base>
-  <Attributes>
-    <Attribute>
-      <AttributeName>GLib.GType(typeof(Gnome.FileDomainGType))</AttributeName>
-    </Attribute>
-  </Attributes>
   <Members>
-    <Member MemberName="Unknown">
-      <MemberSignature Language="C#" Value="Unknown" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gnome.FileDomain</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>An unknown file domain (should never be used).</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Libdir">
-      <MemberSignature Language="C#" Value="Libdir" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gnome.FileDomain</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Libraries in the main GNOME installation.</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Datadir">
-      <MemberSignature Language="C#" Value="Datadir" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gnome.FileDomain</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Data files in the main GNOME installation.</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Sound">
-      <MemberSignature Language="C#" Value="Sound" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gnome.FileDomain</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Sound files in the main GNOME installation.</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Pixmap">
-      <MemberSignature Language="C#" Value="Pixmap" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gnome.FileDomain</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Pixmap files in the main GNOME installation.</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Config">
-      <MemberSignature Language="C#" Value="Config" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gnome.FileDomain</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Config files in the main GNOME installation.</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Help">
-      <MemberSignature Language="C#" Value="Help" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gnome.FileDomain</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Help files in the main GNOME installation.</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AppLibdir">
-      <MemberSignature Language="C#" Value="AppLibdir" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gnome.FileDomain</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Application specific libraries.</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AppDatadir">
-      <MemberSignature Language="C#" Value="AppDatadir" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gnome.FileDomain</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Application specific data files.</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AppSound">
-      <MemberSignature Language="C#" Value="AppSound" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gnome.FileDomain</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Application specific sound files.</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AppPixmap">
-      <MemberSignature Language="C#" Value="AppPixmap" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Gnome.FileDomain</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Application specific pixmap files.</summary>
-        <remarks>
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AppConfig">
       <MemberSignature Language="C#" Value="AppConfig" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.FileDomain AppConfig = int32(11)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gnome.FileDomain</ReturnType>
       </ReturnValue>
@@ -183,15 +46,206 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="AppDatadir">
+      <MemberSignature Language="C#" Value="AppDatadir" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.FileDomain AppDatadir = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.FileDomain</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Application specific data files.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AppHelp">
       <MemberSignature Language="C#" Value="AppHelp" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.FileDomain AppHelp = int32(12)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gnome.FileDomain</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
         <summary>Application specific help files.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AppLibdir">
+      <MemberSignature Language="C#" Value="AppLibdir" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.FileDomain AppLibdir = int32(7)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.FileDomain</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Application specific libraries.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AppPixmap">
+      <MemberSignature Language="C#" Value="AppPixmap" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.FileDomain AppPixmap = int32(10)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.FileDomain</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Application specific pixmap files.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AppSound">
+      <MemberSignature Language="C#" Value="AppSound" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.FileDomain AppSound = int32(9)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.FileDomain</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Application specific sound files.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Config">
+      <MemberSignature Language="C#" Value="Config" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.FileDomain Config = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.FileDomain</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Config files in the main GNOME installation.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Datadir">
+      <MemberSignature Language="C#" Value="Datadir" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.FileDomain Datadir = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.FileDomain</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Data files in the main GNOME installation.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Help">
+      <MemberSignature Language="C#" Value="Help" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.FileDomain Help = int32(6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.FileDomain</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Help files in the main GNOME installation.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Libdir">
+      <MemberSignature Language="C#" Value="Libdir" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.FileDomain Libdir = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.FileDomain</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Libraries in the main GNOME installation.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Pixmap">
+      <MemberSignature Language="C#" Value="Pixmap" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.FileDomain Pixmap = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.FileDomain</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Pixmap files in the main GNOME installation.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Sound">
+      <MemberSignature Language="C#" Value="Sound" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.FileDomain Sound = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.FileDomain</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Sound files in the main GNOME installation.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Unknown">
+      <MemberSignature Language="C#" Value="Unknown" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.FileDomain Unknown = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.FileDomain</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An unknown file domain (should never be used).</summary>
         <remarks>
         </remarks>
       </Docs>

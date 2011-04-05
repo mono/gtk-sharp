@@ -1,5 +1,6 @@
 <Type Name="PrintWin32Devnames" FullName="Gtk.PrintWin32Devnames">
   <TypeSignature Language="C#" Value="public struct PrintWin32Devnames" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit PrintWin32Devnames extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -8,10 +9,24 @@
     <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
   <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Obsolete</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Internal structure.</summary>
+    <remarks>Do not use.</remarks>
+    <since version="Gtk# 2.10" />
+  </Docs>
   <Members>
     <Member MemberName="Device">
       <MemberSignature Language="C#" Value="public string Device;" />
+      <MemberSignature Language="ILAsm" Value=".field public string Device" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -22,7 +37,11 @@
     </Member>
     <Member MemberName="Driver">
       <MemberSignature Language="C#" Value="public string Driver;" />
+      <MemberSignature Language="ILAsm" Value=".field public string Driver" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -33,7 +52,11 @@
     </Member>
     <Member MemberName="Flags">
       <MemberSignature Language="C#" Value="public int Flags;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Flags" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -44,7 +67,11 @@
     </Member>
     <Member MemberName="Free">
       <MemberSignature Language="C#" Value="public void Free ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Free() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -56,7 +83,11 @@
     </Member>
     <Member MemberName="New">
       <MemberSignature Language="C#" Value="public static Gtk.PrintWin32Devnames New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gtk.PrintWin32Devnames New(native int raw) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.PrintWin32Devnames</ReturnType>
       </ReturnValue>
@@ -72,7 +103,11 @@
     </Member>
     <Member MemberName="Output">
       <MemberSignature Language="C#" Value="public string Output;" />
+      <MemberSignature Language="ILAsm" Value=".field public string Output" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -83,7 +118,11 @@
     </Member>
     <Member MemberName="Zero">
       <MemberSignature Language="C#" Value="public static Gtk.PrintWin32Devnames Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Gtk.PrintWin32Devnames Zero" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.PrintWin32Devnames</ReturnType>
       </ReturnValue>
@@ -93,14 +132,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>Internal structure.</summary>
-    <remarks>Do not use.</remarks>
-    <since version="Gtk# 2.10" />
-  </Docs>
-  <Attributes>
-    <Attribute>
-      <AttributeName>System.Obsolete</AttributeName>
-    </Attribute>
-  </Attributes>
 </Type>

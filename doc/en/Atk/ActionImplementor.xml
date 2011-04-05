@@ -1,5 +1,6 @@
 <Type Name="ActionImplementor" FullName="Atk.ActionImplementor">
   <TypeSignature Language="C#" Value="public interface ActionImplementor : GLib.IWrapper" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ActionImplementor implements class GLib.IWrapper" />
   <AssemblyInfo>
     <AssemblyName>atk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -14,10 +15,19 @@
       <AttributeName>GLib.GInterface(typeof(Atk.ActionAdapter))</AttributeName>
     </Attribute>
   </Attributes>
+  <Docs>
+    <summary>Action implementor interface.</summary>
+    <remarks>The implementable portion of the <see cref="T:Atk.Action" /> interface.</remarks>
+    <since version="Gtk# 2.12" />
+  </Docs>
   <Members>
     <Member MemberName="DoAction">
       <MemberSignature Language="C#" Value="public bool DoAction (int i);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool DoAction(int32 i) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -33,7 +43,11 @@
     </Member>
     <Member MemberName="GetDescription">
       <MemberSignature Language="C#" Value="public string GetDescription (int i);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetDescription(int32 i) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -49,7 +63,11 @@
     </Member>
     <Member MemberName="GetKeybinding">
       <MemberSignature Language="C#" Value="public string GetKeybinding (int i);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetKeybinding(int32 i) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -65,7 +83,11 @@
     </Member>
     <Member MemberName="GetLocalizedName">
       <MemberSignature Language="C#" Value="public string GetLocalizedName (int i);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetLocalizedName(int32 i) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -81,7 +103,11 @@
     </Member>
     <Member MemberName="GetName">
       <MemberSignature Language="C#" Value="public string GetName (int i);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetName(int32 i) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -96,8 +122,12 @@
       </Docs>
     </Member>
     <Member MemberName="NActions">
-      <MemberSignature Language="C#" Value="public int NActions { get; };" />
+      <MemberSignature Language="C#" Value="public int NActions { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 NActions" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -109,7 +139,11 @@
     </Member>
     <Member MemberName="SetDescription">
       <MemberSignature Language="C#" Value="public bool SetDescription (int i, string desc);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetDescription(int32 i, string desc) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -126,9 +160,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>Action implementor interface.</summary>
-    <remarks>The implementable portion of the <see cref="T:Atk.Action" /> interface.</remarks>
-    <since version="Gtk# 2.12" />
-  </Docs>
 </Type>

@@ -1,5 +1,6 @@
 <Type Name="Orientation" FullName="Gtk.Orientation">
   <TypeSignature Language="C#" Maintainer="Jonathan Kessler (Jwkpiano1@comcast.net)" Value="public enum Orientation" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed Orientation extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -7,11 +8,6 @@
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
-  <Docs>
-    <summary>An enumeration storing the current orientation.</summary>
-    <remarks>
-    </remarks>
-  </Docs>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
@@ -20,10 +16,19 @@
       <AttributeName>GLib.GType(typeof(Gtk.OrientationGType))</AttributeName>
     </Attribute>
   </Attributes>
+  <Docs>
+    <summary>An enumeration storing the current orientation.</summary>
+    <remarks>
+    </remarks>
+  </Docs>
   <Members>
     <Member MemberName="Horizontal">
       <MemberSignature Language="C#" Value="Horizontal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.Orientation Horizontal = int32(0)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.Orientation</ReturnType>
       </ReturnValue>
@@ -36,7 +41,11 @@
     </Member>
     <Member MemberName="Vertical">
       <MemberSignature Language="C#" Value="Vertical" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.Orientation Vertical = int32(1)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.Orientation</ReturnType>
       </ReturnValue>

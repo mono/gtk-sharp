@@ -1,5 +1,6 @@
 <Type Name="ClosedArgs" FullName="Gdk.ClosedArgs">
   <TypeSignature Language="C#" Value="public class ClosedArgs : GLib.SignalArgs" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ClosedArgs extends GLib.SignalArgs" />
   <AssemblyInfo>
     <AssemblyName>gdk-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -7,20 +8,24 @@
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
+  </Base>
+  <Interfaces />
   <Docs>
     <summary>Event data.</summary>
     <remarks>
       <para>The <see cref="M:Gdk.Display.Closed" /> event invokes <see cref="T:Gdk.ClosedHandler" /> delegates which pass event data via this class.</para>
     </remarks>
   </Docs>
-  <Base>
-    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
-  </Base>
-  <Interfaces />
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public ClosedArgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue />
       <Parameters />
       <Docs>
@@ -29,8 +34,12 @@
       </Docs>
     </Member>
     <Member MemberName="IsError">
-      <MemberSignature Language="C#" Value="public bool IsError { get; };" />
+      <MemberSignature Language="C#" Value="public bool IsError { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsError" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>

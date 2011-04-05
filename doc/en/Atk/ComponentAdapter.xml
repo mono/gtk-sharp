@@ -1,5 +1,6 @@
 <Type Name="ComponentAdapter" FullName="Atk.ComponentAdapter">
-  <TypeSignature Language="C#" Value="public class ComponentAdapter : GLib.GInterfaceAdapter, Atk.Component" />
+  <TypeSignature Language="C#" Value="public class ComponentAdapter : GLib.GInterfaceAdapter, Atk.Component, GLib.IWrapper" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi ComponentAdapter extends GLib.GInterfaceAdapter implements class Atk.Component, class GLib.IWrapper" />
   <AssemblyInfo>
     <AssemblyName>atk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -11,11 +12,23 @@
     <Interface>
       <InterfaceName>Atk.Component</InterfaceName>
     </Interface>
+    <Interface>
+      <InterfaceName>GLib.IWrapper</InterfaceName>
+    </Interface>
   </Interfaces>
+  <Docs>
+    <summary>Component adapter.</summary>
+    <remarks>Adapts <see cref="T:Atk.ComponentImplementor" /> implementations to the full <see cref="T:Atk.Component" /> API.</remarks>
+    <since version="Gtk# 2.12" />
+  </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public ComponentAdapter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -24,7 +37,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public ComponentAdapter (Atk.ComponentImplementor implementor);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Atk.ComponentImplementor implementor) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="implementor" Type="Atk.ComponentImplementor" />
       </Parameters>
@@ -34,9 +51,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ComponentAdapter (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AddFocusHandler">
       <MemberSignature Language="C#" Value="public uint AddFocusHandler (Atk.FocusHandler handler);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance unsigned int32 AddFocusHandler(class Atk.FocusHandler handler) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
@@ -50,9 +87,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Alpha">
+      <MemberSignature Language="C#" Value="public double Alpha { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 Alpha" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="BoundsChanged">
       <MemberSignature Language="C#" Value="public event Atk.BoundsChangedHandler BoundsChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class Atk.BoundsChangedHandler BoundsChanged" />
       <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Signal("bounds_changed")</AttributeName>
@@ -68,7 +125,11 @@
     </Member>
     <Member MemberName="Contains">
       <MemberSignature Language="C#" Value="public bool Contains (int x, int y, Atk.CoordType coord_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Contains(int32 x, int32 y, valuetype Atk.CoordType coord_type) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -88,7 +149,11 @@
     </Member>
     <Member MemberName="GetExtents">
       <MemberSignature Language="C#" Value="public void GetExtents (out int x, out int y, out int width, out int height, Atk.CoordType coord_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void GetExtents(int32 x, int32 y, int32 width, int32 height, valuetype Atk.CoordType coord_type) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -110,8 +175,32 @@
       </Docs>
     </Member>
     <Member MemberName="GetObject">
-      <MemberSignature Language="C#" Value="public static Atk.Component GetObject (IntPtr handle, bool owned);" />
+      <MemberSignature Language="C#" Value="public static Atk.Component GetObject (GLib.Object obj);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Atk.Component GetObject(class GLib.Object obj) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Atk.Component</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="obj" Type="GLib.Object" />
+      </Parameters>
+      <Docs>
+        <param name="obj">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetObject">
+      <MemberSignature Language="C#" Value="public static Atk.Component GetObject (IntPtr handle, bool owned);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Atk.Component GetObject(native int handle, bool owned) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Atk.Component</ReturnType>
       </ReturnValue>
@@ -129,7 +218,11 @@
     </Member>
     <Member MemberName="GetPosition">
       <MemberSignature Language="C#" Value="public void GetPosition (out int x, out int y, Atk.CoordType coord_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void GetPosition(int32 x, int32 y, valuetype Atk.CoordType coord_type) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -148,7 +241,11 @@
     </Member>
     <Member MemberName="GetSize">
       <MemberSignature Language="C#" Value="public void GetSize (out int width, out int height);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void GetSize(int32 width, int32 height) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -165,7 +262,11 @@
     </Member>
     <Member MemberName="GrabFocus">
       <MemberSignature Language="C#" Value="public bool GrabFocus ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool GrabFocus() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -176,11 +277,15 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Layer">
-      <MemberSignature Language="C#" Value="public Atk.Layer Layer { get; };" />
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public override GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype GLib.GType GType" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Atk.Layer</ReturnType>
+        <ReturnType>GLib.GType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -188,120 +293,15 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="MdiZorder">
-      <MemberSignature Language="C#" Value="public int MdiZorder { get; };" />
+    <Member MemberName="Handle">
+      <MemberSignature Language="C#" Value="public override IntPtr Handle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int Handle" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RefAccessibleAtPoint">
-      <MemberSignature Language="C#" Value="public Atk.Object RefAccessibleAtPoint (int x, int y, Atk.CoordType coord_type);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>Atk.Object</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="x" Type="System.Int32" />
-        <Parameter Name="y" Type="System.Int32" />
-        <Parameter Name="coord_type" Type="Atk.CoordType" />
-      </Parameters>
-      <Docs>
-        <param name="x">To be added.</param>
-        <param name="y">To be added.</param>
-        <param name="coord_type">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RemoveFocusHandler">
-      <MemberSignature Language="C#" Value="public void RemoveFocusHandler (uint handler_id);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="handler_id" Type="System.UInt32" />
-      </Parameters>
-      <Docs>
-        <param name="handler_id">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SetExtents">
-      <MemberSignature Language="C#" Value="public bool SetExtents (int x, int y, int width, int height, Atk.CoordType coord_type);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="x" Type="System.Int32" />
-        <Parameter Name="y" Type="System.Int32" />
-        <Parameter Name="width" Type="System.Int32" />
-        <Parameter Name="height" Type="System.Int32" />
-        <Parameter Name="coord_type" Type="Atk.CoordType" />
-      </Parameters>
-      <Docs>
-        <param name="x">To be added.</param>
-        <param name="y">To be added.</param>
-        <param name="width">To be added.</param>
-        <param name="height">To be added.</param>
-        <param name="coord_type">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SetPosition">
-      <MemberSignature Language="C#" Value="public bool SetPosition (int x, int y, Atk.CoordType coord_type);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="x" Type="System.Int32" />
-        <Parameter Name="y" Type="System.Int32" />
-        <Parameter Name="coord_type" Type="Atk.CoordType" />
-      </Parameters>
-      <Docs>
-        <param name="x">To be added.</param>
-        <param name="y">To be added.</param>
-        <param name="coord_type">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SetSize">
-      <MemberSignature Language="C#" Value="public bool SetSize (int width, int height);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="width" Type="System.Int32" />
-        <Parameter Name="height" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="width">To be added.</param>
-        <param name="height">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Alpha">
-      <MemberSignature Language="C#" Value="public double Alpha { get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
+        <ReturnType>System.IntPtr</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -310,8 +310,12 @@
       </Docs>
     </Member>
     <Member MemberName="Implementor">
-      <MemberSignature Language="C#" Value="public Atk.ComponentImplementor Implementor { get; };" />
+      <MemberSignature Language="C#" Value="public Atk.ComponentImplementor Implementor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Atk.ComponentImplementor Implementor" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Atk.ComponentImplementor</ReturnType>
       </ReturnValue>
@@ -322,8 +326,12 @@
       </Docs>
     </Member>
     <Member MemberName="Layer">
-      <MemberSignature Language="C#" Value="public Atk.Layer Layer { get; };" />
+      <MemberSignature Language="C#" Value="public Atk.Layer Layer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Atk.Layer Layer" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Atk.Layer</ReturnType>
       </ReturnValue>
@@ -334,8 +342,12 @@
       </Docs>
     </Member>
     <Member MemberName="MdiZorder">
-      <MemberSignature Language="C#" Value="public int MdiZorder { get; };" />
+      <MemberSignature Language="C#" Value="public int MdiZorder { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 MdiZorder" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -347,7 +359,11 @@
     </Member>
     <Member MemberName="RefAccessibleAtPoint">
       <MemberSignature Language="C#" Value="public Atk.Object RefAccessibleAtPoint (int x, int y, Atk.CoordType coord_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Atk.Object RefAccessibleAtPoint(int32 x, int32 y, valuetype Atk.CoordType coord_type) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Atk.Object</ReturnType>
       </ReturnValue>
@@ -367,7 +383,11 @@
     </Member>
     <Member MemberName="RemoveFocusHandler">
       <MemberSignature Language="C#" Value="public void RemoveFocusHandler (uint handler_id);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveFocusHandler(unsigned int32 handler_id) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -382,7 +402,11 @@
     </Member>
     <Member MemberName="SetExtents">
       <MemberSignature Language="C#" Value="public bool SetExtents (int x, int y, int width, int height, Atk.CoordType coord_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetExtents(int32 x, int32 y, int32 width, int32 height, valuetype Atk.CoordType coord_type) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -406,7 +430,11 @@
     </Member>
     <Member MemberName="SetPosition">
       <MemberSignature Language="C#" Value="public bool SetPosition (int x, int y, Atk.CoordType coord_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetPosition(int32 x, int32 y, valuetype Atk.CoordType coord_type) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -426,7 +454,11 @@
     </Member>
     <Member MemberName="SetSize">
       <MemberSignature Language="C#" Value="public bool SetSize (int width, int height);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetSize(int32 width, int32 height) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -443,9 +475,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>Component adapter.</summary>
-    <remarks>Adapts <see cref="T:Atk.ComponentImplementor" /> implementations to the full <see cref="T:Atk.Component" /> API.</remarks>
-    <since version="Gtk# 2.12" />
-  </Docs>
 </Type>

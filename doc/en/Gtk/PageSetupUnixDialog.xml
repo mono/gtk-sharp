@@ -1,5 +1,6 @@
 <Type Name="PageSetupUnixDialog" FullName="Gtk.PageSetupUnixDialog">
   <TypeSignature Language="C#" Value="public class PageSetupUnixDialog : Gtk.Dialog" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PageSetupUnixDialog extends Gtk.Dialog" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -8,10 +9,19 @@
     <BaseTypeName>Gtk.Dialog</BaseTypeName>
   </Base>
   <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+    <since version="Gtk# 2.10" />
+  </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="protected PageSetupUnixDialog (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Obsolete</AttributeName>
@@ -28,7 +38,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public PageSetupUnixDialog (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="raw" Type="System.IntPtr" />
       </Parameters>
@@ -40,7 +54,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public PageSetupUnixDialog (string title, Gtk.Window parent);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string title, class Gtk.Window parent) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="title" Type="System.String" />
         <Parameter Name="parent" Type="Gtk.Window" />
@@ -53,8 +71,12 @@
       </Docs>
     </Member>
     <Member MemberName="GType">
-      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; };" />
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.GType</ReturnType>
       </ReturnValue>
@@ -65,8 +87,12 @@
       </Docs>
     </Member>
     <Member MemberName="PageSetup">
-      <MemberSignature Language="C#" Value="public Gtk.PageSetup PageSetup { set; get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.PageSetup PageSetup { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.PageSetup PageSetup" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.PageSetup</ReturnType>
       </ReturnValue>
@@ -77,8 +103,12 @@
       </Docs>
     </Member>
     <Member MemberName="PrintSettings">
-      <MemberSignature Language="C#" Value="public Gtk.PrintSettings PrintSettings { set; get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.PrintSettings PrintSettings { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.PrintSettings PrintSettings" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.PrintSettings</ReturnType>
       </ReturnValue>
@@ -89,9 +119,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
-    <since version="Gtk# 2.10" />
-  </Docs>
 </Type>

@@ -1,5 +1,6 @@
 <Type Name="Viewport" FullName="Gtk.Viewport">
   <TypeSignature Language="C#" Maintainer="Lee Mallabone" Value="public class Viewport : Gtk.Bin" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Viewport extends Gtk.Bin" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -7,6 +8,11 @@
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Bin</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
   <Docs>
     <summary>A <see cref="T:Gtk.Container" /> that allows a scrollable view of its child when added to a <see cref="T:Gtk.ScrolledWindow" />.</summary>
     <remarks>
@@ -67,119 +73,14 @@ namespace GtkSamples {
       </example>
     </remarks>
   </Docs>
-  <Base>
-    <BaseTypeName>Gtk.Bin</BaseTypeName>
-  </Base>
-  <Interfaces>
-  </Interfaces>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public Viewport (IntPtr raw);" />
-      <MemberType>Constructor</MemberType>
-      <ReturnValue />
-      <Parameters>
-        <Parameter Name="raw" Type="System.IntPtr" />
-      </Parameters>
-      <Docs>
-        <summary>Internal constructor</summary>
-        <param name="raw">Pointer to the C object.</param>
-        <remarks>
-          <para>This is an internal constructor, and should not be used by user code.</para>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public Viewport (Gtk.Adjustment hadjustment, Gtk.Adjustment vadjustment);" />
-      <MemberType>Constructor</MemberType>
-      <ReturnValue />
-      <Parameters>
-        <Parameter Name="hadjustment" Type="Gtk.Adjustment" />
-        <Parameter Name="vadjustment" Type="Gtk.Adjustment" />
-      </Parameters>
-      <Docs>
-        <summary>Creates a new Viewport with the specified horizontal and vertical Adjustments.</summary>
-        <param name="hadjustment">An <see cref="T:Gtk.Adjustment" /> to model horizontal viewing.</param>
-        <param name="vadjustment">An <see cref="T:Gtk.Adjustment" /> to model vertical viewing.</param>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="Hadjustment">
-      <MemberSignature Language="C#" Value="public Gtk.Adjustment Hadjustment { set; get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>Gtk.Adjustment</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary>Manage the horizontal model.</summary>
-        <value>The current state of the horizontal model</value>
-        <remarks />
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("hadjustment")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="Vadjustment">
-      <MemberSignature Language="C#" Value="public Gtk.Adjustment Vadjustment { set; get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>Gtk.Adjustment</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary>Manage the vertical model.</summary>
-        <value>The current state of the vertical model.</value>
-        <remarks />
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("vadjustment")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="ShadowType">
-      <MemberSignature Language="C#" Value="public Gtk.ShadowType ShadowType { set; get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>Gtk.ShadowType</ReturnType>
-      </ReturnValue>
-      <Parameters>
-      </Parameters>
-      <Docs>
-        <summary>Manage the shadow style surrounding the Viewport contents.</summary>
-        <value>The current shadow style surrounding the child widget.</value>
-        <remarks />
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("shadow-type")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="ScrollAdjustmentsSet">
-      <MemberSignature Language="C#" Value="public event Gtk.ScrollAdjustmentsSetHandler ScrollAdjustmentsSet;" />
-      <MemberType>Event</MemberType>
-      <ReturnValue>
-        <ReturnType>Gtk.ScrollAdjustmentsSetHandler</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>This event is raised when the <see cref="P:Gtk.Viewport.VAdjustment" /> or <see cref="P:Gtk.Viewport.HAdjustment" /> properties are set.</summary>
-        <remarks />
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Signal("set_scroll_adjustments")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public Viewport ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue />
       <Parameters />
       <Docs>
@@ -189,9 +90,73 @@ namespace GtkSamples {
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Viewport (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Viewport (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Viewport (Gtk.Adjustment hadjustment, Gtk.Adjustment vadjustment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Gtk.Adjustment hadjustment, class Gtk.Adjustment vadjustment) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="hadjustment" Type="Gtk.Adjustment" />
+        <Parameter Name="vadjustment" Type="Gtk.Adjustment" />
+      </Parameters>
+      <Docs>
+        <param name="hadjustment">An <see cref="T:Gtk.Adjustment" /> to model horizontal viewing.</param>
+        <param name="vadjustment">An <see cref="T:Gtk.Adjustment" /> to model vertical viewing.</param>
+        <summary>Creates a new Viewport with the specified horizontal and vertical Adjustments.</summary>
+        <remarks />
+      </Docs>
+    </Member>
     <Member MemberName="GType">
-      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; };" />
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.GType</ReturnType>
       </ReturnValue>
@@ -202,9 +167,41 @@ namespace GtkSamples {
         <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.Viewport" />.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Hadjustment">
+      <MemberSignature Language="C#" Value="public Gtk.Adjustment Hadjustment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Adjustment Hadjustment" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("hadjustment")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.Adjustment</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Manage the horizontal model.</summary>
+        <value>The current state of the horizontal model</value>
+        <remarks />
+      </Docs>
+    </Member>
     <Member MemberName="OnScrollAdjustmentsSet">
       <MemberSignature Language="C#" Value="protected virtual void OnScrollAdjustmentsSet (Gtk.Adjustment hadjustment, Gtk.Adjustment vadjustment);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnScrollAdjustmentsSet(class Gtk.Adjustment hadjustment, class Gtk.Adjustment vadjustment) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideScrollAdjustmentsSet", Type=typeof(Gtk.Viewport))</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -213,29 +210,78 @@ namespace GtkSamples {
         <Parameter Name="vadjustment" Type="Gtk.Adjustment" />
       </Parameters>
       <Docs>
-        <summary>Default handler for the <see cref="M:Gtk.Viewport.ScrollAdjustmentsSet" /> event.</summary>
         <param name="hadjustment">a <see cref="T:Gtk.Adjustment" /></param>
         <param name="vadjustment">a <see cref="T:Gtk.Adjustment" /></param>
+        <summary>Default handler for the <see cref="M:Gtk.Viewport.ScrollAdjustmentsSet" /> event.</summary>
         <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Viewport.ScrollAdjustmentsSet" /> event.</remarks>
       </Docs>
     </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected Viewport (GLib.GType gtype);" />
-      <MemberType>Constructor</MemberType>
-      <ReturnValue />
-      <Parameters>
-        <Parameter Name="gtype" Type="GLib.GType" />
-      </Parameters>
-      <Docs>
-        <summary>Protected Constructor.</summary>
-        <param name="gtype">a <see cref="T:GLib.GType" /></param>
-        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
-      </Docs>
+    <Member MemberName="ScrollAdjustmentsSet">
+      <MemberSignature Language="C#" Value="public event Gtk.ScrollAdjustmentsSetHandler ScrollAdjustmentsSet;" />
+      <MemberSignature Language="ILAsm" Value=".event class Gtk.ScrollAdjustmentsSetHandler ScrollAdjustmentsSet" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.Obsolete</AttributeName>
+          <AttributeName>GLib.Signal("set_scroll_adjustments")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.ScrollAdjustmentsSetHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>This event is raised when the <see cref="P:Gtk.Viewport.VAdjustment" /> or <see cref="P:Gtk.Viewport.HAdjustment" /> properties are set.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ShadowType">
+      <MemberSignature Language="C#" Value="public Gtk.ShadowType ShadowType { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.ShadowType ShadowType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("shadow-type")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.ShadowType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Manage the shadow style surrounding the Viewport contents.</summary>
+        <value>The current shadow style surrounding the child widget.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Vadjustment">
+      <MemberSignature Language="C#" Value="public Gtk.Adjustment Vadjustment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Adjustment Vadjustment" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("vadjustment")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.Adjustment</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Manage the vertical model.</summary>
+        <value>The current state of the vertical model.</value>
+        <remarks />
+      </Docs>
     </Member>
   </Members>
 </Type>

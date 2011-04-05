@@ -1,5 +1,6 @@
 <Type Name="PrintJob" FullName="Gtk.PrintJob">
   <TypeSignature Language="C#" Value="public class PrintJob : GLib.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PrintJob extends GLib.Object" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -8,10 +9,19 @@
     <BaseTypeName>GLib.Object</BaseTypeName>
   </Base>
   <Interfaces />
+  <Docs>
+    <summary>Print job class.</summary>
+    <remarks>Represents a job sent to a printer.  Direct use of this class is only necessary when using the non-portable <see cref="T:Gtk.PrintUnixDialog" /> API. The <see cref="M:Gtk.PrintJob.Surface" /> property accesses the cairo surface onto which the pages should be drawn.  When finished drawing, call <see cref="M:Gtk.PrintJob.Send" /> to send the job to the printer.</remarks>
+    <since version="Gtk# 2.10" />
+  </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="protected PrintJob (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Obsolete</AttributeName>
@@ -28,7 +38,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public PrintJob (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="raw" Type="System.IntPtr" />
       </Parameters>
@@ -40,7 +54,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public PrintJob (string title, Gtk.Printer printer, Gtk.PrintSettings settings, Gtk.PageSetup page_setup);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string title, class Gtk.Printer printer, class Gtk.PrintSettings settings, class Gtk.PageSetup page_setup) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="title" Type="System.String" />
         <Parameter Name="printer" Type="Gtk.Printer" />
@@ -57,8 +75,12 @@
       </Docs>
     </Member>
     <Member MemberName="GType">
-      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; };" />
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.GType</ReturnType>
       </ReturnValue>
@@ -70,7 +92,16 @@
     </Member>
     <Member MemberName="OnStatusChanged">
       <MemberSignature Language="C#" Value="protected virtual void OnStatusChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnStatusChanged() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideStatusChanged", Type=typeof(Gtk.PrintJob))</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -81,8 +112,12 @@
       </Docs>
     </Member>
     <Member MemberName="PageSetup">
-      <MemberSignature Language="C#" Value="public Gtk.PageSetup PageSetup { get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.PageSetup PageSetup { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.PageSetup PageSetup" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("page-setup")</AttributeName>
@@ -98,8 +133,12 @@
       </Docs>
     </Member>
     <Member MemberName="Printer">
-      <MemberSignature Language="C#" Value="public Gtk.Printer Printer { get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.Printer Printer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Printer Printer" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("printer")</AttributeName>
@@ -116,7 +155,11 @@
     </Member>
     <Member MemberName="Send">
       <MemberSignature Language="C#" Value="public void Send (Gtk.PrintJobCompleteFunc cb);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Send(class Gtk.PrintJobCompleteFunc cb) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -131,7 +174,11 @@
     </Member>
     <Member MemberName="SetSourceFile">
       <MemberSignature Language="C#" Value="public bool SetSourceFile (string filename);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SetSourceFile(string filename) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -146,8 +193,12 @@
       </Docs>
     </Member>
     <Member MemberName="Settings">
-      <MemberSignature Language="C#" Value="public Gtk.PrintSettings Settings { get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.PrintSettings Settings { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.PrintSettings Settings" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("settings")</AttributeName>
@@ -163,8 +214,12 @@
       </Docs>
     </Member>
     <Member MemberName="Status">
-      <MemberSignature Language="C#" Value="public Gtk.PrintStatus Status { get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.PrintStatus Status { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.PrintStatus Status" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.PrintStatus</ReturnType>
       </ReturnValue>
@@ -176,7 +231,11 @@
     </Member>
     <Member MemberName="StatusChanged">
       <MemberSignature Language="C#" Value="public event EventHandler StatusChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler StatusChanged" />
       <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Signal("status-changed")</AttributeName>
@@ -191,8 +250,12 @@
       </Docs>
     </Member>
     <Member MemberName="Title">
-      <MemberSignature Language="C#" Value="public string Title { get; };" />
+      <MemberSignature Language="C#" Value="public string Title { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Title" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("title")</AttributeName>
@@ -208,8 +271,12 @@
       </Docs>
     </Member>
     <Member MemberName="TrackPrintStatus">
-      <MemberSignature Language="C#" Value="public bool TrackPrintStatus { set; get; };" />
+      <MemberSignature Language="C#" Value="public bool TrackPrintStatus { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool TrackPrintStatus" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("track-print-status")</AttributeName>
@@ -225,9 +292,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>Print job class.</summary>
-    <remarks>Represents a job sent to a printer.  Direct use of this class is only necessary when using the non-portable <see cref="T:Gtk.PrintUnixDialog" /> API. The <see cref="M:Gtk.PrintJob.Surface" /> property accesses the cairo surface onto which the pages should be drawn.  When finished drawing, call <see cref="M:Gtk.PrintJob.Send" /> to send the job to the printer.</remarks>
-    <since version="Gtk# 2.10" />
-  </Docs>
 </Type>

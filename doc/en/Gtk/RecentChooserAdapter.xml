@@ -1,5 +1,6 @@
 <Type Name="RecentChooserAdapter" FullName="Gtk.RecentChooserAdapter">
-  <TypeSignature Language="C#" Value="public class RecentChooserAdapter : GLib.GInterfaceAdapter, Gtk.RecentChooser" />
+  <TypeSignature Language="C#" Value="public class RecentChooserAdapter : GLib.GInterfaceAdapter, GLib.IWrapper, Gtk.RecentChooser" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi RecentChooserAdapter extends GLib.GInterfaceAdapter implements class GLib.IWrapper, class Gtk.RecentChooser" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -9,13 +10,25 @@
   </Base>
   <Interfaces>
     <Interface>
+      <InterfaceName>GLib.IWrapper</InterfaceName>
+    </Interface>
+    <Interface>
       <InterfaceName>Gtk.RecentChooser</InterfaceName>
     </Interface>
   </Interfaces>
+  <Docs>
+    <summary>RecentChooser interface adapter.</summary>
+    <remarks>Adapts a <see cref="T:Gtk.RecentChooserImplementor" /> implementation to expose the complete <see cref="T:Gtk.RecentChooser" /> interface API.</remarks>
+    <since version="Gtk# 2.12" />
+  </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public RecentChooserAdapter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -24,7 +37,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public RecentChooserAdapter (Gtk.RecentChooserImplementor implementor);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Gtk.RecentChooserImplementor implementor) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="implementor" Type="Gtk.RecentChooserImplementor" />
       </Parameters>
@@ -34,9 +51,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public RecentChooserAdapter (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AddFilter">
       <MemberSignature Language="C#" Value="public void AddFilter (Gtk.RecentFilter filter);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddFilter(class Gtk.RecentFilter filter) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -50,8 +87,12 @@
       </Docs>
     </Member>
     <Member MemberName="CurrentItem">
-      <MemberSignature Language="C#" Value="public Gtk.RecentInfo CurrentItem { get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.RecentInfo CurrentItem { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.RecentInfo CurrentItem" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.RecentInfo</ReturnType>
       </ReturnValue>
@@ -62,8 +103,12 @@
       </Docs>
     </Member>
     <Member MemberName="CurrentUri">
-      <MemberSignature Language="C#" Value="public string CurrentUri { get; };" />
+      <MemberSignature Language="C#" Value="public string CurrentUri { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string CurrentUri" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -75,7 +120,11 @@
     </Member>
     <Member MemberName="ErrorQuark">
       <MemberSignature Language="C#" Value="public static int ErrorQuark ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 ErrorQuark() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -87,8 +136,12 @@
       </Docs>
     </Member>
     <Member MemberName="Filter">
-      <MemberSignature Language="C#" Value="public Gtk.RecentFilter Filter { set; get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.RecentFilter Filter { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.RecentFilter Filter" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("filter")</AttributeName>
@@ -104,8 +157,32 @@
       </Docs>
     </Member>
     <Member MemberName="GetObject">
-      <MemberSignature Language="C#" Value="public static Gtk.RecentChooser GetObject (IntPtr handle, bool owned);" />
+      <MemberSignature Language="C#" Value="public static Gtk.RecentChooser GetObject (GLib.Object obj);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gtk.RecentChooser GetObject(class GLib.Object obj) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.RecentChooser</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="obj" Type="GLib.Object" />
+      </Parameters>
+      <Docs>
+        <param name="obj">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetObject">
+      <MemberSignature Language="C#" Value="public static Gtk.RecentChooser GetObject (IntPtr handle, bool owned);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gtk.RecentChooser GetObject(native int handle, bool owned) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.RecentChooser</ReturnType>
       </ReturnValue>
@@ -123,7 +200,11 @@
     </Member>
     <Member MemberName="GetUris">
       <MemberSignature Language="C#" Value="public string GetUris (out ulong length);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetUris(unsigned int64 length) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -137,27 +218,15 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ItemActivated">
-      <MemberSignature Language="C#" Value="public event EventHandler ItemActivated;" />
-      <MemberType>Event</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Signal("item-activated")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.EventHandler</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Items">
-      <MemberSignature Language="C#" Value="public GLib.List Items { get; };" />
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public override GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype GLib.GType GType" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>GLib.List</ReturnType>
+        <ReturnType>GLib.GType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -165,289 +234,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Limit">
-      <MemberSignature Language="C#" Value="public int Limit { set; get; };" />
+    <Member MemberName="Handle">
+      <MemberSignature Language="C#" Value="public override IntPtr Handle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int Handle" />
       <MemberType>Property</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("limit")</AttributeName>
-        </Attribute>
-      </Attributes>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
+        <ReturnType>System.IntPtr</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ListFilters">
-      <MemberSignature Language="C#" Value="public GLib.SList ListFilters ();" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>GLib.SList</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="LocalOnly">
-      <MemberSignature Language="C#" Value="public bool LocalOnly { set; get; };" />
-      <MemberType>Property</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("local-only")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RemoveFilter">
-      <MemberSignature Language="C#" Value="public void RemoveFilter (Gtk.RecentFilter filter);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="filter" Type="Gtk.RecentFilter" />
-      </Parameters>
-      <Docs>
-        <param name="filter">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SelectAll">
-      <MemberSignature Language="C#" Value="public void SelectAll ();" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SelectionChanged">
-      <MemberSignature Language="C#" Value="public event EventHandler SelectionChanged;" />
-      <MemberType>Event</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Signal("selection-changed")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.EventHandler</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SelectMultiple">
-      <MemberSignature Language="C#" Value="public bool SelectMultiple { set; get; };" />
-      <MemberType>Property</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("select-multiple")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SelectUri">
-      <MemberSignature Language="C#" Value="public bool SelectUri (string uri);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="uri" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="uri">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SetCurrentUri">
-      <MemberSignature Language="C#" Value="public bool SetCurrentUri (string uri);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="uri" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="uri">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ShowIcons">
-      <MemberSignature Language="C#" Value="public bool ShowIcons { set; get; };" />
-      <MemberType>Property</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("show-icons")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ShowNotFound">
-      <MemberSignature Language="C#" Value="public bool ShowNotFound { set; get; };" />
-      <MemberType>Property</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("show-not-found")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ShowNumbers">
-      <MemberSignature Language="C#" Value="public bool ShowNumbers { set; get; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Obsolete</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="ShowPrivate">
-      <MemberSignature Language="C#" Value="public bool ShowPrivate { set; get; };" />
-      <MemberType>Property</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("show-private")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ShowTips">
-      <MemberSignature Language="C#" Value="public bool ShowTips { set; get; };" />
-      <MemberType>Property</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("show-tips")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SortFunc">
-      <MemberSignature Language="C#" Value="public Gtk.RecentSortFunc SortFunc { set; };" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>Gtk.RecentSortFunc</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SortType">
-      <MemberSignature Language="C#" Value="public Gtk.RecentSortType SortType { set; get; };" />
-      <MemberType>Property</MemberType>
-      <Attributes>
-        <Attribute>
-          <AttributeName>GLib.Property("sort-type")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>Gtk.RecentSortType</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UnselectAll">
-      <MemberSignature Language="C#" Value="public void UnselectAll ();" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UnselectUri">
-      <MemberSignature Language="C#" Value="public void UnselectUri (string uri);" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="uri" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="uri">To be added.</param>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Implementor">
-      <MemberSignature Language="C#" Value="public Gtk.RecentChooserImplementor Implementor { get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.RecentChooserImplementor Implementor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.RecentChooserImplementor Implementor" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.RecentChooserImplementor</ReturnType>
       </ReturnValue>
@@ -459,7 +268,11 @@
     </Member>
     <Member MemberName="ItemActivated">
       <MemberSignature Language="C#" Value="public event EventHandler ItemActivated;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler ItemActivated" />
       <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Signal("item-activated")</AttributeName>
@@ -474,8 +287,12 @@
       </Docs>
     </Member>
     <Member MemberName="Items">
-      <MemberSignature Language="C#" Value="public GLib.List Items { get; };" />
+      <MemberSignature Language="C#" Value="public GLib.List Items { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class GLib.List Items" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.List</ReturnType>
       </ReturnValue>
@@ -486,8 +303,12 @@
       </Docs>
     </Member>
     <Member MemberName="Limit">
-      <MemberSignature Language="C#" Value="public int Limit { set; get; };" />
+      <MemberSignature Language="C#" Value="public int Limit { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Limit" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("limit")</AttributeName>
@@ -504,7 +325,11 @@
     </Member>
     <Member MemberName="ListFilters">
       <MemberSignature Language="C#" Value="public GLib.SList ListFilters ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class GLib.SList ListFilters() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.SList</ReturnType>
       </ReturnValue>
@@ -516,8 +341,12 @@
       </Docs>
     </Member>
     <Member MemberName="LocalOnly">
-      <MemberSignature Language="C#" Value="public bool LocalOnly { set; get; };" />
+      <MemberSignature Language="C#" Value="public bool LocalOnly { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool LocalOnly" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("local-only")</AttributeName>
@@ -534,7 +363,11 @@
     </Member>
     <Member MemberName="RemoveFilter">
       <MemberSignature Language="C#" Value="public void RemoveFilter (Gtk.RecentFilter filter);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveFilter(class Gtk.RecentFilter filter) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -549,7 +382,11 @@
     </Member>
     <Member MemberName="SelectAll">
       <MemberSignature Language="C#" Value="public void SelectAll ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SelectAll() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -561,7 +398,11 @@
     </Member>
     <Member MemberName="SelectionChanged">
       <MemberSignature Language="C#" Value="public event EventHandler SelectionChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler SelectionChanged" />
       <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Signal("selection-changed")</AttributeName>
@@ -576,8 +417,12 @@
       </Docs>
     </Member>
     <Member MemberName="SelectMultiple">
-      <MemberSignature Language="C#" Value="public bool SelectMultiple { set; get; };" />
+      <MemberSignature Language="C#" Value="public bool SelectMultiple { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool SelectMultiple" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("select-multiple")</AttributeName>
@@ -594,7 +439,11 @@
     </Member>
     <Member MemberName="SelectUri">
       <MemberSignature Language="C#" Value="public bool SelectUri (string uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SelectUri(string uri) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -610,7 +459,11 @@
     </Member>
     <Member MemberName="SetCurrentUri">
       <MemberSignature Language="C#" Value="public bool SetCurrentUri (string uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetCurrentUri(string uri) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -625,8 +478,12 @@
       </Docs>
     </Member>
     <Member MemberName="ShowIcons">
-      <MemberSignature Language="C#" Value="public bool ShowIcons { set; get; };" />
+      <MemberSignature Language="C#" Value="public bool ShowIcons { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ShowIcons" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("show-icons")</AttributeName>
@@ -642,8 +499,12 @@
       </Docs>
     </Member>
     <Member MemberName="ShowNotFound">
-      <MemberSignature Language="C#" Value="public bool ShowNotFound { set; get; };" />
+      <MemberSignature Language="C#" Value="public bool ShowNotFound { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ShowNotFound" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("show-not-found")</AttributeName>
@@ -659,8 +520,12 @@
       </Docs>
     </Member>
     <Member MemberName="ShowNumbers">
-      <MemberSignature Language="C#" Value="public bool ShowNumbers { set; get; };" />
+      <MemberSignature Language="C#" Value="public bool ShowNumbers { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ShowNumbers" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Obsolete</AttributeName>
@@ -676,8 +541,12 @@
       </Docs>
     </Member>
     <Member MemberName="ShowPrivate">
-      <MemberSignature Language="C#" Value="public bool ShowPrivate { set; get; };" />
+      <MemberSignature Language="C#" Value="public bool ShowPrivate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ShowPrivate" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("show-private")</AttributeName>
@@ -693,8 +562,12 @@
       </Docs>
     </Member>
     <Member MemberName="ShowTips">
-      <MemberSignature Language="C#" Value="public bool ShowTips { set; get; };" />
+      <MemberSignature Language="C#" Value="public bool ShowTips { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ShowTips" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("show-tips")</AttributeName>
@@ -710,8 +583,12 @@
       </Docs>
     </Member>
     <Member MemberName="SortFunc">
-      <MemberSignature Language="C#" Value="public Gtk.RecentSortFunc SortFunc { set; };" />
+      <MemberSignature Language="C#" Value="public Gtk.RecentSortFunc SortFunc { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.RecentSortFunc SortFunc" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.RecentSortFunc</ReturnType>
       </ReturnValue>
@@ -722,8 +599,12 @@
       </Docs>
     </Member>
     <Member MemberName="SortType">
-      <MemberSignature Language="C#" Value="public Gtk.RecentSortType SortType { set; get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.RecentSortType SortType { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.RecentSortType SortType" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>GLib.Property("sort-type")</AttributeName>
@@ -740,7 +621,11 @@
     </Member>
     <Member MemberName="UnselectAll">
       <MemberSignature Language="C#" Value="public void UnselectAll ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UnselectAll() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -752,7 +637,11 @@
     </Member>
     <Member MemberName="UnselectUri">
       <MemberSignature Language="C#" Value="public void UnselectUri (string uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UnselectUri(string uri) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -766,9 +655,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>RecentChooser interface adapter.</summary>
-    <remarks>Adapts a <see cref="T:Gtk.RecentChooserImplementor" /> implementation to expose the complete <see cref="T:Gtk.RecentChooser" /> interface API.</remarks>
-    <since version="Gtk# 2.12" />
-  </Docs>
 </Type>

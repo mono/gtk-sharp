@@ -1,5 +1,6 @@
 <Type Name="Thread" FullName="GLib.Thread">
   <TypeSignature Language="C#" Value="public class Thread" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Thread extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>glib-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -7,18 +8,22 @@
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
-  <Docs>
-    <summary>To be added</summary>
-    <remarks>To be added</remarks>
-  </Docs>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces />
+  <Docs>
+    <summary>To be added</summary>
+    <remarks>To be added</remarks>
+  </Docs>
   <Members>
     <Member MemberName="Init">
       <MemberSignature Language="C#" Value="public static void Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Init() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -29,8 +34,12 @@
       </Docs>
     </Member>
     <Member MemberName="Supported">
-      <MemberSignature Language="C#" Value="public static bool Supported { get; };" />
+      <MemberSignature Language="C#" Value="public static bool Supported { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property bool Supported" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>

@@ -1,5 +1,6 @@
 <Type Name="HyperlinkImplImplementor" FullName="Atk.HyperlinkImplImplementor">
   <TypeSignature Language="C#" Value="public interface HyperlinkImplImplementor : GLib.IWrapper" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract HyperlinkImplImplementor implements class GLib.IWrapper" />
   <AssemblyInfo>
     <AssemblyName>atk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -14,10 +15,19 @@
       <AttributeName>GLib.GInterface(typeof(Atk.HyperlinkImplAdapter))</AttributeName>
     </Attribute>
   </Attributes>
+  <Docs>
+    <summary>HyperlinkImpl implementor interface.</summary>
+    <remarks>The implementable portion of the <see cref="T:Atk.HyperlinkImpl" /> interface.</remarks>
+    <since version="Gtk# 2.12" />
+  </Docs>
   <Members>
     <Member MemberName="Hyperlink">
-      <MemberSignature Language="C#" Value="public Atk.Hyperlink Hyperlink { get; };" />
+      <MemberSignature Language="C#" Value="public Atk.Hyperlink Hyperlink { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Atk.Hyperlink Hyperlink" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Atk.Hyperlink</ReturnType>
       </ReturnValue>
@@ -28,9 +38,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>HyperlinkImpl implementor interface.</summary>
-    <remarks>The implementable portion of the <see cref="T:Atk.HyperlinkImpl" /> interface.</remarks>
-    <since version="Gtk# 2.12" />
-  </Docs>
 </Type>

@@ -1,5 +1,6 @@
 <Type Name="PixbufInsertedArgs" FullName="Gtk.PixbufInsertedArgs">
   <TypeSignature Language="C#" Value="public class PixbufInsertedArgs : GLib.SignalArgs" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PixbufInsertedArgs extends GLib.SignalArgs" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -7,20 +8,24 @@
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
+  </Base>
+  <Interfaces />
   <Docs>
     <summary>Event data.</summary>
     <remarks>
       <para>The <see cref="M:Gtk.TextBuffer.PixbufInserted" /> event invokes <see cref="T:Gtk.PixbufInsertedHandler" /> delegates which pass event data via this class.</para>
     </remarks>
   </Docs>
-  <Base>
-    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
-  </Base>
-  <Interfaces />
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public PixbufInsertedArgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue />
       <Parameters />
       <Docs>
@@ -29,8 +34,12 @@
       </Docs>
     </Member>
     <Member MemberName="Pixbuf">
-      <MemberSignature Language="C#" Value="public Gdk.Pixbuf Pixbuf { get; };" />
+      <MemberSignature Language="C#" Value="public Gdk.Pixbuf Pixbuf { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Pixbuf Pixbuf" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gdk.Pixbuf</ReturnType>
       </ReturnValue>
@@ -42,8 +51,12 @@
       </Docs>
     </Member>
     <Member MemberName="Pos">
-      <MemberSignature Language="C#" Value="public Gtk.TextIter Pos { get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.TextIter Pos { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.TextIter Pos" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.TextIter</ReturnType>
       </ReturnValue>

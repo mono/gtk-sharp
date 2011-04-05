@@ -1,16 +1,14 @@
 <Type Name="ClientFlags" FullName="Gnome.ClientFlags">
   <TypeSignature Language="C#" Maintainer="auto" Value="public enum ClientFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed ClientFlags extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>gnome-sharp</AssemblyName>
     <AssemblyPublicKey>
     </AssemblyPublicKey>
     <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
-  <Docs>
-    <summary>Flags indicating the status of a client (as seen by the session manager).</summary>
-    <remarks>Used as return values by <see cref="P:Gnome.Client.Flags" />.</remarks>
-  </Docs>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
@@ -22,10 +20,18 @@
       <AttributeName>System.Flags</AttributeName>
     </Attribute>
   </Attributes>
+  <Docs>
+    <summary>Flags indicating the status of a client (as seen by the session manager).</summary>
+    <remarks>Used as return values by <see cref="P:Gnome.Client.Flags" />.</remarks>
+  </Docs>
   <Members>
     <Member MemberName="IsConnected">
       <MemberSignature Language="C#" Value="IsConnected" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.ClientFlags IsConnected = int32(1)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gnome.ClientFlags</ReturnType>
       </ReturnValue>
@@ -38,7 +44,11 @@
     </Member>
     <Member MemberName="Restarted">
       <MemberSignature Language="C#" Value="Restarted" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.ClientFlags Restarted = int32(2)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gnome.ClientFlags</ReturnType>
       </ReturnValue>
@@ -54,7 +64,11 @@
     </Member>
     <Member MemberName="Restored">
       <MemberSignature Language="C#" Value="Restored" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.ClientFlags Restored = int32(4)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gnome.ClientFlags</ReturnType>
       </ReturnValue>

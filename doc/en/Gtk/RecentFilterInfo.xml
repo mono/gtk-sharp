@@ -1,5 +1,6 @@
 <Type Name="RecentFilterInfo" FullName="Gtk.RecentFilterInfo">
   <TypeSignature Language="C#" Value="public struct RecentFilterInfo" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit RecentFilterInfo extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -8,10 +9,19 @@
     <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
   <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+    <since version="Gtk# 2.10" />
+  </Docs>
   <Members>
     <Member MemberName="Age">
       <MemberSignature Language="C#" Value="public int Age;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Age" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -22,7 +32,11 @@
     </Member>
     <Member MemberName="Applications">
       <MemberSignature Language="C#" Value="public string Applications;" />
+      <MemberSignature Language="ILAsm" Value=".field public string Applications" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -33,7 +47,11 @@
     </Member>
     <Member MemberName="Contains">
       <MemberSignature Language="C#" Value="public Gtk.RecentFilterFlags Contains;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Gtk.RecentFilterFlags Contains" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.RecentFilterFlags</ReturnType>
       </ReturnValue>
@@ -44,7 +62,11 @@
     </Member>
     <Member MemberName="DisplayName">
       <MemberSignature Language="C#" Value="public string DisplayName;" />
+      <MemberSignature Language="ILAsm" Value=".field public string DisplayName" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -55,7 +77,11 @@
     </Member>
     <Member MemberName="Groups">
       <MemberSignature Language="C#" Value="public string Groups;" />
+      <MemberSignature Language="ILAsm" Value=".field public string Groups" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -66,7 +92,11 @@
     </Member>
     <Member MemberName="MimeType">
       <MemberSignature Language="C#" Value="public string MimeType;" />
+      <MemberSignature Language="ILAsm" Value=".field public string MimeType" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -77,7 +107,11 @@
     </Member>
     <Member MemberName="New">
       <MemberSignature Language="C#" Value="public static Gtk.RecentFilterInfo New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gtk.RecentFilterInfo New(native int raw) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.RecentFilterInfo</ReturnType>
       </ReturnValue>
@@ -93,7 +127,11 @@
     </Member>
     <Member MemberName="Uri">
       <MemberSignature Language="C#" Value="public string Uri;" />
+      <MemberSignature Language="ILAsm" Value=".field public string Uri" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -104,7 +142,11 @@
     </Member>
     <Member MemberName="Zero">
       <MemberSignature Language="C#" Value="public static Gtk.RecentFilterInfo Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Gtk.RecentFilterInfo Zero" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.RecentFilterInfo</ReturnType>
       </ReturnValue>
@@ -114,9 +156,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
-    <since version="Gtk# 2.10" />
-  </Docs>
 </Type>

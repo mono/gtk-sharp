@@ -1,5 +1,6 @@
 <Type Name="Unit" FullName="Gtk.Unit">
   <TypeSignature Language="C#" Value="public enum Unit" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed Unit extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -12,10 +13,19 @@
       <AttributeName>GLib.GType(typeof(Gtk.UnitGType))</AttributeName>
     </Attribute>
   </Attributes>
+  <Docs>
+    <summary>Unit enumeration.</summary>
+    <remarks />
+    <since version="Gtk# 2.10" />
+  </Docs>
   <Members>
     <Member MemberName="Inch">
       <MemberSignature Language="C#" Value="Inch" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.Unit Inch = int32(2)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.Unit</ReturnType>
       </ReturnValue>
@@ -25,7 +35,11 @@
     </Member>
     <Member MemberName="Mm">
       <MemberSignature Language="C#" Value="Mm" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.Unit Mm = int32(3)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.Unit</ReturnType>
       </ReturnValue>
@@ -35,7 +49,11 @@
     </Member>
     <Member MemberName="Pixel">
       <MemberSignature Language="C#" Value="Pixel" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.Unit Pixel = int32(0)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.Unit</ReturnType>
       </ReturnValue>
@@ -45,7 +63,11 @@
     </Member>
     <Member MemberName="Points">
       <MemberSignature Language="C#" Value="Points" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.Unit Points = int32(1)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.Unit</ReturnType>
       </ReturnValue>
@@ -54,9 +76,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>Unit enumeration.</summary>
-    <remarks />
-    <since version="Gtk# 2.10" />
-  </Docs>
 </Type>

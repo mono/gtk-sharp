@@ -11,7 +11,7 @@ ASSEMBLIES = 				\
 	gconf-sharp.dll			\
 	gconf-sharp-peditors.dll	\
 	gtkhtml-sharp.dll		\
-	rsvg-sharp.dll			\
+	rsvg2-sharp.dll			\
 	vte-sharp.dll			\
 	gtk-dotnet.dll
 
@@ -46,6 +46,12 @@ get-assemblies:
 	cp $(top_builddir)/../gnome-sharp/*/*.dll.config lib
 	cp $(top_builddir)/../gnome-sharp/gconf/*/*.dll lib
 	cp $(top_builddir)/../gnome-sharp/gconf/*/*.dll.config lib
+	cp $(top_builddir)/../gnome-desktop-sharp/gtkhtml/gtkhtml-sharp.dll.config lib
+	cp $(top_builddir)/../gnome-desktop-sharp/gtkhtml/gtkhtml-sharp.dll lib
+	cp $(top_builddir)/../gnome-desktop-sharp/rsvg/rsvg2-sharp.dll.config lib
+	cp $(top_builddir)/../gnome-desktop-sharp/rsvg/rsvg2-sharp.dll lib
+	cp $(top_builddir)/../gnome-desktop-sharp/vte/vte-sharp.dll.config lib
+	cp $(top_builddir)/../gnome-desktop-sharp/vte/vte-sharp.dll lib
 
 update: get-assemblies
 	$(UPDATER)

@@ -1,5 +1,6 @@
 <Type Name="Variant" FullName="Pango.Variant">
   <TypeSignature Language="C#" Maintainer="duncan" Value="public enum Variant" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed Variant extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>pango-sharp</AssemblyName>
     <AssemblyPublicKey>
@@ -7,10 +8,6 @@
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
   </AssemblyInfo>
   <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
-  <Docs>
-    <summary>An enumeration specifying capitalization variant of the font</summary>
-    <remarks />
-  </Docs>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
@@ -19,10 +16,18 @@
       <AttributeName>GLib.GType(typeof(Pango.VariantGType))</AttributeName>
     </Attribute>
   </Attributes>
+  <Docs>
+    <summary>An enumeration specifying capitalization variant of the font</summary>
+    <remarks />
+  </Docs>
   <Members>
     <Member MemberName="Normal">
       <MemberSignature Language="C#" Value="Normal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Pango.Variant Normal = int32(0)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Pango.Variant</ReturnType>
       </ReturnValue>
@@ -34,7 +39,11 @@
     </Member>
     <Member MemberName="SmallCaps">
       <MemberSignature Language="C#" Value="SmallCaps" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Pango.Variant SmallCaps = int32(1)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Pango.Variant</ReturnType>
       </ReturnValue>

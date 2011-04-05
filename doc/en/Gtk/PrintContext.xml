@@ -1,5 +1,6 @@
 <Type Name="PrintContext" FullName="Gtk.PrintContext">
   <TypeSignature Language="C#" Value="public class PrintContext : GLib.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PrintContext extends GLib.Object" />
   <AssemblyInfo>
     <AssemblyName>gtk-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -8,10 +9,19 @@
     <BaseTypeName>GLib.Object</BaseTypeName>
   </Base>
   <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+    <since version="Gtk# 2.10" />
+  </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="protected PrintContext ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -20,7 +30,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="protected PrintContext (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Obsolete</AttributeName>
@@ -37,7 +51,11 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public PrintContext (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="raw" Type="System.IntPtr" />
       </Parameters>
@@ -48,8 +66,12 @@
       </Docs>
     </Member>
     <Member MemberName="CairoContext">
-      <MemberSignature Language="C#" Value="public Cairo.Context CairoContext { get; };" />
+      <MemberSignature Language="C#" Value="public Cairo.Context CairoContext { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Cairo.Context CairoContext" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Cairo.Context</ReturnType>
       </ReturnValue>
@@ -61,7 +83,11 @@
     </Member>
     <Member MemberName="CreatePangoContext">
       <MemberSignature Language="C#" Value="public Pango.Context CreatePangoContext ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Pango.Context CreatePangoContext() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Pango.Context</ReturnType>
       </ReturnValue>
@@ -74,7 +100,11 @@
     </Member>
     <Member MemberName="CreatePangoLayout">
       <MemberSignature Language="C#" Value="public Pango.Layout CreatePangoLayout ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Pango.Layout CreatePangoLayout() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Pango.Layout</ReturnType>
       </ReturnValue>
@@ -86,8 +116,12 @@
       </Docs>
     </Member>
     <Member MemberName="DpiX">
-      <MemberSignature Language="C#" Value="public double DpiX { get; };" />
+      <MemberSignature Language="C#" Value="public double DpiX { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 DpiX" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -98,8 +132,12 @@
       </Docs>
     </Member>
     <Member MemberName="DpiY">
-      <MemberSignature Language="C#" Value="public double DpiY { get; };" />
+      <MemberSignature Language="C#" Value="public double DpiY { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 DpiY" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -110,8 +148,12 @@
       </Docs>
     </Member>
     <Member MemberName="GType">
-      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; };" />
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.GType</ReturnType>
       </ReturnValue>
@@ -122,8 +164,12 @@
       </Docs>
     </Member>
     <Member MemberName="Height">
-      <MemberSignature Language="C#" Value="public double Height { get; };" />
+      <MemberSignature Language="C#" Value="public double Height { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 Height" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -134,8 +180,12 @@
       </Docs>
     </Member>
     <Member MemberName="PageSetup">
-      <MemberSignature Language="C#" Value="public Gtk.PageSetup PageSetup { get; };" />
+      <MemberSignature Language="C#" Value="public Gtk.PageSetup PageSetup { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.PageSetup PageSetup" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Gtk.PageSetup</ReturnType>
       </ReturnValue>
@@ -146,8 +196,12 @@
       </Docs>
     </Member>
     <Member MemberName="PangoFontmap">
-      <MemberSignature Language="C#" Value="public Pango.FontMap PangoFontmap { get; };" />
+      <MemberSignature Language="C#" Value="public Pango.FontMap PangoFontmap { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Pango.FontMap PangoFontmap" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Pango.FontMap</ReturnType>
       </ReturnValue>
@@ -159,7 +213,11 @@
     </Member>
     <Member MemberName="SetCairoContext">
       <MemberSignature Language="C#" Value="public void SetCairoContext (Cairo.Context cr, double dpi_x, double dpi_y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetCairoContext(class Cairo.Context cr, float64 dpi_x, float64 dpi_y) cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -177,8 +235,12 @@
       </Docs>
     </Member>
     <Member MemberName="Width">
-      <MemberSignature Language="C#" Value="public double Width { get; };" />
+      <MemberSignature Language="C#" Value="public double Width { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 Width" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -189,9 +251,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
-    <since version="Gtk# 2.10" />
-  </Docs>
 </Type>

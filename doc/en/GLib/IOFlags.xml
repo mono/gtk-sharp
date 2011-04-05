@@ -1,5 +1,6 @@
 <Type Name="IOFlags" FullName="GLib.IOFlags">
   <TypeSignature Language="C#" Value="public enum IOFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed IOFlags extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>glib-sharp</AssemblyName>
     <AssemblyVersion>2.12.0.0</AssemblyVersion>
@@ -12,10 +13,18 @@
       <AttributeName>System.Flags</AttributeName>
     </Attribute>
   </Attributes>
+  <Docs>
+    <summary>IOFlags enumeration.</summary>
+    <remarks>Flags for configuring IO channel usage.</remarks>
+  </Docs>
   <Members>
     <Member MemberName="Append">
       <MemberSignature Language="C#" Value="Append" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOFlags Append = int32(1)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.IOFlags</ReturnType>
       </ReturnValue>
@@ -25,7 +34,11 @@
     </Member>
     <Member MemberName="GetMask">
       <MemberSignature Language="C#" Value="GetMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOFlags GetMask = int32(16)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.IOFlags</ReturnType>
       </ReturnValue>
@@ -35,7 +48,11 @@
     </Member>
     <Member MemberName="IsReadable">
       <MemberSignature Language="C#" Value="IsReadable" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOFlags IsReadable = int32(4)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.IOFlags</ReturnType>
       </ReturnValue>
@@ -45,7 +62,11 @@
     </Member>
     <Member MemberName="IsSeekable">
       <MemberSignature Language="C#" Value="IsSeekable" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOFlags IsSeekable = int32(16)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.IOFlags</ReturnType>
       </ReturnValue>
@@ -55,7 +76,11 @@
     </Member>
     <Member MemberName="IsWriteable">
       <MemberSignature Language="C#" Value="IsWriteable" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOFlags IsWriteable = int32(8)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.IOFlags</ReturnType>
       </ReturnValue>
@@ -65,7 +90,11 @@
     </Member>
     <Member MemberName="Mask">
       <MemberSignature Language="C#" Value="Mask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOFlags Mask = int32(16)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.IOFlags</ReturnType>
       </ReturnValue>
@@ -75,7 +104,11 @@
     </Member>
     <Member MemberName="Nonblock">
       <MemberSignature Language="C#" Value="Nonblock" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOFlags Nonblock = int32(2)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.IOFlags</ReturnType>
       </ReturnValue>
@@ -85,7 +118,11 @@
     </Member>
     <Member MemberName="SetMask">
       <MemberSignature Language="C#" Value="SetMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOFlags SetMask = int32(3)" />
       <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>GLib.IOFlags</ReturnType>
       </ReturnValue>
@@ -94,8 +131,4 @@
       </Docs>
     </Member>
   </Members>
-  <Docs>
-    <summary>IOFlags enumeration.</summary>
-    <remarks>Flags for configuring IO channel usage.</remarks>
-  </Docs>
 </Type>
