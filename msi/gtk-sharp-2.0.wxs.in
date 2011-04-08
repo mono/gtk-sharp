@@ -4,8 +4,10 @@
     <Package InstallerVersion="200" Compressed="yes" Description="Gtk# for .Net @VERSION@" Comments="Provides Gtk# and dependencies." />
     <Media Id="1" Cabinet="WixProject1.cab" EmbedCab="yes" />
     <PropertyRef Id="NETFRAMEWORK20" />
+    <PropertyRef Id="NETFRAMEWORK35" />
+    <PropertyRef Id="NETFRAMEWORK40" />
     <Condition Message="This setup requires the .NET Framework 2.0 or higher.">
-      Installed or NETFRAMEWORK20
+      Installed or NETFRAMEWORK20 or NETFRAMEWORK35 or NETFRAMEWORK40
     </Condition>
     <Property Id="PREVIOUSVERSIONSINSTALLED" Secure="yes" />
     <Upgrade Id="6AAF2A04-27B0-4D70-8EBB-3EB225794B3F">
