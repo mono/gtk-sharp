@@ -24,18 +24,6 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-[DllImport ("gtksharpglue-3")]
-static extern void gtksharp_gtk_widget_set_window (IntPtr widget, IntPtr window);
-public Gdk.Window GdkWindow {
-	get {
-		return this.Window;
-	}
-	set {
-		Gdk.Window window = value as Gdk.Window;
-		gtksharp_gtk_widget_set_window (Handle, window.Handle);
-	}
-}
-
 public void AddAccelerator (string accel_signal, AccelGroup accel_group, AccelKey accel_key)
 {
 	this.AddAccelerator (accel_signal, accel_group, (uint) accel_key.Key, accel_key.AccelMods, accel_key.AccelFlags);
