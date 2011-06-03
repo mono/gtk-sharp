@@ -259,12 +259,6 @@ if test x$platform_win32 = xyes; then
    sed -e "s/\/cyg\//\/\//" libtool > libtool.new; mv libtool.new libtool; chmod 755 libtool
 fi
 
-if test "x$enable_mono_cairo" = "xyes"; then
-  cairo_comment="building local copy"
-else
-  cairo_comment="using system assembly"
-fi
-
 echo "---"
 echo "Configuration summary"
 echo ""
