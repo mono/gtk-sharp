@@ -24,8 +24,10 @@ namespace GLib {
 	using System;
 	using System.Runtime.InteropServices;
 
+	[CDeclCallback]
 	public delegate void GInterfaceInitHandler (IntPtr iface_ptr, IntPtr data);
 
+	[CDeclCallback]
 	internal delegate void GInterfaceFinalizeHandler (IntPtr iface_ptr, IntPtr data);
 
 	internal struct GInterfaceInfo {
