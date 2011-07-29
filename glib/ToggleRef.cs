@@ -63,6 +63,11 @@ namespace GLib {
 				PendingDestroys.Remove (this);
 			}
 
+			InternalFree ();
+		}
+
+		public void InternalFree ()
+		{
 			if (hardened)
 				g_object_unref (handle);
 			else
@@ -146,7 +151,7 @@ namespace GLib {
 			}
 
 			foreach (ToggleRef r in references)
-				r.Free ();
+				r.InternalFree ();
 
 			return false;
 		}
