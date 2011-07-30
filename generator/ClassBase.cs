@@ -46,7 +46,13 @@ namespace GtkSharp.Generation {
 			get {
 				return methods;
 			}
-		}	
+		}
+
+		public Hashtable Properties {
+			get {
+				return props;
+			}
+		}
 
 		public ClassBase Parent {
 			get {
@@ -206,13 +212,25 @@ namespace GtkSharp.Generation {
 			}
 		}
 
-		public void GenProperties (GenerationInfo gen_info, ClassBase implementor)
+		public void GenProperties (GenerationInfo gen_info, Hashtable collisions, ClassBase implementor)
 		{		
 			if (props.Count == 0)
 				return;
 
-			foreach (Property prop in props.Values)
+			foreach (Property prop in props.Values) {
+				string oname = null, oprotection = null;
+				if (collisions != null && collisions.Contains (prop.Name)) {
+					oname = prop.Name;
+					prop.Name = QualifiedName + "." + prop.Name;
+					oprotection = prop.Protection;
+					prop.Protection = "";
+				}
 				prop.Generate (gen_info, "\t\t", implementor);
+				if (oname != null) {
+					prop.Name = oname;
+					prop.Protection = oprotection;
+				}
+			}
 		}
 
 		protected void GenFields (GenerationInfo gen_info)
@@ -254,7 +272,7 @@ namespace GtkSharp.Generation {
 
 			foreach (Method method in methods.Values) {
 				if (IgnoreMethod (method, implementor))
-				    	continue;
+					continue;
 
 				string oname = null, oprotection = null;
 				if (collisions != null && collisions.Contains (method.Name)) {

@@ -170,7 +170,7 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ();
 
 			GenCtors (gen_info);
-			GenProperties (gen_info, null);
+			GenProperties (gen_info, null, null);
 			GenFields (gen_info);
 			GenChildProperties (gen_info);
 			
@@ -194,11 +194,26 @@ namespace GtkSharp.Generation {
 			
 			if (interfaces.Count != 0) {
 				Hashtable all_methods = new Hashtable ();
+				Hashtable all_properties = new Hashtable ();
 				foreach (Method m in Methods.Values)
 					all_methods[m.Name] = m;
+				foreach (Property p in Properties.Values)
+					all_properties[p.Name] = p;
 				Hashtable collisions = new Hashtable ();
+				Hashtable prop_collisions = new Hashtable ();
 				foreach (string iface in interfaces) {
 					ClassBase igen = table.GetClassGen (iface);
+					foreach (Property p in igen.Properties.Values) {
+						if (all_methods.Contains ("Get" + p.Name) || all_methods.Contains ("Set" + p.Name)) {
+							prop_collisions[p.Name] = true;
+							continue;
+						}
+						Property collision = all_properties[p.Name] as Property;
+						if (collision != null)
+							prop_collisions[p.Name] = true;
+						else
+							all_properties[p.Name] = p;
+					}
 					foreach (Method m in igen.Methods.Values) {
 						if (m.Name.StartsWith ("Get") || m.Name.StartsWith ("Set")) {
 							if (GetProperty (m.Name.Substring (3)) != null) {
@@ -219,7 +234,7 @@ namespace GtkSharp.Generation {
 						continue;
 					InterfaceGen igen = table.GetClassGen (iface) as InterfaceGen;
 					igen.GenMethods (gen_info, collisions, this);
-					igen.GenProperties (gen_info, this);
+					igen.GenProperties (gen_info, prop_collisions, this);
 					igen.GenSignals (gen_info, this);
 					igen.GenVirtualMethods (gen_info, this);
 				}
@@ -276,7 +291,7 @@ namespace GtkSharp.Generation {
 
 			ObjectGen child_ancestor = Parent as ObjectGen;
 			while (child_ancestor.CName != "GtkContainer" &&
-			       child_ancestor.childprops.Count == 0)
+				child_ancestor.childprops.Count == 0)
 				child_ancestor = child_ancestor.Parent as ObjectGen;
 
 			sw.WriteLine ("\t\tpublic class " + Name + "Child : " + child_ancestor.NS + "." + child_ancestor.Name + "." + child_ancestor.Name + "Child {");

@@ -249,7 +249,7 @@ namespace GtkSharp.Generation {
 			if (!IsConsumeOnly)
 				GenerateImplementorProp (sw);
 
-			GenProperties (gen_info, null);
+			GenProperties (gen_info, null, null);
 
 			foreach (Signal sig in sigs.Values)
 				sig.GenEvent (sw, null, "GLib.Object.GetObject (Handle)");
