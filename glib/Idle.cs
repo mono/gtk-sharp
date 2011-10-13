@@ -99,7 +99,7 @@ namespace GLib {
 		}
 		
 		[DllImport("libglib-2.0-0.dll")]
-		static extern bool g_source_remove_by_funcs_user_data (Delegate d, IntPtr data);
+		static extern bool g_source_remove (uint id);
                                                                                 
 		public static bool Remove (IdleHandler hndlr)
 		{
@@ -112,7 +112,7 @@ namespace GLib {
 				
 					if (p != null && p.real_handler == hndlr) {
 						keys.Add (code);
-						result = g_source_remove_by_funcs_user_data (p.proxy_handler, IntPtr.Zero);
+						result = g_source_remove (code);
 					}
 				}
 
