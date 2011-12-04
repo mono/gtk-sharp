@@ -47,20 +47,19 @@ namespace GLib {
 
 		public void Dispose ()
 		{
-			if (disposed)
-				return;
-
 			Dispose (true);
-			disposed = true;
 			GC.SuppressFinalize (this);
 		}
 
 		protected virtual void Dispose (bool disposing)
 		{
-			ToggleRef tref;
+			if (disposed)
+				return;
+
+			ToggleRef toggle_ref;
 			lock (Objects) {
-				if (Objects.TryGetValue (Handle, out tref)) {
-					tref.QueueUnref ();
+				if (Objects.TryGetValue (Handle, out toggle_ref)) {
+					toggle_ref.QueueUnref ();
 					Objects.Remove (Handle);
 				}
 			}
@@ -71,8 +70,8 @@ namespace GLib {
 			
 			if (disposing)
 				tref.Dispose ();
-			else
-				tref.QueueUnref ();
+
+			disposed = true;
 		}
 
 		public static bool WarnOnFinalize { get; set; }
