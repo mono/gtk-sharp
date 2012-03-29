@@ -36,7 +36,7 @@ namespace GLib
 			g_thread_init (IntPtr.Zero);
 		}
 
-		[DllImport ("libgthread-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern bool g_thread_get_initialized ();
 
 		public static bool Supported
