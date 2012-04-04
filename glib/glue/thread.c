@@ -20,7 +20,10 @@
  */
 
 
+#include <glib.h>
+#ifndef GLIB_CHECK_VERSION (2, 32, 0)
 #include <glib/gthread.h>
+#endif
 
 gboolean glibsharp_g_thread_supported (void);
 
