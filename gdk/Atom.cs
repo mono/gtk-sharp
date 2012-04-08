@@ -1,4 +1,4 @@
-// Atom.custom
+// Atom.cs
 // 
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of version 2 of the Lesser GNU General 
@@ -14,8 +14,14 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-public static implicit operator string (Gdk.Atom atom)
-{
-	return atom.Name;
+namespace Gdk {
+
+	public partial class Atom {
+
+		public static implicit operator string (Gdk.Atom atom)
+		{
+			return atom.Name;
+		}
+	}
 }
 
