@@ -24,6 +24,7 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
+
 [Obsolete]		
 protected Widget (GLib.GType gtype) : base(gtype)
 {
@@ -33,6 +34,33 @@ public override void Destroy ()
 {
 	base.Destroy ();
 }
+
+// BEGIN gtk quartz reparent workaround
+// see https://github.com/Dynalon/bockbuild/issues/1
+[DllImport("libgtk-win32-2.0-0.dll")]
+static extern void gtk_container_add(IntPtr raw, IntPtr widget);
+
+[DllImport("libgtk-win32-2.0-0.dll")]
+static extern void gtk_container_remove(IntPtr raw, IntPtr widget);
+
+[DllImport("libgtk-win32-2.0-0.dll")]
+static extern void gtk_object_ref(IntPtr widget);
+
+[DllImport("libgtk-win32-2.0-0.dll")]
+static extern void gtk_object_unref(IntPtr widget);
+
+public void Reparent(Gtk.Widget new_parent) {
+//	gtk_window_quartz_reparent has issues and sometimes crashes
+//	gtk_widget_reparent(Handle, new_parent == null ? IntPtr.Zero : new_parent.Handle);
+
+	IntPtr old_parent = gtk_widget_get_parent (Handle);
+	// suggested replacement for reparent from the GTK FAQ
+	gtk_object_ref(Handle);
+	gtk_container_remove(old_parent, Handle);
+	gtk_container_add(new_parent.Handle, Handle);
+	gtk_object_unref(Handle);
+}
+// END gtk quartz reparent workaround
 
 protected override void CreateNativeObject (string[] names, GLib.Value[] vals)
 {

@@ -18765,12 +18765,6 @@
           <parameter type="const-gchar*" name="detail" />
         </parameters>
       </method>
-      <method name="Reparent" cname="gtk_widget_reparent">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="GtkWidget*" name="new_parent" />
-        </parameters>
-      </method>
       <method name="ResetRcStyles" cname="gtk_widget_reset_rc_styles">
         <return-type type="void" />
       </method>
