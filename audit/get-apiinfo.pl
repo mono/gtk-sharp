@@ -31,6 +31,7 @@ $outdir = $ARGV[1];
 print "getting api info: ";
 foreach $assm (`ls apitmp/*.dll`) {
 	chomp ($assm);
+	next if ($assm =~ /policy/);
 	$assm =~ /apitmp\/(.*)\.dll/;
 	print "*";
 	`mono mono-api-info.exe $assm > $outdir/$1.apiinfo`;
