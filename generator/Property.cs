@@ -132,7 +132,7 @@ namespace GtkSharp.Generation {
 			    (Setter != null && Setter.IsDeprecated))
 				sw.WriteLine (indent + "[Obsolete]");
 			sw.WriteLine (indent + PropertyAttribute (qpname));
-			sw.WriteLine (indent + "public " + modifiers + CSType + " " + name + " {");
+			sw.WriteLine (indent + Protection + modifiers + CSType + " " + name + " {");
 			indent += "\t";
 
 			if (Getter != null) {
