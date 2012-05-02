@@ -27,16 +27,22 @@ namespace GtkSharp.Generation {
 
 		protected XmlElement elem;
 		protected ClassBase container_type;
+		string name;
+		private string protection = "public ";
 
 		public PropertyBase (XmlElement elem, ClassBase container_type)
 		{
 			this.elem = elem;
 			this.container_type = container_type;
+			this.name = elem.GetAttribute ("name");
 		}
 
 		public string Name {
 			get {
-				return elem.GetAttribute ("name");
+				return name;
+			}
+			set {
+				name = value;
 			}
 		}
 
@@ -82,6 +88,11 @@ namespace GtkSharp.Generation {
 			get {
 				return elem.HasAttribute("new_flag");
 			}
+		}
+
+		public string Protection {
+			get { return protection; }
+			set { protection = value; }
 		}
 
 		protected Method Getter {
