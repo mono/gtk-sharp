@@ -124,7 +124,7 @@ namespace GLib {
 			}
 		}
 
-		static List<ToggleRef> PendingDestroys = new List<ToggleRef> ();
+		static HashSet<ToggleRef> PendingDestroys = new HashSet<ToggleRef> ();
 		static bool idle_queued;
 
 		public void QueueUnref ()
