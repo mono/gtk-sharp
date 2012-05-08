@@ -27,6 +27,10 @@ gboolean glibsharp_g_thread_supported (void);
 gboolean
 glibsharp_g_thread_supported ()
 {
+#ifdef DISABLE_GTHREAD_CHECK
+	return true;
+#else
 	return g_thread_supported ();
+#endif
 }
 
