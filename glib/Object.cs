@@ -90,9 +90,11 @@ namespace GLib {
 			Object obj = null;
 
 			ToggleRef toggle_ref;
-			if (Objects.TryGetValue (o, out toggle_ref)) {
-				if (toggle_ref != null)
-					obj = toggle_ref.Target;
+			lock (Objects) {
+				if (Objects.TryGetValue (o, out toggle_ref)) {
+					if (toggle_ref != null)
+						obj = toggle_ref.Target;
+				}
 			}
 
 			if (obj != null && obj.Handle == o) {
@@ -528,7 +530,8 @@ namespace GLib {
 					return;
 
 				if (handle != IntPtr.Zero) {
-					Objects.Remove (handle);
+					lock (Objects)
+						Objects.Remove (handle);
 					if (tref != null) {
 						tref.Dispose ();
 						tref = null;
@@ -537,7 +540,8 @@ namespace GLib {
 				handle = value;
 				if (value != IntPtr.Zero) {
 					tref = new ToggleRef (this);
-					Objects [value] = tref;
+					lock (Objects)
+						Objects [value] = tref;
 				}
 			}
 		}	
