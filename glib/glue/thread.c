@@ -19,8 +19,11 @@
  * Boston, MA 02111-1307, USA.
  */
 
-
+#ifdef DISABLE_GTHREAD_CHECK
+#include <glib.h>
+#else
 #include <glib/gthread.h>
+#endif
 
 gboolean glibsharp_g_thread_supported (void);
 
@@ -28,7 +31,7 @@ gboolean
 glibsharp_g_thread_supported ()
 {
 #ifdef DISABLE_GTHREAD_CHECK
-	return true;
+	return TRUE;
 #else
 	return g_thread_supported ();
 #endif
