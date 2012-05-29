@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <metadata>
+  <attr path="/api/namespace/object[@cname='GtkWindow']/field[@name='TypeHint']" name="type">guint</attr>
+
   <attr path="/api/namespace/struct[@cname='GtkAccelKey']/field[@cname='accel_key']" name="type">GdkKey</attr>
   <attr path="/api/namespace/struct[@cname='GtkAccelKey']/field[@cname='accel_key']" name="name">Key</attr>
   <attr path="/api/namespace/struct[@cname='GtkAccelKey']/field[@cname='accel_mods']" name="type">GdkModifierType</attr>
