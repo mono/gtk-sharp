@@ -96,6 +96,19 @@ namespace GLib {
 		[DllImport("libgobject-2.0-0.dll")]
 		static extern IntPtr g_object_ref (IntPtr raw);
 
+		public static Object TryGetObject (IntPtr o)
+		{
+			if (o == IntPtr.Zero)
+				return null;
+
+			ToggleRef tr = (ToggleRef) Objects[o];
+			if (tr != null && tr.IsAlive) {
+				return tr.Target;
+			}
+
+			return null;
+		}
+
 		public static Object GetObject(IntPtr o, bool owned_ref)
 		{
 			if (o == IntPtr.Zero)
