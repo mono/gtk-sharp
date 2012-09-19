@@ -22,6 +22,13 @@
 #include <string.h>
 #include <gtk/gtkcontainer.h>
 
+//if this can be invoked without an EntryPointNotFoundExfeption, the caller knows the container leak leak is fixed
+void gtksharp_container_leak_fixed_marker ();
+
+void gtksharp_container_leak_fixed_marker ()
+{
+}
+
 void gtksharp_container_base_forall (GtkContainer *container, gboolean include_internals, GtkCallback cb, gpointer data);
 
 void 
