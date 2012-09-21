@@ -26,9 +26,9 @@ namespace GtkSharp.Generation {
 	using System.Xml;
 
 	public class BoxedGen : StructBase {
-		
+
 		public BoxedGen (XmlElement ns, XmlElement elem) : base (ns, elem) {}
-		
+
 		public override void Generate (GenerationInfo gen_info)
 		{
 			Method copy = methods["Copy"] as Method;
@@ -39,10 +39,10 @@ namespace GtkSharp.Generation {
 
 			StreamWriter sw = gen_info.Writer = gen_info.OpenStream (Name);
 			base.Generate (gen_info);
-			sw.WriteLine ("\t\t[DllImport(\"glibsharpglue-2\")]");
+			sw.WriteLine ("\t\t[DllImport(\"glibsharpglue-2\", CallingConvention = CallingConvention.Cdecl)]");
 			sw.WriteLine ("\t\tstatic extern IntPtr glibsharp_value_get_boxed (ref GLib.Value val);");
 			sw.WriteLine ();
-			sw.WriteLine ("\t\t[DllImport(\"glibsharpglue-2\")]");
+			sw.WriteLine ("\t\t[DllImport(\"glibsharpglue-2\", CallingConvention = CallingConvention.Cdecl)]");
 			sw.WriteLine ("\t\tstatic extern void glibsharp_value_set_boxed (ref GLib.Value val, ref " + QualifiedName + " boxed);");
 			sw.WriteLine ();
 			sw.WriteLine ("\t\tpublic static explicit operator GLib.Value (" + QualifiedName + " boxed)");
@@ -76,7 +76,6 @@ namespace GtkSharp.Generation {
 			sw.Close ();
 			gen_info.Writer = null;
 			Statistics.BoxedCount++;
-		}		
+		}
 	}
 }
-

@@ -28,7 +28,7 @@ namespace GtkSharp.Generation {
 	using System.Xml;
 
 	public class Method : MethodBase  {
-		
+
 		private ReturnValue retval;
 
 		private string call;
@@ -39,12 +39,12 @@ namespace GtkSharp.Generation {
 		public Method (XmlElement elem, ClassBase container_type) : base (elem, container_type)
 		{
 			this.retval = new ReturnValue (elem["return-type"]);
-			
+
 			if (!container_type.IsDeprecated && elem.HasAttribute ("deprecated")) {
 				string attr = elem.GetAttribute ("deprecated");
 				deprecated = attr == "1" || attr == "true";
 			}
-			
+
 			if (elem.HasAttribute ("win32_utf8_variant")) {
 				string attr = elem.GetAttribute ("win32_utf8_variant");
 				win32_utf8_variant = attr == "1" || attr.ToLower () == "true";
@@ -97,7 +97,7 @@ namespace GtkSharp.Generation {
 
 			return true;
 		}
-		
+
 		private Method GetComplement ()
 		{
 			char complement;
@@ -105,10 +105,10 @@ namespace GtkSharp.Generation {
 				complement = 'S';
 			else
 				complement = 'G';
-			
+
 			return container_type.GetMethod (complement + BaseName.Substring (1));
 		}
-		
+
 		public string Declaration {
 			get {
 				return retval.CSType + " " + Name + " (" + (Signature != null ? Signature.ToString() : "") + ");";
@@ -166,7 +166,7 @@ namespace GtkSharp.Generation {
 				Method comp = GetComplement ();
 				if (comp != null && is_set)
 					return;
-			
+
 				sw.Write("\t\t");
 				GenerateDeclCommon (sw, null);
 
@@ -195,7 +195,7 @@ namespace GtkSharp.Generation {
 			string import_sig = IsStatic ? "" : container_type.MarshalType + " raw";
 			import_sig += !IsStatic && Parameters.Count > 0 ? ", " : "";
 			import_sig += Parameters.ImportSignature.ToString();
-			sw.WriteLine("\t\t[DllImport(\"" + LibraryName + "\")]");
+			sw.WriteLine("\t\t[DllImport(\"" + LibraryName + "\", CallingConvention = CallingConvention.Cdecl)]");
 			if (retval.MarshalType.StartsWith ("[return:"))
 				sw.WriteLine("\t\t" + retval.MarshalType + " static extern " + Safety + retval.CSType + " " + CName + "(" + import_sig + ");");
 			else
@@ -203,7 +203,7 @@ namespace GtkSharp.Generation {
 			sw.WriteLine();
 
 			if (HasWin32Utf8Variant) {
-				sw.WriteLine("\t\t[DllImport(\"" + LibraryName + "\")]");
+				sw.WriteLine("\t\t[DllImport(\"" + LibraryName + "\", CallingConvention = CallingConvention.Cdecl)]");
 				if (retval.MarshalType.StartsWith ("[return:"))
 					sw.WriteLine("\t\t" + retval.MarshalType + " static extern " + Safety + retval.CSType + " " + CName + "_utf8(" + import_sig + ");");
 				else
@@ -240,7 +240,7 @@ namespace GtkSharp.Generation {
 				if (comp != null && !comp.is_set)
 					comp = null;
 			}
-			
+
 			GenerateImport (gen_info.Writer);
 			if (comp != null && retval.CSType == comp.Parameters.AccessorReturnType)
 				comp.GenerateImport (gen_info.Writer);
@@ -260,7 +260,7 @@ namespace GtkSharp.Generation {
 			}
 			else
 				GenerateBody (gen_info, implementor, "");
-			
+
 			if (is_get || is_set)
 			{
 				if (comp != null && retval.CSType == comp.Parameters.AccessorReturnType)
@@ -274,7 +274,7 @@ namespace GtkSharp.Generation {
 			}
 			else
 				gen_info.Writer.WriteLine();
-			
+
 			gen_info.Writer.WriteLine();
 
 			Statistics.MethodCount++;
@@ -322,7 +322,7 @@ namespace GtkSharp.Generation {
 			Body.Finish (sw, indent);
 			Body.HandleException (sw, indent);
 
-			if (is_get && Parameters.Count > 0) 
+			if (is_get && Parameters.Count > 0)
 				sw.WriteLine (indent + "\t\t\treturn " + Parameters.AccessorName + ";");
 			else if (!retval.IsVoid)
 				sw.WriteLine (indent + "\t\t\treturn ret;");
@@ -332,11 +332,10 @@ namespace GtkSharp.Generation {
 			sw.Write(indent + "\t\t}");
 		}
 
-		bool IsAccessor { 
-			get { 
-				return retval.IsVoid && Signature.IsAccessor; 
-			} 
+		bool IsAccessor {
+			get {
+				return retval.IsVoid && Signature.IsAccessor;
+			}
 		}
 	}
 }
-

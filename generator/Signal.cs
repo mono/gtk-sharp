@@ -2,7 +2,7 @@
 //
 // Author: Mike Kestner <mkestner@speakeasy.net>
 //
-// Copyright (c) 2001-2003 Mike Kestner 
+// Copyright (c) 2001-2003 Mike Kestner
 // Copyright (c) 2003-2005 Novell, Inc.
 // Copyright (c) 2007 Novell, Inc.
 //
@@ -53,7 +53,7 @@ namespace GtkSharp.Generation {
 
 		public string Name {
 			get {
-				return name; 
+				return name;
 			}
 			set {
 				name = value;
@@ -67,7 +67,7 @@ namespace GtkSharp.Generation {
 				Statistics.ThrottledCount++;
 				return false;
 			}
-			
+
 			if (!parms.Validate () || !retval.Validate ()) {
 				Console.Write (" in signal " + Name + " ");
 				Statistics.ThrottledCount++;
@@ -124,7 +124,7 @@ namespace GtkSharp.Generation {
                                         return Name + "Args";
                         }
                 }
-                                                                                                                        
+
                 private string EventArgsQualifiedName {
                         get {
                                 if (IsEventHandler)
@@ -133,7 +133,7 @@ namespace GtkSharp.Generation {
                                         return container_type.NS + "." + Name + "Args";
                         }
                 }
-                                                                                                                        
+
                 private string EventHandlerName {
                         get {
                                 if (IsEventHandler)
@@ -144,7 +144,7 @@ namespace GtkSharp.Generation {
                                         return Name + "Handler";
                         }
                 }
-                                                                                                                        
+
                 private string EventHandlerQualifiedName {
                         get {
                                 if (IsEventHandler)
@@ -249,7 +249,7 @@ namespace GtkSharp.Generation {
 			sw.WriteLine("\t\t\t} catch (Exception) {");
 			sw.WriteLine ("\t\t\t\tException ex = new Exception (\"args.RetVal or 'out' property unset or set to incorrect type in " + EventHandlerQualifiedName + " callback\");");
 			sw.WriteLine("\t\t\t\tGLib.ExceptionManager.RaiseUnhandledException (ex, true);");
-			
+
 			sw.WriteLine ("\t\t\t\t// NOTREACHED: above call doesn't return.");
 			sw.WriteLine ("\t\t\t\tthrow ex;");
 			sw.WriteLine("\t\t\t}");
@@ -297,7 +297,7 @@ namespace GtkSharp.Generation {
 			string ns = container_type.NS;
 
 			StreamWriter sw = gen_info.OpenStream (EventHandlerName);
-			
+
 			sw.WriteLine ("namespace " + ns + " {");
 			sw.WriteLine ();
 			sw.WriteLine ("\tusing System;");
@@ -365,7 +365,7 @@ namespace GtkSharp.Generation {
 					string call_parm = p.CallString;
 
 					if (p.IsUserData && parms.IsHidden (p) && !parms.HideData && (i == 1 || parms [i - 1].Scope != "notified")) {
-						call_parm = "IntPtr.Zero"; 
+						call_parm = "IntPtr.Zero";
 					}
 
 					result += ", " + call_parm;
@@ -419,7 +419,7 @@ namespace GtkSharp.Generation {
 			glue.WriteLine ("}");
 
 			StreamWriter sw = gen_info.Writer;
-			sw.WriteLine ("\t\t[DllImport (\"{0}\")]", gen_info.GluelibName);
+			sw.WriteLine ("\t\t[DllImport (\"{0}\", CallingConvention = CallingConvention.Cdecl)]", gen_info.GluelibName);
 			sw.WriteLine ("\t\tstatic extern {0} {1} ({2});\n", retval.MarshalType, glue_name, parms.ImportSignature);
 			GenVMDeclaration (sw, null);
 			sw.WriteLine ("\t\t{");
@@ -500,7 +500,7 @@ namespace GtkSharp.Generation {
 			if (use_glue) {
 				glue = gen_info.GlueWriter;
 				glue_name = String.Format ("{0}sharp_{1}_override_{2}", container_type.NS.ToLower ().Replace (".", "_"), container_type.Name.ToLower (), ClassFieldName);
-				sw.WriteLine ("\t\t[DllImport (\"{0}\")]", gen_info.GluelibName);
+				sw.WriteLine ("\t\t[DllImport (\"{0}\", CallingConvention = CallingConvention.Cdecl)]", gen_info.GluelibName);
 				sw.WriteLine ("\t\tstatic extern void {0} (IntPtr gtype, {1}VMDelegate cb);\n", glue_name, Name);
 				glue.WriteLine ("void {0} (GType gtype, gpointer cb);\n", glue_name);
 				glue.WriteLine ("void\n{0} (GType gtype, gpointer cb)", glue_name);
@@ -549,7 +549,7 @@ namespace GtkSharp.Generation {
 		public void GenEvent (StreamWriter sw, ClassBase implementor, string target)
 		{
 			string args_type = IsEventHandler ? "" : ", typeof (" + EventArgsQualifiedName + ")";
-			
+
 			if (Marshaled) {
 				GenCallback (sw);
 				args_type = ", new " + DelegateName + "(" + CallbackName + ")";
@@ -585,9 +585,8 @@ namespace GtkSharp.Generation {
 			else
 				GenChainVirtualMethod (sw, implementor);
 			GenEvent (sw, implementor, "this");
-			
+
 			Statistics.SignalCount++;
 		}
 	}
 }
-

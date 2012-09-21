@@ -113,20 +113,20 @@ namespace GtkSharp.Generation {
 			SymbolTable table = SymbolTable.Table;
 
 			if (getterName != null) {
-				sw.WriteLine (indent + "[DllImport (\"{0}\")]", gen_info.GluelibName);
+				sw.WriteLine (indent + "[DllImport (\"{0}\", CallingConvention = CallingConvention.Cdecl)]", gen_info.GluelibName);
 				sw.WriteLine (indent + "extern static {0} {1} ({2} raw);",
 					      table.GetMarshalReturnType (CType), getterName,
 					      container_type.MarshalType);
 			}
 
 			if (setterName != null) {
-				sw.WriteLine (indent + "[DllImport (\"{0}\")]", gen_info.GluelibName);
+				sw.WriteLine (indent + "[DllImport (\"{0}\", CallingConvention = CallingConvention.Cdecl)]", gen_info.GluelibName);
 				sw.WriteLine (indent + "extern static void {0} ({1} raw, {2} value);",
 					      setterName, container_type.MarshalType, table.GetMarshalType (CType));
 			}
 
 			if (getOffsetName != null) {
-				sw.WriteLine (indent + "[DllImport (\"{0}\")]", gen_info.GluelibName);
+				sw.WriteLine (indent + "[DllImport (\"{0}\", CallingConvention = CallingConvention.Cdecl)]", gen_info.GluelibName);
 				sw.WriteLine (indent + "extern static uint {0} ();", getOffsetName);
 				sw.WriteLine ();
 				sw.WriteLine (indent + "static uint " + offsetName + " = " + getOffsetName + " ();");
@@ -267,4 +267,3 @@ namespace GtkSharp.Generation {
 		}
 	}
 }
-
