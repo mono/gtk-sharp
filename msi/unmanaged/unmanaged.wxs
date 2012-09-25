@@ -6,7 +6,7 @@
     <Binary Id="redirector.exe" SourceFile="redirector.exe" />
     <CustomAction Id="setup_pixbuf_loaders" BinaryKey="redirector.exe" Execute="deferred" Impersonate="no" ExeCommand="&quot;[MergeRedirectFolder]bin\gdk-pixbuf-query-loaders.exe&quot; &quot;[MergeRedirectFolder]etc\gtk-2.0\gdk-pixbuf.loaders"/>
     <CustomAction Id="setup_immodules" BinaryKey="redirector.exe" Execute="deferred" Impersonate="no" ExeCommand="&quot;[MergeRedirectFolder]bin\gtk-query-immodules-2.0.exe&quot; &quot;[MergeRedirectFolder]etc\gtk-2.0\gtk.immodules"/>
- 
+
     <InstallExecuteSequence>
       <Custom Action="setup_pixbuf_loaders" Before="InstallFinalize">Not Installed</Custom>
       <Custom Action="setup_immodules" Before="InstallFinalize">Not Installed</Custom>
@@ -29,7 +29,6 @@
           <Directory Id="gtk2.0" Name="gtk-2.0">
             <Component Id="etcgtk2.0" Guid="5be9cbc0-dc2d-11dc-8163-005056c00008">
               <File Id="gtk.immodules" Name="gtk.immodules" Source="source\etc\gtk-2.0\gtk.immodules" Vital="yes"/>
-              <File Id="gdkpixbuf.loaders" Name="gdk-pixbuf.loaders" Source="source\etc\gtk-2.0\gdk-pixbuf.loaders" Vital="yes"/>
               <File Id="gtkrc" Name="gtkrc" Source="custom\etc\gtk-2.0\gtkrc" Vital="no"/>
               <File Id="immultipress.conf" Name="immultipress.conf" Source="source\etc\gtk-2.0\im-multipress.conf" Vital="yes"/>
             </Component>
@@ -1083,26 +1082,6 @@
                   <File Id="libwimp.dll" Name="libwimp.dll" Source="source\lib\gtk-2.0\2.10.0\engines\libwimp.dll" Vital="yes"/>
                 </Component>
               </Directory>
-              <Directory Id="a2_10_0loaders" Name="loaders">
-                <Component Id="loaders" Guid="3d2a8eec-04da-11dd-a8d2-001a6bce76fb">
-                  <File Id="libpixbufloaderani.dll" Name="libpixbufloader-ani.dll" Source="source\lib\gtk-2.0\2.10.0\loaders\libpixbufloader-ani.dll" Vital="yes"/>
-                  <File Id="libpixbufloaderbmp.dll" Name="libpixbufloader-bmp.dll" Source="source\lib\gtk-2.0\2.10.0\loaders\libpixbufloader-bmp.dll" Vital="yes"/>
-                  <File Id="libpixbufloadergif.dll" Name="libpixbufloader-gif.dll" Source="source\lib\gtk-2.0\2.10.0\loaders\libpixbufloader-gif.dll" Vital="yes"/>
-                  <File Id="libpixbufloadericns.dll" Name="libpixbufloader-icns.dll" Source="source\lib\gtk-2.0\2.10.0\loaders\libpixbufloader-icns.dll" Vital="yes"/>
-                  <File Id="libpixbufloaderico.dll" Name="libpixbufloader-ico.dll" Source="source\lib\gtk-2.0\2.10.0\loaders\libpixbufloader-ico.dll" Vital="yes"/>
-                  <File Id="libpixbufloaderjpeg.dll" Name="libpixbufloader-jpeg.dll" Source="source\lib\gtk-2.0\2.10.0\loaders\libpixbufloader-jpeg.dll" Vital="yes"/>
-                  <File Id="libpixbufloaderpcx.dll" Name="libpixbufloader-pcx.dll" Source="source\lib\gtk-2.0\2.10.0\loaders\libpixbufloader-pcx.dll" Vital="yes"/>
-                  <File Id="libpixbufloaderpng.dll" Name="libpixbufloader-png.dll" Source="source\lib\gtk-2.0\2.10.0\loaders\libpixbufloader-png.dll" Vital="yes"/>
-                  <File Id="libpixbufloaderpnm.dll" Name="libpixbufloader-pnm.dll" Source="source\lib\gtk-2.0\2.10.0\loaders\libpixbufloader-pnm.dll" Vital="yes"/>
-                  <File Id="libpixbufloaderras.dll" Name="libpixbufloader-ras.dll" Source="source\lib\gtk-2.0\2.10.0\loaders\libpixbufloader-ras.dll" Vital="yes"/>
-                  <File Id="libpixbufloadertga.dll" Name="libpixbufloader-tga.dll" Source="source\lib\gtk-2.0\2.10.0\loaders\libpixbufloader-tga.dll" Vital="yes"/>
-                  <File Id="libpixbufloadertiff.dll" Name="libpixbufloader-tiff.dll" Source="source\lib\gtk-2.0\2.10.0\loaders\libpixbufloader-tiff.dll" Vital="yes"/>
-                  <File Id="libpixbufloaderwbmp.dll" Name="libpixbufloader-wbmp.dll" Source="source\lib\gtk-2.0\2.10.0\loaders\libpixbufloader-wbmp.dll" Vital="yes"/>
-                  <File Id="libpixbufloaderxbm.dll" Name="libpixbufloader-xbm.dll" Source="source\lib\gtk-2.0\2.10.0\loaders\libpixbufloader-xbm.dll" Vital="yes"/>
-                  <File Id="libpixbufloaderxpm.dll" Name="libpixbufloader-xpm.dll" Source="source\lib\gtk-2.0\2.10.0\loaders\libpixbufloader-xpm.dll" Vital="yes"/>
-                  <File Id="svg_loader.dll" Name="svg_loader.dll" Source="source\lib\gtk-2.0\2.10.0\loaders\svg_loader.dll" Vital="yes"/>
-                </Component>
-              </Directory>
             </Directory>
           </Directory>
         </Directory>
@@ -1115,7 +1094,7 @@
             <File Id="gspawnwin32helperconsole.exe" Name="gspawn-win32-helper-console.exe" Source="source\bin\gspawn-win32-helper-console.exe" Vital="yes"/>
             <File Id="gtkqueryimmodules2.0.exe" Name="gtk-query-immodules-2.0.exe" Source="source\bin\gtk-query-immodules-2.0.exe" Vital="yes"/>
             <File Id="intl.dll" Name="intl.dll" Source="source\bin\intl.dll" Vital="yes"/>
-            <File Id="libjpeg7.dll" Name="libjpeg-7.dll" Source="source\bin\libjpeg-7.dll" Vital="yes"/>
+            <File Id="libjpeg8.dll" Name="libjpeg-8.dll" Source="source\bin\libjpeg-8.dll" Vital="yes"/>
             <File Id="libatk1.00.dll" Name="libatk-1.0-0.dll" Source="source\bin\libatk-1.0-0.dll" Vital="yes"/>
             <File Id="libcairo2.dll" Name="libcairo-2.dll" Source="source\bin\libcairo-2.dll" Vital="yes"/>
             <File Id="libcroco.dll" Name="libcroco-0.6-3.dll" Source="source\bin\libcroco-0.6-3.dll" Vital="yes"/>
@@ -1134,7 +1113,7 @@
             <File Id="libpangocairo1.00.dll" Name="libpangocairo-1.0-0.dll" Source="source\bin\libpangocairo-1.0-0.dll" Vital="yes"/>
             <File Id="libpangoft21.00.dll" Name="libpangoft2-1.0-0.dll" Source="source\bin\libpangoft2-1.0-0.dll" Vital="yes"/>
             <File Id="libpangowin321.00.dll" Name="libpangowin32-1.0-0.dll" Source="source\bin\libpangowin32-1.0-0.dll" Vital="yes"/>
-            <File Id="libpng120.dll" Name="libpng12-0.dll" Source="source\bin\libpng12-0.dll" Vital="yes"/>
+            <File Id="libpng1414.dll" Name="libpng14-14.dll" Source="source\bin\libpng14-14.dll" Vital="yes"/>
             <File Id="librsvg22.dll" Name="librsvg-2-2.dll" Source="source\bin\librsvg-2-2.dll" Vital="yes"/>
             <File Id="libtiff3.dll" Name="libtiff-3.dll" Source="source\bin\libtiff-3.dll" Vital="yes"/>
             <File Id="libtiffxx3.dll" Name="libtiffxx3.dll" Source="source\bin\libtiffxx-3.dll" Vital="yes"/>
@@ -1149,4 +1128,3 @@
     </Directory>
   </Module>
 </Wix>
-
