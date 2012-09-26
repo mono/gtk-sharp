@@ -18,6 +18,7 @@ gtk-sharp-2.0.msi: gtk-sharp-2.0.wxs
 	for a in $(assembly_dirs); do \
 		mkdir -p binaries/$$a; \
 		cp $(top_builddir)/$$a/*.dll binaries/$$a; \
+		cp $(top_builddir)/$$a/*.pdb binaries/$$a; \
 		cp $(top_builddir)/$$a/policy.*.config binaries/$$a; \
 	done
 	mv binaries/libatksharpglue-2.dll   binaries/atksharpglue-2.dll

@@ -69,7 +69,7 @@ AC_CHECK_SIZEOF(void *, 4)
 CFLAGS="${CFLAGS} -g -Wall -Wunused -Wmissing-prototypes -Wmissing-declarations -Wstrict-prototypes  -Wmissing-prototypes -Wnested-externs  -Wshadow -Wpointer-arith -Wno-cast-qual -Wcast-align -Wwrite-strings"
 
 if test "x$enable_maintainer_mode" = "xyes"; then
-DEBUG_FLAGS='-debug'
+DEBUG_FLAGS='-debug:pdbonly'
 else
 DEBUG_FLAGS=
 AC_ARG_ENABLE(debug, [  --enable-debug          Build debugger (.mdb) files for dlls],
@@ -116,7 +116,7 @@ if test "x$GACUTIL" = "xno" ; then
 	AC_MSG_ERROR([No gacutil tool found. You need to install either the mono or .Net SDK.])
 fi
 
-AC_PATH_PROG(AL, al, no)
+AC_PATH_PROG([AL], al, no)
 if test "x$AL" = "xno" ; then
 	AC_MSG_ERROR([No al tool found. You need to install either the mono or .Net SDK.])
 fi
@@ -131,7 +131,7 @@ if test "x$RUNTIME" != "xno" ; then
 	RUNTIME=mono
 fi
 
-AC_PATH_PROG(CSC, mcs, no)
+AC_PATH_PROG([CSC], mcs, no)
 if test `uname -s` = "Darwin"; then
 	LIB_PREFIX=
 	LIB_SUFFIX=.dylib
@@ -165,6 +165,7 @@ if test "x$CSC" = "xno" ; then
 	AC_MSG_ERROR([No $CS compiler found])
 fi
 
+AL="\"$AL\""
 AC_SUBST(RUNTIME)
 AC_SUBST(CSC)
 AC_SUBST(GACUTIL)

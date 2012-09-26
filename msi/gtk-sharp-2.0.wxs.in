@@ -151,51 +151,51 @@
                 </Directory>
                 <Directory Id="gac_gtkdotnet" Name="gtk-dotnet">
                   <Component Id="gtkdotnet_dll" Guid="4FDE6CCB-25FE-4b8e-9383-462F73952EF9">
-                    <File Id="gtkdotnetdll" Name="gtk-dotnet.dll" Assembly=".net" KeyPath="yes" Source="binaries/gtkdotnet\gtk-dotnet.dll" Vital="yes" />
+                    <File Id="gtkdotnetdll" Name="gtk-dotnet.dll" Assembly=".net" KeyPath="yes" Source="binaries/gtkdotnet/gtk-dotnet.dll" Vital="yes" />
                   </Component>
                   <Component Id="gtkdotnet_policy.2.4" Guid="F4B03BD8-F20C-419a-86DC-9F84AD1B0739">
-                    <File Id="policy.2.4.gtkdotnet.dll" Name="policy.2.4.gtk-dotnet.dll" Assembly=".net" KeyPath="yes" Source="binaries/gtkdotnet\policy.2.4.gtk-dotnet.dll" Vital="no" />
-                    <File Id="policy.2.4.gtkdotnet.config" Name="policy.2.4.config" CompanionFile="policy.2.4.gtkdotnet.dll" Source="binaries/gtkdotnet\policy.2.4.config" Vital="no" />
+                    <File Id="policy.2.4.gtkdotnet.dll" Name="policy.2.4.gtk-dotnet.dll" Assembly=".net" KeyPath="yes" Source="binaries/gtkdotnet/policy.2.4.gtk-dotnet.dll" Vital="no" />
+                    <File Id="policy.2.4.gtkdotnet.config" Name="policy.2.4.config" CompanionFile="policy.2.4.gtkdotnet.dll" Source="binaries/gtkdotnet/policy.2.4.config" Vital="no" />
                   </Component>
                   <Component Id="gtkdotnet_policy.2.6" Guid="88560AEF-4696-4e99-A2B1-D2A797AD666A">
-                    <File Id="policy.2.6.gtkdotnet.dll" Name="policy.2.6.gtk-dotnet.dll" Assembly=".net" KeyPath="yes" Source="binaries/gtkdotnet\policy.2.6.gtk-dotnet.dll" Vital="no" />
-                    <File Id="policy.2.6.gtkdotnet.config" Name="policy.2.6.config" CompanionFile="policy.2.6.gtkdotnet.dll" Source="binaries/gtkdotnet\policy.2.6.config" Vital="no" />
+                    <File Id="policy.2.6.gtkdotnet.dll" Name="policy.2.6.gtk-dotnet.dll" Assembly=".net" KeyPath="yes" Source="binaries/gtkdotnet/policy.2.6.gtk-dotnet.dll" Vital="no" />
+                    <File Id="policy.2.6.gtkdotnet.config" Name="policy.2.6.config" CompanionFile="policy.2.6.gtkdotnet.dll" Source="binaries/gtkdotnet/policy.2.6.config" Vital="no" />
                   </Component>
                   <Component Id="gtkdotnet_policy.2.8" Guid="6BE1C993-72CB-49bd-AAFF-3E48FB5ED06E">
-                    <File Id="policy.2.8.gtkdotnet.dll" Name="policy.2.8.gtk-dotnet.dll" Assembly=".net" KeyPath="yes" Source="binaries/gtkdotnet\policy.2.8.gtk-dotnet.dll" Vital="no" />
-                    <File Id="policy.2.8.gtkdotnet.config" Name="policy.2.8.config" CompanionFile="policy.2.8.gtkdotnet.dll" Source="binaries/gtkdotnet\policy.2.8.config" Vital="no" />
+                    <File Id="policy.2.8.gtkdotnet.dll" Name="policy.2.8.gtk-dotnet.dll" Assembly=".net" KeyPath="yes" Source="binaries/gtkdotnet/policy.2.8.gtk-dotnet.dll" Vital="no" />
+                    <File Id="policy.2.8.gtkdotnet.config" Name="policy.2.8.config" CompanionFile="policy.2.8.gtkdotnet.dll" Source="binaries/gtkdotnet/policy.2.8.config" Vital="no" />
                   </Component>
                   <Component Id="gtkdotnet_policy.2.10" Guid="85bb91e6-5be2-4e58-aa38-d95b04bbbcfd">
-                    <File Id="policy.2.10.gtkdotnet.dll" Name="policy.2.10.gtk-dotnet.dll" Assembly=".net" KeyPath="yes" Source="binaries/gtkdotnet\policy.2.10.gtk-dotnet.dll" Vital="no" />
-                    <File Id="policy.2.10.gtkdotnet.config" Name="policy.2.10.config" CompanionFile="policy.2.10.gtkdotnet.dll" Source="binaries/gtkdotnet\policy.2.10.config" Vital="no" />
+                    <File Id="policy.2.10.gtkdotnet.dll" Name="policy.2.10.gtk-dotnet.dll" Assembly=".net" KeyPath="yes" Source="binaries/gtkdotnet/policy.2.10.gtk-dotnet.dll" Vital="no" />
+                    <File Id="policy.2.10.gtkdotnet.config" Name="policy.2.10.config" CompanionFile="policy.2.10.gtkdotnet.dll" Source="binaries/gtkdotnet/policy.2.10.config" Vital="no" />
                   </Component>
                 </Directory>
                 <Directory Id="gac_glade" Name="glade">
                   <Component Id="gladesharp_dll" Guid="E8E7066F-5113-4279-83CB-5FBA7D870E22">
-                    <File Id="gladesharpdll" Name="glade-sharp.dll" Assembly=".net" KeyPath="yes" Source="binaries/glade\glade-sharp.dll" Vital="yes" />
+                    <File Id="gladesharpdll" Name="glade-sharp.dll" Assembly=".net" KeyPath="yes" Source="binaries/glade/glade-sharp.dll" Vital="yes" />
                   </Component>
                   <Component Id="gladesharp_policy.2.4" Guid="34FAC0DC-D2FE-4567-B89C-C1D2C1011808">
-                    <File Id="policy.2.4.gladesharp.dll" Name="policy.2.4.glade-sharp.dll" Assembly=".net" KeyPath="yes" Source="binaries/glade\policy.2.4.glade-sharp.dll" Vital="no" />
-                    <File Id="policy.2.4.gladesharp.config" Name="policy.2.4.config" CompanionFile="policy.2.4.gladesharp.dll" Source="binaries/glade\policy.2.4.config" Vital="no" />
+                    <File Id="policy.2.4.gladesharp.dll" Name="policy.2.4.glade-sharp.dll" Assembly=".net" KeyPath="yes" Source="binaries/glade/policy.2.4.glade-sharp.dll" Vital="no" />
+                    <File Id="policy.2.4.gladesharp.config" Name="policy.2.4.config" CompanionFile="policy.2.4.gladesharp.dll" Source="binaries/glade/policy.2.4.config" Vital="no" />
                   </Component>
                   <Component Id="gladesharp_policy.2.6" Guid="CEDD652F-2AB9-4a29-8986-94D877EC0B44">
-                    <File Id="policy.2.6.gladesharp.dll" Name="policy.2.6.glade-sharp.dll" Assembly=".net" KeyPath="yes" Source="binaries/glade\policy.2.6.glade-sharp.dll" Vital="no" />
-                    <File Id="policy.2.6.gladesharp.config" Name="policy.2.6.config" CompanionFile="policy.2.6.gladesharp.dll" Source="binaries/glade\policy.2.6.config" Vital="no" />
+                    <File Id="policy.2.6.gladesharp.dll" Name="policy.2.6.glade-sharp.dll" Assembly=".net" KeyPath="yes" Source="binaries/glade/policy.2.6.glade-sharp.dll" Vital="no" />
+                    <File Id="policy.2.6.gladesharp.config" Name="policy.2.6.config" CompanionFile="policy.2.6.gladesharp.dll" Source="binaries/glade/policy.2.6.config" Vital="no" />
                   </Component>
                   <Component Id="gladesharp_policy.2.8" Guid="0EAAB533-7156-4ec8-BBD8-5B8B5E855EE4">
-                    <File Id="policy.2.8.gladesharp.dll" Name="policy.2.8.glade-sharp.dll" Assembly=".net" KeyPath="yes" Source="binaries/glade\policy.2.8.glade-sharp.dll" Vital="no" />
-                    <File Id="policy.2.8.gladesharp.config" Name="policy.2.8.config" CompanionFile="policy.2.8.gladesharp.dll" Source="binaries/glade\policy.2.8.config" Vital="no" />
+                    <File Id="policy.2.8.gladesharp.dll" Name="policy.2.8.glade-sharp.dll" Assembly=".net" KeyPath="yes" Source="binaries/glade/policy.2.8.glade-sharp.dll" Vital="no" />
+                    <File Id="policy.2.8.gladesharp.config" Name="policy.2.8.config" CompanionFile="policy.2.8.gladesharp.dll" Source="binaries/glade/policy.2.8.config" Vital="no" />
                   </Component>
                   <Component Id="gladesharp_policy.2.10" Guid="672f4d3b-8aec-49e9-8ddf-bbb2795b41a9">
-                    <File Id="policy.2.10.gladesharp.dll" Name="policy.2.10.glade-sharp.dll" Assembly=".net" KeyPath="yes" Source="binaries/glade\policy.2.10.glade-sharp.dll" Vital="no" />
-                    <File Id="policy.2.10.gladesharp.config" Name="policy.2.10.config" CompanionFile="policy.2.10.gladesharp.dll" Source="binaries/glade\policy.2.10.config" Vital="no" />
+                    <File Id="policy.2.10.gladesharp.dll" Name="policy.2.10.glade-sharp.dll" Assembly=".net" KeyPath="yes" Source="binaries/glade/policy.2.10.glade-sharp.dll" Vital="no" />
+                    <File Id="policy.2.10.gladesharp.config" Name="policy.2.10.config" CompanionFile="policy.2.10.gladesharp.dll" Source="binaries/glade/policy.2.10.config" Vital="no" />
                   </Component>
                 </Directory>
               </Directory>
               <Directory Id="gtksharp20" Name="gtk-sharp-2.0">
 	        <!-- Installs GACd assemblies to an addressable location - see http://blogs.msdn.com/astebner/archive/2007/06/21/3450539.aspx -->
                 <Component Id="gtksharpinstassembly" Guid="a7c2f618-62c9-4470-981a-8f47901cda67">
-                  <RegistryKey Root='HKLM' Key='SOFTWARE\Novell\GtkSharp\Version' Action="createAndRemoveOnUninstall">
+                  <RegistryKey Root='HKLM' Key='SOFTWARE\Xamarin\GtkSharp\Version' Action="createAndRemoveOnUninstall">
                     <RegistryValue Type="string" Value="[ProductVersion]" />
                   </RegistryKey>
                   <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\AssemblyFolders\GtkSharp' Action="createAndRemoveOnUninstall">
@@ -207,16 +207,22 @@
                   <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\AssemblyFolders\MonoCairo' Action="createAndRemoveOnUninstall">
                     <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\Mono.Cairo" />
                   </RegistryKey>
-                  <RegistryKey Root='HKLM' Key='SOFTWARE\Novell\GtkSharp\InstallFolder' Action="createAndRemoveOnUninstall">
+                  <RegistryKey Root='HKLM' Key='SOFTWARE\Xamarin\GtkSharp\InstallFolder' Action="createAndRemoveOnUninstall">
                     <RegistryValue Type="string" Value="[INSTALLLOCATION]" />
                   </RegistryKey>
-                  <File Id="glibsharpdll_inst" Name="glib-sharp.dll" Source="binaries/glib\glib-sharp.dll" Vital="yes" />
-                  <File Id="pangosharpdll_inst" Name="pango-sharp.dll" Source="binaries/pango\pango-sharp.dll" Vital="yes" />
-                  <File Id="atksharpdll_inst" Name="atk-sharp.dll" Source="binaries/atk\atk-sharp.dll" Vital="yes" />
-                  <File Id="gdksharpdll_inst" Name="gdk-sharp.dll" Source="binaries/gdk\gdk-sharp.dll" Vital="yes" />
-                  <File Id="gtksharpdll_inst" Name="gtk-sharp.dll" Source="binaries/gtk\gtk-sharp.dll" Vital="yes" />
-                  <File Id="gladesharpdll_inst" Name="glade-sharp.dll" Source="binaries/glade\glade-sharp.dll" Vital="yes" />
-                  <File Id="gtkdotnetdll_inst" Name="gtk-dotnet.dll" Source="binaries/gtkdotnet\gtk-dotnet.dll" Vital="yes" />
+                  <File Id="glibsharpdll_inst" Name="glib-sharp.dll" Source="binaries/glib/glib-sharp.dll" Vital="yes" />
+                  <File Id="glibsharppdb" Name="glib-sharp.pdb" Source="binaries/glib/glib-sharp.pdb" Vital="no" />
+                  <File Id="pangosharpdll_inst" Name="pango-sharp.dll" Source="binaries/pango/pango-sharp.dll" Vital="yes" />
+                  <File Id="pangosharppdb" Name="pango-sharp.pdb" Source="binaries/pango/pango-sharp.pdb" Vital="no" />
+                  <File Id="atksharpdll_inst" Name="atk-sharp.dll" Source="binaries/atk/atk-sharp.dll" Vital="yes" />
+                  <File Id="atksharppdb" Name="atk-sharp.pdb" Source="binaries/atk/atk-sharp.pdb" Vital="no" />
+                  <File Id="gdksharpdll_inst" Name="gdk-sharp.dll" Source="binaries/gdk/gdk-sharp.dll" Vital="yes" />
+                  <File Id="gdksharppdb" Name="gdk-sharp.pdb" Source="binaries/gdk/gdk-sharp.pdb" Vital="no" />
+                  <File Id="gtksharpdll_inst" Name="gtk-sharp.dll" Source="binaries/gtk/gtk-sharp.dll" Vital="yes" />
+                  <File Id="gladesharpdll_inst" Name="glade-sharp.dll" Source="binaries/glade/glade-sharp.dll" Vital="yes" />
+                  <File Id="gladesharppdb" Name="glade-sharp.pdb" Source="binaries/glade/glade-sharp.pdb" Vital="no" />
+                  <File Id="gtkdotnetdll_inst" Name="gtk-dotnet.dll" Source="binaries/gtkdotnet/gtk-dotnet.dll" Vital="yes" />
+                  <File Id="gtkdotnetpdb" Name="gtk-dotnet.pdb" Source="binaries/gtkdotnet/gtk-dotnet.pdb" Vital="no" />
                 </Component>
               </Directory>
             </Directory>
