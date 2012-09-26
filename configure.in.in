@@ -21,7 +21,7 @@ case "$host" in
 		platform_win32=yes
 		AC_DEFINE(PLATFORM_WIN32,1,[Platform is Win32])
 		if test "x$cross_compiling" = "xno"; then
-			CC="gcc -mno-cygwin -g"
+			CC="gcc -g"
 			HOST_CC="gcc"
 		fi
 		;;
@@ -29,7 +29,7 @@ case "$host" in
 		platform_win32=yes
 		AC_DEFINE(PLATFORM_WIN32,1,[Platform is Win32])
 		if test "x$cross_compiling" = "xno"; then
-			CC="gcc -mno-cygwin -g"
+			CC="gcc -g"
 			HOST_CC="gcc"
 		fi
 		;;
@@ -322,4 +322,3 @@ if test "x$enable_monodoc" = "xyes" -a "x$doc_sources_dir" != "x$prefix/lib/mono
   echo "               Monodoc will not be able to load the documentation."
 fi
 echo "---"
-
