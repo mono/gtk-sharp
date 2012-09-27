@@ -3,7 +3,6 @@ SUBDIRS = sources generator parser glib cairo pango atk gdk gtk glade gtkdotnet 
 EXTRA_DIST = 			\
 	mono.snk		\
 	gtk-sharp.snk		\
-	gapi-cdecl-insert	\
 	makefile.win32		\
 	policy.config.in	\
 	AssemblyInfo.cs.in	\
@@ -12,6 +11,5 @@ EXTRA_DIST = 			\
 	README			\
 	README.generator
 
-configure.in: bootstrap.status configure.in.in 
+configure.in: bootstrap.status configure.in.in
 	$(SHELL) $<
-

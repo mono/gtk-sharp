@@ -34,12 +34,6 @@ gtk-sharp.snk: $(top_srcdir)/gtk-sharp.snk
 AssemblyInfo.cs: $(top_builddir)/AssemblyInfo.cs
 	cp $(top_builddir)/AssemblyInfo.cs .
 
-if PLATFORM_WIN32
-GAPI_CDECL_INSERT=$(top_srcdir)/gapi-cdecl-insert --keyfile=gtk-sharp.snk $(ASSEMBLY)
-else
-GAPI_CDECL_INSERT=
-endif
-
 $(ASSEMBLY): $(build_sources) $(references) gtk-sharp.snk AssemblyInfo.cs
 	@rm -f $(ASSEMBLY).mdb
 	$(CSC) $(CSFLAGS) -nowarn:0169,0612,0618 -out:$(ASSEMBLY) -target:library $(build_references) $(build_sources)
@@ -74,4 +68,3 @@ uninstall-local:
 	    done									\
 	  fi										\
 	fi
-

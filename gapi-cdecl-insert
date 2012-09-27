@@ -45,7 +45,7 @@ if ($assembly =~ /(.*)\.dll/) {
 	while ($line = <INFILE>) {
 		$insert = 1 if ($line =~ /\.custom instance void .*GLib\.CDeclCallbackAttribute/);
 
-		if ($insert && $line =~ /(.*)\s+(Invoke\s*\(.*)/) {
+	if ($insert && $line =~ /(.*)\s+(Invoke\s*\(.*)/) {
 			print OUTFILE "$1 modopt([mscorlib]System.Runtime.CompilerServices.CallConvCdecl) $2";
 			$insert = 0;
 			next;
