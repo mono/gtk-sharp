@@ -1,3 +1,5 @@
+*~
+*.pdb
 .deps
 .libs
 *-api.raw
@@ -10,10 +12,15 @@
 *.la
 *.lo
 *.m4
+*.msi
+*.msm
 *.mdb
 *.o
 *.pc
 *.tar.gz
+*.wixobj
+*.wixpdb
+
 AssemblyInfo.cs
 INSTALL
 Makefile
@@ -34,6 +41,8 @@ ltconfig
 ltmain.sh
 missing
 mkinstalldirs
+msi/unmanaged/download-stamp
+msi/unmanaged/source/*
 policy.config
 policy.*.config
 stamp*
