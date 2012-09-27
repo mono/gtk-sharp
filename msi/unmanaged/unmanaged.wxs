@@ -1121,7 +1121,7 @@
             <File Id="pangoquerymodules.exe" Name="pango-querymodules.exe" Source="source\bin\pango-querymodules.exe" Vital="yes"/>
             <File Id="zlib1.dll" Name="zlib1.dll" Source="source\bin\zlib1.dll" Vital="yes"/>
             <File Id="libgio2.00.dll" Name="libgio-2.0-0.dll" Source="source\bin\libgio-2.0-0.dll" Vital="yes"/>
-            <File Id="libexpat1.dll" Name="libexpat1.dll" Source="source\bin\libexpat-1.dll" Vital="yes"/>
+            <File Id="libexpat1.dll" Name="libexpat-1.dll" Source="source\bin\libexpat-1.dll" Vital="yes"/>
           </Component>
         </Directory>
       </Directory>
