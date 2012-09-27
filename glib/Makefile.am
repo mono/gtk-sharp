@@ -20,7 +20,6 @@ references =
 sources =		 			\
 	Argv.cs					\
 	Boxed.cs				\
-	CDeclCallbackAttribute.cs		\
 	ClassInitializerAttribute.cs		\
 	ConnectBeforeAttribute.cs		\
 	DefaultSignalHandlerAttribute.cs	\

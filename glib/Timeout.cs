@@ -5,7 +5,7 @@
 // Copyright (c) 2002 Mike Kestner
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -28,7 +28,7 @@ namespace GLib {
 
 	public class Timeout {
 
-		[CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate bool TimeoutHandlerInternal ();
 
 		internal class TimeoutProxy : SourceProxy {
@@ -77,8 +77,8 @@ namespace GLib {
 				return false;
 			}
 		}
-		
-		private Timeout () {} 
+
+		private Timeout () {}
 		[DllImport("libglib-2.0-0.dll")]
 		static extern uint g_timeout_add (uint interval, TimeoutHandlerInternal d, IntPtr data);
 
@@ -94,4 +94,3 @@ namespace GLib {
 		}
 	}
 }
-

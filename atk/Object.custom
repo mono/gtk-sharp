@@ -8,7 +8,7 @@
 //
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -20,15 +20,15 @@
 // License along with this program; if not, write to the
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
-		
+
 		[DllImport("atksharpglue-2")]
 		static extern void atksharp_object_override_get_n_children (IntPtr type, NChildrenDelegate cb);
-		
-		[GLib.CDeclCallback]
+
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate int NChildrenDelegate (IntPtr raw);
-		
+
 		static NChildrenDelegate NChildrenCallback;
-		
+
 		static int NChildren_cb (IntPtr raw)
 		{
 			try {
@@ -40,27 +40,28 @@
 
 			return 0;
 		}
-		
+
 		static void OverrideNChildren (GLib.GType gtype)
 		{
 			if (NChildrenCallback == null)
 				NChildrenCallback = new NChildrenDelegate (NChildren_cb);
 			atksharp_object_override_get_n_children (gtype.Val, NChildrenCallback);
 		}
-		
+
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.Object), ConnectionMethod="OverrideNChildren")]
 		protected virtual int OnGetNChildren() {
 			return 0;
 		}
-		
+
 		[DllImport("atksharpglue-2")]
 		static extern void atksharp_object_override_ref_child (IntPtr type, RefChildDelegate cb);
-		
-		[GLib.CDeclCallback]
+
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr RefChildDelegate (IntPtr raw, int i);
-		
+
 		static RefChildDelegate RefChildCallback;
-		
+
+
 		[DllImport("libgobject-2.0-0.dll")]
 		static extern IntPtr g_object_ref (IntPtr handle);
 
@@ -75,18 +76,18 @@
 			} catch (Exception e) {
 				GLib.ExceptionManager.RaiseUnhandledException (e, false);
 			}
-		
+
 			return IntPtr.Zero;
 		}
-		
-		
+
+
 		static void OverrideRefChild (GLib.GType gtype)
 		{
 			if (RefChildCallback == null)
 				RefChildCallback = new RefChildDelegate (RefChild_cb);
 			atksharp_object_override_ref_child (gtype.Val, RefChildCallback);
 		}
-		
+
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.Object), ConnectionMethod="OverrideRefChild")]
 		protected virtual Atk.Object OnRefChild (int i) {
 			return null;
@@ -94,11 +95,11 @@
 
 		protected void EmitChildrenChanged (ChildrenChangedDetail detail, uint child_index, Atk.Object child)
 		{
-			GLib.Signal.Emit (this, 
-				"children-changed::" + detail.ToString ().ToLower (), 
+			GLib.Signal.Emit (this,
+				"children-changed::" + detail.ToString ().ToLower (),
 				child_index, child.Handle);
 		}
-		
+
 		protected enum ChildrenChangedDetail
 		{
 			Add,
@@ -109,18 +110,19 @@
 		{
 			GLib.Signal.Emit (this, "visible-data-changed");
 		}
-		
+
+
 		[DllImport("atksharpglue-2")]
 		static extern void atksharp_object_override_ref_state_set (IntPtr type, RefStateSetDelegate cb);
-		
+
 		[DllImport("atksharpglue-2")]
 		static extern IntPtr atksharp_object_base_ref_state_set (IntPtr atk_obj);
-		
-		[GLib.CDeclCallback]
+
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr RefStateSetDelegate (IntPtr raw);
-		
+
 		static RefStateSetDelegate RefStateSetCallback;
-		
+
 		static IntPtr RefStateSet_cb (IntPtr raw)
 		{
 			try {
@@ -132,7 +134,7 @@
 			} catch (Exception e) {
 				GLib.ExceptionManager.RaiseUnhandledException (e, false);
 			}
-		
+
 			return IntPtr.Zero;
 		}
 
@@ -142,22 +144,22 @@
 				RefStateSetCallback = new RefStateSetDelegate (RefStateSet_cb);
 			atksharp_object_override_ref_state_set (gtype.Val, RefStateSetCallback);
 		}
-		
+
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.Object), ConnectionMethod="OverrideRefStateSet")]
-		protected virtual Atk.StateSet OnRefStateSet () 
+		protected virtual Atk.StateSet OnRefStateSet ()
 		{
 			IntPtr raw = atksharp_object_base_ref_state_set (Handle);
 			return GLib.Object.GetObject (raw, true) as StateSet;
 		}
-		
+
 		[DllImport("atksharpglue-2")]
 		static extern void atksharp_object_override_get_index_in_parent (IntPtr type, IndexInParentDelegate cb);
-		
-		[GLib.CDeclCallback]
+
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate int IndexInParentDelegate (IntPtr raw);
-		
+
 		static IndexInParentDelegate IndexInParentCallback;
-		
+
 		static int IndexInParent_cb (IntPtr raw)
 		{
 			try {
@@ -169,34 +171,34 @@
 
 			return -1;
 		}
-		
+
 		static void OverrideIndexInParent (GLib.GType gtype)
 		{
 			if (IndexInParentCallback == null)
 				IndexInParentCallback = new IndexInParentDelegate (IndexInParent_cb);
 			atksharp_object_override_get_index_in_parent (gtype.Val, IndexInParentCallback);
 		}
-		
+
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.Object), ConnectionMethod="OverrideIndexInParent")]
 		protected virtual int OnGetIndexInParent() {
 			return -1;
 		}
-		
+
 		public void NotifyStateChange (Atk.StateType state, bool value) {
 			NotifyStateChange ((ulong)state, value);
 		}
 
 		[DllImport("atksharpglue-2")]
 		static extern void atksharp_object_override_ref_relation_set (IntPtr type, RefRelationSetDelegate cb);
-		
+
 		[DllImport("atksharpglue-2")]
 		static extern IntPtr atksharp_object_base_ref_relation_set (IntPtr atk_obj);
-		
-		[GLib.CDeclCallback]
+
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr RefRelationSetDelegate (IntPtr raw);
-		
+
 		static RefRelationSetDelegate RefRelationSetCallback;
-		
+
 		static IntPtr RefRelationSet_cb (IntPtr raw)
 		{
 			try {
@@ -208,29 +210,29 @@
 			} catch (Exception e) {
 				GLib.ExceptionManager.RaiseUnhandledException (e, false);
 			}
-		
+
 			return IntPtr.Zero;
 		}
-		
-		
+
+
 		static void OverrideRefRelationSet (GLib.GType gtype)
 		{
 			if (RefRelationSetCallback == null)
 				RefRelationSetCallback = new RefRelationSetDelegate (RefRelationSet_cb);
 			atksharp_object_override_ref_relation_set (gtype.Val, RefRelationSetCallback);
 		}
-		
+
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.Object), ConnectionMethod="OverrideRefRelationSet")]
-		protected virtual Atk.RelationSet OnRefRelationSet () 
+		protected virtual Atk.RelationSet OnRefRelationSet ()
 		{
 			IntPtr raw = atksharp_object_base_ref_relation_set (Handle);
 			return GLib.Object.GetObject (raw, true) as RelationSet;
 		}
-		
+
 		[DllImport("atksharpglue-2")]
 		static extern void atksharp_object_override_get_attributes (IntPtr type, GetAttributesDelegate cb);
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr GetAttributesDelegate (IntPtr raw);
 
 		static GetAttributesDelegate GetAttributesCallback;
@@ -259,7 +261,7 @@
 		}
 
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.Object), ConnectionMethod="OverrideGetAttributes")]
-		protected virtual Attribute [] OnGetAttributes () 
+		protected virtual Attribute [] OnGetAttributes ()
 		{
 			return new Attribute [0];
 		}
@@ -268,4 +270,3 @@
 		{
 			GLib.Signal.Emit (this, "focus-event", gained);
 		}
-

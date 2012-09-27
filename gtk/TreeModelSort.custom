@@ -7,7 +7,7 @@
 // This code is inserted after the automatically generated code.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -66,7 +66,7 @@
 		public void SetValue (Gtk.TreeIter iter, int column, uint value) {
 			throw new NotImplementedException ();
 		}
-		
+
 		public void SetValue (Gtk.TreeIter iter, int column, object value) {
 			throw new NotImplementedException ();
 		}
@@ -84,18 +84,18 @@
 		}
 
 		[Obsolete ("Replaced by SetSortFunc (int, TreeIterCompareFunc) overload.")]
-		public void SetSortFunc (int sort_column_id, TreeIterCompareFunc sort_func, IntPtr user_data, Gtk.DestroyNotify destroy) 
+		public void SetSortFunc (int sort_column_id, TreeIterCompareFunc sort_func, IntPtr user_data, Gtk.DestroyNotify destroy)
 		{
 			SetSortFunc (sort_column_id, sort_func);
 		}
 
 		[Obsolete ("Replaced by DefaultSortFunc property.")]
-		public void SetDefaultSortFunc (TreeIterCompareFunc sort_func, IntPtr user_data, Gtk.DestroyNotify destroy) 
+		public void SetDefaultSortFunc (TreeIterCompareFunc sort_func, IntPtr user_data, Gtk.DestroyNotify destroy)
 		{
 			DefaultSortFunc = sort_func;
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void RowsReorderedSignalDelegate (IntPtr arg0, IntPtr arg1, IntPtr arg2, IntPtr arg3, IntPtr gch);
 
 		static void RowsReorderedSignalCallback (IntPtr arg0, IntPtr arg1, IntPtr arg2, IntPtr arg3, IntPtr gch)
@@ -121,7 +121,7 @@
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void RowsReorderedVMDelegate (IntPtr tree_model, IntPtr path, IntPtr iter, IntPtr new_order);
 
 		static RowsReorderedVMDelegate RowsReorderedVMCallback;
@@ -194,4 +194,3 @@
 				sig.RemoveDelegate (value);
 			}
 		}
-

@@ -6,7 +6,7 @@
 // Copyright (c) 2005,2008 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -52,7 +52,7 @@ namespace GLib {
 			public Flags run_type;
 		}
 
-		[CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		public delegate bool EmissionHookNative (ref InvocationHint hint, uint n_pvals, IntPtr pvals, IntPtr data);
 
 		public delegate bool EmissionHook (InvocationHint ihint, object[] inst_and_param_values);
@@ -112,7 +112,7 @@ namespace GLib {
 				foreach (Value v in vals)
 					v.Dispose ();
 				Marshal.FreeHGlobal (buf);
-				return result;	
+				return result;
 			}
 
 			public EmissionHook Invoker {
@@ -301,7 +301,7 @@ namespace GLib {
 				gquark = GetGQuarkFromString (signal_detail.Substring (link_pos + 2));
 			}
 		}
-		
+
 		public static object Emit (GLib.Object instance, string detailed_signal, params object[] args)
 		{
 			uint gquark, signal_id;
@@ -312,7 +312,7 @@ namespace GLib {
 				throw new ArgumentException ("Invalid signal name: " + signal_name);
 			GLib.Value[] vals = new GLib.Value [args.Length + 1];
 			GLib.ValueArray inst_and_params = new GLib.ValueArray ((uint) args.Length + 1);
-			
+
 			vals [0] = new GLib.Value (instance);
 			inst_and_params.Append (vals [0]);
 			for (int i = 1; i < vals.Length; i++) {
@@ -328,13 +328,13 @@ namespace GLib {
 				ret.Dispose ();
 			} else
 				g_signal_emitv (inst_and_params.ArrayPtr, signal_id, gquark, IntPtr.Zero);
-			
+
 			foreach (GLib.Value val in vals)
 				val.Dispose ();
 
 			return ret_obj;
 		}
-		
+
 		private static uint GetGQuarkFromString (string str) {
 			IntPtr native_string = GLib.Marshaller.StringToPtrGStrdup (str);
 			uint ret = g_quark_from_string (native_string);
@@ -347,7 +347,7 @@ namespace GLib {
 			IntPtr typeid = gtksharp_get_type_id (obj.Handle);
 			return GetSignalId (signal_name, typeid);
 		}
-		
+
 		private static uint GetSignalId (string signal_name, IntPtr typeid)
 		{
 			IntPtr native_name = GLib.Marshaller.StringToPtrGStrdup (signal_name);
@@ -355,7 +355,7 @@ namespace GLib {
 			GLib.Marshaller.Free (native_name);
 			return signal_id;
 		}
-		
+
 		public static ulong AddEmissionHook (string detailed_signal, GLib.GType type, EmissionHook handler_func)
 		{
 			uint gquark;
@@ -366,32 +366,33 @@ namespace GLib {
 				throw new Exception ("Invalid signal name: " + signal_name);
 			return g_signal_add_emission_hook (signal_id, gquark, new EmissionHookMarshaler (handler_func).Callback, IntPtr.Zero, IntPtr.Zero);
 		}
-		
+
 		[DllImport("libgobject-2.0-0.dll")]
 		static extern IntPtr g_signal_get_invocation_hint (IntPtr instance);
 
 		[DllImport("libgobject-2.0-0.dll")]
 		static extern void g_signal_emitv (IntPtr instance_and_params, uint signal_id, uint gquark_detail, ref GLib.Value return_value);
-		
+
+
 		[DllImport("libgobject-2.0-0.dll")]
 		static extern void g_signal_emitv (IntPtr instance_and_params, uint signal_id, uint gquark_detail, IntPtr return_value);
-		
+
 		[DllImport("glibsharpglue-2")]
 		static extern IntPtr glibsharp_signal_get_return_type (uint signal_id);
-		
+
 		[DllImport("libgobject-2.0-0.dll")]
 		static extern uint g_signal_lookup (IntPtr name, IntPtr itype);
-		
+
 		//better not to expose g_quark_from_static_string () due to memory allocation issues
 		[DllImport("libglib-2.0-0.dll")]
 		static extern uint g_quark_from_string (IntPtr str);
-		
+
+
 		[DllImport("glibsharpglue-2")]
 		static extern IntPtr gtksharp_get_type_id (IntPtr raw);
-		
+
 		[DllImport("libgobject-2.0-0.dll")]
 		static extern ulong g_signal_add_emission_hook (uint signal_id, uint gquark_detail, EmissionHookNative hook_func, IntPtr hook_data, IntPtr data_destroy);
 
 	}
 }
-

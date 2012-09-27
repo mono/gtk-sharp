@@ -5,7 +5,7 @@
 // Copyright (c) 2007 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -25,7 +25,7 @@ namespace GLibSharp {
 	using System.Runtime.InteropServices;
 	using GLib;
 
-	[CDeclCallback]
+	[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 	internal delegate bool IOFuncNative(IntPtr source, int condition, IntPtr data);
 
 	internal class IOFuncWrapper {
@@ -61,14 +61,14 @@ namespace GLib {
 
 		IntPtr handle;
 
-		private IOChannel(IntPtr handle) 
+		private IOChannel(IntPtr handle)
 		{
 			this.handle = handle;
 		}
 
 		public IOChannel (int fd) : this (g_io_channel_unix_new (fd)) {}
 
-		public IOChannel (string filename, string mode) 
+		public IOChannel (string filename, string mode)
 		{
 			IntPtr native_filename = Marshaller.StringToPtrGStrdup (filename);
 			IntPtr native_mode = Marshaller.StringToPtrGStrdup (mode);
@@ -83,15 +83,15 @@ namespace GLib {
 			if (error != IntPtr.Zero) throw new GException (error);
 		}
 
-		public IOCondition BufferCondition 
-		{ 
+		public IOCondition BufferCondition
+		{
 			get {
 				return (IOCondition) g_io_channel_get_buffer_condition (Handle);
 			}
 		}
 
-		public bool Buffered 
-		{ 
+		public bool Buffered
+		{
 			get {
 				return g_io_channel_get_buffered (Handle);
 			}
@@ -100,8 +100,8 @@ namespace GLib {
 			}
 		}
 
-		public ulong BufferSize 
-		{ 
+		public ulong BufferSize
+		{
 			get {
 				return (ulong) g_io_channel_get_buffer_size (Handle);
 			}
@@ -110,8 +110,8 @@ namespace GLib {
 			}
 		}
 
-		public bool CloseOnUnref 
-		{ 
+		public bool CloseOnUnref
+		{
 			get {
 				return g_io_channel_get_close_on_unref (Handle);
 			}
@@ -120,8 +120,8 @@ namespace GLib {
 			}
 		}
 
-		public string Encoding 
-		{ 
+		public string Encoding
+		{
 			get {
 				return Marshaller.Utf8PtrToString (g_io_channel_get_encoding (Handle));
 			}
@@ -134,8 +134,8 @@ namespace GLib {
 			}
 		}
 
-		public IOFlags Flags 
-		{ 
+		public IOFlags Flags
+		{
 			get {
 				return (IOFlags) g_io_channel_get_flags(Handle);
 			}
@@ -173,7 +173,7 @@ namespace GLib {
 			}
 		}
 
-		protected void Init () 
+		protected void Init ()
 		{
 			g_io_channel_init (Handle);
 		}
@@ -183,7 +183,7 @@ namespace GLib {
 			g_io_channel_unref (Handle);
 		}
 
-		public uint AddWatch (int priority, IOCondition condition, IOFunc func) 
+		public uint AddWatch (int priority, IOCondition condition, IOFunc func)
 		{
 			IOFuncWrapper func_wrapper = null;
 			IntPtr user_data = IntPtr.Zero;
@@ -196,7 +196,7 @@ namespace GLib {
 			return g_io_add_watch_full (Handle, priority, (int) condition, func_wrapper.NativeDelegate, user_data, notify);
 		}
 
-		public IOStatus Flush () 
+		public IOStatus Flush ()
 		{
 			IntPtr error;
 			IOStatus ret = (IOStatus) g_io_channel_flush (Handle, out error);
@@ -204,7 +204,7 @@ namespace GLib {
 			return ret;
 		}
 
-		public IOStatus ReadChars (byte[] buf, out ulong bytes_read) 
+		public IOStatus ReadChars (byte[] buf, out ulong bytes_read)
 		{
 			UIntPtr native_bytes_read;
 			IntPtr error;
@@ -220,7 +220,7 @@ namespace GLib {
 			return ReadLine (out str_return, out dump);
 		}
 
-		public IOStatus ReadLine (out string str_return, out ulong terminator_pos) 
+		public IOStatus ReadLine (out string str_return, out ulong terminator_pos)
 		{
 			IntPtr native_string;
 			UIntPtr native_terminator_pos;
@@ -234,7 +234,7 @@ namespace GLib {
 			return ret;
 		}
 
-		public IOStatus ReadToEnd (out string str_return) 
+		public IOStatus ReadToEnd (out string str_return)
 		{
 			IntPtr native_str;
 			UIntPtr native_length;
@@ -251,7 +251,7 @@ namespace GLib {
 			return ret;
 		}
 
-		public IOStatus ReadUnichar (out uint thechar) 
+		public IOStatus ReadUnichar (out uint thechar)
 		{
 			IntPtr error;
 			IOStatus ret = (IOStatus) g_io_channel_read_unichar (Handle, out thechar, out error);
@@ -259,7 +259,7 @@ namespace GLib {
 			return ret;
 		}
 
-		public IOStatus SeekPosition (long offset, SeekType type) 
+		public IOStatus SeekPosition (long offset, SeekType type)
 		{
 			IntPtr error;
 			IOStatus ret = (IOStatus) g_io_channel_seek_position (Handle, offset, (int) type, out error);
@@ -267,7 +267,7 @@ namespace GLib {
 			return ret;
 		}
 
-		public IOStatus Shutdown (bool flush) 
+		public IOStatus Shutdown (bool flush)
 		{
 			IntPtr error;
 			IOStatus ret = (IOStatus) g_io_channel_shutdown (Handle, flush, out error);
@@ -275,7 +275,7 @@ namespace GLib {
 			return ret;
 		}
 
-		public IOStatus WriteChars (string str, out string remainder) 
+		public IOStatus WriteChars (string str, out string remainder)
 		{
 			ulong written;
 			System.Text.Encoding enc = System.Text.Encoding.UTF8;
@@ -291,7 +291,7 @@ namespace GLib {
 			return ret;
 		}
 
-		public IOStatus WriteChars (byte[] buf, out ulong bytes_written) 
+		public IOStatus WriteChars (byte[] buf, out ulong bytes_written)
 		{
 			UIntPtr native_bytes_written;
 			IntPtr error;
@@ -301,7 +301,7 @@ namespace GLib {
 			return ret;
 		}
 
-		public IOStatus WriteUnichar (uint thechar) 
+		public IOStatus WriteUnichar (uint thechar)
 		{
 			IntPtr error;
 			IOStatus ret = (IOStatus) g_io_channel_write_unichar (Handle, thechar, out error);
@@ -318,7 +318,7 @@ namespace GLib {
 			return new IOChannel (handle);
 		}
 
-		public static IOChannelError ErrorFromErrno (int en) 
+		public static IOChannelError ErrorFromErrno (int en)
 		{
 			return (IOChannelError) g_io_channel_error_from_errno (en);
 		}

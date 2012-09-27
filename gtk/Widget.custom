@@ -5,13 +5,13 @@
 //          Brad Taylor <brad@getcoded.net>
 //
 // Copyright (C) 2007 Brad Taylor
-// Copyright (C) 2002 Rachel Hestilow 
+// Copyright (C) 2002 Rachel Hestilow
 //
 // This code is inserted after the automatically generated code.
 //
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -24,7 +24,7 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-[Obsolete]		
+[Obsolete]
 protected Widget (GLib.GType gtype) : base(gtype)
 {
 }
@@ -193,7 +193,7 @@ public int FocusLineWidth {
 [DllImport("gtksharpglue-2")]
 static extern int gtksharp_widget_connect_set_scroll_adjustments_signal (IntPtr gtype, SetScrollAdjustmentsDelegate cb);
 
-[GLib.CDeclCallback]
+[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 delegate void SetScrollAdjustmentsDelegate (IntPtr widget, IntPtr hadj, IntPtr vadj);
 
 static SetScrollAdjustmentsDelegate SetScrollAdjustmentsCallback;
@@ -230,7 +230,7 @@ protected virtual void OnSetScrollAdjustments (Gtk.Adjustment hadj, Gtk.Adjustme
 [DllImport("gtksharpglue-2")]
 static extern int gtksharp_widget_connect_activate_signal (IntPtr gtype, ActivateDelegate cb);
 
-[GLib.CDeclCallback]
+[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 delegate void ActivateDelegate (IntPtr widget);
 
 static ActivateDelegate ActivateCallback;
@@ -278,7 +278,7 @@ private class BindingInvoker {
 	}
 }
 
-[GLib.CDeclCallback]
+[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 private delegate void BindingHandler (IntPtr handle, IntPtr user_data);
 
 private static void BindingCallback (IntPtr handle, IntPtr user_data)
@@ -343,7 +343,7 @@ public object StyleGetProperty (string property_name) {
 		value.Dispose ();
 		return ret;
 	}
-		
+
 	return null;
 }
 
@@ -371,23 +371,22 @@ public Widget[] ListMnemonicLabels ()
 	return result;
 }
 
-public void ModifyBase (Gtk.StateType state) 
+public void ModifyBase (Gtk.StateType state)
 {
 	gtk_widget_modify_base (Handle, (int) state, IntPtr.Zero);
 }
 
-public void ModifyBg (Gtk.StateType state) 
+public void ModifyBg (Gtk.StateType state)
 {
 	gtk_widget_modify_bg (Handle, (int) state, IntPtr.Zero);
 }
 
-public void ModifyFg (Gtk.StateType state) 
+public void ModifyFg (Gtk.StateType state)
 {
 	gtk_widget_modify_fg (Handle, (int) state, IntPtr.Zero);
 }
 
-public void ModifyText (Gtk.StateType state) 
+public void ModifyText (Gtk.StateType state)
 {
 	gtk_widget_modify_text (Handle, (int) state, IntPtr.Zero);
 }
-

@@ -11,7 +11,7 @@
 // This code is inserted after the automatically generated code.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -30,7 +30,7 @@
 		[DllImport("libglade-2.0-0.dll")]
 		static extern void glade_set_custom_handler (GladeSharp.XMLCustomWidgetHandlerNative handler, IntPtr user_data);
 
-		public static Glade.XMLCustomWidgetHandler CustomHandler { 
+		public static Glade.XMLCustomWidgetHandler CustomHandler {
 			set {
 				callback_wrapper = new GladeSharp.XMLCustomWidgetHandlerWrapper (value);
 				glade_set_custom_handler(callback_wrapper.NativeDelegate, IntPtr.Zero);
@@ -149,7 +149,7 @@
 			SignalConnector sc = new SignalConnector (this, handler);
 			sc.Autoconnect ();
 		}
-		
+
 		public void Autoconnect (Type handler_class)
 		{
 			BindFields (handler_class);
@@ -157,112 +157,112 @@
 			sc.Autoconnect ();
 		}
 
-		class SignalConnector 
+		class SignalConnector
 		{
 			/* the Glade.XML object whose signals we want to connect */
 			XML gxml;
-	
+
 			/* the object to look for handlers */
 			object handler_object;
-	
+
 			/* the type to look for handlers if no object has been specified */
 			Type handler_type;
-	
-			public SignalConnector (XML gxml, object handler) 
+
+			public SignalConnector (XML gxml, object handler)
 			{
 				this.gxml = gxml;
 				this.handler_object = handler;
 				this.handler_type = handler.GetType ();
 			}
-	
+
 			public SignalConnector (XML gxml, Type type)
 			{
 				this.gxml = gxml;
 				this.handler_object = null;
 				this.handler_type = type;
 			}
-			
-			[GLib.CDeclCallback]
-			delegate void RawXMLConnectFunc (IntPtr handler_name, IntPtr objekt, 
-						         IntPtr signal_name, IntPtr signal_data, 
+
+			[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
+			delegate void RawXMLConnectFunc (IntPtr handler_name, IntPtr objekt,
+						         IntPtr signal_name, IntPtr signal_data,
 						         IntPtr connect_object, int after, IntPtr user_data);
-			
+
 			[DllImport("libglade-2.0-0.dll")]
 			static extern void glade_xml_signal_autoconnect_full (IntPtr raw, RawXMLConnectFunc func,
 									      IntPtr user_data);
-			
+
 			public void Autoconnect () {
 				RawXMLConnectFunc cf = new RawXMLConnectFunc (ConnectFunc);
 				glade_xml_signal_autoconnect_full (gxml.Handle, cf, IntPtr.Zero);
 			}
-			
-			void ConnectFunc (IntPtr native_handler_name, IntPtr objekt_ptr, 
-					  IntPtr native_signal_name, IntPtr native_signal_data, 
+
+			void ConnectFunc (IntPtr native_handler_name, IntPtr objekt_ptr,
+					  IntPtr native_signal_name, IntPtr native_signal_data,
 					  IntPtr connect_object_ptr, int after, IntPtr user_data) {
-				
+
 				GLib.Object objekt = GLib.Object.GetObject (objekt_ptr, false);
-	
+
 				string handler_name = GLib.Marshaller.Utf8PtrToString (native_handler_name);
 				string signal_name = GLib.Marshaller.Utf8PtrToString (native_signal_name);
 				//string signal_data = GLib.Marshaller.Utf8PtrToString (native_signal_data);
 
 				/* if an connect_object_ptr is provided, use that as handler */
-				object connect_object = 
-					connect_object_ptr == IntPtr.Zero 
+				object connect_object =
+					connect_object_ptr == IntPtr.Zero
 						? handler_object
 						: GLib.Object.GetObject (connect_object_ptr, false);
-				
+
 				/* search for the event to connect */
 				System.Reflection.MemberInfo[] evnts = objekt.GetType ().
-					FindMembers (System.Reflection.MemberTypes.Event, 
-					     System.Reflection.BindingFlags.Instance 
+					FindMembers (System.Reflection.MemberTypes.Event,
+					     System.Reflection.BindingFlags.Instance
 					     | System.Reflection.BindingFlags.Static
-					     | System.Reflection.BindingFlags.Public 
-					     | System.Reflection.BindingFlags.NonPublic, 
+					     | System.Reflection.BindingFlags.Public
+					     | System.Reflection.BindingFlags.NonPublic,
 					     signalFilter, signal_name);
-				foreach (System.Reflection.EventInfo ei in evnts) 
+				foreach (System.Reflection.EventInfo ei in evnts)
 				{
 					bool connected = false;
 					System.Reflection.MethodInfo add = ei.GetAddMethod ();
 					System.Reflection.ParameterInfo[] addpi = add.GetParameters ();
-					if (addpi.Length == 1) 
+					if (addpi.Length == 1)
 					{ /* this should be always true, unless there's something broken */
 						Type delegate_type = addpi[0].ParameterType;
-	
+
 						/* look for an instance method */
-						if (connect_object != null) try 
+						if (connect_object != null) try
 						{
-							Delegate d = Delegate.CreateDelegate 
+							Delegate d = Delegate.CreateDelegate
 								(delegate_type, connect_object, handler_name);
 							add.Invoke (objekt, new object[] { d } );
 							connected = true;
-						} 
-						catch (ArgumentException) 
+						}
+						catch (ArgumentException)
 						{
 							/* ignore if there is not such instance method */
 						}
-						
+
 						/* look for a static method if no instance method has been found */
-						if (!connected && handler_type != null) try 
+						if (!connected && handler_type != null) try
 						{
-							Delegate d = Delegate.CreateDelegate 
+							Delegate d = Delegate.CreateDelegate
 								(delegate_type, handler_type, handler_name);
 							add.Invoke (objekt, new object[] { d } );
 							connected = true;
-						} 
-						catch (ArgumentException) 
+						}
+						catch (ArgumentException)
 						{
 							/* ignore if there is not such static method */
 						}
-	
-						if (!connected) 
+
+						if (!connected)
 						{
 							string msg = ExplainError (ei.Name, delegate_type, handler_type, handler_name);
 							throw new HandlerNotFoundException (msg, handler_name, signal_name, ei, delegate_type);
 						}
 					}
 				}
-	
+
 			}
 
 			static string GetSignature (System.Reflection.MethodInfo method)
@@ -320,11 +320,11 @@
 						event_name, expected, method, actual);
 				return sb.ToString ();
 			}
-	
+
 			System.Reflection.MemberFilter signalFilter = new System.Reflection.MemberFilter (SignalFilter);
-			
+
 			/* matches events to GLib signal names */
-			static bool SignalFilter (System.Reflection.MemberInfo m, object filterCriteria) 
+			static bool SignalFilter (System.Reflection.MemberInfo m, object filterCriteria)
 			{
 				string signame = (filterCriteria as string);
 				object[] attrs = m.GetCustomAttributes (typeof (GLib.SignalAttribute), false);
@@ -357,12 +357,12 @@
 				flags |= System.Reflection.BindingFlags.Instance;
 			else
 				flags |= System.Reflection.BindingFlags.Static;
-			
+
 			do {
 				System.Reflection.FieldInfo[] fields = type.GetFields (flags);
 				if (fields == null)
 					return;
-				
+
 				foreach (System.Reflection.FieldInfo field in fields)
 				{
 					object[] attrs = field.GetCustomAttributes (typeof (WidgetAttribute), false);
@@ -372,9 +372,9 @@
 					// the first attribute.
 					WidgetAttribute attr = (WidgetAttribute) attrs[0];
 					Gtk.Widget widget;
-					if (attr.Specified) 
+					if (attr.Specified)
 						widget = GetWidget (attr.Name);
-					else 
+					else
 						widget = GetWidget (field.Name);
 
 					if (widget != null)
@@ -389,7 +389,7 @@
 			}
 			while (type != typeof(object) && type != null);
 		}
-		
+
 		public void BindFields (object target)
 		{
 			BindFields (target, target.GetType ());
@@ -404,7 +404,7 @@
                 {
                         return new Glade.XML (stream, root, domain);
                 }
-                
+
                 public static Glade.XML FromAssembly (
                         System.Reflection.Assembly assembly, string resource_name, string root, string domain)
                 {
@@ -420,7 +420,7 @@
 		[DllImport("libglade-2.0-0.dll")]
 		static extern IntPtr glade_xml_get_widget_prefix(IntPtr raw, IntPtr name);
 
-		public Gtk.Widget[] GetWidgetPrefix(string name) 
+		public Gtk.Widget[] GetWidgetPrefix(string name)
 		{
 			IntPtr native = GLib.Marshaller.StringToPtrGStrdup (name);
 			IntPtr raw_ret = glade_xml_get_widget_prefix(Handle, native);

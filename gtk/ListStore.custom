@@ -7,7 +7,7 @@
 // This code is inserted after the automatically generated code.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -29,14 +29,14 @@
 
 		[DllImport("libgtk-win32-2.0-0.dll")]
 		static extern bool gtk_tree_model_iter_children (IntPtr raw, out Gtk.TreeIter iter, IntPtr parent);
-		public bool IterChildren (out Gtk.TreeIter iter) 
+		public bool IterChildren (out Gtk.TreeIter iter)
 		{
 			bool raw_ret = gtk_tree_model_iter_children (Handle, out iter, IntPtr.Zero);
 			bool ret = raw_ret;
 			return ret;
 		}
 
-		public int IterNChildren () 
+		public int IterNChildren ()
 		{
 			int raw_ret = gtk_tree_model_iter_n_children (Handle, IntPtr.Zero);
 			int ret = raw_ret;
@@ -45,63 +45,63 @@
 
 		[DllImport("libgtk-win32-2.0-0.dll")]
 		static extern bool gtk_tree_model_iter_nth_child (IntPtr raw, out Gtk.TreeIter iter, IntPtr parent, int n);
-		public bool IterNthChild (out Gtk.TreeIter iter, int n) 
+		public bool IterNthChild (out Gtk.TreeIter iter, int n)
 		{
 			bool raw_ret = gtk_tree_model_iter_nth_child (Handle, out iter, IntPtr.Zero, n);
 			bool ret = raw_ret;
 			return ret;
 		}
 
-		public void SetValue (Gtk.TreeIter iter, int column, bool value) 
+		public void SetValue (Gtk.TreeIter iter, int column, bool value)
 		{
 			GLib.Value val = new GLib.Value (value);
 			SetValue (iter, column, val);
 			val.Dispose ();
 		}
 
-		public void SetValue (Gtk.TreeIter iter, int column, double value) 
+		public void SetValue (Gtk.TreeIter iter, int column, double value)
 		{
 			GLib.Value val = new GLib.Value (value);
 			SetValue (iter, column, val);
 			val.Dispose ();
 		}
 
-		public void SetValue (Gtk.TreeIter iter, int column, int value) 
+		public void SetValue (Gtk.TreeIter iter, int column, int value)
 		{
 			GLib.Value val = new GLib.Value (value);
 			SetValue (iter, column, val);
 			val.Dispose ();
 		}
 
-		public void SetValue (Gtk.TreeIter iter, int column, string value) 
+		public void SetValue (Gtk.TreeIter iter, int column, string value)
 		{
 			GLib.Value val = new GLib.Value (value);
 			SetValue (iter, column, val);
 			val.Dispose ();
 		}
 
-		public void SetValue (Gtk.TreeIter iter, int column, float value) 
+		public void SetValue (Gtk.TreeIter iter, int column, float value)
 		{
 			GLib.Value val = new GLib.Value (value);
 			SetValue (iter, column, val);
 			val.Dispose ();
 		}
 
-		public void SetValue (Gtk.TreeIter iter, int column, uint value) 
-		{
-			GLib.Value val = new GLib.Value (value);
-			SetValue (iter, column, val);
-			val.Dispose ();
-		}
-		
-		public void SetValue (Gtk.TreeIter iter, int column, object value) 
+		public void SetValue (Gtk.TreeIter iter, int column, uint value)
 		{
 			GLib.Value val = new GLib.Value (value);
 			SetValue (iter, column, val);
 			val.Dispose ();
 		}
 
-		public Gtk.TreeIter AppendValues (Array values) 
+		public void SetValue (Gtk.TreeIter iter, int column, object value)
+		{
+			GLib.Value val = new GLib.Value (value);
+			SetValue (iter, column, val);
+			val.Dispose ();
+		}
+
+		public Gtk.TreeIter AppendValues (Array values)
 		{
 			Gtk.TreeIter iter = Append();
 
@@ -117,8 +117,8 @@
 
 			return iter;
 		}
-		
-		public Gtk.TreeIter AppendValues (params object[] values) 
+
+		public Gtk.TreeIter AppendValues (params object[] values)
 		{
 			return AppendValues ((Array) values);
 		}
@@ -186,7 +186,7 @@
 				gtypes[i] = (GLib.GType) type;
 				i++;
 			}
-			
+
 			CreateNativeObject (new string [0], new GLib.Value [0]);
 			ColumnTypes = gtypes;
 		}
@@ -197,7 +197,7 @@
 			ColumnTypes = types;
 		}
 
-		public object GetValue(Gtk.TreeIter iter, int column) 
+		public object GetValue(Gtk.TreeIter iter, int column)
 		{
 			GLib.Value val = GLib.Value.Empty;
 			GetValue (iter, column, ref val);
@@ -207,13 +207,13 @@
 		}
 
 		[Obsolete ("Replaced by SetSortFunc (int, TreeIterCompareFunc) overload.")]
-		public void SetSortFunc (int sort_column_id, TreeIterCompareFunc sort_func, IntPtr user_data, Gtk.DestroyNotify destroy) 
+		public void SetSortFunc (int sort_column_id, TreeIterCompareFunc sort_func, IntPtr user_data, Gtk.DestroyNotify destroy)
 		{
 			SetSortFunc (sort_column_id, sort_func);
 		}
 
 		[Obsolete ("Replaced by DefaultSortFunc property.")]
-		public void SetDefaultSortFunc (TreeIterCompareFunc sort_func, IntPtr user_data, Gtk.DestroyNotify destroy) 
+		public void SetDefaultSortFunc (TreeIterCompareFunc sort_func, IntPtr user_data, Gtk.DestroyNotify destroy)
 		{
 			DefaultSortFunc = sort_func;
 		}
@@ -223,7 +223,7 @@
 			return new TreeEnumerator(this);
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void RowsReorderedSignalDelegate (IntPtr arg0, IntPtr arg1, IntPtr arg2, IntPtr arg3, IntPtr gch);
 
 		static void RowsReorderedSignalCallback (IntPtr arg0, IntPtr arg1, IntPtr arg2, IntPtr arg3, IntPtr gch)
@@ -249,7 +249,7 @@
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void RowsReorderedVMDelegate (IntPtr tree_model, IntPtr path, IntPtr iter, IntPtr new_order);
 
 		static RowsReorderedVMDelegate RowsReorderedVMCallback;
@@ -322,4 +322,3 @@
 				sig.RemoveDelegate (value);
 			}
 		}
-

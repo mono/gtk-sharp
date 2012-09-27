@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="*" Name="Gtk# for .Net @VERSION@" Language="1033" Version="@VERSION@" Manufacturer="Novell, Inc." UpgradeCode="6AAF2A04-27B0-4D70-8EBB-3EB225794B3F">
+  <Product Id="*" Name="Gtk# for .Net @VERSION@" Language="1033" Version="@VERSION@" Manufacturer="Xamarin, Inc." UpgradeCode="6AAF2A04-27B0-4D70-8EBB-3EB225794B3F">
     <Package InstallerVersion="200" Compressed="yes" Description="Gtk# for .Net @VERSION@" Comments="Provides Gtk# and dependencies." />
     <Media Id="1" Cabinet="WixProject1.cab" EmbedCab="yes" />
-    <PropertyRef Id="NETFRAMEWORK20" />
-    <PropertyRef Id="NETFRAMEWORK35" />
-    <PropertyRef Id="NETFRAMEWORK40" />
-    <Condition Message="This setup requires the .NET Framework 2.0 or higher.">
-      Installed or NETFRAMEWORK20 or NETFRAMEWORK35 or NETFRAMEWORK40
+    <PropertyRef Id="NETFRAMEWORK40FULL" />
+    <Condition Message="This setup requires the .NET Framework 4.0.">
+      <![CDATA[Installed or NETFRAMEWORK40FULL]]>
     </Condition>
     <Property Id="PREVIOUSVERSIONSINSTALLED" Secure="yes" />
     <Upgrade Id="6AAF2A04-27B0-4D70-8EBB-3EB225794B3F">
@@ -135,7 +133,7 @@
                     <File Id="gtksharpdll" Name="gtk-sharp.dll" Assembly=".net" KeyPath="yes" Source="binaries/gtk/gtk-sharp.dll" Vital="yes" />
                   </Component>
                   <Component Id="gtksharp_policy.2.4" Guid="7DE61998-2AD1-4776-B2F5-7E76EACC0237">
-                    <File Id="policy.2.4.gtksharp.dll" Name="policy.2.4.gtk-sharp.dll" Assembly=".net" KeyPath="yes" Source="binaries/gtk/policy.2.4.gtk-sharp.dll" Vital="no" /> 
+                    <File Id="policy.2.4.gtksharp.dll" Name="policy.2.4.gtk-sharp.dll" Assembly=".net" KeyPath="yes" Source="binaries/gtk/policy.2.4.gtk-sharp.dll" Vital="no" />
                     <File Id="policy.2.4.gtksharp.config" Name="policy.2.4.config" CompanionFile="policy.2.4.gtksharp.dll" Source="binaries/gtk/policy.2.4.config" Vital="no" />
                   </Component>
                   <Component Id="gtksharp_policy.2.6" Guid="7E2D0B9C-DFA9-438e-B229-6617BD6DE96D">

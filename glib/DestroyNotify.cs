@@ -5,7 +5,7 @@
 // Copyright (c) 2005 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -23,13 +23,13 @@ namespace GLib {
 	using System;
 	using System.Runtime.InteropServices;
 
-	[GLib.CDeclCallback]
+	[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 	public delegate void DestroyNotify (IntPtr data);
 
 	public class DestroyHelper {
 
 		private DestroyHelper () {}
-		
+
 		static void ReleaseGCHandle (IntPtr data)
 		{
 			if (data == IntPtr.Zero)
@@ -49,4 +49,3 @@ namespace GLib {
 		}
 	}
 }
-

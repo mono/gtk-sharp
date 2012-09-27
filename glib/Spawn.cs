@@ -5,7 +5,7 @@
 // Copyright (c) 2007 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -23,28 +23,28 @@ namespace GLib {
 
 	using System;
 	using System.Runtime.InteropServices;
-	
+
 	public enum SpawnError {
-		Fork, 
+		Fork,
 		Read,
 		Chdir,
 		Acces,
-		Perm, 
+		Perm,
 		TooBig,
 		NoExec,
 		NameTooLong,
-		NoEnt,     
-		NoMem,    
-		NotDir,  
-		Loop,   
-		TxtBusy,   
-		IO,       
-		NFile,   
-		MFile,  
-		Inval, 
+		NoEnt,
+		NoMem,
+		NotDir,
+		Loop,
+		TxtBusy,
+		IO,
+		NFile,
+		MFile,
+		Inval,
 		IsDir,
-		LibBad,   
-		Failed,  
+		LibBad,
+		Failed,
 	}
 
 	[Flags]
@@ -60,7 +60,7 @@ namespace GLib {
 
 	public delegate void SpawnChildSetupFunc ();
 
-	[CDeclCallback]
+	[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 	internal delegate void SpawnChildSetupFuncNative (IntPtr gch);
 
 	internal class SpawnChildSetupWrapper {
@@ -97,7 +97,7 @@ namespace GLib {
 
 		long pid;
 
-		private Process (int pid) 
+		private Process (int pid)
 		{
 			this.pid = pid;
 		}
@@ -137,7 +137,7 @@ namespace GLib {
 			Marshaller.Free (native_envp);
 			if (error != IntPtr.Zero) throw new GLib.GException (error);
 			return result;
-		}  
+		}
 
 		[DllImport ("libglib-2.0-0.dll")]
 		static extern bool g_spawn_async_with_pipes (IntPtr dir, IntPtr[] argv, IntPtr[] envp, int flags, SpawnChildSetupFuncNative func, IntPtr data, out int pid, IntPtr stdin, IntPtr stdout, IntPtr stderr, out IntPtr error);
@@ -181,7 +181,7 @@ namespace GLib {
 			Marshaller.Free (native_envp);
 			if (error != IntPtr.Zero) throw new GLib.GException (error);
 			return result;
-		}  
+		}
 
 		[DllImport ("libglib-2.0-0.dll")]
 		static extern bool g_spawn_sync (IntPtr dir, IntPtr[] argv, IntPtr[] envp, int flags, SpawnChildSetupFuncNative func, IntPtr data, out IntPtr stdout, out IntPtr stderr, out int exit_status, out IntPtr error);
@@ -210,7 +210,7 @@ namespace GLib {
 			stderr = Marshaller.PtrToStringGFree (native_stderr);
 			if (error != IntPtr.Zero) throw new GLib.GException (error);
 			return result;
-		}  
+		}
 
 		[DllImport ("libglib-2.0-0.dll")]
 		static extern bool g_spawn_command_line_async (IntPtr cmdline, out IntPtr error);

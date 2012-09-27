@@ -9,7 +9,7 @@
 // This code is inserted after the automatically generated code.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -30,7 +30,7 @@
 		static extern void gtk_tree_store_append (IntPtr raw, out TreeIter iter, IntPtr parent);
 
 		[Obsolete ("Replaced by AppendNode")]
-		public TreeIter Append (TreeIter parent) 
+		public TreeIter Append (TreeIter parent)
 		{
 			TreeIter iter;
 			gtk_tree_store_append (Handle, out iter, ref parent);
@@ -38,19 +38,19 @@
 		}
 
 		[Obsolete ("Replaced by AppendNode")]
-		public void Append (out TreeIter iter) 
+		public void Append (out TreeIter iter)
 		{
 			gtk_tree_store_append (Handle, out iter, IntPtr.Zero);
 		}
 
-		public TreeIter AppendNode () 
+		public TreeIter AppendNode ()
 		{
 			TreeIter iter;
 			gtk_tree_store_append (Handle, out iter, IntPtr.Zero);
 			return iter;
 		}
 
-		public TreeIter AppendNode (TreeIter parent) 
+		public TreeIter AppendNode (TreeIter parent)
 		{
 			TreeIter iter;
 			gtk_tree_store_append (Handle, out iter, ref parent);
@@ -64,7 +64,7 @@
 		static extern void gtk_tree_store_insert (IntPtr raw, out TreeIter iter, IntPtr parent, int position);
 
 		[Obsolete ("Replaced by InsertNode")]
-		public TreeIter Insert (TreeIter parent, int position) 
+		public TreeIter Insert (TreeIter parent, int position)
 		{
 			TreeIter iter;
 			gtk_tree_store_insert (Handle, out iter, ref parent, position);
@@ -72,19 +72,19 @@
 		}
 
 		[Obsolete ("Replaced by InsertNode")]
-		public void Insert (out TreeIter iter, int position) 
+		public void Insert (out TreeIter iter, int position)
 		{
 			gtk_tree_store_insert (Handle, out iter, IntPtr.Zero, position);
 		}
 
-		public TreeIter InsertNode (TreeIter parent, int position) 
+		public TreeIter InsertNode (TreeIter parent, int position)
 		{
 			TreeIter iter;
 			gtk_tree_store_insert (Handle, out iter, ref parent, position);
 			return iter;
 		}
 
-		public TreeIter InsertNode (int position) 
+		public TreeIter InsertNode (int position)
 		{
 			TreeIter iter;
 			gtk_tree_store_insert (Handle, out iter, IntPtr.Zero, position);
@@ -98,7 +98,7 @@
 		static extern void gtk_tree_store_prepend (IntPtr raw, out TreeIter iter, IntPtr parent);
 
 		[Obsolete ("Replaced by PrependNode")]
-		public TreeIter Prepend(TreeIter parent) 
+		public TreeIter Prepend(TreeIter parent)
 		{
 			TreeIter iter;
 			gtk_tree_store_prepend (Handle, out iter, ref parent);
@@ -106,19 +106,19 @@
 		}
 
 		[Obsolete ("Replaced by PrependNode")]
-		public void Prepend (out TreeIter iter) 
+		public void Prepend (out TreeIter iter)
 		{
 			gtk_tree_store_append (Handle, out iter, IntPtr.Zero);
 		}
 
-		public TreeIter PrependNode (TreeIter parent) 
+		public TreeIter PrependNode (TreeIter parent)
 		{
 			TreeIter iter;
 			gtk_tree_store_prepend (Handle, out iter, ref parent);
 			return iter;
 		}
 
-		public TreeIter PrependNode () 
+		public TreeIter PrependNode ()
 		{
 			TreeIter iter;
 			gtk_tree_store_prepend (Handle, out iter, IntPtr.Zero);
@@ -132,7 +132,7 @@
 		static extern void gtk_tree_store_insert_before (IntPtr raw, out TreeIter iter, IntPtr parent, ref TreeIter sibling);
 
 		[Obsolete ("Replaced by InsertNodeBefore")]
-		public TreeIter InsertBefore (TreeIter parent, TreeIter sibling) 
+		public TreeIter InsertBefore (TreeIter parent, TreeIter sibling)
 		{
 			TreeIter iter;
 			gtk_tree_store_insert_before (Handle, out iter, ref parent, ref sibling);
@@ -140,19 +140,19 @@
 		}
 
 		[Obsolete ("Replaced by InsertNodeBefore")]
-		public void InsertBefore (out TreeIter iter, TreeIter sibling) 
+		public void InsertBefore (out TreeIter iter, TreeIter sibling)
 		{
 			gtk_tree_store_insert_before (Handle, out iter, IntPtr.Zero, ref sibling);
 		}
 
-		public TreeIter InsertNodeBefore (TreeIter sibling) 
+		public TreeIter InsertNodeBefore (TreeIter sibling)
 		{
 			TreeIter iter;
 			gtk_tree_store_insert_before (Handle, out iter, IntPtr.Zero, ref sibling);
 			return iter;
 		}
 
-		public TreeIter InsertNodeBefore (TreeIter parent, TreeIter sibling) 
+		public TreeIter InsertNodeBefore (TreeIter parent, TreeIter sibling)
 		{
 			TreeIter iter;
 			gtk_tree_store_insert_before (Handle, out iter, ref parent, ref sibling);
@@ -166,7 +166,7 @@
 		static extern void gtk_tree_store_insert_after (IntPtr raw, out TreeIter iter, IntPtr parent, ref TreeIter sibling);
 
 		[Obsolete ("Replaced by InsertNodeAfter")]
-		public TreeIter InsertAfter (TreeIter parent, TreeIter sibling) 
+		public TreeIter InsertAfter (TreeIter parent, TreeIter sibling)
 		{
 			TreeIter iter;
 			gtk_tree_store_insert_after (Handle, out iter, ref parent, ref sibling);
@@ -174,19 +174,19 @@
 		}
 
 		[Obsolete ("Replaced by InsertNodeAfter")]
-		public void InsertAfter (out TreeIter iter, TreeIter sibling) 
+		public void InsertAfter (out TreeIter iter, TreeIter sibling)
 		{
 			gtk_tree_store_insert_after (Handle, out iter, IntPtr.Zero, ref sibling);
 		}
 
-		public TreeIter InsertNodeAfter (TreeIter sibling) 
+		public TreeIter InsertNodeAfter (TreeIter sibling)
 		{
 			TreeIter iter;
 			gtk_tree_store_insert_after (Handle, out iter, IntPtr.Zero, ref sibling);
 			return iter;
 		}
 
-		public TreeIter InsertNodeAfter (TreeIter parent, TreeIter sibling) 
+		public TreeIter InsertNodeAfter (TreeIter parent, TreeIter sibling)
 		{
 			TreeIter iter;
 			gtk_tree_store_insert_after (Handle, out iter, ref parent, ref sibling);
@@ -215,49 +215,49 @@
 			return ret;
 		}
 
-		public void SetValue (Gtk.TreeIter iter, int column, bool value) 
+		public void SetValue (Gtk.TreeIter iter, int column, bool value)
 		{
 			GLib.Value val = new GLib.Value (value);
 			SetValue (iter, column, val);
 			val.Dispose ();
 		}
 
-		public void SetValue (Gtk.TreeIter iter, int column, double value) 
+		public void SetValue (Gtk.TreeIter iter, int column, double value)
 		{
 			GLib.Value val = new GLib.Value (value);
 			SetValue (iter, column, val);
 			val.Dispose ();
 		}
 
-		public void SetValue (Gtk.TreeIter iter, int column, int value) 
+		public void SetValue (Gtk.TreeIter iter, int column, int value)
 		{
 			GLib.Value val = new GLib.Value (value);
 			SetValue (iter, column, val);
 			val.Dispose ();
 		}
 
-		public void SetValue (Gtk.TreeIter iter, int column, string value) 
+		public void SetValue (Gtk.TreeIter iter, int column, string value)
 		{
 			GLib.Value val = new GLib.Value (value);
 			SetValue (iter, column, val);
 			val.Dispose ();
 		}
 
-		public void SetValue (Gtk.TreeIter iter, int column, float value) 
+		public void SetValue (Gtk.TreeIter iter, int column, float value)
 		{
 			GLib.Value val = new GLib.Value (value);
 			SetValue (iter, column, val);
 			val.Dispose ();
 		}
 
-		public void SetValue (Gtk.TreeIter iter, int column, uint value) 
+		public void SetValue (Gtk.TreeIter iter, int column, uint value)
 		{
 			GLib.Value val = new GLib.Value (value);
 			SetValue (iter, column, val);
 			val.Dispose ();
 		}
-		
-		public void SetValue (Gtk.TreeIter iter, int column, object value) 
+
+		public void SetValue (Gtk.TreeIter iter, int column, object value)
 		{
 			GLib.Value val = new GLib.Value (value);
 			SetValue (iter, column, val);
@@ -278,7 +278,7 @@
 			_AppendValues (iter, values);
 			return iter;
 		}
-		
+
 		public Gtk.TreeIter AppendValues (Gtk.TreeIter parent, params object[] values) {
 			return AppendValues (parent, (Array) values);
 		}
@@ -288,7 +288,7 @@
 			_AppendValues (iter, values);
 			return iter;
 		}
-		
+
 		public Gtk.TreeIter AppendValues (params object[] values) {
 			return AppendValues ((Array) values);
 		}
@@ -372,7 +372,7 @@
 				gtypes[i] = (GLib.GType) type;
 				i++;
 			}
-			
+
 			CreateNativeObject (new string [0], new GLib.Value [0]);
 			ColumnTypes = gtypes;
 		}
@@ -392,18 +392,18 @@
 		}
 
 		[Obsolete ("Replaced by SetSortFunc (int, TreeIterCompareFunc) overload.")]
-		public void SetSortFunc (int sort_column_id, TreeIterCompareFunc sort_func, IntPtr user_data, Gtk.DestroyNotify destroy) 
+		public void SetSortFunc (int sort_column_id, TreeIterCompareFunc sort_func, IntPtr user_data, Gtk.DestroyNotify destroy)
 		{
 			SetSortFunc (sort_column_id, sort_func);
 		}
 
 		[Obsolete ("Replaced by DefaultSortFunc property.")]
-		public void SetDefaultSortFunc (TreeIterCompareFunc sort_func, IntPtr user_data, Gtk.DestroyNotify destroy) 
+		public void SetDefaultSortFunc (TreeIterCompareFunc sort_func, IntPtr user_data, Gtk.DestroyNotify destroy)
 		{
 			DefaultSortFunc = sort_func;
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void RowsReorderedSignalDelegate (IntPtr arg0, IntPtr arg1, IntPtr arg2, IntPtr arg3, IntPtr gch);
 
 		static void RowsReorderedSignalCallback (IntPtr arg0, IntPtr arg1, IntPtr arg2, IntPtr arg3, IntPtr gch)
@@ -429,7 +429,7 @@
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void RowsReorderedVMDelegate (IntPtr tree_model, IntPtr path, IntPtr iter, IntPtr new_order);
 
 		static RowsReorderedVMDelegate RowsReorderedVMCallback;
@@ -502,4 +502,3 @@
 				sig.RemoveDelegate (value);
 			}
 		}
-

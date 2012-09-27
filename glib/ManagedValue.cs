@@ -5,7 +5,7 @@
 // Copyright (c) 2002 Rachel Hestilow
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -24,13 +24,13 @@ namespace GLib {
 	using System.Collections;
 	using System.Runtime.InteropServices;
 	using GLib;
-	
+
 	internal class ManagedValue {
 
 		GCHandle gch;
 		object instance;
 		int ref_count = 1;
-		
+
 		private ManagedValue (object instance)
 		{
 			this.instance = instance;
@@ -58,24 +58,24 @@ namespace GLib {
 			}
 		}
 
-		[CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr CopyFunc (IntPtr gch);
-		[CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void FreeFunc (IntPtr gch);
-		
+
 		static CopyFunc copy;
 		static FreeFunc free;
 		static GType boxed_type = GType.Invalid;
 
 		[DllImport("libgobject-2.0-0.dll")]
 		static extern IntPtr g_boxed_type_register_static (IntPtr typename, CopyFunc copy_func, FreeFunc free_func);
-		
+
 		public static GType GType {
 			get {
 				if (boxed_type == GType.Invalid) {
 					copy = new CopyFunc (Copy);
 					free = new FreeFunc (Free);
-				
+
 					IntPtr name = Marshaller.StringToPtrGStrdup ("GtkSharpValue");
 					boxed_type = new GLib.GType (g_boxed_type_register_static (name, copy, free));
 					Marshaller.Free (name);
@@ -84,7 +84,7 @@ namespace GLib {
 				return boxed_type;
 			}
 		}
-		
+
 		static ManagedValue FromHandle (IntPtr ptr)
 		{
 			GCHandle gch = (GCHandle) ptr;
@@ -146,4 +146,3 @@ namespace GLib {
 		}
 	}
 }
-

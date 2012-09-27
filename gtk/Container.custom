@@ -5,7 +5,7 @@
 // Copyright (c) 2004 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -78,7 +78,7 @@ public Widget[] FocusChain {
 			list.Append (val.Handle);
 		gtk_container_set_focus_chain (Handle, list.Handle);
 	}
-		
+
 }
 
 [DllImport("gtksharpglue-2")]
@@ -90,7 +90,7 @@ static extern void gtksharp_container_override_forall (IntPtr gtype, ForallDeleg
 [DllImport("gtksharpglue-2")]
 static extern void gtksharp_container_invoke_gtk_callback (IntPtr cb, IntPtr handle, IntPtr data);
 
-[GLib.CDeclCallback]
+[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 delegate void ForallDelegate (IntPtr container, bool include_internals, IntPtr cb, IntPtr data);
 
 static ForallDelegate ForallOldCallback;
@@ -199,7 +199,7 @@ static extern IntPtr gtk_container_child_type(IntPtr raw);
 [DllImport("gtksharpglue-2")]
 static extern void gtksharp_container_override_child_type (IntPtr type, ChildTypeDelegate cb);
 
-[GLib.CDeclCallback]
+[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 delegate IntPtr ChildTypeDelegate (IntPtr raw);
 
 static ChildTypeDelegate ChildTypeCallback;
@@ -233,7 +233,7 @@ public virtual GLib.GType ChildType() {
 
 public class ContainerChild {
 	protected Container parent;
-	protected Widget child;	
+	protected Widget child;
 
 	public ContainerChild (Container parent, Widget child)
 	{

@@ -8,7 +8,7 @@
 //
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -22,9 +22,9 @@
 // Boston, MA 02111-1307, USA.
 
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate uint AddGlobalEventListenerNativeDelegate (GLib.Signal.EmissionHookNative hook, IntPtr event_type);
-                
+
 		static AddGlobalEventListenerDelegate add_global_event_listener_handler;
 		static AddGlobalEventListenerNativeDelegate add_global_event_listener_callback;
 
@@ -51,7 +51,7 @@
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void RemoveListenerNativeDelegate (uint listener_id);
 
 		static RemoveListenerDelegate remove_global_event_listener_handler;
@@ -68,7 +68,7 @@
 
 		[DllImport("atksharpglue-2")]
 		static extern void atksharp_util_override_remove_global_event_listener (RemoveListenerNativeDelegate cb);
-		
+
 		public delegate void RemoveListenerDelegate (uint listener_id);
 
 		public static RemoveListenerDelegate RemoveGlobalEventListenerHandler {
@@ -107,7 +107,7 @@
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate uint AddKeyEventListenerNativeDelegate (AtkSharp.KeySnoopFuncNative native_func, IntPtr data);
 
 		static AddKeyEventListenerDelegate add_key_event_listener_handler;
@@ -125,7 +125,7 @@
 
 		[DllImport("atksharpglue-2")]
 		static extern void atksharp_util_override_add_key_event_listener (AddKeyEventListenerNativeDelegate cb);
-		
+
 		public delegate uint AddKeyEventListenerDelegate (KeySnoopFunc listener);
 
 		public static AddKeyEventListenerDelegate AddKeyEventListenerHandler {
@@ -151,7 +151,7 @@
 
 		[DllImport("atksharpglue-2")]
 		static extern void atksharp_util_override_remove_key_event_listener (RemoveListenerNativeDelegate cb);
-		
+
 		public static RemoveListenerDelegate RemoveKeyEventListenerHandler {
 			set {
 				remove_key_event_listener_handler = value;
@@ -161,9 +161,9 @@
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr GetRootNativeDelegate ();
-                
+
 		static GetRootDelegate get_root_handler;
 		static GetRootNativeDelegate get_root_callback;
 
@@ -179,7 +179,7 @@
 
 		[DllImport("atksharpglue-2")]
 		static extern void atksharp_util_override_get_root (GetRootNativeDelegate cb);
-		
+
 		public delegate Atk.Object GetRootDelegate ();
 
 		public static GetRootDelegate GetRootHandler {
@@ -195,7 +195,7 @@
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr GetToolkitNameNativeDelegate ();
 
 		static GetToolkitNameDelegate get_toolkit_name_handler;
@@ -221,7 +221,7 @@
 
 		[DllImport("atksharpglue-2")]
 		static extern void atksharp_util_override_get_toolkit_name (GetToolkitNameNativeDelegate cb);
-		
+
 		public delegate string GetToolkitNameDelegate ();
 
 		public static GetToolkitNameDelegate GetToolkitNameHandler {
@@ -233,7 +233,7 @@
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr GetToolkitVersionNativeDelegate ();
 
 		static GetToolkitVersionDelegate get_toolkit_version_handler;
@@ -259,7 +259,7 @@
 
 		[DllImport("atksharpglue-2")]
 		static extern void atksharp_util_override_get_toolkit_version (GetToolkitVersionNativeDelegate cb);
-		
+
 		public delegate string GetToolkitVersionDelegate ();
 
 		public static GetToolkitVersionDelegate GetToolkitVersionHandler {
@@ -270,4 +270,3 @@
 				atksharp_util_override_get_toolkit_version (get_toolkit_version_callback);
 			}
 		}
-

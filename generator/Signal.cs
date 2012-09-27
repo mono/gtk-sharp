@@ -260,7 +260,7 @@ namespace GtkSharp.Generation {
 			if (IsEventHandler)
 				return;
 
-			sw.WriteLine ("\t\t[GLib.CDeclCallback]");
+			sw.WriteLine ("\t\t[UnmanagedFunctionPointer (CallingConvention.Cdecl)]");
 			sw.WriteLine ("\t\tdelegate " + retval.ToNativeType + " " + DelegateName + " (" + CallbackSig + ", IntPtr gch);");
 			sw.WriteLine ();
 			sw.WriteLine ("\t\tstatic " + retval.ToNativeType + " " + CallbackName + " (" + CallbackSig + ", IntPtr gch)");
@@ -494,7 +494,7 @@ namespace GtkSharp.Generation {
 			bool use_glue = gen_info.GlueEnabled && implementor == null && ClassFieldName.Length > 0;
 			string glue_name = String.Empty;
 			ManagedCallString call = new ManagedCallString (parms, true);
-			sw.WriteLine ("\t\t[GLib.CDeclCallback]");
+			sw.WriteLine ("\t\t[UnmanagedFunctionPointer (CallingConvention.Cdecl)]");
 			sw.WriteLine ("\t\tdelegate " + retval.ToNativeType + " " + Name + "VMDelegate (" + parms.ImportSignature + ");\n");
 
 			if (use_glue) {

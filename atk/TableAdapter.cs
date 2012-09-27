@@ -89,7 +89,7 @@ namespace Atk {
 		}
 
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr RefAtDelegate (IntPtr table, int row, int column);
 
 		static IntPtr RefAtCallback (IntPtr table, int row, int column)
@@ -105,7 +105,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate int GetIndexAtDelegate (IntPtr table, int row, int column);
 
 		static int GetIndexAtCallback (IntPtr table, int row, int column)
@@ -121,7 +121,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate int GetColumnAtIndexDelegate (IntPtr table, int index_);
 
 		static int GetColumnAtIndexCallback (IntPtr table, int index_)
@@ -137,7 +137,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate int GetRowAtIndexDelegate (IntPtr table, int index_);
 
 		static int GetRowAtIndexCallback (IntPtr table, int index_)
@@ -153,7 +153,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate int GetNColumnsDelegate (IntPtr table);
 
 		static int GetNColumnsCallback (IntPtr table)
@@ -169,7 +169,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate int GetNRowsDelegate (IntPtr table);
 
 		static int GetNRowsCallback (IntPtr table)
@@ -185,7 +185,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate int GetColumnExtentAtDelegate (IntPtr table, int row, int column);
 
 		static int GetColumnExtentAtCallback (IntPtr table, int row, int column)
@@ -201,7 +201,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate int GetRowExtentAtDelegate (IntPtr table, int row, int column);
 
 		static int GetRowExtentAtCallback (IntPtr table, int row, int column)
@@ -217,7 +217,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr GetCaptionDelegate (IntPtr table);
 
 		static IntPtr GetCaptionCallback (IntPtr table)
@@ -233,7 +233,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr GetColumnDescriptionDelegate (IntPtr table, int column);
 
 		static IntPtr GetColumnDescriptionCallback (IntPtr table, int column)
@@ -249,7 +249,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr GetColumnHeaderDelegate (IntPtr table, int column);
 
 		static IntPtr GetColumnHeaderCallback (IntPtr table, int column)
@@ -265,7 +265,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr GetRowDescriptionDelegate (IntPtr table, int row);
 
 		static IntPtr GetRowDescriptionCallback (IntPtr table, int row)
@@ -281,7 +281,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr GetRowHeaderDelegate (IntPtr table, int row);
 
 		static IntPtr GetRowHeaderCallback (IntPtr table, int row)
@@ -297,7 +297,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr GetSummaryDelegate (IntPtr table);
 
 		static IntPtr GetSummaryCallback (IntPtr table)
@@ -313,7 +313,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void SetCaptionDelegate (IntPtr table, IntPtr caption);
 
 		static void SetCaptionCallback (IntPtr table, IntPtr caption)
@@ -326,7 +326,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void SetColumnDescriptionDelegate (IntPtr table, int column, IntPtr description);
 
 		static void SetColumnDescriptionCallback (IntPtr table, int column, IntPtr description)
@@ -339,7 +339,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void SetColumnHeaderDelegate (IntPtr table, int column, IntPtr header);
 
 		static void SetColumnHeaderCallback (IntPtr table, int column, IntPtr header)
@@ -352,7 +352,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void SetRowDescriptionDelegate (IntPtr table, int row, IntPtr description);
 
 		static void SetRowDescriptionCallback (IntPtr table, int row, IntPtr description)
@@ -365,7 +365,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void SetRowHeaderDelegate (IntPtr table, int row, IntPtr header);
 
 		static void SetRowHeaderCallback (IntPtr table, int row, IntPtr header)
@@ -378,7 +378,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void SetSummaryDelegate (IntPtr table, IntPtr accessible);
 
 		static void SetSummaryCallback (IntPtr table, IntPtr accessible)
@@ -391,7 +391,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate int GetSelectedColumnsDelegate (IntPtr table, out IntPtr selected_ptr);
 
 		static int GetSelectedColumnsCallback (IntPtr table, out IntPtr selected_ptr)
@@ -413,7 +413,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate int GetSelectedRowsDelegate (IntPtr table, out IntPtr selected);
 
 		static int GetSelectedRowsCallback (IntPtr table, out IntPtr selected_ptr)
@@ -435,7 +435,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate bool IsColumnSelectedDelegate (IntPtr table, int column);
 
 		static bool IsColumnSelectedCallback (IntPtr table, int column)
@@ -451,7 +451,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate bool IsRowSelectedDelegate (IntPtr table, int row);
 
 		static bool IsRowSelectedCallback (IntPtr table, int row)
@@ -467,7 +467,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate bool IsSelectedDelegate (IntPtr table, int row, int column);
 
 		static bool IsSelectedCallback (IntPtr table, int row, int column)
@@ -483,7 +483,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate bool AddRowSelectionDelegate (IntPtr table, int row);
 
 		static bool AddRowSelectionCallback (IntPtr table, int row)
@@ -499,7 +499,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate bool RemoveRowSelectionDelegate (IntPtr table, int row);
 
 		static bool RemoveRowSelectionCallback (IntPtr table, int row)
@@ -515,7 +515,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate bool AddColumnSelectionDelegate (IntPtr table, int column);
 
 		static bool AddColumnSelectionCallback (IntPtr table, int column)
@@ -531,7 +531,7 @@ namespace Atk {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate bool RemoveColumnSelectionDelegate (IntPtr table, int column);
 
 		static bool RemoveColumnSelectionCallback (IntPtr table, int column)
@@ -733,7 +733,7 @@ namespace Atk {
 		[DllImport("libatk-1.0-0.dll")]
 		static extern int atk_table_get_n_rows(IntPtr raw);
 
-		public int NRows { 
+		public int NRows {
 			get {
 				int raw_ret = atk_table_get_n_rows(Handle);
 				int ret = raw_ret;
@@ -783,7 +783,7 @@ namespace Atk {
 		[DllImport("libatk-1.0-0.dll")]
 		static extern void atk_table_set_summary(IntPtr raw, IntPtr accessible);
 
-		public Atk.Object Summary { 
+		public Atk.Object Summary {
 			get {
 				IntPtr raw_ret = atk_table_get_summary(Handle);
 				Atk.Object ret = GLib.Object.GetObject(raw_ret) as Atk.Object;
@@ -970,7 +970,7 @@ namespace Atk {
 		[DllImport("libatk-1.0-0.dll")]
 		static extern void atk_table_set_caption(IntPtr raw, IntPtr caption);
 
-		public Atk.Object Caption { 
+		public Atk.Object Caption {
 			get {
 				IntPtr raw_ret = atk_table_get_caption(Handle);
 				Atk.Object ret = GLib.Object.GetObject(raw_ret) as Atk.Object;
@@ -984,7 +984,7 @@ namespace Atk {
 		[DllImport("libatk-1.0-0.dll")]
 		static extern int atk_table_get_n_columns(IntPtr raw);
 
-		public int NColumns { 
+		public int NColumns {
 			get {
 				int raw_ret = atk_table_get_n_columns(Handle);
 				int ret = raw_ret;

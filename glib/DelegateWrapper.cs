@@ -8,7 +8,7 @@
 // Copyright (c) 2003 Ximian, Inc.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -39,7 +39,7 @@ namespace GLib {
 		static ArrayList static_instances = new ArrayList ();
 
 		static int notify_count = 0;
-		
+
 		// The object 'o' is the object that creates the instance of the DelegateWrapper
 		// derived class or null if created from a static method.
 		// Note that the instances will never be disposed if they are created in a static
@@ -69,12 +69,12 @@ namespace GLib {
 			}
 		}
 
-		[CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		private delegate void DestroyNotify (IntPtr data);
 
 		[DllImport("libgobject-2.0-0.dll")]
 		private static extern void g_object_set_data_full (IntPtr obj, IntPtr name, IntPtr data, DestroyNotify destroy);
-		
+
 		private void AddDestroyNotify (GLib.Object o) {
 			// This is a bit of an ugly hack. There is no
 			// way of getting a destroy notification
@@ -108,4 +108,3 @@ namespace GLib {
 		}
 	}
 }
-

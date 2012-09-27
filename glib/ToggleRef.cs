@@ -5,7 +5,7 @@
 // Copyright <c> 2007 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -96,10 +96,10 @@ namespace GLib {
 		internal void Harden ()
 		{
 			// Added for the benefit of GnomeProgram.  It releases a final ref in
-			// an atexit handler which causes toggle ref notifications to occur after 
-			// our delegates are gone, so we need a mechanism to override the 
-			// notifications.  This method effectively leaks all objects which invoke it, 
-			// but since it is only used by Gnome.Program, which is a singleton object 
+			// an atexit handler which causes toggle ref notifications to occur after
+			// our delegates are gone, so we need a mechanism to override the
+			// notifications.  This method effectively leaks all objects which invoke it,
+			// but since it is only used by Gnome.Program, which is a singleton object
 			// with program duration persistence, who cares.
 
 			g_object_ref (handle);
@@ -120,7 +120,7 @@ namespace GLib {
 			}
 		}
 
-		[CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void ToggleNotifyHandler (IntPtr data, IntPtr handle, bool is_last_ref);
 
 		static void RefToggled (IntPtr data, IntPtr handle, bool is_last_ref)

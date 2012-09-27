@@ -1,13 +1,13 @@
 // Pixbuf.custom - Gdk Pixbuf class customizations
 //
-// Authors: 
+// Authors:
 // 	Vladimir Vukicevic <vladimir@pobox.com>
 // 	Miguel de Icaza <miguel@ximian.com>
 // 	Mike Kestner <mkestner@ximian.com>
 // 	Duncan Mak <duncan@ximian.com>
 //	Gonzalo Paniagua Javier <gonzalo@ximian.com>
 //	Martin Willemoes Hansen <mwh@sysrq.dk>
-//	Jose Faria   <spigaz@gmail.com> 
+//	Jose Faria   <spigaz@gmail.com>
 //
 // Copyright (c) 2002 Vladimir Vukicevic
 // Copyright (c) 2003 Ximian, Inc. (Miguel de Icaza)
@@ -19,7 +19,7 @@
 // This code is inserted after the automatically generated code.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -72,7 +72,7 @@
 		[DllImport("libgdk-win32-2.0-0.dll")]
 		static extern void gdk_pixbuf_render_pixmap_and_mask_for_colormap (IntPtr raw, IntPtr colormap, out IntPtr pixmap_return, out IntPtr mask_return, int alpha_threshold);
 
-		public void RenderPixmapAndMaskForColormap (Colormap colormap, out Pixmap pixmap_return, out Pixmap mask_return, int alpha_threshold) 
+		public void RenderPixmapAndMaskForColormap (Colormap colormap, out Pixmap pixmap_return, out Pixmap mask_return, int alpha_threshold)
 		{
 			IntPtr mask_handle, pixmap_handle;
 			gdk_pixbuf_render_pixmap_and_mask_for_colormap (Handle, colormap == null ? IntPtr.Zero : colormap.Handle, out pixmap_handle, out mask_handle, alpha_threshold);
@@ -107,28 +107,28 @@
 				Raw = pl.PixbufHandle;
 			}
 		}
-		
+
 		public Pixbuf (System.IO.Stream stream, int width, int height) : base (IntPtr.Zero)
 		{
 			using (PixbufLoader pl = new PixbufLoader (stream, width, height)) {
 				Raw = pl.PixbufHandle;
 			}
 		}
-		
+
 		public Pixbuf (System.Reflection.Assembly assembly, string resource) : base (IntPtr.Zero)
 		{
 			using (PixbufLoader pl = new PixbufLoader (assembly == null ? System.Reflection.Assembly.GetCallingAssembly () : assembly, resource)) {
 				Raw = pl.PixbufHandle;
 			}
 		}
-				
+
 		public Pixbuf (System.Reflection.Assembly assembly, string resource, int width, int height) : base (IntPtr.Zero)
 		{
 			using (PixbufLoader pl = new PixbufLoader (assembly == null ? System.Reflection.Assembly.GetCallingAssembly () : assembly, resource, width, height)) {
 				Raw = pl.PixbufHandle;
 			}
 		}
-		
+
 		public Pixbuf (byte[] buffer) : base (IntPtr.Zero)
 		{
 			using (PixbufLoader pl = new PixbufLoader (buffer)) {
@@ -188,7 +188,7 @@
 				this.notify = notify;
 			}
 
-			[GLib.CDeclCallback]
+			[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 			public delegate void NativeDelegate (IntPtr buf, IntPtr data);
 
 			void ReleaseHandles (IntPtr buf, IntPtr data)
@@ -243,7 +243,7 @@
 			Raw = gdk_pixbuf_new_from_inline(data_length, (IntPtr) data, copy_pixels, out error);
 			if (error != IntPtr.Zero) throw new GLib.GException (error);
 		}
-	
+
 //
 // ICloneable interface
 //
@@ -256,7 +256,7 @@
 
 //
 // These are factory versions of a couple of existing methods, but simplify
-// the process by reducing the number of steps required.  Here a single 
+// the process by reducing the number of steps required.  Here a single
 // operation will create the Pixbuf instead of two
 //
 
@@ -344,7 +344,7 @@
 			return SaveToBuffer (type, new string [0], new string [0]);
 		}
 
-		public unsafe byte[] SaveToBuffer (string type, string[] option_keys, string[] option_values) 
+		public unsafe byte[] SaveToBuffer (string type, string[] option_keys, string[] option_values)
 		{
 			IntPtr error = IntPtr.Zero;
 			IntPtr buffer;
@@ -373,7 +373,7 @@
 			SaveToCallback (save_func, type, new string [0], new string [0]);
 		}
 
-		public unsafe void SaveToCallback (PixbufSaveFunc save_func, string type, string[] option_keys, string[] option_values) 
+		public unsafe void SaveToCallback (PixbufSaveFunc save_func, string type, string[] option_keys, string[] option_values)
 		{
 			GdkSharp.PixbufSaveFuncWrapper save_func_wrapper = new GdkSharp.PixbufSaveFuncWrapper (save_func);
 			IntPtr error = IntPtr.Zero;
@@ -408,4 +408,3 @@
 				throw new GLib.GException (error);
 			return saved;
 		}
-

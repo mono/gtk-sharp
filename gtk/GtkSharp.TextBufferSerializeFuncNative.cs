@@ -7,7 +7,7 @@ namespace GtkSharp {
 	using System;
 	using System.Runtime.InteropServices;
 
-	[GLib.CDeclCallback]
+	[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 	internal delegate IntPtr TextBufferSerializeFuncNative(IntPtr register_buffer, IntPtr content_buffer, IntPtr start, IntPtr end, out UIntPtr length, IntPtr user_data);
 
 	internal class TextBufferSerializeFuncInvoker {

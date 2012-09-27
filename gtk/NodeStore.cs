@@ -5,7 +5,7 @@
 // Copyright (c) 2003-2005 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -49,29 +49,29 @@ namespace Gtk {
                 	public IDHashtable () : base (new IDHashCodeProvider (), new IDComparer ()) {}
         	}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate int GetFlagsDelegate ();
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate int GetNColumnsDelegate ();
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr GetColumnTypeDelegate (int col);
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate bool GetNodeDelegate (out int node_idx, IntPtr path);
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr GetPathDelegate (int node_idx);
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void GetValueDelegate (int node_idx, int col, ref GLib.Value val);
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate bool NextDelegate (ref int node_idx);
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate bool ChildrenDelegate (out int child, int parent);
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate bool HasChildDelegate (int node_idx);
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate int NChildrenDelegate (int node_idx);
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate bool NthChildDelegate (out int child, int parent, int n);
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate bool ParentDelegate (out int parent, int child);
 
 		[StructLayout(LayoutKind.Sequential)]
@@ -91,7 +91,7 @@ namespace Gtk {
 		}
 
 		Hashtable node_hash = new IDHashtable ();
- 		GLib.GType[] ctypes; 
+ 		GLib.GType[] ctypes;
 		MemberInfo [] getters;
 		int n_cols;
 		bool list_only = false;
@@ -191,7 +191,7 @@ namespace Gtk {
 					idx = Nodes.IndexOf (node);
 				else
 					idx = node.Parent.IndexOf (node);
-			
+
 				if (idx < 0) throw new Exception ("Node not found in Nodes list");
 
 				if (node.Parent == null) {
@@ -226,7 +226,7 @@ namespace Gtk {
 					node_hash [node.ID] = node;
 					return true;
 				}
-				
+
 				node = node_hash [parent] as ITreeNode;
 				if (node == null || node.ChildCount <= 0)
 					return false;
@@ -261,7 +261,7 @@ namespace Gtk {
 			try {
 				if (node_idx == -1)
 					return Nodes.Count;
-				
+
 				ITreeNode node = node_hash [node_idx] as ITreeNode;
 				if (node == null || node.ChildCount <= 0)
 					return 0;
@@ -287,7 +287,7 @@ namespace Gtk {
 					node_hash [node.ID] = node;
 					return true;
 				}
-				
+
 				node = node_hash [parent] as ITreeNode;
 				if (node == null || node.ChildCount <= n)
 					return false;
@@ -352,17 +352,17 @@ namespace Gtk {
 			TreeNodeAttribute tna = (TreeNodeAttribute) Attribute.GetCustomAttribute (type, typeof (TreeNodeAttribute), false);
 			if (tna != null)
 				list_only = tna.ListOnly;
-			
+
 			ArrayList minfos = new ArrayList ();
-			
+
 			foreach (PropertyInfo pi in type.GetProperties ())
 				foreach (TreeNodeValueAttribute attr in pi.GetCustomAttributes (typeof (TreeNodeValueAttribute), false))
 					minfos.Add (pi);
-			
+
 			foreach (FieldInfo fi in type.GetFields ())
 				foreach (TreeNodeValueAttribute attr in fi.GetCustomAttributes (typeof (TreeNodeValueAttribute), false))
 					minfos.Add (fi);
-			
+
  			ctypes = new GLib.GType [minfos.Count];
  			getters = new MemberInfo [minfos.Count];
 
@@ -372,7 +372,7 @@ namespace Gtk {
 
 					if (getters [col] != null)
 						throw new Exception (String.Format ("You have two TreeNodeValueAttributes with the Column={0}", col));
-					
+
 					getters [col] = mi;
 					Type t = mi is PropertyInfo ? ((PropertyInfo) mi).PropertyType
 					                            : ((FieldInfo) mi).FieldType;
@@ -385,7 +385,7 @@ namespace Gtk {
 			get {
 				return nodes as IList;
 			}
-		}							
+		}
 
 		[DllImport("gtksharpglue-2")]
 		static extern void gtksharp_node_store_emit_row_changed (IntPtr handle, IntPtr path, int node_idx);
@@ -428,7 +428,7 @@ namespace Gtk {
 		private void child_deleted_cb (object o, ITreeNode child, int idx)
 		{
 			ITreeNode node = o as ITreeNode;
-			
+
 			TreePath path = new TreePath (get_path_cb (node.ID));
 			TreePath child_path = path.Copy ();
 			child_path.AppendIndex (idx);
@@ -485,9 +485,9 @@ namespace Gtk {
 		{
 			while (nodes.Count > 0)
 				RemoveNode ((ITreeNode)nodes [0]);
-			
+
 		}
-		
+
 		private ITreeNode GetNodeAtPath (TreePath path)
 		{
 			int[] indices = path.Indices;
@@ -548,7 +548,7 @@ namespace Gtk {
 
 		[DllImport("gtksharpglue-2")]
 		static extern IntPtr gtksharp_node_store_get_type ();
-		
+
 		public static new GLib.GType GType {
 			get {
 				return new GLib.GType (gtksharp_node_store_get_type ());

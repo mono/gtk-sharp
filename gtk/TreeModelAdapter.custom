@@ -64,7 +64,7 @@
 		public void SetValue (Gtk.TreeIter iter, int column, uint value) {
 			throw new NotImplementedException ();
 		}
-		
+
 		public void SetValue (Gtk.TreeIter iter, int column, object value) {
 			throw new NotImplementedException ();
 		}
@@ -77,7 +77,7 @@
 			return ret;
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void RowsReorderedSignalDelegate (IntPtr arg0, IntPtr arg1, IntPtr arg2, IntPtr arg3, IntPtr gch);
 
 		static void RowsReorderedSignalCallback (IntPtr arg0, IntPtr arg1, IntPtr arg2, IntPtr arg3, IntPtr gch)
@@ -104,7 +104,7 @@
 		}
 
 #if false
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void RowsReorderedVMDelegate (IntPtr tree_model, IntPtr path, IntPtr iter, IntPtr new_order);
 
 		static RowsReorderedVMDelegate RowsReorderedVMCallback;
@@ -178,4 +178,3 @@
 				sig.RemoveDelegate (value);
 			}
 		}
-

@@ -5,7 +5,7 @@
 // Copyright (c) 2007 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -24,10 +24,10 @@ namespace GLib {
 	using System;
 	using System.Runtime.InteropServices;
 
-	[CDeclCallback]
+	[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 	public delegate void GInterfaceInitHandler (IntPtr iface_ptr, IntPtr data);
 
-	[CDeclCallback]
+	[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 	internal delegate void GInterfaceFinalizeHandler (IntPtr iface_ptr, IntPtr data);
 
 	internal struct GInterfaceInfo {

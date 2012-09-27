@@ -43,7 +43,7 @@
 		public void SetValue (Gtk.TreeIter iter, int column, uint value) {
 			throw new NotImplementedException ();
 		}
-		
+
 		public void SetValue (Gtk.TreeIter iter, int column, object value) {
 			throw new NotImplementedException ();
 		}
@@ -59,7 +59,7 @@
 		[DllImport("libgtk-win32-2.0-0.dll")]
 		static extern void gtk_tree_model_filter_set_modify_func(IntPtr raw, int n_columns, IntPtr[] types, GtkSharp.TreeModelFilterModifyFuncNative func, IntPtr data, GLib.DestroyNotify destroy);
 
-		public void SetModifyFunc (int n_columns, GLib.GType[] types, TreeModelFilterModifyFunc func) 
+		public void SetModifyFunc (int n_columns, GLib.GType[] types, TreeModelFilterModifyFunc func)
 		{
 			GtkSharp.TreeModelFilterModifyFuncWrapper func_wrapper = new GtkSharp.TreeModelFilterModifyFuncWrapper (func);
 			IntPtr[] native_types = new IntPtr [types.Length];
@@ -81,7 +81,7 @@
 				return TreeIter.Zero;
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void RowsReorderedSignalDelegate (IntPtr arg0, IntPtr arg1, IntPtr arg2, IntPtr arg3, IntPtr gch);
 
 		static void RowsReorderedSignalCallback (IntPtr arg0, IntPtr arg1, IntPtr arg2, IntPtr arg3, IntPtr gch)
@@ -107,7 +107,7 @@
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void RowsReorderedVMDelegate (IntPtr tree_model, IntPtr path, IntPtr iter, IntPtr new_order);
 
 		static RowsReorderedVMDelegate RowsReorderedVMCallback;
@@ -180,4 +180,3 @@
 				sig.RemoveDelegate (value);
 			}
 		}
-

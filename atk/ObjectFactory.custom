@@ -9,7 +9,7 @@
 //
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -45,15 +45,15 @@
 			return marshaler;
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr CreateAccessibleDelegate (IntPtr raw);
-		
-		[GLib.CDeclCallback]
+
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void InvalidateDelegate (IntPtr raw);
-		
-		[GLib.CDeclCallback]
+
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr GetAccessibleTypeDelegate (IntPtr raw);
-		
+
 		class Marshaler {
 
 			GLib.GType gtype;
@@ -85,7 +85,7 @@
 
 				return IntPtr.Zero;
 			}
-		
+
 			void Invalidate_cb (IntPtr raw)
 			{
 				try {
@@ -111,10 +111,10 @@
 
 				return GLib.GType.Invalid.Val;
 			}
-		
+
 			[DllImport("atksharpglue-2")]
 			static extern void atksharp_object_factory_override_create_accessible (IntPtr type, CreateAccessibleDelegate cb);
-		
+
 			public void ConnectCreateAccessible ()
 			{
 				create_cb = new CreateAccessibleDelegate (CreateAccessible_cb);
@@ -123,7 +123,7 @@
 
 			[DllImport("atksharpglue-2")]
 			static extern void atksharp_object_factory_override_invalidate (IntPtr type, InvalidateDelegate cb);
-		
+
 			public void ConnectInvalidate ()
 			{
 				invalidate_cb = new InvalidateDelegate (Invalidate_cb);
@@ -132,7 +132,7 @@
 
 			[DllImport("atksharpglue-2")]
 			static extern void atksharp_object_factory_override_get_accessible_type (IntPtr type, GetAccessibleTypeDelegate cb);
-		
+
 			public void ConnectGetAccessibleType ()
 			{
 				gettype_cb = new GetAccessibleTypeDelegate (GetAccessibleType_cb);
@@ -144,7 +144,7 @@
 		{
 			GetMarshaler (gtype).ConnectCreateAccessible ();
 		}
-		
+
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.ObjectFactory), ConnectionMethod="OverrideCreateAccessible")]
 		protected virtual Atk.Object OnCreateAccessible (GLib.Object obj)
 		{
@@ -155,17 +155,17 @@
 		{
 			GetMarshaler (gtype).ConnectInvalidate ();
 		}
-		
+
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.ObjectFactory), ConnectionMethod="OverrideInvalidate")]
 		protected virtual void OnInvalidate ()
 		{
 		}
-		
+
 		static void OverrideGetAccessibleType (GLib.GType gtype)
 		{
 			GetMarshaler (gtype).ConnectGetAccessibleType ();
 		}
-		
+
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.ObjectFactory), ConnectionMethod="OverrideGetAccessibleType")]
 		protected virtual GLib.GType OnGetAccessibleType ()
 		{

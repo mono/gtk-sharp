@@ -28,7 +28,7 @@ namespace GtkSharp.Generation {
 
 	// FIXME: handle static VMs
 	public class VirtualMethod : MethodBase  {
-		
+
 		XmlElement elem;
 		ReturnValue retval;
 		Parameters parms;
@@ -46,7 +46,7 @@ namespace GtkSharp.Generation {
 				return HasGetterName && ((!retval.IsVoid && parms.Count == 1) || (retval.IsVoid && parms.Count == 2 && parms [1].PassAs == "out"));
 			}
 		}
-	
+
 		public bool IsSetter {
 			get {
 				if (!HasSetterName || !retval.IsVoid)
@@ -58,7 +58,7 @@ namespace GtkSharp.Generation {
 					return false;
 			}
 		}
- 
+
 		public string MarshalReturnType {
 			get {
 				return SymbolTable.Table.GetToNativeReturnType (elem["return-type"].GetAttribute("type"));
@@ -79,7 +79,7 @@ namespace GtkSharp.Generation {
 			else if (IsSetter)
 				call_string = "__obj." + Name.Substring (3) + " = " + call;
 
-			sw.WriteLine ("\t\t[GLib.CDeclCallback]");
+			sw.WriteLine ("\t\t[UnmanagedFunctionPointer (CallingConvention.Cdecl)]");
 			sw.WriteLine ("\t\tdelegate " + MarshalReturnType + " " + Name + "Delegate (" + parms.ImportSignature + ");");
 			sw.WriteLine ();
 			sw.WriteLine ("\t\tstatic " + MarshalReturnType + " " + Name + "Callback (" + parms.ImportSignature + ")");
@@ -90,7 +90,7 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\t\t\ttry {");
 			sw.WriteLine ("\t\t\t\t" + type + " __obj = GLib.Object.GetObject (" + name + ", false) as " + type + ";");
 			sw.Write (call.Setup ("\t\t\t\t"));
-			if (retval.IsVoid) { 
+			if (retval.IsVoid) {
 				if (IsGetter) {
 					Parameter p = parms [1];
 					string out_name = p.Name;
@@ -129,7 +129,7 @@ namespace GtkSharp.Generation {
 					if (complement != null)
 						sw.WriteLine ("\t\t" + complement.retval.CSType + " " + complement.Name + " (" + (new VMSignature (complement.parms)) + ");");
 				}
-			} else if (IsSetter) 
+			} else if (IsSetter)
 				sw.WriteLine ("\t\t" + parms[1].CSType + " " + Name.Substring (3) + " { set; }");
 			else
 				sw.WriteLine ("\t\t" + retval.CSType + " " + Name + " (" + vmsig + ");");
@@ -144,11 +144,11 @@ namespace GtkSharp.Generation {
 		ValidState vstate = ValidState.Unvalidated;
 
 		public bool IsValid {
-			get { 
+			get {
 				if (vstate == ValidState.Unvalidated)
 					return Validate ();
 				else
-					return vstate == ValidState.Valid; 
+					return vstate == ValidState.Valid;
 			}
 		}
 
@@ -165,4 +165,3 @@ namespace GtkSharp.Generation {
 		}
 	}
 }
-

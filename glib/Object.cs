@@ -6,7 +6,7 @@
 // Copyright (c) 2004-2005 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -56,7 +56,7 @@ namespace GLib {
 
 		[DllImport("libgobject-2.0-0.dll")]
 		static extern void g_object_unref (IntPtr raw);
-		
+
 		static bool PerformQueuedUnrefs ()
 		{
 			object [] references;
@@ -131,7 +131,7 @@ namespace GLib {
 			if (!owned_ref)
 				g_object_ref (o);
 
-			obj = GLib.ObjectManager.CreateObject(o); 
+			obj = GLib.ObjectManager.CreateObject(o);
 			if (obj == null) {
 				g_object_unref (o);
 				return null;
@@ -161,7 +161,7 @@ namespace GLib {
 					break;
 				}
 			}
-					
+
 		}
 
 		private static void InvokeClassInitializers (GType gtype, System.Type t)
@@ -177,16 +177,16 @@ namespace GLib {
 			}
 
 			for (Type curr = t; curr != typeof(GLib.Object); curr = curr.BaseType) {
- 
+
 				if (curr.Assembly.IsDefined (typeof (IgnoreClassInitializersAttribute), false))
 					continue;
- 
+
 				foreach (MethodInfo minfo in curr.GetMethods(flags))
 					if (minfo.IsDefined (typeof (ClassInitializerAttribute), true))
 						minfo.Invoke (null, parms);
 			}
  		}
-		
+
 		//  Key: The pointer to the ParamSpec of the property
 		//  Value: The corresponding PropertyInfo object
 		static Hashtable properties;
@@ -197,7 +197,7 @@ namespace GLib {
 				return properties;
 			}
 		}
-		
+
 		[DllImport ("glibsharpglue-2")]
 		static extern void gtksharp_override_property_handlers (IntPtr type, GetPropertyDelegate get_cb, SetPropertyDelegate set_cb);
 
@@ -207,13 +207,13 @@ namespace GLib {
 		static void AddProperties (GType gtype, System.Type t)
 		{
 			uint idx = 1;
-			
+
 			bool handlers_overridden = false;
 			foreach (PropertyInfo pinfo in t.GetProperties (BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly)) {
 				foreach (object attr in pinfo.GetCustomAttributes (typeof (PropertyAttribute), false)) {
 					if(pinfo.GetIndexParameters().Length > 0)
 						throw(new InvalidOperationException(String.Format("GLib.RegisterPropertyAttribute cannot be applied to property {0} of type {1} because the property expects one or more indexed parameters", pinfo.Name, t.FullName)));
-					
+
 					PropertyAttribute property_attr = attr as PropertyAttribute;
 					if (!handlers_overridden) {
 						gtksharp_override_property_handlers (gtype.Val, GetPropertyHandler, SetPropertyHandler);
@@ -233,14 +233,14 @@ namespace GLib {
 					if (param_spec == IntPtr.Zero)
 						// The GType of the property is not supported
 						throw new InvalidOperationException (String.Format ("GLib.PropertyAttribute cannot be applied to property {0} of type {1} because the return type of the property is not supported", pinfo.Name, t.FullName));
-					
+
 					Properties.Add (param_spec, pinfo);
 					idx++;
 				}
 			}
 		}
-		
-		[GLib.CDeclCallback]
+
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void GetPropertyDelegate (IntPtr GObject, uint property_id, ref GLib.Value value, IntPtr pspec);
 
 		static void GetPropertyCallback (IntPtr handle, uint property_id, ref GLib.Value value, IntPtr param_spec)
@@ -258,7 +258,7 @@ namespace GLib {
 			}
 		}
 
-		[GLib.CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void SetPropertyDelegate (IntPtr GObject, uint property_id, ref GLib.Value value, IntPtr pspec);
 
 		static void SetPropertyCallback(IntPtr handle, uint property_id, ref GLib.Value value, IntPtr param_spec)
@@ -287,7 +287,7 @@ namespace GLib {
 
 				GInterfaceAttribute attr = iface.GetCustomAttributes (typeof (GInterfaceAttribute), false) [0] as GInterfaceAttribute;
 				GInterfaceAdapter adapter = Activator.CreateInstance (attr.AdapterType, null) as GInterfaceAdapter;
-				
+
 				GInterfaceInfo info = adapter.Info;
 				g_type_add_interface_static (gtype.Val, adapter.GType.Val, ref info);
 			}
@@ -349,11 +349,11 @@ namespace GLib {
 		{
 			if (g_types.Contains (t))
 				return (GType) g_types [t];
-			
+
 			PropertyInfo pi = t.GetProperty ("GType", BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.Public);
 			if (pi != null)
 				return (GType) pi.GetValue (null, null);
-			
+
 			return RegisterGType (t);
 		}
 
@@ -410,7 +410,7 @@ namespace GLib {
 					Objects [value] = tref;
 				}
 			}
-		}	
+		}
 
 		public static GLib.GType GType {
 			get {
@@ -491,7 +491,7 @@ namespace GLib {
 			}
 		}
 
-		[CDeclCallback]
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void NotifyDelegate (IntPtr handle, IntPtr pspec, IntPtr gch);
 
 		void NotifyCallback (IntPtr handle, IntPtr pspec, IntPtr gch)
@@ -549,10 +549,10 @@ namespace GLib {
 		}
 
 		public Hashtable Data {
-			get { 
+			get {
 				if (data == null)
 					data = new Hashtable ();
-				
+
 				return data;
 			}
 		}
@@ -562,7 +562,7 @@ namespace GLib {
 			get {
 				if (persistent_data == null)
 					persistent_data = new Hashtable ();
-				
+
 				return persistent_data;
 			}
 		}
