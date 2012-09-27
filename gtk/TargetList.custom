@@ -16,7 +16,7 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-		[DllImport("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtk_target_list_new(Gtk.TargetEntry[] targets, uint n_targets);
 
 		public TargetList() : base(gtk_target_list_new(null, 0)) {}
@@ -35,9 +35,9 @@
 			Remove(Gdk.Atom.Intern (target, false));
 		}
 
-		[DllImport("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void gtk_target_table_free (IntPtr list, int n_targets);
-		[DllImport("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtk_target_table_new_from_list (IntPtr list, out int n_targets);
 
 		public static explicit operator TargetEntry[] (TargetList list)

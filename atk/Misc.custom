@@ -22,7 +22,7 @@
 // Boston, MA 02111-1307, USA.
 
 
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int atksharp_misc_override_threads_enter (IntPtr type, ThreadDelegate cb);
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
@@ -52,7 +52,7 @@
 		{
 		}
 
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int atksharp_misc_override_threads_leave (IntPtr type, ThreadDelegate cb);
 
 		static ThreadDelegate ThreadsLeaveCallback;
@@ -79,7 +79,7 @@
 		{
 		}
 
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_misc_set_singleton_instance (IntPtr misc);
 
 		public static void SetSingletonInstance (Misc misc)

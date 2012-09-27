@@ -39,7 +39,7 @@ protected override void CreateNativeObject (string[] names, GLib.Value[] vals)
 	base.CreateNativeObject (names, vals);
 }
 
-[DllImport("gtksharpglue-2")]
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern IntPtr gtksharp_gtk_widget_get_allocation (IntPtr style);
 
 public Gdk.Rectangle Allocation {
@@ -47,9 +47,9 @@ public Gdk.Rectangle Allocation {
 	set { SizeAllocate (value); }
 }
 
-[DllImport ("gtksharpglue-2")]
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern IntPtr gtksharp_gtk_widget_get_window (IntPtr widget);
-[DllImport ("gtksharpglue-2")]
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern void gtksharp_gtk_widget_set_window (IntPtr widget, IntPtr window);
 public Gdk.Window GdkWindow {
 	get {
@@ -73,10 +73,10 @@ public void AddAccelerator (string accel_signal, AccelGroup accel_group, AccelKe
 
 }
 
-[DllImport("libgtk-win32-2.0-0.dll")]
+[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 static extern void gtk_widget_set_state (IntPtr raw, int state);
 
-[DllImport("gtksharpglue-2")]
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern int gtksharp_gtk_widget_get_state (IntPtr raw);
 
 public Gtk.StateType State {
@@ -88,10 +88,10 @@ public Gtk.StateType State {
 	}
 }
 
-[DllImport("gtksharpglue-2")]
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern int gtksharp_gtk_widget_get_flags (IntPtr raw);
 
-[DllImport("gtksharpglue-2")]
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern void gtksharp_gtk_widget_set_flags (IntPtr raw, int flags);
 
 [Obsolete]
@@ -178,7 +178,7 @@ public bool IsDrawable {
 	}
 }
 
-[DllImport("gtksharpglue-2")]
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern int gtksharp_gtk_widget_style_get_int (IntPtr raw, IntPtr name);
 
 public int FocusLineWidth {
@@ -190,7 +190,7 @@ public int FocusLineWidth {
 	}
 }
 
-[DllImport("gtksharpglue-2")]
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern int gtksharp_widget_connect_set_scroll_adjustments_signal (IntPtr gtype, SetScrollAdjustmentsDelegate cb);
 
 [UnmanagedFunctionPointer (CallingConvention.Cdecl)]
@@ -227,7 +227,7 @@ protected virtual void OnSetScrollAdjustments (Gtk.Adjustment hadj, Gtk.Adjustme
 {
 }
 
-[DllImport("gtksharpglue-2")]
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern int gtksharp_widget_connect_activate_signal (IntPtr gtype, ActivateDelegate cb);
 
 [UnmanagedFunctionPointer (CallingConvention.Cdecl)]
@@ -301,10 +301,10 @@ static BindingHandler BindingDelegate {
 	}
 }
 
-[DllImport ("gtksharpglue-2")]
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern void gtksharp_widget_add_binding_signal (IntPtr gvalue, IntPtr name, BindingHandler handler);
 
-[DllImport ("gtksharpglue-2")]
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern void gtksharp_widget_register_binding (IntPtr gvalue, IntPtr name, uint key, int mod, IntPtr data);
 
 static void ClassInit (GLib.GType gtype, Type t)
@@ -329,7 +329,7 @@ static void ClassInit (GLib.GType gtype, Type t)
 	GLib.Marshaller.Free (signame);
 }
 
-[DllImport("gtksharpglue-2")]
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern bool gtksharp_widget_style_get_property (IntPtr widget, IntPtr property, ref GLib.Value value);
 
 public object StyleGetProperty (string property_name) {
@@ -356,7 +356,7 @@ internal GLib.Value StyleGetPropertyValue (string property_name) {
 	return value;
 }
 
-[DllImport("libgtk-win32-2.0-0.dll")]
+[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 static extern IntPtr gtk_widget_list_mnemonic_labels (IntPtr raw);
 
 public Widget[] ListMnemonicLabels ()

@@ -5,7 +5,7 @@
 // Copyright (c) 2001 Mike Kestner
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -41,7 +41,7 @@ namespace Gtk {
 		static extern IntPtr Win32CreateWindow (int dwExStyle, string lpClassName, string lpWindowName,int dwStyle, int x, int y, int nWidth, int nHeight, IntPtr hWndParent, IntPtr hMenu, IntPtr hInstance, IntPtr lParam);
 
 		[DllImport ("user32.dll", EntryPoint="DestroyWindow", CharSet=CharSet.Unicode, CallingConvention=CallingConvention.StdCall)]
-		static extern bool Win32DestroyWindow (IntPtr window); 
+		static extern bool Win32DestroyWindow (IntPtr window);
 
 		static Application ()
 		{
@@ -62,10 +62,10 @@ namespace Gtk {
 			}
 		}
 
-		[DllImport("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void gtk_init (ref int argc, ref IntPtr argv);
 
-		[DllImport("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool gtk_init_check (ref int argc, ref IntPtr argv);
 
 		static void SetPrgname ()
@@ -127,7 +127,7 @@ namespace Gtk {
 			return do_init (progname, ref args, true);
 		}
 
-		[DllImport("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void gtk_main ();
 
 		public static void Run ()
@@ -135,7 +135,7 @@ namespace Gtk {
 			gtk_main ();
 		}
 
-		[DllImport("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool gtk_events_pending ();
 
 
@@ -144,10 +144,10 @@ namespace Gtk {
 			return gtk_events_pending ();
 		}
 
-		[DllImport("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void gtk_main_iteration ();
 
-		[DllImport("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool gtk_main_iteration_do (bool blocking);
 
 		public static void RunIteration ()
@@ -159,8 +159,8 @@ namespace Gtk {
 		{
 			return gtk_main_iteration_do (blocking);
 		}
-		
-		[DllImport("libgtk-win32-2.0-0.dll")]
+
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void gtk_main_quit ();
 
 		public static void Quit ()
@@ -169,7 +169,7 @@ namespace Gtk {
 		}
 
 
-		[DllImport("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtk_get_current_event ();
 
 		public static Gdk.Event CurrentEvent {
@@ -182,39 +182,39 @@ namespace Gtk {
 			EventHandler d;
 			object sender;
 			EventArgs args;
-			
+
 			internal InvokeCB (EventHandler d)
 			{
 				this.d = d;
 				args = EventArgs.Empty;
 				sender = this;
 			}
-			
+
 			internal InvokeCB (EventHandler d, object sender, EventArgs args)
 			{
 				this.d = d;
 				this.args = args;
 				this.sender = sender;
 			}
-			
+
 			internal bool Invoke ()
 			{
 				d (sender, args);
 				return false;
 			}
 		}
-		
+
 		public static void Invoke (EventHandler d)
 		{
 			InvokeCB icb = new InvokeCB (d);
-			
+
 			GLib.Timeout.Add (0, new GLib.TimeoutHandler (icb.Invoke));
 		}
 
 		public static void Invoke (object sender, EventArgs args, EventHandler d)
 		{
 			InvokeCB icb = new InvokeCB (d, sender, args);
-			
+
 			GLib.Timeout.Add (0, new GLib.TimeoutHandler (icb.Invoke));
 		}
 	}

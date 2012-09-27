@@ -79,7 +79,8 @@ namespace GLib {
 		}
 
 		private Timeout () {}
-		[DllImport("libglib-2.0-0.dll")]
+
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern uint g_timeout_add (uint interval, TimeoutHandlerInternal d, IntPtr data);
 
 		public static uint Add (uint interval, TimeoutHandler hndlr)

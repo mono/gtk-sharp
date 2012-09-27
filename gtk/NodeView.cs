@@ -41,7 +41,7 @@ namespace Gtk {
 
 		public NodeView () : base () {}
 
-		[DllImport("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void gtk_tree_view_set_model(IntPtr raw, IntPtr model);
 
 		public NodeStore NodeStore {

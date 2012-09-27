@@ -26,10 +26,10 @@ namespace Gdk {
 
 	public class EventSetting : Event {
 
-		[DllImport("gdksharpglue-2")]
+		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern SettingAction gtksharp_gdk_event_setting_get_action (IntPtr evt);
 
-		[DllImport("gdksharpglue-2")]
+		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_gdk_event_setting_get_name (IntPtr evt);
 
 		public EventSetting (IntPtr raw) : base (raw) {} 

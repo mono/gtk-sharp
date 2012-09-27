@@ -5,7 +5,7 @@
 // Copyright (c) 2008 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -32,7 +32,7 @@ namespace GLib {
 		internal bool elements_owned = false;
 		protected System.Type element_type = null;
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_ptr_array_sized_new (uint n_preallocs);
 
 		public PtrArray (uint n_preallocs, System.Type element_type, bool owned, bool elements_owned)
@@ -43,7 +43,7 @@ namespace GLib {
 			this.elements_owned = elements_owned;
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_ptr_array_new ();
 
 		public PtrArray (System.Type element_type, bool owned, bool elements_owned)
@@ -62,7 +62,7 @@ namespace GLib {
 			this.elements_owned = elements_owned;
 		}
 		public PtrArray (IntPtr raw, System.Type element_type) : this (raw, element_type, false, false) {}
-		
+
 		public PtrArray (IntPtr raw) : this (raw, null) {}
 
 		~PtrArray ()
@@ -77,13 +77,13 @@ namespace GLib {
 			GC.SuppressFinalize (this);
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_ptr_array_free (IntPtr raw, bool free_seg);
 
-		[DllImport ("libglib-2.0-0.dll")]
+		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern void g_object_unref (IntPtr item);
 
-		[DllImport ("libglib-2.0-0.dll")]
+		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern void g_free (IntPtr item);
 
 		void Dispose (bool disposing)
@@ -98,7 +98,7 @@ namespace GLib {
 						g_object_unref (NthData (i));
 					else if (typeof (GLib.Opaque).IsAssignableFrom (element_type))
 						GLib.Opaque.GetOpaque (NthData (i), element_type, true).Dispose ();
-					else 
+					else
 						g_free (NthData (i));
 			}
 
@@ -114,7 +114,7 @@ namespace GLib {
 			}
 		}
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_ptr_array_get_array (IntPtr raw);
 
 		public IntPtr ArrayPtr {
@@ -123,7 +123,7 @@ namespace GLib {
 			}
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_ptr_array_add (IntPtr raw, IntPtr val);
 
 		public void Add (IntPtr val)
@@ -131,7 +131,7 @@ namespace GLib {
 			g_ptr_array_add (Handle, val);
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_ptr_array_remove (IntPtr raw, IntPtr data);
 
 		public void Remove (IntPtr data)
@@ -139,7 +139,7 @@ namespace GLib {
 			g_ptr_array_remove (Handle, data);
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_ptr_array_remove_range (IntPtr raw, uint index, uint length);
 
 		public void RemoveRange (IntPtr data, uint index, uint length)
@@ -147,7 +147,7 @@ namespace GLib {
 			g_ptr_array_remove_range (Handle, index, length);
 		}
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int gtksharp_ptr_array_get_count (IntPtr raw);
 
 		// ICollection
@@ -157,10 +157,10 @@ namespace GLib {
 			}
 		}
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_ptr_array_get_nth (IntPtr raw, uint idx);
 
-		public object this [int index] { 
+		public object this [int index] {
 			get {
 				IntPtr data = NthData ((uint) index);
 				object ret = null;
@@ -169,7 +169,7 @@ namespace GLib {
 			}
 		}
 
-		internal object DataMarshal (IntPtr data) 
+		internal object DataMarshal (IntPtr data)
 		{
 			object ret = null;
 			if (element_type != null) {
@@ -218,7 +218,7 @@ namespace GLib {
 
 			if (index + Count < array.Length)
 				throw new ArgumentException ("Array not large enough to copy into starting at index.");
-			
+
 			for (int i = 0; i < Count; i++)
 				((IList) array) [index + i] = this [i];
 		}
@@ -256,14 +256,14 @@ namespace GLib {
 				current = -1;
 			}
 		}
-		
+
 		// IEnumerable
 		public IEnumerator GetEnumerator ()
 		{
 			return new ListEnumerator (this);
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_ptr_array_copy (IntPtr raw);
 
 		// ICloneable

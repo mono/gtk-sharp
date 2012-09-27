@@ -20,10 +20,10 @@
 
 		private Units () {}
 		
-		[DllImport("pangosharpglue-2")]
+		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int pangosharp_pixels (int units);
 
-		[DllImport("pangosharpglue-2")]
+		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int pangosharp_scale ();
 
 		public static int FromPixels (int pixels)

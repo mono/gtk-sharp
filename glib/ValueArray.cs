@@ -32,7 +32,7 @@ namespace GLib {
 		static private ArrayList PendingFrees = new ArrayList ();
 		static private bool idle_queued = false;
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_value_array_new (uint n_preallocs);
 
 		public ValueArray (uint n_preallocs)
@@ -57,7 +57,7 @@ namespace GLib {
 			GC.SuppressFinalize (this);
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_value_array_free (IntPtr raw);
 
 		void Dispose (bool disposing)
@@ -101,7 +101,7 @@ namespace GLib {
 			}
 		}
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_value_array_get_array (IntPtr raw);
 
 		public IntPtr ArrayPtr {
@@ -110,7 +110,7 @@ namespace GLib {
 			}
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_value_array_append (IntPtr raw, ref GLib.Value val);
 
 		public void Append (GLib.Value val)
@@ -118,7 +118,7 @@ namespace GLib {
 			g_value_array_append (Handle, ref val);
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_value_array_insert (IntPtr raw, uint idx, ref GLib.Value val);
 
 		public void Insert (uint idx, GLib.Value val)
@@ -126,7 +126,7 @@ namespace GLib {
 			g_value_array_insert (Handle, idx, ref val);
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_value_array_prepend (IntPtr raw, ref GLib.Value val);
 
 		public void Prepend (GLib.Value val)
@@ -134,7 +134,7 @@ namespace GLib {
 			g_value_array_prepend (Handle, ref val);
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_value_array_remove (IntPtr raw, uint idx);
 
 		public void Remove (uint idx)
@@ -142,7 +142,7 @@ namespace GLib {
 			g_value_array_remove (Handle, idx);
 		}
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int gtksharp_value_array_get_count (IntPtr raw);
 
 		// ICollection
@@ -152,7 +152,7 @@ namespace GLib {
 			}
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_value_array_get_nth (IntPtr raw, uint idx);
 
 		public object this [int index] { 
@@ -227,7 +227,7 @@ namespace GLib {
 			return new ListEnumerator (this);
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_value_array_copy (IntPtr raw);
 
 		// ICloneable

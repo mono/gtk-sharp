@@ -56,10 +56,10 @@ namespace GLib {
 			}
 		}
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_set_prgname (IntPtr name);
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_get_prgname ();
 
 		public static string ApplicationName {
@@ -73,10 +73,10 @@ namespace GLib {
 			}
 		}
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_set_application_name (IntPtr name);
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_get_application_name ();
 	}
 }

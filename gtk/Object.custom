@@ -105,7 +105,7 @@
 			base.Dispose ();
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		private static extern void g_object_ref_sink (IntPtr raw);
 
 		protected override IntPtr Raw {
@@ -121,7 +121,7 @@
 			}
 		}
 
-		[DllImport("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		private static extern void gtk_object_destroy (IntPtr raw);
 
 		public virtual void Destroy ()
@@ -132,10 +132,10 @@
 			InternalDestroyed -= NativeDestroyHandler;
 		}
 
-		[DllImport("gtksharpglue-2")]
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		private static extern bool gtksharp_object_is_floating (IntPtr raw);
 
-		[DllImport("gtksharpglue-2")]
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		private static extern bool gtksharp_object_set_floating (IntPtr raw, bool val);
 
 		public bool IsFloating {

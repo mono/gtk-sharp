@@ -36,13 +36,13 @@ public class FSButton : Gtk.Button {
 	}
 }
 	
-[DllImport("libgtk-win32-2.0-0.dll")]
+[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 static extern IntPtr gtk_file_selection_get_selections (IntPtr handle);
 
-[DllImport("libgtk-win32-2.0-0.dll")]
+[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 static extern IntPtr gtk_file_selection_get_selections_utf8 (IntPtr handle);
 
-[DllImport("libglib-2.0-0.dll")]
+[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 static extern void g_strfreev (IntPtr handle);
 
 public string[] Selections {

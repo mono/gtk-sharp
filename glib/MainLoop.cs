@@ -25,7 +25,7 @@ namespace GLib {
 	public class MainLoop {
 		private IntPtr handle;
 	
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_main_loop_new (IntPtr context, bool isRunning);
 
 		public MainLoop ()
@@ -33,7 +33,7 @@ namespace GLib {
 			handle = g_main_loop_new (IntPtr.Zero, false);
 		}
 		
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_main_loop_unref (IntPtr loop);
 
 		~MainLoop ()
@@ -42,7 +42,7 @@ namespace GLib {
 			handle = IntPtr.Zero;
 		}
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool g_main_loop_is_running (IntPtr loop);
 
 		public bool IsRunning {
@@ -51,7 +51,7 @@ namespace GLib {
 			}
 		}
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_main_loop_run (IntPtr loop);
 
 		public void Run ()
@@ -59,7 +59,7 @@ namespace GLib {
 			g_main_loop_run (handle);
 		}
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_main_loop_quit (IntPtr loop);
 
 		public void Quit ()

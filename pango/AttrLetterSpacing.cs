@@ -23,14 +23,14 @@ namespace Pango {
 
 	public class AttrLetterSpacing : Attribute {
 
-		[DllImport("libpango-1.0-0.dll")]
+		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pango_attr_letter_spacing_new (int letter_spacing);
 
 		public AttrLetterSpacing (int letter_spacing) : this (pango_attr_letter_spacing_new (letter_spacing)) {}
 
 		internal AttrLetterSpacing (IntPtr raw) : base (raw) {}
 
-		[DllImport("pangosharpglue-2")]
+		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int pangosharp_attr_int_get_value (IntPtr raw);
 
 		public int LetterSpacing {

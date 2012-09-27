@@ -26,34 +26,34 @@ namespace Gdk {
 
 	public class EventCrossing : Event {
 
-		[DllImport("gdksharpglue-2")]
+		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern uint gtksharp_gdk_event_crossing_get_time (IntPtr evt);
 
-		[DllImport("gdksharpglue-2")]
+		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern double gtksharp_gdk_event_crossing_get_x (IntPtr evt);
 
-		[DllImport("gdksharpglue-2")]
+		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern double gtksharp_gdk_event_crossing_get_y (IntPtr evt);
 
-		[DllImport("gdksharpglue-2")]
+		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern double gtksharp_gdk_event_crossing_get_x_root (IntPtr evt);
 
-		[DllImport("gdksharpglue-2")]
+		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern double gtksharp_gdk_event_crossing_get_y_root (IntPtr evt);
 
-		[DllImport("gdksharpglue-2")]
+		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern uint gtksharp_gdk_event_crossing_get_state (IntPtr evt);
 
-		[DllImport("gdksharpglue-2")]
+		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_gdk_event_crossing_get_subwindow (IntPtr evt);
 
-		[DllImport("gdksharpglue-2")]
+		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern CrossingMode gtksharp_gdk_event_crossing_get_mode (IntPtr evt);
 
-		[DllImport("gdksharpglue-2")]
+		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern NotifyType gtksharp_gdk_event_crossing_get_detail (IntPtr evt);
 
-		[DllImport("gdksharpglue-2")]
+		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool gtksharp_gdk_event_crossing_get_focus (IntPtr evt);
 
 		public EventCrossing (IntPtr raw) : base (raw) {} 

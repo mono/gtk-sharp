@@ -33,10 +33,10 @@
 			}
 		}
 
-		[DllImport ("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtk_file_chooser_get_filenames (IntPtr raw);
 
-		[DllImport ("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtk_file_chooser_get_filenames_utf8 (IntPtr raw);
 
 		public string[] Filenames {
@@ -51,10 +51,10 @@
 			}
 		}
 
-		[DllImport ("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtk_file_chooser_list_shortcut_folders (IntPtr raw);
 
-		[DllImport ("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtk_file_chooser_list_shortcut_folders_utf8 (IntPtr raw);
 
 		public string[] ShortcutFolders {

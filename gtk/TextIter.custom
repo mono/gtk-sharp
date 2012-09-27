@@ -19,10 +19,10 @@
 // Boston, MA 02111-1307, USA.
 
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_unichar_to_utf8_string (int raw);
 
-		[DllImport("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern int gtk_text_iter_get_char(ref Gtk.TextIter raw);
 
 		public string Char { 
@@ -33,7 +33,7 @@
 			}
 		}
 
-		[DllImport("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtk_text_iter_get_marks (ref TextIter iter);
 
 		public TextMark[] Marks {
@@ -49,7 +49,7 @@
 			}
 		}
 
-		[DllImport("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtk_text_iter_get_tags (ref TextIter iter);
 
 		public TextTag[] Tags {
@@ -65,7 +65,7 @@
 			}
 		}
 
-		[DllImport("libgtk-win32-2.0-0.dll")]
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtk_text_iter_get_toggled_tags (ref TextIter iter, bool toggled_on);
 
 		public TextTag[] GetToggledTags (bool toggled_on)

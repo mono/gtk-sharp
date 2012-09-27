@@ -33,7 +33,7 @@ namespace GLib {
 			this.errptr = errptr;
 		}
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_error_get_message (IntPtr errptr);
 		public override string Message {
 			get {
@@ -41,7 +41,7 @@ namespace GLib {
 			}
 		}
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_clear_error (ref IntPtr errptr);
 		~GException ()
 		{

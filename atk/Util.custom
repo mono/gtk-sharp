@@ -40,7 +40,7 @@
 
 		public delegate uint AddGlobalEventListenerDelegate (GLib.Signal.EmissionHook hook, string event_type);
 
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_util_override_add_global_event_listener (AddGlobalEventListenerNativeDelegate cb);
 		public static AddGlobalEventListenerDelegate AddGlobalEventListenerHandler {
 			set {
@@ -66,7 +66,7 @@
 			}
 		}
 
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_util_override_remove_global_event_listener (RemoveListenerNativeDelegate cb);
 
 		public delegate void RemoveListenerDelegate (uint listener_id);
@@ -123,7 +123,7 @@
 			return 0;
 		}
 
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_util_override_add_key_event_listener (AddKeyEventListenerNativeDelegate cb);
 
 		public delegate uint AddKeyEventListenerDelegate (KeySnoopFunc listener);
@@ -149,7 +149,7 @@
 			}
 		}
 
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_util_override_remove_key_event_listener (RemoveListenerNativeDelegate cb);
 
 		public static RemoveListenerDelegate RemoveKeyEventListenerHandler {
@@ -177,7 +177,7 @@
 			return IntPtr.Zero;
 		}
 
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_util_override_get_root (GetRootNativeDelegate cb);
 
 		public delegate Atk.Object GetRootDelegate ();
@@ -219,7 +219,7 @@
 			return IntPtr.Zero;
 		}
 
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_util_override_get_toolkit_name (GetToolkitNameNativeDelegate cb);
 
 		public delegate string GetToolkitNameDelegate ();
@@ -257,7 +257,7 @@
 			return IntPtr.Zero;
 		}
 
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_util_override_get_toolkit_version (GetToolkitVersionNativeDelegate cb);
 
 		public delegate string GetToolkitVersionDelegate ();

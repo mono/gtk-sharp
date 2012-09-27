@@ -23,10 +23,10 @@ namespace Pango {
 
 	public class AttrSize : Attribute {
 
-		[DllImport("libpango-1.0-0.dll")]
+		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pango_attr_size_new (int size);
 
-		[DllImport("libpango-1.0-0.dll")]
+		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pango_attr_size_new_absolute (int size);
 
 		public AttrSize (int size) : this (pango_attr_size_new (size)) {}
@@ -35,7 +35,7 @@ namespace Pango {
 
 		internal AttrSize (IntPtr raw) : base (raw) {}
 
-		[DllImport("pangosharpglue-2")]
+		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int pangosharp_attr_size_get_size (IntPtr raw);
 
 		public int Size {
@@ -44,7 +44,7 @@ namespace Pango {
 			}
 		}
 
-		[DllImport("pangosharpglue-2")]
+		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool pangosharp_attr_size_get_absolute (IntPtr raw);
 
 		public bool Absolute {

@@ -67,7 +67,7 @@ namespace GLib {
 		static FreeFunc free;
 		static GType boxed_type = GType.Invalid;
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_boxed_type_register_static (IntPtr typename, CopyFunc copy_func, FreeFunc free_func);
 
 		public static GType GType {

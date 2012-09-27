@@ -23,14 +23,14 @@ namespace Pango {
 
 	public class AttrLanguage : Attribute {
 
-		[DllImport("libpango-1.0-0.dll")]
+		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pango_attr_language_new (IntPtr language);
 
 		public AttrLanguage (Pango.Language language) : this (pango_attr_language_new (language.Handle)) {}
 
 		internal AttrLanguage (IntPtr raw) : base (raw) {}
 
-		[DllImport("pangosharpglue-2")]
+		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pangosharp_attr_language_get_value (IntPtr raw);
 
 		public Pango.Language Language {

@@ -39,7 +39,7 @@ namespace GLib
 			get { return true; }
 		}
 #else
-		[DllImport("libgthread-2.0-0.dll")]
+		[DllImport("libgthread-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_thread_init (IntPtr i);
 
 		public static void Init ()
@@ -47,7 +47,7 @@ namespace GLib
 			g_thread_init (IntPtr.Zero);
 		}
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool glibsharp_g_thread_supported ();
 
 		public static bool Supported

@@ -6,7 +6,7 @@
 // Copyright (c) 2005 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -47,17 +47,17 @@ namespace GLib {
 			managed = owned;
 			this.elements_owned = elements_owned;
 		}
-		
+
 		~ListBase ()
 		{
 			Dispose (false);
 		}
-		
+
 		[Obsolete ("Replaced by owned parameter on ctor.")]
 		public bool Managed {
 			set { managed = value; }
 		}
-		
+
 		public IntPtr Handle {
 			get {
 				return list_ptr;
@@ -93,8 +93,8 @@ namespace GLib {
 			}
 		}
 
-		public object this [int index] { 
-			get { 
+		public object this [int index] {
+			get {
 				IntPtr data = NthData ((uint) index);
 				object ret = null;
 				ret = DataMarshal (data);
@@ -117,8 +117,8 @@ namespace GLib {
 			int i = 0;
 			foreach (object o in this)
 				orig [i++] = o;
-			
-			orig.CopyTo (array, index); 
+
+			orig.CopyTo (array, index);
 		}
 
 		public class FilenameString {
@@ -149,7 +149,7 @@ namespace GLib {
 			return IntPtr.Zero;
 		}
 
-		internal object DataMarshal (IntPtr data) 
+		internal object DataMarshal (IntPtr data)
 		{
 			object ret = null;
 			if (element_type != null) {
@@ -180,10 +180,10 @@ namespace GLib {
 			return ret;
 		}
 
-		[DllImport ("libglib-2.0-0.dll")]
+		[DllImport ("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_free (IntPtr item);
 
-		[DllImport ("libgobject-2.0-0.dll")]
+		[DllImport ("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_object_unref (IntPtr item);
 
 		public void Empty ()
@@ -194,7 +194,7 @@ namespace GLib {
 						g_object_unref (NthData (i));
 					else if (typeof (GLib.Opaque).IsAssignableFrom (element_type))
 						GLib.Opaque.GetOpaque (NthData (i), element_type, true).Dispose ();
-					else 
+					else
 						g_free (NthData (i));
 
 			if (managed)
@@ -246,7 +246,7 @@ namespace GLib {
 				current = IntPtr.Zero;
 			}
 		}
-		
+
 		// IEnumerable
 		public IEnumerator GetEnumerator ()
 		{
@@ -264,7 +264,7 @@ namespace GLib {
 		{
 			Empty ();
 		}
-		
+
 		void FreeList ()
 		{
 			if (list_ptr != IntPtr.Zero)

@@ -85,7 +85,7 @@ namespace GLib {
 		{
 		}
 		
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern uint g_idle_add (IdleHandlerInternal d, IntPtr data);
 
 		public static uint Add (IdleHandler hndlr)
@@ -98,7 +98,7 @@ namespace GLib {
 			return p.ID;
 		}
 		
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool g_source_remove (uint id);
                                                                                 
 		public static bool Remove (IdleHandler hndlr)

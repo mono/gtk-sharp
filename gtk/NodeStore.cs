@@ -158,7 +158,7 @@ namespace Gtk {
 			return IntPtr.Zero;
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_value_init (ref GLib.Value val, IntPtr type);
 
 		void get_value_cb (int node_idx, int col, ref GLib.Value val)
@@ -319,7 +319,7 @@ namespace Gtk {
 			return false;
 		}
 
-		[DllImport("gtksharpglue-2")]
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void gtksharp_node_store_set_tree_model_callbacks (IntPtr raw, ref TreeModelIfaceDelegates cbs);
 
 		private void BuildTreeModelIface ()
@@ -387,7 +387,7 @@ namespace Gtk {
 			}
 		}
 
-		[DllImport("gtksharpglue-2")]
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void gtksharp_node_store_emit_row_changed (IntPtr handle, IntPtr path, int node_idx);
 
 		private void changed_cb (object o, EventArgs args)
@@ -396,7 +396,7 @@ namespace Gtk {
 			gtksharp_node_store_emit_row_changed (Handle, get_path_cb (node.ID), node.ID);
 		}
 
-		[DllImport("gtksharpglue-2")]
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void gtksharp_node_store_emit_row_inserted (IntPtr handle, IntPtr path, int node_idx);
 
 		private void EmitRowInserted (ITreeNode node)
@@ -412,10 +412,10 @@ namespace Gtk {
 			EmitRowInserted (child);
 		}
 
-		[DllImport("gtksharpglue-2")]
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void gtksharp_node_store_emit_row_deleted (IntPtr handle, IntPtr path);
 
-		[DllImport("gtksharpglue-2")]
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void gtksharp_node_store_emit_row_has_child_toggled (IntPtr handle, IntPtr path, int node_idx);
 
 		private void RemoveNodeInternal (ITreeNode node)
@@ -546,7 +546,7 @@ namespace Gtk {
 			return iter;
 		}
 
-		[DllImport("gtksharpglue-2")]
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_node_store_get_type ();
 
 		public static new GLib.GType GType {

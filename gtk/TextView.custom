@@ -20,7 +20,8 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-		[DllImport ("libgtk-win32-2.0-0.dll")]
+
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtk_text_view_new_with_buffer (IntPtr buffer);
 
 		public TextView (TextBuffer buffer) : base (IntPtr.Zero)

@@ -23,14 +23,14 @@ namespace Pango {
 
 	public class AttrShape : Attribute {
 
-		[DllImport("libpango-1.0-0.dll")]
+		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pango_attr_shape_new (ref Pango.Rectangle ink_rect, ref Pango.Rectangle logical_rect);
 
 		public AttrShape (Pango.Rectangle ink_rect, Pango.Rectangle logical_rect) : this (pango_attr_shape_new (ref ink_rect, ref logical_rect)) {}
 
 		internal AttrShape (IntPtr raw) : base (raw) {}
 
-		[DllImport("pangosharpglue-2")]
+		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern Pango.Rectangle pangosharp_attr_shape_get_ink_rect (IntPtr raw);
 
 		public Pango.Rectangle InkRect {
@@ -39,7 +39,7 @@ namespace Pango {
 			}
 		}
 
-		[DllImport("pangosharpglue-2")]
+		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern Pango.Rectangle pangosharp_attr_shape_get_logical_rect (IntPtr raw);
 
 		public Pango.Rectangle LogicalRect {

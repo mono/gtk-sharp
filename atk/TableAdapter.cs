@@ -602,7 +602,7 @@ namespace Atk {
 			this.handle = handle;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr atk_table_get_type();
 
 		private static GLib.GType _gtype = new GLib.GType (atk_table_get_type ());
@@ -730,7 +730,7 @@ namespace Atk {
 			}
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern int atk_table_get_n_rows(IntPtr raw);
 
 		public int NRows {
@@ -741,7 +741,7 @@ namespace Atk {
 			}
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool atk_table_add_row_selection(IntPtr raw, int row);
 
 		public bool AddRowSelection(int row) {
@@ -750,7 +750,7 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern int atk_table_get_column_extent_at(IntPtr raw, int row, int column);
 
 		public int GetColumnExtentAt(int row, int column) {
@@ -759,7 +759,7 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr atk_table_get_column_header(IntPtr raw, int column);
 
 		public Atk.Object GetColumnHeader(int column) {
@@ -768,7 +768,7 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool atk_table_is_selected(IntPtr raw, int row, int column);
 
 		public bool IsSelected(int row, int column) {
@@ -777,10 +777,10 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr atk_table_get_summary(IntPtr raw);
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atk_table_set_summary(IntPtr raw, IntPtr accessible);
 
 		public Atk.Object Summary {
@@ -794,7 +794,7 @@ namespace Atk {
 			}
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr atk_table_get_column_description(IntPtr raw, int column);
 
 		public string GetColumnDescription(int column) {
@@ -803,7 +803,7 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool atk_table_add_column_selection(IntPtr raw, int column);
 
 		public bool AddColumnSelection(int column) {
@@ -812,14 +812,14 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atk_table_set_row_header(IntPtr raw, int row, IntPtr header);
 
 		public void SetRowHeader(int row, Atk.Object header) {
 			atk_table_set_row_header(Handle, row, header == null ? IntPtr.Zero : header.Handle);
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr atk_table_get_row_description(IntPtr raw, int row);
 
 		public string GetRowDescription(int row) {
@@ -828,7 +828,7 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr atk_table_ref_at(IntPtr raw, int row, int column);
 
 		public Atk.Object RefAt(int row, int column) {
@@ -837,7 +837,7 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atk_table_set_column_description(IntPtr raw, int column, IntPtr description);
 
 		public void SetColumnDescription(int column, string description) {
@@ -846,7 +846,7 @@ namespace Atk {
 			GLib.Marshaller.Free (native_description);
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern int atk_table_get_index_at(IntPtr raw, int row, int column);
 
 		public int GetIndexAt(int row, int column) {
@@ -855,7 +855,7 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr atk_table_get_row_header(IntPtr raw, int row);
 
 		public Atk.Object GetRowHeader(int row) {
@@ -864,7 +864,7 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool atk_table_is_column_selected(IntPtr raw, int column);
 
 		public bool IsColumnSelected(int column) {
@@ -873,7 +873,7 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern int atk_table_get_selected_rows(IntPtr raw, out IntPtr selected);
 
 		private static readonly int [] empty_int_array = new int[0];
@@ -897,7 +897,7 @@ namespace Atk {
 			}
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atk_table_set_row_description(IntPtr raw, int row, IntPtr description);
 
 		public void SetRowDescription(int row, string description) {
@@ -906,7 +906,7 @@ namespace Atk {
 			GLib.Marshaller.Free (native_description);
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool atk_table_is_row_selected(IntPtr raw, int row);
 
 		public bool IsRowSelected(int row) {
@@ -915,7 +915,7 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern int atk_table_get_row_extent_at(IntPtr raw, int row, int column);
 
 		public int GetRowExtentAt(int row, int column) {
@@ -924,7 +924,7 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern int atk_table_get_selected_columns(IntPtr raw, out IntPtr selected);
 
 		public int [] SelectedColumns{
@@ -946,7 +946,7 @@ namespace Atk {
 			}
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern int atk_table_get_column_at_index(IntPtr raw, int index_);
 
 		public int GetColumnAtIndex(int index_) {
@@ -955,7 +955,7 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern int atk_table_get_row_at_index(IntPtr raw, int index_);
 
 		public int GetRowAtIndex(int index_) {
@@ -964,10 +964,10 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr atk_table_get_caption(IntPtr raw);
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atk_table_set_caption(IntPtr raw, IntPtr caption);
 
 		public Atk.Object Caption {
@@ -981,7 +981,7 @@ namespace Atk {
 			}
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern int atk_table_get_n_columns(IntPtr raw);
 
 		public int NColumns {
@@ -992,7 +992,7 @@ namespace Atk {
 			}
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool atk_table_remove_row_selection(IntPtr raw, int row);
 
 		public bool RemoveRowSelection(int row) {
@@ -1001,7 +1001,7 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool atk_table_remove_column_selection(IntPtr raw, int column);
 
 		public bool RemoveColumnSelection(int column) {
@@ -1010,7 +1010,7 @@ namespace Atk {
 			return ret;
 		}
 
-		[DllImport("libatk-1.0-0.dll")]
+		[DllImport("libatk-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atk_table_set_column_header(IntPtr raw, int column, IntPtr header);
 
 		public void SetColumnHeader(int column, Atk.Object header) {

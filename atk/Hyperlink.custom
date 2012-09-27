@@ -21,7 +21,7 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_hyperlink_override_get_uri (IntPtr type, GetUriDelegate cb);
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
@@ -53,8 +53,7 @@
 	{
 			return null;
 		}
-
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_hyperlink_override_get_object (IntPtr type, GetObjectDelegate cb);
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
@@ -88,7 +87,7 @@
 			return null;
 		}
 
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_hyperlink_override_get_end_index (IntPtr type, GetEndIndexDelegate cb);
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
@@ -121,8 +120,7 @@
 			return -1;
 		}
 
-
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_hyperlink_override_get_start_index (IntPtr type, GetStartIndexDelegate cb);
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
@@ -155,7 +153,7 @@
 			return -1;
 		}
 
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_hyperlink_override_is_valid (IntPtr type, IsValidDelegate cb);
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
@@ -188,7 +186,7 @@
 			return false;
 		}
 
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_hyperlink_override_get_n_anchors (IntPtr type, GetNAnchorsDelegate cb);
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
@@ -221,7 +219,7 @@
 			return 0;
 		}
 
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_hyperlink_override_link_state (IntPtr type, LinkStateDelegate cb);
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
@@ -254,7 +252,7 @@
 			return 0;
 		}
 
-		[DllImport("atksharpglue-2")]
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_hyperlink_override_is_selected_link (IntPtr type, IsSelectedLinkDelegate cb);
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]

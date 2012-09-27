@@ -29,7 +29,7 @@ namespace GLib {
 
 		private Marshaller () {}
 		
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_free (IntPtr mem);
 
 		public static void Free (IntPtr ptr)
@@ -46,10 +46,10 @@ namespace GLib {
 				g_free (ptrs [i]);
 		}
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_filename_to_utf8 (IntPtr mem, int len, IntPtr read, out IntPtr written, out IntPtr error);
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_filename_to_utf8_utf8 (IntPtr mem, int len, IntPtr read, out IntPtr written, out IntPtr error);
 
 		public static string FilenamePtrToString (IntPtr ptr) 
@@ -76,7 +76,7 @@ namespace GLib {
 			return ret;
 		}
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern UIntPtr glibsharp_strlen (IntPtr mem);
 
 		public static string Utf8PtrToString (IntPtr ptr) 
@@ -115,10 +115,10 @@ namespace GLib {
 			return ret;
 		}
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_filename_from_utf8 (IntPtr mem, int len, IntPtr read, out IntPtr written, out IntPtr error);
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_filename_from_utf8_utf8 (IntPtr mem, int len, IntPtr read, out IntPtr written, out IntPtr error);
 
 		public static IntPtr StringToFilenamePtr (string str) 
@@ -172,7 +172,7 @@ namespace GLib {
 			return result;
 		}
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_strfreev (IntPtr mem);
 
 		public static void StrFreeV (IntPtr null_term_array)
@@ -226,7 +226,7 @@ namespace GLib {
 		// transparently, since we need to alloc buffers of
 		// [native pointer size] * [count] bytes.
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_malloc(UIntPtr size);
 
 		public static IntPtr Malloc (ulong size)
@@ -339,7 +339,7 @@ namespace GLib {
 			return local_epoch.AddSeconds (time_t.ToInt64 () + utc_offset);
 		}
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_unichar_to_utf8_string (uint c);
 
 		public static char GUnicharToChar (uint ucs4_char)
@@ -355,7 +355,7 @@ namespace GLib {
 			return ret [0];
 		}
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern uint glibsharp_utf16_to_unichar (ushort c);
 
 		public static uint CharToGUnichar (char c)

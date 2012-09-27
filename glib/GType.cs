@@ -76,7 +76,7 @@ namespace GLib {
 				gtypes[type] = native_type;
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_type_init ();
 
 		static GType ()
@@ -237,10 +237,10 @@ namespace GLib {
 			return val.GetHashCode ();
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_type_name (IntPtr raw);
 		
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_type_from_name (string name);
 
 		public override string ToString ()

@@ -26,13 +26,13 @@ namespace GLib {
 
         public class MainContext {
 		
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern int g_main_depth ();
 		public static int Depth {
 			get { return g_main_depth (); }
 		}
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool g_main_context_iteration (IntPtr Raw, bool MayBlock);
 
 		public static bool Iteration ()
@@ -45,7 +45,7 @@ namespace GLib {
 			return g_main_context_iteration (IntPtr.Zero, MayBlock);
 		}
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool g_main_context_pending (IntPtr Raw);
 		
 		public static bool Pending ()

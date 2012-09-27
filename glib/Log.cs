@@ -66,7 +66,7 @@ namespace GLib {
 				handlers = new Hashtable ();
 		}
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_logv (IntPtr log_domain, LogLevelFlags flags, IntPtr message);
 		
 		public void WriteLog (string logDomain, LogLevelFlags flags, string format, params object [] args)
@@ -78,7 +78,7 @@ namespace GLib {
 			Marshaller.Free (nmessage);
 		}
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern uint g_log_set_handler (IntPtr log_domain, LogLevelFlags flags, LogFunc log_func, IntPtr user_data);
 		
 		public static uint SetLogHandler (string logDomain, LogLevelFlags flags, LogFunc logFunc)
@@ -92,7 +92,7 @@ namespace GLib {
 			return result;
 		}
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern uint g_log_remove_handler (IntPtr log_domain, uint handler_id);
 
 		public static void RemoveLogHandler (string logDomain, uint handlerID)
@@ -106,7 +106,7 @@ namespace GLib {
 		}
 
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern PrintFunc g_set_print_handler (PrintFunc handler);
 
 		public static PrintFunc SetPrintHandler (PrintFunc handler)
@@ -117,7 +117,7 @@ namespace GLib {
 			return g_set_print_handler (handler);
 		}
 		
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern PrintFunc g_set_printerr_handler (PrintFunc handler);
 
 		public static PrintFunc SetPrintErrorHandler (PrintFunc handler)
@@ -128,7 +128,7 @@ namespace GLib {
 			return g_set_printerr_handler (handler);
 		}
 		
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_log_default_handler (IntPtr log_domain, LogLevelFlags log_level, IntPtr message, IntPtr unused_data);
 
 		public static void DefaultHandler (string logDomain, LogLevelFlags logLevel, string message)
@@ -141,7 +141,7 @@ namespace GLib {
 			Marshaller.Free (nmess);
 		}
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		extern static LogLevelFlags g_log_set_always_fatal (LogLevelFlags fatal_mask);
 		
 		public static LogLevelFlags SetAlwaysFatal (LogLevelFlags fatalMask)
@@ -149,7 +149,7 @@ namespace GLib {
 			return g_log_set_always_fatal (fatalMask);
 		}
 
-		[DllImport("libglib-2.0-0.dll")]
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		extern static LogLevelFlags g_log_set_fatal_mask (IntPtr log_domain, LogLevelFlags fatal_mask);
 		
 		public static LogLevelFlags SetAlwaysFatal (string logDomain, LogLevelFlags fatalMask)

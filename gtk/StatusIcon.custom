@@ -26,7 +26,7 @@
 			return GetGeometry (out junk, out area, out orientation);
 		}
 
-		[DllImport("gtksharpglue-2")]
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void gtksharp_gtk_status_icon_present_menu (IntPtr raw, IntPtr menu, uint button, uint activate_time);
 
 		public void PresentMenu (Menu menu, uint button, uint activate_time) 

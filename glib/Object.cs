@@ -54,7 +54,7 @@ namespace GLib {
 			}
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_object_unref (IntPtr raw);
 
 		static bool PerformQueuedUnrefs ()
@@ -93,7 +93,7 @@ namespace GLib {
 			GC.SuppressFinalize (this);
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_object_ref (IntPtr raw);
 
 		public static Object TryGetObject (IntPtr o)
@@ -198,10 +198,10 @@ namespace GLib {
 			}
 		}
 
-		[DllImport ("glibsharpglue-2")]
+		[DllImport ("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void gtksharp_override_property_handlers (IntPtr type, GetPropertyDelegate get_cb, SetPropertyDelegate set_cb);
 
-		[DllImport ("glibsharpglue-2")]
+		[DllImport ("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_register_property (IntPtr type, IntPtr name, IntPtr nick, IntPtr blurb, uint property_id, IntPtr property_type, bool can_read, bool can_write);
 
 		static void AddProperties (GType gtype, System.Type t)
@@ -276,7 +276,7 @@ namespace GLib {
 			}
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_type_add_interface_static (IntPtr gtype, IntPtr iface_type, ref GInterfaceInfo info);
 
 		static void AddInterfaces (GType gtype, Type t)
@@ -293,7 +293,7 @@ namespace GLib {
 			}
 		}
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_register_type (IntPtr name, IntPtr parent_type);
 
 		static int type_uid;
@@ -367,7 +367,7 @@ namespace GLib {
 			CreateNativeObject (new string [0], new GLib.Value [0]);
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_object_new (IntPtr gtype, IntPtr dummy);
 
 		[Obsolete]
@@ -376,7 +376,7 @@ namespace GLib {
 			Raw = g_object_new (gtype.Val, IntPtr.Zero);
 		}
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_object_newv (IntPtr gtype, int n_params, IntPtr[] names, GLib.Value[] vals);
 
 		protected virtual void CreateNativeObject (string[] names, GLib.Value[] vals)
@@ -418,7 +418,7 @@ namespace GLib {
 			}
 		}
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_get_type_name (IntPtr raw);
 
 		protected string TypeName {
@@ -567,7 +567,7 @@ namespace GLib {
 			}
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_object_get_property (IntPtr obj, IntPtr name, ref GLib.Value val);
 
 		protected GLib.Value GetProperty (string name)
@@ -579,7 +579,7 @@ namespace GLib {
 			return val;
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_object_set_property (IntPtr obj, IntPtr name, ref GLib.Value val);
 
 		protected void SetProperty (string name, GLib.Value val)
@@ -589,7 +589,7 @@ namespace GLib {
 			GLib.Marshaller.Free (native_name);
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_object_notify (IntPtr obj, IntPtr property_name);
 
 		protected void Notify (string property_name)
@@ -599,7 +599,7 @@ namespace GLib {
 			GLib.Marshaller.Free (native_name);
 		}
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void gtksharp_override_virtual_method (IntPtr gtype, IntPtr name, Delegate cb);
 
 		protected static void OverrideVirtualMethod (GType gtype, string name, Delegate cb)
@@ -609,10 +609,10 @@ namespace GLib {
 			GLib.Marshaller.Free (native_name);
 		}
 
-		[DllImport("libgobject-2.0-0.dll")]
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		protected static extern void g_signal_chain_from_overridden (IntPtr args, ref GLib.Value retval);
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool gtksharp_is_object (IntPtr obj);
 
 		internal static bool IsObject (IntPtr obj)
@@ -620,7 +620,7 @@ namespace GLib {
 			return gtksharp_is_object (obj);
 		}
 
-		[DllImport("glibsharpglue-2")]
+		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int gtksharp_object_get_ref_count (IntPtr obj);
 
 		protected int RefCount {

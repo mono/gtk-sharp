@@ -35,25 +35,25 @@ public class ColorSelectionButton : Gtk.Button {
 	}
 }
 
-[DllImport("gtksharpglue-2")]
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern IntPtr gtksharp_color_selection_dialog_get_colorsel (IntPtr i);
 public ColorSelection ColorSelection {
        get { return GLib.Object.GetObject (gtksharp_color_selection_dialog_get_colorsel (this.Handle), false) as ColorSelection; }
 }
 
-[DllImport("gtksharpglue-2")]
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern IntPtr gtksharp_color_selection_dialog_get_ok_button (IntPtr i);
 public Button OkButton {
        get { return GLib.Object.GetObject (gtksharp_color_selection_dialog_get_ok_button (this.Handle), false) as Button; }
 }
 
-[DllImport("gtksharpglue-2")]
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern IntPtr gtksharp_color_selection_dialog_get_cancel_button (IntPtr i);
 public Button CancelButton {
        get { return GLib.Object.GetObject (gtksharp_color_selection_dialog_get_cancel_button (this.Handle), false) as Button; }
 }
 
-[DllImport("gtksharpglue-2")]
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern IntPtr gtksharp_color_selection_dialog_get_help_button (IntPtr i);
 public Button HelpButton {
        get { return GLib.Object.GetObject (gtksharp_color_selection_dialog_get_help_button (this.Handle), false) as Button; }
