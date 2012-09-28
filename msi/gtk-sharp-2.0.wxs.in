@@ -198,13 +198,13 @@
                   <RegistryKey Root='HKLM' Key='SOFTWARE\Xamarin\GtkSharp\Version' Action="createAndRemoveOnUninstall">
                     <RegistryValue Type="string" Value="[ProductVersion]" />
                   </RegistryKey>
-                  <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\AssemblyFolders\GtkSharp' Action="createAndRemoveOnUninstall">
+                  <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\v4.0.30319\AssemblyFoldersEx\GtkSharp' Action="createAndRemoveOnUninstall">
                     <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0" />
                   </RegistryKey>
-                  <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\AssemblyFolders\MonoPosix' Action="createAndRemoveOnUninstall">
+                  <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\v4.0.30319\AssemblyFoldersEx\MonoPosix' Action="createAndRemoveOnUninstall">
                     <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\Mono.Posix" />
                   </RegistryKey>
-                  <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\AssemblyFolders\MonoCairo' Action="createAndRemoveOnUninstall">
+                  <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\v4.0.30319\AssemblyFoldersEx\MonoCairo' Action="createAndRemoveOnUninstall">
                     <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\Mono.Cairo" />
                   </RegistryKey>
                   <RegistryKey Root='HKLM' Key='SOFTWARE\Xamarin\GtkSharp\InstallFolder' Action="createAndRemoveOnUninstall">
