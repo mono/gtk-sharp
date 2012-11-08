@@ -147,6 +147,7 @@ namespace Cairo {
 
         public class Context : IDisposable 
         {
+		bool owned = false;
                 internal IntPtr state = IntPtr.Zero;
 
 		static int native_glyph_size, c_compiler_long_size;
@@ -189,6 +190,7 @@ namespace Cairo {
 		public Context (IntPtr state, bool owned)
 		{
 			this.state = owned ? state : NativeMethods.cairo_reference (state);
+			this.owned = owned;
 		}
 		
 		~Context ()
@@ -205,7 +207,9 @@ namespace Cairo {
                 protected virtual void Dispose (bool disposing)
                 {
 			if (!disposing){
-				Console.Error.WriteLine ("Cairo.Context: called from finalization thread, programmer is missing a call to Dispose");
+				if (!owned){
+					Console.Error.WriteLine ("Cairo.Context: called from finalization thread, programmer is missing a call to Dispose");
+				}
 				return;
 			}
 			

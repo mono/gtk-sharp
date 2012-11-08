@@ -267,9 +267,11 @@
   <attr path="/api/namespace/object[@cname='GtkButton']/signal[@name='Activate']" name="name">Activated</attr>
   <attr path="/api/namespace/object[@cname='GtkButton']/signal[@name='Enter']" name="name">Entered</attr>
   <attr path="/api/namespace/object[@cname='GtkButton']/signal[@name='Leave']" name="name">Left</attr>
+  <attr path="/api/namespace/object[@cname='GtkCellArea']/virtual_method[@name='Render']/*/*[@name='cr']" name="owned">true</attr>
   <attr path="/api/namespace/object[@cname='GtkCellArea']/signal[@name='ApplyAttributes']" name="name">AttributesApplied</attr>
   <attr path="/api/namespace/object[@cname='GtkCellRenderer']/method[@name='StartEditing']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkCellRenderer']/method[@name='GetSize']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkCellRenderer']/virtual_method[@name='Render']/*/*[@name='cr']" name="owned">true</attr>
   <attr path="/api/namespace/object[@cname='GtkCellRenderer']/property[@name='CellBackgroundRgba']" name="type">GdkRGBA</attr>
   <attr path="/api/namespace/object[@cname='GtkCellRenderer']/virtual_method[@cname='get_size']/*/*[@name='cell_area']" name="pass_as">ref</attr>
   <attr path="/api/namespace/object[@cname='GtkCellRenderer']/virtual_method[@cname='get_size']" name="hidden">1</attr>
@@ -469,6 +471,7 @@
   <attr path="/api/namespace/object[@cname='GtkPlug']/constructor[@cname='gtk_plug_new_for_display']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkPlug']/property[@name='Embedded']" name="name">IsEmbedded</attr>
   <attr path="/api/namespace/object[@cname='GtkPlug']/method[@name='GetEmbedded']" name="name">GetIsEmbedded</attr>
+  <attr path="/api/namespace/object[@cname='GtkPrintContext']/method[@name='GetCairoContext']/return-type" name="owned">true</attr>
   <attr path="/api/namespace/object[@cname='GtkPrinter']/method[@name='AcceptsPdf']" name="name">GetAcceptsPdf</attr>
   <attr path="/api/namespace/object[@cname='GtkPrinter']/method[@name='AcceptsPs']" name="name">GetAcceptsPs</attr>
   <attr path="/api/namespace/object[@cname='GtkPrinter']/method[@name='HasDetails']" name="name">GetHasDetails</attr>
