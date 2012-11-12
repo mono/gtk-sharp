@@ -170,6 +170,16 @@
                     <File Id="policy.2.10.gtkdotnet.config" Name="policy.2.10.config" CompanionFile="policy.2.10.gtkdotnet.dll" Source="binaries/gtkdotnet/policy.2.10.config" Vital="no" />
                   </Component>
                 </Directory>
+                <Directory id="gac_cairo" Name="cairo">
+                    <Component Id="monocairo_policy_1.0" >
+                        <File Id="policy.1.0.Mono.Cairo.dll" Name="policy.1.0.Mono.Cairo.dll" Assembly=".net" KeyPath="yes" Source="binaries/cairo/policy.1.0.Mono.Cairo.dll" Vital="no" />
+                        <File Id="policy.1.0.Mono.Cairo.config" Name="policy.1.0.config" CompanionFile="policy.1.0.Mono.Cairo.dll" Source="binaries/cairo/policy.1.0.config" Vital="no" />
+                    </Component>
+                    <Component Id="monocairo_policy_2.0" >
+                        <File Id="policy.2.0.Mono.Cairo.dll" Name="policy.2.0.Mono.Cairo.dll" Assembly=".net" KeyPath="yes" Source="binaries/cairo/policy.2.0.Mono.Cairo.dll" Vital="no" />
+                        <File Id="policy.2.0.Mono.Cairo.config" Name="policy.2.0.config" CompanionFile="policy.2.0.Mono.Cairo.dll" Source="binaries/cairo/policy.2.0.config" Vital="no" />
+                    </Component>
+                </Directory>
                 <Directory Id="gac_glade" Name="glade">
                   <Component Id="gladesharp_dll" Guid="E8E7066F-5113-4279-83CB-5FBA7D870E22">
                     <File Id="gladesharpdll" Name="glade-sharp.dll" Assembly=".net" KeyPath="yes" Source="binaries/glade/glade-sharp.dll" Vital="yes" />
