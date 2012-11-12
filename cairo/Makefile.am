@@ -1,17 +1,21 @@
 ASSEMBLY_NAME = Mono.Cairo
 ASSEMBLY = $(ASSEMBLY_NAME).dll
-POLICY_ASSEMBLY = policy.1.0.$(ASSEMBLY)
-POLICY_CONFIG = policy.1.0.config
+
+POLICY_1_0_ASSEMBLY = policy.1.0.$(ASSEMBLY)
+POLICY_1_0_CONFIG = policy.1.0.config
+
+POLICY_2_0_ASSEMBLY = policy.2.0.$(ASSEMBLY)
+POLICY_2_0_CONFIG = policy.2.0.config
 
 if ENABLE_MONO_CAIRO
-TARGET=$(ASSEMBLY) $(POLICY_ASSEMBLY)
+TARGET=$(ASSEMBLY) $(POLICY_1_0_ASSEMBLY) $(POLICY_2_0_ASSEMBLY)
 else
 TARGET=
 endif
 
 noinst_DATA = $(TARGET)
 
-CLEANFILES = $(ASSEMBLY) $(ASSEMBLY).mdb $(POLICY_ASSEMBLY) mono.snk
+CLEANFILES = $(ASSEMBLY) $(ASSEMBLY).mdb $(POLICY_1_0_ASSEMBLY) $(POLICY_2_0_ASSEMBLY) mono.snk
 
 sources = \
 	Antialias.cs \
@@ -73,16 +77,22 @@ $(ASSEMBLY): $(build_sources) mono.snk
 	@rm -f $(ASSEMBLY).mdb
 	$(CSC) $(CSFLAGS) -nowarn:0169,0612,0618 -out:$(ASSEMBLY) -target:library $(references) $(build_sources)
 
-$(POLICY_ASSEMBLY): $(srcdir)/$(POLICY_CONFIG) mono.snk
+$(POLICY_1_0_ASSEMBLY): $(srcdir)/$(POLICY_1_0_CONFIG) mono.snk
 	echo "Creating policy.1.0.$(ASSEMBLY)";
-	$(AL) -link:$(POLICY_CONFIG) -out:$@ -keyfile:mono.snk;
+	$(AL) -link:$(POLICY_1_0_CONFIG) -out:$@ -keyfile:mono.snk;
+
+$(POLICY_2_0_ASSEMBLY): $(srcdir)/$(POLICY_2_0_CONFIG) mono.snk
+	echo "Creating policy.1.0.$(ASSEMBLY)";
+	$(AL) -link:$(POLICY_2_0_CONFIG) -out:$@ -keyfile:mono.snk;
 
 install-data-local:
 	@if test -n '$(TARGET)'; then							\
 	  echo "$(GACUTIL) /i $(ASSEMBLY) /f $(GACUTIL_FLAGS)";				\
 	  $(GACUTIL) /i $(ASSEMBLY) /f $(GACUTIL_FLAGS) || exit 1;			\
-	  echo "$(GACUTIL) /i $(POLICY_ASSEMBLY) /f $(GACUTIL_FLAGS)";			\
-	  $(GACUTIL) /i $(POLICY_ASSEMBLY) /f $(GACUTIL_FLAGS) || exit 1;		\
+	  echo "$(GACUTIL) /i $(POLICY_1_0_ASSEMBLY) /f $(GACUTIL_FLAGS)";		\
+	  $(GACUTIL) /i $(POLICY_1_0_ASSEMBLY) /f $(GACUTIL_FLAGS) || exit 1;		\
+	  echo "$(GACUTIL) /i $(POLICY_2_0_ASSEMBLY) /f $(GACUTIL_FLAGS)";		\
+	  $(GACUTIL) /i $(POLICY_2_0_ASSEMBLY) /f $(GACUTIL_FLAGS) || exit 1;		\
 	fi
 
 uninstall-local:
@@ -91,7 +101,8 @@ uninstall-local:
 	  $(GACUTIL) /u $(ASSEMBLY_NAME) $(GACUTIL_FLAGS) || exit 1;			\
 	  echo "$(GACUTIL) /u policy.1.0.$(ASSEMBLY_NAME) $(GACUTIL_FLAGS)";		\
 	  $(GACUTIL) /u policy.1.0.$(ASSEMBLY_NAME) $(GACUTIL_FLAGS) || exit 1;		\
+	  echo "$(GACUTIL) /u policy.2.0.$(ASSEMBLY_NAME) $(GACUTIL_FLAGS)";		\
+	  $(GACUTIL) /u policy.2.0.$(ASSEMBLY_NAME) $(GACUTIL_FLAGS) || exit 1;		\
 	fi
 
-EXTRA_DIST = $(sources) $(POLICY_CONFIG)
-
+EXTRA_DIST = $(sources) $(POLICY_1_0_CONFIG) $(POLICY_2_0_CONFIG)
