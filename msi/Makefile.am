@@ -1,6 +1,6 @@
 SUBDIRS = unmanaged .
 
-assembly_dirs = glib pango atk gdk gtk glade gtkdotnet
+assembly_dirs = glib pango atk gdk gtk glade gtkdotnet cairo
 
 if ENABLE_MSI
 TARGET=gtk-sharp-2.0.msi
