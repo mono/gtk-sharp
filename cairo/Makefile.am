@@ -79,11 +79,11 @@ $(ASSEMBLY): $(build_sources) mono.snk
 
 $(POLICY_1_0_ASSEMBLY): $(srcdir)/$(POLICY_1_0_CONFIG) mono.snk
 	echo "Creating policy.1.0.$(ASSEMBLY)";
-	$(AL) -link:$(POLICY_1_0_CONFIG) -out:$@ -keyfile:mono.snk;
+	$(AL) -link:$(POLICY_1_0_CONFIG) -version:1.0 -out:$@ -keyfile:mono.snk;
 
 $(POLICY_2_0_ASSEMBLY): $(srcdir)/$(POLICY_2_0_CONFIG) mono.snk
 	echo "Creating policy.1.0.$(ASSEMBLY)";
-	$(AL) -link:$(POLICY_2_0_CONFIG) -out:$@ -keyfile:mono.snk;
+	$(AL) -link:$(POLICY_2_0_CONFIG) -version:2.0 -out:$@ -keyfile:mono.snk;
 
 install-data-local:
 	@if test -n '$(TARGET)'; then							\
