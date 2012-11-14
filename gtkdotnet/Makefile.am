@@ -43,7 +43,7 @@ policy.%.config: $(top_builddir)/policy.config
 	sed -e "s/@ASSEMBLY_NAME@/$(ASSEMBLY_NAME)/" -e "s/@POLICY@/$*/" $(top_builddir)/policy.config > $@
 
 $(POLICY_ASSEMBLIES) : policy.%.$(ASSEMBLY): policy.%.config gtk-sharp.snk
-	$(AL) -link:policy.$*.config -out:$@ -keyfile:gtk-sharp.snk
+	$(AL) -link:policy.$*.config -version:$* -out:$@ -keyfile:gtk-sharp.snk
 
 install-data-local:
 	@if test -n '$(TARGET)'; then							\
