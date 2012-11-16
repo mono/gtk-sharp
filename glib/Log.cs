@@ -28,8 +28,11 @@ namespace GLib {
 	using System.Collections;
 	using System.Runtime.InteropServices;
 
+	[Obsolete ("The signature for this delegate is incorrect. Use LogFunc2 instead of LogFunc to match the signature declared in glib")]
+	public delegate void LogFunc (string log_domain, LogLevelFlags log_level, string message);
+
 	[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
-	public delegate void LogFunc (string log_domain, LogLevelFlags log_level, string message, IntPtr user_data);
+	public delegate void LogFunc2 (string log_domain, LogLevelFlags log_level, string message, IntPtr user_data);
 
 	[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 	public delegate void PrintFunc (string message);
@@ -81,9 +84,9 @@ namespace GLib {
 		}
 
 		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
-		static extern uint g_log_set_handler (IntPtr log_domain, LogLevelFlags flags, LogFunc log_func, IntPtr user_data);
+		static extern uint g_log_set_handler (IntPtr log_domain, LogLevelFlags flags, LogFunc2 log_func, IntPtr user_data);
 
-		public static uint SetLogHandler (string logDomain, LogLevelFlags flags, LogFunc logFunc)
+		public static uint SetLogHandler (string logDomain, LogLevelFlags flags, LogFunc2 logFunc)
 		{
 			IntPtr ndom = Marshaller.StringToPtrGStrdup (logDomain);
 			uint result = g_log_set_handler (ndom, flags, logFunc, IntPtr.Zero);
@@ -93,6 +96,9 @@ namespace GLib {
 
 			return result;
 		}
+
+		[Obsolete ("This overload will not enable logging. You must use the overload which takes LogFunc2 to enable logging")]
+		public static uint SetLogHandler (string logDomain, LogLevelFlags flags, LogFunc logFunc) {}
 
 		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern uint g_log_remove_handler (IntPtr log_domain, uint handler_id);
