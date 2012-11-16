@@ -1,13 +1,13 @@
 // Gtk.Toolbar.custom - Gtk Toolbar class customizations
 //
-// Author: Mike Kestner <mkestner@novell.com> 
+// Author: Mike Kestner <mkestner@novell.com>
 //
 // Copyright (C) 2005 Novell, Inc.
 //
 // This code is inserted after the automatically generated code.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -23,6 +23,7 @@
 		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_object_weak_ref (IntPtr raw, WeakNotify cb, IntPtr data);
 
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void WeakNotify (IntPtr handle, IntPtr obj);
 
 		static void ReleaseDelegateCB (IntPtr handle, IntPtr obj)
@@ -44,7 +45,7 @@
 		static extern IntPtr gtk_toolbar_append_element (IntPtr raw, int type, IntPtr widget, IntPtr text, IntPtr tooltip_text, IntPtr tooltip_private_text, IntPtr icon, GtkSharp.SignalFuncNative cb, IntPtr user_data);
 
 		[Obsolete ("Replaced by ToolItem API")]
-		public Gtk.Widget AppendElement (Gtk.ToolbarChildType type, Gtk.Widget widget, string text, string tooltip_text, string tooltip_private_text, Gtk.Widget icon, Gtk.SignalFunc cb) 
+		public Gtk.Widget AppendElement (Gtk.ToolbarChildType type, Gtk.Widget widget, string text, string tooltip_text, string tooltip_private_text, Gtk.Widget icon, Gtk.SignalFunc cb)
 		{
 			GtkSharp.SignalFuncWrapper cb_wrapper = new GtkSharp.SignalFuncWrapper (cb);
 			IntPtr ntext = GLib.Marshaller.StringToPtrGStrdup (text);
@@ -68,7 +69,7 @@
 		static extern IntPtr gtk_toolbar_insert_element (IntPtr raw, int type, IntPtr widget, IntPtr text, IntPtr tooltip_text, IntPtr tooltip_private_text, IntPtr icon, GtkSharp.SignalFuncNative cb, IntPtr user_data, int position);
 
 		[Obsolete ("Replaced by ToolItem API")]
-		public Gtk.Widget InsertElement (Gtk.ToolbarChildType type, Gtk.Widget widget, string text, string tooltip_text, string tooltip_private_text, Gtk.Widget icon, Gtk.SignalFunc cb, IntPtr user_data, int position) 
+		public Gtk.Widget InsertElement (Gtk.ToolbarChildType type, Gtk.Widget widget, string text, string tooltip_text, string tooltip_private_text, Gtk.Widget icon, Gtk.SignalFunc cb, IntPtr user_data, int position)
 		{
 			GtkSharp.SignalFuncWrapper cb_wrapper = new GtkSharp.SignalFuncWrapper (cb);
 			IntPtr ntext = GLib.Marshaller.StringToPtrGStrdup (text);
@@ -93,7 +94,7 @@
 		static extern IntPtr gtk_toolbar_prepend_element (IntPtr raw, int type, IntPtr widget, IntPtr text, IntPtr tooltip_text, IntPtr tooltip_private_text, IntPtr icon, GtkSharp.SignalFuncNative cb, IntPtr user_data);
 
 		[Obsolete ("Replaced by ToolItem API")]
-		public Gtk.Widget PrependElement (Gtk.ToolbarChildType type, Gtk.Widget widget, string text, string tooltip_text, string tooltip_private_text, Gtk.Widget icon, Gtk.SignalFunc cb) 
+		public Gtk.Widget PrependElement (Gtk.ToolbarChildType type, Gtk.Widget widget, string text, string tooltip_text, string tooltip_private_text, Gtk.Widget icon, Gtk.SignalFunc cb)
 		{
 			GtkSharp.SignalFuncWrapper cb_wrapper = new GtkSharp.SignalFuncWrapper (cb);
 			IntPtr ntext = GLib.Marshaller.StringToPtrGStrdup (text);
@@ -117,7 +118,7 @@
 		static extern IntPtr gtk_toolbar_append_item (IntPtr raw, IntPtr text, IntPtr tooltip_text, IntPtr tooltip_private_text, IntPtr icon, GtkSharp.SignalFuncNative cb, IntPtr user_data);
 
 		[Obsolete ("Replaced by ToolItem API")]
-		public Gtk.Widget AppendItem (string text, string tooltip_text, string tooltip_private_text, Gtk.Widget icon, Gtk.SignalFunc cb) 
+		public Gtk.Widget AppendItem (string text, string tooltip_text, string tooltip_private_text, Gtk.Widget icon, Gtk.SignalFunc cb)
 		{
 			GtkSharp.SignalFuncWrapper cb_wrapper = new GtkSharp.SignalFuncWrapper (cb);
 			IntPtr ntext = GLib.Marshaller.StringToPtrGStrdup (text);
@@ -141,7 +142,7 @@
 		static extern IntPtr gtk_toolbar_insert_item (IntPtr raw, IntPtr text, IntPtr tooltip_text, IntPtr tooltip_private_text, IntPtr icon, GtkSharp.SignalFuncNative cb, IntPtr user_data, int position);
 
 		[Obsolete ("Replaced by ToolItem API")]
-		public Gtk.Widget InsertItem (string text, string tooltip_text, string tooltip_private_text, Gtk.Widget icon, Gtk.SignalFunc cb, IntPtr user_data, int position) 
+		public Gtk.Widget InsertItem (string text, string tooltip_text, string tooltip_private_text, Gtk.Widget icon, Gtk.SignalFunc cb, IntPtr user_data, int position)
 		{
 			GtkSharp.SignalFuncWrapper cb_wrapper = new GtkSharp.SignalFuncWrapper (cb);
 			IntPtr ntext = GLib.Marshaller.StringToPtrGStrdup (text);
@@ -165,7 +166,7 @@
 		static extern IntPtr gtk_toolbar_prepend_item (IntPtr raw, IntPtr text, IntPtr tooltip_text, IntPtr tooltip_private_text, IntPtr icon, GtkSharp.SignalFuncNative cb, IntPtr user_data);
 
 		[Obsolete ("Replaced by ToolItem API")]
-		public Gtk.Widget PrependItem (string text, string tooltip_text, string tooltip_private_text, Gtk.Widget icon, Gtk.SignalFunc cb) 
+		public Gtk.Widget PrependItem (string text, string tooltip_text, string tooltip_private_text, Gtk.Widget icon, Gtk.SignalFunc cb)
 		{
 			GtkSharp.SignalFuncWrapper cb_wrapper = new GtkSharp.SignalFuncWrapper (cb);
 			IntPtr ntext = GLib.Marshaller.StringToPtrGStrdup (text);
@@ -189,13 +190,13 @@
 		static extern IntPtr gtk_toolbar_insert_stock (IntPtr raw, IntPtr stock_id, IntPtr tooltip_text, IntPtr tooltip_private_text, GtkSharp.SignalFuncNative cb, IntPtr user_data, int position);
 
 		[Obsolete ("Replaced by ToolItem API")]
-		public Gtk.Widget InsertStock (string stock_id, string tooltip_text, string tooltip_private_text, Gtk.SignalFunc cb, int position) 
+		public Gtk.Widget InsertStock (string stock_id, string tooltip_text, string tooltip_private_text, Gtk.SignalFunc cb, int position)
 		{
 			return InsertStock (stock_id, tooltip_text, tooltip_private_text, cb, IntPtr.Zero, position);
 		}
 
 		[Obsolete ("Replaced by ToolItem API")]
-		public Gtk.Widget InsertStock (string stock_id, string tooltip_text, string tooltip_private_text, Gtk.SignalFunc cb, IntPtr user_data, int position) 
+		public Gtk.Widget InsertStock (string stock_id, string tooltip_text, string tooltip_private_text, Gtk.SignalFunc cb, IntPtr user_data, int position)
 		{
 			GtkSharp.SignalFuncWrapper cb_wrapper = new GtkSharp.SignalFuncWrapper (cb);
 			IntPtr nstock = GLib.Marshaller.StringToPtrGStrdup (stock_id);
@@ -214,4 +215,3 @@
 			}
 			return ret;
 		}
-

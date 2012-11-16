@@ -2,12 +2,12 @@
 //
 // Authors:
 //	Gonzalo Paniagua Javier (gonzalo@ximian.com)
-//	
+//
 //
 // Copyright (c) 2002 Gonzalo Paniagua
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -28,8 +28,10 @@ namespace GLib {
 	using System.Collections;
 	using System.Runtime.InteropServices;
 
-	public delegate void LogFunc (string log_domain, LogLevelFlags log_level, string message);
+	[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
+	public delegate void LogFunc (string log_domain, LogLevelFlags log_level, string message, IntPtr user_data);
 
+	[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 	public delegate void PrintFunc (string message);
 
 	[Flags]
@@ -68,7 +70,7 @@ namespace GLib {
 
 		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_logv (IntPtr log_domain, LogLevelFlags flags, IntPtr message);
-		
+
 		public void WriteLog (string logDomain, LogLevelFlags flags, string format, params object [] args)
 		{
 			IntPtr ndom = Marshaller.StringToPtrGStrdup (logDomain);
@@ -80,7 +82,7 @@ namespace GLib {
 
 		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern uint g_log_set_handler (IntPtr log_domain, LogLevelFlags flags, LogFunc log_func, IntPtr user_data);
-		
+
 		public static uint SetLogHandler (string logDomain, LogLevelFlags flags, LogFunc logFunc)
 		{
 			IntPtr ndom = Marshaller.StringToPtrGStrdup (logDomain);
@@ -99,7 +101,7 @@ namespace GLib {
 		{
 			if (handlers != null && handlers.ContainsKey (handlerID))
 				handlers.Remove (handlerID);
-			
+
 			IntPtr ndom = Marshaller.StringToPtrGStrdup (logDomain);
 			g_log_remove_handler (ndom, handlerID);
 			Marshaller.Free (ndom);
@@ -116,7 +118,7 @@ namespace GLib {
 
 			return g_set_print_handler (handler);
 		}
-		
+
 		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern PrintFunc g_set_printerr_handler (PrintFunc handler);
 
@@ -127,12 +129,12 @@ namespace GLib {
 
 			return g_set_printerr_handler (handler);
 		}
-		
+
 		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_log_default_handler (IntPtr log_domain, LogLevelFlags log_level, IntPtr message, IntPtr unused_data);
 
 		public static void DefaultHandler (string logDomain, LogLevelFlags logLevel, string message)
-						   
+
 		{
 			IntPtr ndom = Marshaller.StringToPtrGStrdup (logDomain);
 			IntPtr nmess = Marshaller.StringToPtrGStrdup (message);
@@ -143,7 +145,7 @@ namespace GLib {
 
 		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		extern static LogLevelFlags g_log_set_always_fatal (LogLevelFlags fatal_mask);
-		
+
 		public static LogLevelFlags SetAlwaysFatal (LogLevelFlags fatalMask)
 		{
 			return g_log_set_always_fatal (fatalMask);
@@ -151,7 +153,7 @@ namespace GLib {
 
 		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		extern static LogLevelFlags g_log_set_fatal_mask (IntPtr log_domain, LogLevelFlags fatal_mask);
-		
+
 		public static LogLevelFlags SetAlwaysFatal (string logDomain, LogLevelFlags fatalMask)
 		{
 			IntPtr ndom = Marshaller.StringToPtrGStrdup (logDomain);
@@ -188,4 +190,3 @@ namespace GLib {
 		}
 	}
 }
-
