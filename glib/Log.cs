@@ -83,9 +83,9 @@ namespace GLib {
 		}
 
 		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
-		static extern uint g_log_set_handler (IntPtr log_domain, LogLevelFlags flags, LogFunc2 log_func, IntPtr user_data);
+		static extern uint g_log_set_handler (IntPtr log_domain, LogLevelFlags flags, LogFunc2 log_func, LogFunc user_data);
 
-		static readonly LogFunc2 LogFuncTrampoline = (string domain, LogLoevelFlags level, string message, LogFunc user_data) => {
+		static readonly LogFunc2 LogFuncTrampoline = (string domain, LogLevelFlags level, string message, LogFunc user_data) => {
                         user_data (domain, level, message);
                 };
 
