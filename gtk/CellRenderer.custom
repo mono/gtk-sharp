@@ -135,7 +135,7 @@
 		{
 			try {
 				CellRenderer obj = GLib.Object.GetObject (raw, false) as CellRenderer;
-				Gdk.Event _event = new Gdk.Event (evnt);
+				Gdk.Event _event = evnt != IntPtr.Zero ? new Gdk.Event (evnt) : null;
 				Widget widg = GLib.Object.GetObject (widget, false) as Gtk.Widget;
 				CellEditable retval = obj.StartEditing (_event, widg, GLib.Marshaller.Utf8PtrToString (path), background_area, cell_area, flags);
 				if (retval == null)
