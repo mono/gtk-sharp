@@ -161,7 +161,7 @@
 		[GLib.DefaultSignalHandler (Type=typeof(Gtk.CellRenderer), ConnectionMethod="OverrideStartEditing")]
 		public virtual Gtk.CellEditable StartEditing(Gdk.Event evnt, Gtk.Widget widget, string path, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
 			IntPtr native = GLib.Marshaller.StringToPtrGStrdup (path);
-			IntPtr raw_ret = gtksharp_cellrenderer_base_start_editing(Handle, evnt.Handle, widget.Handle, native, ref background_area, ref cell_area, (int) flags);
+			IntPtr raw_ret = gtksharp_cellrenderer_base_start_editing(Handle, evnt != null ? evnt.Handle : IntPtr.Zero, widget.Handle, native, ref background_area, ref cell_area, (int) flags);
 			GLib.Marshaller.Free (native);
 			Gtk.CellEditable ret = (Gtk.CellEditable) GLib.Object.GetObject(raw_ret);
 			return ret;
