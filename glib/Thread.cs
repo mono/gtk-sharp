@@ -28,7 +28,7 @@ namespace GLib
 	{
 		private Thread () {}
 		
-#if DISABLE_GTHREAD_CHECK
+#if !ENABLE_GTHREAD_CHECK
 		public static void Init ()
 		{
 			// GLib automatically inits threads in 2.31 and above
