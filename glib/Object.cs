@@ -429,7 +429,7 @@ namespace GLib {
 
 				if (!iface.IsAssignableFrom (t.BaseType)) {
 					GInterfaceInfo info = adapter.Info;
-					info.Data = gtype.GetClassPtr ();
+					info.Data = gtype.Val;
 					//FIXME:  overiding prop is done inside the init of interface adapter
 					// not sure that it is the good solution but 
 					// it is the only one I found without exception or loop
@@ -460,6 +460,9 @@ namespace GLib {
 			GType gtype = GType.RegisterGObjectType (t);
 			bool is_first_subclass = gtype.GetBaseType () == gtype.GetThresholdType ();
 
+			bool handlers_overridden = is_first_subclass;
+			AddInterfaces (gtype, t, ref handlers_overridden);
+
 			if (is_first_subclass) {
 				IntPtr class_ptr = gtype.GetClassPtr ();
 				GObjectClass gobject_class = (GObjectClass) Marshal.PtrToStructure (class_ptr, typeof (GObjectClass));
@@ -469,11 +472,9 @@ namespace GLib {
 				Marshal.StructureToPtr (gobject_class, class_ptr, false);
 			}
 			idx = 1;
-			bool handlers_overridden = is_first_subclass;
 			AddProperties (gtype, t, is_first_subclass, ref handlers_overridden);
 			ConnectDefaultHandlers (gtype, t);
 			InvokeTypeInitializers (gtype, t);
-			AddInterfaces (gtype, t, ref handlers_overridden);
 			return gtype;
 		}
 
