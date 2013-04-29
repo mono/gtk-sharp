@@ -17,6 +17,9 @@
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder" Name="PFiles">
         <Directory Id="GtkSharp" Name="GtkSharp">
+          <Component Id="updateinfo" Guid="8bfaed66-e92d-428b-b3d1-79759ee4ede0">
+              <File Id="updateinfo" Name="updateinfo" Source="updateinfo" Vital="yes" />
+          </Component>
           <Directory Id="INSTALLLOCATION" Name="2.12">
 	    <Merge Id="unmanaged" Language="1033" SourceFile="unmanaged\unmanaged.msm" DiskId="1" />
 	    <Merge Id="mono-cairo-lib" Language="1033" SourceFile="mono-cairo-lib.msm" DiskId="1" />
@@ -288,6 +291,7 @@
       <ComponentRef Id="gtkdotnet_policy.2.8" />
       <ComponentRef Id="gtkdotnet_policy.2.10" />
       <ComponentRef Id="gtksharpinstassembly" />
+      <ComponentRef Id="updateinfo" />
     </Feature>
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" />
     <UI Id="WixUI_InstallDir">
