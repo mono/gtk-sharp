@@ -1088,7 +1088,7 @@
 
         <Directory Id="bin" Name="bin">
           <Component Id="binaries" Guid="f007e300-dc2d-11dc-9359-005056c00008">
-            <File Id="freetype6.dll" Name="freetype6.dll" Source="source\bin\freetype6.dll" Vital="yes"/>
+            <File Id="libfreetype6.dll" Name="libfreetype-6.dll" Source="source\bin\libfreetype-6.dll" Vital="yes"/>
             <File Id="gdkpixbufqueryloaders.exe" Name="gdk-pixbuf-query-loaders.exe" Source="source\bin\gdk-pixbuf-query-loaders.exe" Vital="yes"/>
             <File Id="gspawnwin32helper.exe" Name="gspawn-win32-helper.exe" Source="source\bin\gspawn-win32-helper.exe" Vital="yes"/>
             <File Id="gspawnwin32helperconsole.exe" Name="gspawn-win32-helper-console.exe" Source="source\bin\gspawn-win32-helper-console.exe" Vital="yes"/>
@@ -1113,15 +1113,33 @@
             <File Id="libpangocairo1.00.dll" Name="libpangocairo-1.0-0.dll" Source="source\bin\libpangocairo-1.0-0.dll" Vital="yes"/>
             <File Id="libpangoft21.00.dll" Name="libpangoft2-1.0-0.dll" Source="source\bin\libpangoft2-1.0-0.dll" Vital="yes"/>
             <File Id="libpangowin321.00.dll" Name="libpangowin32-1.0-0.dll" Source="source\bin\libpangowin32-1.0-0.dll" Vital="yes"/>
-            <File Id="libpng1414.dll" Name="libpng14-14.dll" Source="source\bin\libpng14-14.dll" Vital="yes"/>
+            <File Id="libpng1515.dll" Name="libpng15-15.dll" Source="source\bin\libpng15-15.dll" Vital="yes"/>
             <File Id="librsvg22.dll" Name="librsvg-2-2.dll" Source="source\bin\librsvg-2-2.dll" Vital="yes"/>
-            <File Id="libtiff3.dll" Name="libtiff-3.dll" Source="source\bin\libtiff-3.dll" Vital="yes"/>
-            <File Id="libtiffxx3.dll" Name="libtiffxx3.dll" Source="source\bin\libtiffxx-3.dll" Vital="yes"/>
+            <File Id="libtiff5.dll" Name="libtiff-5.dll" Source="source\bin\libtiff-5.dll" Vital="yes"/>
             <File Id="libxml2.dll" Name="libxml2-2.dll" Source="source\bin\libxml2-2.dll" Vital="yes"/>
             <File Id="pangoquerymodules.exe" Name="pango-querymodules.exe" Source="source\bin\pango-querymodules.exe" Vital="yes"/>
             <File Id="zlib1.dll" Name="zlib1.dll" Source="source\bin\zlib1.dll" Vital="yes"/>
             <File Id="libgio2.00.dll" Name="libgio-2.0-0.dll" Source="source\bin\libgio-2.0-0.dll" Vital="yes"/>
             <File Id="libexpat1.dll" Name="libexpat-1.dll" Source="source\bin\libexpat-1.dll" Vital="yes"/>
+
+            <File Id="libffi5.dll" Name="libffi-5.dll" Source="source\bin\libffi-5.dll" Vital="yes" />
+            <File Id="libgccssjlj1.dll" Name="libgcc_s_sjlj-1.dll" Source="source\bin\libgcc_s_sjlj-1.dll" Vital="yes" />
+            <File Id="libgsfwin321114.dll" Name="libgsf-win32-1-114.dll" Source="source\bin\libgsf-win32-1-114.dll" Vital="yes"/>
+            <File Id="libharfbuzz0.dll" Name="libharfbuzz-0.dll" Source="source\bin\libharfbuzz-0.dll" Vital="yes"/>
+            <File Id="libintl8.dll" Name="libintl-8.dll" Source="source\bin\libintl-8.dll" Vital="yes"/>
+            <File Id="libjasper1.dll" Name="libjasper-1.dll" Source="source\bin\libjasper-1.dll" Vital="yes"/>
+            <File Id="liblzma5.dll" Name="liblzma-5.dll" Source="source\bin\liblzma-5.dll" Vital="yes"/>
+            <File Id="libpixman10.dll" Name="libpixman-1-0.dll" Source="source\bin\libpixman-1-0.dll" Vital="yes" />
+            <File Id="libstdcpp6.dll" Name="libstdc++-6.dll" Source="source\bin\libstdc++-6.dll" Vital="yes" />
+
+            <!-- ICU -->
+            <File Id="icudata48.dll" Name="icudata48.dll" Source="source\bin\icudata48.dll" Vital="yes"/>
+            <File Id="icui18n48.dll" Name="icui18n48.dll" Source="source\bin\icui18n48.dll" Vital="yes"/>
+            <File Id="icuio48.dll" Name="icuio48.dll" Source="source\bin\icuio48.dll" Vital="yes"/>
+            <File Id="icule48.dll" Name="icule48.dll" Source="source\bin\icule48.dll" Vital="yes"/>
+            <File Id="iculx48.dll" Name="iculx48.dll" Source="source\bin\iculx48.dll" Vital="yes"/>
+            <File Id="icutu48.dll" Name="icutu48.dll" Source="source\bin\icutu48.dll" Vital="yes"/>
+            <File Id="icuuc48.dll" Name="icuuc48.dll" Source="source\bin\icuuc48.dll" Vital="yes"/>
           </Component>
         </Directory>
       </Directory>
