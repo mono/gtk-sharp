@@ -252,7 +252,7 @@ namespace Cairo {
                         }
                 }
                 
-                //FIXME: obsolete this property
+		[Obsolete("Use SetSourceColor")]
                 public Cairo.Color Color {
 			set { 
 				NativeMethods.cairo_set_source_rgba (state, value.R, value.G, value.B, value.A);
@@ -385,6 +385,11 @@ namespace Cairo {
 
 		public uint ReferenceCount {
 			get { return NativeMethods.cairo_get_reference_count (state); }
+		}
+		
+		public void SetSourceColor (Color color)
+		{
+			NativeMethods.cairo_set_source_rgba (state, color.R, color.G, color.B, color.A);
 		}
 
 		public void SetSourceRGB (double r, double g, double b)
