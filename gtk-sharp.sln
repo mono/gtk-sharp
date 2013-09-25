@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gtk", "gtk\gtk.csproj", "{9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pango", "pango\pango.csproj", "{FF422D8C-562F-4EA6-8590-9D1A5CD40AD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gtkdotnet", "gtkdotnet\gtkdotnet.csproj", "{F6C52EAE-CB2A-48F6-9C80-E0B776873022}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -51,6 +53,10 @@ Global
 		{FF422D8C-562F-4EA6-8590-9D1A5CD40AD4}.Debug|x86.Build.0 = Debug|x86
 		{FF422D8C-562F-4EA6-8590-9D1A5CD40AD4}.Release|x86.ActiveCfg = Release|x86
 		{FF422D8C-562F-4EA6-8590-9D1A5CD40AD4}.Release|x86.Build.0 = Release|x86
+		{F6C52EAE-CB2A-48F6-9C80-E0B776873022}.Debug|x86.ActiveCfg = Debug|x86
+		{F6C52EAE-CB2A-48F6-9C80-E0B776873022}.Debug|x86.Build.0 = Debug|x86
+		{F6C52EAE-CB2A-48F6-9C80-E0B776873022}.Release|x86.ActiveCfg = Release|x86
+		{F6C52EAE-CB2A-48F6-9C80-E0B776873022}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{58346CC6-DE93-45B4-8093-3508BD5DAA12} = {E0AD538D-9979-479B-8CBA-ED9143536CE0}
 		{94045F11-4266-40B4-910F-298985AF69D5} = {E0AD538D-9979-479B-8CBA-ED9143536CE0}
 		{FF422D8C-562F-4EA6-8590-9D1A5CD40AD4} = {E0AD538D-9979-479B-8CBA-ED9143536CE0}
+		{F6C52EAE-CB2A-48F6-9C80-E0B776873022} = {E0AD538D-9979-479B-8CBA-ED9143536CE0}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = gtk\gtk.csproj

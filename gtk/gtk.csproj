@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{94045F11-4266-40B4-910F-298985AF69D5}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>gtk</RootNamespace>
+    <RootNamespace>Gtk</RootNamespace>
     <AssemblyName>gtk</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
@@ -39,6 +39,12 @@
     </NoWarn>
     <DefineConstants>GTK_SHARP_2_6;GTK_SHARP_2_8;GTK_SHARP_2_10;GTK_SHARP_2_12</DefineConstants>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>gtk-sharp.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Reference Include="System" />
@@ -65,7 +71,9 @@
       <Name>pango</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="gtk-sharp.snk" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionEntry.cs">
       <SubType>Code</SubType>
