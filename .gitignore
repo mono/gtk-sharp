@@ -1,5 +1,6 @@
 *~
 *.pdb
+*.suo
 .deps
 .libs
 *-api.raw
@@ -20,6 +21,7 @@
 *.tar.gz
 *.wixobj
 *.wixpdb
+*.FileListAbsolute.txt
 
 AssemblyInfo.cs
 INSTALL
