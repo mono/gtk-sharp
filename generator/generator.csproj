@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{80E73555-2284-40DC-9068-9A40B7359B0C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>generator</RootNamespace>
+    <AssemblyName>generator</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AliasGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BoxedGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ByRefGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CallbackGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ChildProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClassBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClassGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CodeGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ConstFilenameGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ConstStringGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Ctor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EnumGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FieldBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GenBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GenerationInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HandleBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IAccessor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IGeneratable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IManualMarshaler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="InterfaceGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LPGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LPUGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ManagedCallString.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ManualGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MarshalGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Method.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MethodBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MethodBody.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ObjectBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ObjectField.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ObjectGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OpaqueGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Parameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Parser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Property.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PropertyBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ReturnValue.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Signal.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Signature.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SimpleBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SimpleGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Statistics.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StructBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StructField.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StructGen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SymbolTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="VirtualMethod.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="VMSignature.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
