@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{58346CC6-DE93-45B4-8093-3508BD5DAA12}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Gdk</RootNamespace>
+    <AssemblyName>gdk</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;GTK_SHARP_2_6;GTK_SHARP_2_8;GTK_SHARP_2_10;GTK_SHARP_2_12</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+    <NoWarn>0169;0612;0618;0649;1616;1699</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+    <NoWarn>0169;0612;0618;0649;1616;1699</NoWarn>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>GTK_SHARP_2_6;GTK_SHARP_2_8;GTK_SHARP_2_10;GTK_SHARP_2_12</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>gtk-sharp.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\glib\glib.csproj">
+      <Project>{3BF1D531-8840-4F15-8066-A9788D8C398B}</Project>
+      <Name>glib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cairo\cairo.csproj">
+      <Project>{364577DB-9728-4951-AC2C-EDF7A6FCC09D}</Project>
+      <Name>cairo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\pango\pango.csproj">
+      <Project>{FF422D8C-562F-4EA6-8590-9D1A5CD40AD4}</Project>
+      <Name>pango</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gtk-sharp.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Event.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventClient.cs" />
+    <Compile Include="EventConfigure.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventCrossing.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventDND.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventExpose.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventFocus.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventGrabBroken.cs" />
+    <Compile Include="EventKey.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventMotion.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventOwnerChange.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventProximity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventScroll.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventSelection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventSetting.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventVisibility.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventWindowState.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AreaUpdatedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Atom.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AxisUse.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\BRESINFO.cs" />
+    <Compile Include="generated\ByteOrder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CairoHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CapStyle.cs" />
+    <Compile Include="generated\Char.cs" />
+    <Compile Include="generated\ClosedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Color.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Colormap.cs" />
+    <Compile Include="generated\Colorspace.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CrossingMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Cursor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CursorType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DestroyNotify.cs" />
+    <Compile Include="generated\Device.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DeviceAxis.cs" />
+    <Compile Include="generated\DeviceKey.cs" />
+    <Compile Include="generated\Display.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DisplayManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DisplayOpenedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DisplayPointerHooks.cs" />
+    <Compile Include="generated\Drag.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DragAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DragContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DragProtocol.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Drawable.cs" />
+    <Compile Include="generated\Drop.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\EdgeTable.cs" />
+    <Compile Include="generated\EdgeTableEntry.cs" />
+    <Compile Include="generated\Error.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\EventFunc.cs" />
+    <Compile Include="generated\EventHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\EventMask.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\EventType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ExtensionMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Fill.cs" />
+    <Compile Include="generated\FillRule.cs" />
+    <Compile Include="generated\FilterFunc.cs" />
+    <Compile Include="generated\FilterReturn.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Font.cs" />
+    <Compile Include="generated\Fontset.cs" />
+    <Compile Include="generated\FontType.cs" />
+    <Compile Include="generated\Function.cs" />
+    <Compile Include="generated\GC.cs" />
+    <Compile Include="generated\GCValues.cs" />
+    <Compile Include="generated\GCValuesMask.cs" />
+    <Compile Include="generated\GdkSharp.DestroyNotifyNative.cs" />
+    <Compile Include="generated\GdkSharp.EventFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GdkSharp.FilterFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GdkSharp.InputFunctionNative.cs" />
+    <Compile Include="generated\GdkSharp.InvalidateMaybeRecurseChildFuncNative.cs" />
+    <Compile Include="generated\GdkSharp.PixbufDestroyNotifyNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GdkSharp.PixbufSaveFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GdkSharp.SpanFuncNative.cs" />
+    <Compile Include="generated\Geometry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GLibSharp.GSourceFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GLibSharp.SpawnChildSetupFuncNative.cs" />
+    <Compile Include="generated\Global.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GrabStatus.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Gravity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Image.cs" />
+    <Compile Include="generated\ImageType.cs" />
+    <Compile Include="generated\Input.cs" />
+    <Compile Include="generated\InputCondition.cs" />
+    <Compile Include="generated\InputFunction.cs" />
+    <Compile Include="generated\InputMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\InputSource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\InterpType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\InvalidateMaybeRecurseChildFunc.cs" />
+    <Compile Include="generated\JoinStyle.cs" />
+    <Compile Include="generated\Keyboard.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Keymap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\KeymapKey.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Keyval.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\LineStyle.cs" />
+    <Compile Include="generated\ModifierType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\NotifyType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\OverlapType.cs" />
+    <Compile Include="generated\OwnerChange.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PangoAttrEmbossColor.cs" />
+    <Compile Include="generated\PangoAttrEmbossed.cs" />
+    <Compile Include="generated\PangoAttrStipple.cs" />
+    <Compile Include="generated\PangoHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PangoRenderer.cs" />
+    <Compile Include="generated\Pixbuf.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixbufAlphaMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixbufAniAnim.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixbufAniAnimIter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixbufAnimation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixbufAnimationIter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixbufDestroyNotify.cs" />
+    <Compile Include="generated\PixbufError.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixbufFormat.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixbufFrame.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixbufFrameAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixbufGifAnim.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixbufGifAnimIter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixbufLoader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixbufRotation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixbufSaveFunc.cs" />
+    <Compile Include="generated\PixbufSimpleAnim.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Pixdata.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixdataDumpType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixdataType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Pixmap.cs" />
+    <Compile Include="generated\Point.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\POINTBLOCK.cs" />
+    <Compile Include="generated\Pointer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PointerHooks.cs" />
+    <Compile Include="generated\Property.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PropertyState.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PropMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Rectangle.cs" />
+    <Compile Include="generated\Region.cs" />
+    <Compile Include="generated\RegionBox.cs" />
+    <Compile Include="generated\Rgb.cs" />
+    <Compile Include="generated\RgbCmap.cs" />
+    <Compile Include="generated\RgbDither.cs" />
+    <Compile Include="generated\ScanLineList.cs" />
+    <Compile Include="generated\ScanLineListBlock.cs" />
+    <Compile Include="generated\Screen.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ScrollDirection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Segment.cs" />
+    <Compile Include="generated\Selection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SettingAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SizePreparedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Span.cs" />
+    <Compile Include="generated\SpanFunc.cs" />
+    <Compile Include="generated\Spawn.cs" />
+    <Compile Include="generated\Status.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SubwindowMode.cs" />
+    <Compile Include="generated\Threads.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TimeCoord.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Trapezoid.cs" />
+    <Compile Include="generated\VisibilityState.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Visual.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\VisualType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Window.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WindowAttr.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WindowAttributesType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WindowClass.cs" />
+    <Compile Include="generated\WindowEdge.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WindowHints.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WindowState.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WindowType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WindowTypeHint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WMDecoration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WMFunction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Key.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Size.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TextProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

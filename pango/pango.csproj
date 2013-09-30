@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FF422D8C-562F-4EA6-8590-9D1A5CD40AD4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Pango</RootNamespace>
+    <AssemblyName>pango</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;GTK_SHARP_2_6;GTK_SHARP_2_8;GTK_SHARP_2_10;GTK_SHARP_2_12</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>0169;1616;1699</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>0169;1616;1699</NoWarn>
+    <DefineConstants>GTK_SHARP_2_6;GTK_SHARP_2_8;GTK_SHARP_2_10;GTK_SHARP_2_12</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>gtk-sharp.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\glib\glib.csproj">
+      <Project>{3BF1D531-8840-4F15-8066-A9788D8C398B}</Project>
+      <Name>glib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cairo\cairo.csproj">
+      <Project>{364577DB-9728-4951-AC2C-EDF7A6FCC09D}</Project>
+      <Name>cairo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gtk-sharp.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="AttrBackground.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrFallback.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrFamily.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrFontDesc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrForeground.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrGravity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrGravityHint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Attribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrLanguage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrLetterSpacing.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrRise.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrScale.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrShape.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrSize.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrStretch.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrStrikethrough.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrStrikethroughColor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrStyle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrUnderline.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrUnderlineColor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrVariant.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AttrWeight.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Alignment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Analysis.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AttrDataCopyFunc.cs" />
+    <Compile Include="generated\AttrFilterFunc.cs" />
+    <Compile Include="generated\AttrIterator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AttrList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AttrType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CairoHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CairoShapeRendererFunc.cs" />
+    <Compile Include="generated\Color.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Context.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Coverage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CoverageLevel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Direction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\EllipsizeMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\EngineLang.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\EngineShape.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Font.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FontDescription.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FontFace.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FontFamily.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FontMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FontMask.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FontMetrics.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Fontset.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FontsetForeachFunc.cs" />
+    <Compile Include="generated\Global.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GlyphGeometry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GlyphInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GlyphItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GlyphString.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GlyphVisAttr.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Gravity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GravityHint.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Item.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Language.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Layout.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\LayoutIter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\LayoutLine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\LayoutRun.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\LogAttr.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Matrix.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PangoSharp.AttrDataCopyFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PangoSharp.AttrFilterFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PangoSharp.CairoShapeRendererFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PangoSharp.FontsetForeachFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Rectangle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Renderer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RenderPart.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Script.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Stretch.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Style.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TabAlign.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TabArray.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Underline.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Units.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Variant.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Weight.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WrapMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Scale.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ScriptIter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
