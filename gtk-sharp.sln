@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pango", "pango\pango.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "audit", "audit\audit.csproj", "{D8A1AAF8-EA10-4D1D-8A8A-D38C56C0A753}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "parser", "parser\parser.csproj", "{83F8326F-B566-4F78-B5B0-7B4EBC1BE2B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fixup", "fixup\fixup.csproj", "{7574AA95-796A-4F34-AE02-1BE38089727F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -53,10 +57,18 @@ Global
 		{58346CC6-DE93-45B4-8093-3508BD5DAA12}.Debug|x86.Build.0 = Debug|x86
 		{58346CC6-DE93-45B4-8093-3508BD5DAA12}.Release|x86.ActiveCfg = Release|x86
 		{58346CC6-DE93-45B4-8093-3508BD5DAA12}.Release|x86.Build.0 = Release|x86
+		{7574AA95-796A-4F34-AE02-1BE38089727F}.Debug|x86.ActiveCfg = Debug|x86
+		{7574AA95-796A-4F34-AE02-1BE38089727F}.Debug|x86.Build.0 = Debug|x86
+		{7574AA95-796A-4F34-AE02-1BE38089727F}.Release|x86.ActiveCfg = Release|x86
+		{7574AA95-796A-4F34-AE02-1BE38089727F}.Release|x86.Build.0 = Release|x86
 		{80E73555-2284-40DC-9068-9A40B7359B0C}.Debug|x86.ActiveCfg = Debug|x86
 		{80E73555-2284-40DC-9068-9A40B7359B0C}.Debug|x86.Build.0 = Debug|x86
 		{80E73555-2284-40DC-9068-9A40B7359B0C}.Release|x86.ActiveCfg = Release|x86
 		{80E73555-2284-40DC-9068-9A40B7359B0C}.Release|x86.Build.0 = Release|x86
+		{83F8326F-B566-4F78-B5B0-7B4EBC1BE2B6}.Debug|x86.ActiveCfg = Debug|x86
+		{83F8326F-B566-4F78-B5B0-7B4EBC1BE2B6}.Debug|x86.Build.0 = Debug|x86
+		{83F8326F-B566-4F78-B5B0-7B4EBC1BE2B6}.Release|x86.ActiveCfg = Release|x86
+		{83F8326F-B566-4F78-B5B0-7B4EBC1BE2B6}.Release|x86.Build.0 = Release|x86
 		{94045F11-4266-40B4-910F-298985AF69D5}.Debug|x86.ActiveCfg = Debug|x86
 		{94045F11-4266-40B4-910F-298985AF69D5}.Debug|x86.Build.0 = Debug|x86
 		{94045F11-4266-40B4-910F-298985AF69D5}.Release|x86.ActiveCfg = Release|x86
