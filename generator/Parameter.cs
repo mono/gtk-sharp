@@ -266,6 +266,18 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		bool hidden = false;
+		public bool IsHidden {
+			get {
+				if (!hidden && elem.HasAttribute ("hidden"))
+					hidden = elem.GetAttributeAsBoolean ("hidden");
+				return hidden;
+			}
+			set {
+				hidden = value;
+			}
+		}
+
 		public virtual string[] Prepare {
 			get {
 				IGeneratable gen = Generatable;
