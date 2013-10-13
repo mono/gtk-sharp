@@ -1,4 +1,4 @@
-SUBDIRS = sources generator parser glib gio cairo pango atk gdk gtk gtkdotnet sample doc
+SUBDIRS = sources generator parser fixup glib gio cairo pango atk gdk gtk gtkdotnet sample doc
 
 EXTRA_DIST = 			\
 	gapi.xsd		\
