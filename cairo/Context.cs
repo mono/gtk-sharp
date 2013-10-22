@@ -112,11 +112,11 @@ namespace Cairo {
 
 		protected virtual void Dispose (bool disposing)
 		{
-			if (!disposing || CairoDebug.Enabled)
-				CairoDebug.OnDisposed<Context> (handle, disposing);
-
 			if (!disposing || handle == IntPtr.Zero)
 				return;
+
+			if (!disposing || CairoDebug.Enabled)
+				CairoDebug.OnDisposed<Context> (handle, disposing);
 
 			NativeMethods.cairo_destroy (handle);
 			handle = IntPtr.Zero;
