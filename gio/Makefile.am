@@ -11,6 +11,7 @@ glue_includes = gio/gio.h
 
 POLICY_VERSIONS=
 
+# FIXME: include DBusInterfaceVTable.cs (custom) or remove the file
 sources =			\
 	AppInfoAdapter.cs	\
 	FileAdapter.cs		\

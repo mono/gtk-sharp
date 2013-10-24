@@ -21,6 +21,7 @@ using System.Runtime.InteropServices;
 
 namespace GLib {
 
+	// FIXME: this file was not included in the build when it was created, as it is just a stub
 	public partial class DBusInterfaceVTable {
 
 		[StructLayout(LayoutKind.Sequential)]
