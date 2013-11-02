@@ -292,3 +292,11 @@ if test "x$enable_monodoc" = "xyes" -a "x$doc_sources_dir" != "x$prefix/lib/mono
 fi
 echo "---"
 
+mono_prefix=`pkg-config --variable=prefix mono`
+if test "x$mono_prefix" != "x$prefix"; then
+        AC_WARN(Prefix to use ($prefix) is not the same as Mono's ($mono_prefix). Consider using
+		    ./autogen.sh --prefix=$mono_prefix
+		    See the README for more information.
+	)
+fi
+
