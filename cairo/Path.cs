@@ -40,6 +40,9 @@ namespace Cairo {
 
 		internal Path (IntPtr handle)
 		{
+			if (handle == IntPtr.Zero)
+				throw new ArgumentException ("handle should not point to NULL", "handle");
+
 			this.handle = handle;
 			if (CairoDebug.Enabled)
 				CairoDebug.OnAllocated (handle);
