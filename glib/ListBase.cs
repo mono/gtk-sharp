@@ -190,10 +190,10 @@ namespace GLib {
 			return fullname + "Adapter";
 		}
 
-		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		[DllImport (Global.GLibNativeLib, CallingConvention = CallingConvention.Cdecl)]
 		static extern void g_free (IntPtr item);
 
-		[DllImport ("libgobject-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		[DllImport (Global.GObjectNativeLib, CallingConvention = CallingConvention.Cdecl)]
 		static extern void g_object_unref (IntPtr item);
 
 		public void Empty ()
