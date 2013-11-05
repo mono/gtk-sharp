@@ -66,7 +66,7 @@ namespace Cairo {
 			if (handle == IntPtr.Zero)
 				return;
 
-			NativeMethods.cairo_path_destroy (handle);
+			Global.QueueUnref (NativeMethods.cairo_path_destroy, handle);
 			handle = IntPtr.Zero;
 		}
 	}

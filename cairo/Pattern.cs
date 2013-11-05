@@ -102,7 +102,7 @@ namespace Cairo {
 			if (Handle == IntPtr.Zero)
 				return;
 
-			NativeMethods.cairo_pattern_destroy (Handle);
+			Global.QueueUnref (NativeMethods.cairo_pattern_destroy, Handle);
 			Handle = IntPtr.Zero;
 		}
 

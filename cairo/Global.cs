@@ -1,4 +1,10 @@
-// Copyright (c) 2011 Novell, Inc.
+//
+// Mono.Cairo.Global.cs
+//
+// Authors:
+//    Andrés G. Aragoneses
+//
+// (C) Andrés G. Aragoneses, 2013.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -24,62 +30,15 @@ using System;
 
 namespace Cairo
 {
-
-	public enum DeviceType {
-		Drm,
-		GL,
-		Script,
-		Xcb,
-		Xlib,
-		Xml,
-	}
-
-	public class Device : IDisposable
+	internal class Global
 	{
-
-		IntPtr handle;
-
-		internal Device (IntPtr handle)
+		internal static void QueueUnref (Action<IntPtr> unref_native_function, IntPtr handle)
 		{
-			this.handle = NativeMethods.cairo_device_reference (handle);
+			GLib.Timeout.Add (50, () => {
+				unref_native_function (handle);
+				return false;
+			});
 		}
-
-		public Status Acquire ()
-		{
-			return NativeMethods.cairo_device_acquire (handle);
-		}
-
-		public void Dispose ()
-		{
-			if (handle != IntPtr.Zero)
-				Global.QueueUnref (NativeMethods.cairo_device_destroy, handle);
-			handle = IntPtr.Zero;
-			GC.SuppressFinalize (this);
-		}
-
-		public void Finish ()
-		{
-			NativeMethods.cairo_device_finish (handle);
-		}
-
-		public void Flush ()
-		{
-			NativeMethods.cairo_device_flush (handle);
-		}
-
-		public void Release ()
-		{
-			NativeMethods.cairo_device_release (handle);
-		}
-
-		public Status Status {
-			get { return NativeMethods.cairo_device_status (handle); }
-		}
-
-		public DeviceType Type {
-			get { return NativeMethods.cairo_device_get_type (handle); }
-		}
-
 	}
 }
 

@@ -700,7 +700,7 @@ namespace Cairo
 		internal static extern IntPtr cairo_scaled_font_create (IntPtr fontFace, Matrix matrix, Matrix ctm, IntPtr options);
 		
 		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
-		internal static extern IntPtr cairo_scaled_font_destroy (IntPtr scaled_font);
+		internal static extern void cairo_scaled_font_destroy (IntPtr scaled_font);
 		
 		[DllImport (cairo, CallingConvention=CallingConvention.Cdecl)]
 		internal static extern void cairo_scaled_font_extents (IntPtr scaled_font, out FontExtents extents);

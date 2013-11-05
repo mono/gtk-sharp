@@ -1,6 +1,7 @@
 ASSEMBLY_NAME = cairo-sharp
 ASSEMBLY_NAME_VERSION = $(ASSEMBLY_NAME),Version=$(CAIRO_API_VERSION)
 ASSEMBLY = $(ASSEMBLY_NAME).dll
+references = -r:$(top_builddir)/glib/glib-sharp.dll
 SNK = $(srcdir)/mono.snk
 
 TARGET=$(ASSEMBLY)
@@ -29,6 +30,7 @@ sources = \
 	FontType.cs \
 	FontWeight.cs \
 	Format.cs \
+	Global.cs \
 	GlitzSurface.cs \
 	Glyph.cs \
 	Gradient.cs \
