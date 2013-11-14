@@ -1121,8 +1121,7 @@
             <File Id="zlib1.dll" Name="zlib1.dll" Source="source\bin\zlib1.dll" Vital="yes"/>
             <File Id="libgio2.00.dll" Name="libgio-2.0-0.dll" Source="source\bin\libgio-2.0-0.dll" Vital="yes"/>
             <File Id="libexpat1.dll" Name="libexpat-1.dll" Source="source\bin\libexpat-1.dll" Vital="yes"/>
-
-            <File Id="libffi5.dll" Name="libffi-5.dll" Source="source\bin\libffi-5.dll" Vital="yes" />
+            <File Id="libffi6.dll" Name="libffi-6.dll" Source="source\bin\libffi-6.dll" Vital="yes" />
             <File Id="libgccssjlj1.dll" Name="libgcc_s_sjlj-1.dll" Source="source\bin\libgcc_s_sjlj-1.dll" Vital="yes" />
             <File Id="libgsfwin321114.dll" Name="libgsf-win32-1-114.dll" Source="source\bin\libgsf-win32-1-114.dll" Vital="yes"/>
             <File Id="libharfbuzz0.dll" Name="libharfbuzz-0.dll" Source="source\bin\libharfbuzz-0.dll" Vital="yes"/>
