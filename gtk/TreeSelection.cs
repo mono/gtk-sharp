@@ -37,9 +37,12 @@ namespace Gtk {
 			if (list_ptr == IntPtr.Zero)
 				return new TreePath [0];
 
-			GLib.List list = new GLib.List (list_ptr, typeof (Gtk.TreePath));
 			g_list_free (list_ptr);
-			return (TreePath[]) GLib.Marshaller.ListToArray (list, typeof (Gtk.TreePath));
+			try {
+				return (TreePath[]) GLib.Marshaller.ListToArray (list, typeof (Gtk.TreePath));
+			} finally {
+				g_list_free (list_ptr);
+			}
 		}
 
 		[DllImport ("libgtk-win32-3.0-0.dll", EntryPoint="gtk_tree_selection_get_selected", CallingConvention = CallingConvention.Cdecl)]
