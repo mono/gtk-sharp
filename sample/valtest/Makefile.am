@@ -5,7 +5,7 @@ assemblies=../../glib/glib-sharp.dll ../../gio/gio-sharp.dll ../../cairo/cairo-s
 references=$(addprefix -r:, $(assemblies))
 
 valtest.exe: Valtest.cs Valobj.cs $(assemblies)
-	$(CSC) $(CSFLAGS) -out:valtest.exe $(references) $(srcdir)/Valtest.cs Valobj.cs
+	$(CSC) $(CSFLAGS) -out:valtest.exe $(references) $(srcdir)/Valtest.cs Gtksharp/Valobj.cs
 
 libvalobj_la_SOURCES =	\
 	valobj.c	\
