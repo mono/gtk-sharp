@@ -13,7 +13,7 @@ noinst_DATA = $(TARGET)
 TARGET_API = $(pkg:=-api.xml)
 gapidir = $(datadir)/gapi-3.0
 gapi_DATA = $(TARGET_API) $(GAPI_XSD)
-CLEANFILES = $(ASSEMBLY) $(ASSEMBLY).mdb $(POLICY_ASSEMBLIES) generated-stamp generated/*.cs $(API) glue/generated.c $(POLICY_CONFIGS)
+CLEANFILES = $(ASSEMBLY) $(ASSEMBLY).mdb $(POLICY_ASSEMBLIES) generated-stamp generated/*/*.cs $(API) glue/generated.c $(POLICY_CONFIGS)
 DISTCLEANFILES = $(ASSEMBLY).config
 
 POLICY_ASSEMBLIES = $(addsuffix .$(ASSEMBLY), $(addprefix policy., $(POLICY_VERSIONS)))
