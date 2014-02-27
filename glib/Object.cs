@@ -81,8 +81,7 @@ namespace GLib {
 
 			disposed = true;
 			ToggleRef toggle_ref;
-			lock(Objects)
-			{
+			lock(Objects) {
 				toggle_ref = Objects [Handle] as ToggleRef;
 				Objects.Remove (Handle);
 			}
@@ -122,8 +121,7 @@ namespace GLib {
 
 			Object obj = null;
 
-			lock(Objects)
-			{
+			lock(Objects) {
 				if (Objects.Contains (o)) {
 					ToggleRef toggle_ref = Objects [o] as ToggleRef;
 					if (toggle_ref != null && toggle_ref.IsAlive)
@@ -406,8 +404,7 @@ namespace GLib {
 				if (handle == value)
 					return;
 
-				lock(Objects)
-				{
+				lock(Objects) {
 					if (handle != IntPtr.Zero) {
 						Objects.Remove (handle);
 						if (tref != null) {
