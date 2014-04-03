@@ -241,6 +241,7 @@ pango/glue/Makefile
 atk/Makefile
 atk/atk-sharp.dll.config
 atk/glue/Makefile
+gdk/gdk-sharp-3.0.pc
 gdk/Makefile
 gdk/gdk-sharp.dll.config
 gtk/Makefile
