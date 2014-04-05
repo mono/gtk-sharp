@@ -59,8 +59,8 @@ namespace GtkSharp.Generation {
 
 			SymbolTable table = SymbolTable.Table;
 
-			Method ref_, unref, dispose;
-			GetSpecialMethods (out ref_, out unref, out dispose);
+			Method ref_, unref, dispose, setGValue;
+			GetSpecialMethods (out ref_, out unref, out dispose, out setGValue);
 
 			if (IsDeprecated)
 				sw.WriteLine ("\t[Obsolete]");
@@ -184,6 +184,17 @@ namespace GtkSharp.Generation {
 				sw.WriteLine ();
 			}
 #endif
+			if (setGValue != null) {
+				sw.WriteLine ("\t\t[DllImport(\"{0}\", CallingConvention = CallingConvention.Cdecl)]", LibraryName);
+				sw.WriteLine ("\t\tstatic extern void {0}(ref GLib.Value val, IntPtr obj);", setGValue.CName);
+				sw.WriteLine ();
+				sw.WriteLine ("\t\tpublic void SetGValue (ref GLib.Value val)");
+				sw.WriteLine ("\t\t{");
+				sw.WriteLine ("\t\t\t{0} (ref val, Handle);", setGValue.CName);
+				sw.WriteLine ("\t\t}");
+				sw.WriteLine ();
+			}
+
 			sw.WriteLine ("#endregion");
 
 			sw.WriteLine ("\t}");
@@ -194,7 +205,7 @@ namespace GtkSharp.Generation {
 			Statistics.OpaqueCount++;
 		}
 
-		void GetSpecialMethods (out Method ref_, out Method unref, out Method dispose)
+		void GetSpecialMethods (out Method ref_, out Method unref, out Method dispose, out Method setGValue)
 		{
 			ref_ = CheckSpecialMethod (GetMethod ("Ref"));
 			unref = CheckSpecialMethod (GetMethod ("Unref"));
@@ -206,6 +217,9 @@ namespace GtkSharp.Generation {
 					dispose = GetMethod ("Dispose");
 			}
 			dispose = CheckSpecialMethod (dispose);
+
+			setGValue = GetMethod ("SetGValue");
+			Methods.Remove ("SetGValue");
 		}
 
 		Method CheckSpecialMethod (Method method)
