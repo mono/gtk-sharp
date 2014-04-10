@@ -1,5 +1,6 @@
 *~
 *.pdb
+*.pidb
 *.suo
 .deps
 .libs
