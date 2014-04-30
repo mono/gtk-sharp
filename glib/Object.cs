@@ -80,8 +80,11 @@ namespace GLib {
 				return;
 
 			disposed = true;
-			ToggleRef toggle_ref = Objects [Handle] as ToggleRef;
-			Objects.Remove (Handle);
+			ToggleRef toggle_ref;
+			lock(Objects) {
+				toggle_ref = Objects [Handle] as ToggleRef;
+				Objects.Remove (Handle);
+			}
 			try {
 				if (toggle_ref != null)
 					toggle_ref.Free ();
@@ -101,7 +104,9 @@ namespace GLib {
 			if (o == IntPtr.Zero)
 				return null;
 
-			ToggleRef tr = (ToggleRef) Objects[o];
+			ToggleRef tr;
+			lock(Objects)
+				tr = (ToggleRef) Objects[o];
 			if (tr != null && tr.IsAlive) {
 				return tr.Target;
 			}
@@ -116,22 +121,24 @@ namespace GLib {
 
 			Object obj = null;
 
-			if (Objects.Contains (o)) {
-				ToggleRef toggle_ref = Objects [o] as ToggleRef;
-				if (toggle_ref != null && toggle_ref.IsAlive)
-					obj = toggle_ref.Target;
+			lock(Objects) {
+				if (Objects.Contains (o)) {
+					ToggleRef toggle_ref = Objects [o] as ToggleRef;
+					if (toggle_ref != null && toggle_ref.IsAlive)
+						obj = toggle_ref.Target;
+				}
+
+				if (obj != null && obj.Handle == o) {
+					if (owned_ref)
+						g_object_unref (obj.Handle);
+					return obj;
+				}
+
+				if (!owned_ref)
+					g_object_ref (o);
+
+				obj = GLib.ObjectManager.CreateObject(o);
 			}
-
-			if (obj != null && obj.Handle == o) {
-				if (owned_ref)
-					g_object_unref (obj.Handle);
-				return obj;
-			}
-
-			if (!owned_ref)
-				g_object_ref (o);
-
-			obj = GLib.ObjectManager.CreateObject(o);
 			if (obj == null) {
 				g_object_unref (o);
 				return null;
@@ -397,20 +404,22 @@ namespace GLib {
 				if (handle == value)
 					return;
 
-				if (handle != IntPtr.Zero) {
-					Objects.Remove (handle);
-					if (tref != null) {
-						tref.Free ();
-						tref = null;
+				lock(Objects) {
+					if (handle != IntPtr.Zero) {
+						Objects.Remove (handle);
+						if (tref != null) {
+							tref.Free ();
+							tref = null;
+						}
+					}
+					handle = value;
+					if (value != IntPtr.Zero) {
+						tref = new ToggleRef (this);
+						Objects [value] = tref;
 					}
 				}
-				handle = value;
-				if (value != IntPtr.Zero) {
-					tref = new ToggleRef (this);
-					Objects [value] = tref;
-				}
 			}
-		}
+        	}
 
 		public static GLib.GType GType {
 			get {

@@ -1,0 +1,1790 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{94045F11-4266-40B4-910F-298985AF69D5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Gtk</RootNamespace>
+    <AssemblyName>gtk</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;GTK_SHARP_2_6;GTK_SHARP_2_8;GTK_SHARP_2_10;GTK_SHARP_2_12</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>0618;0649;0169;0414;0612;1616;1699</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NoWarn>0618;0649;0169;0414;0612;1616;1699</NoWarn>
+    <DefineConstants>GTK_SHARP_2_6;GTK_SHARP_2_8;GTK_SHARP_2_10;GTK_SHARP_2_12</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>gtk-sharp.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\cairo\cairo.csproj">
+      <Project>{364577DB-9728-4951-AC2C-EDF7A6FCC09D}</Project>
+      <Name>cairo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\glib\glib.csproj">
+      <Project>{3BF1D531-8840-4F15-8066-A9788D8C398B}</Project>
+      <Name>glib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\gdk\gdk.csproj">
+      <Project>{58346CC6-DE93-45B4-8093-3508BD5DAA12}</Project>
+      <Name>gdk</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\atk\atk.csproj">
+      <Project>{42FE871A-D8CF-4B29-9AFF-B02454E6C976}</Project>
+      <Name>atk</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\pango\pango.csproj">
+      <Project>{FF422D8C-562F-4EA6-8590-9D1A5CD40AD4}</Project>
+      <Name>pango</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gtk-sharp.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionEntry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Application.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="BindingAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ChildPropertyAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AboutDialog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AboutDialogActivateLinkFunc.cs" />
+    <Compile Include="generated\Accel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AccelActivateHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AccelCanActivateHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AccelChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AccelClearedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AccelEditedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Accelerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AccelFlags.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AccelGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AccelGroupActivate.cs" />
+    <Compile Include="generated\AccelGroupEntry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AccelGroupFindFunc.cs" />
+    <Compile Include="generated\AccelKey.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AccelLabel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AccelMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AccelMapForeach.cs" />
+    <Compile Include="generated\AcceptPositionHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Accessible.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Action.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ActionActivatedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ActionGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ActivateCurrentHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ActivateCursorItemHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AddedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AddWidgetHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AdjustBoundsHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Adjustment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Alignment.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AnchorType.cs" />
+    <Compile Include="generated\Arg.cs" />
+    <Compile Include="generated\Arrow.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ArrowType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AspectFrame.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Assistant.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AssistantPageFunc.cs" />
+    <Compile Include="generated\AssistantPageType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AttachOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\BeginPrintHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Bin.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Bindings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Box.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Builder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\BuilderConnectFunc.cs" />
+    <Compile Include="generated\BuilderError.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Button.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ButtonBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ButtonBoxStyle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ButtonPressEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ButtonReleaseEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ButtonsType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Calendar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CalendarDisplayOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Callback.cs" />
+    <Compile Include="generated\CallbackMarshal.cs" />
+    <Compile Include="generated\CancelPositionHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CellEditable.cs" />
+    <Compile Include="generated\CellEditableAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CellLayout.cs" />
+    <Compile Include="generated\CellLayoutAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CellLayoutDataFunc.cs" />
+    <Compile Include="generated\CellRenderer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CellRendererAccel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CellRendererAccelMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CellRendererCombo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CellRendererMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CellRendererPixbuf.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CellRendererProgress.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CellRendererSpin.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CellRendererState.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CellRendererText.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CellRendererToggle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CellView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ChangeCurrentPageHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ChangeValueHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CheckButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CheckMenuItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ChildAnchorInsertedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ChildAttachedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ChildDetachedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ChildNotifiedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ClientEventHandler.cs" />
+    <Compile Include="generated\Clipboard.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ClipboardClearFunc.cs" />
+    <Compile Include="generated\ClipboardGetFunc.cs" />
+    <Compile Include="generated\ClipboardImageReceivedFunc.cs" />
+    <Compile Include="generated\ClipboardReceivedFunc.cs" />
+    <Compile Include="generated\ClipboardTargetsReceivedFunc.cs" />
+    <Compile Include="generated\ClipboardTextReceivedFunc.cs" />
+    <Compile Include="generated\ColorButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ColorSelection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ColorSelectionChangePaletteFunc.cs" />
+    <Compile Include="generated\ColorSelectionChangePaletteWithScreenFunc.cs" />
+    <Compile Include="generated\ColorSelectionDialog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Combo.cs" />
+    <Compile Include="generated\ComboBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ComboBoxEntry.cs" />
+    <Compile Include="generated\CommitHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ConfigureEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ConfirmOverwriteHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ConnectProxyHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Container.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CornerType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CreateCustomWidgetHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CreateMenuProxyHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CreateWindowHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CursorOnMatchHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Curve.cs" />
+    <Compile Include="generated\CurveType.cs" />
+    <Compile Include="generated\CustomWidgetApplyHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CycleChildFocusHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CycleHandleFocusHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DeleteEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DeleteFromCursorHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DeleteRangeHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DeleteType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DestDefaults.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DestroyEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DestroyNotify.cs" />
+    <Compile Include="generated\DetailsAcquiredHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Dialog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DialogFlags.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DirectionChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DirectionType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DisableDeviceHandler.cs" />
+    <Compile Include="generated\DisconnectProxyHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DoneHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Drag.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DragBeginHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DragDataDeleteHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DragDataGetHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DragDataReceivedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DragDropHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DragEndHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DragFailedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DragLeaveHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DragMotionHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DragResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Draw.cs" />
+    <Compile Include="generated\DrawingArea.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\DrawPageHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Editable.cs" />
+    <Compile Include="generated\EditableAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\EditedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\EditingStartedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\EnableDeviceHandler.cs" />
+    <Compile Include="generated\EndPrintHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\EnterNotifyEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Entry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\EntryCompletion.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\EntryCompletionMatchFunc.cs" />
+    <Compile Include="generated\EventBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ExpandCollapseCursorRowHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Expander.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ExpanderStyle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ExposeEventHandler.cs" />
+    <Compile Include="generated\FileChooser.cs" />
+    <Compile Include="generated\FileChooserAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FileChooserButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FileChooserConfirmation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FileChooserDialog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FileChooserError.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FileChooserWidget.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FileFilter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FileFilterFlags.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FileFilterFunc.cs" />
+    <Compile Include="generated\FileFilterInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FileSelection.cs" />
+    <Compile Include="generated\Fixed.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FocusChildSetHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FocusedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FocusInEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FocusOutEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FocusTabHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FontButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FontSelection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FontSelectionDialog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FormatValueHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Frame.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FrameEventHandler.cs" />
+    <Compile Include="generated\Function.cs" />
+    <Compile Include="generated\GammaCurve.cs" />
+    <Compile Include="generated\Gc.cs" />
+    <Compile Include="generated\Global.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GotPageSizeHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Grab.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GrabBrokenEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GrabNotifyHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.AboutDialogActivateLinkFuncNative.cs" />
+    <Compile Include="generated\GtkSharp.AccelGroupActivateNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.AccelGroupFindFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.AccelMapForeachNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.AssistantPageFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.BuilderConnectFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.CallbackMarshalNative.cs" />
+    <Compile Include="generated\GtkSharp.CallbackNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.CellLayoutDataFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.ClipboardClearFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.ClipboardGetFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.ClipboardImageReceivedFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.ClipboardReceivedFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.ClipboardTargetsReceivedFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.ClipboardTextReceivedFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.ColorSelectionChangePaletteFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.ColorSelectionChangePaletteWithScreenFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.DestroyNotifyNative.cs" />
+    <Compile Include="generated\GtkSharp.EntryCompletionMatchFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.FileFilterFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.FunctionNative.cs" />
+    <Compile Include="generated\GtkSharp.IconViewForeachFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.ItemFactoryCallback1Native.cs" />
+    <Compile Include="generated\GtkSharp.ItemFactoryCallbackNative.cs" />
+    <Compile Include="generated\GtkSharp.KeySnoopFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.LinkButtonUriFuncNative.cs" />
+    <Compile Include="generated\GtkSharp.MenuCallbackNative.cs" />
+    <Compile Include="generated\GtkSharp.MenuDetachFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.MenuPositionFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.MnemonicHashForeachNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.NotebookWindowCreationFuncNative.cs" />
+    <Compile Include="generated\GtkSharp.PageSetupDoneFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.PrinterFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.PrintFuncNative.cs" />
+    <Compile Include="generated\GtkSharp.PrintJobCompleteFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.PrintSettingsFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.RcPropertyParserNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.RecentFilterFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.RecentSortFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.SignalFuncNative.cs" />
+    <Compile Include="generated\GtkSharp.TextBufferDeserializeFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.TextCharPredicateNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.TextTagTableForeachNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.TranslateFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.TreeCellDataFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.TreeDestroyCountFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.TreeIterCompareFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.TreeModelFilterModifyFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.TreeModelFilterVisibleFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.TreeModelForeachFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.TreeSelectionForeachFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.TreeSelectionFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.TreeViewColumnDropFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.TreeViewMappingFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.TreeViewRowSeparatorFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.TreeViewSearchEqualFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.TreeViewSearchPositionFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GtkSharp.WindowKeysForeachFuncNative.cs" />
+    <Compile Include="generated\HandleBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\HBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\HButtonBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\HelpShownHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\HierarchyChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\HPaned.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\HRuler.cs" />
+    <Compile Include="generated\HScale.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\HScrollbar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\HSeparator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\HSV.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Icon.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\IconFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\IconInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\IconLookupFlags.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\IconSet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\IconSize.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\IconSource.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\IconTheme.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\IconThemeError.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\IconView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\IconViewDropPosition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\IconViewForeachFunc.cs" />
+    <Compile Include="generated\Image.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ImageIconNameData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ImageMenuItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ImageType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\IMContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\IMContextSimple.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\IMMulticontext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Init.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Input.cs" />
+    <Compile Include="generated\InputDialog.cs" />
+    <Compile Include="generated\InputHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\InsertAtCursorHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\InsertTextHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Invisible.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Item.cs" />
+    <Compile Include="generated\ItemActivatedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ItemFactory.cs" />
+    <Compile Include="generated\ItemFactoryCallback.cs" />
+    <Compile Include="generated\ItemFactoryCallback1.cs" />
+    <Compile Include="generated\ItemFactoryEntry.cs" />
+    <Compile Include="generated\Justification.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\KeyPressEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\KeyReleaseEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\KeySnoopFunc.cs" />
+    <Compile Include="generated\Label.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Layout.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\LeaveNotifyEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\LinkButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\LinkButtonUriFunc.cs" />
+    <Compile Include="generated\ListStore.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\LoadState.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\LocationMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Main.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MapChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MapEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MarkDeletedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MarkSetHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MatchSelectedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MatchType.cs" />
+    <Compile Include="generated\Menu.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MenuBar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MenuCallback.cs" />
+    <Compile Include="generated\MenuDetachFunc.cs" />
+    <Compile Include="generated\MenuDirectionType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MenuEntry.cs" />
+    <Compile Include="generated\MenuItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MenuPositionFunc.cs" />
+    <Compile Include="generated\MenuShell.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MenuToolButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MessageDialog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MessageType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MetricType.cs" />
+    <Compile Include="generated\Misc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MnemonicActivatedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MnemonicHash.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MnemonicHashForeach.cs" />
+    <Compile Include="generated\MotionNotifyEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MoveCurrentHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MoveCursorHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MoveFocusOutHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MoveHandleHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MoveHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MovementStep.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MoveSelectedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\MoveSliderHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\NoExposeEventHandler.cs" />
+    <Compile Include="generated\Notebook.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\NotebookPage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\NotebookTab.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\NotebookWindowCreationFunc.cs" />
+    <Compile Include="generated\Object.cs" />
+    <Compile Include="generated\OptionMenu.cs" />
+    <Compile Include="generated\Orientation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\OrientationChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\OutputHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\OwnerChangeHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PackDirection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PackType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PageAddedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PageHorizontallyHandler.cs" />
+    <Compile Include="generated\PageOrientation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PageRange.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PageRemovedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PageReorderedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PageSet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PageSetup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PageSetupDoneFunc.cs" />
+    <Compile Include="generated\PageSetupUnixDialog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PaginateHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Paned.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PaperSize.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ParentSetHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PixbufInsertedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Plug.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PlugRemovedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PolicyType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PopulatePopupHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PopupContextMenuHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PopupMenuHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PositionType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PostActivateHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PreActivateHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrefixInsertedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrepareHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PreviewHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PreviewType.cs" />
+    <Compile Include="generated\Print.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrintBackend.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrintCapabilities.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrintContext.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrintDuplex.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Printer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrinterFunc.cs" />
+    <Compile Include="generated\PrintError.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrintFunc.cs" />
+    <Compile Include="generated\PrintJob.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrintJobCompleteFunc.cs" />
+    <Compile Include="generated\PrintOperation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrintOperationAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrintOperationPreview.cs" />
+    <Compile Include="generated\PrintOperationPreviewAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrintOperationResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrintPages.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrintQuality.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrintSettings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrintSettingsFunc.cs" />
+    <Compile Include="generated\PrintStatus.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrintUnixDialog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PrintWin32Devnames.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ProgressBar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ProgressBarOrientation.cs" />
+    <Compile Include="generated\ProgressBarStyle.cs" />
+    <Compile Include="generated\PropertyNotifyEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ProximityInEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ProximityOutEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\QueryTooltipHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Quit.cs" />
+    <Compile Include="generated\RadioAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RadioButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RadioMenuItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RadioToolButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Range.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Rc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RcProperty.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RcPropertyParser.cs" />
+    <Compile Include="generated\RcStyle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ReadyHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RecentAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RecentChooser.cs" />
+    <Compile Include="generated\RecentChooserAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RecentChooserDefault.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RecentChooserDialog.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RecentChooserError.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RecentChooserMenu.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RecentChooserProp.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RecentChooserWidget.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RecentData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RecentFilter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RecentFilterFlags.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RecentFilterFunc.cs" />
+    <Compile Include="generated\RecentFilterInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RecentInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RecentManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RecentManagerError.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RecentSortFunc.cs" />
+    <Compile Include="generated\RecentSortType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ReliefStyle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ReloadState.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RemovedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ReorderTabHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RequestPageSetupHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Requisition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ResizeMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ResponseHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ResponseType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RetrieveSurroundingHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RowActivatedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RowChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RowCollapsedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RowDeletedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RowExpandedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RowHasChildToggledHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RowInsertedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Ruler.cs" />
+    <Compile Include="generated\RulerMetric.cs" />
+    <Compile Include="generated\Scale.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ScaleButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ScreenChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ScrollAdjustmentsSetHandler.cs" />
+    <Compile Include="generated\Scrollbar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ScrollChildHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ScrolledWindow.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ScrollEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ScrollStep.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ScrollType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SelectAllHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SelectCursorParentHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SelectCursorRowHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Selection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SelectionClearEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SelectionData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SelectionGetHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SelectionMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SelectionNotifyEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SelectionReceivedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SelectionRequestEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SelectPageHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SensitivityType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Separator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SeparatorMenuItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SeparatorToolItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SetFocusHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Settings.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SettingsPropertyValue.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SettingsValue.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ShadowType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SideType.cs" />
+    <Compile Include="generated\SignalFunc.cs" />
+    <Compile Include="generated\SizeAllocatedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SizeChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SizeGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SizeGroupMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SizeRequestedHandler.cs" />
+    <Compile Include="generated\Socket.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SortType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SpinButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SpinButtonUpdatePolicy.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SpinType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\StartInteractiveSearchHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\StateChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\StateType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Statusbar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\StatusIcon.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Stock.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\StockItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Style.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\StyleChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\StyleSetHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SubmenuDirection.cs" />
+    <Compile Include="generated\SubmenuPlacement.cs" />
+    <Compile Include="generated\SurroundingDeletedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\SwitchPageHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Table.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TagAddedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TagAppliedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TagChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TagRemovedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Target.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TargetEntry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TargetFlags.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TargetList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TargetPair.cs" />
+    <Compile Include="generated\Targets.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TearoffMenuItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TestCollapseRowHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TestExpandRowHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextAppearance.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextAttributes.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextBuffer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextBufferDeserializeFunc.cs" />
+    <Compile Include="generated\TextBufferTargetInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextCharPredicate.cs" />
+    <Compile Include="generated\TextChildAnchor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextDeletedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextDirection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextInsertedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextIter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextMark.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextPendingScroll.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextPoppedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextPushedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextSearchFlags.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextTag.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextTagTable.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextTagTableForeach.cs" />
+    <Compile Include="generated\TextView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextWindow.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextWindowType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ThemeEngine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ToggleAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ToggleButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ToggleCursorRowHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ToggledHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ToggleHandleFocusHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ToggleSizeAllocatedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ToggleSizeRequestedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ToggleToolButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Toolbar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ToolbarChildType.cs" />
+    <Compile Include="generated\ToolbarStyle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ToolButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ToolItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Tooltip.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Tooltips.cs" />
+    <Compile Include="generated\TooltipsData.cs" />
+    <Compile Include="generated\TooltipSetHandler.cs" />
+    <Compile Include="generated\TranslateFunc.cs" />
+    <Compile Include="generated\TrayIcon.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Tree.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeCellDataFunc.cs" />
+    <Compile Include="generated\TreeDestroyCountFunc.cs" />
+    <Compile Include="generated\TreeDragDest.cs" />
+    <Compile Include="generated\TreeDragDestAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeDragSource.cs" />
+    <Compile Include="generated\TreeDragSourceAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeIter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeIterCompareFunc.cs" />
+    <Compile Include="generated\TreeModel.cs" />
+    <Compile Include="generated\TreeModelAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeModelFilter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeModelFilterModifyFunc.cs" />
+    <Compile Include="generated\TreeModelFilterVisibleFunc.cs" />
+    <Compile Include="generated\TreeModelFlags.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeModelForeachFunc.cs" />
+    <Compile Include="generated\TreeModelSort.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreePath.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeRowReference.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeSelection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeSelectionForeachFunc.cs" />
+    <Compile Include="generated\TreeSelectionFunc.cs" />
+    <Compile Include="generated\TreeSortable.cs" />
+    <Compile Include="generated\TreeSortableAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeStore.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeViewColumn.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeViewColumnDropFunc.cs" />
+    <Compile Include="generated\TreeViewColumnSizing.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeViewDropPosition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeViewGridLines.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TreeViewMappingFunc.cs" />
+    <Compile Include="generated\TreeViewRowSeparatorFunc.cs" />
+    <Compile Include="generated\TreeViewSearchEqualFunc.cs" />
+    <Compile Include="generated\TreeViewSearchPositionFunc.cs" />
+    <Compile Include="generated\UIManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\UIManagerItemType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Unit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\UnmapEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\UnselectAllHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\UpdateType.cs" />
+    <Compile Include="generated\ValueChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\VBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\VButtonBox.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Viewport.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\VisibilityNotifyEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\VolumeButton.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\VPaned.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\VRuler.cs" />
+    <Compile Include="generated\VScale.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\VScrollbar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\VSeparator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Widget.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WidgetEventAfterHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WidgetEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WidgetFlags.cs" />
+    <Compile Include="generated\WidgetHelpType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Win32EmbedWidget.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Window.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WindowGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WindowKeysForeachFunc.cs" />
+    <Compile Include="generated\WindowPosition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WindowStateEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WindowType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\WrapMode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GtkSharp.TextBufferSerializeFuncNative.cs" />
+    <Compile Include="ITreeNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Key.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MoveFocusHandler.cs" />
+    <Compile Include="NodeCellDataFunc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NodeSelection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NodeStore.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NodeView.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RadioActionEntry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RowsReorderedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="StockManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TextBufferSerializeFunc.cs" />
+    <Compile Include="ThreadNotify.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Timeout.cs" />
+    <Compile Include="ToggleActionEntry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TreeEnumerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TreeNode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TreeNodeAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TreeNodeValueAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

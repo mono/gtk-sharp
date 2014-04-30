@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{42FE871A-D8CF-4B29-9AFF-B02454E6C976}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Atk</RootNamespace>
+    <AssemblyName>atk</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;GTK_SHARP_2_6;GTK_SHARP_2_8;GTK_SHARP_2_10;GTK_SHARP_2_12</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+    <NoWarn>0649;1616;1699</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+    <NoWarn>0649;1616;1699</NoWarn>
+    <DefineConstants>GTK_SHARP_2_6;GTK_SHARP_2_8;GTK_SHARP_2_10;GTK_SHARP_2_12</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>gtk-sharp.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\glib\glib.csproj">
+      <Project>{3BF1D531-8840-4F15-8066-A9788D8C398B}</Project>
+      <Name>glib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gtk-sharp.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="ColumnDeletedHandler.cs" />
+    <Compile Include="ColumnInsertedHandler.cs" />
+    <Compile Include="generated\Action.cs" />
+    <Compile Include="generated\ActionAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ActiveDescendantChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AtkSharp.EventListenerInitNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AtkSharp.EventListenerNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AtkSharp.FocusHandlerNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AtkSharp.FunctionNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AtkSharp.KeySnoopFuncNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\AtkSharp.PropertyChangeHandlerNative.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Attribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\BoundsChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ChildrenChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Component.cs" />
+    <Compile Include="generated\ComponentAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\CoordType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Document.cs" />
+    <Compile Include="generated\DocumentAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\EditableText.cs" />
+    <Compile Include="generated\EditableTextAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\EventListener.cs" />
+    <Compile Include="generated\EventListenerInit.cs" />
+    <Compile Include="generated\Focus.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FocusEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\FocusHandler.cs" />
+    <Compile Include="generated\Function.cs" />
+    <Compile Include="generated\Global.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\GObjectAccessible.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Hyperlink.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\HyperlinkImpl.cs" />
+    <Compile Include="generated\HyperlinkImplAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\HyperlinkStateFlags.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Hypertext.cs" />
+    <Compile Include="generated\HypertextAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Image.cs" />
+    <Compile Include="generated\ImageAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Implementor.cs" />
+    <Compile Include="generated\ImplementorAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\KeyEventStruct.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\KeyEventType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\KeySnoopFunc.cs" />
+    <Compile Include="generated\Layer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\LinkSelectedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Misc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\NoOpObject.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\NoOpObjectFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Object.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\ObjectFactory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PropertyChangeEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\PropertyChangeHandler.cs" />
+    <Compile Include="generated\PropertyValues.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Rectangle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Registry.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Relation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RelationSet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\RelationType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Role.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Selection.cs" />
+    <Compile Include="generated\SelectionAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\StateChangeHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\StateManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\StateSet.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\StateType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\StreamableContent.cs" />
+    <Compile Include="generated\StreamableContentAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Text.cs" />
+    <Compile Include="generated\TextAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextBoundary.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextCaretMovedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextChangedHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextClipType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextRange.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\TextRectangle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Util.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="generated\Value.cs" />
+    <Compile Include="generated\ValueAdapter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RowDeletedHandler.cs" />
+    <Compile Include="RowInsertedHandler.cs" />
+    <Compile Include="Table.cs" />
+    <Compile Include="TableAdapter.cs" />
+    <Compile Include="TextChangedDetail.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

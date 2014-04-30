@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{364577DB-9728-4951-AC2C-EDF7A6FCC09D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Cairo</RootNamespace>
+    <AssemblyName>cairo</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;GTK_SHARP_2_6;GTK_SHARP_2_8;GTK_SHARP_2_10;GTK_SHARP_2_12</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+    <NoWarn>1616;1699</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+    <NoWarn>1616;1699</NoWarn>
+    <DefineConstants>GTK_SHARP_2_6;GTK_SHARP_2_8;GTK_SHARP_2_10;GTK_SHARP_2_12</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>mono.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Antialias.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Cairo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Content.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Context.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DirectFBSurface.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Extend.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FillRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Filter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FontExtents.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FontFace.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FontOptions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FontSlant.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FontType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FontWeight.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Format.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GlitzSurface.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Glyph.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Gradient.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HintMetrics.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="HintStyle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ImageSurface.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LinearGradient.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LineCap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LineJoin.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Matrix.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="NativeMethods.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Path.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pattern.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PatternType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PdfSurface.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PSSurface.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RadialGradient.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rectangle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ScaledFont.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SolidPattern.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Status.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SubpixelOrder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Surface.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SurfacePattern.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SurfaceType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SvgSurface.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SvgVersion.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TextExtents.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Win32Surface.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XcbSurface.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="XlibSurface.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mono.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
