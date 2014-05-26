@@ -315,11 +315,18 @@ fi
 echo "---"
 
 if test "x$has_mono" = "xtrue"; then
+
+	configure_file=autogen.sh
+	if ! test -e $configure_file; then
+		configure_file=configure
+	fi
+	configure_command="`dirname $0`/$configure_file"
+
 	mono_prefix=`pkg-config --variable=prefix mono`
 	mono_prefix_canonical=`readlink -m $mono_prefix`
 	if test "x$mono_prefix_canonical" != "x$prefix"; then
 		AC_MSG_WARN(Prefix to use ($prefix) is not the same as Mono's ($mono_prefix_canonical).
-			Consider using ./configure --prefix=$mono_prefix_canonical
+			Consider using $configure_command --prefix=$mono_prefix_canonical
 			See the README for more information.
 		)
 	fi
