@@ -209,6 +209,27 @@ namespace GLib {
 			}
 		}
 
+        public static Signal Lookup (GLib.Object obj, string name)
+        {
+            return Lookup (obj, name, typeof (EventArgs));
+        }
+
+        public static Signal Lookup (GLib.Object obj, string name, Delegate marshaler)
+        {
+            Signal result = obj.ToggleRef.Signals [name] as Signal;
+            if (result == null)
+                result = new Signal (obj, name, marshaler);
+            return result;
+        }
+
+        public static Signal Lookup (GLib.Object obj, string name, Type args_type)
+        {
+            Signal result = obj.ToggleRef.Signals [name] as Signal;
+            if (result == null)
+                result = new Signal (obj, name, args_type);
+            return result;
+        }
+
 		public Delegate Handler {
 			get {
 				InvocationHint hint = (InvocationHint) Marshal.PtrToStructure (g_signal_get_invocation_hint (obj.Handle), typeof (InvocationHint));
