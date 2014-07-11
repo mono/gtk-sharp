@@ -58,7 +58,8 @@ namespace GLib {
 			bool ret = true;
 
 			lock (Source.source_handlers) {
-				if (source_handlers.Remove (tag)) {
+				if (source_handlers.Contains (tag)) {
+					source_handlers.Remove (tag);
 					ret = g_source_remove (tag);
 				}
 			}
