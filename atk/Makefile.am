@@ -12,8 +12,8 @@ sources = 			\
 	Hyperlink.cs		\
 	Misc.cs			\
 	Object.cs		\
-	SelectionAdapter.cs	\
-	TextAdapter.cs		\
+	Selection.cs		\
+	Text.cs			\
 	TextChangedDetail.cs	\
 	Util.cs
 

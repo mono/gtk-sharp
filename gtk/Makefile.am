@@ -24,7 +24,7 @@ sources = 				\
 	Button.cs			\
 	Calendar.cs			\
 	CellAreaBox.cs			\
-	CellLayoutAdapter.cs		\
+	CellLayout.cs			\
 	CellRenderer.cs		\
 	CellView.cs			\
 	CheckMenuItem.cs		\
@@ -99,7 +99,7 @@ sources = 				\
 	TreeEnumerator.cs		\
 	TreeIter.cs			\
 	TreeMenu.cs			\
-	TreeModelAdapter.cs		\
+	TreeModel.cs			\
 	TreeModelFilter.cs		\
 	TreeModelSort.cs		\
 	TreeNode.cs			\

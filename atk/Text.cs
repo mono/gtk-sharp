@@ -1,8 +1,11 @@
-// File.cs - customizations to GLib.File
+// TextAdapter.cs - Atk TextAdapter class customizations
 //
-// Authors: Stephane Delcroix  <stephane@delcroix.org>
+// Author: Brad Taylor <brad@getcoded.net>
 //
 // Copyright (c) 2008 Novell, Inc.
+//
+// This code is inserted after the automatically generated code.
+//
 //
 // This program is free software; you can redistribute it and/or
 // modify it under the terms of version 2 of the Lesser GNU General
@@ -18,18 +21,14 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-namespace GLib {
-	public partial interface IFileBase : GLib.IWrapper {
-		bool Exists
+namespace Atk {
+	public partial class Text {
+
+		public void EmitTextChanged (TextChangedDetail detail, int position, int length)
 		{
-			get;
+			GLib.Signal.Emit (GLib.Object.GetObject (Handle),
+			                  "text_changed::" + detail.ToString ().ToLower (),
+			                  position, length);
 		}
-		
-		System.Uri Uri
-		{
-			get;
-		}
-		
-		bool Delete();
 	}
 }

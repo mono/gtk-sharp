@@ -1,14 +1,11 @@
-// SelectionAdapter.cs - Atk SelectionAdapter class customizations
+// File.cs - customizations to GLib.File
 //
-// Author: Andrés G. Aragoneses <aaragoneses@novell.com>
+// Authors: Stephane Delcroix  <stephane@delcroix.org>
 //
 // Copyright (c) 2008 Novell, Inc.
 //
-// This code is inserted after the automatically generated code.
-//
-//
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -21,12 +18,18 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-namespace Atk {
-	public partial class Selection {
-
-		public void EmitSelectionChanged ()
+namespace GLib {
+	public partial interface IFileBase : GLib.IWrapper {
+		bool Exists
 		{
-			GLib.Signal.Emit (GLib.Object.GetObject (Handle), "selection_changed");
+			get;
 		}
+
+		System.Uri Uri
+		{
+			get;
+		}
+
+		bool Delete();
 	}
 }

@@ -70,7 +70,7 @@ namespace Gtk {
 		public void SetValue (Gtk.TreeIter iter, int column, uint value) {
 			throw new NotImplementedException ();
 		}
-		
+
 		public void SetValue (Gtk.TreeIter iter, int column, object value) {
 			throw new NotImplementedException ();
 		}
