@@ -19,7 +19,7 @@
 // Boston, MA 02111-1307, USA.
 
 namespace GLib {
-	public partial interface IFile : GLib.IWrapper {
+	public partial interface IFileBase : GLib.IWrapper {
 		bool Exists
 		{
 			get;

@@ -23,7 +23,7 @@ namespace Gtk {
 	using System;
 	using System.Runtime.InteropServices;
 
-	public partial class TreeModelAdapter {
+	public partial class TreeModel {
 
 		[DllImport (Global.GtkNativeDll, CallingConvention = CallingConvention.Cdecl)]
 		static extern bool gtk_tree_model_iter_children (IntPtr raw, out Gtk.TreeIter iter, IntPtr parent);

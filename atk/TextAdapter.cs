@@ -22,7 +22,7 @@
 // Boston, MA 02111-1307, USA.
 
 namespace Atk {
-	public partial class TextAdapter {
+	public partial class Text {
 
 		public void EmitTextChanged (TextChangedDetail detail, int position, int length)
 		{

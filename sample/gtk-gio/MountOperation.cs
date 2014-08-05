@@ -35,7 +35,7 @@ using GLib;
 public class TestMount
 {
 
-	static GLib.IFile file;
+	static GLib.IFileBase file;
 	static Gtk.MountOperation operation;
 
 	static void Main ()
@@ -59,7 +59,7 @@ public class TestMount
 		file.MountEnclosingVolume (0, operation, null, new GLib.AsyncReadyCallback (HandleMountFinished));
 	}
 
-	static void HandleMountFinished (GLib.Object sender, GLib.IAsyncResult result)
+	static void HandleMountFinished (GLib.Object sender, GLib.IAsyncResultBase result)
 	{
 		System.Console.WriteLine ("handle mount finished");
 		if (file.MountEnclosingVolumeFinish (result))

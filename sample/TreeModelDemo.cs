@@ -32,7 +32,7 @@ namespace GtkSamples {
 		{
 			DefaultSize = new Gdk.Size (640,480);
 			ScrolledWindow sw = new ScrolledWindow ();
-			TreeView view = new TreeView (new TreeModelAdapter (new MyTreeModel ()));
+			TreeView view = new TreeView (new TreeModel (new MyTreeModel ()));
 			view.HeadersVisible = true;
 			view.AppendColumn ("Name", new CellRendererText (), "text", 0);
 			view.AppendColumn ("Type", new CellRendererText (), "text", 1);
@@ -57,7 +57,7 @@ namespace GtkSamples {
 
 	}
 
-	public class MyTreeModel : GLib.Object, ITreeModelImplementor {
+	public class MyTreeModel : GLib.Object, ITreeModel {
 
 		Assembly[] assemblies;
 

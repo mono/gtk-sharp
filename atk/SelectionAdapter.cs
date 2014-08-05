@@ -22,7 +22,7 @@
 // Boston, MA 02111-1307, USA.
 
 namespace Atk {
-	public partial class SelectionAdapter {
+	public partial class Selection {
 
 		public void EmitSelectionChanged ()
 		{

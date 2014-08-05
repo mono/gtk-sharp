@@ -30,30 +30,30 @@ namespace GLib
 		[DllImport ("libgio-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr g_file_new_for_uri (string uri);
 
-		public static IFile NewForUri (string uri)
+		public static IFileBase NewForUri (string uri)
 		{
-			return GLib.FileAdapter.GetObject (g_file_new_for_uri (uri), false) as IFile;
+			return GLib.File.GetObject (g_file_new_for_uri (uri), false) as IFileBase;
 		}
 
-		public static IFile NewForUri (Uri uri)
+		public static IFileBase NewForUri (Uri uri)
 		{
-			return GLib.FileAdapter.GetObject (g_file_new_for_uri (uri.ToString ()), false) as IFile;
+			return GLib.File.GetObject (g_file_new_for_uri (uri.ToString ()), false) as IFileBase;
 		}
 
 		[DllImport ("libgio-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr g_file_new_for_path (string path);
 		
-		public static IFile NewForPath (string path)
+		public static IFileBase NewForPath (string path)
 		{
-			return GLib.FileAdapter.GetObject (g_file_new_for_path (path), false) as IFile;
+			return GLib.File.GetObject (g_file_new_for_path (path), false) as IFileBase;
 		}
 
 		[DllImport ("libgio-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr g_file_new_for_commandline_arg (string arg);
 
-		public static IFile NewFromCommandlineArg (string arg)
+		public static IFileBase NewFromCommandlineArg (string arg)
 		{
-			return GLib.FileAdapter.GetObject (g_file_new_for_commandline_arg (arg), false) as IFile;
+			return GLib.File.GetObject (g_file_new_for_commandline_arg (arg), false) as IFileBase;
 		}
 	}
 }

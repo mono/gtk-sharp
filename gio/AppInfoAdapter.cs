@@ -22,14 +22,13 @@ namespace GLib {
 	using System;
 	using System.Runtime.InteropServices;
 	
-	public partial class AppInfoAdapter {
+	public partial class AppInfo {
 		[DllImport ("libgio-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern IntPtr g_app_info_get_all();
 
-		public static GLib.IAppInfo[] GetAll () {
+		public static GLib.IAppInfoBase[] GetAll () {
 			IntPtr raw_ret = g_app_info_get_all();
-			GLib.IAppInfo[] ret = (GLib.IAppInfo[]) GLib.Marshaller.ListPtrToArray (raw_ret, typeof (GLib.List), true, false, typeof (GLib.IAppInfo));
-			return ret;
+			return (GLib.IAppInfoBase[]) GLib.Marshaller.ListPtrToArray (raw_ret, typeof (GLib.List), true, false, typeof (GLib.IAppInfoBase));
 		}
 	}
 }

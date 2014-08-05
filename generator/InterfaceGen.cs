@@ -258,7 +258,7 @@ namespace GtkSharp.Generation {
 
 		void GenerateImplementorProp (StreamWriter sw)
 		{
-			sw.WriteLine ("\t\tpublic " + ImplementorName + " Implementor {");
+			sw.WriteLine ("\t\tpublic " + ImplementorName + " VirtualImplementor {");
 			sw.WriteLine ("\t\t\tget {");
 			sw.WriteLine ("\t\t\t\treturn implementor as {0};", ImplementorName);
 			sw.WriteLine ("\t\t\t}");

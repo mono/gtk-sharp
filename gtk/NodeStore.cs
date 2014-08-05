@@ -37,8 +37,8 @@ namespace Gtk {
 			implementor = new NodeStoreImplementor (node_type);
 		}
 
-		internal TreeModelAdapter Adapter {
-			get { return new TreeModelAdapter (implementor); }
+		internal TreeModel Adapter {
+			get { return new TreeModel (implementor); }
 		}
 
 		internal TreeIter GetIter (ITreeNode node)
@@ -81,8 +81,8 @@ namespace Gtk {
 			return implementor.GetEnumerator (); 
 		}
 
-		internal class NodeStoreImplementor : GLib.Object, ITreeModelImplementor, IEnumerable {
-			TreeModelAdapter model_adapter;
+		internal class NodeStoreImplementor : GLib.Object, ITreeModel, IEnumerable {
+			TreeModel model_adapter;
  			GLib.GType[] ctypes; 
 			MemberInfo [] getters;
 			int n_cols;
@@ -99,7 +99,7 @@ namespace Gtk {
 
 				ScanType (node_type);
 
-				model_adapter = new Gtk.TreeModelAdapter (this);
+				model_adapter = new Gtk.TreeModel (this);
 			}
 
 			void ScanType (Type type)
@@ -239,8 +239,8 @@ namespace Gtk {
 				return gch.Target as ITreeNode;
 			}
 
-			void ITreeModelImplementor.RefNode (Gtk.TreeIter iter) { }
-			void ITreeModelImplementor.UnrefNode (Gtk.TreeIter iter) { }
+			void ITreeModel.RefNode (Gtk.TreeIter iter) { }
+			void ITreeModel.UnrefNode (Gtk.TreeIter iter) { }
 #endregion
 
 			public bool GetIter (out TreeIter iter, TreePath path)

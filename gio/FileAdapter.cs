@@ -22,7 +22,7 @@ namespace GLib {
 	using System;
 	using System.Runtime.InteropServices;
 	
-	public partial class FileAdapter {
+	public partial class File {
 		public override string ToString ()
 		{
 			return Uri.ToString ();
