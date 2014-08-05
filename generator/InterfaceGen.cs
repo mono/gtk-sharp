@@ -63,7 +63,7 @@ namespace GtkSharp.Generation {
 
 		public string AdapterName {
 			get {
-				return base.Name + "Adapter";
+				return base.Name;
 			}
 		}
 
@@ -75,13 +75,13 @@ namespace GtkSharp.Generation {
 
 		public string ImplementorName {
 			get {
-				return Name + "Implementor";
+				return "I" + base.Name;
 			}
 		}
 
 		public override string Name {
 			get {
-				return "I" + base.Name;
+				return "I" + base.Name + "Base";
 			}
 		}
 
