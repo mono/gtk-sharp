@@ -23,7 +23,6 @@
           <Directory Id="INSTALLLOCATION" Name="2.12">
 	    <Merge Id="unmanaged" Language="1033" SourceFile="unmanaged\unmanaged.msm" DiskId="1" />
 	    <Merge Id="mono-cairo-lib" Language="1033" SourceFile="mono-cairo-lib.msm" DiskId="1" />
-	    <Merge Id="mono-posix-lib" Language="1033" SourceFile="mono-posix-lib.msm" DiskId="1" />
             <Directory Id="bin" Name="bin">
               <Component Id="glibsharp_glue" Guid="9AFADFAB-0BD8-449e-B121-C9DB71EBECDC">
                 <File Id="glibsharpglue" Name="glibsharpglue-2.dll" Source="binaries/glibsharpglue-2.dll" KeyPath="yes" Vital="yes" />
@@ -42,6 +41,9 @@
               </Component>
               <Component Id="gladesharp_glue" Guid="8D6464FB-CCD1-4f65-9756-554A61E46135">
                 <File Id="gladesharpglue" Name="gladesharpglue-2.dll" Source="binaries/gladesharpglue-2.dll" KeyPath="yes" Vital="yes" />
+              </Component>
+              <Component Id="monoposixhelper_inst" Guid="367274e3-83ed-4f4b-800f-b44f054d67a0">
+                <File Id="monoposixhelper" Name="MonoPosixHelper.dll" Source="source/bin/MonoPosixHelper.dll" KeyPath="yes" Vital="yes" />
               </Component>
             </Directory>
             <Directory Id="lib" Name="lib">
@@ -204,6 +206,16 @@
                     <File Id="policy.2.10.gladesharp.config" Name="policy.2.10.config" CompanionFile="policy.2.10.gladesharp.dll" Source="binaries/glade/policy.2.10.config" Vital="no" />
                   </Component>
                 </Directory>
+                <Directory Id="gac_posix2" Name="posix2">
+                  <Component Id="MonoPosix_2_dll" Guid="c7f75a65-89c6-4f0f-b9fc-db52fc2587b4">
+                    <File Id="MonoPosix2dll" Name="Mono.Posix.dll" Assembly=".net" KeyPath="yes" Source="source/lib/2.0/Mono.Posix.dll" Vital="yes" />
+                  </Component>
+                </Directory>
+                <Directory Id="gac_posix4" Name="posix4">
+                  <Component Id="MonoPosix_4_dll" Guid="0d5368c4-bba7-4d79-a5f9-0bc58e893978">
+                    <File Id="MonoPosix4dll" Name="Mono.Posix.dll" Assembly=".net" KeyPath="yes" Source="source/lib/4.0/Mono.Posix.dll" Vital="yes" />
+                  </Component>
+                </Directory>
               </Directory>
               <Directory Id="gtksharp20" Name="gtk-sharp-2.0">
 	        <!-- Installs GACd assemblies to an addressable location - see http://blogs.msdn.com/astebner/archive/2007/06/21/3450539.aspx -->
@@ -213,9 +225,6 @@
                   </RegistryKey>
                   <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\v4.0.30319\AssemblyFoldersEx\GtkSharp' Action="createAndRemoveOnUninstall">
                     <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-2.0" />
-                  </RegistryKey>
-                  <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\v4.0.30319\AssemblyFoldersEx\MonoPosix' Action="createAndRemoveOnUninstall">
-                    <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\Mono.Posix" />
                   </RegistryKey>
                   <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\v4.0.30319\AssemblyFoldersEx\MonoCairo' Action="createAndRemoveOnUninstall">
                     <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\Mono.Cairo" />
@@ -239,6 +248,24 @@
                   <File Id="gtkdotnetpdb" Name="gtk-dotnet.pdb" Source="binaries/gtkdotnet/gtk-dotnet.pdb" Vital="no" />
                 </Component>
               </Directory>
+              <Directory Id="MonoPosix" Name="Mono.Posix">
+                <Directory Id="MonoPosix2" Name="2.0">
+                  <Component Id="monoposix2instassembly" Guid="f846a63c-d97a-4b30-ab27-d2bd4ac1e8b3">
+                    <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\v2.0.50727\AssemblyFoldersEx\MonoPosix' Action="createAndRemoveOnUninstall">
+                      <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\Mono.Posix\2.0" />
+                    </RegistryKey>
+                    <File Id="MonoPosix2dll_inst" Name="Mono.Posix.dll" Source="source/lib/2.0/Mono.Posix.dll" Vital="yes" />
+                  </Component>
+                </Directory>
+                <Directory Id="MonoPosix4" Name="4.0">
+                  <Component Id="monoposix4instassembly" Guid="06fc48c7-b205-4b47-9129-2ce63def7b76">
+                    <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\v4.0.30319\AssemblyFoldersEx\MonoPosix' Action="createAndRemoveOnUninstall">
+                      <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\Mono.Posix\4.0" />
+                    </RegistryKey>
+                    <File Id="MonoPosix4dll_inst" Name="Mono.Posix.dll" Source="source/lib/4.0/Mono.Posix.dll" Vital="yes" />
+                  </Component>
+                </Directory>
+              </Directory>
             </Directory>
           </Directory>
         </Directory>
@@ -247,7 +274,6 @@
     <Feature Id="Default" Title="Default" Level="1">
       <MergeRef Id="unmanaged" />
       <MergeRef Id="mono-cairo-lib" />
-      <MergeRef Id="mono-posix-lib" />
       <ComponentRef Id="Mono.Cairo_policy.1.0" />
       <ComponentRef Id="Mono.Cairo_policy.2.0" />
       <ComponentRef Id="glibsharp_glue" />
@@ -256,6 +282,7 @@
       <ComponentRef Id="gdksharp_glue" />
       <ComponentRef Id="gtksharp_glue" />
       <ComponentRef Id="gladesharp_glue" />
+      <ComponentRef Id="monoposixhelper_inst" />
       <ComponentRef Id="glibsharp_dll" />
       <ComponentRef Id="glibsharp_policy.2.4" />
       <ComponentRef Id="glibsharp_policy.2.6" />
@@ -291,7 +318,11 @@
       <ComponentRef Id="gtkdotnet_policy.2.6" />
       <ComponentRef Id="gtkdotnet_policy.2.8" />
       <ComponentRef Id="gtkdotnet_policy.2.10" />
+      <ComponentRef Id="MonoPosix_2_dll" />
+      <ComponentRef Id="MonoPosix_4_dll" />
       <ComponentRef Id="gtksharpinstassembly" />
+      <ComponentRef Id="monoposix2instassembly" />
+      <ComponentRef Id="monoposix4instassembly" />
       <ComponentRef Id="updateinfo" />
     </Feature>
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" />

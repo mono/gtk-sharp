@@ -1,1 +1,7 @@
 gtk-sharp-2.0.wxs
+
+!source/bin/
+!source/bin/MonoPosixHelper.dll
+!source/lib/
+!source/lib/2.0/Mono.Posix.dll
+!source/lib/4.0/Mono.Posix.dll

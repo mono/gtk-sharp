@@ -1,0 +1,3 @@
+MonoPosixHelper.dll has been taken from the bin/ folder of the mono-3.2.3 Windows binary release:
+http://download.mono-project.com/archive/3.2.3/windows-installer/mono-3.2.3-gtksharp-2.12.11-win32-0.exe
+The original file was named "libMonoPosixHelper.dll" and was just renamed to "MonoPosixHelper.dll".
