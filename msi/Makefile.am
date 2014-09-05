@@ -20,10 +20,6 @@ gtk-sharp-3.0.msi: gtk-sharp-3.0.wxs
 		cp $(top_builddir)/$$a/*.dll binaries/$$a; \
 		cp $(top_builddir)/$$a/*.pdb binaries/$$a; \
 	done
-	mv binaries/libatksharpglue-3.dll   binaries/atksharpglue-3.dll
-	mv binaries/libgiosharpglue-3.dll   binaries/giosharpglue-3.dll
-	mv binaries/libgtksharpglue-3.dll   binaries/gtksharpglue-3.dll
-	mv binaries/libpangosharpglue-3.dll binaries/pangosharpglue-3.dll
 
 	cp $(top_builddir)/sample/GtkDemo/GtkDemo.exe binaries
 	candle -ext WixUIExtension gtk-sharp-3.0.wxs
