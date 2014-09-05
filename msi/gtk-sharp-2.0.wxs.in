@@ -232,6 +232,7 @@
                   <File Id="gdksharpdll_inst" Name="gdk-sharp.dll" Source="binaries/gdk/gdk-sharp.dll" Vital="yes" />
                   <File Id="gdksharppdb" Name="gdk-sharp.pdb" Source="binaries/gdk/gdk-sharp.pdb" Vital="no" />
                   <File Id="gtksharpdll_inst" Name="gtk-sharp.dll" Source="binaries/gtk/gtk-sharp.dll" Vital="yes" />
+                  <File Id="gtksharppdb" Name="gtk-sharp.pdb" Source="binaries/gtk/gtk-sharp.pdb" Vital="no" />
                   <File Id="gladesharpdll_inst" Name="glade-sharp.dll" Source="binaries/glade/glade-sharp.dll" Vital="yes" />
                   <File Id="gladesharppdb" Name="glade-sharp.pdb" Source="binaries/glade/glade-sharp.pdb" Vital="no" />
                   <File Id="gtkdotnetdll_inst" Name="gtk-dotnet.dll" Source="binaries/gtkdotnet/gtk-dotnet.dll" Vital="yes" />
