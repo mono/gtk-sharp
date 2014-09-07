@@ -26,6 +26,7 @@
 namespace Gtk {
 
 	using System;
+	using System.Reflection;
 	using System.Runtime.InteropServices;
 
 	public partial class Builder {
@@ -168,11 +169,12 @@ namespace Gtk {
 			TranslationDomain = translation_domain;
 		}
 		
-		public Builder (string resource_name) : this (resource_name, null)
+		public Builder (string resource_name) : this (Assembly.GetCallingAssembly (), resource_name, null)
 		{
 		}
 		
-		public Builder (string resource_name, string translation_domain) : this (System.Reflection.Assembly.GetEntryAssembly (), resource_name, translation_domain)
+		public Builder (string resource_name, string translation_domain)
+			: this (Assembly.GetCallingAssembly (), resource_name, translation_domain)
 		{
 		}
 		
@@ -182,7 +184,7 @@ namespace Gtk {
 				throw new InvalidOperationException ("Cannot chain to this constructor from subclasses.");
 		
 			if (assembly == null)
-				assembly = System.Reflection.Assembly.GetCallingAssembly ();
+				assembly = Assembly.GetCallingAssembly ();
 		
 			System.IO.Stream s = assembly.GetManifestResourceStream (resource_name);
 			if (s == null)
