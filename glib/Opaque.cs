@@ -67,6 +67,9 @@ namespace GLib {
 				return _obj;
 			}
 			set {
+				if (_obj == value)
+					return;
+
 				if (_obj != IntPtr.Zero) {
 					Unref (_obj);
 					if (owned)
