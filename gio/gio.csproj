@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{1C3BB17B-336D-432A-8952-4E979BC90867}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>gio</RootNamespace>
-    <AssemblyName>gio</AssemblyName>
+    <AssemblyName>gio-sharp</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -381,5 +379,10 @@
   <ItemGroup>
     <Folder Include="generated\" />
     <Folder Include="generated\GLib\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gio-sharp.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

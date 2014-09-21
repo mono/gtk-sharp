@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{94045F11-4266-40B4-910F-298985AF69D5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>gtk</RootNamespace>
-    <AssemblyName>gtk</AssemblyName>
+    <AssemblyName>gtk-sharp</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -938,6 +936,10 @@
     <Compile Include="generated\Gtk\XEmbedMessage.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="generated\" />
+    <Folder Include="generated\Gtk\" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
@@ -967,7 +969,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="generated\" />
-    <Folder Include="generated\Gtk\" />
+    <None Include="gtk-sharp.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
