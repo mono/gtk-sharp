@@ -1,4 +1,4 @@
-// FileAdapter.cs - customizations to GLib.FileAdapter
+// File.cs - customizations to GLib.File
 //
 // Authors: Stephane Delcroix  <stephane@delcroix.org>
 //
@@ -19,33 +19,17 @@
 // Boston, MA 02111-1307, USA.
 
 namespace GLib {
-	using System;
-	using System.Runtime.InteropServices;
-	
-	public partial class FileAdapter {
-		public override string ToString ()
+	public partial interface IFileBase : GLib.IWrapper {
+		bool Exists
 		{
-			return Uri.ToString ();
+			get;
 		}
-		
-		public bool Exists {
-			get { return QueryExists (null); }
-		}
-		
-		public bool Delete ()
+
+		System.Uri Uri
 		{
-			return Delete (null);
+			get;
 		}
-		
-		[DllImport ("libgio-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
-		static extern IntPtr g_file_get_uri(IntPtr raw);
-		
-		public System.Uri Uri {
-			get {
-				IntPtr raw_ret = g_file_get_uri(Handle);
-				string ret = GLib.Marshaller.PtrToStringGFree(raw_ret);
-				return new System.Uri (ret);
-			}
-		}
+
+		bool Delete();
 	}
 }

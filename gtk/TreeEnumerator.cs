@@ -27,11 +27,11 @@ namespace Gtk
 	internal class TreeEnumerator : IEnumerator
 	{
 		private Gtk.TreeIter iter;
-		private Gtk.ITreeModel model;
+		private Gtk.ITreeModelBase model;
 		private bool reset = true;
 		private bool changed = false;
 		
-		public TreeEnumerator (ITreeModel model)
+		public TreeEnumerator (ITreeModelBase model)
 		{
 			this.model = model;
 			

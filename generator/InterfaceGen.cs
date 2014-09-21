@@ -63,7 +63,7 @@ namespace GtkSharp.Generation {
 
 		public string AdapterName {
 			get {
-				return base.Name + "Adapter";
+				return base.Name;
 			}
 		}
 
@@ -75,13 +75,13 @@ namespace GtkSharp.Generation {
 
 		public string ImplementorName {
 			get {
-				return Name + "Implementor";
+				return "I" + base.Name;
 			}
 		}
 
 		public override string Name {
 			get {
-				return "I" + base.Name;
+				return "I" + base.Name + "Base";
 			}
 		}
 
@@ -258,7 +258,7 @@ namespace GtkSharp.Generation {
 
 		void GenerateImplementorProp (StreamWriter sw)
 		{
-			sw.WriteLine ("\t\tpublic " + ImplementorName + " Implementor {");
+			sw.WriteLine ("\t\tpublic " + ImplementorName + " VirtualImplementor {");
 			sw.WriteLine ("\t\t\tget {");
 			sw.WriteLine ("\t\t\t\treturn implementor as {0};", ImplementorName);
 			sw.WriteLine ("\t\t\t}");

@@ -1,14 +1,11 @@
-// TextAdapter.cs - Atk TextAdapter class customizations
+//  Gtk.CellLayoutAdaptor.cs - Gtk CellLayoutAdaptor customizations
 //
-// Author: Brad Taylor <brad@getcoded.net>
+//  Authors:  Mike Kestner  <mkestner@novell.com>
 //
-// Copyright (c) 2008 Novell, Inc.
-//
-// This code is inserted after the automatically generated code.
-//
+//  Copyright (c) 2007 Novell, Inc.
 //
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -21,14 +18,21 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-namespace Atk {
-	public partial class TextAdapter {
+namespace Gtk {
 
-		public void EmitTextChanged (TextChangedDetail detail, int position, int length)
+	using System;
+
+	public partial class CellLayout {
+
+		public void SetAttributes (CellRenderer cell, params object[] attrs)
 		{
-			GLib.Signal.Emit (GLib.Object.GetObject (Handle),
-			                  "text_changed::" + detail.ToString ().ToLower (),
-			                  position, length);
+			if (attrs.Length % 2 != 0)
+				throw new ArgumentException ("attrs should contain pairs of attribute/col");
+
+			ClearAttributes (cell);
+			for (int i = 0; i < attrs.Length - 1; i += 2) {
+				AddAttribute (cell, (string) attrs [i], (int) attrs [i + 1]);
+			}
 		}
 	}
 }

@@ -53,14 +53,14 @@ namespace GLib
 		{
 			this.stream = stream;
 			can_read = true;
-			can_seek = stream is ISeekable && (stream as ISeekable).CanSeek;
+			can_seek = stream is ISeekableBase && (stream as ISeekableBase).CanSeek;
 		}
 
 		public GioStream (OutputStream stream)
 		{
 			this.stream = stream;
 			can_write = true;
-			can_seek = stream is ISeekable && (stream as ISeekable).CanSeek;
+			can_seek = stream is ISeekableBase && (stream as ISeekableBase).CanSeek;
 		}
 
 		public GioStream (IOStream stream)
@@ -68,7 +68,7 @@ namespace GLib
 			this.stream = stream;
 			can_read = true;
 			can_write = true;
-			can_seek = stream is ISeekable && (stream as ISeekable).CanSeek;
+			can_seek = stream is ISeekableBase && (stream as ISeekableBase).CanSeek;
 		}
 
 		public override bool CanSeek {
@@ -112,7 +112,7 @@ namespace GLib
 					throw new NotSupportedException ("This stream doesn't support seeking");
 				if (is_disposed)
 					throw new ObjectDisposedException ("The stream is closed");
-				return (stream as ISeekable).Position;
+				return (stream as ISeekableBase).Position;
 			}
 			set {
 				Seek (value, System.IO.SeekOrigin.Begin);
@@ -195,7 +195,7 @@ namespace GLib
 				throw new NotSupportedException ("This stream doesn't support seeking");
 			if (is_disposed)
 				throw new ObjectDisposedException ("The stream is closed");
-			var seekable = stream as ISeekable;
+			var seekable = stream as ISeekableBase;
 
 			SeekType seek_type;
 			switch (origin) {
@@ -219,7 +219,7 @@ namespace GLib
 			if (!CanSeek || !CanWrite)
 				throw new NotSupportedException ("This stream doesn't support seeking");
 
-			var seekable = stream as ISeekable;
+			var seekable = stream as ISeekableBase;
 
 			if (!seekable.CanTruncate ())
 				throw new NotSupportedException ("This stream doesn't support truncating");

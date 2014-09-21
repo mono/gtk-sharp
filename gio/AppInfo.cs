@@ -1,14 +1,11 @@
-// SelectionAdapter.cs - Atk SelectionAdapter class customizations
+// AppInfoAdapter.cs - customizations to GLib.AppInfoAdapter
 //
-// Author: Andrés G. Aragoneses <aaragoneses@novell.com>
+// Authors: Stephane Delcroix  <stephane@delcroix.org>
 //
 // Copyright (c) 2008 Novell, Inc.
 //
-// This code is inserted after the automatically generated code.
-//
-//
 // This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2 of the Lesser GNU General 
+// modify it under the terms of version 2 of the Lesser GNU General
 // Public License as published by the Free Software Foundation.
 //
 // This program is distributed in the hope that it will be useful,
@@ -21,12 +18,17 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-namespace Atk {
-	public partial class SelectionAdapter {
+namespace GLib {
+	using System;
+	using System.Runtime.InteropServices;
 
-		public void EmitSelectionChanged ()
-		{
-			GLib.Signal.Emit (GLib.Object.GetObject (Handle), "selection_changed");
+	public partial class AppInfo {
+		[DllImport ("libgio-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern IntPtr g_app_info_get_all();
+
+		public static GLib.IAppInfoBase[] GetAll () {
+			IntPtr raw_ret = g_app_info_get_all();
+			return (GLib.IAppInfoBase[]) GLib.Marshaller.ListPtrToArray (raw_ret, typeof (GLib.List), true, false, typeof (GLib.IAppInfoBase));
 		}
 	}
 }
