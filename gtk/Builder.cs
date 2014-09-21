@@ -26,7 +26,10 @@
 namespace Gtk {
 
 	using System;
+	using System.IO;
+	using System.Reflection;
 	using System.Runtime.InteropServices;
+	using System.Text;
 
 	public partial class Builder {
 
@@ -158,21 +161,16 @@ namespace Gtk {
 			if (s == null)
 				throw new ArgumentNullException ("s");
 		
-			int size = (int) s.Length;
-			byte[] buffer = new byte[size];
-			s.Read (buffer, 0, size);
-			s.Close ();
-		
-			AddFromString(System.Text.Encoding.UTF8.GetString (buffer));
-		
+			AddFromStream (s);
 			TranslationDomain = translation_domain;
 		}
 		
-		public Builder (string resource_name) : this (resource_name, null)
+		public Builder (string resource_name) : this (Assembly.GetCallingAssembly (), resource_name, null)
 		{
 		}
 		
-		public Builder (string resource_name, string translation_domain) : this (System.Reflection.Assembly.GetEntryAssembly (), resource_name, translation_domain)
+		public Builder (string resource_name, string translation_domain)
+			: this (Assembly.GetCallingAssembly (), resource_name, translation_domain)
 		{
 		}
 		
@@ -182,20 +180,14 @@ namespace Gtk {
 				throw new InvalidOperationException ("Cannot chain to this constructor from subclasses.");
 		
 			if (assembly == null)
-				assembly = System.Reflection.Assembly.GetCallingAssembly ();
+				assembly = Assembly.GetCallingAssembly ();
 		
 			System.IO.Stream s = assembly.GetManifestResourceStream (resource_name);
 			if (s == null)
 				throw new ArgumentException ("Cannot get resource file '" + resource_name + "'",
 				                             "resource_name");
 		
-			int size = (int) s.Length;
-			byte[] buffer = new byte[size];
-			s.Read (buffer, 0, size);
-			s.Close ();
-		
-			AddFromString(System.Text.Encoding.UTF8.GetString (buffer));
-		
+			AddFromStream (s);
 			TranslationDomain = translation_domain;
 		}
 		
@@ -366,6 +358,22 @@ namespace Gtk {
 		
 		}
 		
+		void AddFromStream (Stream stream)
+		{
+			var size = (int)stream.Length;
+			var buffer = new byte[size];
+			stream.Read (buffer, 0, size);
+			stream.Close ();
+
+			// If buffer contains a BOM, omit it while reading; otherwise method AddFromString crashes
+			var offset = 0;
+			if (size >= 3 && buffer [0] == 239 && buffer [1] == 187 && buffer [2] == 191) {
+				offset = 3;
+			}
+
+			var text = Encoding.UTF8.GetString (buffer, offset, size - offset);
+			AddFromString (text);
+		}
 		
 		void BindFields (object target)
 		{
