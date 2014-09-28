@@ -47,6 +47,7 @@ sources = 				\
 	MethodBase.cs			\
 	MethodBody.cs			\
 	Method.cs			\
+	NamespaceGenInfo.cs		\
 	NativeStructGen.cs		\
 	ObjectField.cs			\
 	ObjectBase.cs			\

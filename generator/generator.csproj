@@ -95,6 +95,7 @@
     <Compile Include="UnionGen.cs" />
     <Compile Include="NativeStructGen.cs" />
     <Compile Include="AssemblyMetadataClassGenerator.cs" />
+    <Compile Include="NamespaceGenInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DESIGN" />

@@ -33,7 +33,7 @@ namespace GtkSharp.Generation {
 		private ReturnValue retval;
 		private bool valid = true;
 
-		public CallbackGen (XmlElement ns, XmlElement elem) : base (ns, elem) 
+		public CallbackGen (XmlElement elem, NamespaceGenInfo nsGenInfo) : base (elem, nsGenInfo)
 		{
 			retval = new ReturnValue (elem ["return-type"]);
 			parms = new Parameters (elem ["parameters"]);

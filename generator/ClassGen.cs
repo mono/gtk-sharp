@@ -29,8 +29,7 @@ namespace GtkSharp.Generation {
 
 	public class ClassGen : ClassBase  {
 
-		public ClassGen (XmlElement ns, XmlElement elem, AssemblyMetadataClassGenerator assemblyMetadataClassGen)
-			: base (ns, elem, assemblyMetadataClassGen) {}
+		public ClassGen (XmlElement elem, NamespaceGenInfo nsGenInfo) : base (elem, nsGenInfo) {}
 
 		public override string AssignToName {
 			get {

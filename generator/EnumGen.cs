@@ -32,8 +32,7 @@ namespace GtkSharp.Generation {
 		string enum_type = String.Empty;
 		IList<string> members = new List<string> ();
 
-		public EnumGen (XmlElement ns, XmlElement elem, AssemblyMetadataClassGenerator assemblyMetadataClassGen)
-			: base (ns, elem, assemblyMetadataClassGen)
+		public EnumGen (XmlElement elem, NamespaceGenInfo nsGenInfo) : base (elem, nsGenInfo)
 		{
 			foreach (XmlElement member in elem.ChildNodes) {
 				if (member.Name != "member")

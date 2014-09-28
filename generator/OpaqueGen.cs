@@ -28,8 +28,7 @@ namespace GtkSharp.Generation {
 
 	public class OpaqueGen : HandleBase {
 
-		public OpaqueGen (XmlElement ns, XmlElement elem, AssemblyMetadataClassGenerator assemblyMetadataClassGen)
-			: base (ns, elem, assemblyMetadataClassGen) {}
+		public OpaqueGen (XmlElement elem, NamespaceGenInfo nsGenInfo) : base (elem, nsGenInfo) {}
 	
 		public override string FromNative(string var, bool owned)
 		{

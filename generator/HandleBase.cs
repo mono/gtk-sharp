@@ -27,8 +27,7 @@ namespace GtkSharp.Generation {
 
 	public abstract class HandleBase : ClassBase, IAccessor, IOwnable {
 
-		protected HandleBase (XmlElement ns, XmlElement elem, AssemblyMetadataClassGenerator assemblyMetadataClassGen)
-			: base (ns, elem, assemblyMetadataClassGen) {}
+		protected HandleBase (XmlElement elem, NamespaceGenInfo nsGenInfo) : base (elem, nsGenInfo) {}
 					
 		public override string AssignToName {
 			get {

@@ -166,6 +166,7 @@ namespace GtkSharp.Generation {
 				if (elem.GetAttributeAsBoolean ("hidden"))
 					continue;
 
+				var nsGenInfo = new NamespaceGenInfo (ns, assemblyMetadataClassGen);
 				bool is_opaque = elem.GetAttributeAsBoolean ("opaque");
 				bool is_native_struct = elem.GetAttributeAsBoolean ("native");
 
@@ -179,36 +180,36 @@ namespace GtkSharp.Generation {
 					break;
 				case "boxed":
 					if (is_opaque) {
-						result.Add (new OpaqueGen (ns, elem, assemblyMetadataClassGen));
+						result.Add (new OpaqueGen (elem, nsGenInfo));
 					} else {
-						result.Add (new BoxedGen (ns, elem, assemblyMetadataClassGen));
+						result.Add (new BoxedGen (elem, nsGenInfo));
 					}
 					break;
 				case "callback":
-					result.Add (new CallbackGen (ns, elem));
+					result.Add (new CallbackGen (elem, nsGenInfo));
 					break;
 				case "enum":
-					result.Add (new EnumGen (ns, elem, assemblyMetadataClassGen));
+					result.Add (new EnumGen (elem, nsGenInfo));
 					break;
 				case "interface":
-					result.Add (new InterfaceGen (ns, elem, assemblyMetadataClassGen));
+					result.Add (new InterfaceGen (elem, nsGenInfo));
 					break;
 				case "object":
-					result.Add (new ObjectGen (ns, elem, assemblyMetadataClassGen));
+					result.Add (new ObjectGen (elem, nsGenInfo));
 					break;
 				case "class":
-					result.Add (new ClassGen (ns, elem, assemblyMetadataClassGen));
+					result.Add (new ClassGen (elem, nsGenInfo));
 					break;
 				case "union":
-					result.Add (new UnionGen (ns, elem, assemblyMetadataClassGen));
+					result.Add (new UnionGen (elem, nsGenInfo));
 					break;
 				case "struct":
 					if (is_opaque) {
-						result.Add (new OpaqueGen (ns, elem, assemblyMetadataClassGen));
+						result.Add (new OpaqueGen (elem, nsGenInfo));
 					} else if (is_native_struct) {
-						result.Add (new NativeStructGen (ns, elem, assemblyMetadataClassGen));
+						result.Add (new NativeStructGen (elem, nsGenInfo));
 					} else {
-						result.Add (new StructGen (ns, elem, assemblyMetadataClassGen));
+						result.Add (new StructGen (elem, nsGenInfo));
 					}
 					break;
 				default:

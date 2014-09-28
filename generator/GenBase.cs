@@ -27,21 +27,18 @@ namespace GtkSharp.Generation {
 	using System.Xml;
 
 	public abstract class GenBase : IGeneratable {
-		
-		private XmlElement ns;
+
+		private readonly NamespaceGenInfo nsGenInfo;
 		private XmlElement elem;
-		private LibraryNameHandle libHandle;
 
-		protected GenBase (XmlElement ns, XmlElement elem) : this (ns, elem, null) {}
-
-		protected GenBase (XmlElement ns, XmlElement elem, AssemblyMetadataClassGenerator assemblyMetadataClassGen)
+		protected GenBase (XmlElement elem, NamespaceGenInfo nsGenInfo)
 		{
-			this.ns = ns;
-			this.elem = elem;
-
-			if (assemblyMetadataClassGen != null) {
-				this.libHandle = assemblyMetadataClassGen.AddLibrary (ns.GetAttribute ("library"));
+			if (nsGenInfo == null) {
+				throw new ArgumentNullException ("nsGenInfo");
 			}
+
+			this.elem = elem;
+			this.nsGenInfo = nsGenInfo;
 		}
 
 		public string CName {
@@ -71,11 +68,7 @@ namespace GtkSharp.Generation {
 
 		public string LibraryName {
 			get {
-				if (libHandle != null) {
-					return libHandle.GetLibraryNameExpression ();
-				}
-
-				return "\"" + ns.GetAttribute ("library") + "\"";
+				return nsGenInfo.LibraryName;
 			}
 		}
 
@@ -89,7 +82,7 @@ namespace GtkSharp.Generation {
 
 		public string NS {
 			get {
-				return ns.GetAttribute ("name");
+				return nsGenInfo.NamespaceElement.GetAttribute ("name");
 			}
 		}
 
@@ -109,7 +102,7 @@ namespace GtkSharp.Generation {
 
 		public void Generate ()
 		{
-			GenerationInfo geninfo = new GenerationInfo (ns);
+			GenerationInfo geninfo = new GenerationInfo (nsGenInfo.NamespaceElement);
 			Generate (geninfo);
 		}
 

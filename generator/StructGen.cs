@@ -27,8 +27,7 @@ namespace GtkSharp.Generation {
 
 	public class StructGen : StructBase {
 		
-		public StructGen (XmlElement ns, XmlElement elem, AssemblyMetadataClassGenerator assemblyMetadataClassGen)
-			: base (ns, elem, assemblyMetadataClassGen) {}
+		public StructGen (XmlElement elem, NamespaceGenInfo nsGenInfo) : base (elem, nsGenInfo) {}
 		
 		public override void Generate (GenerationInfo gen_info)
 		{

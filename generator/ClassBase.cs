@@ -67,8 +67,7 @@ namespace GtkSharp.Generation {
 			}
 		}
 
-		protected ClassBase (XmlElement ns, XmlElement elem, AssemblyMetadataClassGenerator assemblyMetadataClassGen)
-			: base (ns, elem, assemblyMetadataClassGen) {
+		protected ClassBase (XmlElement elem, NamespaceGenInfo nsGenInfo) : base (elem, nsGenInfo) {
 					
 			deprecated = elem.GetAttributeAsBoolean ("deprecated");
 			isabstract = elem.GetAttributeAsBoolean ("abstract");

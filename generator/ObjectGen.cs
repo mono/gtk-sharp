@@ -35,8 +35,7 @@ namespace GtkSharp.Generation {
 		private IDictionary<string, ChildProperty> childprops = new Dictionary<string, ChildProperty> ();
 		private static IDictionary<string, DirectoryInfo> dirs = new Dictionary<string, DirectoryInfo> ();
 
-		public ObjectGen (XmlElement ns, XmlElement elem, AssemblyMetadataClassGenerator assemblyMetadataClassGen)
-			: base (ns, elem, false, assemblyMetadataClassGen)
+		public ObjectGen (XmlElement elem, NamespaceGenInfo nsGenInfo) : base (elem, false, nsGenInfo)
 		{
 			foreach (XmlNode node in elem.ChildNodes) {
 				XmlElement member = node as XmlElement;

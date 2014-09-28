@@ -30,8 +30,7 @@ namespace GtkSharp.Generation
 	{
 		IList<StructField> fields = new List<StructField> ();
 
-		public NativeStructGen (XmlElement ns, XmlElement elem, AssemblyMetadataClassGenerator assemblyMetadataClassGen)
-			: base (ns, elem, assemblyMetadataClassGen)
+		public NativeStructGen (XmlElement elem, NamespaceGenInfo nsGenInfo) : base (elem, nsGenInfo)
 		{
 			foreach (XmlNode node in elem.ChildNodes) {
 
