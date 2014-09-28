@@ -21,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace GtkSharp.Generation
 {
@@ -112,7 +113,7 @@ namespace GtkSharp.Generation
 
 			this.metadataClassGen = metadataClassGen;
 			this.libraryName = libraryName;
-			constName = libraryName.Replace ('-', '_').Replace ('.', '_');
+			constName = BuildConstName (libraryName);
 		}
 
 		public string LibraryName {
@@ -126,6 +127,31 @@ namespace GtkSharp.Generation
 		public string GetLibraryNameExpression ()
 		{
 			return metadataClassGen.GetClassName () + "." + ConstName;
+		}
+
+		static string BuildConstName (string libraryName)
+		{
+			// Remove prefix [L|l]ib
+			if (libraryName.StartsWith ("lib", StringComparison.InvariantCultureIgnoreCase)) {
+				libraryName = libraryName.Substring (3, libraryName.Length - 3);
+			}
+
+			// Remove trailing .dll or .so
+			if (libraryName.EndsWith (".dll", StringComparison.InvariantCultureIgnoreCase)) {
+				libraryName = libraryName.Substring (0, libraryName.Length - 4);
+			} else {
+				// Remove trailing .so, .so.X, .so.X.Y, .so.X.Y.Z, etc.
+				libraryName = Regex.Replace(libraryName, @"\.so(\.\d+)*$", "");
+			}
+
+			// Remove invalid characters
+			libraryName = libraryName.Replace ("-", "").Replace (".", "");
+
+			// Make first letter upper case
+			libraryName = libraryName [0].ToString ().ToUpperInvariant () +
+				libraryName.Substring (1, libraryName.Length - 1);
+
+			return "Native" + libraryName;
 		}
 	}
 }
