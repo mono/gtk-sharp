@@ -12,6 +12,7 @@ fixup_sources =				\
 sources = 				\
 	AliasGen.cs			\
 	ArrayParameter.cs		\
+	AssemblyMetadataClassGenerator.cs \
 	BoxedGen.cs			\
 	ByRefGen.cs			\
 	CallbackGen.cs			\
