@@ -198,7 +198,7 @@ namespace GtkSharp.Generation {
 			string import_sig = IsStatic ? "" : container_type.MarshalType + " raw";
 			import_sig += !IsStatic && Parameters.Count > 0 ? ", " : "";
 			import_sig += Parameters.ImportSignature.ToString();
-			sw.WriteLine("\t\t[DllImport(\"" + LibraryName + "\", CallingConvention = CallingConvention.Cdecl)]");
+			sw.WriteLine("\t\t[DllImport(" + LibraryName + ", CallingConvention = CallingConvention.Cdecl)]");
 			if (retval.MarshalType.StartsWith ("[return:"))
 				sw.WriteLine("\t\t" + retval.MarshalType + " static extern " + Safety + retval.CSType + " " + CName + "(" + import_sig + ");");
 			else
@@ -206,7 +206,7 @@ namespace GtkSharp.Generation {
 			sw.WriteLine();
 
 			if (HasWin32Utf8Variant) {
-				sw.WriteLine("\t\t[DllImport(\"" + LibraryName + "\")]");
+				sw.WriteLine("\t\t[DllImport(" + LibraryName + ")]");
 				if (retval.MarshalType.StartsWith ("[return:"))
 					sw.WriteLine("\t\t" + retval.MarshalType + " static extern " + Safety + retval.CSType + " " + CName + "_utf8(" + import_sig + ");");
 				else

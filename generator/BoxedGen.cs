@@ -27,7 +27,8 @@ namespace GtkSharp.Generation {
 
 	public class BoxedGen : StructBase {
 		
-		public BoxedGen (XmlElement ns, XmlElement elem) : base (ns, elem) {}
+		public BoxedGen (XmlElement ns, XmlElement elem, AssemblyMetadataClassGenerator assemblyMetadataClassGen)
+			: base (ns, elem, assemblyMetadataClassGen) {}
 		
 		public override void Generate (GenerationInfo gen_info)
 		{

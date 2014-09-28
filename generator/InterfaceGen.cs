@@ -34,7 +34,8 @@ namespace GtkSharp.Generation {
 
 		bool consume_only;
 
-		public InterfaceGen (XmlElement ns, XmlElement elem) : base (ns, elem, true)
+		public InterfaceGen (XmlElement ns, XmlElement elem, AssemblyMetadataClassGenerator assemblyMetadataClassGen)
+			: base (ns, elem, true, assemblyMetadataClassGen)
 		{
 			consume_only = elem.GetAttributeAsBoolean ("consume_only");
 			foreach (XmlNode node in elem.ChildNodes) {

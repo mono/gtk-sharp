@@ -118,7 +118,7 @@ namespace GtkSharp.Generation {
 		public string LibraryName {
 			get {
 				if (elem.HasAttribute ("library"))
-					return elem.GetAttribute ("library");
+					return "\"" + elem.GetAttribute ("library") + "\"";
 				return container_type.LibraryName;
 			}
 		}

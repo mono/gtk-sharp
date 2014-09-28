@@ -28,7 +28,8 @@ namespace GtkSharp.Generation {
 
 	public class OpaqueGen : HandleBase {
 
-		public OpaqueGen (XmlElement ns, XmlElement elem) : base (ns, elem) {}
+		public OpaqueGen (XmlElement ns, XmlElement elem, AssemblyMetadataClassGenerator assemblyMetadataClassGen)
+			: base (ns, elem, assemblyMetadataClassGen) {}
 	
 		public override string FromNative(string var, bool owned)
 		{
@@ -185,7 +186,7 @@ namespace GtkSharp.Generation {
 			}
 #endif
 			if (set_gvalue != null) {
-				sw.WriteLine ("\t\t[DllImport(\"{0}\", CallingConvention = CallingConvention.Cdecl)]", LibraryName);
+				sw.WriteLine ("\t\t[DllImport({0}, CallingConvention = CallingConvention.Cdecl)]", LibraryName);
 				sw.WriteLine ("\t\tstatic extern void {0}(ref GLib.Value val, IntPtr obj);", set_gvalue.CName);
 				sw.WriteLine ();
 				sw.WriteLine ("\t\tpublic void SetGValue (ref GLib.Value val)");

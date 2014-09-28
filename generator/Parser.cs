@@ -83,6 +83,12 @@ namespace GtkSharp.Generation {
 
 		public IGeneratable[] Parse (string filename, string schema_file, string gapidir)
 		{
+			return Parse (filename, schema_file, gapidir, null);
+		}
+
+		public IGeneratable[] Parse (string filename, string schema_file, string gapidir,
+			AssemblyMetadataClassGenerator assemblyMetadataClassgen)
+		{
 			XmlDocument doc = Load (filename, schema_file);
 			if (doc == null)
 				return null;
@@ -132,7 +138,7 @@ namespace GtkSharp.Generation {
 					SymbolTable.Table.AddTypes (curr_gens);
 					break;
 				case "namespace":
-					gens.AddRange (ParseNamespace (elem));
+					gens.AddRange (ParseNamespace (elem, assemblyMetadataClassgen));
 					break;
 				case "symbol":
 					gens.Add (ParseSymbol (elem));
@@ -146,7 +152,8 @@ namespace GtkSharp.Generation {
 			return gens.ToArray ();
 		}
 
-		private IList<IGeneratable> ParseNamespace (XmlElement ns)
+		private IList<IGeneratable> ParseNamespace (XmlElement ns,
+			AssemblyMetadataClassGenerator assemblyMetadataClassGen)
 		{
 			var result = new List<IGeneratable> ();
 
@@ -172,36 +179,36 @@ namespace GtkSharp.Generation {
 					break;
 				case "boxed":
 					if (is_opaque) {
-						result.Add (new OpaqueGen (ns, elem));
+						result.Add (new OpaqueGen (ns, elem, assemblyMetadataClassGen));
 					} else {
-						result.Add (new BoxedGen (ns, elem));
+						result.Add (new BoxedGen (ns, elem, assemblyMetadataClassGen));
 					}
 					break;
 				case "callback":
 					result.Add (new CallbackGen (ns, elem));
 					break;
 				case "enum":
-					result.Add (new EnumGen (ns, elem));
+					result.Add (new EnumGen (ns, elem, assemblyMetadataClassGen));
 					break;
 				case "interface":
-					result.Add (new InterfaceGen (ns, elem));
+					result.Add (new InterfaceGen (ns, elem, assemblyMetadataClassGen));
 					break;
 				case "object":
-					result.Add (new ObjectGen (ns, elem));
+					result.Add (new ObjectGen (ns, elem, assemblyMetadataClassGen));
 					break;
 				case "class":
-					result.Add (new ClassGen (ns, elem));
+					result.Add (new ClassGen (ns, elem, assemblyMetadataClassGen));
 					break;
 				case "union":
-					result.Add (new UnionGen (ns, elem));
+					result.Add (new UnionGen (ns, elem, assemblyMetadataClassGen));
 					break;
 				case "struct":
 					if (is_opaque) {
-						result.Add (new OpaqueGen (ns, elem));
+						result.Add (new OpaqueGen (ns, elem, assemblyMetadataClassGen));
 					} else if (is_native_struct) {
-						result.Add (new NativeStructGen (ns, elem));
+						result.Add (new NativeStructGen (ns, elem, assemblyMetadataClassGen));
 					} else {
-						result.Add (new StructGen (ns, elem));
+						result.Add (new StructGen (ns, elem, assemblyMetadataClassGen));
 					}
 					break;
 				default:

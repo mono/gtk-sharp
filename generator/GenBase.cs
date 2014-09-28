@@ -30,11 +30,18 @@ namespace GtkSharp.Generation {
 		
 		private XmlElement ns;
 		private XmlElement elem;
+		private LibraryNameHandle libHandle;
 
-		protected GenBase (XmlElement ns, XmlElement elem)
+		protected GenBase (XmlElement ns, XmlElement elem) : this (ns, elem, null) {}
+
+		protected GenBase (XmlElement ns, XmlElement elem, AssemblyMetadataClassGenerator assemblyMetadataClassGen)
 		{
 			this.ns = ns;
 			this.elem = elem;
+
+			if (assemblyMetadataClassGen != null) {
+				this.libHandle = assemblyMetadataClassGen.AddLibrary (ns.GetAttribute ("library"));
+			}
 		}
 
 		public string CName {
@@ -64,7 +71,11 @@ namespace GtkSharp.Generation {
 
 		public string LibraryName {
 			get {
-				return ns.GetAttribute ("library");
+				if (libHandle != null) {
+					return libHandle.GetLibraryNameExpression ();
+				}
+
+				return "\"" + ns.GetAttribute ("library") + "\"";
 			}
 		}
 

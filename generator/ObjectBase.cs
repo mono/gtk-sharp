@@ -41,7 +41,9 @@ namespace GtkSharp.Generation {
 		protected IList<InterfaceVM> interface_vms = new List<InterfaceVM> ();
 		protected Hashtable sigs = new Hashtable();
 
-		protected ObjectBase (XmlElement ns, XmlElement elem, bool is_interface) : base (ns, elem) 
+		protected ObjectBase (XmlElement ns, XmlElement elem, bool is_interface,
+			AssemblyMetadataClassGenerator assemblyMetadataClassGen)
+			: base (ns, elem, assemblyMetadataClassGen)
 		{
 			this.is_interface = is_interface;
 			XmlElement class_elem = null;

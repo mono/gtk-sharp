@@ -36,7 +36,8 @@ namespace GtkSharp.Generation {
 		IList<StructField> fields = new List<StructField> ();
 		bool need_read_native = false;
 
-		protected StructBase (XmlElement ns, XmlElement elem) : base (ns, elem)
+		protected StructBase (XmlElement ns, XmlElement elem, AssemblyMetadataClassGenerator assemblyMetadataClassGen)
+			: base (ns, elem, assemblyMetadataClassGen)
 		{
 			foreach (XmlNode node in elem.ChildNodes) {
 

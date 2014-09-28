@@ -32,7 +32,8 @@ namespace GtkSharp.Generation {
 		string enum_type = String.Empty;
 		IList<string> members = new List<string> ();
 
-		public EnumGen (XmlElement ns, XmlElement elem) : base (ns, elem)
+		public EnumGen (XmlElement ns, XmlElement elem, AssemblyMetadataClassGenerator assemblyMetadataClassGen)
+			: base (ns, elem, assemblyMetadataClassGen)
 		{
 			foreach (XmlElement member in elem.ChildNodes) {
 				if (member.Name != "member")
@@ -112,7 +113,7 @@ namespace GtkSharp.Generation {
 			if (Elem.HasAttribute ("gtype")) {
 				sw.WriteLine ();
 				sw.WriteLine ("\tinternal class " + Name + "GType {");
-				sw.WriteLine ("\t\t[DllImport (\"" + LibraryName + "\", CallingConvention = CallingConvention.Cdecl)]");
+				sw.WriteLine ("\t\t[DllImport (" + LibraryName + ", CallingConvention = CallingConvention.Cdecl)]");
 				sw.WriteLine ("\t\tstatic extern IntPtr " + Elem.GetAttribute ("gtype") + " ();");
 				sw.WriteLine ();
 				sw.WriteLine ("\t\tpublic static GLib.GType GType {");

@@ -23,7 +23,8 @@ namespace GtkSharp.Generation
 {
 	public class UnionGen : StructBase {
 
-		public UnionGen (XmlElement ns, XmlElement elem) : base (ns, elem)
+		public UnionGen (XmlElement ns, XmlElement elem, AssemblyMetadataClassGenerator assemblyMetadataClassGen)
+			: base (ns, elem, assemblyMetadataClassGen)
 		{
 		}
 

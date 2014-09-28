@@ -102,6 +102,8 @@ namespace GtkSharp.Generation {
 				schema_name = null;
 			}
 
+			var assemblyMetadataClassGen = new AssemblyMetadataClassGenerator (dir);
+
 			Parser p = new Parser ();
 			foreach (string include in includes) {
 				IGeneratable[] curr_gens = p.Parse (include, schema_name, gapidir);
@@ -109,7 +111,7 @@ namespace GtkSharp.Generation {
 			}
 
 			foreach (string filename in filenames) {
-				IGeneratable[] curr_gens = p.Parse (filename, schema_name, gapidir);
+				IGeneratable[] curr_gens = p.Parse (filename, schema_name, gapidir, assemblyMetadataClassGen);
 				table.AddTypes (curr_gens);
 				gens.AddRange (curr_gens);
 			}
@@ -123,6 +125,9 @@ namespace GtkSharp.Generation {
 			}
 			foreach (IGeneratable gen in invalids)
 				gens.Remove (gen);
+
+			// Generate AssemblyMetadata class
+			assemblyMetadataClassGen.Generate (gens);
 
 			GenerationInfo gen_info = null;
 			if (dir != "" || assembly_name != "" || glue_filename != "" || glue_includes != "" || gluelib_name != "")
