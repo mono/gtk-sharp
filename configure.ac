@@ -119,7 +119,7 @@ fi
 
 if test "x$has_mono" = "xtrue"; then
 GACUTIL_FLAGS='/package $(PACKAGE_VERSION) /gacdir $(DESTDIR)$(prefix)/lib'
-GENERATED_SOURCES_FILES=generated/*/*.cs
+GENERATED_SOURCES_FILES="generated/*.cs generated/*/*.cs"
 GENERATED_SOURCES_OPTION=$GENERATED_SOURCES_FILES
 ASSEMBLYINFO=/AssemblyInfo.cs
 AC_PATH_PROG(RUNTIME, mono, no)
