@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sample", "sample\sample.csproj", "{48234565-8E78-462E-ADEC-9AAA81B641B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "generator", "generator\generator.csproj", "{80E73555-2284-40DC-9068-9A40B7359B0C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gtk-sharp", "gtk-sharp", "{E0AD538D-9979-479B-8CBA-ED9143536CE0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "glib", "glib\glib.csproj", "{3BF1D531-8840-4F15-8066-A9788D8C398B}"
@@ -53,10 +51,6 @@ Global
 		{58346CC6-DE93-45B4-8093-3508BD5DAA12}.Debug|x86.Build.0 = Debug|x86
 		{58346CC6-DE93-45B4-8093-3508BD5DAA12}.Release|x86.ActiveCfg = Release|x86
 		{58346CC6-DE93-45B4-8093-3508BD5DAA12}.Release|x86.Build.0 = Release|x86
-		{80E73555-2284-40DC-9068-9A40B7359B0C}.Debug|x86.ActiveCfg = Debug|x86
-		{80E73555-2284-40DC-9068-9A40B7359B0C}.Debug|x86.Build.0 = Debug|x86
-		{80E73555-2284-40DC-9068-9A40B7359B0C}.Release|x86.ActiveCfg = Release|x86
-		{80E73555-2284-40DC-9068-9A40B7359B0C}.Release|x86.Build.0 = Release|x86
 		{94045F11-4266-40B4-910F-298985AF69D5}.Debug|x86.ActiveCfg = Debug|x86
 		{94045F11-4266-40B4-910F-298985AF69D5}.Debug|x86.Build.0 = Debug|x86
 		{94045F11-4266-40B4-910F-298985AF69D5}.Release|x86.ActiveCfg = Release|x86

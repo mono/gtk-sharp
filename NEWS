@@ -24,14 +24,12 @@ New features and enhancements
  * Windows installer: this is the first release of a Gtk# Windows installer
    with GTK+ 3.x. It includes 32-bit native binaries of GTK+ 3.6.4, provided
    at http://www.gtk.org/download/win32.php
- * generator: Add support for fixed length arrays as method parameters
  * build: Add a pkg-config file for gdk-sharp-3.0
  * Add samples to show the Spinner widget, and to demonstrate CSS theming
 
 Changes
 -------
 
-  * generator: Create a directory for each namespace of generated code
   * cairo: Remove FormatStrideForWidth and PathExtents methods from Context
   * glib: Add GVariant to fundamental types and allow conversion to and from
     GValue
@@ -40,10 +38,6 @@ Bug fixes
 ---------
 
   * Various fixes to build on Windows with MinGW and the .NET compiler
-  * generator: Fix generation of SetGValue method
-  * generator: Add new keyword to GType property if it hides parent
-  * generator: Fix handle being passed when type is a struct
-  * generator: Fix signature of static method overloads
   * gtk: Add ListStore.SetValue overload for long type
 
 
@@ -70,10 +64,6 @@ have any impact on applications using Gtk# 2.x.
 New features and enhancements
 -----------------------------
 
-  * Lots of improvements to the code generator, to support GAPI XML converted
-    from GObject Introspection XML (GIR).
-  * generator: Remove redundant class name from method name
-  * generator: Implement attribute to hide method parameters
   * cairo: Throw ObjectDisposedException when trying to use an object that has
     been disposed
   * glib: Add Mutex, RecMutex and Cond types
@@ -84,9 +74,6 @@ New features and enhancements
 Changes
 -------
 
-  * Move the fixup tool from the parser to the generator folder
-  * generator: Provide a GType static property for adapters and rename existing
-    GType property to GInterfaceGType
   * gio: Rename ApplicationFlags.FlagsNone to ApplicationFlags.None
   * gio: Delete unused DBusInterfaceVTable class
   * gio: Fix up returns type for several GSettings.List* methods
@@ -97,8 +84,6 @@ Changes
 Bug fixes
 ---------
 
-  * generator: Dispose ownable method parameters in VM callback (bxc#237)
-  * generator: Dispose ownable parameters in signal callbacks (bxc#237)
   * atk: Add metadata fixup to avoid crash due to ABI change
   * cairo: Fix leaks when managed objects are finalized
   * glib: Fix copy-paste error in Object.FindClassProperty()
@@ -180,12 +165,7 @@ New features and enhancements
   * cairo: Add mechanism to debug missing Dispose calls, enabled by setting a
     new MONO_CAIRO_DEBUG_DISPOSE environment variable.
 
-  * Provide and use an XML schema definition to validate GAPI XML files.
-
-  * Use generic collections in the generated code, in custom code and in the
-    generator itself.
-
-  * Improve handling of command-line parameters in the generator.
+  * Use generic collections in custom code.
 
   * glib: Install interfaces before they are initialized, to match the behavior
     now required by glib 2.36 and above.
@@ -193,8 +173,6 @@ New features and enhancements
 Changes
 -------
 
-  * Generate all interfaces with the "I" prefix, to match .NET coding 
-    convention. For example, Scrollable is now IScrollable.
   * gdk: Remove AddClientMessageFilter method from Gdk.Display and Gdk.Global
   * cairo: Add SetSourceColor method to Cairo.Context.
   * gio: Correct return types for methods returning GList*, in various classes
@@ -221,7 +199,6 @@ Changes
 Bug fixes
 ---------
 
-  * generator: Add validation check for return values that are arrays
   * cairo: Fix rectangles returned by StrokeExtents and FillExtents methods
   * cairo: Fix various text API calls to use the correct types
   * glib: Fix crash when freeing lists with elements typed as interfaces
@@ -268,12 +245,9 @@ Changes
   * Custom code is now provided solely using partial classes. The Foo.custom
     files that were used before are now proper Foo.cs files.
 
-  * Various enhancements to the parser and the generator.
-
 Bug fixes
 ---------
 
-  * generator: Properly handle boolean attributes when parsing the GAPI XML
   * glib: do not call g_thread_ functions in GLib >= 2.31
   * gtk: Fix resurrection cycles in container subclasses (bxc#3801)
 
