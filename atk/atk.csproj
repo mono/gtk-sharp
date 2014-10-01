@@ -127,6 +127,7 @@
     <Compile Include="generated\Atk\TextRectangle.cs" />
     <Compile Include="generated\Atk\Util.cs" />
     <Compile Include="generated\Atk\ValueAdapter.cs" />
+    <Compile Include="generated\AssemblyMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\glib\glib.csproj">

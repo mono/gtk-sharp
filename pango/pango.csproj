@@ -188,6 +188,7 @@
     <Compile Include="generated\Pango\Win32GlyphInfo.cs" />
     <Compile Include="generated\Pango\Win32MetricsInfo.cs" />
     <Compile Include="generated\Pango\WrapMode.cs" />
+    <Compile Include="generated\AssemblyMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\glib\glib.csproj">

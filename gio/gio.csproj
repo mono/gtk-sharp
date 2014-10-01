@@ -370,6 +370,7 @@
     <Compile Include="generated\GLib\ZlibDecompressor.cs" />
     <Compile Include="Application.cs" />
     <Compile Include="GioGlobal.cs" />
+    <Compile Include="generated\AssemblyMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\glib\glib.csproj">

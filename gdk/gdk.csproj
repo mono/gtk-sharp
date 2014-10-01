@@ -223,6 +223,7 @@
     <Compile Include="generated\Gdk\XBMData.cs" />
     <Compile Include="generated\Gdk\XPMContext.cs" />
     <Compile Include="generated\GLib\GLibSharp.GSourceFuncNative.cs" />
+    <Compile Include="generated\AssemblyMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\glib\glib.csproj">

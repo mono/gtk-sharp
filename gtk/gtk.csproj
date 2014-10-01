@@ -936,6 +936,7 @@
     <Compile Include="generated\Gtk\WindowType.cs" />
     <Compile Include="generated\Gtk\WrapMode.cs" />
     <Compile Include="generated\Gtk\XEmbedMessage.cs" />
+    <Compile Include="generated\AssemblyMetadata.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
