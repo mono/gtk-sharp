@@ -53,6 +53,10 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public NamespaceGenInfo NamespaceGenInfo {
+			get { return nsGenInfo; }
+		}
+
 		public int ParserVersion {
 			get {
 				XmlElement root = elem.OwnerDocument.DocumentElement;

@@ -27,12 +27,15 @@ namespace GtkSharp.Generation {
 
 	public abstract class MethodBase  {
 
+		readonly LibraryNameHandle libNameHandle;
+
 		protected XmlElement elem;
 		protected ClassBase container_type;
 		protected Parameters parms;
 		string mods = String.Empty;
 		string name;
 		private string protection = "public";
+		string libName;
 
 		protected MethodBase (XmlElement elem, ClassBase container_type)
 		{
@@ -53,6 +56,16 @@ namespace GtkSharp.Generation {
 					case "protected internal":
 						protection = attr;
 						break;
+				}
+			}
+
+			var xmlLibName = elem.GetAttribute ("library");
+			if (!string.IsNullOrEmpty(xmlLibName)) {
+				var assemblyMetadataClassGen = container_type.NamespaceGenInfo.AssemblyMetadataClassGenerator;
+				if (assemblyMetadataClassGen != null) {
+					libNameHandle = assemblyMetadataClassGen.AddLibrary (xmlLibName);
+				} else {
+					libName = "\"" + xmlLibName + "\"";
 				}
 			}
 		}
@@ -117,9 +130,15 @@ namespace GtkSharp.Generation {
 
 		public string LibraryName {
 			get {
-				if (elem.HasAttribute ("library"))
-					return "\"" + elem.GetAttribute ("library") + "\"";
-				return container_type.LibraryName;
+				if (libName == null) {
+					if (libNameHandle != null) {
+						libName = libNameHandle.GetLibraryNameExpression ();
+					} else {
+						libName = container_type.LibraryName;
+					}
+				}
+
+				return libName;
 			}
 		}
 

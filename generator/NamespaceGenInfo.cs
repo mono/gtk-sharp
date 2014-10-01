@@ -26,6 +26,8 @@ namespace GtkSharp.Generation
 	{
 		readonly XmlElement nsElem;
 
+		readonly AssemblyMetadataClassGenerator assemblyMetadataClassGen;
+
 		readonly LibraryNameHandle libNameHandle;
 
 		string libName;
@@ -39,6 +41,7 @@ namespace GtkSharp.Generation
 			}
 
 			this.nsElem = nsElem;
+			this.assemblyMetadataClassGen = assemblyMetadataClassGen;
 
 			var xmlLibName = NamespaceElement.GetAttribute ("library");
 			if (string.IsNullOrEmpty (xmlLibName)) {
@@ -54,6 +57,10 @@ namespace GtkSharp.Generation
 
 		public XmlElement NamespaceElement {
 			get { return nsElem; }
+		}
+
+		public AssemblyMetadataClassGenerator AssemblyMetadataClassGenerator {
+			get { return assemblyMetadataClassGen; }
 		}
 
 		public string LibraryName {
