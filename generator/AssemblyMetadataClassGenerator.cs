@@ -136,9 +136,11 @@ namespace GtkSharp.Generation
 				libraryName = libraryName.Substring (3, libraryName.Length - 3);
 			}
 
-			// Remove trailing .dll or .so
+			// Remove trailing .dll, .dylib or .so
 			if (libraryName.EndsWith (".dll", StringComparison.InvariantCultureIgnoreCase)) {
 				libraryName = libraryName.Substring (0, libraryName.Length - 4);
+			} else if (libraryName.EndsWith (".dylib", StringComparison.InvariantCultureIgnoreCase)) {
+				libraryName = libraryName.Substring (0, libraryName.Length - 6);
 			} else {
 				// Remove trailing .so, .so.X, .so.X.Y, .so.X.Y.Z, etc.
 				libraryName = Regex.Replace(libraryName, @"\.so(\.\d+)*$", "");
