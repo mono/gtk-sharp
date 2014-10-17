@@ -76,6 +76,7 @@ namespace Cairo {
 
 		~Pattern ()
 		{
+			Dispose (false);
 		}
 		
                 [Obsolete ("Use the SurfacePattern constructor")]
