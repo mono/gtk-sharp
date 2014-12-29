@@ -28,21 +28,16 @@ namespace GtkSharp.Generation {
 	using System.Xml;
 
 	public class Method : MethodBase  {
-		
+
 		private ReturnValue retval;
 
 		private string call;
 		private bool is_get, is_set;
-		private bool deprecated = false;
 		private bool win32_utf8_variant = false;
 
 		public Method (XmlElement elem, ClassBase container_type) : base (elem, container_type)
 		{
 			this.retval = new ReturnValue (elem["return-type"]);
-			
-			if (!container_type.IsDeprecated) {
-				deprecated = elem.GetAttributeAsBoolean ("deprecated");
-			}
 			
 			win32_utf8_variant = elem.GetAttributeAsBoolean ("win32_utf8_variant");
 
@@ -52,12 +47,6 @@ namespace GtkSharp.Generation {
 
 		public bool HasWin32Utf8Variant {
 			get { return win32_utf8_variant; }
-		}
-
-		public bool IsDeprecated {
-			get {
-				return deprecated;
-			}
 		}
 
 		public bool IsGetter {

@@ -27,6 +27,14 @@ namespace GtkSharp.Generation {
 
 	public abstract class MethodBase  {
 
+		private const string VersionAttr = "version";
+		private const string DeprecatedAttr = "deprecated";
+		private const string DeprecatedVersionAttr = "deprecated-version";
+
+		private readonly string version;
+		private readonly string deprecatedVersion;
+		private readonly bool deprecated;
+
 		protected XmlElement elem;
 		protected ClassBase container_type;
 		protected Parameters parms;
@@ -54,6 +62,18 @@ namespace GtkSharp.Generation {
 						protection = attr;
 						break;
 				}
+			}
+
+			if (elem.HasAttribute (VersionAttr)) {
+				version = elem.GetAttribute (VersionAttr);
+			}
+
+			if (!container_type.IsDeprecated) {
+				deprecated = elem.GetAttributeAsBoolean (DeprecatedAttr);
+			}
+
+			if (elem.HasAttribute (DeprecatedVersionAttr)) {
+				deprecatedVersion = elem.GetAttribute (DeprecatedVersionAttr);
 			}
 		}
 
@@ -147,6 +167,17 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public string Version {
+			get { return version; }
+		}
+
+		public bool IsDeprecated {
+			get { return deprecated; }
+		}
+
+		public string DeprecatedVersion {
+			get { return deprecatedVersion; }
+		}
 	
 		public string Protection {
 			get { return protection; }

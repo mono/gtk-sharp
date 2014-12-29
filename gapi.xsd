@@ -248,7 +248,9 @@
         <xs:attribute name="shared" type="xs:boolean" use="optional"/>
         <xs:attribute name="new_flag" type="xs:boolean" use="optional"/>
         <xs:attribute name="library" type="xs:string" use="optional"/>
+        <xs:attribute name="version" type="xs:string" use="optional"/>
         <xs:attribute name="deprecated" type="xs:boolean" use="optional"/>
+        <xs:attribute name="deprecated-version" type="xs:string" use="optional"/>
         <xs:attribute name="hidden" type="xs:boolean" use="optional"/>
         <xs:attribute name="win32_utf8_variant" type="xs:boolean" use="optional"/>
     </xs:complexType>
