@@ -211,28 +211,34 @@ namespace GtkSharp.Generation {
 			return true;
 		}
 
-		protected void GenerateVersionIf (StreamWriter sw)
+		public void GenerateVersionIf (StreamWriter sw)
 		{
 			if (Version != null) {
 				sw.WriteLine ("#if V_" + Sanitize (Version));
 			}
 		}
 
-		protected void GenerateVersionEndIf (StreamWriter sw)
+		public void GenerateVersionEndIf (StreamWriter sw)
 		{
 			if (Version != null) {
 				sw.WriteLine ("#endif");
 			}
 		}
 
-		protected void GenerateDeprecated (StreamWriter sw)
+		public void GenerateDeprecated (StreamWriter sw)
+		{
+			GenerateDeprecated (sw, 2);
+		}
+
+		public void GenerateDeprecated (StreamWriter sw, int indentation)
 		{
 			if (IsDeprecated) {
 				if (DeprecatedVersion != null) {
 					sw.WriteLine ("#if V_" + Sanitize (DeprecatedVersion));
 				}
 
-				sw.WriteLine ("\t\t[Obsolete]");
+				var indent = new string ('\t', indentation);
+				sw.WriteLine (indent + "[Obsolete]");
 				if (DeprecatedVersion != null) {
 					sw.WriteLine ("#endif");
 				}

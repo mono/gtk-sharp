@@ -95,6 +95,9 @@
         <xs:attribute name="name" type="xs:string"/>
         <xs:attribute name="cname" type="xs:string"/>
         <xs:attribute name="hidden" type="xs:boolean" use="optional"/>
+        <xs:attribute name="deprecated" type="xs:boolean" use="optional"/>
+        <xs:attribute name="deprecated-version" type="xs:string" use="optional"/>
+        <xs:attribute name="version" type="xs:string" use="optional"/>
     </xs:complexType>
 
     <xs:complexType name="classType">
@@ -203,9 +206,11 @@
         <xs:attribute name="cname" type="xs:string"/>
         <xs:attribute name="name" type="xs:string"/>
         <xs:attribute name="deprecated" type="xs:boolean" use="optional"/>
+        <xs:attribute name="deprecated-version" type="xs:string" use="optional"/>
         <xs:attribute name="hidden" type="xs:boolean" use="optional"/>
         <xs:attribute name="preferred" type="xs:boolean" use="optional"/>
         <xs:attribute name="shared" type="xs:boolean" use="optional"/>
+        <xs:attribute name="version" type="xs:string" use="optional"/>
         <xs:attribute name="win32_utf8_variant" type="xs:boolean" use="optional"/>
     </xs:complexType>
 

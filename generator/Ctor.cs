@@ -94,7 +94,9 @@ namespace GtkSharp.Generation {
 			StreamWriter sw = gen_info.Writer;
 			gen_info.CurrentMember = CName;
 
+			GenerateVersionIf (sw);
 			GenerateImport (sw);
+			GenerateDeprecated (sw);
 			
 			if (IsStatic)
 				GenerateStatic (gen_info);
@@ -155,6 +157,7 @@ namespace GtkSharp.Generation {
 			}
 			
 			sw.WriteLine("\t\t}");
+			GenerateVersionEndIf (sw);
 			sw.WriteLine();
 			
 			Statistics.CtorCount++;

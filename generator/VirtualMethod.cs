@@ -66,6 +66,8 @@ namespace GtkSharp.Generation {
 			if (!Validate (log))
 				return;
 
+			GenerateVersionIf (sw);
+
 			string native_signature = "";
 			if (!IsStatic) {
 				native_signature += "IntPtr inst";
@@ -102,12 +104,14 @@ namespace GtkSharp.Generation {
 			if (!retval.IsVoid)
 				sw.WriteLine (indent + retval.CSType + " __result;");
 			sw.Write (call.Setup (indent));
+			GenerateObsoleteWarningDisablePragma (sw);
 			sw.Write (indent);
 			if (!retval.IsVoid)
 				sw.Write ("__result = ");
 			if (!this.IsStatic)
 				sw.Write ("__obj.");
 			sw.WriteLine (this.CallString + ";");
+			GenerateObsoleteWarningRestorePragma (sw);
 			sw.Write (call.Finish (indent));
 			if (!retval.IsVoid)
 				sw.WriteLine ("\t\t\t\treturn " + retval.ToNative ("__result") + ";");
@@ -126,6 +130,7 @@ namespace GtkSharp.Generation {
 			}
 			sw.WriteLine ("\t\t\t}");
 			sw.WriteLine ("\t\t}");
+			GenerateVersionEndIf (sw);
 			sw.WriteLine ();
 		}
 
@@ -151,6 +156,20 @@ namespace GtkSharp.Generation {
 
 			call = new ManagedCallString (parms);
 			return true;
+		}
+
+		public void GenerateObsoleteWarningDisablePragma (StreamWriter sw)
+		{
+			if (IsDeprecated) {
+				sw.WriteLine ("#pragma warning disable 612, 618");
+			}
+		}
+
+		public void GenerateObsoleteWarningRestorePragma (StreamWriter sw)
+		{
+			if (IsDeprecated) {
+				sw.WriteLine ("#pragma warning restore 612, 618");
+			}
 		}
 	}
 }

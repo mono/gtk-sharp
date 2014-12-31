@@ -52,6 +52,7 @@ namespace GtkSharp.Generation {
 				GenerateOverrideBody (sw);
 				sw.WriteLine ("\t\t\tOverrideVirtualMethod (gtype, \"{0}\", callback);", signal_name);
 				sw.WriteLine ("\t\t}");
+				GenerateVersionEndIf (sw);
 			} else
 				base.GenerateOverride (gen_info, implementor);
 		}
@@ -116,6 +117,7 @@ namespace GtkSharp.Generation {
 				sw.WriteLine ("\t\t\treturn result;");
 			}
 			sw.WriteLine ("\t\t}\n");
+			GenerateVersionEndIf (sw);
 		}
 
 		private string ReturnGType {

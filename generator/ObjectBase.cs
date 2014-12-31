@@ -200,8 +200,13 @@ namespace GtkSharp.Generation {
 					VirtualMethod vm = member as VirtualMethod;
 					if (hidden_vms.Contains (vm) || (is_interface && vm is DefaultSignalHandler))
 						sw.WriteLine ("\t\t\tIntPtr {0};", vm.Name);
-					else
+					else {
+						vm.GenerateVersionIf (sw);
+						vm.GenerateDeprecated (sw, 3);
 						sw.WriteLine ("\t\t\tpublic {0}NativeDelegate {0};", vm.Name);
+						vm.GenerateVersionEndIf (sw);
+					}
+
 				} else if (member is ClassField) {
 					ClassField field = member as ClassField;
 					field.Generate (gen_info, "\t\t\t");

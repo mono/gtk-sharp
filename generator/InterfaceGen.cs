@@ -123,8 +123,13 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\t\t{");
 			sw.WriteLine ("\t\t\tGLib.GType.Register (_gtype, typeof ({0}));", AdapterName);
 			foreach (InterfaceVM vm in interface_vms) {
-				if (vm.Validate (new LogWriter (QualifiedName)))
+				if (vm.Validate (new LogWriter (QualifiedName))) {
+					vm.GenerateVersionIf (sw);
+					vm.GenerateObsoleteWarningDisablePragma (sw);
 					sw.WriteLine ("\t\t\tiface.{0} = new {0}NativeDelegate ({0}_cb);", vm.Name);
+					vm.GenerateObsoleteWarningRestorePragma (sw);
+					vm.GenerateVersionEndIf (sw);
+				}
 			}
 			sw.WriteLine ("\t\t}");
 			sw.WriteLine ();
@@ -142,7 +147,11 @@ namespace GtkSharp.Generation {
 				sw.WriteLine ("\t\t\tIntPtr ifaceptr = new IntPtr (ptr.ToInt64 () + class_offset);");
 				sw.WriteLine ("\t\t\t{0} native_iface = ({0}) Marshal.PtrToStructure (ifaceptr, typeof ({0}));", class_struct_name);
 				foreach (InterfaceVM vm in interface_vms) {
+					vm.GenerateVersionIf (sw);
+					vm.GenerateObsoleteWarningDisablePragma (sw);
 					sw.WriteLine ("\t\t\tnative_iface." + vm.Name + " = iface." + vm.Name + ";");
+					vm.GenerateObsoleteWarningRestorePragma (sw);
+					vm.GenerateVersionEndIf (sw);
 				}
 				sw.WriteLine ("\t\t\tMarshal.StructureToPtr (native_iface, ifaceptr, false);");
 			}
@@ -380,7 +389,11 @@ namespace GtkSharp.Generation {
 			foreach (Method method in Methods.Values) {
 				if (IgnoreMethod (method, this))
 					continue;
+
+				method.GenerateVersionIf (sw);
+				method.GenerateDeprecated (sw);
 				method.GenerateDecl (sw);
+				method.GenerateVersionEndIf (sw);
 			}
 
 			foreach (Property prop in Properties.Values)

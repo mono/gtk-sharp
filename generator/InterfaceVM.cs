@@ -69,6 +69,9 @@ namespace GtkSharp.Generation {
 
 		public void GenerateDeclaration (StreamWriter sw, InterfaceVM complement)
 		{
+			GenerateVersionIf (sw);
+			GenerateDeprecated (sw);
+
 			if (IsGetter) {
 				string name = Name.StartsWith ("Get") ? Name.Substring (3) : Name;
 				string type = retval.IsVoid ? parms [0].CSType : retval.CSType;
@@ -83,6 +86,8 @@ namespace GtkSharp.Generation {
 				sw.WriteLine ("\t\t" + parms[0].CSType + " " + Name.Substring (3) + " { set; }");
 			else
 				sw.WriteLine ("\t\t" + retval.CSType + " " + Name + " (" + Signature + ");");
+
+			GenerateVersionEndIf (sw);
 		}
 
 		public override bool Validate (LogWriter log)
