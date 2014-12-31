@@ -240,13 +240,15 @@ namespace GtkSharp.Generation {
 				if (comp != null && !comp.is_set)
 					comp = null;
 			}
+
+			GenerateVersionIf (gen_info.Writer);
 			
 			GenerateImport (gen_info.Writer);
 			if (comp != null && retval.CSType == comp.Parameters.AccessorReturnType)
 				comp.GenerateImport (gen_info.Writer);
 
-			if (IsDeprecated)
-				gen_info.Writer.WriteLine("\t\t[Obsolete]");
+			GenerateDeprecated (gen_info.Writer);
+
 			gen_info.Writer.Write("\t\t");
 			if (Protection != "")
 				gen_info.Writer.Write("{0} ", Protection);
@@ -278,6 +280,7 @@ namespace GtkSharp.Generation {
 			if (Parameters.HasOptional && !(is_get || is_set))
 				GenerateOverloads (gen_info.Writer);
 			
+			GenerateVersionEndIf (gen_info.Writer);
 			gen_info.Writer.WriteLine();
 
 			Statistics.MethodCount++;

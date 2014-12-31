@@ -23,6 +23,7 @@
 namespace GtkSharp.Generation {
 
 	using System;
+	using System.IO;
 	using System.Xml;
 
 	public abstract class MethodBase  {
@@ -208,6 +209,39 @@ namespace GtkSharp.Generation {
 			}
 
 			return true;
+		}
+
+		protected void GenerateVersionIf (StreamWriter sw)
+		{
+			if (Version != null) {
+				sw.WriteLine ("#if V_" + Sanitize (Version));
+			}
+		}
+
+		protected void GenerateVersionEndIf (StreamWriter sw)
+		{
+			if (Version != null) {
+				sw.WriteLine ("#endif");
+			}
+		}
+
+		protected void GenerateDeprecated (StreamWriter sw)
+		{
+			if (IsDeprecated) {
+				if (DeprecatedVersion != null) {
+					sw.WriteLine ("#if V_" + Sanitize (DeprecatedVersion));
+				}
+
+				sw.WriteLine ("\t\t[Obsolete]");
+				if (DeprecatedVersion != null) {
+					sw.WriteLine ("#endif");
+				}
+			}
+		}
+
+		private static string Sanitize (string version)
+		{
+			return version.Replace ('.', '_').Replace ('-', '_').Replace (':', '_').Replace ('~', '_');
 		}
 	}
 }
