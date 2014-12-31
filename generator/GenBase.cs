@@ -161,6 +161,20 @@ namespace GtkSharp.Generation {
 				Utils.GenerateDeprecated (sw, DeprecatedVersion, indentation);
 			}
 		}
+
+		protected void GenerateObsoleteWarningDisablePragma (StreamWriter sw)
+		{
+			if (IsDeprecated) {
+				Utils.GenerateObsoleteWarningDisablePragma (sw);
+			}
+		}
+
+		protected void GenerateObsoleteWarningRestorePragma (StreamWriter sw)
+		{
+			if (IsDeprecated) {
+				Utils.GenerateObsoleteWarningRestorePragma (sw);
+			}
+		}
 	}
 }
 

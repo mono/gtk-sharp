@@ -166,11 +166,13 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\t\t\t__notify = notify;");
 			sw.WriteLine ("\t\t}");
 			sw.WriteLine ();
+			GenerateObsoleteWarningDisablePragma (sw);
 			sw.WriteLine ("\t\tinternal " + QualifiedName + " Handler {");
 			sw.WriteLine ("\t\t\tget {");
 			sw.WriteLine ("\t\t\t\treturn new " + QualifiedName + "(InvokeNative);");
 			sw.WriteLine ("\t\t\t}");
 			sw.WriteLine ("\t\t}");
+			GenerateObsoleteWarningRestorePragma (sw);
 			sw.WriteLine ();
 			sw.WriteLine ("\t\t" + retval.CSType + " InvokeNative (" + sig + ")");
 			sw.WriteLine ("\t\t{");
@@ -262,16 +264,20 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\t\t}");
 			sw.WriteLine ();
 			sw.WriteLine ("\t\tinternal " + wrapper + " NativeDelegate;");
+			GenerateObsoleteWarningDisablePragma (sw);
 			sw.WriteLine ("\t\t" + NS + "." + Name + " managed;");
 			sw.WriteLine ();
 			sw.WriteLine ("\t\tpublic " + Name + "Wrapper (" + NS + "." + Name + " managed)");
+			GenerateObsoleteWarningRestorePragma (sw);
 			sw.WriteLine ("\t\t{");
 			sw.WriteLine ("\t\t\tthis.managed = managed;");
 			sw.WriteLine ("\t\t\tif (managed != null)");
 			sw.WriteLine ("\t\t\t\tNativeDelegate = new " + wrapper + " (NativeCallback);");
 			sw.WriteLine ("\t\t}");
 			sw.WriteLine ();
+			GenerateObsoleteWarningDisablePragma (sw);
 			sw.WriteLine ("\t\tpublic static " + NS + "." + Name + " GetManagedDelegate (" + wrapper + " native)");
+			GenerateObsoleteWarningRestorePragma (sw);
 			sw.WriteLine ("\t\t{");
 			sw.WriteLine ("\t\t\tif (native == null)");
 			sw.WriteLine ("\t\t\t\treturn null;");
@@ -296,17 +302,22 @@ namespace GtkSharp.Generation {
 
 			StreamWriter sw = gen_info.OpenStream (Name, NS);
 
+			GenerateVersionIf (sw);
 			sw.WriteLine ("namespace " + NS + " {");
 			sw.WriteLine ();
 			sw.WriteLine ("\tusing System;");
 			sw.WriteLine ();
+			if (!IsInternal) {
+				GenerateDeprecated (sw);
+			}
+
 			sw.WriteLine ("\t{0} delegate " + retval.CSType + " " + Name + "(" + sig.ToString() + ");", IsInternal ? "internal" : "public");
 			sw.WriteLine ();
 			sw.WriteLine ("}");
-
-			sw.Close ();
 			
 			GenWrapper (gen_info);
+			GenerateVersionEndIf (sw);
+			sw.Close ();
 
 			Statistics.CBCount++;
 		}
