@@ -161,14 +161,14 @@ namespace GtkSharp.Generation {
 		public void GenerateObsoleteWarningDisablePragma (StreamWriter sw)
 		{
 			if (IsDeprecated) {
-				sw.WriteLine ("#pragma warning disable 612, 618");
+				Utils.GenerateObsoleteWarningDisablePragma (sw);
 			}
 		}
 
 		public void GenerateObsoleteWarningRestorePragma (StreamWriter sw)
 		{
 			if (IsDeprecated) {
-				sw.WriteLine ("#pragma warning restore 612, 618");
+				Utils.GenerateObsoleteWarningRestorePragma (sw);
 			}
 		}
 	}

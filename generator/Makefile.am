@@ -69,6 +69,7 @@ sources = 				\
 	StructGen.cs			\
 	SymbolTable.cs			\
 	UnionGen.cs			\
+	Utils.cs			\
 	VirtualMethod.cs		\
 	VMSignature.cs			\
 	XmlElementExtensions.cs

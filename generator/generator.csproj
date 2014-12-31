@@ -94,6 +94,7 @@
     <Compile Include="Constant.cs" />
     <Compile Include="UnionGen.cs" />
     <Compile Include="NativeStructGen.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DESIGN" />
