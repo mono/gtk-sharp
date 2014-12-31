@@ -41,7 +41,6 @@ namespace GtkSharp.Generation {
 
 		private bool ctors_initted = false;
 		private Dictionary<string, Ctor> clash_map;
-		private bool deprecated = false;
 		private bool isabstract = false;
 
 		public IDictionary<string, Method> Methods {
@@ -69,7 +68,6 @@ namespace GtkSharp.Generation {
 
 		protected ClassBase (XmlElement ns, XmlElement elem) : base (ns, elem) {
 					
-			deprecated = elem.GetAttributeAsBoolean ("deprecated");
 			isabstract = elem.GetAttributeAsBoolean ("abstract");
 
 			foreach (XmlNode node in elem.ChildNodes) {
@@ -179,12 +177,6 @@ namespace GtkSharp.Generation {
 			invalids.Clear ();
 
 			return true;
-		}
-
-		public bool IsDeprecated {
-			get {
-				return deprecated;
-			}
 		}
 
 		public bool IsAbstract {

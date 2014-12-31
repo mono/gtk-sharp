@@ -28,6 +28,14 @@ namespace GtkSharp.Generation {
 
 	public abstract class GenBase : IGeneratable {
 		
+		private const string VersionAttr = "version";
+		private const string DeprecatedAttr = "deprecated";
+		private const string DeprecatedVersionAttr = "deprecated-version";
+
+		private readonly string version;
+		private readonly string deprecatedVersion;
+		private readonly bool deprecated;
+
 		private XmlElement ns;
 		private XmlElement elem;
 
@@ -35,6 +43,18 @@ namespace GtkSharp.Generation {
 		{
 			this.ns = ns;
 			this.elem = elem;
+
+			if (elem.HasAttribute (VersionAttr)) {
+				version = elem.GetAttribute (VersionAttr);
+			}
+
+			if (elem.HasAttribute (DeprecatedAttr)) {
+				deprecated = elem.GetAttributeAsBoolean (DeprecatedAttr);
+			}
+
+			if (elem.HasAttribute (DeprecatedVersionAttr)) {
+				deprecatedVersion = elem.GetAttribute (DeprecatedVersionAttr);
+			}
 		}
 
 		public string CName {
@@ -90,6 +110,18 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public string Version {
+			get { return version; }
+		}
+
+		public bool IsDeprecated {
+			get { return deprecated; }
+		}
+
+		public string DeprecatedVersion {
+			get { return deprecatedVersion; }
+		}
+
 		public abstract string CallByName (string var);
 
 		public abstract string FromNative (string var);
@@ -103,6 +135,32 @@ namespace GtkSharp.Generation {
 		}
 
 		public abstract void Generate (GenerationInfo geninfo);
+
+		protected void GenerateVersionIf (StreamWriter sw)
+		{
+			if (Version != null) {
+				Utils.GenerateVersionIf (sw, Version);
+			}
+		}
+
+		protected void GenerateVersionEndIf (StreamWriter sw)
+		{
+			if (Version != null) {
+				Utils.GenerateVersionEndIf (sw);
+			}
+		}
+
+		protected void GenerateDeprecated (StreamWriter sw)
+		{
+			GenerateDeprecated (sw, 1);
+		}
+
+		protected void GenerateDeprecated (StreamWriter sw, int indentation)
+		{
+			if (IsDeprecated) {
+				Utils.GenerateDeprecated (sw, DeprecatedVersion, indentation);
+			}
+		}
 	}
 }
 
