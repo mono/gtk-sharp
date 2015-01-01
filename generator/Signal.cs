@@ -31,6 +31,14 @@ namespace GtkSharp.Generation {
 
 	public class Signal {
 
+		private const string VersionAttr = "version";
+		private const string DeprecatedAttr = "deprecated";
+		private const string DeprecatedVersionAttr = "deprecated-version";
+
+		private readonly string version;
+		private readonly string deprecatedVersion;
+		private readonly bool deprecated;
+
 		bool marshaled;
 		string name;
 		XmlElement elem;
@@ -46,6 +54,18 @@ namespace GtkSharp.Generation {
 			retval = new ReturnValue (elem ["return-type"]);
 			parms = new Parameters (elem["parameters"], container_type.ParserVersion == 1 ? true : false);
 			this.container_type = container_type;
+
+			if (elem.HasAttribute (VersionAttr)) {
+				version = elem.GetAttribute (VersionAttr);
+			}
+
+			if (elem.HasAttribute (DeprecatedAttr)) {
+				deprecated = elem.GetAttributeAsBoolean (DeprecatedAttr);
+			}
+
+			if (elem.HasAttribute (DeprecatedVersionAttr)) {
+				deprecatedVersion = elem.GetAttribute (DeprecatedVersionAttr);
+			}
 		}
 
 		bool Marshaled {
@@ -77,10 +97,21 @@ namespace GtkSharp.Generation {
 
  		public void GenerateDecl (StreamWriter sw)
  		{
+			if (version != null) {
+				Utils.GenerateVersionIf (sw, version);
+			}
+
+			if (deprecated) {
+				Utils.GenerateDeprecated (sw, deprecatedVersion, 2);
+			}
+
 			if (elem.GetAttributeAsBoolean ("new_flag") || (container_type != null && container_type.GetSignalRecursively (Name) != null))
 				sw.Write("new ");
 
  			sw.WriteLine ("\t\tevent " + EventHandlerQualifiedName + " " + Name + ";");
+			if (version != null) {
+				Utils.GenerateVersionEndIf (sw);
+			}
 		}
 
 		public string CName {
@@ -281,15 +312,31 @@ namespace GtkSharp.Generation {
 
 			StreamWriter sw = gen_info.OpenStream (EventHandlerName, container_type.NS);
 			
+			if (version != null) {
+				Utils.GenerateVersionIf (sw, version);
+			}
+
 			sw.WriteLine ("namespace " + ns + " {");
 			sw.WriteLine ();
 			sw.WriteLine ("\tusing System;");
 
 			sw.WriteLine ();
+			if (deprecated) {
+				Utils.GenerateDeprecated (sw, deprecatedVersion, 1);
+			}
+
 			sw.WriteLine ("\tpublic delegate void " + EventHandlerName + "(object o, " + EventArgsName + " args);");
 			sw.WriteLine ();
+			if (deprecated) {
+				Utils.GenerateDeprecated (sw, deprecatedVersion, 1);
+			}
+
 			sw.WriteLine ("\tpublic class " + EventArgsName + " : GLib.SignalArgs {");
 			for (int i = 0; i < parms.Count; i++) {
+				if (deprecated) {
+					Utils.GenerateDeprecated (sw, deprecatedVersion, 2);
+				}
+
 				sw.WriteLine ("\t\tpublic " + parms[i].CSType + " " + parms[i].StudlyName + "{");
 				if (parms[i].PassAs != "out") {
 					sw.WriteLine ("\t\t\tget {");
@@ -316,16 +363,28 @@ namespace GtkSharp.Generation {
 			}
 			sw.WriteLine ("\t}");
 			sw.WriteLine ("}");
+			if (version != null) {
+				Utils.GenerateVersionEndIf (sw);
+			}
+
 			sw.Close ();
 		}
 
 		public void GenEvent (StreamWriter sw, ObjectBase implementor, string target)
 		{
+			if (version != null) {
+				Utils.GenerateVersionIf (sw, version);
+			}
+
 			string args_type = IsEventHandler ? "" : ", typeof (" + EventArgsQualifiedName + ")";
 			
 			if (Marshaled) {
 				GenCallback (sw);
 				args_type = ", new " + DelegateName + "(" + CallbackName + ")";
+			}
+
+			if (deprecated) {
+				Utils.GenerateDeprecated (sw, deprecatedVersion, 2);
 			}
 
 			sw.WriteLine("\t\t[GLib.Signal("+ CName + ")]");
@@ -340,6 +399,10 @@ namespace GtkSharp.Generation {
 			sw.WriteLine("\t\t\t\t{0}.RemoveSignalHandler ({1}, value);", target, CName);
 			sw.WriteLine("\t\t\t}");
 			sw.WriteLine("\t\t}");
+			if (version != null) {
+				Utils.GenerateVersionEndIf (sw);
+			}
+
 			sw.WriteLine();
 		}
 
