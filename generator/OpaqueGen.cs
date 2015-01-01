@@ -47,6 +47,7 @@ namespace GtkSharp.Generation {
 
 			StreamWriter sw = gen_info.Writer = gen_info.OpenStream (Name, NS);
 
+			GenerateVersionIf (sw);
 			sw.WriteLine ("namespace " + NS + " {");
 			sw.WriteLine ();
 			sw.WriteLine ("\tusing System;");
@@ -62,8 +63,8 @@ namespace GtkSharp.Generation {
 			Method ref_, unref, dispose, set_gvalue;
 			GetSpecialMethods (out ref_, out unref, out dispose, out set_gvalue);
 
-			if (IsDeprecated)
-				sw.WriteLine ("\t[Obsolete]");
+			if (!IsInternal)
+				GenerateDeprecated (sw);
 			sw.Write ("\t{0} partial {1}class " + Name, IsInternal ? "internal" : "public", IsAbstract ? "abstract " : String.Empty);
 			string cs_parent = table.GetCSType(Elem.GetAttribute("parent"));
 			if (cs_parent != "")
@@ -199,6 +200,7 @@ namespace GtkSharp.Generation {
 
 			sw.WriteLine ("\t}");
 			sw.WriteLine ("}");
+			GenerateVersionEndIf (sw);
 
 			sw.Close ();
 			gen_info.Writer = null;

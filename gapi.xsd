@@ -79,6 +79,9 @@
         <xs:attribute name="hidden" type="xs:boolean" use="optional"/>
         <xs:attribute name="noequals" type="xs:boolean" use="optional"/>
         <xs:attribute name="nohash" type="xs:boolean" use="optional"/>
+        <xs:attribute name="deprecated" type="xs:boolean" use="optional"/>
+        <xs:attribute name="deprecated-version" type="xs:string" use="optional"/>
+        <xs:attribute name="version" type="xs:string" use="optional"/>
     </xs:complexType>
 
     <xs:complexType name="callbackType">
@@ -186,6 +189,8 @@
         <xs:attribute name="deprecated" type="xs:boolean" use="optional"/>
         <xs:attribute name="hidden" type="xs:boolean" use="optional"/>
         <xs:attribute name="opaque" type="xs:boolean" use="optional"/>
+        <xs:attribute name="deprecated-version" type="xs:string" use="optional"/>
+        <xs:attribute name="version" type="xs:string" use="optional"/>
     </xs:complexType>
 
 

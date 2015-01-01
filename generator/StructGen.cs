@@ -43,6 +43,7 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("#endregion");
 			sw.WriteLine ("\t}");
 			sw.WriteLine ("}");
+			GenerateVersionEndIf (sw);
 			sw.Close ();
 			gen_info.Writer = null;
 			Statistics.StructCount++;
