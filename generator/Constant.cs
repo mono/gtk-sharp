@@ -25,6 +25,13 @@ namespace GtkSharp.Generation
 {
 	public class Constant
 	{
+		private const string VersionAttr = "version";
+		private const string DeprecatedAttr = "deprecated";
+		private const string DeprecatedVersionAttr = "deprecated-version";
+
+		private readonly string version;
+		private readonly string deprecatedVersion;
+		private readonly bool deprecated;
 		private readonly string name;
 		private readonly string value;
 		private readonly string ctype;
@@ -34,6 +41,18 @@ namespace GtkSharp.Generation
 			this.name = elem.GetAttribute ("name");
 			this.value = elem.GetAttribute ("value");
 			this.ctype = elem.GetAttribute ("ctype");
+
+			if (elem.HasAttribute (VersionAttr)) {
+				version = elem.GetAttribute (VersionAttr);
+			}
+
+			if (elem.HasAttribute (DeprecatedAttr)) {
+				deprecated = elem.GetAttributeAsBoolean (DeprecatedAttr);
+			}
+
+			if (elem.HasAttribute (DeprecatedVersionAttr)) {
+				deprecatedVersion = elem.GetAttribute (DeprecatedVersionAttr);
+			}
 		}
 
 		public string Name {
@@ -75,6 +94,14 @@ namespace GtkSharp.Generation
 		{
 			StreamWriter sw = gen_info.Writer;
 
+			if (version != null) {
+				Utils.GenerateVersionIf (sw, version);
+			}
+
+			if (deprecated) {
+				Utils.GenerateDeprecated (sw, deprecatedVersion, indent.Length);
+			}
+
 			sw.WriteLine ("{0}public const {1} {2} = {3}{4}{5};",
 			              indent,
 			              ConstType,
@@ -82,6 +109,9 @@ namespace GtkSharp.Generation
 			              IsString ? "@\"": String.Empty,
 			              value,
 			              IsString ? "\"": String.Empty);
+			if (version != null) {
+				Utils.GenerateVersionEndIf (sw);
+			}
 		}
 	}
 }
