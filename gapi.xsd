@@ -169,6 +169,9 @@
         <xs:attribute name="cname" type="xs:string"/>
         <xs:attribute name="hidden" type="xs:boolean" use="optional"/>
         <xs:attribute name="parent" type="xs:string" use="optional"/>
+        <xs:attribute name="deprecated" type="xs:boolean" use="optional"/>
+        <xs:attribute name="deprecated-version" type="xs:string" use="optional"/>
+        <xs:attribute name="version" type="xs:string" use="optional"/>
     </xs:complexType>
 
     <xs:complexType name="structType">
