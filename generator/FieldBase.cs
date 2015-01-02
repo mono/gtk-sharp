@@ -155,6 +155,7 @@ namespace GtkSharp.Generation {
 				return;
 			}
 
+			GenerateVersionIf (gen_info.Writer);
 			GenerateImports (gen_info, indent);
 
 			SymbolTable table = SymbolTable.Table;
@@ -162,6 +163,7 @@ namespace GtkSharp.Generation {
 			StreamWriter sw = gen_info.Writer;
 			string modifiers = elem.GetAttributeAsBoolean ("new_flag") ? "new " : "";
 
+			GenerateDeprecated (sw, indent.Length);
 			sw.WriteLine (indent + "public " + modifiers + CSType + " " + Name + " {");
 
 			if (Getter != null) {
@@ -220,6 +222,7 @@ namespace GtkSharp.Generation {
 			}
 
 			sw.WriteLine (indent + "}");
+			GenerateVersionEndIf (sw);
 			sw.WriteLine ("");
 
 			if (getterName != null || setterName != null || getOffsetName != null)

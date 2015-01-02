@@ -56,13 +56,6 @@ namespace GtkSharp.Generation {
 			}
 		}
 
-		bool IsDeprecated {
-			get {
-				return !container_type.IsDeprecated &&
-					elem.GetAttributeAsBoolean ("deprecated");
-			}
-		}
-
 		protected virtual string PropertyAttribute (string qpname) {
 			return "[GLib.Property (" + qpname + ")]";
 		}
@@ -84,6 +77,8 @@ namespace GtkSharp.Generation {
 			if (name == container_type.Name)
 				name += "Prop";
 
+			GenerateVersionIf (sw);
+			GenerateDeprecated (sw, indent.Length);
 			sw.WriteLine (indent + CSType + " " + name + " {");
 			sw.Write (indent + "\t");
 			if (Readable || Getter != null)
@@ -92,6 +87,7 @@ namespace GtkSharp.Generation {
 				sw.Write ("set;");
 			sw.WriteLine ();
 			sw.WriteLine (indent + "}");
+			GenerateVersionEndIf (sw);
 		}
 
 		public void Generate (GenerationInfo gen_info, string indent, ClassBase implementor)
@@ -124,12 +120,13 @@ namespace GtkSharp.Generation {
 				v_type = "(Enum)";
 			}
 
+			GenerateVersionIf (sw);
 			GenerateImports (gen_info, indent);
 
 			if (IsDeprecated ||
 			    (Getter != null && Getter.IsDeprecated) ||
 			    (Setter != null && Setter.IsDeprecated))
-				sw.WriteLine (indent + "[Obsolete]");
+				GenerateDeprecated (sw, indent.Length);
 			sw.WriteLine (indent + PropertyAttribute (qpname));
 			sw.WriteLine (indent + "public " + modifiers + CSType + " " + name + " {");
 			indent += "\t";
@@ -187,6 +184,7 @@ namespace GtkSharp.Generation {
 			}
 
 			sw.WriteLine(indent.Substring (1) + "}");
+			GenerateVersionEndIf (sw);
 			sw.WriteLine();
 
 			Statistics.PropCount++;

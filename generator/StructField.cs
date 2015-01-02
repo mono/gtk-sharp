@@ -139,6 +139,7 @@ namespace GtkSharp.Generation {
 				return;
 
 			visible = Access != "private";
+			var publiclyExposed = Access == "public" || Access.Contains ("protected");
 
 			StreamWriter sw = gen_info.Writer;
 			SymbolTable table = SymbolTable.Table;
@@ -148,11 +149,19 @@ namespace GtkSharp.Generation {
 			IGeneratable gen = table [CType];
 
 			if (IsArray && !IsNullTermArray) {
+				GenerateVersionIf (sw);
+				if (publiclyExposed) {
+					GenerateDeprecated (sw, indent.Length);
+				}
+
 				sw.WriteLine (indent + "[MarshalAs (UnmanagedType.ByValArray, SizeConst=" + ArrayLength + ")]");
 				sw.WriteLine (indent + "{0} {1} {2};", Access, CSType, StudlyName);
+				GenerateVersionEndIf (sw);
 			} else if (IsArray && IsNullTermArray) {
+				GenerateVersionIf (sw);
 				sw.WriteLine (indent + "private {0} {1};", "IntPtr", StudlyName+ "Ptr");
 				if ((Readable || Writable) && Access == "public") {
+					GenerateDeprecated (sw, indent.Length);
 					sw.WriteLine (indent + "public {0} {1} {{", CSType, StudlyName);
 					if (Readable)
 						sw.WriteLine (indent + "\tget {{ return GLib.Marshaller.StructArrayFromNullTerminatedIntPtr<{0}> ({1}); }}",
@@ -162,31 +171,55 @@ namespace GtkSharp.Generation {
 						              StudlyName + "Ptr", base.CSType);
 					sw.WriteLine (indent + "}");
 				}
+
+				GenerateVersionEndIf (sw);
 			} else if (IsBitfield) {
 				base.Generate (gen_info, indent);
 			} else if (gen is IAccessor) {
+				GenerateVersionIf (sw);
 				sw.WriteLine (indent + "private {0} {1};", gen.MarshalType, Name);
 
 				if (Access != "private") {
 					IAccessor acc = table [CType] as IAccessor;
+					if (publiclyExposed) {
+						GenerateDeprecated (sw, indent.Length);
+					}
+
 					sw.WriteLine (indent + Access + " " + wrapped + " " + StudlyName + " {");
 					acc.WriteAccessors (sw, indent + "\t", Name);
 					sw.WriteLine (indent + "}");
 				}
+
+				GenerateVersionEndIf (sw);
 			} else if (IsPointer && (gen is StructGen || gen is BoxedGen || gen is UnionGen)) {
+				GenerateVersionIf (sw);
 				sw.WriteLine (indent + "private {0} {1};", CSType, Name);
 				sw.WriteLine ();
 				if (Access != "private") {
+					if (publiclyExposed) {
+						GenerateDeprecated (sw, indent.Length);
+					}
+
 					sw.WriteLine (indent + Access + " " + wrapped + " " + wrapped_name + " {");
 					sw.WriteLine (indent + "\tget { return " + table.FromNative (CType, Name) + "; }");
 					sw.WriteLine (indent + "}");
 				}
+
+				GenerateVersionEndIf (sw);
 			} else if (IsPointer && CSType != "string") {
 				// FIXME: probably some fields here which should be visible.
 				visible = false;
+				GenerateVersionIf (sw);
 				sw.WriteLine (indent + "private {0} {1};", CSType, Name);
+				GenerateVersionEndIf (sw);
 			} else {
+				GenerateVersionIf (sw);
+				if (publiclyExposed) {
+					GenerateDeprecated (sw, indent.Length);
+				}
+
 				sw.WriteLine (indent + "{0} {1} {2};", Access, CSType, Access == "public" ? StudlyName : Name);
+				GenerateVersionEndIf (sw);
 			}
 		}
 	}

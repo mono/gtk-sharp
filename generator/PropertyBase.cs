@@ -21,9 +21,18 @@
 namespace GtkSharp.Generation {
 
 	using System;
+	using System.IO;
 	using System.Xml;
 
 	public abstract class PropertyBase {
+
+		private const string VersionAttr = "version";
+		private const string DeprecatedAttr = "deprecated";
+		private const string DeprecatedVersionAttr = "deprecated-version";
+
+		private readonly string version;
+		private readonly string deprecatedVersion;
+		private readonly bool deprecated;
 
 		protected XmlElement elem;
 		protected ClassBase container_type;
@@ -32,6 +41,18 @@ namespace GtkSharp.Generation {
 		{
 			this.elem = elem;
 			this.container_type = container_type;
+
+			if (elem.HasAttribute (VersionAttr)) {
+				version = elem.GetAttribute (VersionAttr);
+			}
+
+			if (!container_type.IsDeprecated && elem.HasAttribute (DeprecatedAttr)) {
+				deprecated = elem.GetAttributeAsBoolean (DeprecatedAttr);
+			}
+
+			if (elem.HasAttribute (DeprecatedVersionAttr)) {
+				deprecatedVersion = elem.GetAttribute (DeprecatedVersionAttr);
+			}
 		}
 
 		public string Name {
@@ -84,6 +105,18 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public string Version {
+			get { return version; }
+		}
+
+		public bool IsDeprecated {
+			get { return deprecated; }
+		}
+
+		public string DeprecatedVersion {
+			get { return deprecatedVersion; }
+		}
+
 		protected Method Getter {
 			get {
 				Method getter = container_type.GetMethod ("Get" + Name);
@@ -110,6 +143,32 @@ namespace GtkSharp.Generation {
 				Getter.GenerateImport (gen_info.Writer);
 			if (Setter != null)
 				Setter.GenerateImport (gen_info.Writer);
+		}
+
+		protected void GenerateVersionIf (StreamWriter sw)
+		{
+			if (Version != null) {
+				Utils.GenerateVersionIf (sw, Version);
+			}
+		}
+
+		protected void GenerateVersionEndIf (StreamWriter sw)
+		{
+			if (Version != null) {
+				Utils.GenerateVersionEndIf (sw);
+			}
+		}
+
+		protected void GenerateDeprecated (StreamWriter sw)
+		{
+			GenerateDeprecated (sw, 2);
+		}
+
+		protected void GenerateDeprecated (StreamWriter sw, int indentation)
+		{
+			if (IsDeprecated) {
+				Utils.GenerateDeprecated (sw, DeprecatedVersion, indentation);
+			}
 		}
 	}
 }
