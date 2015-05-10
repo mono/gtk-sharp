@@ -18,13 +18,13 @@ libvalobj_la_LIBADD = $(GTK_LIBS)
 AM_CPPFLAGS = $(GTK_CFLAGS)
 
 $(GENERATED_SOURCES_FILES): valobj-api.xml
-	$(RUNTIME) ../../generator/gapi_codegen.exe --generate $(srcdir)/valobj-api.xml	\
+	$(GAPI_CODEGEN) --generate $(srcdir)/valobj-api.xml	\
 	--include=../../gtk/gtk-api.xml --include=../../gdk/gdk-api.xml					\
 	--outdir=generated --assembly-name=valobj-sharp											\
-	--schema=$(top_srcdir)/gapi.xsd
+	--schema=$(GAPIXMLDIR)/gapi.xsd
 
 api:
-	PATH=../../parser:$(PATH) $(RUNTIME) ../../parser/gapi-parser.exe valobj-sources.xml
+	$(GAPI_PARSER) valobj-sources.xml
 
 install:
 

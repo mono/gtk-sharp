@@ -18,14 +18,14 @@ libopaque_la_LIBADD = $(GTK_LIBS)
 AM_CPPFLAGS = $(GTK_CFLAGS)
 
 $(GENERATED_SOURCES_FILES): opaque-api.xml
-	$(RUNTIME) ../../generator/gapi_codegen.exe --generate $(srcdir)/opaque-api.xml	\
+	$(GAPI_CODEGEN) --generate $(srcdir)/opaque-api.xml	\
 	--include=../../gtk/gtk-api.xml --include=../../gdk/gdk-api.xml 				\
 	--outdir=generated --assembly-name=opaque-sharp									\
-	--schema=$(top_srcdir)/gapi.xsd
+	--schema=$(GAPIXMLDIR)/gapi.xsd
 
 api:
-	PATH=../../parser:$(PATH) $(RUNTIME) ../../parser/gapi-parser.exe opaque-sources.xml
-	$(RUNTIME) ../../generator/gapi-fixup.exe --metadata=Opaque.metadata --api=opaque-api.xml
+	$(GAPI_PARSER) opaque-sources.xml
+	$(GAPI_FIXUP) --metadata=Opaque.metadata --api=opaque-api.xml
 
 install:
 

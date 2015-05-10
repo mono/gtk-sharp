@@ -179,6 +179,48 @@ AC_SUBST(GENERATED_SOURCES_FILES)
 AC_SUBST(GENERATED_SOURCES_OPTION)
 AC_SUBST(ASSEMBLYINFO)
 
+dnl Check for Gapi#
+PKG_CHECK_MODULES(GAPI, gapi-3.0)
+GAPIXMLDIR=`pkg-config --variable=gapidir gapi-3.0`
+AC_SUBST(GAPIXMLDIR)
+
+dnl Check for gapi
+AC_PATH_PROG(GAPI_PARSER, gapi3-parser, no)
+if test "x$GAPI_PARSER" = "xno"; then
+	AC_MSG_CHECKING(for gapi3-parser.exe)
+	GAPI_PARSER=`which gapi3-parser.exe || echo "no"`
+	if test "x$GAPI_PARSER" = "xno" ; then
+		AC_MSG_ERROR(['gapi3_parser'/'gapi3-parser.exe' not found.])
+	fi
+	AC_MSG_RESULT($GAPI_PARSER)
+	GAPI_PARSER="$MONO $GAPI_PARSER"
+fi
+AC_SUBST(GAPI_PARSER)
+
+AC_PATH_PROG(GAPI_FIXUP, gapi3-fixup, no)
+if test "x$GAPI_FIXUP" = "xno"; then
+	AC_MSG_CHECKING(for gapi3-fixup.exe)
+	GAPI_FIXUP=`which gapi3-fixup.exe || echo "no"`
+	if test "x$GAPI_FIXUP" = "xno" ; then
+		AC_MSG_ERROR(['gapi3_fixup'/'gapi3-fixup.exe' not found.])
+	fi
+	AC_MSG_RESULT($GAPI_FIXUP)
+	GAPI_FIXUP="$MONO $GAPI_FIXUP"
+fi
+AC_SUBST(GAPI_FIXUP)
+
+AC_PATH_PROG(GAPI_CODEGEN, gapi3-codegen, no)
+if test "x$GAPI_CODEGEN" = "xno"; then
+	AC_MSG_CHECKING(for gapi3_codegen.exe)
+	GAPI_CODEGEN=`which gapi3_codegen.exe || echo "no"`
+	if test "x$GAPI_CODEGEN" = "xno" ; then
+		AC_MSG_ERROR(['gapi3-codegen'/'gapi3_codegen.exe' not found.])
+	fi
+	AC_MSG_RESULT([$GAPI_CODEGEN])
+	GAPI_CODEGEN="$MONO $GAPI_CODEGEN"
+fi
+AC_SUBST(GAPI_CODEGEN)
+
 GTK_REQUIRED_VERSION=3.0.0
 GLIB_REQUIRED_VERSION=2.32.0
 
@@ -226,12 +268,6 @@ AssemblyInfo.cs
 Makefile
 policy.config
 sources/Makefile
-parser/Makefile
-parser/gapi-3.0.pc
-parser/gapi3-parser
-generator/Makefile
-generator/gapi3-codegen
-generator/gapi3-fixup
 glib/Makefile
 glib/glib-sharp-3.0.pc
 glib/glib-sharp.dll.config
