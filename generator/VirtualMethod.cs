@@ -30,6 +30,7 @@ namespace GtkSharp.Generation {
 	public abstract class VirtualMethod : MethodBase  {
 		protected ReturnValue retval;
 		protected ManagedCallString call;
+		private Parameter accessorParam;
 		
 		protected string modifiers = "";
 
@@ -53,6 +54,12 @@ namespace GtkSharp.Generation {
 					signature = new VMSignature (parms);
 
 				return signature;
+			}
+		}
+
+		protected bool IsAccessor {
+			get {
+				return retval.IsVoid && Signature.IsAccessor;
 			}
 		}
 
@@ -99,16 +106,22 @@ namespace GtkSharp.Generation {
 			}
 
 			string indent = "\t\t\t\t";
-			if (!retval.IsVoid)
+			if (IsAccessor) {
+				sw.WriteLine (indent + Signature.AccessorType + " __result;");
+			} else if (!retval.IsVoid)
 				sw.WriteLine (indent + retval.CSType + " __result;");
 			sw.Write (call.Setup (indent));
 			sw.Write (indent);
-			if (!retval.IsVoid)
+			if (!retval.IsVoid || IsAccessor)
 				sw.Write ("__result = ");
 			if (!this.IsStatic)
 				sw.Write ("__obj.");
 			sw.WriteLine (this.CallString + ";");
 			sw.Write (call.Finish (indent));
+			if (IsAccessor) {
+				sw.Write (ManagedCallString.GetParamAssignmentStatement ("__result", accessorParam, indent));
+			}
+
 			if (!retval.IsVoid)
 				sw.WriteLine ("\t\t\t\treturn " + retval.ToNative ("__result") + ";");
 
@@ -149,7 +162,12 @@ namespace GtkSharp.Generation {
 				return false;
 			}
 
-			call = new ManagedCallString (parms);
+			if (IsAccessor) {
+				call = ManagedCallString.CreateWithoutAccessorParameter (parms, out accessorParam);
+			} else {
+				call = new ManagedCallString (parms);
+			}
+
 			return true;
 		}
 	}
