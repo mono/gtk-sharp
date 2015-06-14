@@ -187,9 +187,26 @@ namespace GtkSharp.Generation {
 			sw.Write ("\t\t{0} ", this.Protection);
 			if (this.modifiers != "")
 				sw.Write ("{0} ", this.modifiers);
-			sw.WriteLine ("virtual {0} On{1} ({2})", retval.CSType, this.Name, Signature.ToString ());
+			string ret, signature;
+			if (IsAccessor) {
+				ret = Signature.AccessorType;
+				signature = Signature.AsAccessor;
+			} else {
+				ret = retval.CSType;
+				signature = Signature.ToString ();
+			}
+
+			sw.WriteLine ("virtual {0} On{1} ({2})", ret, this.Name, signature);
 			sw.WriteLine ("\t\t{");
+			var accessorParamName = Signature.AccessorName;
+			if (IsAccessor) {
+				sw.WriteLine ("\t\t\t{0} {1};", ret, accessorParamName);
+			}
+
 			sw.WriteLine ("\t\t\t{0}Internal{1} ({2});", retval.IsVoid ? "" : "return ", this.Name, Signature.GetCallString (false));
+			if (IsAccessor) {
+				sw.WriteLine ("\t\t\treturn {0};", accessorParamName);
+			}
 			sw.WriteLine ("\t\t}");
 			sw.WriteLine ();
 			// This method is to be invoked from existing VM implementations in the custom code
