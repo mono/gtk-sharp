@@ -81,7 +81,9 @@ namespace GtkSharp.Generation {
 				}
 			} else if (IsSetter) 
 				sw.WriteLine ("\t\t" + parms[0].CSType + " " + Name.Substring (3) + " { set; }");
-			else
+			else if (IsAccessor) {
+				sw.WriteLine ("\t\t" + Signature.AccessorType + " " + Name + " (" + Signature.AsAccessor + ");");
+			} else
 				sw.WriteLine ("\t\t" + retval.CSType + " " + Name + " (" + Signature + ");");
 		}
 

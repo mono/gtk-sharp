@@ -24,6 +24,7 @@ namespace GtkSharp.Generation {
 	using System;
 	using System.Collections.Generic;
 	using System.IO;
+	using System.Linq;
 
 	public class ManagedCallString {
 		
@@ -34,9 +35,18 @@ namespace GtkSharp.Generation {
 		string destroy_param = null;
 
 		public ManagedCallString (Parameters parms)
+			: this (parms, false)
+		{
+		}
+
+		private ManagedCallString (Parameters parms, bool stripAccessorParameter)
 		{
 			for (int i = 0; i < parms.Count; i ++) {
 				Parameter p = parms [i];
+				if (stripAccessorParameter && p.PassAs == "out") {
+					continue;
+				}
+
 				if (p.IsLength && i > 0 && parms [i-1].IsString) 
 					continue;
 				else if (p.Scope == "notified") {
@@ -88,6 +98,14 @@ namespace GtkSharp.Generation {
 				ret += indent + p.CSType + " my" + p.Name + " = null;\n";
 			}
 			return ret;
+		}
+
+		public static ManagedCallString CreateWithoutAccessorParameter (Parameters parms,
+			out Parameter accessorParam)
+		{
+			var call = new ManagedCallString (parms, true);
+			accessorParam = parms.FirstOrDefault (p => p.PassAs == "out");
+			return call;
 		}
 
 		public string Setup (string indent)
@@ -158,17 +176,25 @@ namespace GtkSharp.Generation {
 					continue;
 				}
 
-				IGeneratable igen = p.Generatable;
-
-				if (igen is CallbackGen)
-					continue;
-				else if (igen is StructBase || igen is ByRefGen)
-					ret += indent + String.Format ("if ({0} != IntPtr.Zero) System.Runtime.InteropServices.Marshal.StructureToPtr (my{0}, {0}, false);\n", p.Name);
-				else if (igen is IManualMarshaler)
-					ret += String.Format ("{0}{1} = {2};", indent, p.Name, (igen as IManualMarshaler).AllocNative ("my" + p.Name));
-				else
-					ret += indent + p.Name + " = " + igen.CallByName ("my" + p.Name) + ";\n";
+				ret += GetParamAssignmentStatement ("my" + p.Name, p, indent);
 			}
+
+			return ret;
+		}
+
+		public static string GetParamAssignmentStatement (string srcParameterName, Parameter p, string indent)
+		{
+			var ret = string.Empty;
+			IGeneratable igen = p.Generatable;
+
+			if (igen is CallbackGen)
+				return string.Empty;
+			else if (igen is StructBase || igen is ByRefGen)
+				ret += indent + String.Format ("if ({0} != IntPtr.Zero) System.Runtime.InteropServices.Marshal.StructureToPtr ({1}, {0}, false);\n", p.Name, srcParameterName);
+			else if (igen is IManualMarshaler)
+				ret += String.Format ("{0}{1} = {2};", indent, p.Name, (igen as IManualMarshaler).AllocNative (srcParameterName));
+			else
+				ret += indent + p.Name + " = " + igen.CallByName (srcParameterName) + ";\n";
 
 			return ret;
 		}
