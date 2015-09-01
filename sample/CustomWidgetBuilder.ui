@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<object class="GtkWindow" id="m_window">
+		<child>
+			<object class="MyWidget" id="m_mywidget">
+				<property name="visible">True</property>
+				<property name="my-text">Hello world!</property>
+			</object>
+		</child>
+	</object>
+</interface>
