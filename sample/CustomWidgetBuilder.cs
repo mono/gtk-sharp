@@ -27,7 +27,17 @@ namespace CustomWidgetBuilder
 
 		private void Init()
 		{
+			this.Changed += (sender, e) => {
+				if (this.MySignal != null)
+					this.MySignal(sender, e);
+
+				GLib.Signal.Emit(this, "my-signal");
+			};
 		}
+
+
+		[GLib.Signal("my-signal")]
+		public event EventHandler MySignal = null;
 
 
 		[GLib.Property("my-text")]
@@ -64,6 +74,12 @@ namespace CustomWidgetBuilder
 				Gtk.Application.Quit();
 				args.RetVal = true;
 			};
+		}
+
+
+		private void MySignalHandler(object sender, EventArgs e)
+		{
+			this.m_mywidget.MyText = this.m_mywidget.MyText.ToUpper();
 		}
 	}
 }

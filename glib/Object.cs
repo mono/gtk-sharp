@@ -246,6 +246,7 @@ namespace GLib {
 				}
 
 				AddProperties (gobject_class_handle);
+				AddSignals ();
 			}
 
 			private void InitializeProperties (GInterfaceAdapter adapter, IntPtr gobject_class_handle)
@@ -323,6 +324,15 @@ namespace GLib {
 							throw new InvalidOperationException (String.Format ("GLib.PropertyAttribute cannot be applied to property {0} of type {1} because the return type of the property is not supported",
 							                                                    pinfo.Name, Type.FullName));
 						}
+					}
+				}
+			}
+
+			void AddSignals()
+			{
+				foreach (EventInfo einfo in Type.GetEvents (BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly)) {
+					foreach (object attr in einfo.GetCustomAttributes (typeof (SignalAttribute), false)) {
+						RegisterSignal (((SignalAttribute)attr).CName, gtype, GLib.Signal.Flags.RunLast, GLib.GType.None, new GLib.GType [0], null);
 					}
 				}
 			}
@@ -438,6 +448,24 @@ namespace GLib {
 				PropertiesToSet.Remove(raw);
 			}
 			return raw;
+		}
+
+		[DllImport (Global.GObjectNativeDll, CallingConvention = CallingConvention.Cdecl)]
+		static extern uint g_signal_newv (IntPtr signal_name, IntPtr gtype, GLib.Signal.Flags signal_flags, IntPtr closure, IntPtr accumulator, IntPtr accu_data, IntPtr c_marshaller, IntPtr return_type, uint n_params, [MarshalAs (UnmanagedType.LPArray)] IntPtr[] param_types);
+
+		protected static uint RegisterSignal (string signal_name, GLib.GType gtype, GLib.Signal.Flags signal_flags, GLib.GType return_type, GLib.GType[] param_types, GLib.ClosureMarshal marshaler)
+		{
+			IntPtr[] native_param_types = new IntPtr [param_types.Length];
+			for (int parm_idx = 0; parm_idx < param_types.Length; parm_idx++)
+				native_param_types [parm_idx] = param_types [parm_idx].Val;
+
+			IntPtr native_signal_name = GLib.Marshaller.StringToPtrGStrdup (signal_name);
+			try {
+				IntPtr closure = marshaler != null ? GLib.SignalClosure.CreateClosure (marshaler) : IntPtr.Zero;
+				return g_signal_newv (native_signal_name, gtype.Val, signal_flags, closure, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, return_type.Val, (uint) param_types.Length, native_param_types);
+			} finally {
+				GLib.Marshaller.Free (native_signal_name);
+			}
 		}
 
 		[DllImport (Global.GObjectNativeDll, CallingConvention = CallingConvention.Cdecl)]

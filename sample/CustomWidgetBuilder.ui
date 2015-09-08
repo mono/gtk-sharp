@@ -5,6 +5,7 @@
 			<object class="MyWidget" id="m_mywidget">
 				<property name="visible">True</property>
 				<property name="my-text">Hello world!</property>
+				<signal name="my-signal" handler="MySignalHandler"/>
 			</object>
 		</child>
 	</object>

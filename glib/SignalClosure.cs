@@ -56,6 +56,9 @@ namespace GLib {
 		public IntPtr notifiers;
 	}
 
+	[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
+	public delegate void ClosureMarshal (IntPtr closure, IntPtr return_val, uint n_param_vals, IntPtr param_values, IntPtr invocation_hint, IntPtr marshal_data);
+
 	internal delegate void ClosureInvokedHandler (object o, ClosureInvokedArgs args);
 
 	internal class SignalClosure : IDisposable {
@@ -89,6 +92,12 @@ namespace GLib {
 			handle = obj;
 			name = signal_name;
 			this.custom_marshaler = custom_marshaler;
+		}
+
+		public static IntPtr CreateClosure (ClosureMarshal marshaler) {
+			IntPtr raw_closure = g_closure_new_simple (Marshal.SizeOf (typeof (GClosure)), IntPtr.Zero);
+			g_closure_set_marshal (raw_closure, marshaler);
+			return raw_closure;
 		}
 
 		public event EventHandler Disposed;
@@ -134,9 +143,6 @@ namespace GLib {
 				return marshaler;
 			}
 		}
-
-		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
-		delegate void ClosureMarshal (IntPtr closure, IntPtr return_val, uint n_param_vals, IntPtr param_values, IntPtr invocation_hint, IntPtr marshal_data);
 
 		static void MarshalCallback (IntPtr raw_closure, IntPtr return_val, uint n_param_vals, IntPtr param_values, IntPtr invocation_hint, IntPtr marshal_data)
 		{
