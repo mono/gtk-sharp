@@ -110,7 +110,7 @@ namespace GLib {
 				foreach (uint code in Source.source_handlers.Keys) {
 					IdleProxy p = Source.source_handlers [code] as IdleProxy;
 				
-					if (p != null && p.real_handler == hndlr) {
+					if (p != null && p.real_handler == (System.Delegate) hndlr) {
 						keys.Add (code);
 						result = g_source_remove (code);
 					}
