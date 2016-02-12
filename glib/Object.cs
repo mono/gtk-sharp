@@ -134,9 +134,6 @@ namespace GLib {
 					return obj;
 				}
 
-				if (!owned_ref)
-					g_object_ref (o);
-
 				obj = GLib.ObjectManager.CreateObject(o);
 			}
 			if (obj == null) {
