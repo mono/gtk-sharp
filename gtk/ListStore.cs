@@ -111,22 +111,18 @@ namespace Gtk {
 		{
 			Gtk.TreeIter iter = Append();
 
-			int col = 0;
-			foreach (object value in values) {
-				if (value != null) {
-					GLib.Value val = new GLib.Value (value);
-					SetValue (iter, col, val);
-					val.Dispose ();
-				}
-				col++;
-			}
+			SetValues (iter, values);
 
 			return iter;
 		}
 		
 		public Gtk.TreeIter AppendValues (params object[] values) 
 		{
-			return AppendValues ((Array) values);
+			Gtk.TreeIter iter = Append();
+			
+			SetValues (iter, values);
+			
+			return iter;
 		}
 
 		[DllImport (Global.GtkNativeDll, CallingConvention = CallingConvention.Cdecl)]
