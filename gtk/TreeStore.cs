@@ -198,33 +198,28 @@ namespace Gtk {
 			val.Dispose ();
 		}
 
-		private void _AppendValues (Gtk.TreeIter iter, Array values) {
-			int col = 0;
-			foreach (object value in values) {
-				if (value != null)
-					SetValue (iter, col, value);
-				col++;
-			}
-		}
-
 		public Gtk.TreeIter AppendValues (Gtk.TreeIter parent, Array values) {
 			Gtk.TreeIter iter = AppendNode (parent);
-			_AppendValues (iter, values);
+			SetValues (iter, values);
 			return iter;
 		}
 		
 		public Gtk.TreeIter AppendValues (Gtk.TreeIter parent, params object[] values) {
-			return AppendValues (parent, (Array) values);
+			Gtk.TreeIter iter = AppendNode (parent);
+			SetValues (iter, values);
+			return iter;
 		}
 
 		public Gtk.TreeIter AppendValues (Array values) {
 			Gtk.TreeIter iter = AppendNode ();
-			_AppendValues (iter, values);
+			SetValues (iter, values);
 			return iter;
 		}
 		
 		public Gtk.TreeIter AppendValues (params object[] values) {
-			return AppendValues ((Array) values);
+			Gtk.TreeIter iter = AppendNode ();
+			SetValues (iter, values);
+			return iter;
 		}
 
 		[DllImport (Global.GtkNativeDll, CallingConvention = CallingConvention.Cdecl)]
