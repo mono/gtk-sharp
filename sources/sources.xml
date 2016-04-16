@@ -100,7 +100,7 @@
     </library>
     <library name="libgdk_pixbuf-2.0-0.dll">
       <namespace name="Gdk">
-        <directory path="gdk-pixbuf-2.22.1/gdk-pixbuf">
+        <directory path="gdk-pixbuf-2.30.8/gdk-pixbuf">
           <exclude>io-gdip-native.h</exclude>
           <exclude>io-gdip-propertytags.h</exclude>
           <exclude>io-gdip-utils.h</exclude>
