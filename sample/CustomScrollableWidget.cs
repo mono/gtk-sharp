@@ -54,7 +54,7 @@ class DerivedScrollableWidget<T> : CustomScrollableWidget<T>
 	{ }
 }
 
-class CustomScrollableWidget<T> : CustomBase, IScrollableImplementor {
+class CustomScrollableWidget<T> : CustomBase, IScrollable {
 	private int num_rows = 20;
 	private string label;
 	private Pango.Layout layout;
@@ -203,15 +203,20 @@ class CustomScrollableWidget<T> : CustomBase, IScrollableImplementor {
 		}
 	}
 	
-	private void OnHadjustmentChanged (object o, EventArgs args)
+	private void OnHadjustmentChanged (object o, System.EventArgs args)
 	{
 		UpdateAdjustments ();
 		QueueDraw ();
 	}
 	
-	private void OnVadjustmentChanged (object o, EventArgs args)
+	private void OnVadjustmentChanged (object o, System.EventArgs args)
 	{
 		UpdateAdjustments ();
 		QueueDraw ();
+	}
+
+	public bool GetBorder(Gtk.Border border)
+	{
+		return false;
 	}
 }

@@ -28,6 +28,9 @@
       <member cname="GDK_CROSSING_GTK_GRAB" name="GtkGrab" />
       <member cname="GDK_CROSSING_GTK_UNGRAB" name="GtkUngrab" />
       <member cname="GDK_CROSSING_STATE_CHANGED" name="StateChanged" />
+      <member cname="GDK_CROSSING_TOUCH_BEGIN" name="TouchBegin" />
+      <member cname="GDK_CROSSING_TOUCH_END" name="TouchEnd" />
+      <member cname="GDK_CROSSING_DEVICE_SWITCH" name="DeviceSwitch" />
     </enum>
     <enum name="CursorType" cname="GdkCursorType" gtype="gdk_cursor_type_get_type" type="enum">
       <member cname="GDK_X_CURSOR" name="XCursor" />
@@ -132,6 +135,7 @@
       <member cname="GDK_DRAG_PROTO_WIN32_DROPFILES" name="Win32Dropfiles" />
       <member cname="GDK_DRAG_PROTO_OLE2" name="Ole2" />
       <member cname="GDK_DRAG_PROTO_LOCAL" name="Local" />
+      <member cname="GDK_DRAG_PROTO_WAYLAND" name="Wayland" />
     </enum>
     <enum name="EventMask" cname="GdkEventMask" gtype="gdk_event_mask_get_type" type="flags">
       <member cname="GDK_EXPOSURE_MASK" name="ExposureMask" value="1 &lt;&lt; 1" />
@@ -155,7 +159,10 @@
       <member cname="GDK_PROXIMITY_OUT_MASK" name="ProximityOutMask" value="1 &lt;&lt; 19" />
       <member cname="GDK_SUBSTRUCTURE_MASK" name="SubstructureMask" value="1 &lt;&lt; 20" />
       <member cname="GDK_SCROLL_MASK" name="ScrollMask" value="1 &lt;&lt; 21" />
-      <member cname="GDK_ALL_EVENTS_MASK" name="AllEventsMask" value="0x3FFFFE" />
+      <member cname="GDK_TOUCH_MASK" name="TouchMask" value="1 &lt;&lt; 22" />
+      <member cname="GDK_SMOOTH_SCROLL_MASK" name="SmoothScrollMask" value="1 &lt;&lt; 23" />
+      <member cname="GDK_TOUCHPAD_GESTURE_MASK" name="TouchpadGestureMask" value="1 &lt;&lt; 24" />
+      <member cname="GDK_ALL_EVENTS_MASK" name="AllEventsMask" value="0xFFFFFE" />
     </enum>
     <enum name="EventType" cname="GdkEventType" gtype="gdk_event_type_get_type" type="enum">
       <member cname="GDK_NOTHING" name="Nothing" value="-1" />
@@ -165,7 +172,9 @@
       <member cname="GDK_MOTION_NOTIFY" name="MotionNotify" value="3" />
       <member cname="GDK_BUTTON_PRESS" name="ButtonPress" value="4" />
       <member cname="GDK_2BUTTON_PRESS" name="TwoButtonPress" value="5" />
+      <member cname="GDK_DOUBLE_BUTTON_PRESS" name="DoubleButtonPress" value="TwoButtonPress" />
       <member cname="GDK_3BUTTON_PRESS" name="ThreeButtonPress" value="6" />
+      <member cname="GDK_TRIPLE_BUTTON_PRESS" name="TripleButtonPress" value="ThreeButtonPress" />
       <member cname="GDK_BUTTON_RELEASE" name="ButtonRelease" value="7" />
       <member cname="GDK_KEY_PRESS" name="KeyPress" value="8" />
       <member cname="GDK_KEY_RELEASE" name="KeyRelease" value="9" />
@@ -195,17 +204,37 @@
       <member cname="GDK_OWNER_CHANGE" name="OwnerChange" value="34" />
       <member cname="GDK_GRAB_BROKEN" name="GrabBroken" value="35" />
       <member cname="GDK_DAMAGE" name="Damage" value="36" />
+      <member cname="GDK_TOUCH_BEGIN" name="TouchBegin" value="37" />
+      <member cname="GDK_TOUCH_UPDATE" name="TouchUpdate" value="38" />
+      <member cname="GDK_TOUCH_END" name="TouchEnd" value="39" />
+      <member cname="GDK_TOUCH_CANCEL" name="TouchCancel" value="40" />
+      <member cname="GDK_TOUCHPAD_SWIPE" name="TouchpadSwipe" value="41" />
+      <member cname="GDK_TOUCHPAD_PINCH" name="TouchpadPinch" value="42" />
       <member cname="GDK_EVENT_LAST" name="EventLast" />
-    </enum>
-    <enum name="ExtensionMode" cname="GdkExtensionMode" gtype="gdk_extension_mode_get_type" type="enum">
-      <member cname="GDK_EXTENSION_EVENTS_NONE" name="None" />
-      <member cname="GDK_EXTENSION_EVENTS_ALL" name="All" />
-      <member cname="GDK_EXTENSION_EVENTS_CURSOR" name="Cursor" />
     </enum>
     <enum name="FilterReturn" cname="GdkFilterReturn" gtype="gdk_filter_return_get_type" type="enum">
       <member cname="GDK_FILTER_CONTINUE" name="Continue" />
       <member cname="GDK_FILTER_TRANSLATE" name="Translate" />
       <member cname="GDK_FILTER_REMOVE" name="Remove" />
+    </enum>
+    <enum name="FrameClockPhase" cname="GdkFrameClockPhase" gtype="gdk_frame_clock_phase_get_type" type="flags">
+      <member cname="GDK_FRAME_CLOCK_PHASE_NONE" name="None" />
+      <member cname="GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS" name="FlushEvents" value="1 &lt;&lt; 0" />
+      <member cname="GDK_FRAME_CLOCK_PHASE_BEFORE_PAINT" name="BeforePaint" value="1 &lt;&lt; 1" />
+      <member cname="GDK_FRAME_CLOCK_PHASE_UPDATE" name="Update" value="1 &lt;&lt; 2" />
+      <member cname="GDK_FRAME_CLOCK_PHASE_LAYOUT" name="Layout" value="1 &lt;&lt; 3" />
+      <member cname="GDK_FRAME_CLOCK_PHASE_PAINT" name="Paint" value="1 &lt;&lt; 4" />
+      <member cname="GDK_FRAME_CLOCK_PHASE_RESUME_EVENTS" name="ResumeEvents" value="1 &lt;&lt; 5" />
+      <member cname="GDK_FRAME_CLOCK_PHASE_AFTER_PAINT" name="AfterPaint" value="1 &lt;&lt; 6" />
+    </enum>
+    <enum name="FullscreenMode" cname="GdkFullscreenMode" gtype="gdk_fullscreen_mode_get_type" type="enum">
+      <member cname="GDK_FULLSCREEN_ON_CURRENT_MONITOR" name="CurrentMonitor" />
+      <member cname="GDK_FULLSCREEN_ON_ALL_MONITORS" name="AllMonitors" />
+    </enum>
+    <enum name="GLError" cname="GdkGLError" type="enum">
+      <member cname="GDK_GL_ERROR_NOT_AVAILABLE" name="NotAvailable" />
+      <member cname="GDK_GL_ERROR_UNSUPPORTED_FORMAT" name="UnsupportedFormat" />
+      <member cname="GDK_GL_ERROR_UNSUPPORTED_PROFILE" name="UnsupportedProfile" />
     </enum>
     <enum name="GrabOwnership" cname="GdkGrabOwnership" gtype="gdk_grab_ownership_get_type" type="enum">
       <member cname="GDK_OWNERSHIP_NONE" name="None" />
@@ -218,6 +247,7 @@
       <member cname="GDK_GRAB_INVALID_TIME" name="InvalidTime" value="2" />
       <member cname="GDK_GRAB_NOT_VIEWABLE" name="NotViewable" value="3" />
       <member cname="GDK_GRAB_FROZEN" name="Frozen" value="4" />
+      <member cname="GDK_GRAB_FAILED" name="Failed" value="5" />
     </enum>
     <enum name="Gravity" cname="GdkGravity" gtype="gdk_gravity_get_type" type="enum">
       <member cname="GDK_GRAVITY_NORTH_WEST" name="NorthWest" value="1" />
@@ -242,6 +272,17 @@
       <member cname="GDK_SOURCE_ERASER" name="Eraser" />
       <member cname="GDK_SOURCE_CURSOR" name="Cursor" />
       <member cname="GDK_SOURCE_KEYBOARD" name="Keyboard" />
+      <member cname="GDK_SOURCE_TOUCHSCREEN" name="Touchscreen" />
+      <member cname="GDK_SOURCE_TOUCHPAD" name="Touchpad" />
+    </enum>
+    <enum name="ModifierIntent" cname="GdkModifierIntent" gtype="gdk_modifier_intent_get_type" type="enum">
+      <member cname="GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR" name="PrimaryAccelerator" />
+      <member cname="GDK_MODIFIER_INTENT_CONTEXT_MENU" name="ContextMenu" />
+      <member cname="GDK_MODIFIER_INTENT_EXTEND_SELECTION" name="ExtendSelection" />
+      <member cname="GDK_MODIFIER_INTENT_MODIFY_SELECTION" name="ModifySelection" />
+      <member cname="GDK_MODIFIER_INTENT_NO_TEXT_INPUT" name="NoTextInput" />
+      <member cname="GDK_MODIFIER_INTENT_SHIFT_GROUP" name="ShiftGroup" />
+      <member cname="GDK_MODIFIER_INTENT_DEFAULT_MOD_MASK" name="DefaultModMask" />
     </enum>
     <enum name="ModifierType" cname="GdkModifierType" gtype="gdk_modifier_type_get_type" type="flags">
       <member cname="GDK_SHIFT_MASK" name="ShiftMask" value="1 &lt;&lt; 0" />
@@ -257,9 +298,23 @@
       <member cname="GDK_BUTTON3_MASK" name="Button3Mask" value="1 &lt;&lt; 10" />
       <member cname="GDK_BUTTON4_MASK" name="Button4Mask" value="1 &lt;&lt; 11" />
       <member cname="GDK_BUTTON5_MASK" name="Button5Mask" value="1 &lt;&lt; 12" />
+      <member cname="GDK_MODIFIER_RESERVED_13_MASK" name="ModifierReserved13Mask" value="1 &lt;&lt; 13" />
+      <member cname="GDK_MODIFIER_RESERVED_14_MASK" name="ModifierReserved14Mask" value="1 &lt;&lt; 14" />
+      <member cname="GDK_MODIFIER_RESERVED_15_MASK" name="ModifierReserved15Mask" value="1 &lt;&lt; 15" />
+      <member cname="GDK_MODIFIER_RESERVED_16_MASK" name="ModifierReserved16Mask" value="1 &lt;&lt; 16" />
+      <member cname="GDK_MODIFIER_RESERVED_17_MASK" name="ModifierReserved17Mask" value="1 &lt;&lt; 17" />
+      <member cname="GDK_MODIFIER_RESERVED_18_MASK" name="ModifierReserved18Mask" value="1 &lt;&lt; 18" />
+      <member cname="GDK_MODIFIER_RESERVED_19_MASK" name="ModifierReserved19Mask" value="1 &lt;&lt; 19" />
+      <member cname="GDK_MODIFIER_RESERVED_20_MASK" name="ModifierReserved20Mask" value="1 &lt;&lt; 20" />
+      <member cname="GDK_MODIFIER_RESERVED_21_MASK" name="ModifierReserved21Mask" value="1 &lt;&lt; 21" />
+      <member cname="GDK_MODIFIER_RESERVED_22_MASK" name="ModifierReserved22Mask" value="1 &lt;&lt; 22" />
+      <member cname="GDK_MODIFIER_RESERVED_23_MASK" name="ModifierReserved23Mask" value="1 &lt;&lt; 23" />
+      <member cname="GDK_MODIFIER_RESERVED_24_MASK" name="ModifierReserved24Mask" value="1 &lt;&lt; 24" />
+      <member cname="GDK_MODIFIER_RESERVED_25_MASK" name="ModifierReserved25Mask" value="1 &lt;&lt; 25" />
       <member cname="GDK_SUPER_MASK" name="SuperMask" value="1 &lt;&lt; 26" />
       <member cname="GDK_HYPER_MASK" name="HyperMask" value="1 &lt;&lt; 27" />
       <member cname="GDK_META_MASK" name="MetaMask" value="1 &lt;&lt; 28" />
+      <member cname="GDK_MODIFIER_RESERVED_29_MASK" name="ModifierReserved29Mask" value="1 &lt;&lt; 29" />
       <member cname="GDK_RELEASE_MASK" name="ReleaseMask" value="1 &lt;&lt; 30" />
       <member cname="GDK_MODIFIER_MASK" name="ModifierMask" value="0x5c001fff" />
     </enum>
@@ -290,6 +345,7 @@
       <member cname="GDK_SCROLL_DOWN" name="Down" />
       <member cname="GDK_SCROLL_LEFT" name="Left" />
       <member cname="GDK_SCROLL_RIGHT" name="Right" />
+      <member cname="GDK_SCROLL_SMOOTH" name="Smooth" />
     </enum>
     <enum name="SettingAction" cname="GdkSettingAction" gtype="gdk_setting_action_get_type" type="enum">
       <member cname="GDK_SETTING_ACTION_NEW" name="New" />
@@ -302,6 +358,12 @@
       <member cname="GDK_ERROR_PARAM" name="ErrorParam" value="-2" />
       <member cname="GDK_ERROR_FILE" name="ErrorFile" value="-3" />
       <member cname="GDK_ERROR_MEM" name="ErrorMem" value="-4" />
+    </enum>
+    <enum name="TouchpadGesturePhase" cname="GdkTouchpadGesturePhase" gtype="gdk_touchpad_gesture_phase_get_type" type="enum">
+      <member cname="GDK_TOUCHPAD_GESTURE_PHASE_BEGIN" name="Begin" />
+      <member cname="GDK_TOUCHPAD_GESTURE_PHASE_UPDATE" name="Update" />
+      <member cname="GDK_TOUCHPAD_GESTURE_PHASE_END" name="End" />
+      <member cname="GDK_TOUCHPAD_GESTURE_PHASE_CANCEL" name="Cancel" />
     </enum>
     <enum name="VisibilityState" cname="GdkVisibilityState" gtype="gdk_visibility_state_get_type" type="enum">
       <member cname="GDK_VISIBILITY_UNOBSCURED" name="Unobscured" />
@@ -372,6 +434,8 @@
       <member cname="GDK_WINDOW_STATE_FULLSCREEN" name="Fullscreen" value="1 &lt;&lt; 4" />
       <member cname="GDK_WINDOW_STATE_ABOVE" name="Above" value="1 &lt;&lt; 5" />
       <member cname="GDK_WINDOW_STATE_BELOW" name="Below" value="1 &lt;&lt; 6" />
+      <member cname="GDK_WINDOW_STATE_FOCUSED" name="Focused" value="1 &lt;&lt; 7" />
+      <member cname="GDK_WINDOW_STATE_TILED" name="Tiled" value="1 &lt;&lt; 8" />
     </enum>
     <enum name="WindowType" cname="GdkWindowType" gtype="gdk_window_type_get_type" type="enum">
       <member cname="GDK_WINDOW_ROOT" name="Root" />
@@ -380,6 +444,7 @@
       <member cname="GDK_WINDOW_TEMP" name="Temp" />
       <member cname="GDK_WINDOW_FOREIGN" name="Foreign" />
       <member cname="GDK_WINDOW_OFFSCREEN" name="Offscreen" />
+      <member cname="GDK_WINDOW_SUBSURFACE" name="Subsurface" />
     </enum>
     <enum name="WindowTypeHint" cname="GdkWindowTypeHint" gtype="gdk_window_type_hint_get_type" type="enum">
       <member cname="GDK_WINDOW_TYPE_HINT_NORMAL" name="Normal" />
@@ -421,6 +486,13 @@
       <parameters>
         <parameter type="GdkWindow*" name="window" />
         <parameter type="gpointer" name="user_data" />
+      </parameters>
+    </callback>
+    <callback name="WindowInvalidateHandlerFunc" cname="GdkWindowInvalidateHandlerFunc">
+      <return-type type="void" />
+      <parameters>
+        <parameter type="GdkWindow*" name="window" />
+        <parameter type="cairo_region_t*" name="region" />
       </parameters>
     </callback>
     <object name="AppLaunchContext" cname="GdkAppLaunchContext" parent="GAppLaunchContext">
@@ -469,13 +541,16 @@
     <object name="Cursor" cname="GdkCursor" parent="GObject">
       <class_struct cname="GdkCursorClass">
         <field name="ParentClass" cname="parent_class" type="GObjectClass" />
-        <method vm="get_image" />
+        <method vm="get_surface" />
       </class_struct>
       <property name="CursorType" cname="cursor-type" type="GdkCursorType" readable="true" writeable="true" construct-only="true" />
       <property name="Display" cname="display" type="GdkDisplay" readable="true" writeable="true" construct-only="true" />
-      <virtual_method name="GetImage" cname="get_image">
-        <return-type type="GdkPixbuf*" />
-        <parameters />
+      <virtual_method name="GetSurface" cname="get_surface">
+        <return-type type="cairo_surface_t*" />
+        <parameters>
+          <parameter type="gdouble*" name="x_hot" />
+          <parameter type="gdouble*" name="y_hot" />
+        </parameters>
       </virtual_method>
       <method name="GetCursorType" cname="gdk_cursor_get_cursor_type">
         <return-type type="GdkCursorType" />
@@ -486,10 +561,17 @@
       <method name="GetImage" cname="gdk_cursor_get_image">
         <return-type type="GdkPixbuf*" />
       </method>
+      <method name="GetSurface" cname="gdk_cursor_get_surface">
+        <return-type type="cairo_surface_t*" />
+        <parameters>
+          <parameter type="gdouble*" name="x_hot" />
+          <parameter type="gdouble*" name="y_hot" />
+        </parameters>
+      </method>
       <method name="GetType" cname="gdk_cursor_get_type" shared="true">
         <return-type type="GType" />
       </method>
-      <constructor cname="gdk_cursor_new">
+      <constructor cname="gdk_cursor_new" deprecated="1">
         <parameters>
           <parameter type="GdkCursorType" name="cursor_type" />
         </parameters>
@@ -512,6 +594,14 @@
           <parameter type="GdkPixbuf*" name="pixbuf" />
           <parameter type="gint" name="x" />
           <parameter type="gint" name="y" />
+        </parameters>
+      </constructor>
+      <constructor cname="gdk_cursor_new_from_surface">
+        <parameters>
+          <parameter type="GdkDisplay*" name="display" />
+          <parameter type="cairo_surface_t*" name="surface" />
+          <parameter type="gdouble" name="x" />
+          <parameter type="gdouble" name="y" />
         </parameters>
       </constructor>
       <method name="Ref" cname="gdk_cursor_ref" deprecated="1">
@@ -543,6 +633,8 @@
       <property name="InputMode" cname="input-mode" type="GdkInputMode" readable="true" writeable="true" />
       <property name="HasCursor" cname="has-cursor" type="gboolean" readable="true" writeable="true" construct-only="true" />
       <property name="NAxes" cname="n-axes" type="guint" readable="true" />
+      <property name="VendorId" cname="vendor-id" type="gchar*" readable="true" writeable="true" construct-only="true" />
+      <property name="ProductId" cname="product-id" type="gchar*" readable="true" writeable="true" construct-only="true" />
       <signal name="Changed" cname="changed" when="LAST">
         <return-type type="void" />
         <parameters />
@@ -576,20 +668,20 @@
         <return-type type="void" />
         <parameters>
           <parameter type="GdkScreen*" name="screen" />
-          <parameter type="gint" name="x" />
-          <parameter type="gint" name="y" />
+          <parameter type="gdouble" name="x" />
+          <parameter type="gdouble" name="y" />
         </parameters>
       </virtual_method>
       <virtual_method name="QueryState" cname="query_state">
-        <return-type type="gboolean" />
+        <return-type type="void" />
         <parameters>
           <parameter type="GdkWindow*" name="window" />
           <parameter type="GdkWindow**" name="root_window" />
           <parameter type="GdkWindow**" name="child_window" />
-          <parameter type="gint*" name="root_x" />
-          <parameter type="gint*" name="root_y" />
-          <parameter type="gint*" name="win_x" />
-          <parameter type="gint*" name="win_y" />
+          <parameter type="gdouble*" name="root_x" />
+          <parameter type="gdouble*" name="root_y" />
+          <parameter type="gdouble*" name="win_x" />
+          <parameter type="gdouble*" name="win_y" />
           <parameter type="GdkModifierType*" name="mask" />
         </parameters>
       </virtual_method>
@@ -613,8 +705,8 @@
       <virtual_method name="WindowAtPosition" cname="window_at_position">
         <return-type type="GdkWindow*" />
         <parameters>
-          <parameter type="gint*" name="win_x" />
-          <parameter type="gint*" name="win_y" />
+          <parameter type="double*" name="win_x" />
+          <parameter type="double*" name="win_y" />
           <parameter type="GdkModifierType*" name="mask" />
           <parameter type="gboolean" name="get_toplevel" />
         </parameters>
@@ -685,6 +777,9 @@
           <parameter type="GdkModifierType*" name="modifiers" />
         </parameters>
       </method>
+      <method name="GetLastEventWindow" cname="gdk_device_get_last_event_window">
+        <return-type type="GdkWindow*" />
+      </method>
       <method name="GetMode" cname="gdk_device_get_mode">
         <return-type type="GdkInputMode" />
       </method>
@@ -705,6 +800,17 @@
           <parameter type="gint*" name="y" />
         </parameters>
       </method>
+      <method name="GetPositionDouble" cname="gdk_device_get_position_double">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GdkScreen**" name="screen" />
+          <parameter type="gdouble*" name="x" />
+          <parameter type="gdouble*" name="y" />
+        </parameters>
+      </method>
+      <method name="GetProductId" cname="gdk_device_get_product_id">
+        <return-type type="const-gchar*" />
+      </method>
       <method name="GetSource" cname="gdk_device_get_source">
         <return-type type="GdkInputSource" />
       </method>
@@ -719,11 +825,21 @@
       <method name="GetType" cname="gdk_device_get_type" shared="true">
         <return-type type="GType" />
       </method>
+      <method name="GetVendorId" cname="gdk_device_get_vendor_id">
+        <return-type type="const-gchar*" />
+      </method>
       <method name="GetWindowAtPosition" cname="gdk_device_get_window_at_position">
         <return-type type="GdkWindow*" />
         <parameters>
           <parameter type="gint*" name="win_x" />
           <parameter type="gint*" name="win_y" />
+        </parameters>
+      </method>
+      <method name="GetWindowAtPositionDouble" cname="gdk_device_get_window_at_position_double">
+        <return-type type="GdkWindow*" />
+        <parameters>
+          <parameter type="gdouble*" name="win_x" />
+          <parameter type="gdouble*" name="win_y" />
         </parameters>
       </method>
       <method name="Grab" cname="gdk_device_grab">
@@ -737,7 +853,7 @@
           <parameter type="guint32" name="time_" />
         </parameters>
       </method>
-      <method name="GrabInfoLibgtkOnly" cname="gdk_device_grab_info_libgtk_only" shared="true">
+      <method name="GrabInfoLibgtkOnly" cname="gdk_device_grab_info_libgtk_only" deprecated="1" shared="true">
         <return-type type="gboolean" />
         <parameters>
           <parameter type="GdkDisplay*" name="display" />
@@ -847,14 +963,13 @@
         <field name="ParentClass" cname="parent_class" type="GObjectClass" />
         <field name="WindowType" cname="window_type" type="GType" />
         <method vm="get_name" />
-        <method vm="get_n_screens" />
-        <method vm="get_screen" />
         <method vm="get_default_screen" />
         <method vm="beep" />
         <method vm="sync" />
         <method vm="flush" />
         <method vm="has_pending" />
         <method vm="queue_events" />
+        <method vm="make_default" />
         <method vm="get_default_group" />
         <method vm="supports_selection_notification" />
         <method vm="request_selection_notification" />
@@ -869,7 +984,7 @@
         <method vm="get_maximal_cursor_size" />
         <method vm="get_cursor_for_type" />
         <method vm="get_cursor_for_name" />
-        <method vm="get_cursor_for_pixbuf" />
+        <method vm="get_cursor_for_surface" />
         <method vm="list_devices" />
         <method vm="get_app_launch_context" />
         <method vm="before_process_all_updates" />
@@ -889,9 +1004,11 @@
         <method vm="convert_selection" />
         <method vm="text_property_to_utf8_list" />
         <method vm="utf8_to_string_target" />
+        <method vm="make_gl_context_current" />
+        <method signal_vm="opened" />
         <method signal_vm="closed" />
       </class_struct>
-      <signal name="Opened" cname="opened" when="LAST">
+      <signal name="Opened" cname="opened" when="LAST" field_name="opened">
         <return-type type="void" />
         <parameters />
       </signal>
@@ -902,18 +1019,8 @@
         </parameters>
       </signal>
       <virtual_method name="GetName" cname="get_name">
-        <return-type type="const-gchar*" />
+        <return-type type="gchar*" />
         <parameters />
-      </virtual_method>
-      <virtual_method name="GetNScreens" cname="get_n_screens">
-        <return-type type="gint" />
-        <parameters />
-      </virtual_method>
-      <virtual_method name="GetScreen" cname="get_screen">
-        <return-type type="GdkScreen*" />
-        <parameters>
-          <parameter type="gint" name="screen_num" />
-        </parameters>
       </virtual_method>
       <virtual_method name="GetDefaultScreen" cname="get_default_screen">
         <return-type type="GdkScreen*" />
@@ -936,6 +1043,10 @@
         <parameters />
       </virtual_method>
       <virtual_method name="QueueEvents" cname="queue_events">
+        <return-type type="void" />
+        <parameters />
+      </virtual_method>
+      <virtual_method name="MakeDefault" cname="make_default">
         <return-type type="void" />
         <parameters />
       </virtual_method>
@@ -1012,12 +1123,12 @@
           <parameter type="const-gchar*" name="name" />
         </parameters>
       </virtual_method>
-      <virtual_method name="GetCursorForPixbuf" cname="get_cursor_for_pixbuf">
+      <virtual_method name="GetCursorForSurface" cname="get_cursor_for_surface">
         <return-type type="GdkCursor*" />
         <parameters>
-          <parameter type="GdkPixbuf*" name="pixbuf" />
-          <parameter type="gint" name="x" />
-          <parameter type="gint" name="y" />
+          <parameter type="cairo_surface_t*" name="surface" />
+          <parameter type="gdouble" name="x" />
+          <parameter type="gdouble" name="y" />
         </parameters>
       </virtual_method>
       <virtual_method name="ListDevices" cname="list_devices">
@@ -1143,6 +1254,12 @@
           <parameter type="const-gchar*" name="text" />
         </parameters>
       </virtual_method>
+      <virtual_method name="MakeGlContextCurrent" cname="make_gl_context_current">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="GdkGLContext*" name="context" />
+        </parameters>
+      </virtual_method>
       <method name="Beep" cname="gdk_display_beep">
         <return-type type="void" />
       </method>
@@ -1186,7 +1303,7 @@
           <parameter type="guint*" name="height" />
         </parameters>
       </method>
-      <method name="GetNScreens" cname="gdk_display_get_n_screens">
+      <method name="GetNScreens" cname="gdk_display_get_n_screens" deprecated="1">
         <return-type type="gint" />
       </method>
       <method name="GetName" cname="gdk_display_get_name">
@@ -1244,7 +1361,7 @@
           <parameter type="const-gchar*" name="display_name" />
         </parameters>
       </method>
-      <method name="OpenDefaultLibgtkOnly" cname="gdk_display_open_default_libgtk_only" shared="true">
+      <method name="OpenDefaultLibgtkOnly" cname="gdk_display_open_default_libgtk_only" deprecated="1" shared="true">
         <return-type type="GdkDisplay*" />
       </method>
       <method name="PeekEvent" cname="gdk_display_peek_event">
@@ -1295,7 +1412,7 @@
       <method name="SupportsClipboardPersistence" cname="gdk_display_supports_clipboard_persistence">
         <return-type type="gboolean" />
       </method>
-      <method name="SupportsComposite" cname="gdk_display_supports_composite">
+      <method name="SupportsComposite" cname="gdk_display_supports_composite" deprecated="1">
         <return-type type="gboolean" />
       </method>
       <method name="SupportsCursorAlpha" cname="gdk_display_supports_cursor_alpha">
@@ -1328,15 +1445,6 @@
     <object name="DisplayManager" cname="GdkDisplayManager" parent="GObject">
       <class_struct cname="GdkDisplayManagerClass">
         <field name="ParentClass" cname="parent_class" type="GObjectClass" />
-        <method vm="list_displays" />
-        <method vm="get_default_display" />
-        <method vm="set_default_display" />
-        <method vm="open_display" />
-        <method vm="atom_intern" />
-        <method vm="get_atom_name" />
-        <method vm="lookup_keyval" />
-        <method vm="get_keyval_name" />
-        <method vm="keyval_convert_case" />
         <method signal_vm="display_opened" />
       </class_struct>
       <signal name="DisplayOpened" cname="display-opened" when="LAST" field_name="display_opened">
@@ -1346,59 +1454,6 @@
         </parameters>
       </signal>
       <property name="DefaultDisplay" cname="default-display" type="GdkDisplay" readable="true" writeable="true" />
-      <virtual_method name="ListDisplays" cname="list_displays">
-        <return-type type="GSList*" />
-        <parameters />
-      </virtual_method>
-      <virtual_method name="GetDefaultDisplay" cname="get_default_display">
-        <return-type type="GdkDisplay*" />
-        <parameters />
-      </virtual_method>
-      <virtual_method name="SetDefaultDisplay" cname="set_default_display">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="GdkDisplay*" name="display" />
-        </parameters>
-      </virtual_method>
-      <virtual_method name="OpenDisplay" cname="open_display">
-        <return-type type="GdkDisplay*" />
-        <parameters>
-          <parameter type="const-gchar*" name="name" />
-        </parameters>
-      </virtual_method>
-      <virtual_method name="AtomIntern" cname="atom_intern">
-        <return-type type="GdkAtom" />
-        <parameters>
-          <parameter type="const-gchar*" name="atom_name" />
-          <parameter type="gboolean" name="copy_name" />
-        </parameters>
-      </virtual_method>
-      <virtual_method name="GetAtomName" cname="get_atom_name">
-        <return-type type="gchar*" />
-        <parameters>
-          <parameter type="GdkAtom" name="atom" />
-        </parameters>
-      </virtual_method>
-      <virtual_method name="LookupKeyval" cname="lookup_keyval">
-        <return-type type="guint" />
-        <parameters>
-          <parameter type="const-gchar*" name="name" />
-        </parameters>
-      </virtual_method>
-      <virtual_method name="GetKeyvalName" cname="get_keyval_name">
-        <return-type type="gchar*" />
-        <parameters>
-          <parameter type="guint" name="keyval" />
-        </parameters>
-      </virtual_method>
-      <virtual_method name="KeyvalConvertCase" cname="keyval_convert_case">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="guint" name="keyval" />
-          <parameter type="guint*" name="lower" />
-          <parameter type="guint*" name="upper" />
-        </parameters>
-      </virtual_method>
       <method name="Get" cname="gdk_display_manager_get" shared="true">
         <return-type type="GdkDisplayManager*" />
       </method>
@@ -1534,6 +1589,218 @@
         </parameters>
       </method>
     </object>
+    <object name="FrameClock" cname="GdkFrameClock" parent="GObject">
+      <class_struct cname="GdkFrameClockClass">
+        <field name="ParentClass" cname="parent_class" type="GObjectClass" />
+        <method vm="get_frame_time" />
+        <method vm="request_phase" />
+        <method vm="begin_updating" />
+        <method vm="end_updating" />
+        <method vm="freeze" />
+        <method vm="thaw" />
+      </class_struct>
+      <signal name="FlushEvents" cname="flush-events" when="LAST">
+        <return-type type="void" />
+        <parameters />
+      </signal>
+      <signal name="BeforePaint" cname="before-paint" when="LAST">
+        <return-type type="void" />
+        <parameters />
+      </signal>
+      <signal name="Update" cname="update" when="LAST">
+        <return-type type="void" />
+        <parameters />
+      </signal>
+      <signal name="Layout" cname="layout" when="LAST">
+        <return-type type="void" />
+        <parameters />
+      </signal>
+      <signal name="Paint" cname="paint" when="LAST">
+        <return-type type="void" />
+        <parameters />
+      </signal>
+      <signal name="AfterPaint" cname="after-paint" when="LAST">
+        <return-type type="void" />
+        <parameters />
+      </signal>
+      <signal name="ResumeEvents" cname="resume-events" when="LAST">
+        <return-type type="void" />
+        <parameters />
+      </signal>
+      <virtual_method name="GetFrameTime" cname="get_frame_time">
+        <return-type type="gint64" />
+        <parameters />
+      </virtual_method>
+      <virtual_method name="RequestPhase" cname="request_phase">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GdkFrameClockPhase" name="phase" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="BeginUpdating" cname="begin_updating">
+        <return-type type="void" />
+        <parameters />
+      </virtual_method>
+      <virtual_method name="EndUpdating" cname="end_updating">
+        <return-type type="void" />
+        <parameters />
+      </virtual_method>
+      <virtual_method name="Freeze" cname="freeze">
+        <return-type type="void" />
+        <parameters />
+      </virtual_method>
+      <virtual_method name="Thaw" cname="thaw">
+        <return-type type="void" />
+        <parameters />
+      </virtual_method>
+      <method name="BeginUpdating" cname="gdk_frame_clock_begin_updating">
+        <return-type type="void" />
+      </method>
+      <method name="EndUpdating" cname="gdk_frame_clock_end_updating">
+        <return-type type="void" />
+      </method>
+      <method name="GetCurrentTimings" cname="gdk_frame_clock_get_current_timings">
+        <return-type type="GdkFrameTimings*" />
+      </method>
+      <method name="GetFrameCounter" cname="gdk_frame_clock_get_frame_counter">
+        <return-type type="gint64" />
+      </method>
+      <method name="GetFrameTime" cname="gdk_frame_clock_get_frame_time">
+        <return-type type="gint64" />
+      </method>
+      <method name="GetHistoryStart" cname="gdk_frame_clock_get_history_start">
+        <return-type type="gint64" />
+      </method>
+      <method name="GetRefreshInfo" cname="gdk_frame_clock_get_refresh_info">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="gint64" name="base_time" />
+          <parameter type="gint64*" name="refresh_interval_return" />
+          <parameter type="gint64*" name="presentation_time_return" />
+        </parameters>
+      </method>
+      <method name="GetTimings" cname="gdk_frame_clock_get_timings">
+        <return-type type="GdkFrameTimings*" />
+        <parameters>
+          <parameter type="gint64" name="frame_counter" />
+        </parameters>
+      </method>
+      <method name="GetType" cname="gdk_frame_clock_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <method name="RequestPhase" cname="gdk_frame_clock_request_phase">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GdkFrameClockPhase" name="phase" />
+        </parameters>
+      </method>
+    </object>
+    <object name="FrameClockIdle" cname="GdkFrameClockIdle" parent="GdkFrameClock">
+      <class_struct cname="GdkFrameClockIdleClass">
+        <field name="ParentClass" cname="parent_class" type="GdkFrameClockClass" />
+      </class_struct>
+      <field name="Priv" cname="priv" type="GdkFrameClockIdlePrivate*" />
+      <method name="GetType" cname="gdk_frame_clock_idle_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </object>
+    <object name="GLContext" cname="GdkGLContext" parent="GObject">
+      <class_struct cname="GdkGLContextClass">
+        <field name="ParentClass" cname="parent_class" type="GObjectClass" />
+        <method vm="realize" />
+        <method vm="end_frame" />
+        <method vm="texture_from_surface" />
+      </class_struct>
+      <property name="Display" cname="display" type="GdkDisplay" readable="true" writeable="true" construct-only="true" />
+      <property name="Window" cname="window" type="GdkWindow" readable="true" writeable="true" construct-only="true" />
+      <property name="SharedContext" cname="shared-context" type="GdkGlContext" readable="true" writeable="true" construct-only="true" />
+      <virtual_method name="Realize" cname="realize">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="EndFrame" cname="end_frame">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="cairo_region_t*" name="painted" />
+          <parameter type="cairo_region_t*" name="damage" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="TextureFromSurface" cname="texture_from_surface">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="cairo_surface_t*" name="surface" />
+          <parameter type="cairo_region_t*" name="region" />
+        </parameters>
+      </virtual_method>
+      <method name="ClearCurrent" cname="gdk_gl_context_clear_current" shared="true">
+        <return-type type="void" />
+      </method>
+      <method name="GetCurrent" cname="gdk_gl_context_get_current" shared="true">
+        <return-type type="GdkGLContext*" />
+      </method>
+      <method name="GetDebugEnabled" cname="gdk_gl_context_get_debug_enabled">
+        <return-type type="gboolean" />
+      </method>
+      <method name="GetDisplay" cname="gdk_gl_context_get_display">
+        <return-type type="GdkDisplay*" />
+      </method>
+      <method name="GetForwardCompatible" cname="gdk_gl_context_get_forward_compatible">
+        <return-type type="gboolean" />
+      </method>
+      <method name="GetRequiredVersion" cname="gdk_gl_context_get_required_version">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="int*" name="major" />
+          <parameter type="int*" name="minor" />
+        </parameters>
+      </method>
+      <method name="GetSharedContext" cname="gdk_gl_context_get_shared_context">
+        <return-type type="GdkGLContext*" />
+      </method>
+      <method name="GetType" cname="gdk_gl_context_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <method name="GetVersion" cname="gdk_gl_context_get_version">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="int*" name="major" />
+          <parameter type="int*" name="minor" />
+        </parameters>
+      </method>
+      <method name="GetWindow" cname="gdk_gl_context_get_window">
+        <return-type type="GdkWindow*" />
+      </method>
+      <method name="MakeCurrent" cname="gdk_gl_context_make_current">
+        <return-type type="void" />
+      </method>
+      <method name="Realize" cname="gdk_gl_context_realize">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="SetDebugEnabled" cname="gdk_gl_context_set_debug_enabled">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="gboolean" name="enabled" />
+        </parameters>
+      </method>
+      <method name="SetForwardCompatible" cname="gdk_gl_context_set_forward_compatible">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="gboolean" name="compatible" />
+        </parameters>
+      </method>
+      <method name="SetRequiredVersion" cname="gdk_gl_context_set_required_version">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="int" name="major" />
+          <parameter type="int" name="minor" />
+        </parameters>
+      </method>
+    </object>
     <object name="Keymap" cname="GdkKeymap" parent="GObject">
       <class_struct cname="GdkKeymapClass">
         <field name="ParentClass" cname="parent_class" type="GObjectClass" />
@@ -1541,12 +1808,15 @@
         <method vm="have_bidi_layouts" />
         <method vm="get_caps_lock_state" />
         <method vm="get_num_lock_state" />
+        <method vm="get_scroll_lock_state" />
         <method vm="get_entries_for_keyval" />
         <method vm="get_entries_for_keycode" />
         <method vm="lookup_key" />
         <method vm="translate_keyboard_state" />
         <method vm="add_virtual_modifiers" />
         <method vm="map_virtual_modifiers" />
+        <method vm="get_modifier_mask" />
+        <method vm="get_modifier_state" />
         <method signal_vm="direction_changed" />
         <method signal_vm="keys_changed" />
         <method signal_vm="state_changed" />
@@ -1576,6 +1846,10 @@
         <parameters />
       </virtual_method>
       <virtual_method name="GetNumLockState" cname="get_num_lock_state">
+        <return-type type="gboolean" />
+        <parameters />
+      </virtual_method>
+      <virtual_method name="GetScrollLockState" cname="get_scroll_lock_state">
         <return-type type="gboolean" />
         <parameters />
       </virtual_method>
@@ -1626,6 +1900,16 @@
           <parameter type="GdkModifierType*" name="state" />
         </parameters>
       </virtual_method>
+      <virtual_method name="GetModifierMask" cname="get_modifier_mask">
+        <return-type type="GdkModifierType" />
+        <parameters>
+          <parameter type="GdkModifierIntent" name="intent" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="GetModifierState" cname="get_modifier_state">
+        <return-type type="guint" />
+        <parameters />
+      </virtual_method>
       <method name="AddVirtualModifiers" cname="gdk_keymap_add_virtual_modifiers">
         <return-type type="void" />
         <parameters>
@@ -1664,7 +1948,19 @@
           <parameter type="GdkDisplay*" name="display" />
         </parameters>
       </method>
+      <method name="GetModifierMask" cname="gdk_keymap_get_modifier_mask">
+        <return-type type="GdkModifierType" />
+        <parameters>
+          <parameter type="GdkModifierIntent" name="intent" />
+        </parameters>
+      </method>
+      <method name="GetModifierState" cname="gdk_keymap_get_modifier_state">
+        <return-type type="guint" />
+      </method>
       <method name="GetNumLockState" cname="gdk_keymap_get_num_lock_state">
+        <return-type type="gboolean" />
+      </method>
+      <method name="GetScrollLockState" cname="gdk_keymap_get_scroll_lock_state">
         <return-type type="gboolean" />
       </method>
       <method name="GetType" cname="gdk_keymap_get_type" shared="true">
@@ -1714,6 +2010,7 @@
         <method vm="get_monitor_height_mm" />
         <method vm="get_monitor_plug_name" />
         <method vm="get_monitor_geometry" />
+        <method vm="get_monitor_workarea" />
         <method vm="list_visuals" />
         <method vm="get_system_visual" />
         <method vm="get_rgba_visual" />
@@ -1731,24 +2028,11 @@
         <method vm="visual_get_best_with_both" />
         <method vm="query_depths" />
         <method vm="query_visual_types" />
-        <method signal_vm="size_changed" />
-        <method signal_vm="composited_changed" />
-        <method signal_vm="monitors_changed" />
+        <method vm="get_monitor_scale_factor" />
+        <method vm="size_changed" />
+        <method vm="composited_changed" />
+        <method vm="monitors_changed" />
       </class_struct>
-      <property name="FontOptions" cname="font-options" type="gpointer" readable="true" writeable="true" />
-      <property name="Resolution" cname="resolution" type="gdouble" readable="true" writeable="true" />
-      <signal name="SizeChanged" cname="size-changed" when="LAST" field_name="size_changed">
-        <return-type type="void" />
-        <parameters />
-      </signal>
-      <signal name="CompositedChanged" cname="composited-changed" when="LAST" field_name="composited_changed">
-        <return-type type="void" />
-        <parameters />
-      </signal>
-      <signal name="MonitorsChanged" cname="monitors-changed" when="LAST" field_name="monitors_changed">
-        <return-type type="void" />
-        <parameters />
-      </signal>
       <virtual_method name="GetDisplay" cname="get_display">
         <return-type type="GdkDisplay*" />
         <parameters />
@@ -1804,6 +2088,13 @@
         </parameters>
       </virtual_method>
       <virtual_method name="GetMonitorGeometry" cname="get_monitor_geometry">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="gint" name="monitor_num" />
+          <parameter type="GdkRectangle*" name="dest" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="GetMonitorWorkarea" cname="get_monitor_workarea">
         <return-type type="void" />
         <parameters>
           <parameter type="gint" name="monitor_num" />
@@ -1896,6 +2187,24 @@
           <parameter type="gint*" name="count" />
         </parameters>
       </virtual_method>
+      <virtual_method name="GetMonitorScaleFactor" cname="get_monitor_scale_factor">
+        <return-type type="gint" />
+        <parameters>
+          <parameter type="gint" name="monitor_num" />
+        </parameters>
+      </virtual_method>
+      <virtual_method name="SizeChanged" cname="size_changed">
+        <return-type type="void" />
+        <parameters />
+      </virtual_method>
+      <virtual_method name="CompositedChanged" cname="composited_changed">
+        <return-type type="void" />
+        <parameters />
+      </virtual_method>
+      <virtual_method name="MonitorsChanged" cname="monitors_changed">
+        <return-type type="void" />
+        <parameters />
+      </virtual_method>
       <method name="GetActiveWindow" cname="gdk_screen_get_active_window">
         <return-type type="GdkWindow*" />
       </method>
@@ -1946,10 +2255,23 @@
           <parameter type="gint" name="monitor_num" />
         </parameters>
       </method>
+      <method name="GetMonitorScaleFactor" cname="gdk_screen_get_monitor_scale_factor">
+        <return-type type="gint" />
+        <parameters>
+          <parameter type="gint" name="monitor_num" />
+        </parameters>
+      </method>
       <method name="GetMonitorWidthMm" cname="gdk_screen_get_monitor_width_mm">
         <return-type type="gint" />
         <parameters>
           <parameter type="gint" name="monitor_num" />
+        </parameters>
+      </method>
+      <method name="GetMonitorWorkarea" cname="gdk_screen_get_monitor_workarea">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="gint" name="monitor_num" />
+          <parameter type="GdkRectangle*" name="dest" />
         </parameters>
       </method>
       <method name="GetNMonitors" cname="gdk_screen_get_n_monitors">
@@ -2190,7 +2512,7 @@
           <parameter type="gpointer" name="data" />
         </parameters>
       </method>
-      <method name="AtPointer" cname="gdk_window_at_pointer" shared="true">
+      <method name="AtPointer" cname="gdk_window_at_pointer" deprecated="1" shared="true">
         <return-type type="GdkWindow*" />
         <parameters>
           <parameter type="gint*" name="win_x" />
@@ -2203,6 +2525,16 @@
       <method name="BeginMoveDrag" cname="gdk_window_begin_move_drag">
         <return-type type="void" />
         <parameters>
+          <parameter type="gint" name="button" />
+          <parameter type="gint" name="root_x" />
+          <parameter type="gint" name="root_y" />
+          <parameter type="guint32" name="timestamp" />
+        </parameters>
+      </method>
+      <method name="BeginMoveDragForDevice" cname="gdk_window_begin_move_drag_for_device">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GdkDevice*" name="device" />
           <parameter type="gint" name="button" />
           <parameter type="gint" name="root_x" />
           <parameter type="gint" name="root_y" />
@@ -2231,14 +2563,25 @@
           <parameter type="guint32" name="timestamp" />
         </parameters>
       </method>
-      <method name="ConfigureFinished" cname="gdk_window_configure_finished">
+      <method name="BeginResizeDragForDevice" cname="gdk_window_begin_resize_drag_for_device">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GdkWindowEdge" name="edge" />
+          <parameter type="GdkDevice*" name="device" />
+          <parameter type="gint" name="button" />
+          <parameter type="gint" name="root_x" />
+          <parameter type="gint" name="root_y" />
+          <parameter type="guint32" name="timestamp" />
+        </parameters>
+      </method>
+      <method name="ConfigureFinished" cname="gdk_window_configure_finished" deprecated="1">
         <return-type type="void" />
       </method>
       <method name="ConstrainSize" cname="gdk_window_constrain_size" shared="true">
         <return-type type="void" />
         <parameters>
           <parameter type="GdkGeometry*" name="geometry" />
-          <parameter type="guint" name="flags" />
+          <parameter type="GdkWindowHints" name="flags" />
           <parameter type="gint" name="width" />
           <parameter type="gint" name="height" />
           <parameter type="gint*" name="new_width" />
@@ -2263,6 +2606,21 @@
           <parameter type="gdouble*" name="parent_y" />
         </parameters>
       </method>
+      <method name="CreateGlContext" cname="gdk_window_create_gl_context">
+        <return-type type="GdkGLContext*" />
+        <parameters>
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="CreateSimilarImageSurface" cname="gdk_window_create_similar_image_surface">
+        <return-type type="cairo_surface_t*" />
+        <parameters>
+          <parameter type="cairo_format_t" name="format" />
+          <parameter type="int" name="width" />
+          <parameter type="int" name="height" />
+          <parameter type="int" name="scale" />
+        </parameters>
+      </method>
       <method name="CreateSimilarSurface" cname="gdk_window_create_similar_surface">
         <return-type type="cairo_surface_t*" />
         <parameters>
@@ -2277,7 +2635,7 @@
       <method name="Destroy" cname="gdk_window_destroy">
         <return-type type="void" />
       </method>
-      <method name="EnableSynchronizedConfigure" cname="gdk_window_enable_synchronized_configure">
+      <method name="EnableSynchronizedConfigure" cname="gdk_window_enable_synchronized_configure" deprecated="1">
         <return-type type="void" />
       </method>
       <method name="EndPaint" cname="gdk_window_end_paint">
@@ -2286,7 +2644,7 @@
       <method name="EnsureNative" cname="gdk_window_ensure_native">
         <return-type type="gboolean" />
       </method>
-      <method name="Flush" cname="gdk_window_flush">
+      <method name="Flush" cname="gdk_window_flush" deprecated="1">
         <return-type type="void" />
       </method>
       <method name="Focus" cname="gdk_window_focus">
@@ -2295,7 +2653,7 @@
           <parameter type="guint32" name="timestamp" />
         </parameters>
       </method>
-      <method name="FreezeToplevelUpdatesLibgtkOnly" cname="gdk_window_freeze_toplevel_updates_libgtk_only">
+      <method name="FreezeToplevelUpdatesLibgtkOnly" cname="gdk_window_freeze_toplevel_updates_libgtk_only" deprecated="1">
         <return-type type="void" />
       </method>
       <method name="FreezeUpdates" cname="gdk_window_freeze_updates">
@@ -2303,6 +2661,12 @@
       </method>
       <method name="Fullscreen" cname="gdk_window_fullscreen">
         <return-type type="void" />
+      </method>
+      <method name="FullscreenOnMonitor" cname="gdk_window_fullscreen_on_monitor">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="gint" name="monitor" />
+        </parameters>
       </method>
       <method name="GeometryChanged" cname="gdk_window_geometry_changed">
         <return-type type="void" />
@@ -2316,10 +2680,16 @@
       <method name="GetChildren" cname="gdk_window_get_children">
         <return-type type="GList*" />
       </method>
+      <method name="GetChildrenWithUserData" cname="gdk_window_get_children_with_user_data">
+        <return-type type="GList*" />
+        <parameters>
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </method>
       <method name="GetClipRegion" cname="gdk_window_get_clip_region">
         <return-type type="cairo_region_t*" />
       </method>
-      <method name="GetComposited" cname="gdk_window_get_composited">
+      <method name="GetComposited" cname="gdk_window_get_composited" deprecated="1">
         <return-type type="gboolean" />
       </method>
       <method name="GetCursor" cname="gdk_window_get_cursor">
@@ -2352,6 +2722,15 @@
           <parameter type="GdkModifierType*" name="mask" />
         </parameters>
       </method>
+      <method name="GetDevicePositionDouble" cname="gdk_window_get_device_position_double">
+        <return-type type="GdkWindow*" />
+        <parameters>
+          <parameter type="GdkDevice*" name="device" />
+          <parameter type="gdouble*" name="x" />
+          <parameter type="gdouble*" name="y" />
+          <parameter type="GdkModifierType*" name="mask" />
+        </parameters>
+      </method>
       <method name="GetDisplay" cname="gdk_window_get_display">
         <return-type type="GdkDisplay*" />
       </method>
@@ -2367,17 +2746,26 @@
       <method name="GetEffectiveToplevel" cname="gdk_window_get_effective_toplevel">
         <return-type type="GdkWindow*" />
       </method>
+      <method name="GetEventCompression" cname="gdk_window_get_event_compression">
+        <return-type type="gboolean" />
+      </method>
       <method name="GetEvents" cname="gdk_window_get_events">
         <return-type type="GdkEventMask" />
       </method>
       <method name="GetFocusOnMap" cname="gdk_window_get_focus_on_map">
         <return-type type="gboolean" />
       </method>
+      <method name="GetFrameClock" cname="gdk_window_get_frame_clock">
+        <return-type type="GdkFrameClock*" />
+      </method>
       <method name="GetFrameExtents" cname="gdk_window_get_frame_extents">
         <return-type type="void" />
         <parameters>
           <parameter type="GdkRectangle*" name="rect" />
         </parameters>
+      </method>
+      <method name="GetFullscreenMode" cname="gdk_window_get_fullscreen_mode">
+        <return-type type="GdkFullscreenMode" />
       </method>
       <method name="GetGeometry" cname="gdk_window_get_geometry">
         <return-type type="void" />
@@ -2407,7 +2795,10 @@
       <method name="GetParent" cname="gdk_window_get_parent">
         <return-type type="GdkWindow*" />
       </method>
-      <method name="GetPointer" cname="gdk_window_get_pointer">
+      <method name="GetPassThrough" cname="gdk_window_get_pass_through">
+        <return-type type="gboolean" />
+      </method>
+      <method name="GetPointer" cname="gdk_window_get_pointer" deprecated="1">
         <return-type type="GdkWindow*" />
         <parameters>
           <parameter type="gint*" name="x" />
@@ -2437,6 +2828,9 @@
           <parameter type="gint*" name="x" />
           <parameter type="gint*" name="y" />
         </parameters>
+      </method>
+      <method name="GetScaleFactor" cname="gdk_window_get_scale_factor">
+        <return-type type="gint" />
       </method>
       <method name="GetScreen" cname="gdk_window_get_screen">
         <return-type type="GdkScreen*" />
@@ -2540,6 +2934,12 @@
       <method name="Lower" cname="gdk_window_lower">
         <return-type type="void" />
       </method>
+      <method name="MarkPaintFromClip" cname="gdk_window_mark_paint_from_clip">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="cairo_t*" name="cr" />
+        </parameters>
+      </method>
       <method name="Maximize" cname="gdk_window_maximize">
         <return-type type="void" />
       </method>
@@ -2640,7 +3040,7 @@
           <parameter type="gboolean" name="accept_focus" />
         </parameters>
       </method>
-      <method name="SetBackground" cname="gdk_window_set_background">
+      <method name="SetBackground" cname="gdk_window_set_background" deprecated="1">
         <return-type type="void" />
         <parameters>
           <parameter type="const-GdkColor*" name="color" />
@@ -2655,7 +3055,7 @@
       <method name="SetBackgroundRgba" cname="gdk_window_set_background_rgba">
         <return-type type="void" />
         <parameters>
-          <parameter type="GdkRGBA*" name="rgba" />
+          <parameter type="const-GdkRGBA*" name="rgba" />
         </parameters>
       </method>
       <method name="SetChildInputShapes" cname="gdk_window_set_child_input_shapes">
@@ -2664,7 +3064,7 @@
       <method name="SetChildShapes" cname="gdk_window_set_child_shapes">
         <return-type type="void" />
       </method>
-      <method name="SetComposited" cname="gdk_window_set_composited">
+      <method name="SetComposited" cname="gdk_window_set_composited" deprecated="1">
         <return-type type="void" />
         <parameters>
           <parameter type="gboolean" name="composited" />
@@ -2702,6 +3102,12 @@
           <parameter type="GdkEventMask" name="event_mask" />
         </parameters>
       </method>
+      <method name="SetEventCompression" cname="gdk_window_set_event_compression">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="gboolean" name="event_compression" />
+        </parameters>
+      </method>
       <method name="SetEvents" cname="gdk_window_set_events">
         <return-type type="void" />
         <parameters>
@@ -2712,6 +3118,12 @@
         <return-type type="void" />
         <parameters>
           <parameter type="gboolean" name="focus_on_map" />
+        </parameters>
+      </method>
+      <method name="SetFullscreenMode" cname="gdk_window_set_fullscreen_mode">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GdkFullscreenMode" name="mode" />
         </parameters>
       </method>
       <method name="SetFunctions" cname="gdk_window_set_functions">
@@ -2745,6 +3157,12 @@
           <parameter type="const-gchar*" name="name" />
         </parameters>
       </method>
+      <method name="SetInvalidateHandler" cname="gdk_window_set_invalidate_handler">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GdkWindowInvalidateHandlerFunc" name="handler" />
+        </parameters>
+      </method>
       <method name="SetKeepAbove" cname="gdk_window_set_keep_above">
         <return-type type="void" />
         <parameters>
@@ -2769,16 +3187,37 @@
           <parameter type="gdouble" name="opacity" />
         </parameters>
       </method>
+      <method name="SetOpaqueRegion" cname="gdk_window_set_opaque_region">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="cairo_region_t*" name="region" />
+        </parameters>
+      </method>
       <method name="SetOverrideRedirect" cname="gdk_window_set_override_redirect">
         <return-type type="void" />
         <parameters>
           <parameter type="gboolean" name="override_redirect" />
         </parameters>
       </method>
+      <method name="SetPassThrough" cname="gdk_window_set_pass_through">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="gboolean" name="pass_through" />
+        </parameters>
+      </method>
       <method name="SetRole" cname="gdk_window_set_role">
         <return-type type="void" />
         <parameters>
           <parameter type="const-gchar*" name="role" />
+        </parameters>
+      </method>
+      <method name="SetShadowWidth" cname="gdk_window_set_shadow_width">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="gint" name="left" />
+          <parameter type="gint" name="right" />
+          <parameter type="gint" name="top" />
+          <parameter type="gint" name="bottom" />
         </parameters>
       </method>
       <method name="SetSkipPagerHint" cname="gdk_window_set_skip_pager_hint">
@@ -2806,7 +3245,7 @@
           <parameter type="const-gchar*" name="startup_id" />
         </parameters>
       </method>
-      <method name="SetStaticGravities" cname="gdk_window_set_static_gravities">
+      <method name="SetStaticGravities" cname="gdk_window_set_static_gravities" deprecated="1">
         <return-type type="gboolean" />
         <parameters>
           <parameter type="gboolean" name="use_static" />
@@ -2862,10 +3301,16 @@
       <method name="ShowUnraised" cname="gdk_window_show_unraised">
         <return-type type="void" />
       </method>
+      <method name="ShowWindowMenu" cname="gdk_window_show_window_menu">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="GdkEvent*" name="event" />
+        </parameters>
+      </method>
       <method name="Stick" cname="gdk_window_stick">
         <return-type type="void" />
       </method>
-      <method name="ThawToplevelUpdatesLibgtkOnly" cname="gdk_window_thaw_toplevel_updates_libgtk_only">
+      <method name="ThawToplevelUpdatesLibgtkOnly" cname="gdk_window_thaw_toplevel_updates_libgtk_only" deprecated="1">
         <return-type type="void" />
       </method>
       <method name="ThawUpdates" cname="gdk_window_thaw_updates">
@@ -2887,38 +3332,39 @@
     <struct name="ArgContext" cname="GdkArgContext" opaque="true" />
     <struct name="ArgDesc" cname="GdkArgDesc" opaque="true" />
     <struct name="AxisInfo" cname="GdkAxisInfo" opaque="true" />
+    <struct name="Backend" cname="GdkBackend" opaque="true" />
     <struct name="ClientFilter" cname="GdkClientFilter" opaque="true" />
     <boxed name="Color" cname="GdkColor">
       <field name="Pixel" cname="pixel" type="guint32" />
       <field name="Red" cname="red" type="guint16" />
       <field name="Green" cname="green" type="guint16" />
       <field name="Blue" cname="blue" type="guint16" />
-      <method name="Copy" cname="gdk_color_copy">
+      <method name="Copy" cname="gdk_color_copy" deprecated="1">
         <return-type type="GdkColor*" owned="true" />
       </method>
-      <method name="Equal" cname="gdk_color_equal">
+      <method name="Equal" cname="gdk_color_equal" deprecated="1">
         <return-type type="gboolean" />
         <parameters>
           <parameter type="const-GdkColor*" name="colorb" />
         </parameters>
       </method>
-      <method name="Free" cname="gdk_color_free">
+      <method name="Free" cname="gdk_color_free" deprecated="1">
         <return-type type="void" />
       </method>
-      <method name="GetType" cname="gdk_color_get_type" shared="true">
+      <method name="GetType" cname="gdk_color_get_type" deprecated="1" shared="true">
         <return-type type="GType" />
       </method>
-      <method name="Hash" cname="gdk_color_hash">
+      <method name="Hash" cname="gdk_color_hash" deprecated="1">
         <return-type type="guint" />
       </method>
-      <method name="Parse" cname="gdk_color_parse" shared="true">
+      <method name="Parse" cname="gdk_color_parse" deprecated="1" shared="true">
         <return-type type="gboolean" />
         <parameters>
           <parameter type="const-gchar*" name="spec" />
           <parameter type="GdkColor*" name="color" />
         </parameters>
       </method>
-      <method name="ToString" cname="gdk_color_to_string">
+      <method name="ToString" cname="gdk_color_to_string" deprecated="1">
         <return-type type="gchar*" />
       </method>
     </boxed>
@@ -3063,6 +3509,8 @@
       <field name="Device" cname="device" type="GdkDevice*" />
       <field name="XRoot" cname="x_root" type="gdouble" />
       <field name="YRoot" cname="y_root" type="gdouble" />
+      <field name="DeltaX" cname="delta_x" type="gdouble" />
+      <field name="DeltaY" cname="delta_y" type="gdouble" />
     </struct>
     <struct name="EventSelection" cname="GdkEventSelection">
       <field name="Type" cname="type" type="GdkEventType" />
@@ -3074,12 +3522,64 @@
       <field name="Time" cname="time" type="guint32" />
       <field name="Requestor" cname="requestor" type="GdkWindow*" />
     </struct>
+    <boxed name="EventSequence" cname="GdkEventSequence" opaque="true">
+      <method name="GetType" cname="gdk_event_sequence_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+    </boxed>
     <struct name="EventSetting" cname="GdkEventSetting">
       <field name="Type" cname="type" type="GdkEventType" />
       <field name="Window" cname="window" type="GdkWindow*" />
       <field name="SendEvent" cname="send_event" type="gint8" />
       <field name="Action" cname="action" type="GdkSettingAction" />
       <field name="Name" cname="name" type="char*" />
+    </struct>
+    <struct name="EventTouch" cname="GdkEventTouch">
+      <field name="Type" cname="type" type="GdkEventType" />
+      <field name="Window" cname="window" type="GdkWindow*" />
+      <field name="SendEvent" cname="send_event" type="gint8" />
+      <field name="Time" cname="time" type="guint32" />
+      <field name="X" cname="x" type="gdouble" />
+      <field name="Y" cname="y" type="gdouble" />
+      <field name="Axes" cname="axes" type="gdouble*" />
+      <field name="State" cname="state" type="guint" />
+      <field name="Sequence" cname="sequence" type="GdkEventSequence*" />
+      <field name="EmulatingPointer" cname="emulating_pointer" type="gboolean" />
+      <field name="Device" cname="device" type="GdkDevice*" />
+      <field name="XRoot" cname="x_root" type="gdouble" />
+      <field name="YRoot" cname="y_root" type="gdouble" />
+    </struct>
+    <struct name="EventTouchpadPinch" cname="GdkEventTouchpadPinch">
+      <field name="Type" cname="type" type="GdkEventType" />
+      <field name="Window" cname="window" type="GdkWindow*" />
+      <field name="SendEvent" cname="send_event" type="gint8" />
+      <field name="Phase" cname="phase" type="gint8" />
+      <field name="NFingers" cname="n_fingers" type="gint8" />
+      <field name="Time" cname="time" type="guint32" />
+      <field name="X" cname="x" type="gdouble" />
+      <field name="Y" cname="y" type="gdouble" />
+      <field name="Dx" cname="dx" type="gdouble" />
+      <field name="Dy" cname="dy" type="gdouble" />
+      <field name="AngleDelta" cname="angle_delta" type="gdouble" />
+      <field name="Scale" cname="scale" type="gdouble" />
+      <field name="XRoot" cname="x_root" type="gdouble" />
+      <field name="YRoot" cname="y_root" type="gdouble" />
+      <field name="State" cname="state" type="guint" />
+    </struct>
+    <struct name="EventTouchpadSwipe" cname="GdkEventTouchpadSwipe">
+      <field name="Type" cname="type" type="GdkEventType" />
+      <field name="Window" cname="window" type="GdkWindow*" />
+      <field name="SendEvent" cname="send_event" type="gint8" />
+      <field name="Phase" cname="phase" type="gint8" />
+      <field name="NFingers" cname="n_fingers" type="gint8" />
+      <field name="Time" cname="time" type="guint32" />
+      <field name="X" cname="x" type="gdouble" />
+      <field name="Y" cname="y" type="gdouble" />
+      <field name="Dx" cname="dx" type="gdouble" />
+      <field name="Dy" cname="dy" type="gdouble" />
+      <field name="XRoot" cname="x_root" type="gdouble" />
+      <field name="YRoot" cname="y_root" type="gdouble" />
+      <field name="State" cname="state" type="guint" />
     </struct>
     <struct name="EventVisibility" cname="GdkEventVisibility">
       <field name="Type" cname="type" type="GdkEventType" />
@@ -3094,6 +3594,35 @@
       <field name="ChangedMask" cname="changed_mask" type="GdkWindowState" />
       <field name="NewWindowState" cname="new_window_state" type="GdkWindowState" />
     </struct>
+    <boxed name="FrameTimings" cname="GdkFrameTimings" opaque="true">
+      <method name="GetComplete" cname="gdk_frame_timings_get_complete">
+        <return-type type="gboolean" />
+      </method>
+      <method name="GetFrameCounter" cname="gdk_frame_timings_get_frame_counter">
+        <return-type type="gint64" />
+      </method>
+      <method name="GetFrameTime" cname="gdk_frame_timings_get_frame_time">
+        <return-type type="gint64" />
+      </method>
+      <method name="GetPredictedPresentationTime" cname="gdk_frame_timings_get_predicted_presentation_time">
+        <return-type type="gint64" />
+      </method>
+      <method name="GetPresentationTime" cname="gdk_frame_timings_get_presentation_time">
+        <return-type type="gint64" />
+      </method>
+      <method name="GetRefreshInterval" cname="gdk_frame_timings_get_refresh_interval">
+        <return-type type="gint64" />
+      </method>
+      <method name="GetType" cname="gdk_frame_timings_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
+      <method name="Ref" cname="gdk_frame_timings_ref">
+        <return-type type="GdkFrameTimings*" />
+      </method>
+      <method name="Unref" cname="gdk_frame_timings_unref">
+        <return-type type="void" />
+      </method>
+    </boxed>
     <struct name="Geometry" cname="GdkGeometry">
       <field name="MinWidth" cname="min_width" type="gint" />
       <field name="MinHeight" cname="min_height" type="gint" />
@@ -3136,14 +3665,12 @@
       </method>
     </struct>
     <struct name="OffscreenWindowClass" cname="GdkOffscreenWindowClass" opaque="true" />
-    <struct name="Paintable" cname="GdkPaintable" opaque="true" />
-    <struct name="PaintableIface" cname="GdkPaintableIface" opaque="true" />
     <struct name="Point" cname="GdkPoint">
       <field name="X" cname="x" type="gint" />
       <field name="Y" cname="y" type="gint" />
     </struct>
     <struct name="Predicate" cname="GdkPredicate" opaque="true" />
-    <boxed name="RGBA" cname="GdkRGBA">
+    <struct name="RGBA" cname="GdkRGBA">
       <field name="Red" cname="red" type="gdouble" />
       <field name="Green" cname="green" type="gdouble" />
       <field name="Blue" cname="blue" type="gdouble" />
@@ -3179,7 +3706,7 @@
       <method name="ToString" cname="gdk_rgba_to_string">
         <return-type type="gchar*" />
       </method>
-    </boxed>
+    </struct>
     <alias name="Rectangle" cname="GdkRectangle" type="cairo_rectangle_int_t" />
     <struct name="ThreadsDispatch" cname="GdkThreadsDispatch" opaque="true" />
     <struct name="TimeCoord" cname="GdkTimeCoord">
@@ -3224,7 +3751,7 @@
       </method>
     </struct>
     <class name="Global" cname="GdkGlobal">
-      <method name="AddOptionEntriesLibgtkOnly" cname="gdk_add_option_entries_libgtk_only" shared="true">
+      <method name="AddOptionEntriesLibgtkOnly" cname="gdk_add_option_entries_libgtk_only" deprecated="1" shared="true">
         <return-type type="void" />
         <parameters>
           <parameter type="GOptionGroup*" name="group" />
@@ -3236,9 +3763,6 @@
       <method name="GetDefaultRootWindow" cname="gdk_get_default_root_window" shared="true">
         <return-type type="GdkWindow*" />
       </method>
-      <method name="GetDisplay" cname="gdk_get_display" shared="true">
-        <return-type type="gchar*" />
-      </method>
       <method name="GetDisplayArgName" cname="gdk_get_display_arg_name" shared="true">
         <return-type type="const-gchar*" />
       </method>
@@ -3247,6 +3771,9 @@
       </method>
       <method name="GetShowEvents" cname="gdk_get_show_events" shared="true">
         <return-type type="gboolean" />
+      </method>
+      <method name="GlErrorQuark" cname="gdk_gl_error_quark" shared="true">
+        <return-type type="GQuark" />
       </method>
       <method name="InitCheck" cname="gdk_init_check" shared="true">
         <return-type type="gboolean" />
@@ -3265,8 +3792,14 @@
           <parameter type="gchar***" name="argv" />
         </parameters>
       </method>
-      <method name="PreParseLibgtkOnly" cname="gdk_pre_parse_libgtk_only" shared="true">
+      <method name="PreParseLibgtkOnly" cname="gdk_pre_parse_libgtk_only" deprecated="1" shared="true">
         <return-type type="void" />
+      </method>
+      <method name="SetAllowedBackends" cname="gdk_set_allowed_backends" shared="true">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="const-gchar*" name="backends" />
+        </parameters>
       </method>
       <method name="SetDoubleClickTime" cname="gdk_set_double_click_time" shared="true">
         <return-type type="void" />
@@ -3318,6 +3851,20 @@
           <parameter type="GdkWindow*" name="window" />
         </parameters>
       </method>
+      <method name="DrawFromGl" cname="gdk_cairo_draw_from_gl" shared="true">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="cairo_t*" name="cr" />
+          <parameter type="GdkWindow*" name="window" />
+          <parameter type="int" name="source" />
+          <parameter type="int" name="source_type" />
+          <parameter type="int" name="buffer_scale" />
+          <parameter type="int" name="x" />
+          <parameter type="int" name="y" />
+          <parameter type="int" name="width" />
+          <parameter type="int" name="height" />
+        </parameters>
+      </method>
       <method name="GetClipRectangle" cname="gdk_cairo_get_clip_rectangle" shared="true">
         <return-type type="gboolean" />
         <parameters>
@@ -3345,7 +3892,7 @@
           <parameter type="cairo_surface_t*" name="surface" />
         </parameters>
       </method>
-      <method name="SetSourceColor" cname="gdk_cairo_set_source_color" shared="true">
+      <method name="SetSourceColor" cname="gdk_cairo_set_source_color" deprecated="1" shared="true">
         <return-type type="void" />
         <parameters>
           <parameter type="cairo_t*" name="cr" />
@@ -3375,6 +3922,14 @@
           <parameter type="GdkWindow*" name="window" />
           <parameter type="gdouble" name="x" />
           <parameter type="gdouble" name="y" />
+        </parameters>
+      </method>
+      <method name="SurfaceCreateFromPixbuf" cname="gdk_cairo_surface_create_from_pixbuf" shared="true">
+        <return-type type="cairo_surface_t*" />
+        <parameters>
+          <parameter type="const-GdkPixbuf*" name="pixbuf" />
+          <parameter type="int" name="scale" />
+          <parameter type="GdkWindow*" name="for_window" />
         </parameters>
       </method>
     </class>
@@ -3504,6 +4059,20 @@
           <parameter type="gdouble*" name="value" />
         </parameters>
       </method>
+      <method name="GetButton" cname="gdk_event_get_button" shared="true">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-GdkEvent*" name="event" />
+          <parameter type="guint*" name="button" />
+        </parameters>
+      </method>
+      <method name="GetClickCount" cname="gdk_event_get_click_count" shared="true">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-GdkEvent*" name="event" />
+          <parameter type="guint*" name="click_count" />
+        </parameters>
+      </method>
       <method name="GetCoords" cname="gdk_event_get_coords" shared="true">
         <return-type type="gboolean" />
         <parameters>
@@ -3518,6 +4087,32 @@
           <parameter type="const-GdkEvent*" name="event" />
         </parameters>
       </method>
+      <method name="GetEventSequence" cname="gdk_event_get_event_sequence" shared="true">
+        <return-type type="GdkEventSequence*" />
+        <parameters>
+          <parameter type="const-GdkEvent*" name="event" />
+        </parameters>
+      </method>
+      <method name="GetEventType" cname="gdk_event_get_event_type" shared="true">
+        <return-type type="GdkEventType" />
+        <parameters>
+          <parameter type="const-GdkEvent*" name="event" />
+        </parameters>
+      </method>
+      <method name="GetKeycode" cname="gdk_event_get_keycode" shared="true">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-GdkEvent*" name="event" />
+          <parameter type="guint16*" name="keycode" />
+        </parameters>
+      </method>
+      <method name="GetKeyval" cname="gdk_event_get_keyval" shared="true">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-GdkEvent*" name="event" />
+          <parameter type="guint*" name="keyval" />
+        </parameters>
+      </method>
       <method name="GetRootCoords" cname="gdk_event_get_root_coords" shared="true">
         <return-type type="gboolean" />
         <parameters>
@@ -3530,6 +4125,21 @@
         <return-type type="GdkScreen*" />
         <parameters>
           <parameter type="const-GdkEvent*" name="event" />
+        </parameters>
+      </method>
+      <method name="GetScrollDeltas" cname="gdk_event_get_scroll_deltas" shared="true">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-GdkEvent*" name="event" />
+          <parameter type="gdouble*" name="delta_x" />
+          <parameter type="gdouble*" name="delta_y" />
+        </parameters>
+      </method>
+      <method name="GetScrollDirection" cname="gdk_event_get_scroll_direction" shared="true">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-GdkEvent*" name="event" />
+          <parameter type="GdkScrollDirection*" name="direction" />
         </parameters>
       </method>
       <method name="GetSourceDevice" cname="gdk_event_get_source_device" shared="true">
@@ -3553,6 +4163,12 @@
       </method>
       <method name="GetType" cname="gdk_event_get_type" shared="true">
         <return-type type="GType" />
+      </method>
+      <method name="GetWindow" cname="gdk_event_get_window" shared="true">
+        <return-type type="GdkWindow*" />
+        <parameters>
+          <parameter type="const-GdkEvent*" name="event" />
+        </parameters>
       </method>
       <method name="HandlerSet" cname="gdk_event_handler_set" shared="true">
         <return-type type="void" />
@@ -3602,6 +4218,12 @@
         <parameters>
           <parameter type="GdkEvent*" name="event" />
           <parameter type="GdkDevice*" name="device" />
+        </parameters>
+      </method>
+      <method name="TriggersContextMenu" cname="gdk_event_triggers_context_menu" shared="true">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="const-GdkEvent*" name="event" />
         </parameters>
       </method>
     </class>
@@ -3988,16 +4610,16 @@
           <parameter type="GDestroyNotify" name="notify" />
         </parameters>
       </method>
-      <method name="Enter" cname="gdk_threads_enter" shared="true">
+      <method name="Enter" cname="gdk_threads_enter" deprecated="1" shared="true">
         <return-type type="void" />
       </method>
-      <method name="Init" cname="gdk_threads_init" shared="true">
+      <method name="Init" cname="gdk_threads_init" deprecated="1" shared="true">
         <return-type type="void" />
       </method>
-      <method name="Leave" cname="gdk_threads_leave" shared="true">
+      <method name="Leave" cname="gdk_threads_leave" deprecated="1" shared="true">
         <return-type type="void" />
       </method>
-      <method name="SetLockFunctions" cname="gdk_threads_set_lock_functions" shared="true">
+      <method name="SetLockFunctions" cname="gdk_threads_set_lock_functions" deprecated="1" shared="true">
         <return-type type="void" />
         <parameters>
           <parameter type="GCallback" name="enter_fn" />
@@ -4039,7 +4661,7 @@
       <member cname="GDK_PIXBUF_ROTATE_UPSIDEDOWN" name="Upsidedown" value="180" />
       <member cname="GDK_PIXBUF_ROTATE_CLOCKWISE" name="Clockwise" value="270" />
     </enum>
-    <enum name="PixdataDumpType" cname="GdkPixdataDumpType" type="flags">
+    <enum name="PixdataDumpType" cname="GdkPixdataDumpType" deprecated="1" type="flags">
       <member cname="GDK_PIXDATA_DUMP_PIXDATA_STREAM" name="PixdataStream" />
       <member cname="GDK_PIXDATA_DUMP_PIXDATA_STRUCT" name="PixdataStruct" value="1" />
       <member cname="GDK_PIXDATA_DUMP_MACROS" name="Macros" value="2" />
@@ -4049,7 +4671,7 @@
       <member cname="GDK_PIXDATA_DUMP_CONST" name="Const" value="1 &lt;&lt; 10" />
       <member cname="GDK_PIXDATA_DUMP_RLE_DECODER" name="RleDecoder" value="1 &lt;&lt; 16" />
     </enum>
-    <enum name="PixdataType" cname="GdkPixdataType" type="flags">
+    <enum name="PixdataType" cname="GdkPixdataType" deprecated="1" type="flags">
       <member cname="GDK_PIXDATA_COLOR_TYPE_RGB" name="ColorTypeRgb" value="0x01" />
       <member cname="GDK_PIXDATA_COLOR_TYPE_RGBA" name="ColorTypeRgba" value="0x02" />
       <member cname="GDK_PIXDATA_COLOR_TYPE_MASK" name="ColorTypeMask" value="0xff" />
@@ -4087,8 +4709,10 @@
       <property name="Height" cname="height" type="gint" />
       <property name="Rowstride" cname="rowstride" type="gint" />
       <property name="Pixels" cname="pixels" type="gpointer" />
+      <property name="PixelBytes" cname="pixel-bytes" type="GBytes" />
       <implements>
         <interface cname="GIcon" />
+        <interface cname="GLoadableIcon" />
       </implements>
       <method name="AddAlpha" cname="gdk_pixbuf_add_alpha">
         <return-type type="GdkPixbuf*" />
@@ -4181,16 +4805,11 @@
           <parameter type="gboolean" name="horizontal" />
         </parameters>
       </method>
-      <method name="FromPixdata" cname="gdk_pixbuf_from_pixdata" shared="true">
-        <return-type type="GdkPixbuf*" />
-        <parameters>
-          <parameter type="const-GdkPixdata*" name="pixdata" />
-          <parameter type="gboolean" name="copy_pixels" />
-          <parameter type="GError**" name="error" />
-        </parameters>
-      </method>
       <method name="GetBitsPerSample" cname="gdk_pixbuf_get_bits_per_sample">
         <return-type type="int" />
+      </method>
+      <method name="GetByteLength" cname="gdk_pixbuf_get_byte_length">
+        <return-type type="gsize" />
       </method>
       <method name="GetColorspace" cname="gdk_pixbuf_get_colorspace">
         <return-type type="GdkColorspace" />
@@ -4201,6 +4820,24 @@
           <parameter type="const-gchar*" name="filename" />
           <parameter type="gint*" name="width" />
           <parameter type="gint*" name="height" />
+        </parameters>
+      </method>
+      <method name="GetFileInfoAsync" cname="gdk_pixbuf_get_file_info_async" shared="true">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="const-gchar*" name="filename" />
+          <parameter type="GCancellable*" name="cancellable" />
+          <parameter type="GAsyncReadyCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </method>
+      <method name="GetFileInfoFinish" cname="gdk_pixbuf_get_file_info_finish" shared="true">
+        <return-type type="GdkPixbufFormat*" />
+        <parameters>
+          <parameter type="GAsyncResult*" name="async_result" />
+          <parameter type="gint*" name="width" />
+          <parameter type="gint*" name="height" />
+          <parameter type="GError**" name="error" />
         </parameters>
       </method>
       <method name="GetFormats" cname="gdk_pixbuf_get_formats" shared="true">
@@ -4221,8 +4858,17 @@
           <parameter type="const-gchar*" name="key" />
         </parameters>
       </method>
+      <method name="GetOptions" cname="gdk_pixbuf_get_options">
+        <return-type type="GHashTable*" />
+      </method>
       <method name="GetPixels" cname="gdk_pixbuf_get_pixels">
         <return-type type="guchar*" />
+      </method>
+      <method name="GetPixelsWithLength" cname="gdk_pixbuf_get_pixels_with_length">
+        <return-type type="guchar*" />
+        <parameters>
+          <parameter type="guint*" name="length" />
+        </parameters>
       </method>
       <method name="GetRowstride" cname="gdk_pixbuf_get_rowstride">
         <return-type type="int" />
@@ -4233,12 +4879,6 @@
       <method name="GetWidth" cname="gdk_pixbuf_get_width">
         <return-type type="int" />
       </method>
-      <method name="Gettext" cname="gdk_pixbuf_gettext" shared="true">
-        <return-type type="const-gchar*" />
-        <parameters>
-          <parameter type="const-gchar*" name="msgid)" />
-        </parameters>
-      </method>
       <constructor cname="gdk_pixbuf_new">
         <parameters>
           <parameter type="GdkColorspace" name="colorspace" />
@@ -4246,6 +4886,17 @@
           <parameter type="int" name="bits_per_sample" />
           <parameter type="int" name="width" />
           <parameter type="int" name="height" />
+        </parameters>
+      </constructor>
+      <constructor cname="gdk_pixbuf_new_from_bytes">
+        <parameters>
+          <parameter type="GBytes*" name="data" />
+          <parameter type="GdkColorspace" name="colorspace" />
+          <parameter type="gboolean" name="has_alpha" />
+          <parameter type="int" name="bits_per_sample" />
+          <parameter type="int" name="width" />
+          <parameter type="int" name="height" />
+          <parameter type="int" name="rowstride" />
         </parameters>
       </constructor>
       <constructor cname="gdk_pixbuf_new_from_data">
@@ -4284,11 +4935,18 @@
           <parameter type="GError**" name="error" />
         </parameters>
       </constructor>
-      <constructor cname="gdk_pixbuf_new_from_inline">
+      <constructor cname="gdk_pixbuf_new_from_resource">
         <parameters>
-          <parameter type="gint" name="data_length" />
-          <parameter type="const-guint8*" name="data" />
-          <parameter type="gboolean" name="copy_pixels" />
+          <parameter type="const-char*" name="resource_path" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </constructor>
+      <constructor cname="gdk_pixbuf_new_from_resource_at_scale">
+        <parameters>
+          <parameter type="const-char*" name="resource_path" />
+          <parameter type="int" name="width" />
+          <parameter type="int" name="height" />
+          <parameter type="gboolean" name="preserve_aspect_ratio" />
           <parameter type="GError**" name="error" />
         </parameters>
       </constructor>
@@ -4299,6 +4957,14 @@
           <parameter type="GError**" name="error" />
         </parameters>
       </constructor>
+      <constructor cname="gdk_pixbuf_new_from_stream_async">
+        <parameters>
+          <parameter type="GInputStream*" name="stream" />
+          <parameter type="GCancellable*" name="cancellable" />
+          <parameter type="GAsyncReadyCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </constructor>
       <constructor cname="gdk_pixbuf_new_from_stream_at_scale">
         <parameters>
           <parameter type="GInputStream*" name="stream" />
@@ -4306,6 +4972,23 @@
           <parameter type="gint" name="height" />
           <parameter type="gboolean" name="preserve_aspect_ratio" />
           <parameter type="GCancellable*" name="cancellable" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </constructor>
+      <constructor cname="gdk_pixbuf_new_from_stream_at_scale_async">
+        <parameters>
+          <parameter type="GInputStream*" name="stream" />
+          <parameter type="gint" name="width" />
+          <parameter type="gint" name="height" />
+          <parameter type="gboolean" name="preserve_aspect_ratio" />
+          <parameter type="GCancellable*" name="cancellable" />
+          <parameter type="GAsyncReadyCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </constructor>
+      <constructor cname="gdk_pixbuf_new_from_stream_finish">
+        <parameters>
+          <parameter type="GAsyncResult*" name="async_result" />
           <parameter type="GError**" name="error" />
         </parameters>
       </constructor>
@@ -4323,8 +5006,11 @@
           <parameter type="int" name="height" />
         </parameters>
       </constructor>
-      <method name="Ref" cname="gdk_pixbuf_ref" deprecated="1">
-        <return-type type="GdkPixbuf*" />
+      <method name="ReadPixelBytes" cname="gdk_pixbuf_read_pixel_bytes">
+        <return-type type="GBytes*" />
+      </method>
+      <method name="ReadPixels" cname="gdk_pixbuf_read_pixels">
+        <return-type type="const-guint8*" />
       </method>
       <method name="RotateSimple" cname="gdk_pixbuf_rotate_simple">
         <return-type type="GdkPixbuf*" />
@@ -4401,6 +5087,24 @@
           <parameter ellipsis="true" />
         </parameters>
       </method>
+      <method name="SaveToStreamAsync" cname="gdk_pixbuf_save_to_stream_async">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GOutputStream*" name="stream" />
+          <parameter type="const-gchar*" name="type" />
+          <parameter type="GCancellable*" name="cancellable" />
+          <parameter type="GAsyncReadyCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+          <parameter ellipsis="true" />
+        </parameters>
+      </method>
+      <method name="SaveToStreamFinish" cname="gdk_pixbuf_save_to_stream_finish" shared="true">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="GAsyncResult*" name="async_result" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
       <method name="Savev" cname="gdk_pixbuf_savev">
         <return-type type="gboolean" />
         <parameters>
@@ -4434,9 +5138,6 @@
           <parameter type="GdkInterpType" name="interp_type" />
         </parameters>
       </method>
-      <method name="Unref" cname="gdk_pixbuf_unref" deprecated="1">
-        <return-type type="void" />
-      </method>
     </object>
     <object name="PixbufAnimation" cname="GdkPixbufAnimation" parent="GObject">
       <method name="GetHeight" cname="gdk_pixbuf_animation_get_height">
@@ -4466,12 +5167,33 @@
           <parameter type="GError**" name="error" />
         </parameters>
       </constructor>
-      <method name="Ref" cname="gdk_pixbuf_animation_ref" deprecated="1">
-        <return-type type="GdkPixbufAnimation*" />
-      </method>
-      <method name="Unref" cname="gdk_pixbuf_animation_unref" deprecated="1">
-        <return-type type="void" />
-      </method>
+      <constructor cname="gdk_pixbuf_animation_new_from_resource">
+        <parameters>
+          <parameter type="const-char*" name="resource_path" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </constructor>
+      <constructor cname="gdk_pixbuf_animation_new_from_stream">
+        <parameters>
+          <parameter type="GInputStream*" name="stream" />
+          <parameter type="GCancellable*" name="cancellable" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </constructor>
+      <constructor cname="gdk_pixbuf_animation_new_from_stream_async">
+        <parameters>
+          <parameter type="GInputStream*" name="stream" />
+          <parameter type="GCancellable*" name="cancellable" />
+          <parameter type="GAsyncReadyCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </constructor>
+      <constructor cname="gdk_pixbuf_animation_new_from_stream_finish">
+        <parameters>
+          <parameter type="GAsyncResult*" name="async_result" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </constructor>
     </object>
     <object name="PixbufAnimationIter" cname="GdkPixbufAnimationIter" parent="GObject">
       <method name="Advance" cname="gdk_pixbuf_animation_iter_advance">
@@ -4640,6 +5362,13 @@
           <parameter type="GError**" name="error" />
         </parameters>
       </method>
+      <method name="WriteBytes" cname="gdk_pixbuf_loader_write_bytes">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="GBytes*" name="buffer" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
     </object>
     <object name="PixbufSimpleAnim" cname="GdkPixbufSimpleAnim" parent="GdkPixbufAnimation">
       <class_struct cname="GdkPixbufSimpleAnimClass">
@@ -4738,7 +5467,7 @@
       </method>
     </struct>
     <struct name="PixbufSimpleAnimIterClass" cname="GdkPixbufSimpleAnimIterClass" opaque="true" />
-    <struct name="Pixdata" cname="GdkPixdata">
+    <struct name="Pixdata" cname="GdkPixdata" deprecated="1">
       <field name="Magic" cname="magic" type="guint32" />
       <field name="Length" cname="length" type="gint32" />
       <field name="PixdataType" cname="pixdata_type" type="guint32" />
@@ -4746,34 +5475,6 @@
       <field name="Width" cname="width" type="guint32" />
       <field name="Height" cname="height" type="guint32" />
       <field name="PixelData" cname="pixel_data" type="guint8*" />
-      <method name="Deserialize" cname="gdk_pixdata_deserialize">
-        <return-type type="gboolean" />
-        <parameters>
-          <parameter type="guint" name="stream_length" />
-          <parameter type="const-guint8*" name="stream" />
-          <parameter type="GError**" name="error" />
-        </parameters>
-      </method>
-      <method name="FromPixbuf" cname="gdk_pixdata_from_pixbuf">
-        <return-type type="gpointer" />
-        <parameters>
-          <parameter type="const-GdkPixbuf*" name="pixbuf" />
-          <parameter type="gboolean" name="use_rle" />
-        </parameters>
-      </method>
-      <method name="Serialize" cname="gdk_pixdata_serialize">
-        <return-type type="guint8*" />
-        <parameters>
-          <parameter type="guint*" name="stream_length_p" />
-        </parameters>
-      </method>
-      <method name="ToCsource" cname="gdk_pixdata_to_csource">
-        <return-type type="GString*" />
-        <parameters>
-          <parameter type="const-gchar*" name="name" />
-          <parameter type="GdkPixdataDumpType" name="dump_type" />
-        </parameters>
-      </method>
     </struct>
     <struct name="Gif89" cname="Gif89" opaque="true" />
     <struct name="GifContext" cname="GifContext" opaque="true" />

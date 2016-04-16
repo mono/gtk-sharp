@@ -1,0 +1,53 @@
+--- gtk+-3.18.2.orig/gtk/gtktextattributes.h	2015-11-09 13:28:27.852084380 +0100
++++ gtk+-3.18.2/gtk/gtktextattributes.h	2015-11-09 13:29:14.424084380 +0100
+@@ -112,26 +112,7 @@
+   guint inside_selection : 1;
+   guint is_text : 1;
+ 
+-  /* For the sad story of this bit of code, see
+-   * https://bugzilla.gnome.org/show_bug.cgi?id=711158
+-   */
+-#ifdef __GI_SCANNER__
+-  /* The scanner should only see the transparent union, so that its
+-   * content does not vary across architectures.
+-   */
+-  union {
+-    GdkRGBA *rgba[2];
+-    /*< private >*/
+-    guint padding[4];
+-  };
+-#else
+   GdkRGBA *rgba[2];
+-#if (defined(__SIZEOF_INT__) && defined(__SIZEOF_POINTER__)) && (__SIZEOF_INT__ == __SIZEOF_POINTER__)
+-  /* unusable, just for ABI compat */
+-  /*< private >*/
+-  guint padding[2];
+-#endif
+-#endif
+ };
+ 
+ /**
+@@ -207,23 +188,7 @@
+   /*< public >*/
+   gint letter_spacing;
+ 
+-#ifdef __GI_SCANNER__
+-  /* The scanner should only see the transparent union, so that its
+-   * content does not vary across architectures.
+-   */
+-  union {
+-    gchar *font_features;
+-    /*< private >*/
+-    guint padding[2];
+-  };
+-#else
+   gchar *font_features;
+-#if (defined(__SIZEOF_INT__) && defined(__SIZEOF_POINTER__)) && (__SIZEOF_INT__ == __SIZEOF_POINTER__)
+-  /* unusable, just for ABI compat */
+-  /*< private >*/
+-  guint padding[1];
+-#endif
+-#endif
+ };
+ 
+ GDK_AVAILABLE_IN_ALL
