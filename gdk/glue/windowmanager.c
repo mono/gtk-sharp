@@ -29,7 +29,7 @@
 #include <gdk/gdkproperty.h>
 
 GList * gtksharp_get_gdk_net_supported (void);
-guint * gtksharp_get_gdk_net_client_list (int *count);
+gpointer * gtksharp_get_gdk_net_client_list (int *count);
 gint gtksharp_get_gdk_net_number_of_desktops (void);
 gint gtksharp_get_gdk_net_current_desktop (void);
 guint gtksharp_get_gdk_net_active_window (void);
@@ -75,14 +75,14 @@ gtksharp_get_gdk_net_supported (void)
 	return list;
 }
 
-guint * 
+gpointer *
 gtksharp_get_gdk_net_client_list (int *count)
 {
 	GdkAtom actual_property_type;
 	int actual_format;
 	int actual_length;
 	long *data = NULL;
-	guint * list = NULL;
+	gpointer *list = NULL;
 	int i;
 
 	if (!gdk_property_get (
@@ -107,7 +107,7 @@ gtksharp_get_gdk_net_client_list (int *count)
 	}
 
 	*count = actual_length / sizeof (long);
-	list = g_malloc (*count * sizeof (guint));
+	list = g_malloc (*count * sizeof (gpointer));
 	/* Put all of the windows into a GList to return */
 	for (i = 0; i < *count; i ++) {
 		list [i] = data [i];
