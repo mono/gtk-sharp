@@ -90,13 +90,13 @@
               <Directory Id="gtksharp20" Name="gtk-sharp-3.0">
                 <!-- Installs GACd assemblies to an addressable location - see http://blogs.msdn.com/astebner/archive/2007/06/21/3450539.aspx -->
                 <Component Id="gtksharpinstassembly" Guid="BC078476-3336-4871-B9E1-3598BD724407">
-                  <RegistryKey Root='HKLM' Key='SOFTWARE\GtkSharp\Version'>
+                  <RegistryKey Root='HKLM' Key='SOFTWARE\GtkSharp\3\Version'>
                     <RegistryValue Type="string" Value="[ProductVersion]" />
                   </RegistryKey>
-                  <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\v4.0.30319\AssemblyFoldersEx\GtkSharp'>
+                  <RegistryKey Root='HKLM' Key='SOFTWARE\Microsoft\.NetFramework\v4.0.30319\AssemblyFoldersEx\GtkSharp3'>
                     <RegistryValue Type="string" Value="[INSTALLLOCATION]lib\gtk-sharp-3.0" />
                   </RegistryKey>
-                  <RegistryKey Root='HKLM' Key='SOFTWARE\GtkSharp\InstallFolder'>
+                  <RegistryKey Root='HKLM' Key='SOFTWARE\GtkSharp\3\InstallFolder'>
                     <RegistryValue Type="string" Value="[INSTALLLOCATION]" />
                   </RegistryKey>
                   <File Id="atksharpdll_inst" Source="binaries/atk/atk-sharp.dll" />
