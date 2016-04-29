@@ -109,6 +109,7 @@
   <attr path="/api/namespace/object[@cname='GApplication']/method[@cname='g_application_run']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GApplication']/signal[@cname='activate']" name="name">Activated</attr>
   <attr path="/api/namespace/object[@cname='GApplication']/signal[@cname='open']" name="name">Opened</attr>
+  <attr path="/api/namespace/object[@cname='GAppLaunchContext']/signal[@cname='launch-failed']" name="name">LaunchedFailed</attr>
   <attr path="/api/namespace/object[@cname='GDBusAuthObserver']/signal[@cname='authorize-authenticated-peer']" name="name">AuthenticatedPeerAuthorized</attr>
   <attr path="/api/namespace/object[@cname='GDBusConnection']/property[@cname='closed']" name="name">IsClosed</attr>
   <attr path="/api/namespace/object[@cname='GDBusConnection']/method[@cname='g_dbus_connection_is_closed']" name="name">GetIsClosed</attr>
@@ -132,6 +133,7 @@
   <attr path="/api/namespace/object[@cname='GInputStream']/method[@cname='g_input_stream_read_async']/parameters/parameter[@name='buffer']" name="type">guchar*</attr>
   <attr path="/api/namespace/object[@cname='GInputStream']/method[@cname='g_input_stream_read_async']/parameters/parameter[@name='buffer']" name="array">1</attr>
   <attr path="/api/namespace/object[@cname='GMemoryOutputStream']/method[@name='GetData']" name="new_flag">1</attr>
+  <attr path="/api/namespace/object[@cname='GMenuModel']/method[@cname='g_menu_model_items_changed']" name="name">SetItemsChanged</attr>
   <attr path="/api/namespace/object[@cname='GMountOperation']/method[@name='Reply']" name="name">EmitReply</attr>
   <attr path="/api/namespace/object[@cname='GOutputStream']/method[@cname='g_output_stream_write']/parameters/parameter[@name='buffer']" name="type">guchar*</attr>
   <attr path="/api/namespace/object[@cname='GOutputStream']/method[@cname='g_output_stream_write']/parameters/parameter[@name='buffer']" name="array">1</attr>
@@ -139,6 +141,7 @@
   <attr path="/api/namespace/object[@cname='GOutputStream']/method[@cname='g_output_stream_write_all']/parameters/parameter[@name='buffer']" name="array">1</attr>
   <attr path="/api/namespace/object[@cname='GOutputStream']/method[@cname='g_output_stream_write_async']/parameters/parameter[@name='buffer']" name="type">guchar*</attr>
   <attr path="/api/namespace/object[@cname='GOutputStream']/method[@cname='g_output_stream_write_async']/parameters/parameter[@name='buffer']" name="array">1</attr>
+  <attr path="/api/namespace/object[@cname='GOutputStream']/method[@cname='g_output_stream_vprintf']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GResolver']/*[@name='LookupByName']/return-type" name="element_type">GInetAddress*</attr>
   <attr path="/api/namespace/object[@cname='GResolver']/*[@name='LookupByName']/return-type" name="owned">true</attr>
   <attr path="/api/namespace/object[@cname='GResolver']/*[@name='LookupByName']/return-type" name="elements_owned">true</attr>
@@ -161,6 +164,7 @@
   <attr path="/api/namespace/object[@cname='GSettings']/method[@name='ListSchemas']/return-type" name="null_term_array">1</attr>
   <attr path="/api/namespace/object[@cname='GSettings']/method[@name='SetStrv']/*/*[@name='value']" name="null_term_array">1</attr>
   <attr path="/api/namespace/object[@cname='GSimpleAction']/signal[@cname='activate']" name="name">Activated</attr>
+  <attr path="/api/namespace/object[@cname='GSimpleAction']/method[@cname='g_simple_action_set_state']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GSimpleAsyncResult']/constructor[@cname='g_simple_async_result_new_error']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GSimpleAsyncResult']/method[@name='SetError']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GThemedIcon']/method[@name='GetNames']/return-type" name="null_term_array">1</attr> 

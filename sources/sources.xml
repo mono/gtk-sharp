@@ -2,15 +2,53 @@
   <api filename="../gio/gio-api.raw">
     <library name="libgio-2.0-0.dll">
       <namespace name="G">
-        <directory path="glib-2.28.0/gio">
+        <directory path="glib-2.42.2/gio">
+          <exclude>gappinfoprivate.h</exclude>
+          <exclude>gapplicationimpl.h</exclude>
           <exclude>gasynchelper.h</exclude>
           <exclude>gcontenttypeprivate.h</exclude>
+          <exclude>gcredentialsprivate.h</exclude>
+          <exclude>gdbusactiongroup.h</exclude>
+          <exclude>gdbusactiongroup-private.h</exclude>
+          <exclude>gdbusdaemon.h</exclude>
+          <exclude>gdbusobject.h</exclude>
+          <exclude>gdbusaddress.h</exclude>
+          <exclude>gdbuserror.h</exclude>
+          <exclude>gdbusobjectmanagerclient.h</exclude>
+          <exclude>gdbusauth.h</exclude>
+          <exclude>gdbusinterface.h</exclude>
+          <exclude>gdbusobjectmanager.h</exclude>
+          <exclude>gdbusauthmechanismanon.h</exclude>
+          <exclude>gdbusinterfaceskeleton.h</exclude>
+          <exclude>gdbusobjectmanagerserver.h</exclude>
+          <exclude>gdbusauthmechanismexternal.h</exclude>
+          <exclude>gdbusintrospection.h</exclude>
+          <exclude>gdbusobjectproxy.h</exclude>
+          <exclude>gdbusauthmechanism.h</exclude>
+          <exclude>gdbusmenumodel.h</exclude>
+          <exclude>gdbusobjectskeleton.h</exclude>
+          <exclude>gdbusauthmechanismsha1.h</exclude>
+          <exclude>gdbusmessage.h</exclude>
+          <exclude>gdbusprivate.h</exclude>
+          <exclude>gdbusauthobserver.h</exclude>
+          <exclude>gdbusmethodinvocation.h</exclude>
+          <exclude>gdbusproxy.h</exclude>
+          <exclude>gdbusconnection.h</exclude>
+          <exclude>gdbusnameowning.h</exclude>
+          <exclude>gdbusserver.h</exclude>
+          <exclude>gdbus-daemon-generated.h</exclude>
+          <exclude>gdbusnamewatching.h</exclude>
+          <exclude>gdbusutils.h</exclude>
           <exclude>gdelayedsettingsbackend.h</exclude>
           <exclude>gdummyfile.h</exclude>
+          <exclude>gdummyproxyresolver.h</exclude>
+          <exclude>gdummytlsbackend.h</exclude>
           <exclude>gfileattribute-priv.h</exclude>
           <exclude>gioalias.h</exclude>
           <exclude>gio-marshal.h</exclude>
           <exclude>giomodule-priv.h</exclude>
+          <exclude>gioprivate.h</exclude>
+          <exclude>giowin32-priv.h</exclude>
           <exclude>glocalfile.h</exclude>
           <exclude>glocalfileinfo.h</exclude>
           <exclude>glocalfileinputstream.h</exclude>
@@ -19,9 +57,23 @@
           <exclude>glocalvfs.h</exclude>
           <exclude>gkeyfilesettingsbackend.h</exclude>
           <exclude>gmountprivate.h</exclude>
+          <exclude>gnativevolumemonitor.h</exclude>
+          <exclude>gnetworkingprivate.h</exclude>
+          <exclude>gnetworkmonitorbase.h</exclude>
+          <exclude>gnetworkmonitornetlink.h</exclude>
+          <exclude>gnotification-private.h</exclude>
+          <exclude>gnotificationbackend.h</exclude>
           <exclude>gpollfilemonitor.h</exclude>
+          <exclude>gresourcefile.h</exclude>
           <exclude>gsettingsbackend.h</exclude>
           <exclude>gsettingsbackendinternal.h</exclude>
+          <exclude>gsettingsschema.h</exclude>
+          <exclude>gsettingsschema-internal.h</exclude>
+          <exclude>gsettings-mapping.h</exclude>
+          <exclude>gsocketinputstream.h</exclude>
+          <exclude>gsocketoutputstream.h</exclude>
+          <exclude>gtlsfiledatabase.h</exclude>
+          <exclude>gthreadedresolver.h</exclude>
           <exclude>gunionvolumemonitor.h</exclude>
           <exclude>gunixinputstream.h</exclude>
           <exclude>gunixmount.h</exclude>
