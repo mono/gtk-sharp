@@ -4089,6 +4089,7 @@
       <property name="Pixels" cname="pixels" type="gpointer" />
       <implements>
         <interface cname="GIcon" />
+        <interface cname="GLoadableIcon" />
       </implements>
       <method name="AddAlpha" cname="gdk_pixbuf_add_alpha">
         <return-type type="GdkPixbuf*" />
@@ -4192,6 +4193,9 @@
       <method name="GetBitsPerSample" cname="gdk_pixbuf_get_bits_per_sample">
         <return-type type="int" />
       </method>
+      <method name="GetByteLength" cname="gdk_pixbuf_get_byte_length">
+        <return-type type="gsize" />
+      </method>
       <method name="GetColorspace" cname="gdk_pixbuf_get_colorspace">
         <return-type type="GdkColorspace" />
       </method>
@@ -4223,6 +4227,12 @@
       </method>
       <method name="GetPixels" cname="gdk_pixbuf_get_pixels">
         <return-type type="guchar*" />
+      </method>
+      <method name="GetPixelsWithLength" cname="gdk_pixbuf_get_pixels_with_length">
+        <return-type type="guchar*" />
+        <parameters>
+          <parameter type="guint*" name="length" />
+        </parameters>
       </method>
       <method name="GetRowstride" cname="gdk_pixbuf_get_rowstride">
         <return-type type="int" />
@@ -4292,11 +4302,34 @@
           <parameter type="GError**" name="error" />
         </parameters>
       </constructor>
+      <constructor cname="gdk_pixbuf_new_from_resource">
+        <parameters>
+          <parameter type="const-char*" name="resource_path" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </constructor>
+      <constructor cname="gdk_pixbuf_new_from_resource_at_scale">
+        <parameters>
+          <parameter type="const-char*" name="resource_path" />
+          <parameter type="int" name="width" />
+          <parameter type="int" name="height" />
+          <parameter type="gboolean" name="preserve_aspect_ratio" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </constructor>
       <constructor cname="gdk_pixbuf_new_from_stream">
         <parameters>
           <parameter type="GInputStream*" name="stream" />
           <parameter type="GCancellable*" name="cancellable" />
           <parameter type="GError**" name="error" />
+        </parameters>
+      </constructor>
+      <constructor cname="gdk_pixbuf_new_from_stream_async">
+        <parameters>
+          <parameter type="GInputStream*" name="stream" />
+          <parameter type="GCancellable*" name="cancellable" />
+          <parameter type="GAsyncReadyCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
         </parameters>
       </constructor>
       <constructor cname="gdk_pixbuf_new_from_stream_at_scale">
@@ -4306,6 +4339,23 @@
           <parameter type="gint" name="height" />
           <parameter type="gboolean" name="preserve_aspect_ratio" />
           <parameter type="GCancellable*" name="cancellable" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </constructor>
+      <constructor cname="gdk_pixbuf_new_from_stream_at_scale_async">
+        <parameters>
+          <parameter type="GInputStream*" name="stream" />
+          <parameter type="gint" name="width" />
+          <parameter type="gint" name="height" />
+          <parameter type="gboolean" name="preserve_aspect_ratio" />
+          <parameter type="GCancellable*" name="cancellable" />
+          <parameter type="GAsyncReadyCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </constructor>
+      <constructor cname="gdk_pixbuf_new_from_stream_finish">
+        <parameters>
+          <parameter type="GAsyncResult*" name="async_result" />
           <parameter type="GError**" name="error" />
         </parameters>
       </constructor>
@@ -4323,9 +4373,6 @@
           <parameter type="int" name="height" />
         </parameters>
       </constructor>
-      <method name="Ref" cname="gdk_pixbuf_ref" deprecated="1">
-        <return-type type="GdkPixbuf*" />
-      </method>
       <method name="RotateSimple" cname="gdk_pixbuf_rotate_simple">
         <return-type type="GdkPixbuf*" />
         <parameters>
@@ -4401,6 +4448,24 @@
           <parameter ellipsis="true" />
         </parameters>
       </method>
+      <method name="SaveToStreamAsync" cname="gdk_pixbuf_save_to_stream_async">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GOutputStream*" name="stream" />
+          <parameter type="const-gchar*" name="type" />
+          <parameter type="GCancellable*" name="cancellable" />
+          <parameter type="GAsyncReadyCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+          <parameter ellipsis="true" />
+        </parameters>
+      </method>
+      <method name="SaveToStreamFinish" cname="gdk_pixbuf_save_to_stream_finish" shared="true">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="GAsyncResult*" name="async_result" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
       <method name="Savev" cname="gdk_pixbuf_savev">
         <return-type type="gboolean" />
         <parameters>
@@ -4434,9 +4499,6 @@
           <parameter type="GdkInterpType" name="interp_type" />
         </parameters>
       </method>
-      <method name="Unref" cname="gdk_pixbuf_unref" deprecated="1">
-        <return-type type="void" />
-      </method>
     </object>
     <object name="PixbufAnimation" cname="GdkPixbufAnimation" parent="GObject">
       <method name="GetHeight" cname="gdk_pixbuf_animation_get_height">
@@ -4466,12 +4528,33 @@
           <parameter type="GError**" name="error" />
         </parameters>
       </constructor>
-      <method name="Ref" cname="gdk_pixbuf_animation_ref" deprecated="1">
-        <return-type type="GdkPixbufAnimation*" />
-      </method>
-      <method name="Unref" cname="gdk_pixbuf_animation_unref" deprecated="1">
-        <return-type type="void" />
-      </method>
+      <constructor cname="gdk_pixbuf_animation_new_from_resource">
+        <parameters>
+          <parameter type="const-char*" name="resource_path" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </constructor>
+      <constructor cname="gdk_pixbuf_animation_new_from_stream">
+        <parameters>
+          <parameter type="GInputStream*" name="stream" />
+          <parameter type="GCancellable*" name="cancellable" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </constructor>
+      <constructor cname="gdk_pixbuf_animation_new_from_stream_async">
+        <parameters>
+          <parameter type="GInputStream*" name="stream" />
+          <parameter type="GCancellable*" name="cancellable" />
+          <parameter type="GAsyncReadyCallback" name="callback" />
+          <parameter type="gpointer" name="user_data" />
+        </parameters>
+      </constructor>
+      <constructor cname="gdk_pixbuf_animation_new_from_stream_finish">
+        <parameters>
+          <parameter type="GAsyncResult*" name="async_result" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </constructor>
     </object>
     <object name="PixbufAnimationIter" cname="GdkPixbufAnimationIter" parent="GObject">
       <method name="Advance" cname="gdk_pixbuf_animation_iter_advance">
@@ -4637,6 +4720,13 @@
         <parameters>
           <parameter type="const-guchar*" name="buf" />
           <parameter type="gsize" name="count" />
+          <parameter type="GError**" name="error" />
+        </parameters>
+      </method>
+      <method name="WriteBytes" cname="gdk_pixbuf_loader_write_bytes">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter type="GBytes*" name="buffer" />
           <parameter type="GError**" name="error" />
         </parameters>
       </method>
