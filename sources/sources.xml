@@ -101,7 +101,7 @@
   <api filename="../pango/pango-api.raw">
     <library name="libpango-1.0-0.dll">
       <namespace name="Pango">
-        <directory path="pango-1.28.3/pango">
+        <directory path="pango-1.36.8/pango">
           <exclude>pangoatsui.c</exclude>
           <exclude>pangoatsui.h</exclude>
           <exclude>pangoatsui-fontmap.h</exclude>
