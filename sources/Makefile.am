@@ -7,7 +7,7 @@ TARGET_GTK_VERSION=3.0.0
 
 GTK_DOWNLOADS = \
 	http://ftp.gnome.org/pub/GNOME/sources/glib/2.42/glib-2.42.2.tar.xz			\
-	http://ftp.gnome.org/pub/GNOME/sources/pango/1.28/pango-1.28.3.tar.bz2			\
+	http://ftp.gnome.org/pub/GNOME/sources/pango/1.36/pango-1.36.8.tar.xz			\
 	http://ftp.gnome.org/pub/GNOME/sources/atk/2.14/atk-2.14.0.tar.xz			\
 	http://ftp.gnome.org/pub/GNOME/sources/gdk-pixbuf/2.30/gdk-pixbuf-2.30.8.tar.xz		\
 	http://ftp.gnome.org/pub/GNOME/sources/gtk+/3.0/gtk+-$(TARGET_GTK_VERSION).tar.bz2
