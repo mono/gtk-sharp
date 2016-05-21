@@ -1,26 +1,32 @@
 EXTRA_DIST =					\
 	README					\
 	sources.xml				\
-	gtk_tree_model_signal_fix.patch
+	gtk_tree_model_signal_fix.patch		\
+	gtkselectionprivate-space.patch		\
+	gtktextattributes-gi-scanner.patch	\
+	gtk_text_view_public.patch
 
-TARGET_GTK_VERSION=3.0.0
+TARGET_GTK_VERSION=3.14.15
 
 GTK_DOWNLOADS = \
 	http://ftp.gnome.org/pub/GNOME/sources/glib/2.42/glib-2.42.2.tar.xz			\
 	http://ftp.gnome.org/pub/GNOME/sources/pango/1.36/pango-1.36.8.tar.xz			\
 	http://ftp.gnome.org/pub/GNOME/sources/atk/2.14/atk-2.14.0.tar.xz			\
 	http://ftp.gnome.org/pub/GNOME/sources/gdk-pixbuf/2.30/gdk-pixbuf-2.30.8.tar.xz		\
-	http://ftp.gnome.org/pub/GNOME/sources/gtk+/3.0/gtk+-$(TARGET_GTK_VERSION).tar.bz2
+	http://ftp.gnome.org/pub/GNOME/sources/gtk+/3.14/gtk+-$(TARGET_GTK_VERSION).tar.xz
 
 api: 
 	PATH=../parser:$$PATH $(RUNTIME) ../parser/gapi-parser.exe sources.xml
 
 get-source-code:
 	for i in $(GTK_DOWNLOADS); do                  \
-		wget $$i --output-document=- | tar -xj ;   \
+		wget $$i --output-document=- | tar -xJ ;   \
 	done;
 	ln -f -s gtkfilechooserprivate.h gtk+-$(TARGET_GTK_VERSION)/gtk/gtkfilechooserpriv.h
 	patch -p0 gtk+-$(TARGET_GTK_VERSION)/gtk/gtktreemodel.c < gtk_tree_model_signal_fix.patch
+	patch -p0 gtk+-$(TARGET_GTK_VERSION)/gtk/gtkselectionprivate.h < gtkselectionprivate-space.patch
+	patch -p0 gtk+-$(TARGET_GTK_VERSION)/gtk/gtktextattributes.h < gtktextattributes-gi-scanner.patch
+	patch -p0 gtk+-$(TARGET_GTK_VERSION)/gtk/gtktextview.h < gtk_text_view_public.patch
 	echo "typedef struct _GtkClipboard GtkClipboard;" >> gtk+-$(TARGET_GTK_VERSION)/gtk/gtkclipboard.h
 	echo "typedef struct _GtkClipboardClass GtkClipboardClass;" >> gtk+-$(TARGET_GTK_VERSION)/gtk/gtkclipboard.h
 
