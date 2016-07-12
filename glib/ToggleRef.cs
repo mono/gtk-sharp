@@ -39,7 +39,6 @@ namespace GLib {
 			gch = GCHandle.Alloc (this);
 			reference = target;
 			g_object_add_toggle_ref (target.Handle, ToggleNotifyCallback, (IntPtr) gch);
-			g_object_unref (target.Handle);
 		}
 
 		public bool IsAlive {

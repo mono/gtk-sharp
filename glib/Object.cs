@@ -34,6 +34,7 @@ namespace GLib {
 		IntPtr handle;
 		ToggleRef tref;
 		bool disposed = false;
+		bool owned = true;
 		Hashtable data;
 		static Hashtable Objects = new Hashtable();
 		static ArrayList PendingDestroys = new ArrayList ();
@@ -92,6 +93,8 @@ namespace GLib {
 				Console.WriteLine ("Exception while disposing a " + this + " in Gtk#");
 				throw e;
 			}
+			if (owned)
+				g_object_unref (handle);
 			handle = IntPtr.Zero;
 			GC.SuppressFinalize (this);
 		}
@@ -134,9 +137,6 @@ namespace GLib {
 					return obj;
 				}
 
-				if (!owned_ref)
-					g_object_ref (o);
-
 				obj = GLib.ObjectManager.CreateObject(o);
 			}
 			if (obj == null) {
@@ -144,6 +144,7 @@ namespace GLib {
 				return null;
 			}
 
+			obj.owned = owned_ref;
 			return obj;
 		}
 
