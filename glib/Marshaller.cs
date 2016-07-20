@@ -157,7 +157,7 @@ namespace GLib {
 			if (str == null)
 				return IntPtr.Zero;
 			int len = System.Text.Encoding.UTF8.GetByteCount (str);
-			IntPtr result = g_malloc (new UIntPtr (len + 1));
+			IntPtr result = g_malloc (new UIntPtr ((ulong)len + 1));
 			unsafe {
 				fixed (char *p = str) {
 					System.Text.Encoding.UTF8.GetBytes (p, str.Length, (byte *)result, len);
