@@ -24,39 +24,14 @@ namespace GtkSharp.Generation {
 
 	using System;
 
-	public class ByRefGen : SimpleBase, IManualMarshaler {
+	public class ByRefGen : SimpleBase {
 		
 		public ByRefGen (string ctype, string type) : base (ctype, type, type + ".Empty") {}
 		
 		public override string MarshalType {
 			get {
-				return "IntPtr";
+				return "ref " + QualifiedName;
 			}
-		}
-
-		public override string CallByName (string var_name)
-		{
-			return "native_" + var_name;
-		}
-		
-		public string AllocNative ()
-		{
-			return "Marshal.AllocHGlobal (Marshal.SizeOf (typeof (" + QualifiedName + ")))";
-		}
-
-		public string AllocNative (string var_name)
-		{
-			return "GLib.Marshaller.StructureToPtrAlloc (" + var_name + ")";
-		}
-
-		public override string FromNative (string var_name)
-		{
-			return String.Format ("({0}) Marshal.PtrToStructure ({1}, typeof ({0}))", QualifiedName, var_name);
-		}
-
-		public string ReleaseNative (string var_name)
-		{
-			return "Marshal.FreeHGlobal (" + var_name + ")";
 		}
 	}
 }

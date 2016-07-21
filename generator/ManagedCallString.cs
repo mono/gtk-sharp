@@ -139,9 +139,9 @@ namespace GtkSharp.Generation {
 
 				if (igen is CallbackGen)
 					continue;
-				else if (igen is StructBase || igen is ByRefGen)
+				else if (igen is StructBase)
 					ret += indent + String.Format ("if ({0} != IntPtr.Zero) System.Runtime.InteropServices.Marshal.StructureToPtr (my{0}, {0}, false);\n", p.Name);
-				else
+				else if (!(igen is ByRefGen))
 					ret += indent + p.Name + " = " + igen.ToNativeReturn ("my" + p.Name) + ";\n";
 			}
 
