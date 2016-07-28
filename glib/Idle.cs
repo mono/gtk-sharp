@@ -32,7 +32,7 @@ namespace GLib {
 	public class Idle {
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
-		delegate bool IdleHandlerInternal ();
+		delegate bool IdleHandlerInternal (IntPtr ptr);
 
 
 		internal class IdleProxy : SourceProxy {
@@ -65,14 +65,17 @@ namespace GLib {
 					Source.Remove (ID);
 			}
 
-			public bool Handler ()
+			static bool Handler (IntPtr data)
 			{
 				try {
-					IdleHandler idle_handler = (IdleHandler) real_handler;
+					SourceProxy obj;
+					lock(proxies)
+						obj = proxies [(int)data];
+					IdleHandler idle_handler = (IdleHandler)obj.real_handler;
 
 					bool cont = idle_handler ();
 					if (!cont)
-						Remove ();
+						obj.Remove ();
 					return cont;
 				} catch (Exception e) {
 					ExceptionManager.RaiseUnhandledException (e, false);
@@ -91,7 +94,7 @@ namespace GLib {
 		public static uint Add (IdleHandler hndlr)
 		{
 			IdleProxy p = new IdleProxy (hndlr);
-			p.ID = g_idle_add ((IdleHandlerInternal) p.proxy_handler, IntPtr.Zero);
+			p.ID = g_idle_add ((IdleHandlerInternal)p.proxy_handler, (IntPtr)p.proxyId);
 			lock (Source.source_handlers)
 				Source.source_handlers [p.ID] = p;
 
@@ -113,6 +116,10 @@ namespace GLib {
 					if (p != null && p.real_handler == (System.Delegate) hndlr) {
 						keys.Add (code);
 						result = g_source_remove (code);
+						p.proxy_handler = null;
+						p.real_handler = null;
+						lock(SourceProxy.proxies)
+							SourceProxy.proxies.Remove (p.proxyId);
 					}
 				}
 
