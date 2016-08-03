@@ -23,13 +23,15 @@ namespace GLib {
 
 	using System;
 	using System.Collections;
+	using System.Collections.Generic;
 	using System.Runtime.InteropServices;
 
 	public class ValueArray : IDisposable, ICollection, ICloneable, IWrapper {
 
 		private IntPtr handle = IntPtr.Zero;
 
-		static private ArrayList PendingFrees = new ArrayList ();
+		static private object lockObject = new object ();
+		static private List<IntPtr> PendingFrees = new List<IntPtr> (8);
 		static private bool idle_queued = false;
 
 		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
@@ -65,7 +67,7 @@ namespace GLib {
 			if (Handle == IntPtr.Zero)
 				return;
 
-			lock (PendingFrees) {
+			lock (lockObject) {
 				PendingFrees.Add (handle);
 
 				if (! idle_queued) {
@@ -79,18 +81,17 @@ namespace GLib {
 
 		static bool PerformFrees ()
 		{
-			IntPtr[] handles;
+			List<IntPtr> handles;
 
-			lock (PendingFrees) {
+			lock (lockObject) {
 				idle_queued = false;
 
-				handles = new IntPtr [PendingFrees.Count];
-				PendingFrees.CopyTo (handles, 0);
-				PendingFrees.Clear ();
+				handles = PendingFrees;
+				PendingFrees = new List<IntPtr> (8);
 			}
 
-			foreach (IntPtr h in handles)
-				g_value_array_free (h);
+			for (int i = 0; i < handles.Count; ++i)
+				g_value_array_free (handles [i]);
 
 			return false;
 		}
