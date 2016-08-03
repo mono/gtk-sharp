@@ -359,8 +359,11 @@ namespace GLib {
 				return (GType) g_types [t];
 
 			PropertyInfo pi = t.GetProperty ("GType", BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.Public);
-			if (pi != null)
-				return (GType) pi.GetValue (null, null);
+			if (pi != null) {
+				var val = (GType)pi.GetValue (null, null);
+				g_types[t] = val;
+				return val;
+			}
 
 			return RegisterGType (t);
 		}
