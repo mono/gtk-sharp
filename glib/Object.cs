@@ -123,22 +123,21 @@ namespace GLib {
 				return null;
 
 			Object obj = null;
-
+			ToggleRef toggle_ref = null;
 			lock(Objects) {
-				if (Objects.Contains (o)) {
-					ToggleRef toggle_ref = Objects [o] as ToggleRef;
-					if (toggle_ref != null && toggle_ref.IsAlive)
-						obj = toggle_ref.Target;
-				}
-
-				if (obj != null && obj.Handle == o) {
-					if (owned_ref)
-						g_object_unref (obj.Handle);
-					return obj;
-				}
-
-				obj = GLib.ObjectManager.CreateObject(o);
+				if (Objects.Contains (o))
+					toggle_ref = Objects [o] as ToggleRef;
 			}
+			if (toggle_ref != null && toggle_ref.IsAlive)
+				obj = toggle_ref.Target;
+
+			if (obj != null && obj.Handle == o) {
+				if (owned_ref)
+					g_object_unref (obj.Handle);
+				return obj;
+			}
+
+			obj = GLib.ObjectManager.CreateObject (o);
 			if (obj == null) {
 				g_object_unref (o);
 				return null;
