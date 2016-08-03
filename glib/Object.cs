@@ -24,6 +24,7 @@ namespace GLib {
 
 	using System;
 	using System.Collections;
+	using System.Collections.Generic;
 	using System.ComponentModel;
 	using System.Reflection;
 	using System.Runtime.InteropServices;
@@ -36,16 +37,18 @@ namespace GLib {
 		bool disposed = false;
 		bool owned = true;
 		Hashtable data;
-		static Hashtable Objects = new Hashtable();
-		static ArrayList PendingDestroys = new ArrayList ();
+		static Dictionary<IntPtr, ToggleRef> Objects = new Dictionary<IntPtr, ToggleRef>();
+		static object lockObject = new object ();
+		static List<ToggleRef> PendingDestroys = new List<ToggleRef> ();
 		static bool idle_queued;
 
 		~Object ()
 		{
-			lock (PendingDestroys) {
+			lock (lockObject) {
 				lock (Objects) {
-					if (Objects[Handle] is ToggleRef)
-						PendingDestroys.Add (Objects [Handle]);
+					ToggleRef res;
+					if (Objects.TryGetValue (handle, out res))
+						PendingDestroys.Add (res);
 					Objects.Remove (Handle);
 				}
 				if (!idle_queued){
@@ -60,12 +63,11 @@ namespace GLib {
 
 		static bool PerformQueuedUnrefs ()
 		{
-			object [] references;
+			List<ToggleRef> references;
 
-			lock (PendingDestroys){
-				references = new object [PendingDestroys.Count];
-				PendingDestroys.CopyTo (references, 0);
-				PendingDestroys.Clear ();
+			lock (lockObject) {
+				references = PendingDestroys;
+				PendingDestroys = new List<ToggleRef> ();
 				idle_queued = false;
 			}
 
@@ -83,7 +85,7 @@ namespace GLib {
 			disposed = true;
 			ToggleRef toggle_ref;
 			lock(Objects) {
-				toggle_ref = Objects [Handle] as ToggleRef;
+				Objects.TryGetValue (Handle, out toggle_ref);
 				Objects.Remove (Handle);
 			}
 			try {
@@ -109,7 +111,7 @@ namespace GLib {
 
 			ToggleRef tr;
 			lock(Objects)
-				tr = (ToggleRef) Objects[o];
+				Objects.TryGetValue (o, out tr);
 			if (tr != null && tr.IsAlive) {
 				return tr.Target;
 			}
@@ -124,10 +126,9 @@ namespace GLib {
 
 			Object obj = null;
 			ToggleRef toggle_ref = null;
-			lock(Objects) {
-				if (Objects.Contains (o))
-					toggle_ref = Objects [o] as ToggleRef;
-			}
+			lock(Objects)
+				Objects.TryGetValue (o, out toggle_ref);
+
 			if (toggle_ref != null && toggle_ref.IsAlive)
 				obj = toggle_ref.Target;
 
