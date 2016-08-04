@@ -29,7 +29,7 @@ namespace GLib {
 	public class Timeout {
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
-		delegate bool TimeoutHandlerInternal ();
+		delegate bool TimeoutHandlerInternal (IntPtr ptr);
 
 		internal class TimeoutProxy : SourceProxy {
 			public TimeoutProxy (TimeoutHandler real)
@@ -62,14 +62,17 @@ namespace GLib {
 					Source.Remove (ID);
 			}
 
-			public bool Handler ()
+			static bool Handler (IntPtr data)
 			{
 				try {
-					TimeoutHandler timeout_handler = (TimeoutHandler) real_handler;
+					SourceProxy obj;
+					lock (proxies)
+						obj = proxies [(int)data];
+					TimeoutHandler timeout_handler = (TimeoutHandler)obj.real_handler;
 
 					bool cont = timeout_handler ();
 					if (!cont)
-						Remove ();
+						obj.Remove ();
 					return cont;
 				} catch (Exception e) {
 					ExceptionManager.RaiseUnhandledException (e, false);
@@ -87,7 +90,7 @@ namespace GLib {
 		{
 			TimeoutProxy p = new TimeoutProxy (hndlr);
 
-			p.ID = g_timeout_add (interval, (TimeoutHandlerInternal) p.proxy_handler, IntPtr.Zero);
+			p.ID = g_timeout_add (interval, (TimeoutHandlerInternal) p.proxy_handler, (IntPtr)p.proxyId);
 			lock (Source.source_handlers)
 				Source.source_handlers [p.ID] = p;
 
