@@ -132,11 +132,9 @@ namespace GLib {
 
 		static void MarshalCallback (IntPtr raw_closure, IntPtr return_val, uint n_param_vals, IntPtr param_values, IntPtr invocation_hint, IntPtr marshal_data)
 		{
-			string message = String.Empty;
-
+			SignalClosure closure = null;
 			try {
-				SignalClosure closure = closures [raw_closure] as SignalClosure;
-				message = "Marshaling " + closure.name + " signal";
+				closure = closures [raw_closure] as SignalClosure;
 				Value objval = (Value) Marshal.PtrToStructure (param_values, typeof (Value));
 				GLib.Object __obj = objval.Val as GLib.Object;
 				if (__obj == null)
@@ -169,7 +167,8 @@ namespace GLib {
 				ret.Val = args.RetVal;
 				Marshal.StructureToPtr (ret, return_val, false);
 			} catch (Exception e) {
-				Console.WriteLine (message);
+				if (closure != null)
+					Console.WriteLine ("Marshaling {0} signal", closure.name);
 				ExceptionManager.RaiseUnhandledException (e, false);
 			}
 		}
