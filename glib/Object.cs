@@ -24,6 +24,7 @@ namespace GLib {
 
 	using System;
 	using System.Collections;
+	using System.Collections.Generic;
 	using System.ComponentModel;
 	using System.Reflection;
 	using System.Runtime.InteropServices;
@@ -36,16 +37,18 @@ namespace GLib {
 		bool disposed = false;
 		bool owned = true;
 		Hashtable data;
-		static Hashtable Objects = new Hashtable();
-		static ArrayList PendingDestroys = new ArrayList ();
+		static Dictionary<IntPtr, ToggleRef> Objects = new Dictionary<IntPtr, ToggleRef>();
+		static object lockObject = new object ();
+		static List<ToggleRef> PendingDestroys = new List<ToggleRef> ();
 		static bool idle_queued;
 
 		~Object ()
 		{
-			lock (PendingDestroys) {
+			lock (lockObject) {
 				lock (Objects) {
-					if (Objects[Handle] is ToggleRef)
-						PendingDestroys.Add (Objects [Handle]);
+					ToggleRef res;
+					if (Objects.TryGetValue (handle, out res))
+						PendingDestroys.Add (res);
 					Objects.Remove (Handle);
 				}
 				if (!idle_queued){
@@ -60,12 +63,11 @@ namespace GLib {
 
 		static bool PerformQueuedUnrefs ()
 		{
-			object [] references;
+			List<ToggleRef> references;
 
-			lock (PendingDestroys){
-				references = new object [PendingDestroys.Count];
-				PendingDestroys.CopyTo (references, 0);
-				PendingDestroys.Clear ();
+			lock (lockObject) {
+				references = PendingDestroys;
+				PendingDestroys = new List<ToggleRef> ();
 				idle_queued = false;
 			}
 
@@ -83,7 +85,7 @@ namespace GLib {
 			disposed = true;
 			ToggleRef toggle_ref;
 			lock(Objects) {
-				toggle_ref = Objects [Handle] as ToggleRef;
+				Objects.TryGetValue (Handle, out toggle_ref);
 				Objects.Remove (Handle);
 			}
 			try {
@@ -109,7 +111,7 @@ namespace GLib {
 
 			ToggleRef tr;
 			lock(Objects)
-				tr = (ToggleRef) Objects[o];
+				Objects.TryGetValue (o, out tr);
 			if (tr != null && tr.IsAlive) {
 				return tr.Target;
 			}
@@ -123,22 +125,20 @@ namespace GLib {
 				return null;
 
 			Object obj = null;
+			ToggleRef toggle_ref = null;
+			lock(Objects)
+				Objects.TryGetValue (o, out toggle_ref);
 
-			lock(Objects) {
-				if (Objects.Contains (o)) {
-					ToggleRef toggle_ref = Objects [o] as ToggleRef;
-					if (toggle_ref != null && toggle_ref.IsAlive)
-						obj = toggle_ref.Target;
-				}
+			if (toggle_ref != null && toggle_ref.IsAlive)
+				obj = toggle_ref.Target;
 
-				if (obj != null && obj.Handle == o) {
-					if (owned_ref)
-						g_object_unref (obj.Handle);
-					return obj;
-				}
-
-				obj = GLib.ObjectManager.CreateObject(o);
+			if (obj != null && obj.Handle == o) {
+				if (owned_ref)
+					g_object_unref (obj.Handle);
+				return obj;
 			}
+
+			obj = GLib.ObjectManager.CreateObject (o);
 			if (obj == null) {
 				g_object_unref (o);
 				return null;
@@ -359,8 +359,11 @@ namespace GLib {
 				return (GType) g_types [t];
 
 			PropertyInfo pi = t.GetProperty ("GType", BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.Public);
-			if (pi != null)
-				return (GType) pi.GetValue (null, null);
+			if (pi != null) {
+				var val = (GType)pi.GetValue (null, null);
+				g_types[t] = val;
+				return val;
+			}
 
 			return RegisterGType (t);
 		}
