@@ -107,7 +107,7 @@ namespace GLib {
 		public static bool Remove (IdleHandler hndlr)
 		{
 			bool result = false;
-			ArrayList keys = new ArrayList ();
+			var keys = new System.Collections.Generic.List<uint> ();
 
 			lock (Source.source_handlers) {
 				foreach (uint code in Source.source_handlers.Keys) {
@@ -123,7 +123,7 @@ namespace GLib {
 					}
 				}
 
-				foreach (object key in keys)
+				foreach (var key in keys)
 					Source.source_handlers.Remove (key);
 			}
 

@@ -186,7 +186,7 @@ namespace GLib {
 				return new string [0];
 
 			int count = 0;
-			System.Collections.ArrayList result = new System.Collections.ArrayList ();
+			var result = new System.Collections.Generic.List<string> ();
 			IntPtr s = Marshal.ReadIntPtr (null_term_array, count++ * IntPtr.Size);
 			while (s != IntPtr.Zero) {
 				result.Add (Utf8PtrToString (s));
@@ -196,7 +196,7 @@ namespace GLib {
 			if (owned)
 				g_strfreev (null_term_array);
 
-			return (string[]) result.ToArray (typeof(string));
+			return result.ToArray ();
 		}
 
 		public static string[] PtrToStringArrayGFree (IntPtr string_array)

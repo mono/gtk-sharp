@@ -23,6 +23,7 @@ namespace Gtk {
 
 	using System;
 	using System.Collections;
+	using System.Collections.Generic;
 	using System.Reflection;
 	using System.Runtime.InteropServices;
 
@@ -95,7 +96,7 @@ namespace Gtk {
 		MemberInfo [] getters;
 		int n_cols;
 		bool list_only = false;
-		ArrayList nodes = new ArrayList ();
+		List<ITreeNode> nodes = new List<ITreeNode> ();
 		TreeModelIfaceDelegates tree_model_iface;
 
 		int get_flags_cb ()
@@ -353,7 +354,7 @@ namespace Gtk {
 			if (tna != null)
 				list_only = tna.ListOnly;
 
-			ArrayList minfos = new ArrayList ();
+			var minfos = new List<MemberInfo> ();
 
 			foreach (PropertyInfo pi in type.GetProperties ())
 				foreach (TreeNodeValueAttribute attr in pi.GetCustomAttributes (typeof (TreeNodeValueAttribute), false))
@@ -383,7 +384,7 @@ namespace Gtk {
 
 		private IList Nodes {
 			get {
-				return nodes as IList;
+				return nodes;
 			}
 		}
 
@@ -484,7 +485,7 @@ namespace Gtk {
 		public void Clear ()
 		{
 			while (nodes.Count > 0)
-				RemoveNode ((ITreeNode)nodes [0]);
+				RemoveNode (nodes [0]);
 
 		}
 
