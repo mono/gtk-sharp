@@ -35,6 +35,8 @@ namespace GtkSharp.Generation {
 		private bool is_get, is_set;
 		private bool deprecated = false;
 		private bool win32_utf8_variant = false;
+		private bool cacheValue = false;
+		private string cacheName = string.Empty;
 
 		public Method (XmlElement elem, ClassBase container_type) : base (elem, container_type)
 		{
@@ -50,8 +52,11 @@ namespace GtkSharp.Generation {
 				win32_utf8_variant = attr == "1" || attr.ToLower () == "true";
 			}
 
-			if (Name == "GetType")
+			if (Name == "GetType") {
 				Name = "GetGType";
+				cacheValue = !(container_type is StructBase);
+				cacheName = "_gtype";
+			}
 		}
 
 		public bool HasWin32Utf8Variant {
@@ -212,6 +217,13 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public void GenerateCacheValue (StreamWriter sw)
+		{
+			if (!cacheValue)
+				return;
+			sw.WriteLine ("\t\tstatic {0} {1} = new {0} ({2});", retval.CSType, cacheName, CName + call);
+		}
+
 		public void Generate (GenerationInfo gen_info, ClassBase implementor)
 		{
 			if (!Validate ())
@@ -242,6 +254,7 @@ namespace GtkSharp.Generation {
 			}
 
 			GenerateImport (gen_info.Writer);
+			GenerateCacheValue (gen_info.Writer);
 			if (comp != null && retval.CSType == comp.Parameters.AccessorReturnType)
 				comp.GenerateImport (gen_info.Writer);
 
@@ -311,7 +324,7 @@ namespace GtkSharp.Generation {
 				sw.Write(indent + "\t\t\t");
 				if (retval.IsVoid)
 					sw.WriteLine(CName + call + ";");
-				else {
+				else if (!cacheValue) {
 					sw.WriteLine(retval.MarshalType + " raw_ret = " + CName + call + ";");
 					sw.WriteLine(indent + "\t\t\t" + retval.CSType + " ret = " + retval.FromNative ("raw_ret") + ";");
 				}
@@ -324,9 +337,9 @@ namespace GtkSharp.Generation {
 
 			if (is_get && Parameters.Count > 0)
 				sw.WriteLine (indent + "\t\t\treturn " + Parameters.AccessorName + ";");
-			else if (!retval.IsVoid)
-				sw.WriteLine (indent + "\t\t\treturn ret;");
-			else if (IsAccessor)
+			else if (!retval.IsVoid) {
+				sw.WriteLine (indent + "\t\t\treturn " + (cacheValue ? cacheName : "ret") + ";");
+			} else if (IsAccessor)
 				Body.FinishAccessor (sw, Signature, indent);
 
 			sw.Write(indent + "\t\t}");
