@@ -25,6 +25,7 @@ namespace GtkSharp.Generation {
 	using System;
 	using System.Collections;
 	using System.IO;
+	using System.Linq;
 	using System.Xml;
 
 	public class Ctor : MethodBase  {
@@ -87,6 +88,11 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\t\t\treturn result;");
 		}
 
+		static bool IsNullable (IGeneratable gen)
+		{
+			return gen is ClassBase && !(gen is StructBase);
+		}
+
 		public void Generate (GenerationInfo gen_info)
 		{
 			if (!Validate ())
@@ -124,23 +130,41 @@ namespace GtkSharp.Generation {
 						}
 
 						if (names.Count == Parameters.Count) {
-							sw.WriteLine ("\t\t\t\tArrayList vals = new ArrayList();");
-							sw.WriteLine ("\t\t\t\tArrayList names = new ArrayList();");
+							bool genFixedDimension = true;
+							foreach (Parameter par in Parameters) {
+								if (IsNullable (par.Generatable)) {
+									genFixedDimension = false;
+									break;
+								}
+							}
+							sw.WriteLine ("\t\t\t\tvar vals = new GLib.Value[{0}];", Parameters.Count);
+							sw.WriteLine ("\t\t\t\tvar names = new string[{0}];", names.Count);
+							if (!genFixedDimension)
+								sw.WriteLine ("\t\t\t\tvar param_count = 0;");
 							for (int i = 0; i < names.Count; i++) {
 								Parameter p = Parameters [i];
 								string indent = "\t\t\t\t";
-								if (p.Generatable is ClassBase && !(p.Generatable is StructBase)) {
+								if (IsNullable (p.Generatable)) {
 									sw.WriteLine (indent + "if (" + p.Name + " != null) {");
 									indent += "\t";
 								}
-								sw.WriteLine (indent + "names.Add (\"" + names [i] + "\");");
-								sw.WriteLine (indent + "vals.Add (new GLib.Value (" + values[i] + "));");
+								if (genFixedDimension) {
+									sw.WriteLine (indent + "names[" + i + "] = \"" + names [i] + "\";");
+									sw.WriteLine (indent + "vals[" + i + "] = new GLib.Value (" + values [i] + ");");
+								} else {
+									sw.WriteLine (indent + "names[param_count] = \"" + names [i] + "\";");
+									sw.WriteLine (indent + "vals[param_count++] = new GLib.Value (" + values [i] + ");");
+								}
 
-								if (p.Generatable is ClassBase && !(p.Generatable is StructBase))
+								if (IsNullable (p.Generatable))
 									sw.WriteLine ("\t\t\t\t}");
 							}
 
-							sw.WriteLine ("\t\t\t\tCreateNativeObject ((string[])names.ToArray (typeof (string)), (GLib.Value[])vals.ToArray (typeof (GLib.Value)));");
+							if (genFixedDimension)
+								sw.WriteLine ("\t\t\t\tCreateNativeObject (names, vals);");
+							else
+								sw.WriteLine ("\t\t\t\tCreateNativeObject (names, vals, param_count);");
+							
 							sw.WriteLine ("\t\t\t\treturn;");
 						} else
 							sw.WriteLine ("\t\t\t\tthrow new InvalidOperationException (\"Can't override this constructor.\");");

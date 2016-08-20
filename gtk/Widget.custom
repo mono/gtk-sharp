@@ -34,11 +34,6 @@ public override void Destroy ()
 	base.Destroy ();
 }
 
-protected override void CreateNativeObject (string[] names, GLib.Value[] vals)
-{
-	base.CreateNativeObject (names, vals);
-}
-
 [DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern IntPtr gtksharp_gtk_widget_get_allocation (IntPtr style);
 
