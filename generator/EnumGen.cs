@@ -109,11 +109,13 @@ namespace GtkSharp.Generation {
 				sw.WriteLine ("\t\t[DllImport (\"" + LibraryName + "\", CallingConvention = CallingConvention.Cdecl)]");
 				sw.WriteLine ("\t\tstatic extern IntPtr " + Elem.GetAttribute ("gtype") + " ();");
 				sw.WriteLine ();
+				sw.WriteLine ("\t\tprivate static GLib.GType _gtype = new GLib.GType ({0} ());", Elem.GetAttribute ("gtype"));
 				sw.WriteLine ("\t\tpublic static GLib.GType GType {");
 				sw.WriteLine ("\t\t\tget {");
-				sw.WriteLine ("\t\t\t\treturn new GLib.GType (" + Elem.GetAttribute ("gtype") + " ());");
+				sw.WriteLine ("\t\t\t\treturn _gtype;");
 				sw.WriteLine ("\t\t\t}");
 				sw.WriteLine ("\t\t}");
+				sw.WriteLine ();
 				sw.WriteLine ("\t}");
 			}
 
