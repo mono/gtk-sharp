@@ -590,8 +590,8 @@ namespace GLib {
 
 		protected GLib.Value GetProperty (string name)
 		{
-			Value val = new Value (this, name);
 			IntPtr native_name = GLib.Marshaller.StringToPtrGStrdup (name);
+			Value val = new Value (this, native_name);
 			g_object_get_property (Raw, native_name, ref val);
 			GLib.Marshaller.Free (native_name);
 			return val;
