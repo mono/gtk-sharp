@@ -45,10 +45,11 @@
 			}
 			System.Console.WriteLine("Raw call finished, making " + n_colors + " actual colors");
 			Gdk.Color[] colors = new Gdk.Color[n_colors];
+			int colorSize = Marshal.SizeOf (typeof (Gdk.Color));
 			for (int i=0; i < n_colors; i++)
 			{
 				colors[i] = Gdk.Color.New(parsedColors);
-				parsedColors = (IntPtr) ((int)parsedColors + Marshal.SizeOf(colors[i]));
+				parsedColors = (IntPtr) ((int)parsedColors + colorSize);
 			}
 			return colors;
 		}

@@ -80,7 +80,7 @@ namespace GtkSharp {
 
 				IntPtr ret_ptr;
 				if (mylength > 0) {
-					ret_ptr = GLib.Marshaller.Malloc ((ulong)(Marshal.SizeOf (typeof(byte)) * (int)mylength));
+					ret_ptr = GLib.Marshaller.Malloc ((ulong)(sizeof (byte) * (int)mylength));
 					Marshal.Copy (__ret, 0, ret_ptr, (int)mylength);
 				} else {
 					ret_ptr = IntPtr.Zero;

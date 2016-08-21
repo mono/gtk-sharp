@@ -235,8 +235,8 @@ namespace GLib {
 		}
 
 		static bool check_sixtyfour () {
-			int szint = Marshal.SizeOf (typeof (int));
-			int szlong = Marshal.SizeOf (typeof (long));
+			int szint = sizeof (int);
+			int szlong = sizeof (long);
 			int szptr = IntPtr.Size;
 
 			if (szptr == szint)
@@ -254,7 +254,7 @@ namespace GLib {
 			for (int i = 0; i < args.Length; i++)
 				ptrs[i] = (int) Marshal.StringToHGlobalAuto (args[i]);
 
-			IntPtr buf = g_malloc (new UIntPtr ((ulong) Marshal.SizeOf(typeof(int)) * 
+			IntPtr buf = g_malloc (new UIntPtr ((ulong) sizeof (int) * 
 					       (ulong) args.Length));
 			Marshal.Copy (ptrs, 0, buf, ptrs.Length);
 			return buf;
@@ -267,7 +267,7 @@ namespace GLib {
 			for (int i = 0; i < args.Length; i++)
 				ptrs[i] = (long) Marshal.StringToHGlobalAuto (args[i]);
 				
-			IntPtr buf = g_malloc (new UIntPtr ((ulong) Marshal.SizeOf(typeof(long)) * 
+			IntPtr buf = g_malloc (new UIntPtr ((ulong) sizeof (long) * 
 					       (ulong) args.Length));
 			Marshal.Copy (ptrs, 0, buf, ptrs.Length);
 			return buf;
@@ -382,10 +382,32 @@ namespace GLib {
 				return ListToArray (list, elem_type);
 		}
 
+		public static T [] ListPtrToArray<T> (IntPtr list_ptr, Type list_type, bool owned, bool elements_owned)
+		{
+			ListBase list;
+			if (list_type == typeof (GLib.List))
+				list = new GLib.List (list_ptr, typeof(T), owned, elements_owned);
+			else
+				list = new GLib.SList (list_ptr, typeof (T), owned, elements_owned);
+
+			using (list)
+				return ListToArray<T> (list);
+		}
+
 		public static Array PtrArrayToArray (IntPtr list_ptr, bool owned, bool elements_owned, Type elem_type)
 		{
 			GLib.PtrArray array = new GLib.PtrArray (list_ptr, elem_type, owned, elements_owned);
 			Array ret = Array.CreateInstance (elem_type, array.Count);
+			array.CopyTo (ret, 0);
+			array.Dispose ();
+			return ret;
+		}
+
+		public static T [] PtrArrayToArray<T> (IntPtr list_ptr, bool owned, bool elements_owned)
+		{
+			var elem_type = typeof (T);
+			GLib.PtrArray array = new GLib.PtrArray (list_ptr, elem_type, owned, elements_owned);
+			T [] ret = new T [array.Count];
 			array.CopyTo (ret, 0);
 			array.Dispose ();
 			return ret;

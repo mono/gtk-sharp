@@ -81,8 +81,9 @@ namespace GLib {
 			bool NativeCallback (ref InvocationHint hint, uint n_pvals, IntPtr pvals_ptr, IntPtr data)
 			{
 				object[] pvals = new object [n_pvals];
+				int valueSize = Marshal.SizeOf (typeof (Value));
 				for (int i = 0; i < n_pvals; i++) {
-					IntPtr p = new IntPtr ((long) pvals_ptr + i * Marshal.SizeOf (typeof (Value)));
+					IntPtr p = new IntPtr ((long) pvals_ptr + i * valueSize);
 					Value v = (Value) Marshal.PtrToStructure (p, typeof (Value));
 					pvals [i] = v.Val;
 				}
