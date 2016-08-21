@@ -67,10 +67,7 @@ public Widget[] FocusChain {
 			return new Widget [0];
 
 		GLib.List list = new GLib.List (list_ptr);
-		Widget[] result = new Widget [list.Count];
-		for (int i = 0; i < list.Count; i++)
-			result [i] = list [i] as Widget;
-		return result;
+		return GLib.Marshaller.ListToArray<Widget> (list);
 	}
 	set {
 		GLib.List list = new GLib.List (IntPtr.Zero);

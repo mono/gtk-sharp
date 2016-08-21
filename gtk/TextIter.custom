@@ -42,10 +42,7 @@
 				if (raw_ret == IntPtr.Zero)
 					return new TextMark [0];
 				GLib.SList list = new GLib.SList(raw_ret);
-				TextMark[] result = new TextMark [list.Count];
-				for (int i = 0; i < list.Count; i++)
-					result [i] = list [i] as TextMark;
-				return result;
+				return GLib.Marshaller.ListToArray<TextMark> (list);
 			}
 		}
 
@@ -58,10 +55,7 @@
 				if (raw_ret == IntPtr.Zero)
 					return new TextTag [0];
 				GLib.SList list = new GLib.SList(raw_ret);
-				TextTag[] result = new TextTag [list.Count];
-				for (int i = 0; i < list.Count; i++)
-					result [i] = list [i] as TextTag;
-				return result;
+				return GLib.Marshaller.ListToArray<TextTag> (list);
 			}
 		}
 
@@ -74,10 +68,7 @@
 			if (raw_ret == IntPtr.Zero)
 				return new TextTag [0];
 			GLib.SList list = new GLib.SList(raw_ret);
-			TextTag[] result = new TextTag [list.Count];
-			for (int i = 0; i < list.Count; i++)
-				result [i] = list [i] as TextTag;
-			return result;
+			return GLib.Marshaller.ListToArray<TextTag> (list);
 		}
 
 		[Obsolete("Replaced by overload without IntPtr argument")]

@@ -79,8 +79,5 @@
 		public Gtk.Action[] ListActions() {
 			IntPtr raw_ret = gtk_action_group_list_actions (Handle);
 			GLib.List list = new GLib.List (raw_ret);
- 			Gtk.Action[] result = new Gtk.Action [list.Count];
-			for (int i = 0; i < list.Count; i++)
-				result [i] = list [i] as Gtk.Action;
-			return result;
+			return GLib.Marshaller.ListToArray<Gtk.Action> (list);
 		}

@@ -29,7 +29,7 @@
 				return new TreePath [0];
 
 			GLib.List list = new GLib.List (list_ptr, typeof (Gtk.TreePath));
-			return (TreePath[]) GLib.Marshaller.ListToArray (list, typeof (Gtk.TreePath));
+			return GLib.Marshaller.ListToArray<Gtk.TreePath> (list);
 		}
 
 		[Obsolete ("Replaced by SelectFunction property.")]

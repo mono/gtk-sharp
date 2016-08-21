@@ -32,11 +32,7 @@
 			if (list_handle == IntPtr.Zero)
 				return new GlyphItem [0];
 			GLib.SList item_list = new GLib.SList (list_handle, typeof (GlyphItem));
-			GlyphItem[] result = new GlyphItem [item_list.Count];
-			int i = 0;
-			foreach (GlyphItem item in item_list)
-				result [i++] = item;
-			return result;
+			return GLib.Marshaller.ListToArray<GlyphItem> (item_list);
 		}
 
 		[Obsolete ("Replaced by Glyphs property")]

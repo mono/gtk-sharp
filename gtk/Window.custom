@@ -38,10 +38,7 @@
 				if (raw_ret == IntPtr.Zero)
 					return new Gdk.Pixbuf [0];
 				GLib.List list = new GLib.List(raw_ret);
-				Gdk.Pixbuf[] result = new Gdk.Pixbuf [list.Count];
-				for (int i = 0; i < list.Count; i++)
-					result [i] = list [i] as Gdk.Pixbuf;
-				return result;
+				return GLib.Marshaller.ListToArray<Gdk.Pixbuf> (list);
 			}
 			set {
 				GLib.List list = new GLib.List(IntPtr.Zero);
@@ -63,10 +60,7 @@
 				if (raw_ret == IntPtr.Zero)
 					return new Gdk.Pixbuf [0];
 				GLib.List list = new GLib.List(raw_ret);
-				Gdk.Pixbuf[] result = new Gdk.Pixbuf [list.Count];
-				for (int i = 0; i < list.Count; i++)
-					result [i] = list [i] as Gdk.Pixbuf;
-				return result;
+				return GLib.Marshaller.ListToArray<Gdk.Pixbuf> (list);
 			}
 			set {
 				GLib.List list = new GLib.List(IntPtr.Zero);
