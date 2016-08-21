@@ -191,7 +191,7 @@ namespace GtkSharp.Generation {
 				if (igen is BoxedGen)
 					return retval.CSType + ".GType";
 				if (igen is EnumGen)
-					return retval.CSType + "GType.GType";
+					return retval.CSType + "Attribute.GType";
 
 				switch (retval.CSType) {
 				case "bool":

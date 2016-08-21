@@ -21,6 +21,7 @@ namespace GLib {
 
 	using System;
 
+	[Obsolete ("Use GTypeTypeAttribute instead.")]
 	[AttributeUsage (AttributeTargets.Enum)]
 	public sealed class GTypeAttribute : Attribute {
 		Type wrapper_type;
@@ -37,6 +38,14 @@ namespace GLib {
 			set {
 				wrapper_type = value;
 			}
+		}
+	}
+
+	[AttributeUsage (AttributeTargets.Enum | AttributeTargets.Class | AttributeTargets.Struct)]
+	public abstract class GTypeTypeAttribute : Attribute
+	{
+		public abstract GType Type {
+			get;
 		}
 	}
 }

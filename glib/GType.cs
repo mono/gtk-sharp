@@ -121,10 +121,17 @@ namespace GLib {
 			if (pi != null)
 				gtype = (GType)pi.GetValue (null, null);
 			else {
-				GTypeAttribute gattr;
-				if (type.IsEnum && (gattr = (GTypeAttribute)Attribute.GetCustomAttribute (type, typeof (GTypeAttribute), false)) != null) {
-					pi = gattr.WrapperType.GetProperty ("GType", BindingFlags.Public | BindingFlags.Static);
-					gtype = (GType)pi.GetValue (null, null);
+				if (type.IsEnum) {
+					GTypeTypeAttribute geattr;
+					GTypeAttribute gattr;
+					if ((geattr = (GTypeTypeAttribute)Attribute.GetCustomAttribute (type, typeof (GTypeTypeAttribute), false)) != null) {
+						gtype = geattr.Type;
+					} else if ((gattr = (GTypeAttribute)Attribute.GetCustomAttribute (type, typeof (GTypeAttribute), false)) != null) {
+						// This should never happen for generated code, keep it in place for other users of the API.
+						pi = gattr.WrapperType.GetProperty ("GType", BindingFlags.Public | BindingFlags.Static);
+						gtype = (GType)pi.GetValue (null, null);
+					} else
+						gtype = ManagedValue.GType;
 				} else if (type.IsSubclassOf (typeof (GLib.Opaque)))
 					gtype = GType.Pointer;
 				else
