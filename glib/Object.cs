@@ -346,7 +346,7 @@ namespace GLib {
 		}
 
 
-		static Hashtable g_types = new Hashtable ();
+		static Dictionary<Type, GType> g_types = new Dictionary<Type, GType> ();
 
 		protected GType LookupGType ()
 		{
@@ -355,8 +355,9 @@ namespace GLib {
 
 		protected internal static GType LookupGType (System.Type t)
 		{
-			if (g_types.Contains (t))
-				return (GType) g_types [t];
+			GType res;
+			if (g_types.TryGetValue (t, out res))
+				return res;
 
 			PropertyInfo pi = t.GetProperty ("GType", BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.Public);
 			if (pi != null) {
