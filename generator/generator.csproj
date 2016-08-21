@@ -181,5 +181,6 @@
     <Compile Include="VMSignature.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AttributeHelper.cs" />
   </ItemGroup>
 </Project>

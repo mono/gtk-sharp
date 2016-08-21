@@ -49,7 +49,7 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\t\t{");
 
 			sw.WriteLine ("\t\t\tGLib.Value val = GLib.Value.Empty;");
-			sw.WriteLine ("\t\t\tval.Init (" + QualifiedName + ".GType);");
+			sw.WriteLine ("\t\t\tval.Init (" + Name + "Attribute.GType);");
 			sw.WriteLine ("\t\t\tglibsharp_value_set_boxed (ref val, ref boxed);");
 			sw.WriteLine ("\t\t\treturn val;");
 			sw.WriteLine ("\t\t}");
@@ -72,7 +72,10 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("#endregion");
                         AppendCustom(sw, gen_info.CustomDir);
                         sw.WriteLine ("\t}");
-                        sw.WriteLine ("}");
+			var method = GetMethod ("GetType") ?? GetMethod ("GetGType");
+			if (method != null)
+				AttributeHelper.Gen (sw, Name, LibraryName, method.CName);
+			sw.WriteLine ("}");
 			sw.Close ();
 			gen_info.Writer = null;
 			Statistics.BoxedCount++;

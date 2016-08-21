@@ -31,9 +31,10 @@ namespace GtkSharp.Generation {
 
 		protected override void GenerateAttribute (StreamWriter writer)
 		{
-			base.GenerateAttribute (writer);
 			if (GetMethod ("GetType") == null && GetMethod ("GetGType") == null) {
 				writer.WriteLine ("\t[GLib.GTypeStruct]");
+			} else {
+				base.GenerateAttribute (writer);
 			}
 		}
 
@@ -46,6 +47,9 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("#endregion");
 			AppendCustom (sw, gen_info.CustomDir);
 			sw.WriteLine ("\t}");
+			var method = GetMethod ("GetType") ?? GetMethod ("GetGType");
+			if (method != null)
+				AttributeHelper.Gen (sw, Name, LibraryName, method.CName);
 			sw.WriteLine ("}");
 			sw.Close ();
 			gen_info.Writer = null;
