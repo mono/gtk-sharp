@@ -128,16 +128,23 @@ namespace GLib {
 					gtype = (GType)pi.GetValue (null, null);
 				} else
 					gtype = ManagedValue.GType;
+			} else if (type.IsValueType && !type.IsPrimitive) {
+				GTypeTypeAttribute geattr;
+				PropertyInfo pi;
+				if ((geattr = (GTypeTypeAttribute)Attribute.GetCustomAttribute (type, typeof (GTypeTypeAttribute), false)) != null) {
+					gtype = geattr.Type;
+				} else if ((pi = type.GetProperty ("GType", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.FlattenHierarchy)) != null) {
+					gtype = (GType)pi.GetValue (null, null);
+				} else
+					gtype = ManagedValue.GType;
 			} else {
 				var pi = type.GetProperty ("GType", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.FlattenHierarchy);
 				if (pi != null)
 					gtype = (GType)pi.GetValue (null, null);
-				else {
-					if (type.IsSubclassOf (typeof (GLib.Opaque)))
-						gtype = GType.Pointer;
-					else
-						gtype = ManagedValue.GType;
-				}
+				else if (type.IsSubclassOf (typeof (GLib.Opaque)))
+					gtype = GType.Pointer;
+				else
+					gtype = ManagedValue.GType;
 			}
 
 

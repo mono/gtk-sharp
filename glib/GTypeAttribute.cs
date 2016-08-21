@@ -48,4 +48,13 @@ namespace GLib {
 			get;
 		}
 	}
+
+	public sealed class GTypeStructAttribute : GTypeTypeAttribute
+	{
+		public override GType Type {
+			get {
+				return GType.Pointer;
+			}
+		}
+	}
 }

@@ -159,6 +159,7 @@ namespace GtkSharp.Generation {
 			if (IsDeprecated)
 				sw.WriteLine ("\t[Obsolete]");
 			sw.WriteLine ("\t[StructLayout(LayoutKind.Sequential)]");
+			GenerateAttribute (sw);
 			string access = IsInternal ? "internal" : "public";
 			sw.WriteLine ("\t" + access + " struct " + Name + " {");
 			sw.WriteLine ();
@@ -179,8 +180,13 @@ namespace GtkSharp.Generation {
 			
 			sw.WriteLine ("\t}");
 			sw.WriteLine ("}");
+
 			sw.Close ();
 			gen_info.Writer = null;
+		}
+
+		protected virtual void GenerateAttribute (StreamWriter writer)
+		{
 		}
 		
 		protected override void GenCtors (GenerationInfo gen_info)
