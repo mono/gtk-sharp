@@ -119,15 +119,17 @@ namespace GLib {
 
 			PropertyInfo pi = type.GetProperty ("GType", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.FlattenHierarchy);
 			if (pi != null)
-				gtype = (GType) pi.GetValue (null, null);
-			else if (type.IsDefined (typeof (GTypeAttribute), false)) {
-				GTypeAttribute gattr = (GTypeAttribute)Attribute.GetCustomAttribute (type, typeof (GTypeAttribute), false);
-				pi = gattr.WrapperType.GetProperty ("GType", BindingFlags.Public | BindingFlags.Static);
-				gtype = (GType) pi.GetValue (null, null);
-			} else if (type.IsSubclassOf (typeof (GLib.Opaque)))
-				gtype = GType.Pointer;
-			else
-				gtype = ManagedValue.GType;
+				gtype = (GType)pi.GetValue (null, null);
+			else {
+				GTypeAttribute gattr;
+				if (type.IsEnum && (gattr = (GTypeAttribute)Attribute.GetCustomAttribute (type, typeof (GTypeAttribute), false)) != null) {
+					pi = gattr.WrapperType.GetProperty ("GType", BindingFlags.Public | BindingFlags.Static);
+					gtype = (GType)pi.GetValue (null, null);
+				} else if (type.IsSubclassOf (typeof (GLib.Opaque)))
+					gtype = GType.Pointer;
+				else
+					gtype = ManagedValue.GType;
+			}
 
 			Register (gtype, type);
 			return gtype;
