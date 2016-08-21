@@ -41,7 +41,7 @@ namespace GLib {
 		}
 	}
 
-	[AttributeUsage (AttributeTargets.Enum | AttributeTargets.Class | AttributeTargets.Struct)]
+	[AttributeUsage (AttributeTargets.Enum | AttributeTargets.Struct)]
 	public abstract class GTypeTypeAttribute : Attribute
 	{
 		public abstract GType Type {
