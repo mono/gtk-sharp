@@ -370,6 +370,7 @@ namespace GLib {
 			return result;
 		}
 
+		[Obsolete ("Use the ListPtrToArray<T> overload.")]
 		public static Array ListPtrToArray (IntPtr list_ptr, Type list_type, bool owned, bool elements_owned, Type elem_type)
 		{
 			ListBase list;
