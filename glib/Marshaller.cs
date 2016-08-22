@@ -395,6 +395,7 @@ namespace GLib {
 				return ListToArray<T> (list);
 		}
 
+		[Obsolete ("Use the PtrArrayToArray<T> overload.")]
 		public static Array PtrArrayToArray (IntPtr list_ptr, bool owned, bool elements_owned, Type elem_type)
 		{
 			GLib.PtrArray array = new GLib.PtrArray (list_ptr, elem_type, owned, elements_owned);
