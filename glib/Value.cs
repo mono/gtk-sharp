@@ -420,7 +420,7 @@ namespace GLib {
 					g_value_set_string (ref this, native);
 					GLib.Marshaller.Free (native);
 				} else if (type == GType.Pointer.Val) {
-					if (value.GetType () == typeof (IntPtr)) {
+					if (value is IntPtr) {
 						g_value_set_pointer (ref this, (IntPtr) value);
 						return;
 					} else if (value is IWrapper) {
