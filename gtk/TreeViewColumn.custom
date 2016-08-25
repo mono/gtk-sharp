@@ -59,10 +59,7 @@
 				if (raw_ret == IntPtr.Zero)
 					return new CellRenderer [0];
 				GLib.List list = new GLib.List (raw_ret);
-				CellRenderer[] result = new CellRenderer [list.Count];
-				for (int i = 0; i < list.Count; i++)
-					result [i] = list [i] as CellRenderer;
-				return result;
+				return GLib.Marshaller.ListToArray<CellRenderer> (list);
 			}
 		}
 

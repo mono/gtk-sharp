@@ -111,7 +111,7 @@
 		{
 			IntPtr icon_name_as_native = GLib.Marshaller.StringToPtrGStrdup (icon_name);
 			IntPtr raw_ret = gtk_icon_theme_get_icon_sizes(Handle, icon_name_as_native);
-			ArrayList result = new ArrayList ();
+			var result = new System.Collections.Generic.List<int> ();
 			int offset = 0;
 			int size = Marshal.ReadInt32 (raw_ret, offset);
 			while (size != 0) {
@@ -121,7 +121,7 @@
 			}
 			GLib.Marshaller.Free (icon_name_as_native);
 			GLib.Marshaller.Free (raw_ret);
-			return (int[]) result.ToArray (typeof (int));
+			return result.ToArray ();
 		}
 #endif
 

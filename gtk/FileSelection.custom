@@ -61,7 +61,7 @@ public string[] Selections {
 			break;
 		}
 
-		System.Collections.ArrayList result = new System.Collections.ArrayList ();
+		var result = new System.Collections.Generic.List<string> ();
 
 		int i = 0;
 		IntPtr strptr = Marshal.ReadIntPtr (strv, IntPtr.Size * i++); 
@@ -72,7 +72,7 @@ public string[] Selections {
 		
 		g_strfreev (strv);
 
-		return result.ToArray (typeof (string)) as string[];
+		return result.ToArray ();
 	}
 }
 

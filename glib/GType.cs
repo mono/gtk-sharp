@@ -98,7 +98,6 @@ namespace GLib {
 			Register (GType.String, typeof (string));
 			Register (GType.Pointer, typeof (IntPtr));
 			Register (GType.Object, typeof (GLib.Object));
-			Register (GType.Pointer, typeof (IntPtr));
 
 			// One-way mapping
 			gtypes[typeof (char)] = GType.UInt;
@@ -117,17 +116,36 @@ namespace GLib {
 				return gtype;
 			}
 
-			PropertyInfo pi = type.GetProperty ("GType", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.FlattenHierarchy);
-			if (pi != null)
-				gtype = (GType) pi.GetValue (null, null);
-			else if (type.IsDefined (typeof (GTypeAttribute), false)) {
-				GTypeAttribute gattr = (GTypeAttribute)Attribute.GetCustomAttribute (type, typeof (GTypeAttribute), false);
-				pi = gattr.WrapperType.GetProperty ("GType", BindingFlags.Public | BindingFlags.Static);
-				gtype = (GType) pi.GetValue (null, null);
-			} else if (type.IsSubclassOf (typeof (GLib.Opaque)))
-				gtype = GType.Pointer;
-			else
-				gtype = ManagedValue.GType;
+			if (type.IsEnum) {
+				GTypeTypeAttribute geattr;
+				GTypeAttribute gattr;
+				if ((geattr = (GTypeTypeAttribute)Attribute.GetCustomAttribute (type, typeof (GTypeTypeAttribute), false)) != null) {
+					gtype = geattr.Type;
+				} else if ((gattr = (GTypeAttribute)Attribute.GetCustomAttribute (type, typeof (GTypeAttribute), false)) != null) {
+					// This should never happen for generated code, keep it in place for other users of the API.
+					var pi = gattr.WrapperType.GetProperty ("GType", BindingFlags.Public | BindingFlags.Static);
+					gtype = (GType)pi.GetValue (null, null);
+				} else
+					gtype = ManagedValue.GType;
+			} else if (type.IsValueType && !type.IsPrimitive) {
+				GTypeTypeAttribute geattr;
+				PropertyInfo pi;
+				if ((geattr = (GTypeTypeAttribute)Attribute.GetCustomAttribute (type, typeof (GTypeTypeAttribute), false)) != null) {
+					gtype = geattr.Type;
+				} else if ((pi = type.GetProperty ("GType", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.FlattenHierarchy)) != null) {
+					gtype = (GType)pi.GetValue (null, null);
+				} else
+					gtype = ManagedValue.GType;
+			} else {
+				var pi = type.GetProperty ("GType", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.FlattenHierarchy);
+				if (pi != null)
+					gtype = (GType)pi.GetValue (null, null);
+				else if (type.IsSubclassOf (typeof (GLib.Opaque)))
+					gtype = GType.Pointer;
+				else
+					gtype = ManagedValue.GType;
+			}
+
 
 			Register (gtype, type);
 			return gtype;

@@ -26,13 +26,6 @@ static extern IntPtr gtksharp_drag_context_get_targets (IntPtr ptr);
 public Atom [] Targets {
 	get {
 		GLib.List list = new GLib.List (gtksharp_drag_context_get_targets (this.Handle), typeof (Atom));
-
-		Atom [] entries = new Atom [list.Count];
-
-		int i = 0;
-		foreach (Atom a in list)
-			entries [i ++] = a;
-
-		return entries;
+		return GLib.Marshaller.ListToArray<Atom> (list);
 	}
 }

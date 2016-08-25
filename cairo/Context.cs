@@ -163,8 +163,8 @@ namespace Cairo {
 			// except in the case of Win64 where sizeof(long)
 			// is 32 bits
 			//
-			int ptr_size = Marshal.SizeOf (typeof (IntPtr));
-			
+			int ptr_size = IntPtr.Size;
+
 			PlatformID platform = Environment.OSVersion.Platform;
 			if (platform == PlatformID.Win32NT ||
 			    platform == PlatformID.Win32S ||

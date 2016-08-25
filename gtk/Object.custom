@@ -92,11 +92,6 @@
 			}
 		}
 
-		protected override void CreateNativeObject (string[] names, GLib.Value[] vals)
-		{
-			base.CreateNativeObject (names, vals);
-		}
-
 		public override void Dispose ()
 		{
 			// Don't call base.Dispose because it's calling g_object_unref

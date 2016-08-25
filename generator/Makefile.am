@@ -7,6 +7,7 @@ DISTCLEANFILES = gapi2-codegen
 references =
 
 sources = 				\
+	AttributeHelper.cs		\
 	AliasGen.cs			\
 	BoxedGen.cs			\
 	ByRefGen.cs			\

@@ -28,10 +28,7 @@
 				if (raw_ret == IntPtr.Zero)
 					return new Window [0];
 				GLib.List list = new GLib.List(raw_ret);
-				Window[] result = new Window [list.Count];
-				for (int i = 0; i < list.Count; i++)
-					result [i] = list [i] as Window;
-				return result;
+				return GLib.Marshaller.ListToArray<Window> (list);
 			}
 		}
 
@@ -44,10 +41,7 @@
 			if (raw_ret == IntPtr.Zero)
 				return new Visual [0];
 			GLib.List list = new GLib.List(raw_ret);
-			Visual[] result = new Visual [list.Count];
-			for (int i = 0; i < list.Count; i++)
-				result [i] = list [i] as Visual;
-			return result;
+			return GLib.Marshaller.ListToArray<Visual> (list);
 		}
 
 		[DllImport("libgdk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]

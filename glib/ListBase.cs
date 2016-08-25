@@ -113,12 +113,24 @@ namespace GLib {
 
 		public void CopyTo (Array array, int index)
 		{
-			object[] orig = new object[Count];
+			CopyTo (array, index, Count);
+		}
+
+		internal void CopyTo (Array array, int index, int count)
+		{
+			object[] orig = new object[count];
 			int i = 0;
 			foreach (object o in this)
 				orig [i++] = o;
 
 			orig.CopyTo (array, index);
+		}
+
+		public void CopyTo<T> (T[] array, int index)
+		{
+			int i = index;
+			foreach (T o in this)
+				array [i++] = o;
 		}
 
 		public class FilenameString {

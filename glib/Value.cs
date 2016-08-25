@@ -158,6 +158,13 @@ namespace GLib {
 			GLib.Marshaller.Free (prop);
 		}
 
+		internal Value (GLib.Object obj, IntPtr prop)
+		{
+			type = IntPtr.Zero;
+			pad_1 = pad_2 = 0;
+			gtksharp_value_create_from_property (ref this, obj.Handle, prop);
+		}
+
 		[Obsolete]
 		public Value (GLib.Object obj, string prop_name, EnumWrapper wrap)
 		{
@@ -413,7 +420,7 @@ namespace GLib {
 					g_value_set_string (ref this, native);
 					GLib.Marshaller.Free (native);
 				} else if (type == GType.Pointer.Val) {
-					if (value.GetType () == typeof (IntPtr)) {
+					if (value is IntPtr) {
 						g_value_set_pointer (ref this, (IntPtr) value);
 						return;
 					} else if (value is IWrapper) {

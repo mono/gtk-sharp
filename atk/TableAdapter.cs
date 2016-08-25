@@ -400,7 +400,7 @@ namespace Atk {
 				Atk.TableImplementor __obj = GLib.Object.GetObject (table, false) as Atk.TableImplementor;
 				int [] selected = __obj.SelectedColumns;
 				if (selected.Length > 0) {
-					selected_ptr = GLib.Marshaller.Malloc ((ulong)(Marshal.SizeOf (typeof(int)) * selected.Length));
+					selected_ptr = GLib.Marshaller.Malloc ((ulong)(sizeof(int) * selected.Length));
 					Marshal.Copy (selected, 0, selected_ptr, selected.Length);
 				} else {
 					selected_ptr = IntPtr.Zero;
@@ -422,7 +422,7 @@ namespace Atk {
 				Atk.TableImplementor __obj = GLib.Object.GetObject (table, false) as Atk.TableImplementor;
 				int [] selected = __obj.SelectedRows;
 				if (selected.Length > 0) {
-					selected_ptr = GLib.Marshaller.Malloc ((ulong)(Marshal.SizeOf (typeof(int)) * selected.Length));
+					selected_ptr = GLib.Marshaller.Malloc ((ulong)(sizeof (int) * selected.Length));
 					Marshal.Copy (selected, 0, selected_ptr, selected.Length);
 				} else {
 					selected_ptr = IntPtr.Zero;

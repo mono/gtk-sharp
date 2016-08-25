@@ -346,7 +346,7 @@ namespace GLib {
 		}
 
 
-		static Hashtable g_types = new Hashtable ();
+		static Dictionary<Type, GType> g_types = new Dictionary<Type, GType> ();
 
 		protected GType LookupGType ()
 		{
@@ -355,8 +355,9 @@ namespace GLib {
 
 		protected internal static GType LookupGType (System.Type t)
 		{
-			if (g_types.Contains (t))
-				return (GType) g_types [t];
+			GType res;
+			if (g_types.TryGetValue (t, out res))
+				return res;
 
 			PropertyInfo pi = t.GetProperty ("GType", BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.Public);
 			if (pi != null) {
@@ -392,10 +393,15 @@ namespace GLib {
 
 		protected virtual void CreateNativeObject (string[] names, GLib.Value[] vals)
 		{
-			IntPtr[] native_names = new IntPtr [names.Length];
-			for (int i = 0; i < names.Length; i++)
+			CreateNativeObject (names, vals, names.Length);
+		}
+
+		protected void CreateNativeObject (string [] names, GLib.Value [] vals, int count)
+		{
+			IntPtr[] native_names = new IntPtr [count];
+			for (int i = 0; i < count; i++)
 				native_names [i] = GLib.Marshaller.StringToPtrGStrdup (names [i]);
-			Raw = gtksharp_object_newv (LookupGType ().Val, names.Length, native_names, vals);
+			Raw = gtksharp_object_newv (LookupGType ().Val, count, native_names, vals);
 			foreach (IntPtr p in native_names)
 				GLib.Marshaller.Free (p);
 		}
@@ -585,8 +591,8 @@ namespace GLib {
 
 		protected GLib.Value GetProperty (string name)
 		{
-			Value val = new Value (this, name);
 			IntPtr native_name = GLib.Marshaller.StringToPtrGStrdup (name);
+			Value val = new Value (this, native_name);
 			g_object_get_property (Raw, native_name, ref val);
 			GLib.Marshaller.Free (native_name);
 			return val;
