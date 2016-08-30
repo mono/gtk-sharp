@@ -188,7 +188,7 @@ namespace GtkSharp.Generation {
 		protected virtual void GenerateAttribute (StreamWriter writer)
 		{
 			if (GetMethod ("GetType") != null || GetMethod ("GetGType") != null)
-				writer.WriteLine ("\t[{0}Attribute]", Name);
+				writer.WriteLine ("\t[{0}]", Name);
 		}
 		
 		protected override void GenCtors (GenerationInfo gen_info)
