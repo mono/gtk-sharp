@@ -2474,6 +2474,9 @@
       <method name="GetState" cname="gdk_window_get_state">
         <return-type type="GdkWindowState" />
       </method>
+      <method name="GetType" cname="gdk_window_object_get_type" shared="true">
+        <return-type type="GType" />
+      </method>
       <method name="GetToplevel" cname="gdk_window_get_toplevel">
         <return-type type="GdkWindow*" />
       </method>
