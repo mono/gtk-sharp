@@ -442,42 +442,46 @@ namespace GtkSharp.Generation {
 				sw.WriteLine ("\t\t\tGLib.Value ret = new GLib.Value (" + ReturnGType + ");");
 
 			sw.WriteLine ("\t\t\tGLib.ValueArray inst_and_params = new GLib.ValueArray (" + parms.Count + ");");
-			sw.WriteLine ("\t\t\tGLib.Value[] vals = new GLib.Value [" + parms.Count + "];");
-			sw.WriteLine ("\t\t\tvals [0] = new GLib.Value (this);");
-			sw.WriteLine ("\t\t\tinst_and_params.Append (vals [0]);");
+			sw.WriteLine ("\t\t\tusing (var val0 = new GLib.Value (this)) {");
+			sw.WriteLine ("\t\t\t\tinst_and_params.Append (val0);");
 			string cleanup = "";
+			string indent = new string ('\t', 4);
 			for (int i = 1; i < parms.Count; i++) {
 				Parameter p = parms [i];
+				indent = new string ('\t', 3 + i);
 				if (p.PassAs != "") {
 					if (SymbolTable.Table.IsBoxed (p.CType)) {
 						if (p.PassAs == "ref")
-							sw.WriteLine ("\t\t\tvals [" + i + "] = new GLib.Value (" + p.Name + ");");
+							sw.WriteLine (indent + "using (var val" + i + " = new GLib.Value (" + p.Name + ")) {");
 						else
-							sw.WriteLine ("\t\t\tvals [" + i + "] = new GLib.Value ((GLib.GType)typeof (" + p.CSType + "));");
-						cleanup += "\t\t\t" + p.Name + " = (" + p.CSType + ") vals [" + i + "];\n";
+							sw.WriteLine (indent + "using (var val" + i + " = new GLib.Value ((GLib.GType)typeof (" + p.CSType + "))) {");
+						cleanup += indent + p.Name + " = (" + p.CSType + ") vals [" + i + "];\n";
 					} else {
 						if (p.PassAs == "ref")
-							sw.WriteLine ("\t\t\tIntPtr " + p.Name + "_ptr = GLib.Marshaller.StructureToPtrAlloc (" + p.Generatable.CallByName (p.Name) + ");");
+							sw.WriteLine (indent + "IntPtr " + p.Name + "_ptr = GLib.Marshaller.StructureToPtrAlloc (" + p.Generatable.CallByName (p.Name) + ");");
 						else
-							sw.WriteLine ("\t\t\tIntPtr " + p.Name + "_ptr = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (" + p.MarshalType + ")));");
+							sw.WriteLine (indent + "IntPtr " + p.Name + "_ptr = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (" + p.MarshalType + ")));");
 
-						sw.WriteLine ("\t\t\tvals [" + i + "] = new GLib.Value (" + p.Name + "_ptr);");
-						cleanup += "\t\t\t" + p.Name + " = " + p.FromNative ("(" + p.MarshalType + ") Marshal.PtrToStructure (" + p.Name + "_ptr, typeof (" + p.MarshalType + "))") + ";\n";
-						cleanup += "\t\t\tMarshal.FreeHGlobal (" + p.Name + "_ptr);\n";
+						sw.WriteLine (indent + "using (var val" + i + " = new GLib.Value (" + p.Name + "_ptr)) {");
+						cleanup += indent + p.Name + " = " + p.FromNative ("(" + p.MarshalType + ") Marshal.PtrToStructure (" + p.Name + "_ptr, typeof (" + p.MarshalType + "))") + ";\n";
+						cleanup += indent + "Marshal.FreeHGlobal (" + p.Name + "_ptr);\n";
 					}
 				} else if (p.IsLength && parms [i - 1].IsString)
-					sw.WriteLine ("\t\t\tvals [" + i + "] = new GLib.Value (System.Text.Encoding.UTF8.GetByteCount (" + parms [i-1].Name + "));");
+					sw.WriteLine (indent + "using (var val" + i + " = new GLib.Value (System.Text.Encoding.UTF8.GetByteCount (" + parms [i-1].Name + "))) {");
 				else
-					sw.WriteLine ("\t\t\tvals [" + i + "] = new GLib.Value (" + p.Name + ");");
+					sw.WriteLine (indent + "using (var val" + i + " = new GLib.Value (" + p.Name + ")) {");
 
-				sw.WriteLine ("\t\t\tinst_and_params.Append (vals [" + i + "]);");
+				sw.WriteLine (indent + "inst_and_params.Append (val" + i + ");");
 			}
 
-			sw.WriteLine ("\t\t\tg_signal_chain_from_overridden (inst_and_params.ArrayPtr, ref ret);");
+			sw.WriteLine (indent + "g_signal_chain_from_overridden (inst_and_params.ArrayPtr, ref ret);");
 			if (cleanup != "")
 				sw.WriteLine (cleanup);
-			sw.WriteLine ("\t\t\tforeach (GLib.Value v in vals)");
-			sw.WriteLine ("\t\t\t\tv.Dispose ();");
+			for (int i = 1; i < parms.Count; ++i) {
+				indent = new string ('\t', parms.Count - i + 3);
+				sw.WriteLine (indent + "}");
+			}
+			sw.WriteLine ("\t\t\t}");
 			if (!IsVoid) {
 				IGeneratable igen = SymbolTable.Table [retval.CType];
 				sw.WriteLine ("\t\t\t" + retval.CSType + " result = (" + (igen is EnumGen ? retval.CSType + ") (Enum" : retval.CSType) + ") ret;");
