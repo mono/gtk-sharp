@@ -359,17 +359,10 @@ namespace GLib {
 			if (g_types.TryGetValue (t, out res))
 				return res;
 
-			GTypeTypeAttribute geattr;
-			if ((geattr = (GTypeTypeAttribute)Attribute.GetCustomAttribute (t, typeof (GTypeTypeAttribute), false)) != null) {
-				var val = geattr.Type;
-				g_types [t] = val;
-				return val;
-			}
-
 			PropertyInfo pi = t.GetProperty ("GType", BindingFlags.DeclaredOnly | BindingFlags.Static | BindingFlags.Public);
 			if (pi != null) {
 				var val = (GType)pi.GetValue (null, null);
-				g_types [t] = val;
+				g_types[t] = val;
 				return val;
 			}
 
