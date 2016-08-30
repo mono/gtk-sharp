@@ -41,11 +41,20 @@ namespace GLib {
 		}
 	}
 
-	[AttributeUsage (AttributeTargets.Enum | AttributeTargets.Struct)]
+	[AttributeUsage (AttributeTargets.Enum | AttributeTargets.Struct | AttributeTargets.Class, Inherited = false)]
 	public abstract class GTypeTypeAttribute : Attribute
 	{
 		public abstract GType Type {
 			get;
+		}
+	}
+
+	public sealed class GTypeObjectAttribute : GTypeTypeAttribute
+	{
+		public override GType Type {
+			get {
+				return GType.Object;
+			}
 		}
 	}
 
