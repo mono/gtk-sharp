@@ -136,7 +136,7 @@ namespace GtkSharp.Generation {
 
 		ClassBase GetParentWithGType (ClassBase start)
 		{
-			ClassBase parent = this;
+			ClassBase parent = start;
 			while (parent != null && parent.CName != "GObject") {
 				if (parent.GetMethod ("GetType") == null && parent.GetMethod ("GetGType") == null) {
 					parent = Parent;

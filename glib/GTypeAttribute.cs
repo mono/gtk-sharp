@@ -49,6 +49,15 @@ namespace GLib {
 		}
 	}
 
+	public sealed class GTypeOpaqueAttribute : GTypeTypeAttribute
+	{
+		public override GType Type {
+			get {
+				return GType.Pointer;
+			}
+		}
+	}
+
 	public sealed class GTypeObjectAttribute : GTypeTypeAttribute
 	{
 		public override GType Type {

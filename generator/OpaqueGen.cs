@@ -41,6 +41,29 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		ClassBase GetParentWithGType (ClassBase start)
+		{
+			ClassBase parent = start;
+			while (parent != null && parent.CName != "GObject") {
+				if (parent.GetMethod ("GetType") == null && parent.GetMethod ("GetGType") == null) {
+					parent = Parent;
+				} else {
+					return parent;
+				}
+			}
+			return null;
+		}
+
+		protected void GenerateAttribute (StreamWriter writer)
+		{
+			var parent = GetParentWithGType (this);
+			if (parent == null) {
+				writer.WriteLine ("\t[GLib.GTypeOpaque]");
+			} else {
+				writer.WriteLine ("\t[{0}]", Name);
+			}
+		}
+
 		public override void Generate (GenerationInfo gen_info)
 		{
 			gen_info.CurrentType = Name;
@@ -63,6 +86,7 @@ namespace GtkSharp.Generation {
 
 			if (IsDeprecated)
 				sw.WriteLine ("\t[Obsolete]");
+			GenerateAttribute (sw);
 			sw.Write ("\t{0} class " + Name, IsInternal ? "internal" : "public");
 			string cs_parent = table.GetCSType(Elem.GetAttribute("parent"));
 			if (cs_parent != "")
@@ -180,6 +204,11 @@ namespace GtkSharp.Generation {
 			AppendCustom(sw, gen_info.CustomDir);
 
 			sw.WriteLine ("\t}");
+			var parentGType = GetParentWithGType (this);
+			if (parentGType == this) {
+				var method = parentGType.GetMethod ("GetType") ?? parentGType.GetMethod ("GetGType");
+				AttributeHelper.Gen (sw, Name, LibraryName, method.CName);
+			}
 			sw.WriteLine ("}");
 
 			sw.Close ();
