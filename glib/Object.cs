@@ -414,8 +414,8 @@ namespace GLib {
 		protected void CreateNativeObject (IntPtr [] native_names, GLib.Value [] vals, int count)
 		{
 			Raw = gtksharp_object_newv (LookupGType ().Val, count, native_names, vals);
-			foreach (IntPtr p in native_names)
-				GLib.Marshaller.Free (p);
+			for (int i = 0; i < count; ++i)
+				GLib.Marshaller.Free (native_names [i]);
 		}
 
 		protected virtual IntPtr Raw {
