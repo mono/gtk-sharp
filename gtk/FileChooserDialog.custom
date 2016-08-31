@@ -28,7 +28,7 @@
 		public FileChooserDialog (string title, Window parent, FileChooserAction action, params object[] button_data) : base (IntPtr.Zero)
 		{
 			if (GetType () != typeof (FileChooserDialog)) {
-				CreateNativeObject (new string[0], new GLib.Value[0]);
+				CreateNativeObject (new IntPtr[0], new GLib.Value[0], 0);
 				Title = title;
 				if (parent != null)
 					TransientFor = parent;
@@ -49,7 +49,7 @@
 		public FileChooserDialog (string backend, string title, Window parent, FileChooserAction action, params object[] button_data) : base (IntPtr.Zero)
 		{
 			if (GetType () != typeof (FileChooserDialog)) {
-				CreateNativeObject (new string[] { "file-system-backend" }, new GLib.Value[] { new GLib.Value (backend) } );
+				CreateNativeObject (new IntPtr[] { GLib.Marshaller.StringToPtrGStrdup ("file-system-backend") }, new GLib.Value[] { new GLib.Value (backend) }, 1);
 				Title = title;
 				if (parent != null)
 					TransientFor = parent;

@@ -30,10 +30,10 @@ public Dialog (string title, Gtk.Window parent, Gtk.DialogFlags flags, params ob
 {
 	if (GetType() != typeof (Dialog)) {
 		GLib.Value[] vals = new GLib.Value [1];
-		string[] names = new string [1];
-		names [0] = "title";
+		var names = new IntPtr [1];
+		names [0] = GLib.Marshaller.StringToPtrGStrdup ("title");
 		vals [0] = new GLib.Value (title);
-		CreateNativeObject (names, vals);
+		CreateNativeObject (names, vals, 1);
 		TransientFor = parent;
 		if ((flags & DialogFlags.Modal) > 0)
 			Modal = true;

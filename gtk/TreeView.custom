@@ -28,11 +28,11 @@
 		public TreeView (NodeStore store) : base (IntPtr.Zero)
 		{
 			if (GetType() != typeof (TreeView)) {
-				string[] names = new string [1];
+				var names = new IntPtr[1];
 				GLib.Value[] vals = new GLib.Value [1];
-				names [0] = "model";
+				names [0] = GLib.Marshaller.StringToPtrGStrdup ("model");
 				vals [0] = new GLib.Value (store);
-				CreateNativeObject (names, vals);
+				CreateNativeObject (names, vals, 1);
 				vals [0].Dispose ();
 				return;
 			}
