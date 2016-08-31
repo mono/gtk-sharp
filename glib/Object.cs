@@ -408,6 +408,11 @@ namespace GLib {
 			IntPtr[] native_names = new IntPtr [count];
 			for (int i = 0; i < count; i++)
 				native_names [i] = GLib.Marshaller.StringToPtrGStrdup (names [i]);
+			CreateNativeObject (native_names, vals, count);
+		}
+
+		protected void CreateNativeObject (IntPtr [] native_names, GLib.Value [] vals, int count)
+		{
 			Raw = gtksharp_object_newv (LookupGType ().Val, count, native_names, vals);
 			foreach (IntPtr p in native_names)
 				GLib.Marshaller.Free (p);

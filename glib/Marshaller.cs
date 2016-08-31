@@ -79,13 +79,26 @@ namespace GLib {
 		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern UIntPtr glibsharp_strlen (IntPtr mem);
 
+		static string Utf8PtrToStringFast (IntPtr ptr, int len)
+		{
+			unsafe
+			{
+				var p = (byte*)ptr;
+				return System.Text.Encoding.UTF8.GetString (p, len);
+			}
+		}
+
+		static bool hasFastGetStringOverload = typeof (System.Text.Encoding).GetMethod ("GetString", new [] { typeof (byte*), typeof (int) }) != null;
 		public static string Utf8PtrToString (IntPtr ptr) 
 		{
 			if (ptr == IntPtr.Zero)
 				return null;
 
 			int len = (int) (uint)glibsharp_strlen (ptr);
-			byte[] bytes = new byte [len];
+			if (hasFastGetStringOverload)
+				return Utf8PtrToStringFast (ptr, len);
+
+			byte [] bytes = new byte [len];
 			Marshal.Copy (ptr, bytes, 0, len);
 			return System.Text.Encoding.UTF8.GetString (bytes);
 		}
@@ -146,10 +159,16 @@ namespace GLib {
 		public static IntPtr StringToPtrGStrdup (string str) {
 			if (str == null)
 				return IntPtr.Zero;
-			byte[] bytes = System.Text.Encoding.UTF8.GetBytes (str);
-			IntPtr result = g_malloc (new UIntPtr ((ulong)bytes.Length + 1));
-			Marshal.Copy (bytes, 0, result, bytes.Length);
-			Marshal.WriteByte (result, bytes.Length, 0);
+			int len = System.Text.Encoding.UTF8.GetByteCount (str);
+			IntPtr result = g_malloc (new UIntPtr ((uint)len + 1));
+			unsafe
+			{
+				fixed (char* p = str)
+				{
+					System.Text.Encoding.UTF8.GetBytes (p, str.Length, (byte*)result, len);
+				}
+			}
+			Marshal.WriteByte (result, len, 0);
 			return result;
 		}
 

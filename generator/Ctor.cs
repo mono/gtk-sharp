@@ -113,7 +113,7 @@ namespace GtkSharp.Generation {
 					sw.WriteLine ("\t\t\tif (GetType () != typeof (" + name + ")) {");
 					
 					if (Parameters.Count == 0) {
-						sw.WriteLine ("\t\t\t\tCreateNativeObject (new string [0], new GLib.Value[0]);");
+						sw.WriteLine ("\t\t\t\tCreateNativeObject (new IntPtr [0], new GLib.Value[0], 0);");
 						sw.WriteLine ("\t\t\t\treturn;");
 					} else {
 						ArrayList names = new ArrayList ();
@@ -138,7 +138,7 @@ namespace GtkSharp.Generation {
 								}
 							}
 							sw.WriteLine ("\t\t\t\tvar vals = new GLib.Value[{0}];", Parameters.Count);
-							sw.WriteLine ("\t\t\t\tvar names = new string[{0}];", names.Count);
+							sw.WriteLine ("\t\t\t\tvar names = new IntPtr[{0}];", names.Count);
 							if (!genFixedDimension)
 								sw.WriteLine ("\t\t\t\tvar param_count = 0;");
 							for (int i = 0; i < names.Count; i++) {
@@ -149,10 +149,10 @@ namespace GtkSharp.Generation {
 									indent += "\t";
 								}
 								if (genFixedDimension) {
-									sw.WriteLine (indent + "names[" + i + "] = \"" + names [i] + "\";");
+									sw.WriteLine (indent + "names[" + i + "] = GLib.Marshaller.StringToPtrGStrdup (\"" + names [i] + "\");");
 									sw.WriteLine (indent + "vals[" + i + "] = new GLib.Value (" + values [i] + ");");
 								} else {
-									sw.WriteLine (indent + "names[param_count] = \"" + names [i] + "\";");
+									sw.WriteLine (indent + "names[param_count] = GLib.Marshaller.StringToPtrGStrdup (\"" + names [i] + "\");");
 									sw.WriteLine (indent + "vals[param_count++] = new GLib.Value (" + values [i] + ");");
 								}
 
@@ -161,7 +161,7 @@ namespace GtkSharp.Generation {
 							}
 
 							if (genFixedDimension)
-								sw.WriteLine ("\t\t\t\tCreateNativeObject (names, vals);");
+								sw.WriteLine ("\t\t\t\tCreateNativeObject (names, vals, {0});", names.Count);
 							else
 								sw.WriteLine ("\t\t\t\tCreateNativeObject (names, vals, param_count);");
 							

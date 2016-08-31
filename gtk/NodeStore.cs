@@ -343,7 +343,7 @@ namespace Gtk {
 
 		public NodeStore (Type node_type) : base (IntPtr.Zero)
 		{
-			CreateNativeObject (new string [0], new GLib.Value [0]);
+			CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
 			ScanType (node_type);
 			BuildTreeModelIface ();
 		}

@@ -32,9 +32,9 @@ namespace Gtk {
 
 		public NodeView (NodeStore store) : base (IntPtr.Zero)
 		{
-			string[] names = { "model" };
+			IntPtr[] names = { GLib.Marshaller.StringToPtrGStrdup ("model") };
 			GLib.Value[] vals =  { new GLib.Value (store) };
-			CreateNativeObject (names, vals);
+			CreateNativeObject (names, vals, 0);
 			vals [0].Dispose ();
 			this.store = store;
 		}

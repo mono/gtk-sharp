@@ -27,7 +27,7 @@
 		public Plug (uint socket_id) : base (IntPtr.Zero)
 		{
 			if (GetType () != typeof (Plug)) {
-				CreateNativeObject (new string [0], new GLib.Value [0]);
+				CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
 				Construct (socket_id);
 				return;
 			}
@@ -40,7 +40,7 @@
 		public Plug (Gdk.Display display, uint socket_id) : base (IntPtr.Zero)
 		{
 			if (GetType () != typeof (Plug)) {
-				CreateNativeObject (new string [0], new GLib.Value [0]);
+				CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
 				ConstructForDisplay (display, socket_id);
 				return;
 			}

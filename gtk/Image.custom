@@ -26,12 +26,12 @@
 		{
 			if (GetType () != typeof (Image)) {
 				var vals = new GLib.Value[2];
-				var names = new string[2];
-				names[0] = "icon_set";
+				var names = new IntPtr[2];
+				names[0] = GLib.Marshaller.StringToPtrGStrdup ("icon_set");
 				vals[0] = new GLib.Value (icon_set);
-				names[1] = "icon_size";
+				names[1] = GLib.Marshaller.StringToPtrGStrdup ("icon_size");
 				vals[1] = new GLib.Value ((int)size);
-				CreateNativeObject (names, vals);
+				CreateNativeObject (names, vals, 2);
 				return;
 			}
 			Raw = gtk_image_new_from_icon_set(icon_set.Handle, (int) size);
@@ -44,12 +44,12 @@
 		{
 			if (GetType () != typeof (Image)) {
 				var vals = new GLib.Value[2];
-				var names = new string[2];
-				names[0] = "stock";
+				var names = new IntPtr[2];
+				names[0] = GLib.Marshaller.StringToPtrGStrdup ("stock");
 				vals[0] = new GLib.Value (stock_id);
-				names[1] = "icon_size";
+				names[1] = GLib.Marshaller.StringToPtrGStrdup ("icon_size");
 				vals[1] = new GLib.Value ((int)size);
-				CreateNativeObject (names, vals);
+				CreateNativeObject (names, vals, 2);
 				return;
 			}
 			IntPtr native = GLib.Marshaller.StringToPtrGStrdup (stock_id);

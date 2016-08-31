@@ -27,7 +27,7 @@
 		public RadioToolButton (GLib.SList group) : base (IntPtr.Zero)
 		{
 			if (GetType () != typeof (RadioToolButton)) {
-				CreateNativeObject (new string [0], new GLib.Value [0]);
+				CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
 				Group = group;
 				return;
 			}
@@ -41,9 +41,9 @@
 		{
 			if (GetType () != typeof (RadioToolButton)) {
 				GLib.Value[] vals = new GLib.Value [1];
-				string[] names = { "stock_id" };
+				IntPtr[] names = { GLib.Marshaller.StringToPtrGStrdup ("stock_id") };
 				vals [0] = new GLib.Value (stock_id);
-				CreateNativeObject (names, vals);
+				CreateNativeObject (names, vals, 0);
 				Group = group;
 				return;
 			}

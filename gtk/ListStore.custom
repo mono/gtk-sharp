@@ -170,7 +170,7 @@
 
 		public ListStore (params GLib.GType[] types) : base (IntPtr.Zero)
 		{
-			CreateNativeObject (new string [0], new GLib.Value [0]);
+			CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
 			ColumnTypes = types;
 		}
 
@@ -183,7 +183,7 @@
 				i++;
 			}
 
-			CreateNativeObject (new string [0], new GLib.Value [0]);
+			CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
 			ColumnTypes = gtypes;
 		}
 

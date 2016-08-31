@@ -24,7 +24,7 @@ static extern IntPtr gtk_adjustment_new(double value, double lower, double upper
 public Adjustment (double value, double lower, double upper, double step_increment, double page_increment, double page_size) : base (IntPtr.Zero)
 {
 	if (GetType () != typeof (Adjustment)) {
-		CreateNativeObject (new string [0], new GLib.Value [0]);
+		CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
 		Value = value;
 		Lower = lower;
 		Upper = upper;

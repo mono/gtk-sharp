@@ -27,7 +27,7 @@
 		public ItemFactory (GLib.GType container_type, string path, Gtk.AccelGroup accel_group) : base (IntPtr.Zero)
 		{
 			if (GetType () != typeof (ItemFactory)) {
-				CreateNativeObject (new string [0], new GLib.Value [0]);
+				CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
 				Construct (container_type, path, accel_group);
 				return;
 			}
