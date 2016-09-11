@@ -140,14 +140,14 @@ namespace GtkSharp.Generation {
 				sw.WriteLine();
 			} else if (Readable) {
 				sw.WriteLine(indent + "get {");
-				sw.WriteLine(indent + "\tGLib.Value val = " + RawGetter (qpname) + ";");
+				sw.WriteLine(indent + "\tusing (GLib.Value val = " + RawGetter (qpname) + ") {");
 				if (table.IsOpaque (CType) || table.IsBoxed (CType)) {
-					sw.WriteLine(indent + "\t" + CSType + " ret = (" + CSType + ") val;");
+					sw.WriteLine(indent + "\t\t" + CSType + " ret = (" + CSType + ") val;");
 				} else if (table.IsInterface (CType)) {
 					// Do we have to dispose the GLib.Object from the GLib.Value?
-					sw.WriteLine (indent + "\t{0} ret = {0}Adapter.GetObject ((GLib.Object) val);", CSType);
+					sw.WriteLine (indent + "\t\t{0} ret = {0}Adapter.GetObject ((GLib.Object) val);", CSType);
 				} else {
-					sw.Write(indent + "\t" + CSType + " ret = ");
+					sw.Write(indent + "\t\t" + CSType + " ret = ");
 					sw.Write ("(" + CSType + ") ");
 					if (v_type != "") {
 						sw.Write(v_type + " ");
@@ -155,8 +155,8 @@ namespace GtkSharp.Generation {
 					sw.WriteLine("val;");
 				}
 
-				sw.WriteLine(indent + "\tval.Dispose ();");
-				sw.WriteLine(indent + "\treturn ret;");
+				sw.WriteLine(indent + "\t\treturn ret;");
+				sw.WriteLine(indent + "\t}");
 				sw.WriteLine(indent + "}");
 			}
 
@@ -166,21 +166,22 @@ namespace GtkSharp.Generation {
 				sw.WriteLine();
 			} else if (Writable) {
 				sw.WriteLine(indent + "set {");
-				sw.Write(indent + "\tGLib.Value val = ");
+				sw.Write(indent + "\tusing (GLib.Value val = ");
 				if (table.IsBoxed (CType)) {
-					sw.WriteLine("(GLib.Value) value;");
+					sw.Write("(GLib.Value) value");
 				} else if (table.IsOpaque (CType)) {
-					sw.WriteLine("new GLib.Value(value, \"{0}\");", CType);
+					sw.Write("new GLib.Value(value, \"{0}\")", CType);
 				} else {
 					sw.Write("new GLib.Value(");
 					if (v_type != "" && !(table.IsObject (CType) || table.IsInterface (CType) || table.IsOpaque (CType))) {
 						sw.Write(v_type + " ");
 					}
-					sw.WriteLine("value);");
+					sw.Write("value)");
 				}
-				sw.WriteLine(indent + "\t" + RawSetter (qpname) + ";");
-				sw.WriteLine(indent + "\tval.Dispose ();");
-				sw.WriteLine(indent + "}");
+				sw.WriteLine (") {");
+				sw.WriteLine(indent + "\t\t" + RawSetter (qpname) + ";");
+				sw.WriteLine(indent + "\t}");
+				sw.WriteLine (indent + "}");
 			}
 
 			sw.WriteLine(indent.Substring (1) + "}");
