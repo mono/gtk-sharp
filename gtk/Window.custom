@@ -128,14 +128,13 @@
 		{
 			GLib.Value ret = GLib.Value.Empty;
 			GLib.ValueArray inst_and_params = new GLib.ValueArray (2);
-			GLib.Value[] vals = new GLib.Value [2];
-			vals [0] = new GLib.Value (this);
-			inst_and_params.Append (vals [0]);
-			vals [1] = new GLib.Value (direction);
-			inst_and_params.Append (vals [1]);
-			g_signal_chain_from_overridden (inst_and_params.ArrayPtr, ref ret);
-			foreach (GLib.Value v in vals)
-				v.Dispose ();
+			using (var val0 = new GLib.Value (this)) {
+				inst_and_params.Append (val0);
+				using (var val1 = new GLib.Value (direction)) {
+					inst_and_params.Append (val1);
+					g_signal_chain_from_overridden (inst_and_params.ArrayPtr, ref ret);
+				}
+			}
 		}
 
 		[Obsolete ("Replaced by Keybinding signal on Gtk.Widget")]
