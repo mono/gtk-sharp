@@ -35,7 +35,6 @@ namespace Gtk {
 			IntPtr[] names = { GLib.Marshaller.StringToPtrGStrdup ("model") };
 			GLib.Value[] vals =  { new GLib.Value (store) };
 			CreateNativeObject (names, vals, 0);
-			vals [0].Dispose ();
 			this.store = store;
 		}
 
