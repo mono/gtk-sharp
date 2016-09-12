@@ -929,4 +929,7 @@
   <attr path="/api/namespace/boxed[@cname='GtkSelectionData']/method[@cname='gtk_selection_data_get_uris']/return-type" name="null_term_array">1</attr>
   <attr path="/api/namespace/boxed[@cname='GtkSelectionData']/method[@cname='gtk_selection_data_get_uris']/return-type" name="owned">true</attr>
   <attr path="/api/namespace/boxed[@cname='GtkSelectionData']/method[@cname='gtk_selection_data_set_uris']/parameters/parameter[@name='uris']" name="null_term_array">1</attr>
+  <attr path="/api/namespace/struct[@cname='GtkRecentData']/field[@cname='groups']" name="null_term_array">1</attr>
+  <attr path="/api/namespace/struct[@cname='GtkRecentFilterInfo']/field[@cname='groups']" name="null_term_array">1</attr>
+  <attr path="/api/namespace/struct[@cname='GtkRecentFilterInfo']/field[@cname='applications']" name="null_term_array">1</attr>
 </metadata>

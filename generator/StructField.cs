@@ -61,7 +61,7 @@ namespace GtkSharp.Generation {
 		public new string CSType {
 			get {
 				string type = base.CSType;
-				if (IsArray)
+				if (IsArray || IsNullTermArray)
 					type += "[]";
 				else if ((IsPointer || SymbolTable.Table.IsOpaque (CType)) && type != "string")
 					type = "IntPtr";
@@ -115,7 +115,14 @@ namespace GtkSharp.Generation {
 			string wrapped_name = SymbolTable.Table.MangleName (CName);
 			IGeneratable gen = table [CType];
 
-			if (IsArray) {
+			if (IsNullTermArray) {
+				sw.WriteLine (indent + Access + " IntPtr Native" + StudlyName + ";");
+				sw.WriteLine (indent + Access + " " + CSType + " " + StudlyName + " {");
+				sw.WriteLine (indent + "\tget {");
+				sw.WriteLine (indent + "\t\treturn GLib.Marshaller.NullTermPtrToStringArray (Native" + StudlyName + ", false);");
+				sw.WriteLine (indent + "\t}");
+				sw.WriteLine (indent + "}");
+			} else if (IsArray) {
 				sw.WriteLine (indent + "[MarshalAs (UnmanagedType.ByValArray, SizeConst=" + ArrayLength + ")]");
 				sw.WriteLine (indent + "{0} {1} {2};", Access, CSType, StudlyName);
 			} else if (IsBitfield) {
