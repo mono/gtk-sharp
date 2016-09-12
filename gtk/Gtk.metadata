@@ -920,4 +920,13 @@
   <move-node path="/api/namespace/class[@cname='GtkGlobal']/method[@name='PaintSlider']">/api/namespace/object[@cname='GtkStyle']</move-node>
   <move-node path="/api/namespace/class[@cname='GtkGlobal']/method[@name='PaintTab']">/api/namespace/object[@cname='GtkStyle']</move-node>
   <move-node path="/api/namespace/class[@cname='GtkGlobal']/method[@name='PaintVline']">/api/namespace/object[@cname='GtkStyle']</move-node>
+  <attr path="/api/namespace/interface[@cname='GtkRecentChooser']/method[@cname='gtk_recent_chooser_get_uris']/return-type" name="null_term_array">1</attr>
+  <attr path="/api/namespace/interface[@cname='GtkRecentChooser']/method[@cname='gtk_recent_chooser_get_uris']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/boxed[@cname='GtkRecentInfo']/method[@cname='gtk_recent_info_get_applications']/return-type" name="null_term_array">1</attr>
+  <attr path="/api/namespace/boxed[@cname='GtkRecentInfo']/method[@cname='gtk_recent_info_get_applications']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/boxed[@cname='GtkRecentInfo']/method[@cname='gtk_recent_info_get_groups']/return-type" name="null_term_array">1</attr>
+  <attr path="/api/namespace/boxed[@cname='GtkRecentInfo']/method[@cname='gtk_recent_info_get_groups']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/boxed[@cname='GtkSelectionData']/method[@cname='gtk_selection_data_get_uris']/return-type" name="null_term_array">1</attr>
+  <attr path="/api/namespace/boxed[@cname='GtkSelectionData']/method[@cname='gtk_selection_data_get_uris']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/boxed[@cname='GtkSelectionData']/method[@cname='gtk_selection_data_set_uris']/parameters/parameter[@name='uris']" name="null_term_array">1</attr>
 </metadata>

@@ -102,4 +102,6 @@
   <add-node path="/api"><symbol type="manual" cname="cairo_t" name="Cairo.Context"/></add-node>
   <move-node path="/api/namespace/class[@name='Version']/method[@cname='pango_version_check']">/api/namespace/class[@name='Global']</move-node>
   <move-node path="/api/namespace/class[@name='Version']/method[@cname='pango_version_string']">/api/namespace/class[@name='Global']</move-node>
+  <attr path="/api/namespace/class[@cname='PangoGlobal']/method[@cname='pango_split_file_list']/return-type" name="null_term_array">1</attr>
+  <attr path="/api/namespace/class[@cname='PangoGlobal']/method[@cname='pango_split_file_list']/return-type" name="owned">true</attr>
 </metadata>
