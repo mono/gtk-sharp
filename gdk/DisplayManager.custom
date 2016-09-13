@@ -26,7 +26,6 @@
 			IntPtr raw_ret = gdk_display_manager_list_displays (Handle);
 			if (raw_ret == IntPtr.Zero)
 				return new Display [0];
-			GLib.SList list = new GLib.SList(raw_ret);
-			return GLib.Marshaller.ListToArray<Display> (list);
+			return GLib.Marshaller.ListPtrToArray<Display> (raw_ret, typeof (GLib.SList), true, false);
 		}
 

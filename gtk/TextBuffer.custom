@@ -160,6 +160,7 @@ public byte[] Serialize(Gtk.TextBuffer content_buffer, Gdk.Atom format, Gtk.Text
 	int sz = (int) (uint) length;
 	byte[] ret = new byte [sz];
 	Marshal.Copy (raw_ret, ret, 0, sz);
+	GLib.Marshaller.Free (raw_ret);
 	return ret;
 }
 
@@ -178,6 +179,7 @@ public Gdk.Atom[] DeserializeFormats {
 			IntPtr format = Marshal.ReadIntPtr (raw_ret, i * IntPtr.Size);
 			result [i] = format == IntPtr.Zero ? null : (Gdk.Atom) GLib.Opaque.GetOpaque (format, typeof (Gdk.Atom), false);
 		}
+		GLib.Marshaller.Free (raw_ret);
 		return result;
 	}
 }
@@ -191,6 +193,7 @@ public Gdk.Atom[] SerializeFormats {
 			IntPtr format = Marshal.ReadIntPtr (raw_ret, i * IntPtr.Size);
 			result [i] = format == IntPtr.Zero ? null : (Gdk.Atom) GLib.Opaque.GetOpaque (format, typeof (Gdk.Atom), false);
 		}
+		GLib.Marshaller.Free (raw_ret);
 		return result;
 	}
 }

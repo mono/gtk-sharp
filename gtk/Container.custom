@@ -66,11 +66,10 @@ public Widget[] FocusChain {
 		if (!success)
 			return new Widget [0];
 
-		GLib.List list = new GLib.List (list_ptr);
-		return GLib.Marshaller.ListToArray<Widget> (list);
+		return GLib.Marshaller.ListPtrToArray<Widget> (list_ptr, typeof(GLib.List), true, false);
 	}
 	set {
-		GLib.List list = new GLib.List (IntPtr.Zero);
+		GLib.List list = new GLib.List (IntPtr.Zero, typeof(Widget), true, false);
 		foreach (Widget val in value)
 			list.Append (val.Handle);
 		gtk_container_set_focus_chain (Handle, list.Handle);

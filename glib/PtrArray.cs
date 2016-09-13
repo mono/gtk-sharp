@@ -31,6 +31,7 @@ namespace GLib {
 		private bool managed = false;
 		internal bool elements_owned = false;
 		protected System.Type element_type = null;
+		private ListElementFree free_func;
 
 		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr g_ptr_array_sized_new (uint n_preallocs);
@@ -54,12 +55,16 @@ namespace GLib {
 			this.elements_owned = elements_owned;
 		}
 
-		internal PtrArray (IntPtr raw, System.Type element_type, bool owned, bool elements_owned)
+		internal PtrArray (IntPtr raw, System.Type element_type, bool owned, bool elements_owned, ListElementFree free_func)
 		{
 			handle = raw;
 			this.element_type = element_type;
 			managed = owned;
 			this.elements_owned = elements_owned;
+			this.free_func = free_func;
+		}
+		internal PtrArray (IntPtr raw, System.Type element_type, bool owned, bool elements_owned) : this(raw, element_type, owned, elements_owned, g_free)
+		{
 		}
 		public PtrArray (IntPtr raw, System.Type element_type) : this (raw, element_type, false, false) {}
 
@@ -99,7 +104,7 @@ namespace GLib {
 					else if (typeof (GLib.Opaque).IsAssignableFrom (element_type))
 						GLib.Opaque.GetOpaque (NthData (i), element_type, true).Dispose ();
 					else
-						g_free (NthData (i));
+						free_func (NthData (i));
 			}
 
 			if (managed)

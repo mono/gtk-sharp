@@ -292,8 +292,7 @@
 				IntPtr list_ptr = gdk_pixbuf_get_formats ();
 				if (list_ptr == IntPtr.Zero)
 					return new PixbufFormat [0];
-				GLib.SList list = new GLib.SList (list_ptr, typeof (PixbufFormat));
-				return GLib.Marshaller.ListToArray<PixbufFormat> (list);
+				return GLib.Marshaller.ListPtrToArray<PixbufFormat> (list_ptr, typeof (GLib.SList), true, false);
 			}
 		}
 

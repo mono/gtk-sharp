@@ -19,7 +19,7 @@ static extern void gtk_combo_set_popdown_strings(IntPtr raw, IntPtr strings);
 
 public string[] PopdownStrings {
 	set {
-		GLib.List list = new GLib.List (IntPtr.Zero, typeof (string));
+		GLib.List list = new GLib.List (IntPtr.Zero, typeof (string), true, true);
 		foreach (string val in value)
 			list.Append (val);
 		gtk_combo_set_popdown_strings(Handle, list.Handle);

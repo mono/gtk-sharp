@@ -37,11 +37,10 @@
 				IntPtr raw_ret = gtk_window_get_default_icon_list();
 				if (raw_ret == IntPtr.Zero)
 					return new Gdk.Pixbuf [0];
-				GLib.List list = new GLib.List(raw_ret);
-				return GLib.Marshaller.ListToArray<Gdk.Pixbuf> (list);
+				return GLib.Marshaller.ListPtrToArray<Gdk.Pixbuf> (raw_ret, typeof (GLib.List), true, false);
 			}
 			set {
-				GLib.List list = new GLib.List(IntPtr.Zero);
+				GLib.List list = new GLib.List(IntPtr.Zero, typeof (IntPtr), true, false);
 				foreach (Gdk.Pixbuf val in value)
 					list.Append (val.Handle);
 				gtk_window_set_default_icon_list(list.Handle);
@@ -59,11 +58,10 @@
 				IntPtr raw_ret = gtk_window_get_icon_list(Handle);
 				if (raw_ret == IntPtr.Zero)
 					return new Gdk.Pixbuf [0];
-				GLib.List list = new GLib.List(raw_ret);
-				return GLib.Marshaller.ListToArray<Gdk.Pixbuf> (list);
+				return GLib.Marshaller.ListPtrToArray<Gdk.Pixbuf> (raw_ret, typeof (GLib.List), true, false);
 			}
 			set {
-				GLib.List list = new GLib.List(IntPtr.Zero);
+				GLib.List list = new GLib.List(IntPtr.Zero, typeof (IntPtr), true, false);
 				foreach (Gdk.Pixbuf val in value)
 					list.Append (val.Handle);
 				gtk_window_set_icon_list(Handle, list.Handle);

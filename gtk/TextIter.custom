@@ -41,8 +41,7 @@
 				IntPtr raw_ret = gtk_text_iter_get_marks (ref this);
 				if (raw_ret == IntPtr.Zero)
 					return new TextMark [0];
-				GLib.SList list = new GLib.SList(raw_ret);
-				return GLib.Marshaller.ListToArray<TextMark> (list);
+				return GLib.Marshaller.ListPtrToArray<TextMark> (raw_ret, typeof (GLib.SList), true, false);
 			}
 		}
 
@@ -54,8 +53,7 @@
 				IntPtr raw_ret = gtk_text_iter_get_tags (ref this);
 				if (raw_ret == IntPtr.Zero)
 					return new TextTag [0];
-				GLib.SList list = new GLib.SList(raw_ret);
-				return GLib.Marshaller.ListToArray<TextTag> (list);
+				return GLib.Marshaller.ListPtrToArray<TextTag> (raw_ret, typeof (GLib.SList), true, false);
 			}
 		}
 
@@ -67,8 +65,7 @@
 			IntPtr raw_ret = gtk_text_iter_get_toggled_tags (ref this, toggled_on);
 			if (raw_ret == IntPtr.Zero)
 				return new TextTag [0];
-			GLib.SList list = new GLib.SList(raw_ret);
-			return GLib.Marshaller.ListToArray<TextTag> (list);
+				return GLib.Marshaller.ListPtrToArray<TextTag> (raw_ret, typeof (GLib.SList), true, false);
 		}
 
 		[Obsolete("Replaced by overload without IntPtr argument")]

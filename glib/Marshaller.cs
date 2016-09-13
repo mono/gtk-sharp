@@ -402,6 +402,18 @@ namespace GLib {
 				return ListToArray (list, elem_type);
 		}
 
+		public static T [] ListPtrToArray<T> (IntPtr list_ptr, Type list_type, bool owned, bool elements_owned, ListElementFree free_func)
+		{
+			ListBase list;
+			if (list_type == typeof (GLib.List))
+				list = new GLib.List (list_ptr, typeof (T), owned, elements_owned, free_func);
+			else
+				list = new GLib.SList (list_ptr, typeof (T), owned, elements_owned, free_func);
+
+			using (list)
+				return ListToArray<T> (list);
+		}
+
 		public static T [] ListPtrToArray<T> (IntPtr list_ptr, Type list_type, bool owned, bool elements_owned)
 		{
 			ListBase list;
@@ -428,6 +440,16 @@ namespace GLib {
 		{
 			var elem_type = typeof (T);
 			GLib.PtrArray array = new GLib.PtrArray (list_ptr, elem_type, owned, elements_owned);
+			T [] ret = new T [array.Count];
+			array.CopyTo (ret, 0);
+			array.Dispose ();
+			return ret;
+		}
+
+		public static T [] PtrArrayToArray<T> (IntPtr list_ptr, bool owned, bool elements_owned, ListElementFree free_func)
+		{
+			var elem_type = typeof (T);
+			GLib.PtrArray array = new GLib.PtrArray (list_ptr, elem_type, owned, elements_owned, free_func);
 			T [] ret = new T [array.Count];
 			array.CopyTo (ret, 0);
 			array.Dispose ();
