@@ -424,7 +424,7 @@ namespace GtkSharp.Generation {
 			GenVMDeclaration (sw, null);
 			sw.WriteLine ("\t\t{");
 			MethodBody body = new MethodBody (parms);
-			body.Initialize (gen_info, false, false, String.Empty);
+			body.Initialize (gen_info);
 			sw.WriteLine ("\t\t\t{0}{1} ({2});", IsVoid ? "" : retval.MarshalType + " __ret = ", glue_name, GlueCallString);
 			body.Finish (sw, "");
 			if (!IsVoid)
