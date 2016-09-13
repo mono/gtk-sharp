@@ -28,8 +28,7 @@
 			if (list_ptr == IntPtr.Zero)
 				return new TreePath [0];
 
-			GLib.List list = new GLib.List (list_ptr, typeof (Gtk.TreePath));
-			return GLib.Marshaller.ListToArray<Gtk.TreePath> (list);
+			return GLib.Marshaller.ListPtrToArray<Gtk.TreePath> (list_ptr, typeof (GLib.List), true, true);
 		}
 
 		[Obsolete ("Replaced by SelectFunction property.")]

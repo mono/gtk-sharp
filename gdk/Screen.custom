@@ -27,8 +27,8 @@
 				IntPtr raw_ret = gdk_screen_get_toplevel_windows (Handle);
 				if (raw_ret == IntPtr.Zero)
 					return new Window [0];
-				GLib.List list = new GLib.List(raw_ret);
-				return GLib.Marshaller.ListToArray<Window> (list);
+
+				return GLib.Marshaller.ListPtrToArray<Window> (raw_ret, typeof (GLib.List), true, false);
 			}
 		}
 
@@ -40,8 +40,8 @@
 			IntPtr raw_ret = gdk_screen_list_visuals (Handle);
 			if (raw_ret == IntPtr.Zero)
 				return new Visual [0];
-			GLib.List list = new GLib.List(raw_ret);
-			return GLib.Marshaller.ListToArray<Visual> (list);
+
+			return GLib.Marshaller.ListPtrToArray<Visual> (raw_ret, typeof (GLib.List), true, false);
 		}
 
 		[DllImport("libgdk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]

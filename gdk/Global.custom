@@ -39,8 +39,7 @@
 			IntPtr raw_ret = gdk_list_visuals ();
 			if (raw_ret == IntPtr.Zero)
 				return new Visual [0];
-			GLib.List list = new GLib.List(raw_ret);
-			return GLib.Marshaller.ListToArray<Visual> (list);
+			return GLib.Marshaller.ListPtrToArray<Visual> (raw_ret, typeof (GLib.List), true, false);
 		}
 
 		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
@@ -51,8 +50,7 @@
 				IntPtr raw_ret = gtksharp_get_gdk_net_supported ();
 				if (raw_ret == IntPtr.Zero)
 					return new Gdk.Atom [0];
-				GLib.List list = new GLib.List (raw_ret, typeof (Gdk.Atom));
-				return GLib.Marshaller.ListToArray<Gdk.Atom> (list);
+				return GLib.Marshaller.ListPtrToArray<Gdk.Atom> (raw_ret, typeof (GLib.List), true, false);
 			}
 		}
 
@@ -73,6 +71,7 @@
 					offset += IntPtr.Size;
 					windows [i] = Gdk.Window.ForeignNew ((uint) windowID);
 				}
+				GLib.Marshaller.Free (raw_ret);
 				return windows;
 			}
 		}
@@ -117,8 +116,7 @@
 				IntPtr raw_ret = gtksharp_get_gdk_net_workarea ();
 				if (raw_ret == IntPtr.Zero)
 					return new Gdk.Rectangle [0];
-				GLib.List list = new GLib.List (raw_ret, typeof (Gdk.Rectangle));
-				return GLib.Marshaller.ListToArray<Gdk.Rectangle> (list);
+				return GLib.Marshaller.ListPtrToArray<Gdk.Rectangle> (raw_ret, typeof(GLib.List), true, false);
 			}
 		}
 

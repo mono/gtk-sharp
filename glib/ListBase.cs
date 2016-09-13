@@ -26,12 +26,14 @@ namespace GLib {
 	using System.Collections;
 	using System.Runtime.InteropServices;
 
+	public delegate void ListElementFree (IntPtr ptr);
 	public abstract class ListBase : IDisposable, ICollection, GLib.IWrapper, ICloneable {
 
 		private IntPtr list_ptr = IntPtr.Zero;
 		private bool managed = false;
 		internal bool elements_owned = false;
 		protected System.Type element_type = null;
+		private ListElementFree free_func;
 
 		abstract internal IntPtr NthData (uint index);
 		abstract internal int Length (IntPtr list);
@@ -39,12 +41,13 @@ namespace GLib {
 		abstract internal IntPtr Append (IntPtr current, IntPtr raw);
 		abstract internal IntPtr Prepend (IntPtr current, IntPtr raw);
 
-		internal ListBase (IntPtr list, System.Type element_type, bool owned, bool elements_owned)
+		internal ListBase (IntPtr list, System.Type element_type, bool owned, bool elements_owned, ListElementFree free_func)
 		{
 			list_ptr = list;
 			this.element_type = element_type;
 			managed = owned;
 			this.elements_owned = elements_owned;
+			this.free_func = free_func;
 		}
 
 		~ListBase ()
@@ -189,9 +192,6 @@ namespace GLib {
 			return ret;
 		}
 
-		[DllImport ("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
-		static extern void g_free (IntPtr item);
-
 		[DllImport ("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_object_unref (IntPtr item);
 
@@ -215,7 +215,7 @@ namespace GLib {
 					while (current != IntPtr.Zero) {
 						var temp = current;
 						current = Next (temp);
-						g_free (temp);
+						free_func (temp);
 					}
 				}
 			}

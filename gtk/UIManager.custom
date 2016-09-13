@@ -45,8 +45,7 @@
 
 		public Widget[] GetToplevels (Gtk.UIManagerItemType types) {
 			IntPtr raw_ret = gtk_ui_manager_get_toplevels (Handle, (int) types);
-			GLib.SList list = new GLib.SList (raw_ret);
-			return GLib.Marshaller.ListToArray<Widget> (list);
+			return GLib.Marshaller.ListPtrToArray<Widget> (raw_ret, typeof (GLib.SList), true, false);
 		}
 
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]

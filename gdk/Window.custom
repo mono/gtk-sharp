@@ -32,8 +32,7 @@
 			IntPtr raw_ret = gdk_window_get_children(Handle);
 			if (raw_ret == IntPtr.Zero)
 				return new Window [0];
-			GLib.List list = new GLib.List(raw_ret);
-			return GLib.Marshaller.ListToArray<Window> (list);
+			return GLib.Marshaller.ListPtrToArray<Window> (raw_ret, typeof (GLib.List), true, false);
 		}
 	}
 
@@ -42,7 +41,7 @@
 
 	public Pixbuf[] IconList {
 		set {
-			GLib.List list = new GLib.List(IntPtr.Zero);
+			GLib.List list = new GLib.List(IntPtr.Zero, typeof(Pixbuf), true, false);
 			foreach (Pixbuf val in value)
 				list.Append (val.Handle);
 			gdk_window_set_icon_list(Handle, list.Handle);
@@ -57,8 +56,7 @@
 			IntPtr raw_ret = gdk_window_get_toplevels();
 			if (raw_ret == IntPtr.Zero)
 				return new Window [0];
-			GLib.List list = new GLib.List(raw_ret);
-			return GLib.Marshaller.ListToArray<Window> (list);
+			return GLib.Marshaller.ListPtrToArray<Window> (raw_ret, typeof(GLib.List), true, false);
 		}
 	}
 

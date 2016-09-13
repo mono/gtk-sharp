@@ -27,8 +27,7 @@
 			IntPtr raw_ret = gtk_stock_list_ids ();
 			if (raw_ret == IntPtr.Zero)
 				return new string [0];
-			GLib.SList list = new GLib.SList(raw_ret, typeof (string));
-			return GLib.Marshaller.ListToArray<string> (list);
+			return GLib.Marshaller.ListPtrToArray<string> (raw_ret, typeof (GLib.SList), true, true);
 		}
 
 		[StructLayout(LayoutKind.Sequential)]

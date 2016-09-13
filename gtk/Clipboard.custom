@@ -81,6 +81,7 @@
 			int sz = (int) (uint) length;
 			byte[] ret = new byte [sz];
 			Marshal.Copy (ret, 0, raw_ret, sz);
+			GLib.Marshaller.Free (raw_ret);
 			return ret;
 		}
 

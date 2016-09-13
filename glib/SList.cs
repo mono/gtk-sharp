@@ -76,13 +76,20 @@ namespace GLib {
 			return g_slist_nth_data (Handle, n);
 		}
 
+
+		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void g_free (IntPtr item);
+
 		public SList (IntPtr raw) : this (raw, null) {}
 
 		public SList (System.Type element_type) : this (IntPtr.Zero, element_type) {}
 
 		public SList (IntPtr raw, System.Type element_type) : this (raw, element_type, false, false) {}
 
-		public SList (IntPtr raw, System.Type element_type, bool owned, bool elements_owned) : base (raw, element_type, owned, elements_owned) {}
+		public SList (IntPtr raw, System.Type element_type, bool owned, bool elements_owned) : base (raw, element_type, owned, elements_owned, g_free) { }
+
+		public SList (IntPtr raw, System.Type element_type, bool owned, bool elements_owned, ListElementFree free_func) : base (raw, element_type, owned, elements_owned, free_func) { }
+
 
 		public SList (object[] members, System.Type element_type, bool owned, bool elements_owned) : this (IntPtr.Zero, element_type, owned, elements_owned)
 		{
