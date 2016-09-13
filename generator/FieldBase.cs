@@ -65,6 +65,12 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public bool IsNullTermArray {
+			get {
+				return elem.HasAttribute ("null_term_array");
+			}
+		}
+
 		public bool IsBitfield {
 			get {
 				return elem.HasAttribute("bits");
