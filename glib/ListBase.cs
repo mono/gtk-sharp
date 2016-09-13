@@ -29,7 +29,6 @@ namespace GLib {
 	public abstract class ListBase : IDisposable, ICollection, GLib.IWrapper, ICloneable {
 
 		private IntPtr list_ptr = IntPtr.Zero;
-		private int length = -1;
 		private bool managed = false;
 		internal bool elements_owned = false;
 		protected System.Type element_type = null;
@@ -87,9 +86,7 @@ namespace GLib {
 		// ICollection
 		public int Count {
 			get {
-				if (length == -1)
-					length = Length (list_ptr);
-				return length;
+				return Length (list_ptr);
 			}
 		}
 
@@ -296,7 +293,6 @@ namespace GLib {
 			if (list_ptr != IntPtr.Zero)
 				Free (list_ptr);
 			list_ptr = IntPtr.Zero;
-			length = -1;
 		}
 
 		// ICloneable
