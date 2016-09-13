@@ -35,7 +35,7 @@ namespace GtkSharp.Generation {
 		private bool is_get, is_set;
 		private bool deprecated = false;
 		private bool win32_utf8_variant = false;
-		private bool cacheValue = false;
+		private bool cacheRetValue = false;
 		private string cacheName = string.Empty;
 
 		public Method (XmlElement elem, ClassBase container_type) : base (elem, container_type)
@@ -54,7 +54,7 @@ namespace GtkSharp.Generation {
 
 			if (Name == "GetType") {
 				Name = "GetGType";
-				cacheValue = !(container_type is StructBase);
+				cacheRetValue = !(container_type is StructBase);
 				cacheName = "_gtype";
 			}
 		}
@@ -217,11 +217,44 @@ namespace GtkSharp.Generation {
 			}
 		}
 
-		public void GenerateCacheValue (StreamWriter sw)
+		public void GenerateCacheValue (StreamWriter sw, Method complement)
 		{
-			if (!cacheValue)
+			if (cacheRetValue) {
+				sw.WriteLine ("\t\tstatic {0} {1} = new {0} ({2});", retval.CSType, cacheName, CName + call);
+			}
+			string varName = null;
+			if (is_set || is_get)
+				varName = "value";
+			
+			foreach (Parameter p in Parameters) {
+				var cback = p.Generatable as CallbackGen;
+				if (cback == null)
+					continue;
+
+				if (p.Scope != "notified")
+					continue;
+
+				sw.Write ("\t\t");
+				if (IsStatic)
+					sw.Write ("static ");
+				sw.WriteLine ("GCHandle? {0}_{1}_{2};", Name, p.CType, varName ?? p.Name);
+			}
+
+			if (complement == null)
 				return;
-			sw.WriteLine ("\t\tstatic {0} {1} = new {0} ({2});", retval.CSType, cacheName, CName + call);
+			foreach (Parameter p in complement.Parameters) {
+				var cback = p.Generatable as CallbackGen;
+				if (cback == null)
+					continue;
+
+				if (p.Scope != "notified")
+					continue;
+
+				sw.Write ("\t\t");
+				if (IsStatic)
+					sw.Write ("static ");
+				sw.WriteLine ("GCHandle? {0}_{1}_{2};", complement.Name, p.CType, varName ?? p.Name);
+			}
 		}
 
 		public void Generate (GenerationInfo gen_info, ClassBase implementor)
@@ -254,7 +287,7 @@ namespace GtkSharp.Generation {
 			}
 
 			GenerateImport (gen_info.Writer);
-			GenerateCacheValue (gen_info.Writer);
+			GenerateCacheValue (gen_info.Writer, comp);
 			if (comp != null && retval.CSType == comp.Parameters.AccessorReturnType)
 				comp.GenerateImport (gen_info.Writer);
 
@@ -301,7 +334,7 @@ namespace GtkSharp.Generation {
 				implementor.Prepare (sw, indent + "\t\t\t");
 			if (IsAccessor)
 				Body.InitAccessor (sw, Signature, indent);
-			Body.Initialize(gen_info, is_get, is_set, indent);
+			Body.Initialize(gen_info, is_get, is_set, indent, Name);
 
 			if (HasWin32Utf8Variant) {
 				if (!retval.IsVoid)
@@ -324,7 +357,7 @@ namespace GtkSharp.Generation {
 				sw.Write(indent + "\t\t\t");
 				if (retval.IsVoid)
 					sw.WriteLine(CName + call + ";");
-				else if (!cacheValue) {
+				else if (!cacheRetValue) {
 					sw.WriteLine(retval.MarshalType + " raw_ret = " + CName + call + ";");
 					sw.WriteLine(indent + "\t\t\t" + retval.CSType + " ret = " + retval.FromNative ("raw_ret") + ";");
 				}
@@ -338,7 +371,7 @@ namespace GtkSharp.Generation {
 			if (is_get && Parameters.Count > 0)
 				sw.WriteLine (indent + "\t\t\treturn " + Parameters.AccessorName + ";");
 			else if (!retval.IsVoid) {
-				sw.WriteLine (indent + "\t\t\treturn " + (cacheValue ? cacheName : "ret") + ";");
+				sw.WriteLine (indent + "\t\t\treturn " + (cacheRetValue ? cacheName : "ret") + ";");
 			} else if (IsAccessor)
 				Body.FinishAccessor (sw, Signature, indent);
 

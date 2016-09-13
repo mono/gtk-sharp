@@ -41,3 +41,5 @@
 		{
 			TranslateFunc = func;
 		}
+
+		GCHandle? SetTranslateFunc_GtkTranslateFunc_value;

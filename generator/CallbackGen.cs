@@ -276,6 +276,11 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("}");
 			sw.Close ();
 			gen_info.Writer = save_sw;
+			return GetWrapperName ();
+		}
+
+		public string GetWrapperName ()
+		{
 			return NS + "Sharp." + Name + "Wrapper";
 		}
 

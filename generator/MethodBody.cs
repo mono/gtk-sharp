@@ -77,10 +77,10 @@ namespace GtkSharp.Generation {
 
 		public void Initialize (GenerationInfo gen_info)
 		{
-			Initialize (gen_info, false, false, String.Empty);
+			Initialize (gen_info, false, false, String.Empty, string.Empty);
 		}
 
-		public void Initialize (GenerationInfo gen_info, bool is_get, bool is_set, string indent)
+		public void Initialize (GenerationInfo gen_info, bool is_get, bool is_set, string indent, string methodName)
 		{
 			if (parameters.Count == 0)
 				return;
@@ -106,11 +106,15 @@ namespace GtkSharp.Generation {
 						sw.WriteLine (indent + "\t\t\t{0} {1}_wrapper = new {0} ({1});", wrapper, name);
 						sw.WriteLine (indent + "\t\t\tIntPtr {0};", parameters [i + 1].Name);
 						sw.WriteLine (indent + "\t\t\t{0} {1};", parameters [i + 2].CSType, parameters [i + 2].Name);
+						sw.WriteLine (indent + "\t\t\tif ({0}_{1}_{2} != null)", methodName, p.CType, name);
+						sw.WriteLine (indent + "\t\t\t\t{0}_{1}_{2}.Value.Free();", methodName, p.CType, name);
 						sw.WriteLine (indent + "\t\t\tif ({0} == null) {{", name);
+						sw.WriteLine (indent + "\t\t\t\t{0}_{1}_{2} = null;", methodName, p.CType, name);
 						sw.WriteLine (indent + "\t\t\t\t{0} = IntPtr.Zero;", parameters [i + 1].Name);
 						sw.WriteLine (indent + "\t\t\t\t{0} = null;", parameters [i + 2].Name);
 						sw.WriteLine (indent + "\t\t\t} else {");
-						sw.WriteLine (indent + "\t\t\t\t{0} = (IntPtr) GCHandle.Alloc ({1}_wrapper);", parameters [i + 1].Name, name);
+						sw.WriteLine (indent + "\t\t\t\t{0}_{1}_{2} = GCHandle.Alloc ({2}_wrapper);", methodName, p.CType, name);
+						sw.WriteLine (indent + "\t\t\t\t{0} = (IntPtr) {1}_{2}_{3};", parameters [i + 1].Name, methodName, p.CType, name);
 						sw.WriteLine (indent + "\t\t\t\t{0} = GLib.DestroyHelper.NotifyHandler;", parameters [i + 2].Name, parameters [i + 2].CSType);
 						sw.WriteLine (indent + "\t\t\t}");
 						break;
