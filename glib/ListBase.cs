@@ -200,14 +200,28 @@ namespace GLib {
 
 		public void Empty ()
 		{
-			if (elements_owned)
-				for (uint i = 0; i < Count; i++)
-					if (typeof (GLib.Object).IsAssignableFrom (element_type))
-						g_object_unref (NthData (i));
-					else if (typeof (GLib.Opaque).IsAssignableFrom (element_type))
-						GLib.Opaque.GetOpaque (NthData (i), element_type, true).Dispose ();
-					else
-						g_free (NthData (i));
+			if (elements_owned) {
+				var current = list_ptr;
+				if (typeof (GLib.Object).IsAssignableFrom (element_type)) {
+					while (current != IntPtr.Zero) {
+						var temp = current;
+						current = Next (temp);
+						g_object_unref (temp);
+					}
+				} else if (typeof (GLib.Opaque).IsAssignableFrom (element_type)) {
+					while (current != IntPtr.Zero) {
+						var temp = current;
+						current = Next (temp);
+						GLib.Opaque.GetOpaque (temp, element_type, true).Dispose ();
+					}
+				} else {
+					while (current != IntPtr.Zero) {
+						var temp = current;
+						current = Next (temp);
+						g_free (temp);
+					}
+				}
+			}
 
 			if (managed)
 				FreeList ();
