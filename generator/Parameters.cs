@@ -277,8 +277,13 @@ namespace GtkSharp.Generation {
 					if (PassAs != "out")
 						result [i] = (gen as IManualMarshaler).ReleaseNative ("native_" + CallName) + ";";
 					return result;
-				} else if (PassAs != String.Empty && MarshalType != CSType)
+				} else if (PassAs != String.Empty && MarshalType != CSType) {
+					var handle = gen as HandleBase;
+					if (handle != null) {
+						return new string [] { CallName + " = " + handle.FromNative ("native_" + CallName, Owned) + ";" };
+					}
 					return new string [] { CallName + " = " + gen.FromNative ("native_" + CallName) + ";" };
+				}
 				return new string [0];
 			}
 		}
