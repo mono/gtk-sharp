@@ -76,6 +76,18 @@ namespace GLib {
 			return ret;
 		}
 
+#if HAVE_NET_4_6
+		static bool hasFastGetStringOverload = typeof (System.Text.Encoding).GetMethod ("GetString", new [] { typeof (byte*), typeof (int) }) != null;
+		static string Utf8PtrToStringFast (IntPtr ptr, int len)
+		{
+			unsafe
+			{
+				var p = (byte*)ptr;
+				return System.Text.Encoding.UTF8.GetString (p, len);
+			}
+		}
+#endif
+
 		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern UIntPtr glibsharp_strlen (IntPtr mem);
 		public static string Utf8PtrToString (IntPtr ptr) 
@@ -85,16 +97,12 @@ namespace GLib {
 
 			int len = (int) (uint)glibsharp_strlen (ptr);
 #if HAVE_NET_4_6
-			unsafe
-			{
-				var p = (byte*)ptr;
-				return System.Text.Encoding.UTF8.GetString (p, len);
-			}
-#else
+			if (hasFastGetStringOverload)
+				return Utf8PtrToStringFast (ptr, len);
+#endif
 			byte [] bytes = new byte [len];
 			Marshal.Copy (ptr, bytes, 0, len);
 			return System.Text.Encoding.UTF8.GetString (bytes);
-#endif
 		}
 
 		public static string[] Utf8PtrToString (IntPtr[] ptrs) {
