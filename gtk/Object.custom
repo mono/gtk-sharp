@@ -119,8 +119,6 @@
 		{
 			if (Handle == IntPtr.Zero)
 				return;
-			if (IsFloating)//We have to check or we will increment ref_count
-				IsFloating = false;
 			gtk_object_destroy (Handle);
 			InternalDestroyed -= NativeDestroyHandler;
 		}
