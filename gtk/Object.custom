@@ -94,18 +94,22 @@
 
 		public override void Dispose ()
 		{
-			// Don't call base.Dispose because it's calling g_object_unref
-			// which is done by gtk_object_destroy for Gtk.Object
-
-			//Should line below be uncommented?(but it breaks backward compatiblity)
-			//throw new InvalidOperationException("Calling Dispose is invalid for Gtk objects. Call Destroy().");
+			if (Handle == IntPtr.Zero)
+				return;
+			InternalDestroyed -= NativeDestroyHandler;
+			base.Dispose ();
 		}
+
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		private static extern void g_object_ref_sink (IntPtr raw);
 
 		protected override IntPtr Raw {
 			get {
 				return base.Raw;
 			}
 			set {
+				if (value != IntPtr.Zero)
+					g_object_ref_sink (value);
 				base.Raw = value;
 				if (value != IntPtr.Zero)
 					InternalDestroyed += NativeDestroyHandler;
@@ -119,7 +123,7 @@
 		{
 			if (Handle == IntPtr.Zero)
 				return;
-			if (IsFloating)//We have to check or we will increment ref_count
+			if (IsFloating)
 				IsFloating = false;
 			gtk_object_destroy (Handle);
 			InternalDestroyed -= NativeDestroyHandler;
@@ -129,7 +133,10 @@
 		private static extern bool gtksharp_object_is_floating (IntPtr raw);
 
 		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
-		private static extern bool gtksharp_object_set_floating (IntPtr raw, bool val);
+ 		private static extern bool gtksharp_object_set_floating (IntPtr raw, bool val);
+
+		[DllImport ("libgobject-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void g_object_unref (IntPtr raw);
 
 		public bool IsFloating {
 			get {
