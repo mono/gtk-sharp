@@ -35,7 +35,6 @@ namespace GLib {
 		IntPtr handle;
 		ToggleRef tref;
 		bool disposed = false;
-		bool owned = true;
 		Hashtable data;
 		static Dictionary<IntPtr, ToggleRef> Objects = new Dictionary<IntPtr, ToggleRef>();
 		static object lockObject = new object ();
@@ -95,8 +94,7 @@ namespace GLib {
 				Console.WriteLine ("Exception while disposing a " + this + " in Gtk#");
 				throw e;
 			}
-			if (owned)
-				g_object_unref (handle);
+			g_object_unref (handle);
 			handle = IntPtr.Zero;
 			GC.SuppressFinalize (this);
 		}
@@ -144,7 +142,6 @@ namespace GLib {
 				return null;
 			}
 
-			obj.owned = owned_ref;
 			return obj;
 		}
 
