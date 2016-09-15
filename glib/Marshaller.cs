@@ -84,16 +84,17 @@ namespace GLib {
 				return null;
 
 			int len = (int) (uint)glibsharp_strlen (ptr);
-#if HAVE_NET_4_6
+
+#if UTF8_SLOW_PATH
+			byte [] bytes = new byte [len];
+			Marshal.Copy (ptr, bytes, 0, len);
+			return System.Text.Encoding.UTF8.GetString (bytes);
+#else
 			unsafe
 			{
 				var p = (byte*)ptr;
 				return System.Text.Encoding.UTF8.GetString (p, len);
 			}
-#else
-			byte [] bytes = new byte [len];
-			Marshal.Copy (ptr, bytes, 0, len);
-			return System.Text.Encoding.UTF8.GetString (bytes);
 #endif
 		}
 

@@ -234,8 +234,8 @@ AM_CONDITIONAL(ENABLE_MONOGETOPTIONS, test "x$has_mono" = "xtrue")
 
 CSFLAGS="$DEBUG_FLAGS $CSDEFINES $WIN64DEFINES -unsafe"
 
-if test "x$NET_4_6_SUPPORT" = "xtrue" ; then
-  CSFLAGS="$CSFLAGS -define:HAVE_NET_4_6"
+if test "x$NET_4_6_SUPPORT" = "xfalse" ; then
+  CSFLAGS="$CSFLAGS -define:UTF8_SLOW_PATH"
 fi
 PKG_CHECK_MODULES(GLIB_2_31,
   glib-2.0 >= 2.31,
