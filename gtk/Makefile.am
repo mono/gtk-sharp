@@ -81,6 +81,7 @@ customs = 				\
 	FileChooserWidget.custom	\
 	FileSelection.custom		\
 	Frame.custom			\
+	Global.custom			\
 	HBox.custom			\
 	HScale.custom			\
 	IconFactory.custom		\

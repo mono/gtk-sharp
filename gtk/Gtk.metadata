@@ -935,4 +935,5 @@
   <attr path="/api/namespace/object[@cname='GtkIMContext']/method[@cname='gtk_im_context_get_preedit_string']/parameters/parameter[@name='attrs']" name="owned">true</attr>
   <attr path="/api/namespace/object[@cname='GtkIconView']/method[@cname='gtk_icon_view_get_tooltip_context']/parameters/parameter[@name='path']" name="owned">true</attr>
   <attr path="/api/namespace/object[@cname='GtkTreeView']/method[@cname='gtk_tree_view_get_tooltip_context']/parameters/parameter[@name='path']" name="owned">true</attr>
+  <attr path="/api/namespace/class[@cname='GtkGlobal']/method[@cname='gtk_parse_args']" name="hidden">1</attr>
 </metadata>
