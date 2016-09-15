@@ -106,9 +106,19 @@ OFF_T_FLAGS="-define:OFF_T_$ac_cv_sizeof_off_t"
 AC_SUBST(OFF_T_FLAGS)
 
 MONO_REQUIRED_VERSION=1.0
+FIRST_MONO_VERSION_WITH_NET_4_6_SUPPORT=4.4
 PKG_CHECK_MODULES(MONO_DEPENDENCY, mono >= $MONO_REQUIRED_VERSION, has_mono=true, has_mono=false)
 if test "x$has_mono" = "xfalse" ; then
 	PKG_CHECK_MODULES(MONO_DEPENDENCY, mono-2 >= $MONO_REQUIRED_VERSION, has_mono=true, has_mono=false)
+	if test "x$has_mono" = "xtrue" ; then
+		PKG_CHECK_MODULES(MONO_DEPENDENCY, mono-2 >= $FIRST_MONO_VERSION_WITH_NET_4_6_SUPPORT, NET_4_6_SUPPORT=true, NET_4_6_SUPPORT=false)
+	fi
+else
+	PKG_CHECK_MODULES(MONO_DEPENDENCY, mono >= $FIRST_MONO_VERSION_WITH_NET_4_6_SUPPORT, NET_4_6_SUPPORT=true, NET_4_6_SUPPORT=false)
+fi
+
+if test "x$platform_win32" = "xyes"; then
+	NET_4_6_SUPPORT=true
 fi
 
 AC_PATH_PROG(GACUTIL, gacutil, no)
@@ -224,6 +234,9 @@ AM_CONDITIONAL(ENABLE_MONOGETOPTIONS, test "x$has_mono" = "xtrue")
 
 CSFLAGS="$DEBUG_FLAGS $CSDEFINES $WIN64DEFINES -unsafe"
 
+if test "x$NET_4_6_SUPPORT" = "xtrue" ; then
+  CSFLAGS="$CSFLAGS -define:HAVE_NET_4_6"
+fi
 PKG_CHECK_MODULES(GLIB_2_31,
   glib-2.0 >= 2.31,
   HAVE_GLIB_2_31_OR_HIGHER=yes, HAVE_GLIB_2_31_OR_HIGHER=no)
