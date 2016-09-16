@@ -31,8 +31,7 @@
 			GLib.Marshaller.Free (native_text);
 			if (list_handle == IntPtr.Zero)
 				return new GlyphItem [0];
-			GLib.SList item_list = new GLib.SList (list_handle, typeof (GlyphItem));
-			return GLib.Marshaller.ListToArray<GlyphItem> (item_list);
+			return GLib.Marshaller.ListPtrToArray<GlyphItem> (list_handle, typeof (GLib.SList), true, true, pango_glyph_item_free);
 		}
 
 		[Obsolete ("Replaced by Glyphs property")]

@@ -308,6 +308,8 @@
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='RequestText']/*/*[@name='callback']" name="scope">async</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='SetWithData']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='SetWithOwner']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForTargets']/parameters/parameter[@name='targets']" name="pass_as">out</attr>
+  <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForImage']/return-type" name="owned">true</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForContents']/return-type" name="owned">true</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForRichText']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='RequestRichText']" name="hidden">1</attr>
@@ -938,4 +940,14 @@
   <attr path="/api/namespace/object[@cname='GtkTreeView']/method[@cname='gtk_tree_view_get_tooltip_context']/parameters/parameter[@name='path']" name="owned">true</attr>
   <attr path="/api/namespace/class[@cname='GtkGlobal']/method[@cname='gtk_parse_args']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkLabel']/method[@cname='gtk_label_get']/parameters/parameter[@name='str']" name="pass_as">out</attr>
+  <attr path="/api/namespace/object[@cname='GtkWidget']/method[@cname='gtk_widget_create_pango_context']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='GtkWidget']/method[@cname='gtk_widget_create_pango_layout']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='GtkWidget']/method[@cname='gtk_widget_render_icon']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/boxed[@cname='GtkIconSet']/method[@cname='gtk_icon_set_render_icon']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='GtkIconView']/method[@cname='gtk_icon_view_create_drag_icon']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/class[@cname='GtkPrint_']/method[@cname='gtk_print_run_page_setup_dialog']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='GtkPrintSettings']/method[@cname='gtk_print_settings_get_page_ranges']" name="hidden">1</attr>
+  <attr path="/api/namespace/boxed[@cname='GtkRecentInfo']/method[@cname='gtk_recent_info_get_icon']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/boxed[@cname='GtkSelectionData']/method[@cname='gtk_selection_data_get_pixbuf']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='GtkStyle']/method[@cname='gtk_style_render_icon']/return-type" name="owned">true</attr>
 </metadata>
