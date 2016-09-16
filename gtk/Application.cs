@@ -172,9 +172,15 @@ namespace Gtk {
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtk_get_current_event ();
 
+		[DllImport ("libgdk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void gdk_event_free (IntPtr raw);
+
 		public static Gdk.Event CurrentEvent {
 			get {
-				return Gdk.Event.GetEvent (gtk_get_current_event ());
+				var raw_ret = gtk_get_current_event ();
+				var ret = Gdk.Event.GetEvent (raw_ret);
+				gdk_event_free (raw_ret);
+				return ret;
 			}
 		}
 
