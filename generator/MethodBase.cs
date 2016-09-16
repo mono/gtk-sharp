@@ -58,6 +58,12 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public bool Hidden {
+			get {
+				return elem.HasAttribute ("hidden");
+			}
+		}
+
 		protected string BaseName {
 			get {
 				string name = Name;

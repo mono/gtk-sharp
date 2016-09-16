@@ -102,6 +102,9 @@ namespace GtkSharp.Generation {
 			if (Hidden || (!Readable && !Writable))
 				return;
 
+			if ((Getter != null && Getter.Hidden) && (Setter != null && Setter.Hidden))
+				return;
+
 			string modifiers = "";
 
 			if (IsNew || (container_type.Parent != null && container_type.Parent.GetPropertyRecursively (Name) != null))
