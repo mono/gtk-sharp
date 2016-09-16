@@ -24,6 +24,30 @@
 // Boston, MA 02111-1307, USA.
 
 
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern IntPtr gtk_tree_view_get_model(IntPtr raw);
+
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void gtk_tree_view_set_model(IntPtr raw, IntPtr model);
+
+		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void g_object_unref (IntPtr item);
+
+		[GLib.Property ("model")]
+		public Gtk.TreeModel Model {
+			get  {
+				IntPtr raw_ret = gtk_tree_view_get_model(Handle);
+				Gtk.TreeModel ret = Gtk.TreeModelAdapter.GetObject (raw_ret, false);
+				return ret;
+			}
+			set  {
+				var storeHandle = value == null ? IntPtr.Zero : value.Handle;
+				gtk_tree_view_set_model(Handle, storeHandle);
+				if (storeHandle != IntPtr.Zero)
+					g_object_unref (storeHandle);
+			}
+		}
+
 		[Obsolete ("Use NodeView with NodeStores")]
 		public TreeView (NodeStore store) : base (IntPtr.Zero)
 		{
