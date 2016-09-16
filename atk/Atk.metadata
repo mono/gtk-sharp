@@ -39,4 +39,16 @@
   <attr path="/api/namespace/interface[@cname='AtkText']/*[@name='GetDefaultAttributes']/return-type" name="element_type">AtkAttribute*</attr>
   <attr path="/api/namespace/interface[@cname='AtkEditableText']/*[@name='GetRunAttributes']/return-type" name="element_type">AtkAttribute*</attr>
   <attr path="/api/namespace/interface[@cname='AtkEditableText']/*[@name='GetDefaultAttributes']/return-type" name="element_type">AtkAttribute*</attr>
+  <attr path="/api/namespace/interface[@cname='AtkHyperlinkImpl']/*[@cname='atk_hyperlink_impl_get_hyperlink']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='AtkObjectFactory']/*[@cname='atk_object_factory_create_accessible']/return-type" name="owned">true</attr>
+  <!-- Says transfer full, but it's actually a static variable being saved.
+       <attr path="/api/namespace/object[@cname='AtkRegistry']/*[@cname='atk_get_default_registry']/return-type" name="owned">true</attr>
+  -->
+  <attr path="/api/namespace/object[@cname='AtkStateSet']/*[@cname='atk_state_set_and_sets']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='AtkStateSet']/*[@cname='atk_state_set_or_sets']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='AtkStateSet']/*[@cname='atk_state_set_xor_sets']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/interface[@cname='AtkTable']/*[@cname='atk_table_get_summary']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@cname='atk_object_get_attributes']" name="hidden">1</attr>
+  <attr path="/api/namespace/interface[@cname='AtkText']/*[@cname='atk_text_get_run_attributes']" name="hidden">1</attr>
+  <attr path="/api/namespace/interface[@cname='AtkText']/*[@cname='atk_text_get_default_attributes']" name="hidden">1</attr>
 </metadata>

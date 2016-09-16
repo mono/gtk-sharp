@@ -27,3 +27,28 @@
 			                  "text_changed::" + detail.ToString ().ToLower (),
 			                  position, length);
 		}
+
+		[DllImport("libatk-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void atk_attribute_set_free(IntPtr raw);
+
+		[DllImport("libatk-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern IntPtr atk_text_get_run_attributes(IntPtr raw, int offset, out int start_offset, out int end_offset);
+
+		public Atk.Attribute[] GetRunAttributes(int offset, out int start_offset, out int end_offset) {
+			IntPtr raw_ret = atk_text_get_run_attributes(Handle, offset, out start_offset, out end_offset);
+			Atk.Attribute[] ret = GLib.Marshaller.ListPtrToArray<Atk.Attribute> (raw_ret, typeof(GLib.SList), false, false);
+			atk_attribute_set_free(raw_ret);
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern IntPtr atk_text_get_default_attributes(IntPtr raw);
+
+		public Atk.Attribute[] DefaultAttributes { 
+			get {
+				IntPtr raw_ret = atk_text_get_default_attributes(Handle);
+				Atk.Attribute[] ret = GLib.Marshaller.ListPtrToArray<Atk.Attribute> (raw_ret, typeof(GLib.SList), false, false);
+				atk_attribute_set_free(raw_ret);
+				return ret;
+			}
+		}
