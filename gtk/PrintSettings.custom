@@ -1,0 +1,15 @@
+﻿
+
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern IntPtr gtk_print_settings_get_page_ranges(IntPtr raw, out int num_ranges);
+
+		public Gtk.PageRange[] GetPageRanges(out int num_ranges) {
+			IntPtr raw_ret = gtk_print_settings_get_page_ranges(Handle, out num_ranges);
+			var ret = new Gtk.PageRange [num_ranges];
+			for (int i = 0; i < num_ranges; i++)
+				ret[i] = Gtk.PageRange.New (raw_ret + i * IntPtr.Size);
+
+			GLib.Marshaller.Free (raw_ret);
+			return ret;
+		}
+

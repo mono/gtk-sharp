@@ -105,4 +105,11 @@
   <attr path="/api/namespace/class[@cname='PangoGlobal']/method[@cname='pango_split_file_list']/return-type" name="null_term_array">1</attr>
   <attr path="/api/namespace/class[@cname='PangoGlobal']/method[@cname='pango_split_file_list']/return-type" name="owned">true</attr>
   <attr path="/api/namespace/class[@cname='PangoGlobal']/method[@cname='pango_parse_enum']/parameters/parameter[@name='possible_values']" name="pass_as">out</attr>
+  <attr path="/api/namespace/object[@cname='PangoFont']/method[@cname='pango_font_get_coverage']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/struct[@cname='PangoCoverage']/method[@cname='pango_coverage_from_bytes']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='PangoContext']/method[@cname='pango_context_load_font']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='PangoContext']/method[@cname='pango_context_load_fontset']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='PangoFontMap']/method[@cname='pango_font_map_load_font']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='PangoFontMap']/method[@cname='pango_font_map_load_fontset']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/class[@cname='PangoCairo_']/method[@cname='pango_cairo_create_layout']/return-type" name="owned">true</attr>
 </metadata>

@@ -268,3 +268,18 @@
 		{
 			GLib.Signal.Emit (this, "focus-event", gained);
 		}
+
+		[DllImport("libatk-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern IntPtr atk_attribute_set_free(IntPtr raw);
+
+		[DllImport("libatk-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern IntPtr atk_object_get_attributes(IntPtr raw);
+
+		public Atk.Attribute[] Attributes { 
+			get {
+				IntPtr raw_ret = atk_object_get_attributes(Handle);
+				Atk.Attribute[] ret = GLib.Marshaller.ListPtrToArray<Atk.Attribute> (raw_ret, typeof(GLib.SList), false, false);
+				atk_attribute_set_free(raw_ret);
+				return ret;
+			}
+		}

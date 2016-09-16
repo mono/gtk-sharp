@@ -102,6 +102,7 @@ customs = 				\
 	Object.custom			\
 	Plug.custom			\
 	PrintContext.custom		\
+	PrintSettings.custom	\
 	Printer.custom			\
 	RadioButton.custom		\
 	RadioMenuItem.custom		\

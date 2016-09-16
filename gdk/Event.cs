@@ -53,9 +53,10 @@ namespace Gdk {
 			}
 		}
 
+		static GLib.GType _gtype = new GLib.GType (gdk_event_get_type ());
 		public static GLib.GType GType {
 			get {
-				return new GLib.GType (gdk_event_get_type ());
+				return _gtype;
 			}
 		}
 
