@@ -77,7 +77,8 @@ namespace GLib {
 
 			lock (Source.source_handlers) {
 				if (source_handlers.Contains (tag)) {
-					source_handlers.Remove (tag);
+					var handler = (SourceProxy)source_handlers [tag];
+					handler.Remove ();
 					ret = g_source_remove (tag);
 				}
 			}
