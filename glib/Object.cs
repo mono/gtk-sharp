@@ -132,11 +132,8 @@ namespace GLib {
 			if (toggle_ref != null && toggle_ref.IsAlive)
 				obj = toggle_ref.Target;
 
-			if (obj != null && obj.Handle == o) {
-				if (owned_ref)
-					g_object_unref (obj.Handle);
+			if (obj != null && obj.Handle == o)
 				return obj;
-			}
 
 			obj = GLib.ObjectManager.CreateObject (o);
 			if (obj == null) {
