@@ -59,8 +59,7 @@ namespace GLib {
 		string name;
 		uint id = UInt32.MaxValue;
 		System.Type args_type;
-		Delegate custom_marshaler;
-		GCHandle gch;
+		GCHandle? gch;
 
 		static Hashtable closures = new Hashtable ();
 
@@ -80,7 +79,6 @@ namespace GLib {
 			closures [raw_closure] = this;
 			handle = obj;
 			name = signal_name;
-			this.custom_marshaler = custom_marshaler;
 		}
 
 		public event EventHandler Disposed;
@@ -103,9 +101,8 @@ namespace GLib {
 		{
 			Disconnect ();
 			closures.Remove (raw_closure);
-			if (custom_marshaler != null)
-				gch.Free ();
-			custom_marshaler = null;
+			if (gch != null)
+				gch.Value.Free ();
 			if (Disposed != null)
 				Disposed (this, EventArgs.Empty);
 			GC.SuppressFinalize (this);
