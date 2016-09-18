@@ -56,29 +56,32 @@ namespace GLib {
 
 		IntPtr handle;
 		IntPtr raw_closure;
-		string name;
+		internal string name;
 		uint id = UInt32.MaxValue;
 		System.Type args_type;
 		GCHandle? gch;
+		internal bool before_closure;
 
 		static Hashtable closures = new Hashtable ();
 
-		public SignalClosure (IntPtr obj, string signal_name, System.Type args_type)
+		public SignalClosure (IntPtr obj, string signal_name, System.Type args_type, bool before_closure)
 		{
 			raw_closure = glibsharp_closure_new (Marshaler, Notify, IntPtr.Zero);
 			closures [raw_closure] = this;
 			handle = obj;
 			name = signal_name;
 			this.args_type = args_type;
+			this.before_closure = before_closure;
 		}
 
-		public SignalClosure (IntPtr obj, string signal_name, Delegate custom_marshaler, Signal signal)
+		public SignalClosure (IntPtr obj, string signal_name, Delegate custom_marshaler, Signal signal, bool before_closure)
 		{
 			gch = GCHandle.Alloc (signal);
 			raw_closure = g_cclosure_new (custom_marshaler, (IntPtr) gch, Notify);
 			closures [raw_closure] = this;
 			handle = obj;
 			name = signal_name;
+			this.before_closure = before_closure;
 		}
 
 		public event EventHandler Disposed;
