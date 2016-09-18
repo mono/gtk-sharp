@@ -189,7 +189,7 @@ namespace Pango {
 		static extern IntPtr pango_attribute_copy (IntPtr raw);
 
 		public Pango.Attribute Copy () {
-			return GetAttribute (pango_attribute_copy (raw));
+			return GetAttribute (pango_attribute_copy (raw), true);
 		}
 
 		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
