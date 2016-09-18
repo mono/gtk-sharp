@@ -24,6 +24,7 @@ namespace Pango {
 	public class Attribute : GLib.IWrapper, IDisposable {
 
 		IntPtr raw;
+		bool owned;
 
 		internal Attribute (IntPtr raw)
 		{
@@ -33,75 +34,107 @@ namespace Pango {
 		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern Pango.AttrType pangosharp_attribute_get_attr_type (IntPtr raw);
 
-		public static Attribute GetAttribute (IntPtr raw)
+		public static Attribute GetAttribute (IntPtr raw, bool owned)
 		{
+			Attribute attr;
 			switch (pangosharp_attribute_get_attr_type (raw)) {
 			case Pango.AttrType.Language:
-				return new AttrLanguage (raw);
+				attr = new AttrLanguage (raw);
+				break;
 			case Pango.AttrType.Family:
-				return new AttrFamily (raw);
+				attr = new AttrFamily (raw);
+				break;
 			case Pango.AttrType.Style:
-				return new AttrStyle (raw);
+				attr = new AttrStyle (raw);
+				break;
 			case Pango.AttrType.Weight:
-				return new AttrWeight (raw);
+				attr = new AttrWeight (raw);
+				break;
 			case Pango.AttrType.Variant:
-				return new AttrVariant (raw);
+				attr = new AttrVariant (raw);
+				break;
 			case Pango.AttrType.Stretch:
-				return new AttrStretch (raw);
+				attr = new AttrStretch (raw);
+				break;
 			case Pango.AttrType.Size:
-				return new AttrSize (raw);
+				attr = new AttrSize (raw);
+				break;
 			case Pango.AttrType.FontDesc:
-				return new AttrFontDesc (raw);
+				attr = new AttrFontDesc (raw);
+				break;
 			case Pango.AttrType.Foreground:
-				return new AttrForeground (raw);
+				attr = new AttrForeground (raw);
+				break;
 			case Pango.AttrType.Background:
-				return new AttrBackground (raw);
+				attr = new AttrBackground (raw);
+				break;
 			case Pango.AttrType.Underline:
-				return new AttrUnderline (raw);
+				attr = new AttrUnderline (raw);
+				break;
 			case Pango.AttrType.Strikethrough:
-				return new AttrStrikethrough (raw);
+				attr = new AttrStrikethrough (raw);
+				break;
 			case Pango.AttrType.Rise:
-				return new AttrRise (raw);
+				attr = new AttrRise (raw);
+				break;
 			case Pango.AttrType.Shape:
-				return new AttrShape (raw);
+				attr = new AttrShape (raw);
+				break;
 			case Pango.AttrType.Scale:
-				return new AttrScale (raw);
+				attr = new AttrScale (raw);
+				break;
 			case Pango.AttrType.Fallback:
-				return new AttrFallback (raw);
+				attr = new AttrFallback (raw);
+				break;
 #if GTK_SHARP_2_6
 			case Pango.AttrType.LetterSpacing:
-				return new AttrLetterSpacing (raw);
+				attr = new AttrLetterSpacing (raw);
+				break;
 			case Pango.AttrType.UnderlineColor:
-				return new AttrUnderlineColor (raw);
+				attr = new AttrUnderlineColor (raw);
+				break;
 			case Pango.AttrType.StrikethroughColor:
-				return new AttrStrikethroughColor (raw);
+				attr = new AttrStrikethroughColor (raw);
+				break;
 #endif
 #if GTK_SHARP_2_12
 			case Pango.AttrType.Gravity:
-				return new AttrGravity (raw);
+				attr = new AttrGravity (raw);
+				break;
 			case Pango.AttrType.GravityHint:
-				return new AttrGravityHint (raw);
+				attr = new AttrGravityHint (raw);
+				break;
 #endif
 			default:
-				return new Attribute (raw);
+				attr = new Attribute (raw);
+				break;
 			}
+			attr.owned = owned;
+			return attr;
 		}
+
+		public static Attribute GetAttribute (IntPtr raw)
+		{
+			return GetAttribute (raw, false);
+		}
+
+		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern void pango_attribute_destroy (IntPtr raw);
 
 		~Attribute ()
 		{
 			Dispose ();
 		}
 
-		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
-		static extern void pango_attribute_destroy (IntPtr raw);
-
 		public void Dispose ()
 		{
+			if (!owned)
+				return;
+			
 			if (raw != IntPtr.Zero) {
 				pango_attribute_destroy (raw);
 				raw = IntPtr.Zero;
 			}
-			GC.SuppressFinalize (this);
 		}
 
 		public IntPtr Handle {

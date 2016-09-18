@@ -35,11 +35,11 @@
 				extra_attrs = new Pango.Attribute [0];
 				return;
 			}
-			GLib.SList list = new GLib.SList (list_handle);
+			GLib.SList list = new GLib.SList (list_handle, typeof(IntPtr), true, false);
 			extra_attrs = new Pango.Attribute [list.Count];
 			int i = 0;
 			foreach (IntPtr raw_attr in list)
-				extra_attrs [i++] = Pango.Attribute.GetAttribute (raw_attr);
+				extra_attrs [i++] = Pango.Attribute.GetAttribute (raw_attr, true);
 		}
 
 		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
@@ -50,11 +50,11 @@
 				IntPtr list_handle = pango_attr_iterator_get_attrs (Handle);
 				if (list_handle == IntPtr.Zero)
 					return new Pango.Attribute [0];
-				GLib.SList list = new GLib.SList (list_handle);
+				GLib.SList list = new GLib.SList (list_handle, typeof(IntPtr), true, false);
 				Pango.Attribute[] attrs = new Pango.Attribute [list.Count];
 				int i = 0;
 				foreach (IntPtr raw_attr in list)
-					attrs [i++] = Pango.Attribute.GetAttribute (raw_attr);
+					attrs [i++] = Pango.Attribute.GetAttribute (raw_attr, true);
 				return attrs;
 			}
 		}
