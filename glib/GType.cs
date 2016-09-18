@@ -24,6 +24,7 @@ namespace GLib {
 
 	using System;
 	using System.Collections;
+	using System.Collections.Generic;
 	using System.IO;
 	using System.Reflection;
 	using System.Runtime.InteropServices;
@@ -65,8 +66,8 @@ namespace GLib {
 		public static readonly GType Param = new GType ((IntPtr) TypeFundamentals.TypeParam);
 		public static readonly GType Object = new GType ((IntPtr) TypeFundamentals.TypeObject);
 
-		static Hashtable types = new Hashtable ();
-		static Hashtable gtypes = new Hashtable ();
+		static Dictionary<IntPtr, Type> types = new Dictionary<IntPtr, Type> ();
+		static Dictionary<Type, GType> gtypes = new Dictionary<Type, GType> ();
 
 		public static void Register (GType native_type, System.Type type)
 		{
@@ -107,9 +108,9 @@ namespace GLib {
 		{
 			GType gtype;
 
-			if (gtypes.Contains (type))
-				return (GType)gtypes[type];
-
+			if (gtypes.TryGetValue (type, out gtype))
+				return gtype;
+			
 			if (type.IsSubclassOf (typeof (GLib.Object))) {
 				gtype = GLib.Object.LookupGType (type);
 				Register (gtype, type);
@@ -171,12 +172,12 @@ namespace GLib {
 
 		public static Type LookupType (IntPtr typeid)
 		{
-			if (types.Contains (typeid))
-				return (Type)types[typeid];
+			Type result;
+			if (types.TryGetValue (typeid, out result))
+				return result;
 
 			string native_name = Marshaller.Utf8PtrToString (g_type_name (typeid));
 			string type_name = GetQualifiedName (native_name);
-			Type result = null;
 			Assembly[] assemblies = (Assembly[]) AppDomain.CurrentDomain.GetAssemblies ().Clone ();
 			foreach (Assembly asm in assemblies) {
 				result = asm.GetType (type_name);
