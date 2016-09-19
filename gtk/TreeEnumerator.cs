@@ -34,10 +34,10 @@ namespace Gtk
 		public TreeEnumerator (TreeModel model)
 		{
 			this.model = model;
-			model.RowChanged += row_changed;
-			model.RowDeleted += row_deleted;
-			model.RowInserted += row_inserted;
-			model.RowsReordered += rows_reordered;
+			model.RowChanged += row_event;
+			model.RowDeleted += row_event;
+			model.RowInserted += row_event;
+			model.RowsReordered += row_event;
 		}
 		
 		public object Current
@@ -75,32 +75,17 @@ namespace Gtk
 			changed = false;
 		}
 		
-		private void row_changed(object o, RowChangedArgs args)
-		{
-			changed = true;
-		}
-		
-		private void row_deleted(object o, RowDeletedArgs args)
-		{
-			changed = true;
-		}
-		
-		private void row_inserted(object o, RowInsertedArgs args)
-		{
-			changed = true;
-		}
-		
-		private void rows_reordered(object o, RowsReorderedArgs args)
+		private void row_event(object o, EventArgs args)
 		{
 			changed = true;
 		}
 
 		public void Dispose ()
 		{
-			model.RowChanged -= row_changed;
-			model.RowDeleted -= row_deleted;
-			model.RowInserted -= row_inserted;
-			model.RowsReordered -= rows_reordered;
+			model.RowChanged -= row_event;
+			model.RowDeleted -= row_event;
+			model.RowInserted -= row_event;
+			model.RowsReordered -= row_event;
 			model = null;
 		}
 	}
