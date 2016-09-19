@@ -73,6 +73,16 @@ namespace GLib {
 		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_logv (IntPtr log_domain, LogLevelFlags flags, IntPtr message);
 
+		public static void Write (string logDomain, LogLevelFlags flags, string format, params object [] args)
+		{
+			IntPtr ndom = Marshaller.StringToPtrGStrdup (logDomain);
+			IntPtr nmessage = Marshaller.StringToPtrGStrdup (String.Format (format, args));
+			g_logv (ndom, flags, nmessage);
+			Marshaller.Free (ndom);
+			Marshaller.Free (nmessage);
+		}
+
+		[Obsolete ("Use the static member Write")]
 		public void WriteLog (string logDomain, LogLevelFlags flags, string format, params object [] args)
 		{
 			IntPtr ndom = Marshaller.StringToPtrGStrdup (logDomain);
