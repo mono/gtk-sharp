@@ -104,8 +104,10 @@ namespace GLib {
 		{
 			Disconnect ();
 			closures.Remove (raw_closure);
-			if (gch != null)
+			if (gch != null) {
 				gch.Value.Free ();
+				gch = null;
+			}
 			if (Disposed != null)
 				Disposed (this, EventArgs.Empty);
 			GC.SuppressFinalize (this);
