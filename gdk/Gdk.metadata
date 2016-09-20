@@ -125,7 +125,7 @@
   <attr path="/api/namespace/object[@cname='GdkPixbuf']/property" name="construct-only">true</attr>
   <attr path="/api/namespace/struct[@cname='GdkPixbufFormat']/method[@name='GetExtensions']/return-type" name="null_term_array">1</attr> 
   <attr path="/api/namespace/struct[@cname='GdkPixbufFormat']/method[@name='GetMimeTypes']/return-type" name="null_term_array">1</attr> 
-  <attr path="/api/namespace/object[@cname='GdkPixbufLoader']/method[@name='GetPixbuf']" name="needs_ref">1</attr>
+  <attr path="/api/namespace/object[@cname='GdkPixbufLoader']/method[@name='GetPixbuf']/return-type" name="needs_ref">true</attr>
   <attr path="/api/namespace/object[@cname='GdkPixbufLoader']/method[@name='Write']/*/*[@name='buf']" name="array">1</attr>
   <attr path="/api/namespace/object[@cname='GdkPixmap']" name="parent">GdkDrawable</attr>
   <attr path="/api/namespace/object[@cname='GdkPixmap']/method[@name='CreateFromXpm']/*/*[@name='mask']" name="pass_as">out</attr>

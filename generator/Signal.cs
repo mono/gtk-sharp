@@ -427,8 +427,13 @@ namespace GtkSharp.Generation {
 			body.Initialize (gen_info, false, false, String.Empty);
 			sw.WriteLine ("\t\t\t{0}{1} ({2});", IsVoid ? "" : retval.MarshalType + " __ret = ", glue_name, GlueCallString);
 			body.Finish (sw, "");
-			if (!IsVoid)
+			if (!IsVoid) {
 				sw.WriteLine ("\t\t\treturn {0};", retval.FromNative ("__ret"));
+				var postRef = retval.PostFromNative ("__ret");
+				if (postRef != string.Empty)
+					sw.WriteLine ("\t\t\t" + postRef);
+
+			}
 			sw.WriteLine ("\t\t}\n");
 		}
 

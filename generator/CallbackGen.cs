@@ -172,8 +172,12 @@ namespace GtkSharp.Generation {
 			string call = "native_cb (" + InvokeString + ")";
 			if (retval.IsVoid)
 				sw.WriteLine ("\t\t\t" + call + ";");
-			else
+			else {
 				sw.WriteLine ("\t\t\t" + retval.CSType + " result = " + retval.FromNative (call) + ";");
+				var postRef = retval.PostFromNative (call);
+				if (postRef != string.Empty)
+					sw.WriteLine ("\t\t\t" + postRef);
+			}
 			body.Finish (sw, String.Empty);
 			if (!retval.IsVoid)
 				sw.WriteLine ("\t\t\treturn result;");

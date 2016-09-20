@@ -319,6 +319,10 @@ namespace GtkSharp.Generation {
 					sw.WriteLine(indent + "\t\t\t" + "else");
 					sw.WriteLine(indent + "\t\t\t\traw_ret = " + CName + call + ";");
 					sw.WriteLine(indent + "\t\t\t" + retval.CSType + " ret = " + retval.FromNative ("raw_ret") + ";");
+					var postRef = retval.PostFromNative ("raw_ret");
+					if (postRef != string.Empty)
+						sw.WriteLine (indent + "\t\t\t" + postRef);
+					sw.WriteLine ();
 				}
 			} else {
 				sw.Write(indent + "\t\t\t");
@@ -327,6 +331,9 @@ namespace GtkSharp.Generation {
 				else if (!cacheValue) {
 					sw.WriteLine(retval.MarshalType + " raw_ret = " + CName + call + ";");
 					sw.WriteLine(indent + "\t\t\t" + retval.CSType + " ret = " + retval.FromNative ("raw_ret") + ";");
+					var postRef = retval.PostFromNative ("raw_ret");
+					if (postRef != string.Empty)
+						sw.WriteLine (indent + "\t\t\t" + postRef);
 				}
 			}
 
