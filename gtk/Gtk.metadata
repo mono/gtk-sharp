@@ -800,15 +800,7 @@
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='Destroyed']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='Event']" name="name">ProcessEvent</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetChildRequisition']/*/*[@name='requisition']" name="pass_as">out</attr>
-  <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetColormap']" name="needs_ref">1</attr>
-  <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetDefaultColormap']" name="needs_ref">1</attr>
-  <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetDefaultStyle']" name="needs_ref">1</attr>
-  <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetDefaultVisual']" name="needs_ref">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetEvents']/return-type" name="type">GdkEventMask</attr>
-  <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetModifierStyle']" name="needs_ref">1</attr>
-  <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetParentWindow']" name="needs_ref">1</attr>
-  <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetStyle']" name="needs_ref">1</attr>
-  <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='GetVisual']" name="needs_ref">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='Intersect']/*/*[@name='intersection']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='IsFocus']" name="name">GetIsFocus</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='ListAccelClosures']" name="hidden">1</attr>

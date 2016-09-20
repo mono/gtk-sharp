@@ -41,17 +41,6 @@ namespace GLib {
 			g_object_add_toggle_ref (target.Handle, ToggleNotifyCallback, (IntPtr) gch);
 		}
 
-		public bool IsAlive {
-			get {
-				if (reference is WeakReference) {
-					WeakReference weak = reference as WeakReference;
-					return weak.IsAlive;
-				} else if (reference == null)
-					return false;
-				return true;
-			}
-		}
-
 		public IntPtr Handle {
 			get {
 				return handle;

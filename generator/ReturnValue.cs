@@ -31,6 +31,7 @@ namespace GtkSharp.Generation {
 		bool is_array;
 		bool elements_owned;
 		bool owned;
+		bool needs_ref;
 		string ctype = String.Empty;
 		string element_ctype = String.Empty;
 
@@ -43,6 +44,7 @@ namespace GtkSharp.Generation {
 				owned = elem.GetAttribute ("owned") == "true";
 				ctype = elem.GetAttribute("type");
 				element_ctype = elem.GetAttribute ("element_type");
+				needs_ref = elem.GetAttribute ("needs_ref") == "true";
 			}
 		}
 
@@ -133,6 +135,14 @@ namespace GtkSharp.Generation {
 				return String.Format ("GLib.Marshaller.NullTermPtrToStringArray ({0}, {1})", var, owned ? "true" : "false");
 			else
 				return IGen.FromNativeReturn (var);
+		}
+
+		public string PostFromNative (string var)
+		{
+			if (!needs_ref)
+				return string.Empty;
+
+			return "g_object_ref (" + var + ");";
 		}
 			
 		public string ToNative (string var)

@@ -95,8 +95,6 @@ namespace GLib {
 				Console.WriteLine ("Exception while disposing a " + this + " in Gtk#");
 				throw e;
 			}
-			if (owned)
-				g_object_unref (handle);
 			handle = IntPtr.Zero;
 			GC.SuppressFinalize (this);
 		}
@@ -112,7 +110,7 @@ namespace GLib {
 			ToggleRef tr;
 			lock(Objects)
 				Objects.TryGetValue (o, out tr);
-			if (tr != null && tr.IsAlive) {
+			if (tr != null) {
 				return tr.Target;
 			}
 
@@ -129,7 +127,7 @@ namespace GLib {
 			lock(Objects)
 				Objects.TryGetValue (o, out toggle_ref);
 
-			if (toggle_ref != null && toggle_ref.IsAlive)
+			if (toggle_ref != null)
 				obj = toggle_ref.Target;
 
 			if (obj != null && obj.Handle == o)
@@ -141,7 +139,8 @@ namespace GLib {
 				return null;
 			}
 
-			obj.owned = owned_ref;
+			if (owned_ref)
+				g_object_unref (o);
 			return obj;
 		}
 
