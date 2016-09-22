@@ -203,19 +203,19 @@ namespace GLib {
 					while (current != IntPtr.Zero) {
 						var temp = current;
 						current = Next (temp);
-						g_object_unref (temp);
+						g_object_unref (GetData (temp));
 					}
 				} else if (typeof (GLib.Opaque).IsAssignableFrom (element_type)) {
 					while (current != IntPtr.Zero) {
 						var temp = current;
 						current = Next (temp);
-						GLib.Opaque.GetOpaque (temp, element_type, true).Dispose ();
+						GLib.Opaque.GetOpaque (GetData (temp), element_type, true).Dispose ();
 					}
 				} else {
 					while (current != IntPtr.Zero) {
 						var temp = current;
 						current = Next (temp);
-						free_func (temp);
+						free_func (GetData (temp));
 					}
 				}
 			}
