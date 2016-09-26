@@ -25,27 +25,27 @@
 
 
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
-		static extern IntPtr gtk_tree_view_get_model(IntPtr raw);
-
-		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
-		static extern void gtk_tree_view_set_model(IntPtr raw, IntPtr model);
+		static extern IntPtr gtk_tree_view_new_with_model(IntPtr model);
 
 		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
-		static extern void g_object_unref (IntPtr raw);
+		static extern void g_object_ref (IntPtr raw);
 
-		[GLib.Property ("model")]
-		public Gtk.TreeModel Model {
-			get  {
-				IntPtr raw_ret = gtk_tree_view_get_model(Handle);
-				Gtk.TreeModel ret = Gtk.TreeModelAdapter.GetObject (raw_ret, false);
-				return ret;
+		public TreeView (Gtk.TreeModel model) : base (IntPtr.Zero)
+		{
+			if (GetType () != typeof (TreeView)) {
+				var vals = new GLib.Value[1];
+				var names = new IntPtr[1];
+				var param_count = 0;
+				if (model != null) {
+					names[param_count] = GLib.Marshaller.StringToPtrGStrdup ("model");
+					vals[param_count++] = new GLib.Value (model);
+				}
+				CreateNativeObject (names, vals, param_count);
+				return;
 			}
-			set  {
-				var storeHandle = value == null ? IntPtr.Zero : value.Handle;
-				gtk_tree_view_set_model(Handle, storeHandle);
-				if (storeHandle != IntPtr.Zero)
-					g_object_unref (storeHandle);
-			}
+			Raw = gtk_tree_view_new_with_model(model == null ? IntPtr.Zero : model.Handle);
+			if (model != null)
+				g_object_ref (model.Handle);
 		}
 
 		[Obsolete ("Use NodeView with NodeStores")]
