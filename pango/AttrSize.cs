@@ -29,11 +29,11 @@ namespace Pango {
 		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pango_attr_size_new_absolute (int size);
 
-		public AttrSize (int size) : this (pango_attr_size_new (size)) {}
+		public AttrSize (int size) : this (pango_attr_size_new (size), true) {}
 
-		public AttrSize (int size, bool absolute) : this (absolute ? pango_attr_size_new (size) : pango_attr_size_new_absolute (size)) {}
+		public AttrSize (int size, bool absolute) : this (absolute ? pango_attr_size_new (size) : pango_attr_size_new_absolute (size), true) {}
 
-		internal AttrSize (IntPtr raw) : base (raw) {}
+		internal AttrSize (IntPtr raw, bool owned) : base (raw, owned) {}
 
 		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int pangosharp_attr_size_get_size (IntPtr raw);

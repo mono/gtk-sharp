@@ -26,7 +26,7 @@ namespace Pango {
 		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pango_attr_family_new (IntPtr family);
 
-		public AttrFamily (string family) : base (NewAttrFamily (family)) {}
+		public AttrFamily (string family) : base (NewAttrFamily (family), true) {}
 
 		static IntPtr NewAttrFamily (string family)
 		{
@@ -36,7 +36,7 @@ namespace Pango {
 			return attr_raw;
 		}
 
-		internal AttrFamily (IntPtr raw) : base (raw) {}
+		internal AttrFamily (IntPtr raw, bool owned) : base (raw, owned) {}
 
 		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pangosharp_attr_string_get_value (IntPtr raw);

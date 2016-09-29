@@ -26,9 +26,9 @@ namespace Pango {
 		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pango_attr_scale_new (double scale);
 
-		public AttrScale (double scale) : this (pango_attr_scale_new (scale)) {}
+		public AttrScale (double scale) : this (pango_attr_scale_new (scale), true) {}
 
-		internal AttrScale (IntPtr raw) : base (raw) {}
+		internal AttrScale (IntPtr raw, bool owned) : base (raw, owned) {}
 
 		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern double pangosharp_attr_float_get_value (IntPtr raw);

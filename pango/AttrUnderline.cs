@@ -26,9 +26,9 @@ namespace Pango {
 		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pango_attr_underline_new (Pango.Underline underline);
 
-		public AttrUnderline (Pango.Underline underline) : this (pango_attr_underline_new (underline)) {}
+		public AttrUnderline (Pango.Underline underline) : this (pango_attr_underline_new (underline), true) {}
 
-		internal AttrUnderline (IntPtr raw) : base (raw) {}
+		internal AttrUnderline (IntPtr raw, bool owned) : base (raw, owned) {}
 
 		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int pangosharp_attr_int_get_value (IntPtr raw);

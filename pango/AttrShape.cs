@@ -26,9 +26,9 @@ namespace Pango {
 		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pango_attr_shape_new (ref Pango.Rectangle ink_rect, ref Pango.Rectangle logical_rect);
 
-		public AttrShape (Pango.Rectangle ink_rect, Pango.Rectangle logical_rect) : this (pango_attr_shape_new (ref ink_rect, ref logical_rect)) {}
+		public AttrShape (Pango.Rectangle ink_rect, Pango.Rectangle logical_rect) : this (pango_attr_shape_new (ref ink_rect, ref logical_rect), true) {}
 
-		internal AttrShape (IntPtr raw) : base (raw) {}
+		internal AttrShape (IntPtr raw, bool owned) : base (raw, owned) {}
 
 		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern Pango.Rectangle pangosharp_attr_shape_get_ink_rect (IntPtr raw);

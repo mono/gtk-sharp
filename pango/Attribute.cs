@@ -26,9 +26,10 @@ namespace Pango {
 		IntPtr raw;
 		bool owned;
 
-		internal Attribute (IntPtr raw)
+		internal Attribute (IntPtr raw, bool owned)
 		{
 			this.raw = raw;
+			this.owned = owned;
 		}
 
 		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
@@ -36,81 +37,56 @@ namespace Pango {
 
 		public static Attribute GetAttribute (IntPtr raw, bool owned)
 		{
-			Attribute attr;
 			switch (pangosharp_attribute_get_attr_type (raw)) {
 			case Pango.AttrType.Language:
-				attr = new AttrLanguage (raw);
-				break;
+				return new AttrLanguage (raw, owned);
 			case Pango.AttrType.Family:
-				attr = new AttrFamily (raw);
-				break;
+				return new AttrFamily (raw, owned);
 			case Pango.AttrType.Style:
-				attr = new AttrStyle (raw);
-				break;
+				return new AttrStyle (raw, owned);
 			case Pango.AttrType.Weight:
-				attr = new AttrWeight (raw);
-				break;
+				return new AttrWeight (raw, owned);
 			case Pango.AttrType.Variant:
-				attr = new AttrVariant (raw);
-				break;
+				return new AttrVariant (raw, owned);
 			case Pango.AttrType.Stretch:
-				attr = new AttrStretch (raw);
-				break;
+				return new AttrStretch (raw, owned);
 			case Pango.AttrType.Size:
-				attr = new AttrSize (raw);
-				break;
+				return new AttrSize (raw, owned);
 			case Pango.AttrType.FontDesc:
-				attr = new AttrFontDesc (raw);
-				break;
+				return new AttrFontDesc (raw, owned);
 			case Pango.AttrType.Foreground:
-				attr = new AttrForeground (raw);
-				break;
+				return new AttrForeground (raw, owned);
 			case Pango.AttrType.Background:
-				attr = new AttrBackground (raw);
-				break;
+				return new AttrBackground (raw, owned);
 			case Pango.AttrType.Underline:
-				attr = new AttrUnderline (raw);
-				break;
+				return new AttrUnderline (raw, owned);
 			case Pango.AttrType.Strikethrough:
-				attr = new AttrStrikethrough (raw);
-				break;
+				return new AttrStrikethrough (raw, owned);
 			case Pango.AttrType.Rise:
-				attr = new AttrRise (raw);
-				break;
+				return new AttrRise (raw, owned);
 			case Pango.AttrType.Shape:
-				attr = new AttrShape (raw);
-				break;
+				return new AttrShape (raw, owned);
 			case Pango.AttrType.Scale:
-				attr = new AttrScale (raw);
-				break;
+				return new AttrScale (raw, owned);
 			case Pango.AttrType.Fallback:
-				attr = new AttrFallback (raw);
-				break;
+				return new AttrFallback (raw, owned);
 #if GTK_SHARP_2_6
 			case Pango.AttrType.LetterSpacing:
-				attr = new AttrLetterSpacing (raw);
-				break;
+				return new AttrLetterSpacing (raw, owned);
 			case Pango.AttrType.UnderlineColor:
-				attr = new AttrUnderlineColor (raw);
-				break;
+				return new AttrUnderlineColor (raw, owned);
 			case Pango.AttrType.StrikethroughColor:
-				attr = new AttrStrikethroughColor (raw);
-				break;
+				return new AttrStrikethroughColor (raw, owned);
 #endif
 #if GTK_SHARP_2_12
 			case Pango.AttrType.Gravity:
-				attr = new AttrGravity (raw);
-				break;
+				return new AttrGravity (raw, owned);
 			case Pango.AttrType.GravityHint:
-				attr = new AttrGravityHint (raw);
-				break;
+				return new AttrGravityHint (raw, owned);
 #endif
 			default:
-				attr = new Attribute (raw);
-				break;
+				return new Attribute (raw, owned);
 			}
-			attr.owned = owned;
-			return attr;
 		}
 
 		public static Attribute GetAttribute (IntPtr raw)

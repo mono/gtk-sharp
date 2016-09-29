@@ -26,9 +26,9 @@ namespace Pango {
 		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pango_attr_style_new (Pango.Style style);
 
-		public AttrStyle (Pango.Style style) : this (pango_attr_style_new (style)) {}
+		public AttrStyle (Pango.Style style) : this (pango_attr_style_new (style), true) {}
 
-		internal AttrStyle (IntPtr raw) : base (raw) {}
+		internal AttrStyle (IntPtr raw, bool owned) : base (raw, owned) {}
 
 		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int pangosharp_attr_int_get_value (IntPtr raw);
