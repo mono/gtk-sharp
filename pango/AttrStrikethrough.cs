@@ -26,9 +26,9 @@ namespace Pango {
 		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pango_attr_strikethrough_new (bool strikethrough);
 
-		public AttrStrikethrough (bool strikethrough) : this (pango_attr_strikethrough_new (strikethrough)) {}
+		public AttrStrikethrough (bool strikethrough) : this (pango_attr_strikethrough_new (strikethrough), true) {}
 
-		internal AttrStrikethrough (IntPtr raw) : base (raw) {}
+		internal AttrStrikethrough (IntPtr raw, bool owned) : base (raw, owned) {}
 
 		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int pangosharp_attr_int_get_value (IntPtr raw);

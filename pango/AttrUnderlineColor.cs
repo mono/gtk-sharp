@@ -26,11 +26,11 @@ namespace Pango {
 		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pango_attr_underline_color_new (ushort red, ushort green, ushort blue);
 
-		public AttrUnderlineColor (ushort red, ushort green, ushort blue) : this (pango_attr_underline_color_new (red, green, blue)) {}
+		public AttrUnderlineColor (ushort red, ushort green, ushort blue) : this (pango_attr_underline_color_new (red, green, blue), true) {}
 
-		public AttrUnderlineColor (Pango.Color color) : this (pango_attr_underline_color_new (color.Red, color.Green, color.Blue)) {}
+		public AttrUnderlineColor (Pango.Color color) : this (pango_attr_underline_color_new (color.Red, color.Green, color.Blue), true) {}
 
-		internal AttrUnderlineColor (IntPtr raw) : base (raw) {}
+		internal AttrUnderlineColor (IntPtr raw, bool owned) : base (raw, owned) {}
 
 		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern Pango.Color pangosharp_attr_color_get_color (IntPtr raw);

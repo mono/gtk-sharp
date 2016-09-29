@@ -26,9 +26,9 @@ namespace Pango {
 		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pango_attr_stretch_new (Pango.Stretch stretch);
 
-		public AttrStretch (Pango.Stretch stretch) : this (pango_attr_stretch_new (stretch)) {}
+		public AttrStretch (Pango.Stretch stretch) : this (pango_attr_stretch_new (stretch), true) {}
 
-		internal AttrStretch (IntPtr raw) : base (raw) {}
+		internal AttrStretch (IntPtr raw, bool owned) : base (raw, owned) {}
 
 		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int pangosharp_attr_int_get_value (IntPtr raw);

@@ -26,11 +26,11 @@ namespace Pango {
 		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pango_attr_strikethrough_color_new (ushort red, ushort green, ushort blue);
 
-		public AttrStrikethroughColor (ushort red, ushort green, ushort blue) : this (pango_attr_strikethrough_color_new (red, green, blue)) {}
+		public AttrStrikethroughColor (ushort red, ushort green, ushort blue) : this (pango_attr_strikethrough_color_new (red, green, blue), true) {}
 
-		public AttrStrikethroughColor (Pango.Color color) : this (pango_attr_strikethrough_color_new (color.Red, color.Green, color.Blue)) {}
+		public AttrStrikethroughColor (Pango.Color color) : this (pango_attr_strikethrough_color_new (color.Red, color.Green, color.Blue), true) {}
 
-		internal AttrStrikethroughColor (IntPtr raw) : base (raw) {}
+		internal AttrStrikethroughColor (IntPtr raw, bool owned) : base (raw, owned) {}
 
 		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern Pango.Color pangosharp_attr_color_get_color (IntPtr raw);
