@@ -66,7 +66,7 @@ namespace GLib {
 		public static readonly GType Param = new GType ((IntPtr) TypeFundamentals.TypeParam);
 		public static readonly GType Object = new GType ((IntPtr) TypeFundamentals.TypeObject);
 
-		static Dictionary<IntPtr, Type> types = new Dictionary<IntPtr, Type> ();
+		static Dictionary<IntPtr, Type> types = new Dictionary<IntPtr, Type> (IntPtrEqualityComparer.Instance);
 		static Dictionary<Type, GType> gtypes = new Dictionary<Type, GType> ();
 
 		public static void Register (GType native_type, System.Type type)

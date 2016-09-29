@@ -192,6 +192,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="WeakObject.cs" />
+    <Compile Include="IntPtrEqualityComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

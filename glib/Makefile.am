@@ -40,6 +40,7 @@ sources =		 			\
 	Idle.cs					\
 	IgnoreClassInitializersAttribute.cs	\
 	InitiallyUnowned.cs			\
+	IntPtrEqualityComparer.cs	\
 	IOChannel.cs				\
 	IWrapper.cs				\
 	ListBase.cs				\
