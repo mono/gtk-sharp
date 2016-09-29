@@ -37,7 +37,7 @@ namespace GLib {
 		bool disposed = false;
 		bool owned = true;
 		Hashtable data;
-		static Dictionary<IntPtr, ToggleRef> Objects = new Dictionary<IntPtr, ToggleRef>();
+		static Dictionary<IntPtr, ToggleRef> Objects = new Dictionary<IntPtr, ToggleRef>(IntPtrEqualityComparer.Instance);
 		static object lockObject = new object ();
 		static List<ToggleRef> PendingDestroys = new List<ToggleRef> ();
 		static bool idle_queued;
