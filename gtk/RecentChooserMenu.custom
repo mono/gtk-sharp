@@ -1,0 +1,8 @@
+		[Obsolete ("Use GetSelectedUris instead")]
+		public string GetUris (out ulong length)
+		{
+			var res = GetSelectedUris (out length);
+			if (length > 0)
+				return res [0];
+			return null;
+		}
