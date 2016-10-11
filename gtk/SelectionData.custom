@@ -76,3 +76,19 @@
 					return new Gdk.Atom [0];
 			}
 		}
+
+		[Obsolete ("Use SetSelectedUris instead")]
+		public bool SetUris(string uris)
+		{
+			return SetSelectedUris (new [] { uris });
+		}
+
+		[Obsolete ("Use SelectedUris instead")]
+		public string Uris {
+			get {
+				var res = SelectedUris;
+				if (res.Length > 0)
+					return res [0];
+				return null;
+			}
+		}

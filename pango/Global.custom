@@ -49,4 +49,13 @@
 			return result;
 		}
 
+		[Obsolete ("Use SplitFileListArray")]
+		public static string SplitFileList (string str)
+		{
+			var res = SplitFileListArray (str);
+			if (res.Length > 0)
+				return res [0];
+			return null;
+		}
+
 

@@ -104,6 +104,7 @@
   <move-node path="/api/namespace/class[@name='Version']/method[@cname='pango_version_string']">/api/namespace/class[@name='Global']</move-node>
   <attr path="/api/namespace/class[@cname='PangoGlobal']/method[@cname='pango_split_file_list']/return-type" name="null_term_array">1</attr>
   <attr path="/api/namespace/class[@cname='PangoGlobal']/method[@cname='pango_split_file_list']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/class[@cname='PangoGlobal']/method[@cname='pango_split_file_list']" name="name">SplitFileListArray</attr>
   <attr path="/api/namespace/class[@cname='PangoGlobal']/method[@cname='pango_parse_enum']/parameters/parameter[@name='possible_values']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='PangoFont']/method[@cname='pango_font_get_coverage']/return-type" name="owned">true</attr>
   <attr path="/api/namespace/struct[@cname='PangoCoverage']/method[@cname='pango_coverage_from_bytes']/return-type" name="owned">true</attr>
