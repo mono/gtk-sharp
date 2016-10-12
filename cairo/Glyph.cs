@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 namespace Cairo
 {
 	[StructLayout(LayoutKind.Sequential)]
-	public struct Glyph
+	public struct Glyph : IEquatable<Glyph>
 	{
 		internal long index;
 		internal double x;
@@ -66,6 +66,11 @@ namespace Cairo
 			if (obj is Glyph)
 				return this == (Glyph)obj;
 			return false;
+		}
+
+		public bool Equals (Glyph other)
+		{
+			return this == other;
 		}
 
 		public override int GetHashCode ()

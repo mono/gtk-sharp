@@ -37,7 +37,7 @@ using System.Runtime.InteropServices;
 namespace Cairo
 {
 	[StructLayout (LayoutKind.Sequential)]
-	public struct FontExtents
+	public struct FontExtents : IEquatable<FontExtents>
 	{
 		double ascent;
 		double descent;
@@ -84,6 +84,11 @@ namespace Cairo
 			if (obj is FontExtents)
 				return this == (FontExtents) obj;
 			return false;
+		}
+
+		public bool Equals (FontExtents other)
+		{
+			return this == other;
 		}
 
 		public override int GetHashCode ()

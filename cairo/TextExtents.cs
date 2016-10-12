@@ -34,7 +34,7 @@ using System.Runtime.InteropServices;
 namespace Cairo
 {
 	[StructLayout (LayoutKind.Sequential)]
-	public struct TextExtents
+	public struct TextExtents : IEquatable<TextExtents>
 	{
 		double xbearing;
 		double ybearing;
@@ -78,6 +78,11 @@ namespace Cairo
 			if (obj is TextExtents)
 				return this == (TextExtents)obj;
 			return false;
+		}
+
+		public bool Equals (TextExtents other)
+		{
+			return this == other;
 		}
 
 		public override int GetHashCode ()

@@ -23,7 +23,7 @@ using System;
 
 namespace Gdk {
 	
-	public struct Size { 
+	public struct Size : IEquatable<Size> { 
 		
 		int width, height;
 
@@ -100,6 +100,11 @@ namespace Gdk {
 				return false;
 
 			return (this == (Size) o);
+		}
+
+		public bool Equals (Size other)
+		{
+			return this == other;
 		}
 
 		public override int GetHashCode ()
