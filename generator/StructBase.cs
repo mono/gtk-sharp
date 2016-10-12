@@ -138,6 +138,13 @@ namespace GtkSharp.Generation {
 			return base.Validate ();
 		}
 
+		string GetInterfaceImplExtra ()
+		{
+			if (Elem.HasAttribute ("iequatable") && Elem.GetAttribute ("iequatable") == "1")
+				return " : IEquatable<" + Name + ">";
+			return string.Empty;
+		}
+
 		public override void Generate (GenerationInfo gen_info)
 		{
 			bool need_close = false;
@@ -161,7 +168,7 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\t[StructLayout(LayoutKind.Sequential)]");
 			GenerateAttribute (sw);
 			string access = IsInternal ? "internal" : "public";
-			sw.WriteLine ("\t" + access + " struct " + Name + " {");
+			sw.WriteLine ("\t" + access + " struct " + Name + GetInterfaceImplExtra () + " {");
 			sw.WriteLine ();
 
 			need_read_native = false;

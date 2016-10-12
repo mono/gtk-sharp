@@ -949,4 +949,5 @@
   <attr path="/api/namespace/boxed[@cname='GtkSelectionData']/method[@cname='gtk_selection_data_set_uris']" name="name">SetSelectedUris</attr>
   <attr path="/api/namespace/boxed[@cname='GtkRecentInfo']/method[@cname='gtk_recent_info_get_applications']" name="name">GetRecentApplications</attr>
   <attr path="/api/namespace/boxed[@cname='GtkRecentInfo']/method[@cname='gtk_recent_info_get_groups']" name="name">GetRecentGroups</attr>
+  <attr path="/api/namespace/boxed[@cname='GtkTreeIter']" name="iequatable">1</attr>
 </metadata>
