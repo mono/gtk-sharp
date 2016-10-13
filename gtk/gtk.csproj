@@ -1786,5 +1786,6 @@
     <Compile Include="TreeNodeValueAttribute.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="IntPtrEqualityComparer.cs" />
   </ItemGroup>
 </Project>

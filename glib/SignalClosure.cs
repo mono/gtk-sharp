@@ -23,6 +23,7 @@ namespace GLib {
 
 	using System;
 	using System.Collections;
+	using System.Collections.Generic;
 	using System.Runtime.InteropServices;
 
 	internal class ClosureInvokedArgs : EventArgs {
@@ -62,7 +63,7 @@ namespace GLib {
 		GCHandle? gch;
 		internal bool before_closure;
 
-		static Hashtable closures = new Hashtable ();
+		static Dictionary<IntPtr, SignalClosure> closures = new Dictionary<IntPtr, SignalClosure> (IntPtrEqualityComparer.Instance);
 
 		public SignalClosure (IntPtr obj, string signal_name, System.Type args_type, bool before_closure)
 		{
@@ -181,9 +182,9 @@ namespace GLib {
 
 		static void NotifyCallback (IntPtr data, IntPtr raw_closure)
 		{
-			SignalClosure closure = closures [raw_closure] as SignalClosure;
-			if (closure != null)
-				closure.Dispose ();
+			SignalClosure closure;
+			if (closures.TryGetValue (raw_closure, out closure))
+				closure.Dispose();
 		}
 
 		static ClosureNotify notify_handler;

@@ -65,7 +65,7 @@ namespace GLib {
         public class Source {
 		private Source () {}
 		
-		internal static Hashtable source_handlers = new Hashtable ();
+		internal static Dictionary<uint, SourceProxy> source_handlers = new Dictionary<uint, SourceProxy>();
 		
 		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool g_source_remove (uint tag);
@@ -76,8 +76,8 @@ namespace GLib {
 			bool ret = true;
 
 			lock (Source.source_handlers) {
-				if (source_handlers.Contains (tag)) {
-					var handler = (SourceProxy)source_handlers [tag];
+				SourceProxy handler;
+				if (source_handlers.TryGetValue (tag, out handler)) {
 					handler.Remove ();
 					ret = g_source_remove (tag);
 				}

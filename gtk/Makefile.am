@@ -22,6 +22,7 @@ sources = 				\
 	BindingAttribute.cs		\
 	ChildPropertyAttribute.cs	\
 	ITreeNode.cs			\
+	IntPtrEqualityComparer.cs	\
 	Key.cs				\
 	MoveFocusHandler.cs		\
 	NodeCellDataFunc.cs		\

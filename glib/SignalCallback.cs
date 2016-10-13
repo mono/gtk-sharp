@@ -23,6 +23,7 @@
 namespace GLib {
 	using System;
 	using System.Collections;
+	using System.Collections.Generic;
 	using System.Runtime.InteropServices;
 
 	[Obsolete ("Replaced by GLib.Signal.")]
@@ -32,7 +33,7 @@ namespace GLib {
 		protected static int _NextKey = 0;
 
 		// Hashtable containing refs to all current instances.
-		protected static Hashtable _Instances = new Hashtable ();
+		protected static Dictionary<int, SignalCallback> _Instances = new Dictionary<int, SignalCallback> ();
 
 		// protected instance members
 		protected GLib.Object _obj;
