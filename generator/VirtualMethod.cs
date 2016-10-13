@@ -80,9 +80,9 @@ namespace GtkSharp.Generation {
 				call_string = "__obj." + Name.Substring (3) + " = " + call;
 
 			sw.WriteLine ("\t\t[UnmanagedFunctionPointer (CallingConvention.Cdecl)]");
-			sw.WriteLine ("\t\tdelegate " + MarshalReturnType + " " + Name + "Delegate (" + parms.ImportSignature + ");");
+			sw.WriteLine ("\t\tdelegate " + MarshalReturnType + " " + Name + "Delegate (" + parms.CallbackImportSignature + ");");
 			sw.WriteLine ();
-			sw.WriteLine ("\t\tstatic " + MarshalReturnType + " " + Name + "Callback (" + parms.ImportSignature + ")");
+			sw.WriteLine ("\t\tstatic " + MarshalReturnType + " " + Name + "Callback (" + parms.CallbackImportSignature + ")");
 			sw.WriteLine ("\t\t{");
 			string unconditional = call.Unconditional ("\t\t\t");
 			if (unconditional.Length > 0)

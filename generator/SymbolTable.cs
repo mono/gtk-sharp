@@ -267,6 +267,14 @@ namespace GtkSharp.Generation {
 				return "";
 			return gen.ToNativeReturnType;
 		}
+
+		public string GetMarshalCallbackType (string c_type)
+		{
+			IGeneratable gen = this [c_type];
+			if (gen == null)
+				return "";
+			return gen.MarshalCallbackType;
+		}
 		
 		public string GetMarshalType(string c_type)
 		{

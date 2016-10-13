@@ -101,7 +101,7 @@ namespace GtkSharp.Generation {
 					Parameter p = parms [i];
 					if (p.PassAs != "" && !(p.Generatable is StructBase))
 						result += p.PassAs + " ";
-					result += (p.MarshalType + " arg" + i);
+					result += (p.MarshalCallbackType + " arg" + i);
 				}
 
 				return result;
@@ -222,10 +222,7 @@ namespace GtkSharp.Generation {
 						sw.WriteLine ("\t\t\t\t\targs.Args[" + (idx - 1) + "] = " + p.FromNative ("arg" + idx) + ";");
 						sw.WriteLine ("\t\t\t\t}");
 					} else {
-						if (igen is StructBase && p.PassAs != "out")
-							sw.WriteLine ("\t\t\t\targs.Args[" + (idx - 1) + "] = arg" + idx + ";");
-						else
-							sw.WriteLine ("\t\t\t\targs.Args[" + (idx - 1) + "] = " + p.FromNative ("arg" + idx) + ";");
+						sw.WriteLine ("\t\t\t\targs.Args[" + (idx - 1) + "] = " + p.FromNative ("arg" + idx) + ";");
 					}
 				}
 				if (igen is StructBase && p.PassAs == "ref")
@@ -366,7 +363,7 @@ namespace GtkSharp.Generation {
 					}
 
 					p.CallName = p.Name;
-					string call_parm = p.CallString;
+					string call_parm = p.CallStringCallback;
 
 					if (p.IsUserData && parms.IsHidden (p) && !parms.HideData && (i == 1 || parms [i - 1].Scope != "notified")) {
 						call_parm = "IntPtr.Zero";
@@ -424,11 +421,11 @@ namespace GtkSharp.Generation {
 
 			StreamWriter sw = gen_info.Writer;
 			sw.WriteLine ("\t\t[DllImport (\"{0}\", CallingConvention = CallingConvention.Cdecl)]", gen_info.GluelibName);
-			sw.WriteLine ("\t\tstatic extern {0} {1} ({2});\n", retval.MarshalType, glue_name, parms.ImportSignature);
+			sw.WriteLine ("\t\tstatic extern {0} {1} ({2});\n", retval.MarshalType, glue_name, parms.CallbackImportSignature);
 			GenVMDeclaration (sw, null);
 			sw.WriteLine ("\t\t{");
 			MethodBody body = new MethodBody (parms);
-			body.Initialize (gen_info, false, false, String.Empty);
+			body.Initialize (gen_info, false, false, String.Empty, true);
 			sw.WriteLine ("\t\t\t{0}{1} ({2});", IsVoid ? "" : retval.MarshalType + " __ret = ", glue_name, GlueCallString);
 			body.Finish (sw, "");
 			if (!IsVoid) {
@@ -508,7 +505,7 @@ namespace GtkSharp.Generation {
 			string glue_name = String.Empty;
 			ManagedCallString call = new ManagedCallString (parms, true);
 			sw.WriteLine ("\t\t[UnmanagedFunctionPointer (CallingConvention.Cdecl)]");
-			sw.WriteLine ("\t\tdelegate " + retval.ToNativeType + " " + Name + "VMDelegate (" + parms.ImportSignature + ");\n");
+			sw.WriteLine ("\t\tdelegate " + retval.ToNativeType + " " + Name + "VMDelegate (" + parms.CallbackImportSignature + ");\n");
 
 			if (use_glue) {
 				glue = gen_info.GlueWriter;
@@ -526,7 +523,7 @@ namespace GtkSharp.Generation {
 			}
 
 			sw.WriteLine ("\t\tstatic {0} {1};\n", Name + "VMDelegate", Name + "VMCallback");
-			sw.WriteLine ("\t\tstatic " + retval.ToNativeType + " " + Name.ToLower() + "_cb (" + parms.ImportSignature + ")");
+			sw.WriteLine ("\t\tstatic " + retval.ToNativeType + " " + Name.ToLower() + "_cb (" + parms.CallbackImportSignature + ")");
 			sw.WriteLine ("\t\t{");
 			string unconditional = call.Unconditional ("\t\t\t");
 			if (unconditional.Length > 0)

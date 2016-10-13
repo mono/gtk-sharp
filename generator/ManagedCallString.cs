@@ -99,11 +99,7 @@ namespace GtkSharp.Generation {
 				} else {
 					ret += indent + igen.QualifiedName + " my" + p.Name;
 					if (p.PassAs == "ref") {
-						ret += " = ";
-						if (p.Generatable is StructBase)
-							ret += p.Name;
-						else
-							ret += p.FromNative (p.Name);
+						ret += " = " + p.FromNative (p.Name);
 					}
 					ret += ";\n";
 				}
@@ -125,9 +121,6 @@ namespace GtkSharp.Generation {
 
 				if (p.Generatable is CallbackGen)
 					result [i] += p.Name + "_invoker.Handler";
-				else if (p.Generatable is StructBase) {
-					result [i] += ((bool)special [i]) ? "my" + p.Name : p.Name;
-				}
 				else
 					result [i] += ((bool)special[i]) ? "my" + p.Name : p.FromNative (p.Name);
 			}
@@ -149,8 +142,7 @@ namespace GtkSharp.Generation {
 				if (igen is CallbackGen)
 					continue;
 				if (igen is StructBase) {
-					if (p.PassAs == "out")
-						ret += indent + String.Format ("if ({0} != IntPtr.Zero) System.Runtime.InteropServices.Marshal.StructureToPtr (my{0}, {0}, false);\n", p.Name);
+					ret += indent + String.Format ("if ({0} != IntPtr.Zero) System.Runtime.InteropServices.Marshal.StructureToPtr (my{0}, {0}, false);\n", p.Name);
 				}
 				else if (!(igen is ByRefGen))
 					ret += indent + p.Name + " = " + igen.ToNativeReturn ("my" + p.Name) + ";\n";

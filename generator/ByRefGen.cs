@@ -33,6 +33,12 @@ namespace GtkSharp.Generation {
 				return "ref " + QualifiedName;
 			}
 		}
+
+		public override string MarshalCallbackType {
+			get {
+				return "ref " + QualifiedName;
+			}
+		}
 	}
 }
 
