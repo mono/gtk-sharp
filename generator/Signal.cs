@@ -363,7 +363,7 @@ namespace GtkSharp.Generation {
 					}
 
 					p.CallName = p.Name;
-					string call_parm = p.CallStringCallback;
+					string call_parm = p.CallString;
 
 					if (p.IsUserData && parms.IsHidden (p) && !parms.HideData && (i == 1 || parms [i - 1].Scope != "notified")) {
 						call_parm = "IntPtr.Zero";
@@ -421,11 +421,11 @@ namespace GtkSharp.Generation {
 
 			StreamWriter sw = gen_info.Writer;
 			sw.WriteLine ("\t\t[DllImport (\"{0}\", CallingConvention = CallingConvention.Cdecl)]", gen_info.GluelibName);
-			sw.WriteLine ("\t\tstatic extern {0} {1} ({2});\n", retval.MarshalType, glue_name, parms.CallbackImportSignature);
+			sw.WriteLine ("\t\tstatic extern {0} {1} ({2});\n", retval.MarshalType, glue_name, parms.ImportSignature);
 			GenVMDeclaration (sw, null);
 			sw.WriteLine ("\t\t{");
 			MethodBody body = new MethodBody (parms);
-			body.Initialize (gen_info, false, false, String.Empty, true);
+			body.Initialize (gen_info, false, false, String.Empty, false);
 			sw.WriteLine ("\t\t\t{0}{1} ({2});", IsVoid ? "" : retval.MarshalType + " __ret = ", glue_name, GlueCallString);
 			body.Finish (sw, "");
 			if (!IsVoid) {
