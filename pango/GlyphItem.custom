@@ -24,6 +24,9 @@
 		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr pango_glyph_item_apply_attrs(ref Pango.GlyphItem raw, IntPtr text, IntPtr list);
 
+		[DllImport("libpango-1.0-0.dll", EntryPoint="pango_glyph_item_free", CallingConvention = CallingConvention.Cdecl)]
+		static extern void pango_glyph_item_free_ptr (IntPtr raw);
+
 		public GlyphItem[] ApplyAttrs (string text, Pango.AttrList list)
 		{
 			IntPtr native_text = GLib.Marshaller.StringToPtrGStrdup (text);
@@ -31,7 +34,7 @@
 			GLib.Marshaller.Free (native_text);
 			if (list_handle == IntPtr.Zero)
 				return new GlyphItem [0];
-			return GLib.Marshaller.ListPtrToArray<GlyphItem> (list_handle, typeof (GLib.SList), true, true, pango_glyph_item_free);
+			return GLib.Marshaller.ListPtrToArray<GlyphItem> (list_handle, typeof (GLib.SList), true, true, pango_glyph_item_free_ptr);
 		}
 
 		[Obsolete ("Replaced by Glyphs property")]

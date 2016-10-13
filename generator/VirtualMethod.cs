@@ -61,7 +61,7 @@ namespace GtkSharp.Generation {
 
 		public string MarshalReturnType {
 			get {
-				return SymbolTable.Table.GetToNativeReturnType (elem["return-type"].GetAttribute("type"));
+				return SymbolTable.Table.GetMarshalReturnType (elem["return-type"].GetAttribute("type"));
 			}
 		}
 

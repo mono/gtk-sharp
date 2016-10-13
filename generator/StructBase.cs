@@ -62,9 +62,15 @@ namespace GtkSharp.Generation {
 			}
 		}
 
-		public override string MarshalType {
+		public override string MarshalReturnType {
 			get {
 				return "IntPtr";
+			}
+		}
+
+		public override string MarshalType {
+			get {
+				return "ref " + QualifiedName;
 			}
 		}
 
@@ -74,12 +80,12 @@ namespace GtkSharp.Generation {
 
 		public override string CallByName ()
 		{
-			return "this_as_native";
+			return "ref this";
 		}
 
 		public override string CallByName (string var)
 		{
-			return var + "_as_native";
+			return "ref " + var;
 		}
 
 		public override string FromNative (string var)
@@ -223,15 +229,11 @@ namespace GtkSharp.Generation {
 
 		public override void Prepare (StreamWriter sw, string indent)
 		{
-			sw.WriteLine (indent + "IntPtr this_as_native = System.Runtime.InteropServices.Marshal.AllocHGlobal (System.Runtime.InteropServices.Marshal.SizeOf (this));");
-			sw.WriteLine (indent + "System.Runtime.InteropServices.Marshal.StructureToPtr (this, this_as_native, false);");
 		}
 
 		public override void Finish (StreamWriter sw, string indent)
 		{
 			need_read_native = true;
-			sw.WriteLine (indent + "ReadNative (this_as_native, ref this);");
-			sw.WriteLine (indent + "System.Runtime.InteropServices.Marshal.FreeHGlobal (this_as_native);");
 		}
 	}
 }
