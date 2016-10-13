@@ -30,7 +30,6 @@ namespace GtkSharp.Generation {
 	public abstract class StructBase : ClassBase, IManualMarshaler {
 	
 		new ArrayList fields = new ArrayList ();
-		bool need_read_native = false;
 
 		protected StructBase (XmlElement ns, XmlElement elem) : base (ns, elem)
 		{
@@ -170,13 +169,10 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\t" + access + " struct " + Name + " {");
 			sw.WriteLine ();
 
-			need_read_native = false;
 			GenFields (gen_info);
 			sw.WriteLine ();
 			GenCtors (gen_info);
 			GenMethods (gen_info, null, this);
-			if (need_read_native)
-				GenReadNative (sw);
 
 			if (!need_close)
 				return;
@@ -218,22 +214,12 @@ namespace GtkSharp.Generation {
 			base.GenCtors (gen_info);
 		}
 
-		void GenReadNative (StreamWriter sw)
-		{
-			sw.WriteLine ("\t\tstatic void ReadNative (IntPtr native, ref {0} target)", QualifiedName);
-			sw.WriteLine ("\t\t{");
-			sw.WriteLine ("\t\t\ttarget = New (native);");
-			sw.WriteLine ("\t\t}");
-			sw.WriteLine ();
-		}
-
 		public override void Prepare (StreamWriter sw, string indent)
 		{
 		}
 
 		public override void Finish (StreamWriter sw, string indent)
 		{
-			need_read_native = true;
 		}
 	}
 }
