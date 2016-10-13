@@ -179,7 +179,8 @@ namespace Gtk {
 			get {
 				var raw_ret = gtk_get_current_event ();
 				var ret = Gdk.Event.GetEvent (raw_ret);
-				gdk_event_free (raw_ret);
+				if (raw_ret != IntPtr.Zero)
+					gdk_event_free (raw_ret);
 				return ret;
 			}
 		}
