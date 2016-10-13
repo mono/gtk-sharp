@@ -509,11 +509,10 @@ namespace GtkSharp.Generation {
 
 		public override string[] Finish {
 			get {
-				string[] result = new string [PassAs == string.Empty ? 1 : 2];
-				int i = 0;
+				string[] result = new string [PassAs == "out" ? 2 : 0];
 				if (PassAs == "out") {
-					result [i++] = CallName + " = " + FromNative ("native_" + CallName) + ";";
-					result [i++] = (Generatable as IManualMarshaler).ReleaseNative ("native_" + CallName) + ";";
+					result [0] = CallName + " = " + FromNative ("native_" + CallName) + ";";
+					result [1] = (Generatable as IManualMarshaler).ReleaseNative ("native_" + CallName) + ";";
 				}
 				return result;
 			}
