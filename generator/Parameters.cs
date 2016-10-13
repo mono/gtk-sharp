@@ -529,10 +529,7 @@ namespace GtkSharp.Generation {
 
 		public override string MarshalType {
 			get {
-				if (PassAs == "out")
-					return "IntPtr";
-				else
-					return "ref " + Generatable.QualifiedName;
+				return "ref " + Generatable.QualifiedName;
 			}
 		}
 
@@ -545,7 +542,7 @@ namespace GtkSharp.Generation {
 		public override string[] Prepare {
 			get {
 				if (PassAs == "out")
-					return new string [] { "IntPtr native_" + CallName + " = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (" + Generatable.QualifiedName + ")));"};
+					return new string [] { CallName + " = new " + Generatable.QualifiedName + "();"};
 				return new string [0];
 			}
 		}
@@ -561,10 +558,7 @@ namespace GtkSharp.Generation {
 
 		public override string CallString {
 			get {
-				if (PassAs == "out")
-					return "native_" + CallName;
-				else
-					return "ref " + CallName;
+				return "ref " + CallName;
 			}
 		}
 
@@ -576,12 +570,7 @@ namespace GtkSharp.Generation {
 
 		public override string[] Finish {
 			get {
-				string[] result = new string [PassAs == "out" ? 2 : 0];
-				if (PassAs == "out") {
-					result [0] = CallName + " = " + FromNative ("native_" + CallName) + ";";
-					result [1] = (Generatable as IManualMarshaler).ReleaseNative ("native_" + CallName) + ";";
-				}
-				return result;
+				return new string [0];
 			}
 		}
 
@@ -605,10 +594,7 @@ namespace GtkSharp.Generation {
 
 		public override string NativeSignature {
 			get {
-				if (PassAs == "out")
-					return "IntPtr " + CallName;
-				else
-					return "ref " + Generatable.QualifiedName + " " + CallName;
+				return "ref " + Generatable.QualifiedName + " " + CallName;
 			}
 		}
 	}
