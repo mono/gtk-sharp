@@ -29,8 +29,12 @@
 			return ret;
 		}
 
-		public int IterNChildren () {
-			int raw_ret = gtk_tree_model_iter_n_children (Handle, IntPtr.Zero);
+		[DllImport("libgtk-win32-2.0-0.dll", EntryPoint="gtk_tree_model_iter_n_children", CallingConvention = CallingConvention.Cdecl)]
+		static extern int gtk_tree_model_iter_n_children_ptr(IntPtr raw, IntPtr iter);
+
+		public int IterNChildren ()
+		{
+			int raw_ret = gtk_tree_model_iter_n_children_ptr (Handle, IntPtr.Zero);
 			int ret = raw_ret;
 			return ret;
 		}

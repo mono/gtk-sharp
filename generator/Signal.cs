@@ -216,13 +216,17 @@ namespace GtkSharp.Generation {
 				IGeneratable igen = p.Generatable;
 				if (p.PassAs != "out") {
 					if (igen is ManualGen) {
-						sw.WriteLine("\t\t\t\tif (arg{0} == IntPtr.Zero)", idx);
-						sw.WriteLine("\t\t\t\t\targs.Args[{0}] = null;", idx - 1);
-						sw.WriteLine("\t\t\t\telse {");
-						sw.WriteLine("\t\t\t\t\targs.Args[" + (idx - 1) + "] = " + p.FromNative ("arg" + idx)  + ";");
-						sw.WriteLine("\t\t\t\t}");
-					} else
-						sw.WriteLine("\t\t\t\targs.Args[" + (idx - 1) + "] = " + p.FromNative ("arg" + idx)  + ";");
+						sw.WriteLine ("\t\t\t\tif (arg{0} == IntPtr.Zero)", idx);
+						sw.WriteLine ("\t\t\t\t\targs.Args[{0}] = null;", idx - 1);
+						sw.WriteLine ("\t\t\t\telse {");
+						sw.WriteLine ("\t\t\t\t\targs.Args[" + (idx - 1) + "] = " + p.FromNative ("arg" + idx) + ";");
+						sw.WriteLine ("\t\t\t\t}");
+					} else {
+						if (igen is StructBase && p.PassAs != "out")
+							sw.WriteLine ("\t\t\t\targs.Args[" + (idx - 1) + "] = arg" + idx + ";");
+						else
+							sw.WriteLine ("\t\t\t\targs.Args[" + (idx - 1) + "] = " + p.FromNative ("arg" + idx) + ";");
+					}
 				}
 				if (igen is StructBase && p.PassAs == "ref")
 					finish += "\t\t\t\tif (arg" + idx + " != IntPtr.Zero) System.Runtime.InteropServices.Marshal.StructureToPtr (args.Args[" + (idx-1) + "], arg" + idx + ", false);\n";

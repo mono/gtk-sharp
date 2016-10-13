@@ -99,10 +99,7 @@
 
 			int InvokeNative (KeyEventStruct evnt)
 			{
-				IntPtr native_evnt = GLib.Marshaller.StructureToPtrAlloc (evnt);
-				int result = native_cb (native_evnt, data);
-				evnt = KeyEventStruct.New (native_evnt);
-				Marshal.FreeHGlobal (native_evnt);
+				int result = native_cb (ref evnt, data);
 				return result;
 			}
 		}
