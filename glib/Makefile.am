@@ -28,6 +28,7 @@ sources =		 			\
 	DestroyNotify.cs			\
 	EnumWrapper.cs				\
 	ExceptionManager.cs			\
+	FastActivator.cs			\
 	FileUtils.cs				\
 	Format.cs				\
 	GException.cs				\
