@@ -230,11 +230,14 @@ namespace GLib {
 
 		public Delegate Handler {
 			get {
-				InvocationHint hint = (InvocationHint) Marshal.PtrToStructure (g_signal_get_invocation_hint (tref.Handle), typeof (InvocationHint));
-				if (hint.run_type == Flags.RunFirst)
-					return tref.Target.BeforeSignals [name] as Delegate;
-				else
-					return tref.Target.AfterSignals [name] as Delegate;
+				unsafe
+				{
+					InvocationHint *hint = (InvocationHint*)g_signal_get_invocation_hint (tref.Handle);
+					if (hint->run_type == Flags.RunFirst)
+						return tref.Target.BeforeSignals [name] as Delegate;
+					else
+						return tref.Target.AfterSignals [name] as Delegate;
+				}
 			}
 		}
 
