@@ -142,7 +142,11 @@ namespace GtkSharp.Generation {
 				if (igen is CallbackGen)
 					continue;
 				if (igen is StructBase) {
-					ret += indent + String.Format ("if ({0} != IntPtr.Zero) System.Runtime.InteropServices.Marshal.StructureToPtr (my{0}, {0}, false);\n", p.Name);
+					if (SymbolTable.Table.IsBlittable (igen)) {
+						ret += indent + string.Format ("unsafe {{ if ({1} != IntPtr.Zero) *({0}*){1} = my{1}; }}\n", p.CSType, p.Name);
+					} else {
+						ret += indent + String.Format ("if ({0} != IntPtr.Zero) System.Runtime.InteropServices.Marshal.StructureToPtr (my{0}, {0}, false);\n", p.Name);
+					}
 				}
 				else if (!(igen is ByRefGen))
 					ret += indent + p.Name + " = " + igen.ToNativeReturn ("my" + p.Name) + ";\n";

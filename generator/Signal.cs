@@ -225,9 +225,13 @@ namespace GtkSharp.Generation {
 						sw.WriteLine ("\t\t\t\targs.Args[" + (idx - 1) + "] = " + p.FromNative ("arg" + idx) + ";");
 					}
 				}
-				if (igen is StructBase && p.PassAs == "ref")
-					finish += "\t\t\t\tif (arg" + idx + " != IntPtr.Zero) System.Runtime.InteropServices.Marshal.StructureToPtr (args.Args[" + (idx-1) + "], arg" + idx + ", false);\n";
-				else if (p.PassAs != "")
+				if (igen is StructBase && p.PassAs == "ref") {
+					if (SymbolTable.Table.IsBlittable (SymbolTable.Table [igen.CName])) {
+						finish += "\t\t\t\tunsafe { if (arg" + idx + " != IntPtr.Zero) " + string.Format ("*({0}*){1} = my{1}", p.CSType, p.Name) + "; }\n";
+					} else {
+						finish += "\t\t\t\tif (arg" + idx + " != IntPtr.Zero) System.Runtime.InteropServices.Marshal.StructureToPtr (args.Args[" + (idx - 1) + "], arg" + idx + ", false);\n";
+					}
+				} else if (p.PassAs != "")
 					finish += "\t\t\t\targ" + idx + " = " + igen.ToNativeReturn ("((" + p.CSType + ")args.Args[" + (idx - 1) + "])") + ";\n";
 			}
 			return finish;

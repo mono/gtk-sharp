@@ -29,7 +29,7 @@ namespace GtkSharp.Generation {
 
 	public abstract class StructBase : ClassBase, IManualMarshaler {
 	
-		new ArrayList fields = new ArrayList ();
+		internal new ArrayList fields = new ArrayList ();
 
 		protected StructBase (XmlElement ns, XmlElement elem) : base (ns, elem)
 		{
@@ -219,38 +219,6 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ();
 		}
 
-		static bool IsFullOfPrimitives (IGeneratable t)
-		{
-			if (t is SimpleGen)
-				return true;
-			if (t is EnumGen)
-				return true;
-			if (t is ByRefGen && t.CName == "GValue")
-				return true;
-			if (t is IAccessor && t.MarshalType == "IntPtr")
-				return true;
-			
-			if (t is StructBase) {
-				foreach (StructField field in (t as StructBase).fields) {
-					if (field.IsArray || field.IsNullTermArray)
-						return false;
-
-					if (field.CSType == "string")
-						return false;
-
-					// We don't care about pointers.
-					if (field.IsPointer)
-						continue;
-
-					var gen = SymbolTable.Table [field.CType];
-					if (!IsFullOfPrimitives (gen))
-						return false;
-				}
-				return true;
-			}
-			return false;
-		}
-
 		protected override void GenCtors (GenerationInfo gen_info)
 		{
 			StreamWriter sw = gen_info.Writer;
@@ -258,7 +226,7 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\t\tpublic static {0} Zero = new {0} ();", QualifiedName);
 			sw.WriteLine();
 			if (!DisableNew) {
-				bool viaMarshal = !IsFullOfPrimitives(SymbolTable.Table[this.CName]);
+				bool viaMarshal = !SymbolTable.Table.IsBlittable(SymbolTable.Table[this.CName]);
 
 				if (viaMarshal)
 					GenNewWithMarshal (sw);
