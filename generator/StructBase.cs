@@ -212,10 +212,9 @@ namespace GtkSharp.Generation {
 		void GenNewWithMemCpy (StreamWriter sw)
 		{
 			sw.WriteLine ("\t\tpublic static " + QualifiedName + " New (IntPtr raw) {");
-			sw.WriteLine ("\t\t\tvar ret = " + QualifiedName + ".Zero;");
-			sw.WriteLine ("\t\t\tif (raw != IntPtr.Zero)");
-			sw.WriteLine ("\t\t\t\tunsafe { *(&ret) = *(" + QualifiedName + "*)raw; }");
-			sw.WriteLine ("\t\t\treturn ret;");
+			sw.WriteLine ("\t\t\tif (raw == IntPtr.Zero)");
+			sw.WriteLine ("\t\t\t\treturn {0}.Zero;", QualifiedName);
+			sw.WriteLine ("\t\t\tunsafe {{ return *({0}*)raw; }}", QualifiedName);
 			sw.WriteLine ("\t\t}");
 			sw.WriteLine ();
 		}
