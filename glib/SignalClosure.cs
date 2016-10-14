@@ -150,7 +150,7 @@ namespace GLib {
 					return;
 				}
 
-				SignalArgs args = Activator.CreateInstance (closure.args_type, new object [0]) as SignalArgs;
+				SignalArgs args = FastActivator.CreateSignalArgs (closure.args_type);
 				args.Args = new object [n_param_vals - 1];
 				for (int i = 1; i < n_param_vals; i++) {
 					args.Args [i - 1] = param_values [i].Val;
