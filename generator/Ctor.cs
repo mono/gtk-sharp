@@ -113,7 +113,7 @@ namespace GtkSharp.Generation {
 					sw.WriteLine ("\t\t\tif (GetType () != typeof (" + name + ")) {");
 					
 					if (Parameters.Count == 0) {
-						sw.WriteLine ("\t\t\t\tCreateNativeObject (new IntPtr [0], new GLib.Value[0], 0);");
+						sw.WriteLine ("\t\t\t\tCreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);");
 						sw.WriteLine ("\t\t\t\treturn;");
 					} else {
 						ArrayList names = new ArrayList ();
