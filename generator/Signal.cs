@@ -101,7 +101,7 @@ namespace GtkSharp.Generation {
 					Parameter p = parms [i];
 					if (p.PassAs != "" && !(p.Generatable is StructBase))
 						result += p.PassAs + " ";
-					result += (p.MarshalType + " arg" + i);
+					result += (p.MarshalCallbackType + " arg" + i);
 				}
 
 				return result;
@@ -216,17 +216,22 @@ namespace GtkSharp.Generation {
 				IGeneratable igen = p.Generatable;
 				if (p.PassAs != "out") {
 					if (igen is ManualGen) {
-						sw.WriteLine("\t\t\t\tif (arg{0} == IntPtr.Zero)", idx);
-						sw.WriteLine("\t\t\t\t\targs.Args[{0}] = null;", idx - 1);
-						sw.WriteLine("\t\t\t\telse {");
-						sw.WriteLine("\t\t\t\t\targs.Args[" + (idx - 1) + "] = " + p.FromNative ("arg" + idx)  + ";");
-						sw.WriteLine("\t\t\t\t}");
-					} else
-						sw.WriteLine("\t\t\t\targs.Args[" + (idx - 1) + "] = " + p.FromNative ("arg" + idx)  + ";");
+						sw.WriteLine ("\t\t\t\tif (arg{0} == IntPtr.Zero)", idx);
+						sw.WriteLine ("\t\t\t\t\targs.Args[{0}] = null;", idx - 1);
+						sw.WriteLine ("\t\t\t\telse {");
+						sw.WriteLine ("\t\t\t\t\targs.Args[" + (idx - 1) + "] = " + p.FromNative ("arg" + idx) + ";");
+						sw.WriteLine ("\t\t\t\t}");
+					} else {
+						sw.WriteLine ("\t\t\t\targs.Args[" + (idx - 1) + "] = " + p.FromNative ("arg" + idx) + ";");
+					}
 				}
-				if (igen is StructBase && p.PassAs == "ref")
-					finish += "\t\t\t\tif (arg" + idx + " != IntPtr.Zero) System.Runtime.InteropServices.Marshal.StructureToPtr (args.Args[" + (idx-1) + "], arg" + idx + ", false);\n";
-				else if (p.PassAs != "")
+				if (igen is StructBase && p.PassAs == "ref") {
+					if (SymbolTable.Table.IsBlittable (SymbolTable.Table [igen.CName])) {
+						finish += "\t\t\t\tunsafe { if (arg" + idx + " != IntPtr.Zero) " + string.Format ("*({0}*){1} = my{1}", p.CSType, p.Name) + "; }\n";
+					} else {
+						finish += "\t\t\t\tif (arg" + idx + " != IntPtr.Zero) System.Runtime.InteropServices.Marshal.StructureToPtr (args.Args[" + (idx - 1) + "], arg" + idx + ", false);\n";
+					}
+				} else if (p.PassAs != "")
 					finish += "\t\t\t\targ" + idx + " = " + igen.ToNativeReturn ("((" + p.CSType + ")args.Args[" + (idx - 1) + "])") + ";\n";
 			}
 			return finish;
@@ -424,7 +429,7 @@ namespace GtkSharp.Generation {
 			GenVMDeclaration (sw, null);
 			sw.WriteLine ("\t\t{");
 			MethodBody body = new MethodBody (parms);
-			body.Initialize (gen_info, false, false, String.Empty);
+			body.Initialize (gen_info, false, false, String.Empty, false);
 			sw.WriteLine ("\t\t\t{0}{1} ({2});", IsVoid ? "" : retval.MarshalType + " __ret = ", glue_name, GlueCallString);
 			body.Finish (sw, "");
 			if (!IsVoid) {
@@ -504,7 +509,7 @@ namespace GtkSharp.Generation {
 			string glue_name = String.Empty;
 			ManagedCallString call = new ManagedCallString (parms, true);
 			sw.WriteLine ("\t\t[UnmanagedFunctionPointer (CallingConvention.Cdecl)]");
-			sw.WriteLine ("\t\tdelegate " + retval.ToNativeType + " " + Name + "VMDelegate (" + parms.ImportSignature + ");\n");
+			sw.WriteLine ("\t\tdelegate " + retval.ToNativeType + " " + Name + "VMDelegate (" + parms.CallbackImportSignature + ");\n");
 
 			if (use_glue) {
 				glue = gen_info.GlueWriter;
@@ -522,7 +527,7 @@ namespace GtkSharp.Generation {
 			}
 
 			sw.WriteLine ("\t\tstatic {0} {1};\n", Name + "VMDelegate", Name + "VMCallback");
-			sw.WriteLine ("\t\tstatic " + retval.ToNativeType + " " + Name.ToLower() + "_cb (" + parms.ImportSignature + ")");
+			sw.WriteLine ("\t\tstatic " + retval.ToNativeType + " " + Name.ToLower() + "_cb (" + parms.CallbackImportSignature + ")");
 			sw.WriteLine ("\t\t{");
 			string unconditional = call.Unconditional ("\t\t\t");
 			if (unconditional.Length > 0)

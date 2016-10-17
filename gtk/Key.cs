@@ -22,11 +22,12 @@ namespace Gtk {
 
 	using System;
 	using System.Collections;
+	using System.Collections.Generic;
 	using System.Runtime.InteropServices;
 
 	public class Key {
 
-		static Hashtable wrappers = new Hashtable ();
+		static Dictionary<uint, GtkSharp.KeySnoopFuncWrapper> wrappers = new Dictionary<uint, GtkSharp.KeySnoopFuncWrapper> ();
 
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern uint gtk_key_snooper_install (GtkSharp.KeySnoopFuncNative snooper, IntPtr func_data);

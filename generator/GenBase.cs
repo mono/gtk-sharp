@@ -71,6 +71,12 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public virtual string MarshalCallbackType {
+			get {
+				return MarshalType;
+			}
+		}
+
 		public abstract string MarshalType { get; }
 
 		public string Name {

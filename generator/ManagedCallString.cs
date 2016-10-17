@@ -98,8 +98,9 @@ namespace GtkSharp.Generation {
 						ret += indent + String.Format ("{0} {1}_invoker = new {0} ({1}, {2}, {3});\n", (igen as CallbackGen).InvokerName, p.Name, user_data_param, destroy_param);
 				} else {
 					ret += indent + igen.QualifiedName + " my" + p.Name;
-					if (p.PassAs == "ref")
+					if (p.PassAs == "ref") {
 						ret += " = " + p.FromNative (p.Name);
+					}
 					ret += ";\n";
 				}
 			}
@@ -117,6 +118,7 @@ namespace GtkSharp.Generation {
 			for (int i = 0; i < parms.Count; i ++) {
 				Parameter p = parms [i] as Parameter;
 				result [i] = p.PassAs == "" ? "" : p.PassAs + " ";
+
 				if (p.Generatable is CallbackGen)
 					result [i] += p.Name + "_invoker.Handler";
 				else
@@ -139,8 +141,13 @@ namespace GtkSharp.Generation {
 
 				if (igen is CallbackGen)
 					continue;
-				else if (igen is StructBase)
-					ret += indent + String.Format ("if ({0} != IntPtr.Zero) System.Runtime.InteropServices.Marshal.StructureToPtr (my{0}, {0}, false);\n", p.Name);
+				if (igen is StructBase) {
+					if (SymbolTable.Table.IsBlittable (igen)) {
+						ret += indent + string.Format ("unsafe {{ if ({1} != IntPtr.Zero) *({0}*){1} = my{1}; }}\n", p.CSType, p.Name);
+					} else {
+						ret += indent + String.Format ("if ({0} != IntPtr.Zero) System.Runtime.InteropServices.Marshal.StructureToPtr (my{0}, {0}, false);\n", p.Name);
+					}
+				}
 				else if (!(igen is ByRefGen))
 					ret += indent + p.Name + " = " + igen.ToNativeReturn ("my" + p.Name) + ";\n";
 			}

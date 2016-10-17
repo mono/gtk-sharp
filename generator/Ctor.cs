@@ -75,7 +75,7 @@ namespace GtkSharp.Generation {
 			sw.WriteLine("\t\t" + Protection + " static " + Safety + Modifiers +  name + " " + StaticName + "(" + Signature + ")");
 			sw.WriteLine("\t\t{");
 
-			Body.Initialize(gen_info, false, false, ""); 
+			Body.Initialize(gen_info, false, false, "", false); 
 
 			sw.Write("\t\t\t" + name + " result = ");
 			if (container_type is StructBase)
@@ -113,7 +113,7 @@ namespace GtkSharp.Generation {
 					sw.WriteLine ("\t\t\tif (GetType () != typeof (" + name + ")) {");
 					
 					if (Parameters.Count == 0) {
-						sw.WriteLine ("\t\t\t\tCreateNativeObject (new IntPtr [0], new GLib.Value[0], 0);");
+						sw.WriteLine ("\t\t\t\tCreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);");
 						sw.WriteLine ("\t\t\t\treturn;");
 					} else {
 						ArrayList names = new ArrayList ();
@@ -173,7 +173,7 @@ namespace GtkSharp.Generation {
 					sw.WriteLine ("\t\t\t}");
 				}
 	
-				Body.Initialize(gen_info, false, false, ""); 
+				Body.Initialize(gen_info, false, false, "", false); 
 				sw.WriteLine("\t\t\t{0} = {1}({2});", container_type.AssignToName, CName, Body.GetCallString (false));
 				Body.Finish (sw, "");
 				Body.HandleException (sw, "");

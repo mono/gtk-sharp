@@ -299,7 +299,7 @@ namespace GtkSharp.Generation {
 				gen_info.Writer.WriteLine();
 				gen_info.Writer.WriteLine("\t\tprotected " + Name + "() : base(IntPtr.Zero)");
 				gen_info.Writer.WriteLine("\t\t{");
-				gen_info.Writer.WriteLine("\t\t\tCreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);");
+				gen_info.Writer.WriteLine("\t\t\tCreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);");
 				gen_info.Writer.WriteLine("\t\t}");
 			}
 			gen_info.Writer.WriteLine();

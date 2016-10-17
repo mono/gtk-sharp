@@ -193,11 +193,11 @@ namespace GLib {
 
 		//  Key: The pointer to the ParamSpec of the property
 		//  Value: The corresponding PropertyInfo object
-		static Hashtable properties;
-		static Hashtable Properties {
+		static Dictionary<IntPtr, PropertyInfo> properties;
+		static Dictionary<IntPtr, PropertyInfo> Properties {
 			get {
 				if (properties == null)
-					properties = new Hashtable ();
+					properties = new Dictionary<IntPtr, PropertyInfo> (IntPtrEqualityComparer.Instance);
 				return properties;
 			}
 		}

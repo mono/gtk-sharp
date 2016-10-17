@@ -21,11 +21,11 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-		static Hashtable destroy_handlers;
-		static Hashtable DestroyHandlers {
+		static System.Collections.Generic.Dictionary<IntPtr, EventHandler> destroy_handlers;
+		static System.Collections.Generic.Dictionary<IntPtr, EventHandler> DestroyHandlers {
 			get {
 				if (destroy_handlers == null)
-					destroy_handlers = new Hashtable ();
+					destroy_handlers = new System.Collections.Generic.Dictionary<IntPtr, EventHandler> (IntPtrEqualityComparer.Instance);
 				return destroy_handlers;
 			}
 		}
@@ -41,8 +41,8 @@
 		[GLib.DefaultSignalHandler(Type=typeof(Gtk.Object), ConnectionMethod="OverrideDestroyed")]
 		protected virtual void OnDestroyed ()
 		{
-			if (DestroyHandlers.Contains (Handle)) {
-				EventHandler handler = (EventHandler) DestroyHandlers [Handle];
+			EventHandler handler;
+			if (DestroyHandlers.TryGetValue (Handle, out handler)) {
 				handler (this, EventArgs.Empty);
 				DestroyHandlers.Remove (Handle);
 			}
@@ -51,11 +51,13 @@
 		[GLib.Signal("destroy")]
 		public event EventHandler Destroyed {
 			add {
-				EventHandler handler = (EventHandler) DestroyHandlers [Handle];
-				DestroyHandlers [Handle] = Delegate.Combine (handler, value);
+				EventHandler handler;
+				DestroyHandlers.TryGetValue (Handle, out handler);
+				DestroyHandlers [Handle] = (EventHandler)Delegate.Combine (handler, value);
 			}
 			remove {
-				EventHandler handler = (EventHandler) DestroyHandlers [Handle];
+				EventHandler handler;
+				DestroyHandlers.TryGetValue (Handle, out handler);
 				handler = (EventHandler) Delegate.Remove (handler, value);
 				if (handler != null)
 					DestroyHandlers [Handle] = handler;

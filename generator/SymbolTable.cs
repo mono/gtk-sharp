@@ -267,6 +267,14 @@ namespace GtkSharp.Generation {
 				return "";
 			return gen.ToNativeReturnType;
 		}
+
+		public string GetMarshalCallbackType (string c_type)
+		{
+			IGeneratable gen = this [c_type];
+			if (gen == null)
+				return "";
+			return gen.MarshalCallbackType;
+		}
 		
 		public string GetMarshalType(string c_type)
 		{
@@ -407,6 +415,38 @@ namespace GtkSharp.Generation {
 			}
 
 			return name;
+		}
+
+		public bool IsBlittable (IGeneratable t)
+		{
+			if (t is SimpleGen)
+				return true;
+			if (t is EnumGen)
+				return true;
+			if (t is ByRefGen && t.CName == "GValue")
+				return true;
+			if (t is IAccessor && t.MarshalType == "IntPtr")
+				return true;
+
+			if (t is StructBase) {
+				foreach (StructField field in (t as StructBase).fields) {
+					if (field.IsArray || field.IsNullTermArray)
+						return false;
+
+					if (field.CSType == "string")
+						return false;
+
+					// We don't care about pointers.
+					if (field.IsPointer)
+						continue;
+
+					var gen = SymbolTable.Table [field.CType];
+					if (!IsBlittable (gen))
+						return false;
+				}
+				return true;
+			}
+			return false;
 		}
 	}
 }

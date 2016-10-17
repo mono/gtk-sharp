@@ -301,7 +301,7 @@ namespace GtkSharp.Generation {
 				implementor.Prepare (sw, indent + "\t\t\t");
 			if (IsAccessor)
 				Body.InitAccessor (sw, Signature, indent);
-			Body.Initialize(gen_info, is_get, is_set, indent);
+			Body.Initialize(gen_info, is_get, is_set, indent, false);
 
 			if (HasWin32Utf8Variant) {
 				if (!retval.IsVoid)

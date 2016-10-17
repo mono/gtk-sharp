@@ -168,6 +168,19 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public virtual string MarshalCallbackType {
+			get {
+				string type = SymbolTable.Table.GetMarshalCallbackType (elem.GetAttribute ("type"));
+				if (type == "void" || Generatable is IManualMarshaler)
+					type = "IntPtr";
+				if (IsArray) {
+					type += "[]";
+					type = type.Replace ("ref ", "");
+				}
+				return type;
+			}
+		}
+
 		public string Name {
 			get {
 				return SymbolTable.Table.MangleName (elem.GetAttribute("name"));
@@ -177,6 +190,15 @@ namespace GtkSharp.Generation {
 		public bool Owned {
 			get {
 				return elem.GetAttribute ("owned") == "true";
+			}
+		}
+
+		public virtual string NativeCallbackSignature {
+			get {
+				string sig = MarshalCallbackType + " " + Name;
+				if (PassAs != String.Empty)
+					sig = PassAs + " " + sig;
+				return sig;
 			}
 		}
 
@@ -245,6 +267,12 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public virtual string [] PrepareCallback {
+			get {
+				return Prepare;
+			}
+		}
+
 		public virtual string CallString {
 			get {
 				string call_parm;
@@ -263,6 +291,12 @@ namespace GtkSharp.Generation {
 					call_parm = SymbolTable.Table.CallByName(CType, CallName);
 			
 				return call_parm;
+			}
+		}
+
+		public virtual string CallStringCallback {
+			get {
+				return CallString;
 			}
 		}
 
@@ -285,6 +319,12 @@ namespace GtkSharp.Generation {
 					return new string [] { CallName + " = " + gen.FromNative ("native_" + CallName) + ";" };
 				}
 				return new string [0];
+			}
+		}
+
+		public virtual string [] FinishCallback {
+			get {
+				return Finish;
 			}
 		}
 
@@ -453,6 +493,12 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public override string NativeCallbackSignature {
+			get {
+				return NativeSignature;
+			}
+		}
+
 		public override string NativeSignature {
 			get {
 				if (invert)
@@ -483,6 +529,12 @@ namespace GtkSharp.Generation {
 
 		public override string MarshalType {
 			get {
+				return "ref " + Generatable.QualifiedName;
+			}
+		}
+
+		public override string MarshalCallbackType {
+			get {
 				return "IntPtr";
 			}
 		}
@@ -490,13 +542,27 @@ namespace GtkSharp.Generation {
 		public override string[] Prepare {
 			get {
 				if (PassAs == "out")
-					return new string [] { "IntPtr native_" + CallName + " = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (" + Generatable.QualifiedName + ")));"};
+					return new string [] { CallName + " = new " + Generatable.QualifiedName + "();"};
+				return new string [0];
+			}
+		}
+
+		public override string [] PrepareCallback {
+			get {
+				if (PassAs == "out")
+					return new string [] { "IntPtr native_" + CallName + " = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (" + Generatable.QualifiedName + ")));" };
 				else
-					return new string [] { "IntPtr native_" + CallName + " = " + (Generatable as IManualMarshaler).AllocNative (CallName) + ";"};
+					return new string [] { "IntPtr native_" + CallName + " = " + (Generatable as IManualMarshaler).AllocNative (CallName) + ";" };
 			}
 		}
 
 		public override string CallString {
+			get {
+				return "ref " + CallName;
+			}
+		}
+
+		public override string CallStringCallback {
 			get {
 				return "native_" + CallName;
 			}
@@ -504,7 +570,13 @@ namespace GtkSharp.Generation {
 
 		public override string[] Finish {
 			get {
-				string[] result = new string [PassAs == string.Empty ? 1 : 2];
+				return new string [0];
+			}
+		}
+
+		public override string [] FinishCallback {
+			get {
+				string [] result = new string [PassAs == string.Empty ? 1 : 2];
 				int i = 0;
 				if (PassAs != string.Empty) {
 					result [i++] = CallName + " = " + FromNative ("native_" + CallName) + ";";
@@ -514,9 +586,15 @@ namespace GtkSharp.Generation {
 			}
 		}
 
-		public override string NativeSignature {
+		public override string NativeCallbackSignature {
 			get {
 				return "IntPtr " + CallName;
+			}
+		}
+
+		public override string NativeSignature {
+			get {
+				return "ref " + Generatable.QualifiedName + " " + CallName;
 			}
 		}
 	}
@@ -547,6 +625,12 @@ namespace GtkSharp.Generation {
 		public override string [] Finish {
 			get {
 				return new string [0];
+			}
+		}
+
+		public override string NativeCallbackSignature {
+			get {
+				return NativeSignature;
 			}
 		}
 
@@ -765,6 +849,19 @@ namespace GtkSharp.Generation {
 					return p.Name;
 				else
 					return null;
+			}
+		}
+
+		public string CallbackImportSignature {
+			get {
+				if (Count == 0)
+					return String.Empty;
+
+				string [] result = new string [Count];
+				for (int i = 0; i < Count; i++)
+					result [i] = this [i].NativeCallbackSignature;
+
+				return String.Join (", ", result);
 			}
 		}
 

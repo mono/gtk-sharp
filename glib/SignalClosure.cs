@@ -23,6 +23,7 @@ namespace GLib {
 
 	using System;
 	using System.Collections;
+	using System.Collections.Generic;
 	using System.Runtime.InteropServices;
 
 	internal class ClosureInvokedArgs : EventArgs {
@@ -62,7 +63,7 @@ namespace GLib {
 		GCHandle? gch;
 		internal bool before_closure;
 
-		static Hashtable closures = new Hashtable ();
+		static Dictionary<IntPtr, SignalClosure> closures = new Dictionary<IntPtr, SignalClosure> (IntPtrEqualityComparer.Instance);
 
 		public SignalClosure (IntPtr obj, string signal_name, System.Type args_type, bool before_closure)
 		{
@@ -123,22 +124,24 @@ namespace GLib {
 		static ClosureMarshal marshaler;
 		static ClosureMarshal Marshaler {
 			get {
-				if (marshaler == null)
-					marshaler = new ClosureMarshal (MarshalCallback);
+				if (marshaler == null) {
+					unsafe {
+						marshaler = new ClosureMarshal (MarshalCallback);
+					}
+				}
 				return marshaler;
 			}
 		}
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
-		delegate void ClosureMarshal (IntPtr closure, IntPtr return_val, uint n_param_vals, IntPtr param_values, IntPtr invocation_hint, IntPtr marshal_data);
+		unsafe delegate void ClosureMarshal (IntPtr closure, Value *return_val, uint n_param_vals, Value *param_values, IntPtr invocation_hint, IntPtr marshal_data);
 
-		static void MarshalCallback (IntPtr raw_closure, IntPtr return_val, uint n_param_vals, IntPtr param_values, IntPtr invocation_hint, IntPtr marshal_data)
+		unsafe static void MarshalCallback (IntPtr raw_closure, Value *return_val, uint n_param_vals, Value *param_values, IntPtr invocation_hint, IntPtr marshal_data)
 		{
 			SignalClosure closure = null;
 			try {
 				closure = closures [raw_closure] as SignalClosure;
-				Value objval = (Value) Marshal.PtrToStructure (param_values, typeof (Value));
-				GLib.Object __obj = objval.Val as GLib.Object;
+				GLib.Object __obj = param_values[0].Val as GLib.Object;
 				if (__obj == null)
 					return;
 
@@ -147,28 +150,20 @@ namespace GLib {
 					return;
 				}
 
-				SignalArgs args = Activator.CreateInstance (closure.args_type, new object [0]) as SignalArgs;
+				SignalArgs args = FastActivator.CreateSignalArgs (closure.args_type);
 				args.Args = new object [n_param_vals - 1];
-				GLib.Value[] vals = new GLib.Value [n_param_vals - 1];
-				int valueSize = Marshal.SizeOf (typeof (Value));
 				for (int i = 1; i < n_param_vals; i++) {
-					IntPtr ptr = new IntPtr (param_values.ToInt64 () + i * valueSize);
-					vals [i - 1] = (Value) Marshal.PtrToStructure (ptr, typeof (Value));
-					args.Args [i - 1] = vals [i - 1].Val;
+					args.Args [i - 1] = param_values [i].Val;
 				}
 				ClosureInvokedArgs ci_args = new ClosureInvokedArgs (__obj, args);
 				closure.Invoke (ci_args);
 				for (int i = 1; i < n_param_vals; i++) {
-					vals [i - 1].Update (args.Args [i - 1]);
-					IntPtr ptr = new IntPtr (param_values.ToInt64 () + i * valueSize);
-					Marshal.StructureToPtr (vals [i - 1], ptr, false);
+					param_values [i].Update (args.Args [i - 1]);
 				}
-				if (return_val == IntPtr.Zero || args.RetVal == null)
+				if (return_val == null || args.RetVal == null)
 					return;
 
-				Value ret = (Value) Marshal.PtrToStructure (return_val, typeof (Value));
-				ret.Val = args.RetVal;
-				Marshal.StructureToPtr (ret, return_val, false);
+				return_val->Val = args.RetVal;
 			} catch (Exception e) {
 				if (closure != null)
 					Console.WriteLine ("Marshaling {0} signal", closure.name);
@@ -181,9 +176,9 @@ namespace GLib {
 
 		static void NotifyCallback (IntPtr data, IntPtr raw_closure)
 		{
-			SignalClosure closure = closures [raw_closure] as SignalClosure;
-			if (closure != null)
-				closure.Dispose ();
+			SignalClosure closure;
+			if (closures.TryGetValue (raw_closure, out closure))
+				closure.Dispose();
 		}
 
 		static ClosureNotify notify_handler;

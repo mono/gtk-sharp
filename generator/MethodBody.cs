@@ -29,7 +29,7 @@ namespace GtkSharp.Generation {
 	public class MethodBody  {
 		
 		Parameters parameters;
-
+		bool is_callback;
 		public MethodBody (Parameters parms) 
 		{
 			parameters = parms;
@@ -62,7 +62,7 @@ namespace GtkSharp.Generation {
 					p.CallName = "value";
 				else
 					p.CallName = p.Name;
-				string call_parm = p.CallString;
+				string call_parm = is_callback ? p.CallStringCallback : p.CallString;
 
 				if (p.IsUserData && parameters.IsHidden (p) && !parameters.HideData &&
 					   (i == 0 || parameters [i - 1].Scope != "notified")) {
@@ -75,16 +75,17 @@ namespace GtkSharp.Generation {
 			return String.Join (", ", result);
 		}
 
-		public void Initialize (GenerationInfo gen_info)
+		public void Initialize (GenerationInfo gen_info, bool is_callback)
 		{
-			Initialize (gen_info, false, false, String.Empty);
+			Initialize (gen_info, false, false, String.Empty, is_callback);
 		}
 
-		public void Initialize (GenerationInfo gen_info, bool is_get, bool is_set, string indent)
+		public void Initialize (GenerationInfo gen_info, bool is_get, bool is_set, string indent, bool is_callback)
 		{
 			if (parameters.Count == 0)
 				return;
 
+			this.is_callback = is_callback;
 			StreamWriter sw = gen_info.Writer;
 			for (int i = 0; i < parameters.Count; i++) {
 				Parameter p = parameters [i];
@@ -95,7 +96,8 @@ namespace GtkSharp.Generation {
 					name = "value";
 
 				p.CallName = name;
-				foreach (string prep in p.Prepare)
+				var prepare = is_callback ? p.PrepareCallback : p.Prepare;
+				foreach (string prep in prepare)
 					sw.WriteLine (indent + "\t\t\t" + prep);
 
 				if (gen is CallbackGen) {
@@ -140,9 +142,11 @@ namespace GtkSharp.Generation {
 
 		public void Finish (StreamWriter sw, string indent)
 		{
-			foreach (Parameter p in parameters)
-				foreach (string s in p.Finish)
-					sw.WriteLine(indent + "\t\t\t" + s);
+			foreach (Parameter p in parameters) {
+				var finish = is_callback ? p.FinishCallback : p.Finish;
+				foreach (string s in finish)
+					sw.WriteLine (indent + "\t\t\t" + s);
+			}
 		}
 
 		public void FinishAccessor (StreamWriter sw, Signature sig, string indent)
