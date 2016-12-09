@@ -87,6 +87,9 @@ namespace GtkSharp.Generation {
 
 			this.is_callback = is_callback;
 			StreamWriter sw = gen_info.Writer;
+			if (gen_info.AssemblyName == "gtk-sharp")
+				sw.WriteLine (indent + "\t\t\tGtk.Application.AssertMainThread();");
+
 			for (int i = 0; i < parameters.Count; i++) {
 				Parameter p = parameters [i];
 

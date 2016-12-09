@@ -26,6 +26,7 @@ namespace Gtk {
 	using Gdk;
 
 	public class Application {
+		static System.Threading.Thread MainThread;
 
 		//
 		// Disables creation of instances.
@@ -117,13 +118,22 @@ namespace Gtk {
 			return res;
 		}
 
+		internal static void AssertMainThread ()
+		{
+			if (MainThread != null && System.Threading.Thread.CurrentThread != MainThread) {
+				GLib.Log.Write (null, GLib.LogLevelFlags.Warning, "Gtk operations should be done on the main Thread\n" + Environment.StackTrace);
+			}
+		}
+
 		public static void Init (string progname, ref string[] args)
 		{
+			MainThread = System.Threading.Thread.CurrentThread;
 			do_init (progname, ref args, false);
 		}
 
 		public static bool InitCheck (string progname, ref string[] args)
 		{
+			MainThread = System.Threading.Thread.CurrentThread;
 			return do_init (progname, ref args, true);
 		}
 
@@ -137,7 +147,6 @@ namespace Gtk {
 
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool gtk_events_pending ();
-
 
 		public static bool EventsPending ()
 		{
