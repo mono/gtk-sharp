@@ -106,6 +106,16 @@ namespace GtkSharp.Generation {
 			if (IsStatic)
 				GenerateStatic (gen_info);
 			else {
+				if (container_type is ObjectGen && !ObjectGen.unrefImported.Contains (gen_info.CurrentType)) {
+					sw.WriteLine ("\t\t[DllImport(\"libgobject-2.0-0.dll\", CallingConvention=CallingConvention.Cdecl)]");
+					sw.WriteLine ("\t\tstatic extern void g_object_unref (IntPtr raw);");
+					if (SymbolTable.Table.IsGtkObject (container_type)) {
+						sw.WriteLine ("\t\t[DllImport(\"libgobject-2.0-0.dll\", CallingConvention=CallingConvention.Cdecl)]");
+						sw.WriteLine ("\t\tstatic extern void g_object_ref_sink (IntPtr raw);");
+					}
+					ObjectGen.unrefImported.Add (gen_info.CurrentType);
+				}
+				sw.WriteLine ();
 				sw.WriteLine("\t\t{0} {1}{2} ({3}) {4}", Protection, Safety, name, Signature.ToString(), needs_chaining ? ": base (IntPtr.Zero)" : "");
 				sw.WriteLine("\t\t{");
 
@@ -117,6 +127,11 @@ namespace GtkSharp.Generation {
 					
 					if (Parameters.Count == 0) {
 						sw.WriteLine ("\t\t\t\tCreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);");
+						if (SymbolTable.Table.IsGtkObject (container_type)) {
+							gen_info.Writer.WriteLine ("\t\t\t\tg_object_ref_sink (Raw);");
+						}
+						if (container_type is ObjectGen)
+							sw.WriteLine ("\t\t\t\tg_object_unref (Raw);");
 						sw.WriteLine ("\t\t\t\treturn;");
 					} else {
 						ArrayList names = new ArrayList ();
@@ -167,7 +182,13 @@ namespace GtkSharp.Generation {
 								sw.WriteLine ("\t\t\t\tCreateNativeObject (names, vals, {0});", names.Count);
 							else
 								sw.WriteLine ("\t\t\t\tCreateNativeObject (names, vals, param_count);");
-							
+
+							if (SymbolTable.Table.IsGtkObject (container_type)) {
+								gen_info.Writer.WriteLine ("\t\t\t\tg_object_ref_sink (Raw);");
+							}
+							if (container_type is ObjectGen)
+								sw.WriteLine ("\t\t\t\tg_object_unref (Raw);");
+
 							sw.WriteLine ("\t\t\t\treturn;");
 						} else
 							sw.WriteLine ("\t\t\t\tthrow new InvalidOperationException (\"Can't override this constructor.\");");
@@ -180,6 +201,11 @@ namespace GtkSharp.Generation {
 				sw.WriteLine("\t\t\t{0} = {1}({2});", container_type.AssignToName, CName, Body.GetCallString (false));
 				Body.Finish (sw, "");
 				Body.HandleException (sw, "");
+				if (SymbolTable.Table.IsGtkObject (container_type)) {
+					gen_info.Writer.WriteLine ("\t\t\tg_object_ref_sink (Raw);");
+				}
+				if (container_type is ObjectGen)
+					sw.WriteLine ("\t\t\tg_object_unref (Raw);");
 			}
 			
 			sw.WriteLine("\t\t}");

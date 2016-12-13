@@ -417,6 +417,18 @@ namespace GtkSharp.Generation {
 			return name;
 		}
 
+		public bool IsGtkObject (IGeneratable t)
+		{
+			var gen = t as ObjectGen;
+			if (!(gen is ObjectGen))
+				return false;
+
+			if (gen.CName == "GtkObject")
+				return true;
+
+			return IsGtkObject (gen.Parent);
+		}
+
 		public bool IsBlittable (IGeneratable t)
 		{
 			if (t is SimpleGen)

@@ -285,6 +285,7 @@ namespace GtkSharp.Generation {
 			Statistics.ObjectCount++;
 		}
 
+		public static readonly System.Collections.Generic.HashSet<string> unrefImported = new System.Collections.Generic.HashSet<string> ();
 		protected override void GenCtors (GenerationInfo gen_info)
 		{
 			if (!Elem.HasAttribute("parent"))
@@ -296,10 +297,24 @@ namespace GtkSharp.Generation {
 			}
 			gen_info.Writer.WriteLine("\t\tpublic " + Name + "(IntPtr raw) : base(raw) {}");
 			if (ctors.Count == 0 && !DisableVoidCtor) {
+				if (!unrefImported.Contains (gen_info.CurrentType)) {
+					gen_info.Writer.WriteLine ("\t\t[DllImport(\"libgobject-2.0-0.dll\", CallingConvention=CallingConvention.Cdecl)]");
+					gen_info.Writer.WriteLine ("\t\tstatic extern void g_object_unref (IntPtr raw);");
+					if (SymbolTable.Table.IsGtkObject (SymbolTable.Table [gen_info.CurrentType])) {
+						gen_info.Writer.WriteLine ("\t\t[DllImport(\"libgobject-2.0-0.dll\", CallingConvention=CallingConvention.Cdecl)]");
+						gen_info.Writer.WriteLine ("\t\tstatic extern void g_object_ref_sink (IntPtr raw);");
+					}
+						
+					unrefImported.Add (gen_info.CurrentType);
+				}
 				gen_info.Writer.WriteLine();
 				gen_info.Writer.WriteLine("\t\tprotected " + Name + "() : base(IntPtr.Zero)");
 				gen_info.Writer.WriteLine("\t\t{");
 				gen_info.Writer.WriteLine("\t\t\tCreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);");
+				if (SymbolTable.Table.IsGtkObject (SymbolTable.Table [gen_info.CurrentType])) {
+					gen_info.Writer.WriteLine ("\t\t\tg_object_ref_sink (Raw);");
+				}
+				gen_info.Writer.WriteLine ("\t\t\tg_object_unref (Raw);");
 				gen_info.Writer.WriteLine("\t\t}");
 			}
 			gen_info.Writer.WriteLine();
