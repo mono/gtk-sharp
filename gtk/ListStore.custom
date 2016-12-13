@@ -175,6 +175,7 @@
 		{
 			CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
 			ColumnTypes = types;
+			g_object_unref (Raw);
 		}
 
 		public ListStore (params Type[] types) : base (IntPtr.Zero)
@@ -188,6 +189,7 @@
 
 			CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
 			ColumnTypes = gtypes;
+			g_object_unref (Raw);
 		}
 
 		[Obsolete ("Replaced by ColumnTypes property.")]

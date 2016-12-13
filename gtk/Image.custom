@@ -32,9 +32,13 @@
 				names[1] = GLib.Marshaller.StringToPtrGStrdup ("icon_size");
 				vals[1] = new GLib.Value ((int)size);
 				CreateNativeObject (names, vals, 2);
+				g_object_ref_sink (Raw);
+				g_object_unref (Raw);
 				return;
 			}
 			Raw = gtk_image_new_from_icon_set(icon_set.Handle, (int) size);
+			g_object_ref_sink (Raw);
+			g_object_unref (Raw);
 		}
 
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
@@ -50,11 +54,15 @@
 				names[1] = GLib.Marshaller.StringToPtrGStrdup ("icon_size");
 				vals[1] = new GLib.Value ((int)size);
 				CreateNativeObject (names, vals, 2);
+				g_object_ref_sink (Raw);
+				g_object_unref (Raw);
 				return;
 			}
 			IntPtr native = GLib.Marshaller.StringToPtrGStrdup (stock_id);
 			Raw = gtk_image_new_from_stock(native, (int) size);
 			GLib.Marshaller.Free (native);
+			g_object_ref_sink (Raw);
+			g_object_unref (Raw);
 		}
 
 		void LoadFromStream (System.IO.Stream stream)

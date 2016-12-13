@@ -33,9 +33,13 @@
 				names [0] = GLib.Marshaller.StringToPtrGStrdup ("adjustment");
 				vals [0] = new GLib.Value (adj);
 				CreateNativeObject (names, vals, 1);
+				g_object_ref_sink (Raw);
+				g_object_unref (Raw);
 				return;
 			}
 
 			Raw = gtk_vscale_new_with_range (min, max, step);
+			g_object_ref_sink (Raw);
+			g_object_unref (Raw);
 		}
 

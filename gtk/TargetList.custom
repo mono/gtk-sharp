@@ -16,12 +16,21 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern void g_object_unref (IntPtr raw);
+
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtk_target_list_new(Gtk.TargetEntry[] targets, uint n_targets);
 
-		public TargetList() : base(gtk_target_list_new(null, 0)) {}
+		public TargetList() : base(gtk_target_list_new(null, 0))
+		{
+			g_object_unref (Raw);
+		}
 
-		public TargetList (Gtk.TargetEntry[] targets) : this(gtk_target_list_new(targets, (uint) targets.Length)) {}
+		public TargetList (Gtk.TargetEntry[] targets) : this(gtk_target_list_new(targets, (uint) targets.Length))
+		{
+			g_object_unref (Raw);
+		}
 
 		public void Add(string target, uint flags, uint info) {
 			Add(Gdk.Atom.Intern (target, false), flags, info);

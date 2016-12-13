@@ -29,10 +29,14 @@
 			if (GetType() != typeof (TextView)) {
 				CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
 				Buffer = buffer;
+				g_object_ref_sink (Raw);
+				g_object_unref (Raw);
 				return;
 			}
 
 			Raw = gtk_text_view_new_with_buffer (buffer.Handle);
+			g_object_ref_sink (Raw);
+			g_object_unref (Raw);
 		}
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]

@@ -34,11 +34,15 @@ public Button (string stock_id) : base (IntPtr.Zero)
 		names [1] = GLib.Marshaller.StringToPtrGStrdup ("use_stock");
 		vals [1] = new GLib.Value (true);
 		CreateNativeObject (names, vals, 2);
+		g_object_ref_sink (Raw);
+		g_object_unref (Raw);
 		return;
 	}
 	IntPtr native = GLib.Marshaller.StringToPtrGStrdup (stock_id);
 	Raw = gtk_button_new_from_stock (native);
 	GLib.Marshaller.Free (native);
+	g_object_ref_sink (Raw);
+	g_object_unref (Raw);
 }
 
 public Button (Widget widget) : this ()

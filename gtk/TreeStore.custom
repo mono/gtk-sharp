@@ -360,6 +360,7 @@
 		public TreeStore (params GLib.GType[] types) : base (IntPtr.Zero)
 		{
 			CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
+			g_object_unref (Raw);
 			ColumnTypes = types;
 		}
 
@@ -373,6 +374,7 @@
 			}
 
 			CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
+			g_object_unref (Raw);
 			ColumnTypes = gtypes;
 		}
 

@@ -29,10 +29,14 @@
 				al.SetAlignment (0.0f, 0.5f);
 				Add (al);
 				al.AccelWidget = this;
+				g_object_ref_sink (Raw);
+				g_object_unref (Raw);
 				return;
 			}
 
 			IntPtr label_as_native = GLib.Marshaller.StringToPtrGStrdup (label);
 			Raw = gtk_radio_menu_item_new_with_mnemonic (IntPtr.Zero, label_as_native);
 			GLib.Marshaller.Free (label_as_native);
+			g_object_ref_sink (Raw);
+			g_object_unref (Raw);
 		}

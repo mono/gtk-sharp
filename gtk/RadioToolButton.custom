@@ -29,9 +29,13 @@
 			if (GetType () != typeof (RadioToolButton)) {
 				CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
 				Group = group;
+				g_object_ref_sink (Raw);
+				g_object_unref (Raw);
 				return;
 			}
 			Raw = gtk_radio_tool_button_new(group == null ? IntPtr.Zero : group.Handle);
+			g_object_ref_sink (Raw);
+			g_object_unref (Raw);
 		}
 
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
@@ -45,10 +49,14 @@
 				vals [0] = new GLib.Value (stock_id);
 				CreateNativeObject (names, vals, 0);
 				Group = group;
+				g_object_ref_sink (Raw);
+				g_object_unref (Raw);
 				return;
 			}
 			IntPtr stock_id_as_native = GLib.Marshaller.StringToPtrGStrdup (stock_id);
 			Raw = gtk_radio_tool_button_new_from_stock(group == null ? IntPtr.Zero : group.Handle, stock_id_as_native);
 			GLib.Marshaller.Free (stock_id_as_native);
+			g_object_ref_sink (Raw);
+			g_object_unref (Raw);
 		}
 

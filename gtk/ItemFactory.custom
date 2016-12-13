@@ -20,7 +20,9 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-		
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern void g_object_ref_sink (IntPtr raw);
+
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtk_item_factory_new(IntPtr container_type, IntPtr path, IntPtr accel_group);
 
@@ -29,11 +31,15 @@
 			if (GetType () != typeof (ItemFactory)) {
 				CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
 				Construct (container_type, path, accel_group);
+				g_object_ref_sink (Raw);
+				g_object_unref (Raw);
 				return;
 			}
 			IntPtr native = GLib.Marshaller.StringToPtrGStrdup (path);
 			Raw = gtk_item_factory_new(container_type.Val, native, (accel_group != null) ? accel_group.Handle : IntPtr.Zero);
 			GLib.Marshaller.Free (native);
+			g_object_ref_sink (Raw);
+			g_object_unref (Raw);
 		}
 
 		[Obsolete ("Replaced by TranslateFunc property.")]

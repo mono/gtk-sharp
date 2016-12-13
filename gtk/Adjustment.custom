@@ -21,6 +21,9 @@
 [DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 static extern IntPtr gtk_adjustment_new(double value, double lower, double upper, double step_increment, double page_increment, double page_size);
 
+[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+static extern void g_object_ref_sink (IntPtr raw);
+
 public Adjustment (double value, double lower, double upper, double step_increment, double page_increment, double page_size) : base (IntPtr.Zero)
 {
 	if (GetType () != typeof (Adjustment)) {
@@ -31,10 +34,14 @@ public Adjustment (double value, double lower, double upper, double step_increme
 		StepIncrement = step_increment;
 		PageIncrement = page_increment;
 		PageSize = page_size;
+		g_object_ref_sink (Raw);
+		g_object_unref (Raw);
 		return;
 	}
 
 	Raw = gtk_adjustment_new(value, lower, upper, step_increment, page_increment, page_size);
+	g_object_ref_sink (Raw);
+	g_object_unref (Raw);
 }
 
 [DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]

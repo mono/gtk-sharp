@@ -24,5 +24,6 @@
 		protected TextMark () : base (IntPtr.Zero)
 		{
 			CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
+			g_object_unref (Raw);
 		}
 

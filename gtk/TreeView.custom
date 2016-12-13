@@ -41,9 +41,13 @@
 					vals[param_count++] = new GLib.Value (model);
 				}
 				CreateNativeObject (names, vals, param_count);
+				g_object_ref_sink (Raw);
+				g_object_unref (Raw);
 				return;
 			}
 			Raw = gtk_tree_view_new_with_model(model == null ? IntPtr.Zero : model.Handle);
+			g_object_ref_sink (Raw);
+			g_object_unref (Raw);
 			if (model != null)
 				g_object_ref (model.Handle);
 		}
@@ -57,10 +61,14 @@
 				names [0] = GLib.Marshaller.StringToPtrGStrdup ("model");
 				vals [0] = new GLib.Value (store);
 				CreateNativeObject (names, vals, 1);
+				g_object_ref_sink (Raw);
+				g_object_unref (Raw);
 				return;
 			}
 
 			Raw = gtk_tree_view_new_with_model (store.Handle);
+			g_object_ref_sink (Raw);
+			g_object_unref (Raw);
 		}
 
 		public Gdk.Color OddRowColor {

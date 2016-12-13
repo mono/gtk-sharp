@@ -17,5 +17,7 @@
 public Table()
 {
 	Raw = gtk_table_new (0, 0, false);
+	g_object_ref_sink (Raw);
+	g_object_unref (Raw);
 }
 */

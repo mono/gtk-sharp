@@ -20,7 +20,9 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
-		
+		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern void g_object_ref_sink (IntPtr raw);
+
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtk_plug_new(uint socket_id);
 
@@ -29,9 +31,13 @@
 			if (GetType () != typeof (Plug)) {
 				CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
 				Construct (socket_id);
+				g_object_ref_sink (Raw);
+				g_object_unref (Raw);
 				return;
 			}
 			Raw = gtk_plug_new(socket_id);
+			g_object_ref_sink (Raw);
+			g_object_unref (Raw);
 		}
 
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
@@ -42,8 +48,12 @@
 			if (GetType () != typeof (Plug)) {
 				CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
 				ConstructForDisplay (display, socket_id);
+				g_object_ref_sink (Raw);
+				g_object_unref (Raw);
 				return;
 			}
 			Raw = gtk_plug_new_for_display(display.Handle, socket_id);
+			g_object_ref_sink (Raw);
+			g_object_unref (Raw);
 		}
 

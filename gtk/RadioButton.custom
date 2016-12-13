@@ -28,4 +28,6 @@
 		IntPtr native = GLib.Marshaller.StringToPtrGStrdup (label);
 		Raw = gtk_radio_button_new_with_mnemonic (IntPtr.Zero, native);
 		GLib.Marshaller.Free (native);
+		g_object_ref_sink (Raw);
+		g_object_unref (Raw);
 	}
