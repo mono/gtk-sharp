@@ -35,7 +35,6 @@ namespace GLib {
 		IntPtr handle;
 		ToggleRef tref;
 		bool disposed = false;
-		bool owned = true;
 		Hashtable data;
 		static Dictionary<IntPtr, ToggleRef> Objects = new Dictionary<IntPtr, ToggleRef>(IntPtrEqualityComparer.Instance);
 		static object lockObject = new object ();
