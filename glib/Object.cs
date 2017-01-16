@@ -35,7 +35,7 @@ namespace GLib {
 		IntPtr handle;
 		ToggleRef tref;
 		bool disposed = false;
-		bool owned = true;
+		internal protected bool owned = false;
 		Hashtable data;
 		static Dictionary<IntPtr, ToggleRef> Objects = new Dictionary<IntPtr, ToggleRef>(IntPtrEqualityComparer.Instance);
 		static object lockObject = new object ();
@@ -409,6 +409,7 @@ namespace GLib {
 
 		protected void CreateNativeObject (IntPtr [] native_names, GLib.Value [] vals, int count)
 		{
+			owned = true;
 			Raw = gtksharp_object_newv (LookupGType ().Val, count, native_names, vals);
 			for (int i = 0; i < count; ++i) {
 				GLib.Marshaller.Free (native_names [i]);
