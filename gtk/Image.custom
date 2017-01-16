@@ -34,6 +34,7 @@
 				CreateNativeObject (names, vals, 2);
 				return;
 			}
+			owned = true;
 			Raw = gtk_image_new_from_icon_set(icon_set.Handle, (int) size);
 		}
 
@@ -52,6 +53,7 @@
 				CreateNativeObject (names, vals, 2);
 				return;
 			}
+			owned = true;
 			IntPtr native = GLib.Marshaller.StringToPtrGStrdup (stock_id);
 			Raw = gtk_image_new_from_stock(native, (int) size);
 			GLib.Marshaller.Free (native);

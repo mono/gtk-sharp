@@ -32,6 +32,7 @@
 				return;
 			}
 
+			owned = true;
 			Raw = gtk_text_view_new_with_buffer (buffer.Handle);
 		}
 

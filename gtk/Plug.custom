@@ -31,6 +31,7 @@
 				Construct (socket_id);
 				return;
 			}
+			owned = true;
 			Raw = gtk_plug_new(socket_id);
 		}
 
@@ -44,6 +45,7 @@
 				ConstructForDisplay (display, socket_id);
 				return;
 			}
+			owned = true;
 			Raw = gtk_plug_new_for_display(display.Handle, socket_id);
 		}
 

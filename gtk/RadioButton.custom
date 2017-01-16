@@ -25,6 +25,7 @@
 	// creates a new group for this RadioButton
 	public RadioButton (string label)
 	{
+		owned = true;
 		IntPtr native = GLib.Marshaller.StringToPtrGStrdup (label);
 		Raw = gtk_radio_button_new_with_mnemonic (IntPtr.Zero, native);
 		GLib.Marshaller.Free (native);

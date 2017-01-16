@@ -36,6 +36,7 @@
 				return;
 			}
 
+			owned = true;
 			IntPtr native = GLib.Marshaller.StringToPtrGStrdup (label);
 			Raw = gtk_image_menu_item_new_with_mnemonic (native);
 			GLib.Marshaller.Free (native);

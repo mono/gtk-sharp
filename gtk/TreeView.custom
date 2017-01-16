@@ -43,6 +43,7 @@
 				CreateNativeObject (names, vals, param_count);
 				return;
 			}
+			owned = true;
 			Raw = gtk_tree_view_new_with_model(model == null ? IntPtr.Zero : model.Handle);
 			if (model != null)
 				g_object_ref (model.Handle);
@@ -60,6 +61,7 @@
 				return;
 			}
 
+			owned = true;
 			Raw = gtk_tree_view_new_with_model (store.Handle);
 		}
 

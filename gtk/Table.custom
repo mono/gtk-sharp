@@ -16,6 +16,7 @@
 /* FIXME: Uncomment this when the default ctor flag is added to the XML
 public Table()
 {
+	owned = true;
 	Raw = gtk_table_new (0, 0, false);
 }
 */
