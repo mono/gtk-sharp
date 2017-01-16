@@ -109,11 +109,10 @@ namespace GtkSharp.Generation {
 				sw.WriteLine("\t\t{0} {1}{2} ({3}) {4}", Protection, Safety, name, Signature.ToString(), needs_chaining ? ": base (IntPtr.Zero)" : "");
 				sw.WriteLine("\t\t{");
 
-				if (gen_info.AssemblyName == "gtk-sharp")
-					sw.WriteLine ("\t\t\tGtk.Application.AssertMainThread();");
-
 				if (needs_chaining) {
 					sw.WriteLine ("\t\t\tif (GetType () != typeof (" + name + ")) {");
+					if (gen_info.AssemblyName == "gtk-sharp")
+						sw.WriteLine ("\t\t\t\tGtk.Application.AssertMainThread();");
 					
 					if (Parameters.Count == 0) {
 						sw.WriteLine ("\t\t\t\tCreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);");
