@@ -94,9 +94,10 @@ namespace GLib {
 				return null;
 
 			int len = (int) (uint) strlen (ptr);
-			byte[] bytes = new byte [len];
-			Marshal.Copy (ptr, bytes, 0, len);
-			return System.Text.Encoding.UTF8.GetString (bytes);
+			unsafe {
+				byte *p = (byte *)ptr;
+				return System.Text.Encoding.UTF8.GetString(p, len);
+			}
 		}
 
 		public static string[] Utf8PtrToString (IntPtr[] ptrs) {
@@ -155,10 +156,14 @@ namespace GLib {
 		public static IntPtr StringToPtrGStrdup (string str) {
 			if (str == null)
 				return IntPtr.Zero;
-			byte[] bytes = System.Text.Encoding.UTF8.GetBytes (str);
-			IntPtr result = g_malloc (new UIntPtr ((ulong)bytes.Length + 1));
-			Marshal.Copy (bytes, 0, result, bytes.Length);
-			Marshal.WriteByte (result, bytes.Length, 0);
+			int len = System.Text.Encoding.UTF8.GetByteCount (str);
+			IntPtr result = g_malloc (new UIntPtr ((ulong)len + 1));
+			unsafe {
+				fixed (char *p = str) {
+					System.Text.Encoding.UTF8.GetBytes (p, str.Length, (byte *)result, len);
+				}
+			}
+			Marshal.WriteByte (result, len, 0);
 			return result;
 		}
 
