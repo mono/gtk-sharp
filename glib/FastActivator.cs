@@ -16,10 +16,11 @@ namespace GLib
 			lock (cache) {
 				if (!cache.TryGetValue (t, out method)) {
 					var param = Expression.Parameter (typeof (IntPtr));
-					var newExpr = Expression.New (
-						t.GetConstructor (flags, null, new [] { typeof (IntPtr) }, new ParameterModifier [0]),
-						param
-					);
+					var ctor = t.GetConstructor (flags, null, new [] { typeof (IntPtr) }, new ParameterModifier [0]);
+					if (ctor == null)
+						throw new MissingMethodException ();
+
+					var newExpr = Expression.New (ctor, param);
 					cache [t] = method = (FastCreateObjectPtr)Expression.Lambda (typeof (FastCreateObjectPtr), newExpr, param).Compile ();
 				}
 			}

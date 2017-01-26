@@ -36,6 +36,7 @@ public Button (string stock_id) : base (IntPtr.Zero)
 		CreateNativeObject (names, vals, 2);
 		return;
 	}
+	owned = true;
 	IntPtr native = GLib.Marshaller.StringToPtrGStrdup (stock_id);
 	Raw = gtk_button_new_from_stock (native);
 	GLib.Marshaller.Free (native);

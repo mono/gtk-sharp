@@ -31,6 +31,7 @@
 				Construct (container_type, path, accel_group);
 				return;
 			}
+			owned = true;
 			IntPtr native = GLib.Marshaller.StringToPtrGStrdup (path);
 			Raw = gtk_item_factory_new(container_type.Val, native, (accel_group != null) ? accel_group.Handle : IntPtr.Zero);
 			GLib.Marshaller.Free (native);

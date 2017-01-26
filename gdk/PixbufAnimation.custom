@@ -24,6 +24,7 @@
 		{
 			if (assembly == null)
 				assembly = System.Reflection.Assembly.GetCallingAssembly ();
+			owned = true;
 			Raw = new PixbufLoader (assembly, resource).AnimationHandle;
 		}
 

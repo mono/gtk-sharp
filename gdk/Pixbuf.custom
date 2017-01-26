@@ -106,6 +106,7 @@
 		public Pixbuf (System.IO.Stream stream) : base (IntPtr.Zero)
 		{
 			using (PixbufLoader pl = new PixbufLoader (stream)) {
+				owned = true;
 				Raw = pl.PixbufHandle;
 			}
 		}
@@ -113,6 +114,7 @@
 		public Pixbuf (System.IO.Stream stream, int width, int height) : base (IntPtr.Zero)
 		{
 			using (PixbufLoader pl = new PixbufLoader (stream, width, height)) {
+				owned = true;
 				Raw = pl.PixbufHandle;
 			}
 		}
@@ -120,6 +122,7 @@
 		public Pixbuf (System.Reflection.Assembly assembly, string resource) : base (IntPtr.Zero)
 		{
 			using (PixbufLoader pl = new PixbufLoader (assembly == null ? System.Reflection.Assembly.GetCallingAssembly () : assembly, resource)) {
+				owned = true;
 				Raw = pl.PixbufHandle;
 			}
 		}
@@ -127,6 +130,7 @@
 		public Pixbuf (System.Reflection.Assembly assembly, string resource, int width, int height) : base (IntPtr.Zero)
 		{
 			using (PixbufLoader pl = new PixbufLoader (assembly == null ? System.Reflection.Assembly.GetCallingAssembly () : assembly, resource, width, height)) {
+				owned = true;
 				Raw = pl.PixbufHandle;
 			}
 		}
@@ -134,6 +138,7 @@
 		public Pixbuf (byte[] buffer) : base (IntPtr.Zero)
 		{
 			using (PixbufLoader pl = new PixbufLoader (buffer)) {
+				owned = true;
 				Raw = pl.PixbufHandle;
 			}
 		}
@@ -141,6 +146,7 @@
 		public Pixbuf (byte[] buffer, int width, int height) : base (IntPtr.Zero)
 		{
 			using (PixbufLoader pl = new PixbufLoader (buffer, width, height)) {
+				owned = true;
 				Raw = pl.PixbufHandle;
 			}
 		}

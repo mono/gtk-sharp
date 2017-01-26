@@ -31,6 +31,7 @@
 				Group = group;
 				return;
 			}
+			owned = true;
 			Raw = gtk_radio_tool_button_new(group == null ? IntPtr.Zero : group.Handle);
 		}
 
@@ -47,6 +48,7 @@
 				Group = group;
 				return;
 			}
+			owned = true;
 			IntPtr stock_id_as_native = GLib.Marshaller.StringToPtrGStrdup (stock_id);
 			Raw = gtk_radio_tool_button_new_from_stock(group == null ? IntPtr.Zero : group.Handle, stock_id_as_native);
 			GLib.Marshaller.Free (stock_id_as_native);

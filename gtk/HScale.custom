@@ -36,6 +36,7 @@
 				return;
 			}
 
+			owned = true;
 			Raw = gtk_hscale_new_with_range (min, max, step);
 		}
 
