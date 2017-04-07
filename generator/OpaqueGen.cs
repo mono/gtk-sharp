@@ -159,6 +159,18 @@ namespace GtkSharp.Generation {
 			}
 
 			if (finalizer_needed) {
+				// Generate Dispose override.
+				sw.WriteLine ("\t\tpublic override void Dispose ()");
+				sw.WriteLine ("\t\t{");
+				sw.WriteLine ("\t\t\tif (Owned)");
+				if (dispose != null)
+					sw.WriteLine ("\t\t\t\t{0} (Raw);", dispose.CName);
+				else if (unref != null)
+					sw.WriteLine ("\t\t\t\t{0} (Raw);", unref.CName);
+				sw.WriteLine ("\t\t\tbase.Dispose();");
+				sw.WriteLine ("\t\t}");
+
+				// Generate finalizer
 				sw.WriteLine ("\t\tclass FinalizerInfo {");
 				sw.WriteLine ("\t\t\tIntPtr handle;");
 				sw.WriteLine ();
