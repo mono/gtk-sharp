@@ -26,6 +26,7 @@ namespace GLib {
 	using System.Collections;
 	using System.Collections.Generic;
 	using System.ComponentModel;
+	using System.Diagnostics;
 	using System.Reflection;
 	using System.Runtime.InteropServices;
 	using System.Text;
@@ -474,6 +475,7 @@ namespace GLib {
 			}
 		}
 
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		public IntPtr OwnedHandle {
 			get {
 				return g_object_ref (handle);

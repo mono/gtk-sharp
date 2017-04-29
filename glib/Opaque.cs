@@ -29,6 +29,7 @@ namespace GLib {
 	using System;
 	using System.Collections;
 	using System.ComponentModel;
+	using System.Diagnostics;
 	using System.Runtime.InteropServices;
 
 	public class Opaque : IWrapper, IDisposable {
@@ -114,6 +115,7 @@ namespace GLib {
 			}
 		}
 
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public IntPtr OwnedCopy {
 			get {
 				Opaque result = Copy (Handle);
