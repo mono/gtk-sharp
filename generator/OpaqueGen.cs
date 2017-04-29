@@ -170,8 +170,6 @@ namespace GtkSharp.Generation {
 				sw.WriteLine ();
 				sw.WriteLine ("\t\t~{0} ()", Name);
 				sw.WriteLine ("\t\t{");
-				sw.WriteLine ("\t\t\tif (!Owned)");
-				sw.WriteLine ("\t\t\t\treturn;");
 				sw.WriteLine ("\t\t\tGLib.Timeout.Add (50, FinalizeHandler);");
 				sw.WriteLine ("\t\t}");
 				sw.WriteLine ();
