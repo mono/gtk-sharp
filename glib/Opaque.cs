@@ -47,11 +47,11 @@ namespace GLib {
 		{
 			Opaque opaque = FastActivator.CreateOpaque (o, type);
 			if (owned) {
-				if (opaque.owned) {
+				if (opaque.Owned) {
 					// The constructor took a Ref it shouldn't have, so undo it
 					opaque.Unref (o);
 				}
-				opaque.owned = true;
+				opaque.Owned = true;
 			} else 
 				opaque = opaque.Copy (o);
 
@@ -65,6 +65,7 @@ namespace GLib {
 
 		public Opaque (IntPtr raw)
 		{
+			GC.SuppressFinalize (this);
 			owned = false;
 			Raw = raw;
 		}
@@ -129,6 +130,13 @@ namespace GLib {
 				return owned;
 			}
 			set {
+				if (owned == value)
+					return;
+
+				if (value)
+					GC.ReRegisterForFinalize (this);
+				else
+					GC.SuppressFinalize (this);
 				owned = value;
 			}
 		}
