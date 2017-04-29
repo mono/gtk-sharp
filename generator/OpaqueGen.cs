@@ -159,30 +159,20 @@ namespace GtkSharp.Generation {
 			}
 
 			if (finalizer_needed) {
-				sw.WriteLine ("\t\tclass FinalizerInfo {");
-				sw.WriteLine ("\t\t\tIntPtr handle;");
-				sw.WriteLine ();
-				sw.WriteLine ("\t\t\tpublic FinalizerInfo (IntPtr handle)");
-				sw.WriteLine ("\t\t\t{");
-				sw.WriteLine ("\t\t\t\tthis.handle = handle;");
-				sw.WriteLine ("\t\t\t}");
-				sw.WriteLine ();
-				sw.WriteLine ("\t\t\tpublic bool Handler ()");
-				sw.WriteLine ("\t\t\t{");
+				sw.WriteLine ("\t\tbool FinalizeHandler ()");
+				sw.WriteLine ("\t\t{");
 				if (dispose != null)
-					sw.WriteLine ("\t\t\t\t{0} (handle);", dispose.CName);
+					sw.WriteLine ("\t\t\t{0} (Handle);", dispose.CName);
 				else if (unref != null)
-					sw.WriteLine ("\t\t\t\t{0} (handle);", unref.CName);
-				sw.WriteLine ("\t\t\t\treturn false;");
-				sw.WriteLine ("\t\t\t}");
+					sw.WriteLine ("\t\t\t{0} (Handle);", unref.CName);
+				sw.WriteLine ("\t\t\treturn false;");
 				sw.WriteLine ("\t\t}");
 				sw.WriteLine ();
 				sw.WriteLine ("\t\t~{0} ()", Name);
 				sw.WriteLine ("\t\t{");
 				sw.WriteLine ("\t\t\tif (!Owned)");
 				sw.WriteLine ("\t\t\t\treturn;");
-				sw.WriteLine ("\t\t\tFinalizerInfo info = new FinalizerInfo (Handle);");
-				sw.WriteLine ("\t\t\tGLib.Timeout.Add (50, new GLib.TimeoutHandler (info.Handler));");
+				sw.WriteLine ("\t\t\tGLib.Timeout.Add (50, FinalizeHandler);");
 				sw.WriteLine ("\t\t}");
 				sw.WriteLine ();
 			}
