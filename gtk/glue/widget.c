@@ -43,6 +43,7 @@ void gtksharp_widget_register_binding (GType gtype, const char *sig_name, guint 
 gboolean gtksharp_widget_style_get_property (GtkWidget *widget, const gchar* property, GValue *value);
 /* */
 
+/* obsoleted */
 GdkRectangle*
 gtksharp_gtk_widget_get_allocation (GtkWidget *widget)
 {
@@ -58,9 +59,7 @@ gtksharp_gtk_widget_get_window (GtkWidget *widget)
 void
 gtksharp_gtk_widget_set_window (GtkWidget *widget, GdkWindow *window)
 {
-	if (widget->window)
-		g_object_unref (widget->window);
-	widget->window = g_object_ref (window);
+	gtk_widget_set_window (widget, window);
 }
 
 int
@@ -68,6 +67,7 @@ gtksharp_gtk_widget_get_state (GtkWidget *widget)
 {
 	return GTK_WIDGET_STATE (widget);
 }
+/* end obsoleted */
 
 int
 gtksharp_gtk_widget_get_flags (GtkWidget *widget)
