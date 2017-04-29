@@ -29,36 +29,34 @@ protected Widget (GLib.GType gtype) : base(gtype)
 {
 }
 
-public override void Destroy ()
-{
-	base.Destroy ();
-}
-
-[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
-static extern IntPtr gtksharp_gtk_widget_get_allocation (IntPtr style);
+[DllImport("libgtk-win32-2.0-0.dll ", CallingConvention=CallingConvention.Cdecl)]
+static extern IntPtr gtk_widget_get_allocation (IntPtr widget, ref Gdk.Rectangle rect);
 
 public Gdk.Rectangle Allocation {
-	get { return Gdk.Rectangle.New (gtksharp_gtk_widget_get_allocation (Handle)); }
+	get {
+		Gdk.Rectangle rect = new Gdk.Rectangle ();
+		gtk_widget_get_allocation (Handle, ref rect);
+		return rect;
+	}
 	set { SizeAllocate (value); }
 }
 
-[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
-static extern IntPtr gtksharp_gtk_widget_get_window (IntPtr widget);
-[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
-static extern void gtksharp_gtk_widget_set_window (IntPtr widget, IntPtr window);
+[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+static extern IntPtr gtk_widget_get_window  (IntPtr widget);
+[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+static extern void gtk_widget_set_window  (IntPtr widget, IntPtr window);
 public Gdk.Window GdkWindow {
 	get {
-		IntPtr raw_ret = gtksharp_gtk_widget_get_window (Handle);
+		IntPtr raw_ret = gtk_widget_get_window (Handle);
+		if (raw_ret == IntPtr.Zero)
+			return null;
 
-		if (raw_ret != (IntPtr) 0){
-	 		Gdk.Window ret = (Gdk.Window) GLib.Object.GetObject(raw_ret, false);
-			return ret;
-		}
-		return null;
+ 		Gdk.Window ret = (Gdk.Window) GLib.Object.GetObject(raw_ret, false);
+		return ret;
 	}
 	set {
 		Gdk.Window window = value as Gdk.Window;
-		gtksharp_gtk_widget_set_window (Handle, window.Handle);
+		gtk_widget_set_window  (Handle, window.Handle);
 	}
 }
 
@@ -71,15 +69,15 @@ public void AddAccelerator (string accel_signal, AccelGroup accel_group, AccelKe
 [DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 static extern void gtk_widget_set_state (IntPtr raw, int state);
 
-[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
-static extern int gtksharp_gtk_widget_get_state (IntPtr raw);
+[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+static extern int gtk_widget_get_state  (IntPtr raw);
 
 public Gtk.StateType State {
 	set {
 		gtk_widget_set_state (Handle, (int) value);
 	}
 	get {
-		return (Gtk.StateType) gtksharp_gtk_widget_get_state (Handle);
+		return (Gtk.StateType) gtk_widget_get_state  (Handle);
 	}
 }
 
