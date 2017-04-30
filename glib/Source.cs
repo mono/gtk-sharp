@@ -48,8 +48,10 @@ namespace GLib {
 		public void Remove ()
 		{
 			lock (Source.source_handlers) {
-				needsAdd = false;
-				Source.source_handlers.Remove (ID);
+				if (needsAdd)
+					needsAdd = false;
+				else
+					Source.source_handlers.Remove (ID);
 			}
 		}
 
