@@ -28,6 +28,7 @@ namespace GLib {
 
 	using System;
 	using System.Collections;
+	using System.Collections.Generic;
 	using System.ComponentModel;
 	using System.Diagnostics;
 	using System.Runtime.InteropServices;
@@ -87,15 +88,34 @@ namespace GLib {
 			}
 		}
 
-		bool FinalizeHandler ()
+		static object lockObject = new object ();
+		static List<Opaque> PendingFrees = new List<Opaque> ();
+		static bool idleQueued;
+
+		bool PerformQueuedFrees ()
 		{
-			Raw = IntPtr.Zero;
+			List<Opaque> references;
+			lock (lockObject) {
+				references = PendingFrees;
+				PendingFrees = new List<Opaque> ();
+				idleQueued = false;
+			}
+
+			foreach (var opaque in references)
+				opaque.Raw = IntPtr.Zero;
+			
 			return false;
 		}
 
 		~Opaque ()
 		{
-			Timeout.Add (50, FinalizeHandler);
+			lock (lockObject) {
+				PendingFrees.Add (this);
+				if (!idleQueued) {
+					idleQueued = true;
+					Timeout.Add (50, new TimeoutHandler (PerformQueuedFrees));
+				}
+			}
 		}
 
 		public virtual void Dispose ()
