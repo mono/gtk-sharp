@@ -54,7 +54,7 @@ namespace GtkSharp.Generation {
 
 			if (Name == "GetType") {
 				Name = "GetGType";
-				cacheValue = !(container_type is StructBase);
+				cacheValue = !(container_type is StructBase) && !retval.IsVoid;
 				cacheName = "_gtype";
 			}
 		}

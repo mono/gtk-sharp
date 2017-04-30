@@ -44,12 +44,16 @@
 				return null;
 			}
 			Gdk.Color[] colors = new Gdk.Color[n_colors];
-			int colorSize = Marshal.SizeOf (typeof (Gdk.Color));
+			int colorSize = 0;			
+			unsafe {
+				colorSize = sizeof(Gdk.Color);
+			}
 			for (int i=0; i < n_colors; i++)
 			{
 				colors[i] = Gdk.Color.New(parsedColors);
 				parsedColors = (IntPtr) ((int)parsedColors + colorSize);
 			}
+			GLib.Marshaller.Free (parsedColors);
 			return colors;
 		}
 

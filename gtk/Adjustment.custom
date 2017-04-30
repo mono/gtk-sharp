@@ -34,6 +34,7 @@ public Adjustment (double value, double lower, double upper, double step_increme
 		return;
 	}
 
+	owned = true;
 	Raw = gtk_adjustment_new(value, lower, upper, step_increment, page_increment, page_size);
 }
 
