@@ -29,7 +29,7 @@ protected Widget (GLib.GType gtype) : base(gtype)
 {
 }
 
-[DllImport("libgtk-win32-2.0-0.dll ", CallingConvention=CallingConvention.Cdecl)]
+[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 static extern IntPtr gtk_widget_get_allocation (IntPtr widget, ref Gdk.Rectangle rect);
 
 public Gdk.Rectangle Allocation {
