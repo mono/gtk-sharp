@@ -85,12 +85,17 @@ namespace GLib {
 					Ref (_obj);
 				}
 			}
-		}       
+		}
+
+		bool FinalizeHandler ()
+		{
+			Raw = IntPtr.Zero;
+			return false;
+		}
 
 		~Opaque ()
 		{
-			// for compat.  All subclasses should have
-			// generated finalizers if needed now.
+			Timeout.Add (50, FinalizeHandler);
 		}
 
 		public virtual void Dispose ()
