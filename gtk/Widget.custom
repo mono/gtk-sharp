@@ -29,11 +29,6 @@ protected Widget (GLib.GType gtype) : base(gtype)
 {
 }
 
-public override void Destroy ()
-{
-	base.Destroy ();
-}
-
 [DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 static extern IntPtr gtksharp_gtk_widget_get_allocation (IntPtr style);
 

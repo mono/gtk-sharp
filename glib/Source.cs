@@ -32,34 +32,38 @@ namespace GLib {
 	//
 	// Base class for IdleProxy and TimeoutProxy
 	//
-	internal class SourceProxy {
-		internal Delegate real_handler;
-		internal Delegate proxy_handler;
+	internal abstract class SourceProxy {
 		internal uint ID;
-
-		internal int proxyId;
-		static int idCounter;
-		internal static Dictionary<int, SourceProxy> proxies = new Dictionary<int, SourceProxy> ();
+		internal readonly GSourceFuncInternal Handler;
 
 		protected SourceProxy ()
 		{
-			lock(proxies) {
-				do {
-					proxyId = idCounter++;
-				} while (proxies.ContainsKey (proxyId));
-				proxies [proxyId] = this;
-			}
+			Handler = new GSourceFuncInternal (HandlerInternal);
 		}
 
-		internal void Remove ()
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
+		internal delegate bool GSourceFuncInternal (IntPtr ptr);
+
+		public void Remove ()
 		{
 			lock (Source.source_handlers)
 				Source.source_handlers.Remove (ID);
-			real_handler = null;
-			proxy_handler = null;
-			lock(proxies)
-				proxies.Remove (proxyId);
 		}
+
+		bool HandlerInternal (IntPtr data)
+		{
+			try {
+				bool cont = Invoke (data);
+				if (!cont)
+					Remove ();
+				return cont;
+			} catch (Exception e) {
+				ExceptionManager.RaiseUnhandledException (e, false);
+			}
+			return false;
+		}
+
+		protected abstract bool Invoke (IntPtr data);
 	}
 	
         public class Source {
@@ -75,11 +79,11 @@ namespace GLib {
 			// g_source_remove always returns true, so we follow that
 			bool ret = true;
 
-			lock (Source.source_handlers) {
+			lock (source_handlers) {
 				SourceProxy handler;
 				if (source_handlers.TryGetValue (tag, out handler)) {
-					handler.Remove ();
 					ret = g_source_remove (tag);
+					handler.Remove ();
 				}
 			}
 			return ret;
