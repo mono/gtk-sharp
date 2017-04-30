@@ -39,7 +39,7 @@ namespace GLib {
 				real_handler = real;
 			}
 
-			protected override bool Invoke ()
+			protected override bool Invoke (IntPtr data)
 			{
 				return real_handler ();
 			}
@@ -55,7 +55,7 @@ namespace GLib {
 		public static uint Add (IdleHandler hndlr)
 		{
 			IdleProxy p = new IdleProxy (hndlr);
-			p.ID = g_idle_add (SourceProxy.Handler, (IntPtr)p.proxyId);
+			p.ID = g_idle_add (p.Handler, IntPtr.Zero);
 			lock (Source.source_handlers)
 				Source.source_handlers [p.ID] = p;
 
@@ -76,7 +76,7 @@ namespace GLib {
 				
 					if (p != null && p.real_handler == hndlr) {
 						result = g_source_remove (code);
-						p.Dispose ();
+						p.Remove ();
 					}
 				}
 			}

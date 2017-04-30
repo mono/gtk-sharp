@@ -35,7 +35,7 @@ namespace GLib {
 				real_handler = real;
 			}
 
-			protected override bool Invoke ()
+			protected override bool Invoke (IntPtr data)
 			{
 				return real_handler ();
 			}
@@ -50,7 +50,7 @@ namespace GLib {
 		{
 			TimeoutProxy p = new TimeoutProxy (hndlr);
 
-			p.ID = g_timeout_add (interval, SourceProxy.Handler, (IntPtr)p.proxyId);
+			p.ID = g_timeout_add (interval, p.Handler, IntPtr.Zero);
 			lock (Source.source_handlers)
 				Source.source_handlers [p.ID] = p;
 
