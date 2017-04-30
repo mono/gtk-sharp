@@ -35,6 +35,7 @@ namespace GLib {
 	internal abstract class SourceProxy {
 		internal uint ID;
 		internal readonly GSourceFuncInternal Handler;
+		internal int needsAdd = 1;
 
 		protected SourceProxy ()
 		{
@@ -46,8 +47,10 @@ namespace GLib {
 
 		public void Remove ()
 		{
-			lock (Source.source_handlers)
+			Interlocked.Exchange (ref needsAdd, 0);
+			lock (Source.source_handlers) {
 				Source.source_handlers.Remove (ID);
+			}
 		}
 
 		bool HandlerInternal (IntPtr data)
@@ -73,6 +76,15 @@ namespace GLib {
 		
 		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool g_source_remove (uint tag);
+
+		internal static void Add (SourceProxy proxy)
+		{
+			if (Interlocked.CompareExchange (ref proxy.needsAdd, 0, 1) == 1) {
+				lock (source_handlers) {
+					source_handlers [proxy.ID] = proxy;
+				}
+			}
+		}
 
 		public static bool Remove (uint tag)
 		{

@@ -56,8 +56,7 @@ namespace GLib {
 		{
 			IdleProxy p = new IdleProxy (hndlr);
 			p.ID = g_idle_add (p.Handler, IntPtr.Zero);
-			lock (Source.source_handlers)
-				Source.source_handlers [p.ID] = p;
+			Source.Add (p);
 
 			return p.ID;
 		}
