@@ -25,62 +25,23 @@ namespace GLib {
 
 	using System;
 	using System.Collections;
+	using System.Collections.Generic;
 	using System.Runtime.InteropServices;
 
 	public delegate bool IdleHandler ();
 
 	public class Idle {
 
-		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
-		delegate bool IdleHandlerInternal (IntPtr ptr);
-
-
 		internal class IdleProxy : SourceProxy {
+			internal readonly IdleHandler real_handler;
 			public IdleProxy (IdleHandler real)
 			{
 				real_handler = real;
-				proxy_handler = new IdleHandlerInternal (Handler);
 			}
 
-			~IdleProxy ()
+			protected override bool Invoke (IntPtr data)
 			{
-				Dispose (false);
-			}
-
-			public void Dispose ()
-			{
-				Dispose (true);
-				GC.SuppressFinalize (this);
-			}
-
-			protected virtual void Dispose (bool disposing)
-			{
-				// Both branches remove our delegate from the
-				// managed list of handlers, but only
-				// Source.Remove will remove it from the
-
-				if (disposing)
-					Remove ();
-				else
-					Source.Remove (ID);
-			}
-
-			static bool Handler (IntPtr data)
-			{
-				try {
-					SourceProxy obj;
-					lock(proxies)
-						obj = proxies [(int)data];
-					IdleHandler idle_handler = (IdleHandler)obj.real_handler;
-
-					bool cont = idle_handler ();
-					if (!cont)
-						obj.Remove ();
-					return cont;
-				} catch (Exception e) {
-					ExceptionManager.RaiseUnhandledException (e, false);
-				}
-				return false;
+				return real_handler ();
 			}
 		}
 		
@@ -89,14 +50,13 @@ namespace GLib {
 		}
 		
 		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
-		static extern uint g_idle_add (IdleHandlerInternal d, IntPtr data);
+		static extern uint g_idle_add (SourceProxy.GSourceFuncInternal d, IntPtr data);
 
 		public static uint Add (IdleHandler hndlr)
 		{
 			IdleProxy p = new IdleProxy (hndlr);
-			p.ID = g_idle_add ((IdleHandlerInternal)p.proxy_handler, (IntPtr)p.proxyId);
-			lock (Source.source_handlers)
-				Source.source_handlers [p.ID] = p;
+			p.ID = g_idle_add (p.Handler, IntPtr.Zero);
+			Source.Add (p);
 
 			return p.ID;
 		}
@@ -107,24 +67,17 @@ namespace GLib {
 		public static bool Remove (IdleHandler hndlr)
 		{
 			bool result = false;
-			var keys = new System.Collections.Generic.List<uint> ();
 
 			lock (Source.source_handlers) {
-				foreach (uint code in Source.source_handlers.Keys) {
-					IdleProxy p = Source.source_handlers [code] as IdleProxy;
+				foreach (KeyValuePair<uint, SourceProxy> kvp in Source.source_handlers) {
+					uint code = kvp.Key;
+					IdleProxy p = kvp.Value as IdleProxy;
 				
-					if (p != null && p.real_handler == (System.Delegate) hndlr) {
-						keys.Add (code);
+					if (p != null && p.real_handler == hndlr) {
 						result = g_source_remove (code);
-						p.proxy_handler = null;
-						p.real_handler = null;
-						lock(SourceProxy.proxies)
-							SourceProxy.proxies.Remove (p.proxyId);
+						p.Remove ();
 					}
 				}
-
-				foreach (var key in keys)
-					Source.source_handlers.Remove (key);
 			}
 
 			return result;

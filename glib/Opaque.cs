@@ -28,7 +28,9 @@ namespace GLib {
 
 	using System;
 	using System.Collections;
+	using System.Collections.Generic;
 	using System.ComponentModel;
+	using System.Diagnostics;
 	using System.Runtime.InteropServices;
 
 	public class Opaque : IWrapper, IDisposable {
@@ -46,11 +48,11 @@ namespace GLib {
 		{
 			Opaque opaque = FastActivator.CreateOpaque (o, type);
 			if (owned) {
-				if (opaque.owned) {
+				if (opaque.Owned) {
 					// The constructor took a Ref it shouldn't have, so undo it
 					opaque.Unref (o);
 				}
-				opaque.owned = true;
+				opaque.Owned = true;
 			} else 
 				opaque = opaque.Copy (o);
 
@@ -64,6 +66,7 @@ namespace GLib {
 
 		public Opaque (IntPtr raw)
 		{
+			GC.SuppressFinalize (this);
 			owned = false;
 			Raw = raw;
 		}
@@ -83,12 +86,36 @@ namespace GLib {
 					Ref (_obj);
 				}
 			}
-		}       
+		}
+
+		static object lockObject = new object ();
+		static List<Opaque> PendingFrees = new List<Opaque> ();
+		static bool idleQueued;
+
+		bool PerformQueuedFrees ()
+		{
+			List<Opaque> references;
+			lock (lockObject) {
+				references = PendingFrees;
+				PendingFrees = new List<Opaque> ();
+				idleQueued = false;
+			}
+
+			foreach (var opaque in references)
+				opaque.Raw = IntPtr.Zero;
+			
+			return false;
+		}
 
 		~Opaque ()
 		{
-			// for compat.  All subclasses should have
-			// generated finalizers if needed now.
+			lock (lockObject) {
+				PendingFrees.Add (this);
+				if (!idleQueued) {
+					idleQueued = true;
+					Timeout.Add (50, new TimeoutHandler (PerformQueuedFrees));
+				}
+			}
 		}
 
 		public virtual void Dispose ()
@@ -114,6 +141,7 @@ namespace GLib {
 			}
 		}
 
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public IntPtr OwnedCopy {
 			get {
 				Opaque result = Copy (Handle);
@@ -127,6 +155,13 @@ namespace GLib {
 				return owned;
 			}
 			set {
+				if (owned == value)
+					return;
+
+				if (value)
+					GC.ReRegisterForFinalize (this);
+				else
+					GC.SuppressFinalize (this);
 				owned = value;
 			}
 		}
