@@ -61,13 +61,12 @@ namespace GLib {
   
 		public Opaque ()
 		{
-			owned = true;
+			Owned = true;
 		}
 
 		public Opaque (IntPtr raw)
 		{
-			GC.SuppressFinalize (this);
-			owned = false;
+			Owned = false;
 			Raw = raw;
 		}
 
@@ -110,7 +109,8 @@ namespace GLib {
 		~Opaque ()
 		{
 			lock (lockObject) {
-				PendingFrees.Add (this);
+				if (Owned)
+					PendingFrees.Add (this);
 				if (!idleQueued) {
 					idleQueued = true;
 					Timeout.Add (50, new TimeoutHandler (PerformQueuedFrees));
@@ -121,7 +121,6 @@ namespace GLib {
 		public virtual void Dispose ()
 		{
 			Raw = IntPtr.Zero;
-			GC.SuppressFinalize (this);
 		}
 
 		// These take an IntPtr arg so we don't get conflicts if we need
@@ -155,13 +154,6 @@ namespace GLib {
 				return owned;
 			}
 			set {
-				if (owned == value)
-					return;
-
-				if (value)
-					GC.ReRegisterForFinalize (this);
-				else
-					GC.SuppressFinalize (this);
 				owned = value;
 			}
 		}
