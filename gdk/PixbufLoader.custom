@@ -55,7 +55,7 @@
 			int n;
 
 			while ((n = input.Read (buffer, 0, 8192)) != 0)
-				Write (buffer, (uint) n);
+				Write (buffer, (ulong) n);
 		}
 		
 		public PixbufLoader (string file, int width, int height) : this ()
