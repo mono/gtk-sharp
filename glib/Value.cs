@@ -212,7 +212,8 @@ namespace GLib {
 
 		public void Dispose () 
 		{
-			g_value_unset (ref this);
+			if (type != IntPtr.Zero)
+				g_value_unset (ref this);
 		}
 
 		public void Init (GLib.GType gtype)
@@ -428,7 +429,8 @@ namespace GLib {
 						return;
 					}
 					IntPtr wrapper = ManagedValue.WrapObject (value);
-					g_value_unset (ref this);
+					if (type != IntPtr.Zero)
+						g_value_unset (ref this);
 					g_value_init (ref this, ManagedValue.GType.Val);
 					g_value_set_boxed (ref this, wrapper);
 					ManagedValue.ReleaseWrapper (wrapper);
