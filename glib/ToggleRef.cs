@@ -71,10 +71,10 @@ namespace GLib {
 
   		public void Free ()
   		{
-			Signal[] signals = new Signal [Signals.Count];
-			Signals.Values.CopyTo (signals, 0);
-			foreach (Signal s in signals)
-				s.Free ();
+			if (signals != null)
+				foreach (Signal s in signals)
+					s.Free ();
+
 			if (hardened)
 				g_object_unref (handle);
 			else
