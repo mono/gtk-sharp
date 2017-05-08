@@ -285,7 +285,7 @@ namespace GLib {
 				return;
 			}
 
-			hash.Remove (del);
+			hash.Remove (name);
 			if (before) {
 				if (before_closure != null) {
 					before_closure.Dispose ();
