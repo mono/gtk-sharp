@@ -276,15 +276,23 @@ namespace GLib {
 			if (tref.Target == null)
 				return;
 
-			if (d.Method.IsDefined (typeof (ConnectBeforeAttribute), false)) {
-				tref.Target.BeforeSignals [name] = Delegate.Remove (tref.Target.BeforeSignals [name] as Delegate, d);
-				if (tref.Target.BeforeSignals [name] == null && before_closure != null) {
+			bool before = d.Method.IsDefined (typeof (ConnectBeforeAttribute), false);
+			Hashtable hash = before ? tref.Target.BeforeSignals : tref.Target.AfterSignals;
+
+			Delegate del = Delegate.Remove (hash [name] as Delegate, d);
+			if (del != null) {
+				hash [name] = del;
+				return;
+			}
+
+			hash.Remove (name);
+			if (before) {
+				if (before_closure != null) {
 					before_closure.Dispose ();
 					before_closure = null;
 				}
 			} else {
-				tref.Target.AfterSignals [name] = Delegate.Remove (tref.Target.AfterSignals [name] as Delegate, d);
-				if (tref.Target.AfterSignals [name] == null && after_closure != null) {
+				if (after_closure != null) {
 					after_closure.Dispose ();
 					after_closure = null;
 				}
