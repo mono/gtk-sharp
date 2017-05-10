@@ -72,7 +72,7 @@ namespace GLib {
   		public void Free ()
   		{
 			if (signals != null)
-				foreach (Signal s in signals)
+				foreach (Signal s in signals.Values)
 					s.Free ();
 
 			if (hardened)
