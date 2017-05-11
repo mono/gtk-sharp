@@ -76,18 +76,6 @@ namespace GLib {
 			return ret;
 		}
 
-#if HAVE_NET_4_6
-		static bool hasFastGetStringOverload = typeof (System.Text.Encoding).GetMethod ("GetString", new [] { typeof (byte*), typeof (int) }) != null;
-		static string Utf8PtrToStringFast (IntPtr ptr, int len)
-		{
-			unsafe
-			{
-				var p = (byte*)ptr;
-				return System.Text.Encoding.UTF8.GetString (p, len);
-			}
-		}
-#endif
-
 		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		unsafe static extern char* g_utf8_to_utf16 (IntPtr native_str, IntPtr len, IntPtr items_read, IntPtr items_written, IntPtr error);
 
