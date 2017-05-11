@@ -77,10 +77,10 @@ namespace GLib {
 		}
 
 		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
-		unsafe static extern char* g_utf8_to_utf16 (IntPtr native_str, IntPtr len, IntPtr items_read, IntPtr items_written, IntPtr error);
+		unsafe static extern char* g_utf8_to_utf16 (IntPtr native_str, IntPtr len, IntPtr items_read, ref IntPtr items_written, out IntPtr error);
 
 		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
-		unsafe static extern IntPtr g_utf16_to_utf8 (char* native_str, IntPtr len, IntPtr items_read, IntPtr items_written, IntPtr error);
+		unsafe static extern IntPtr g_utf16_to_utf8 (char* native_str, IntPtr len, IntPtr items_read, IntPtr items_written, out IntPtr error);
 
 		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern UIntPtr glibsharp_strlen (IntPtr mem);
@@ -90,8 +90,13 @@ namespace GLib {
 				return null;
 			unsafe
 			{
-				char *utf16 = g_utf8_to_utf16 (ptr, new IntPtr (-1), IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
-				var result = new string (utf16);
+				IntPtr written = IntPtr.Zero;
+				IntPtr error;
+				char *utf16 = g_utf8_to_utf16 (ptr, new IntPtr (-1), IntPtr.Zero, ref written, out error);
+				if (error != IntPtr.Zero)
+					throw new GLib.GException (error);
+				
+				var result = new string (utf16, 0, (int)written);
 				g_free ((IntPtr)utf16);
 				return result;
 			}
@@ -157,7 +162,12 @@ namespace GLib {
 			unsafe
 			{
 				fixed (char* p = str) {
-					var result = g_utf16_to_utf8 (p, new IntPtr (str.Length), IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
+					IntPtr error;
+					var result = g_utf16_to_utf8 (p, new IntPtr (str.Length), IntPtr.Zero, IntPtr.Zero, out error);
+
+					if (error != IntPtr.Zero)
+						throw new GLib.GException (error);
+					
 					return result;
 				}
 			}
