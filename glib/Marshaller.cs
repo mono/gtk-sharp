@@ -88,21 +88,22 @@ namespace GLib {
 		}
 #endif
 
+		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		unsafe static extern char* g_utf8_to_utf16 (IntPtr native_str, IntPtr len, IntPtr items_read, IntPtr items_written, IntPtr error);
+
+		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		unsafe static extern IntPtr g_utf16_to_utf8 (char* native_str, IntPtr len, IntPtr items_read, IntPtr items_written, IntPtr error);
+
 		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern UIntPtr glibsharp_strlen (IntPtr mem);
 		public static string Utf8PtrToString (IntPtr ptr) 
 		{
 			if (ptr == IntPtr.Zero)
 				return null;
-
-			int len = (int) (uint)glibsharp_strlen (ptr);
-#if HAVE_NET_4_6
-			if (hasFastGetStringOverload)
-				return Utf8PtrToStringFast (ptr, len);
-#endif
-			byte [] bytes = new byte [len];
-			Marshal.Copy (ptr, bytes, 0, len);
-			return System.Text.Encoding.UTF8.GetString (bytes);
+			unsafe
+			{
+				return new string (g_utf8_to_utf16 (ptr, new IntPtr (-1), IntPtr.Zero, IntPtr.Zero, IntPtr.Zero));
+			}
 		}
 
 		public static string[] Utf8PtrToString (IntPtr[] ptrs) {
@@ -161,17 +162,14 @@ namespace GLib {
 		public static IntPtr StringToPtrGStrdup (string str) {
 			if (str == null)
 				return IntPtr.Zero;
-			int len = System.Text.Encoding.UTF8.GetByteCount (str);
-			IntPtr result = g_malloc (new UIntPtr ((uint)len + 1));
+
 			unsafe
 			{
-				fixed (char* p = str)
-				{
-					System.Text.Encoding.UTF8.GetBytes (p, str.Length, (byte*)result, len);
+				fixed (char* p = str) {
+					var result = g_utf16_to_utf8 (p, new IntPtr (str.Length), IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
+					return result;
 				}
 			}
-			Marshal.WriteByte (result, len, 0);
-			return result;
 		}
 
 		public static string StringFormat (string format, params object[] args) {
