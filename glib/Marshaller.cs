@@ -90,7 +90,10 @@ namespace GLib {
 				return null;
 			unsafe
 			{
-				return new string (g_utf8_to_utf16 (ptr, new IntPtr (-1), IntPtr.Zero, IntPtr.Zero, IntPtr.Zero));
+				char *utf16 = g_utf8_to_utf16 (ptr, new IntPtr (-1), IntPtr.Zero, IntPtr.Zero, IntPtr.Zero);
+				var result = new string (utf16);
+				g_free ((IntPtr)utf16);
+				return result;
 			}
 		}
 
