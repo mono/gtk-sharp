@@ -76,17 +76,11 @@ namespace GLib {
 			return ret;
 		}
 
-#if HAVE_NET_4_6
-		static bool hasFastGetStringOverload = typeof (System.Text.Encoding).GetMethod ("GetString", new [] { typeof (byte*), typeof (int) }) != null;
-		static string Utf8PtrToStringFast (IntPtr ptr, int len)
-		{
-			unsafe
-			{
-				var p = (byte*)ptr;
-				return System.Text.Encoding.UTF8.GetString (p, len);
-			}
-		}
-#endif
+		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		unsafe static extern char* g_utf8_to_utf16 (IntPtr native_str, IntPtr len, IntPtr items_read, ref IntPtr items_written, out IntPtr error);
+
+		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		unsafe static extern IntPtr g_utf16_to_utf8 (char* native_str, IntPtr len, IntPtr items_read, IntPtr items_written, out IntPtr error);
 
 		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern UIntPtr glibsharp_strlen (IntPtr mem);
@@ -94,15 +88,18 @@ namespace GLib {
 		{
 			if (ptr == IntPtr.Zero)
 				return null;
-
-			int len = (int) (uint)glibsharp_strlen (ptr);
-#if HAVE_NET_4_6
-			if (hasFastGetStringOverload)
-				return Utf8PtrToStringFast (ptr, len);
-#endif
-			byte [] bytes = new byte [len];
-			Marshal.Copy (ptr, bytes, 0, len);
-			return System.Text.Encoding.UTF8.GetString (bytes);
+			unsafe
+			{
+				IntPtr written = IntPtr.Zero;
+				IntPtr error;
+				char *utf16 = g_utf8_to_utf16 (ptr, new IntPtr (-1), IntPtr.Zero, ref written, out error);
+				if (error != IntPtr.Zero)
+					throw new GLib.GException (error);
+				
+				var result = new string (utf16, 0, (int)written);
+				g_free ((IntPtr)utf16);
+				return result;
+			}
 		}
 
 		public static string[] Utf8PtrToString (IntPtr[] ptrs) {
@@ -161,17 +158,19 @@ namespace GLib {
 		public static IntPtr StringToPtrGStrdup (string str) {
 			if (str == null)
 				return IntPtr.Zero;
-			int len = System.Text.Encoding.UTF8.GetByteCount (str);
-			IntPtr result = g_malloc (new UIntPtr ((uint)len + 1));
+
 			unsafe
 			{
-				fixed (char* p = str)
-				{
-					System.Text.Encoding.UTF8.GetBytes (p, str.Length, (byte*)result, len);
+				fixed (char* p = str) {
+					IntPtr error;
+					var result = g_utf16_to_utf8 (p, new IntPtr (str.Length), IntPtr.Zero, IntPtr.Zero, out error);
+
+					if (error != IntPtr.Zero)
+						throw new GLib.GException (error);
+					
+					return result;
 				}
 			}
-			Marshal.WriteByte (result, len, 0);
-			return result;
 		}
 
 		public static string StringFormat (string format, params object[] args) {
