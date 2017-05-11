@@ -172,7 +172,7 @@ namespace GLib {
 			}
 
 			if (before_closure == null && after_closure == null)
-				tref.Signals.Remove (name);
+				tref.RemoveSignal (name);
 		}
 
 		EventHandler closure_disposed_cb;

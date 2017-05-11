@@ -69,12 +69,20 @@ namespace GLib {
 			}
 		}
 
+		internal void RemoveSignal (string name)
+		{
+			if (signals == null)
+				return;
+			
+			signals.Remove (name);
+		}
+
   		public void Free ()
   		{
 			if (signals != null) {
-				var array = new Signal [signals.Values.Count];
-				signals.Values.CopyTo (array, 0);
-				foreach (Signal s in array)
+				var copy = signals.Values;
+				signals = null;
+				foreach (Signal s in copy)
 					s.Free ();
 			}
 
