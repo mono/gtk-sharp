@@ -5586,6 +5586,25 @@
           <parameter type="GtkComboBox*" name="combo_box" />
         </parameters>
       </virtual_method>
+      <signal name="MoveActive" cname="move-active" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="GtkComboBox*" />
+          <parameter name="p0" type="GtkScrollType" />
+        </parameters>
+      </signal>
+      <signal name="Popup" cname="popup" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="GtkComboBox*" />
+        </parameters>
+      </signal>
+      <signal name="Popdown" cname="popdown" when="LAST">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter name="inst" type="GtkComboBox*" />
+        </parameters>
+      </signal>
       <property name="Model" cname="model" type="GtkTreeModel" readable="true" writeable="true" />
       <property name="WrapWidth" cname="wrap-width" type="gint" readable="true" writeable="true" />
       <property name="RowSpanColumn" cname="row-span-column" type="gint" readable="true" writeable="true" />
@@ -9375,6 +9394,13 @@
       <field name="LowerArrowVisible" cname="lower_arrow_visible" bits="1" type="guint" />
       <field name="UpperArrowPrelight" cname="upper_arrow_prelight" bits="1" type="guint" />
       <field name="LowerArrowPrelight" cname="lower_arrow_prelight" bits="1" type="guint" />
+      <signal name="MoveScroll" cname="move_scroll" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="GtkMenu*" />
+          <parameter name="p0" type="GtkScrollType" />
+        </parameters>
+      </signal>
       <property name="TearoffTitle" cname="tearoff-title" type="gchar*" readable="true" writeable="true" />
       <property name="TearoffState" cname="tearoff-state" type="gboolean" readable="true" writeable="true" />
       <childprop name="LeftAttach" cname="left-attach" type="gint" readable="true" writeable="true" />
@@ -9687,6 +9713,13 @@
           <parameter type="GtkMenuShell*" name="menu_shell" />
         </parameters>
       </virtual_method>
+      <signal name="CycleFocus" cname="cycle_focus" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="GtkMenuShell*" />
+          <parameter name="p0" type="GtkDirectionType" />
+        </parameters>
+      </signal>
       <signal name="MoveSelected" cname="move_selected" when="LAST" field_name="move_selected">
         <return-type type="gboolean" />
         <parameters>
@@ -12627,6 +12660,18 @@
           <parameter type="gdouble" name="value" />
         </parameters>
       </signal>
+      <signal name="Popup" cname="popup" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="GtkScaleButton*" />
+        </parameters>
+      </signal>
+      <signal name="Popdown" cname="popdown" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="GtkScaleButton*" />
+        </parameters>
+      </signal>
       <method name="GetAdjustment" cname="gtk_scale_button_get_adjustment">
         <return-type type="GtkAdjustment*" />
       </method>
@@ -14878,6 +14923,14 @@
           <parameter type="gboolean" name="extend_selection" />
         </parameters>
       </signal>
+      <signal name="MoveViewport" cname="move_viewport" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="GtkTextView*" />
+          <parameter name="p0" type="GtkScrollStep" />
+          <parameter name="p1" type="gint32" />
+        </parameters>
+      </signal>
       <signal name="SetAnchor" cname="set_anchor" when="LAST" field_name="set_anchor">
         <return-type type="void" />
         <parameters>
@@ -14937,13 +14990,6 @@
           <parameter type="GtkAdjustment*" name="vadjustment" />
         </parameters>
       </signal>
-      <signal name="PopulatePopup" cname="populate_popup" when="LAST" field_name="populate_popup">
-        <return-type type="void" />
-        <parameters>
-          <parameter type="GtkTextView*" name="text_view" />
-          <parameter type="GtkMenu*" name="menu" />
-        </parameters>
-      </signal>
       <virtual_method name="MoveFocus" cname="move_focus">
         <return-type type="void" />
         <parameters>
@@ -14951,6 +14997,26 @@
           <parameter type="GtkDirectionType" name="direction" />
         </parameters>
       </virtual_method>
+      <signal name="PopulatePopup" cname="populate_popup" when="LAST" field_name="populate_popup">
+        <return-type type="void" />
+        <parameters>
+          <parameter type="GtkTextView*" name="text_view" />
+          <parameter type="GtkMenu*" name="menu" />
+        </parameters>
+      </signal>
+      <signal name="SelectAll" cname="select_all" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="GtkTextView*" />
+          <parameter name="p0" type="gboolean" />
+        </parameters>
+      </signal>
+      <signal name="ToggleCursorVisible" cname="toggle_cursor_visible" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="GtkTextView*" />
+        </parameters>
+      </signal>
       <method name="AddChildAtAnchor" cname="gtk_text_view_add_child_at_anchor">
         <return-type type="void" />
         <parameters>
@@ -15441,6 +15507,13 @@
           <parameter type="gint" name="x" />
           <parameter type="gint" name="y" />
           <parameter type="gint" name="button_number" />
+        </parameters>
+      </signal>
+      <signal name="FocusHomeOrEnd" cname="focus_home_or_end" when="LAST">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter name="inst" type="GtkToolbar*" />
+          <parameter name="p0" type="gboolean" />
         </parameters>
       </signal>
       <property name="Orientation" cname="orientation" type="GtkOrientation" readable="true" writeable="true" />
@@ -17939,6 +18012,13 @@
           <parameter type="GtkDirectionType" name="direction" />
         </parameters>
       </signal>
+      <signal name="MoveFocus" cname="move_focus" when="LAST">
+        <return-type type="void" />
+        <parameters>
+          <parameter name="inst" type="GtkWidget*" />
+          <parameter name="p0" type="GtkDirectionType" />
+        </parameters>
+      </signal>
       <signal name="Event" cname="event" when="LAST" field_name="event">
         <return-type type="gboolean" />
         <parameters>
@@ -17985,6 +18065,13 @@
         <return-type type="void" />
         <parameters>
           <parameter type="GtkWidget*" name="widget" />
+        </parameters>
+      </signal>
+      <signal name="KeynavFailed" cname="keynav-failed" when="LAST">
+        <return-type type="gboolean" />
+        <parameters>
+          <parameter name="inst" type="GtkWidget*" />
+          <parameter name="p0" type="GtkDirectionType" />
         </parameters>
       </signal>
       <signal name="DeleteEvent" cname="delete_event" when="LAST" field_name="delete_event">

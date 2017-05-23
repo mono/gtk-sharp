@@ -1787,5 +1787,13 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="IntPtrEqualityComparer.cs" />
+    <Compile Include="generated\ActiveMovedHandler.cs" />
+    <Compile Include="generated\FocusCycledHandler.cs" />
+    <Compile Include="generated\FocusHomeOrEndHandler.cs" />
+    <Compile Include="generated\FocusMovedHandler.cs" />
+    <Compile Include="generated\KeynavFailHandler.cs" />
+    <Compile Include="generated\MoveViewportHandler.cs" />
+    <Compile Include="generated\PopdownRequestedHandler.cs" />
+    <Compile Include="generated\ScrollMovedHandler.cs" />
   </ItemGroup>
 </Project>

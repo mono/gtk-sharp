@@ -1066,6 +1066,20 @@ sub parseInitFunc
 			} until ($init_lines[$linenum] =~ /\)\s*;/);
 			addPropElem ($prop, $obj_el, 1);
 			$childpropcnt++;
+		} elsif ($line =~ /\b_gtk_binding_signal_new/) {
+			my $sig = $line;
+			do {
+				$sig .= $init_lines[++$linenum];
+			} until ($init_lines[$linenum] =~ /;/);
+			$classdef = addSignalElem ($sig, $classdef, $obj_el);
+			$sigcnt++;
+		} elsif ($line =~ /\bg_signal_new_class_handler/) {
+			my $sig = $line;
+			do {
+				$sig .= $init_lines[++$linenum];
+			} until ($init_lines[$linenum] =~ /;/);
+			$classdef = addSignalElem ($sig, $classdef, $obj_el);
+			$sigcnt++;
 		} elsif ($line =~ /\bg.*_signal_new/) {
 			my $sig = $line;
 			do {
