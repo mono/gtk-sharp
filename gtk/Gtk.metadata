@@ -331,6 +331,9 @@
   <attr path="/api/namespace/object[@cname='GtkComboBox']/method[@name='GetActiveIter']/*/*[@type='GtkTreeIter*']" name="pass_as">out</attr> 
   <attr path="/api/namespace/object[@cname='GtkComboBox']/method[@name='GetTitle']" name="name">GetTearoffTitle</attr> 
   <attr path="/api/namespace/object[@cname='GtkComboBox']/method[@name='SetTitle']" name="name">SetTearoffTitle</attr> 
+  <attr path="/api/namespace/object[@cname='GtkComboBox']/signal[@name='MoveActive']" name="name">ActiveMoved</attr> 
+  <attr path="/api/namespace/object[@cname='GtkComboBox']/signal[@name='Popdown']" name="name">PopdownRequested</attr> 
+  <attr path="/api/namespace/object[@cname='GtkComboBox']/signal[@name='Popup']" name="name">PopupRequested</attr> 
   <add-node path="/api/namespace/object[@cname='GtkContainer']"><implements><interface name="IEnumerable" /></implements></add-node>
   <attr path="/api/namespace/object[@cname='GtkContainer']/field[@name='FocusChild']" name="access">public</attr>
   <attr path="/api/namespace/object[@cname='GtkContainer']/method[@name='AddWithProperties']" name="hidden">1</attr>
@@ -519,8 +522,17 @@
   <attr path="/api/namespace/object[@cname='GtkMenu']/method[@name='AttachToWidget']/*/*[@name='detacher']" name="scope">async</attr>
   <attr path="/api/namespace/object[@cname='GtkMenu']/method[@name='Popup']/*/*[@name='func']" name="scope">call</attr>
   <attr path="/api/namespace/object[@cname='GtkMenu']/method[@name='SetScreen']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkMenu']/signal[@name='MoveScroll']" name="name">ScrollMoved</attr>
   <attr path="/api/namespace/object[@cname='GtkMenuShell']/signal[@name='Cancel']" name="name">Canceled</attr>
   <attr path="/api/namespace/object[@cname='GtkMenuShell']/signal[@name='Deactivate']" name="name">Deactivated</attr>
+  <attr path="/api/namespace/object[@cname='GtkMenuShell']/signal[@name='CycleFocus']" name="name">FocusCycled</attr>
+  <attr path="/api/namespace/object[@cname='GtkMenuShell']/signal[@name='Popup']" name="name">PopupRequested</attr>
+  <attr path="/api/namespace/object[@cname='GtkMenuShell']/signal[@name='Popdown']" name="name">PopdownRequested</attr>
+  <attr path="/api/namespace/object[@cname='GtkMenuShell']/signal[@name='MoveViewport']" name="name">ViewportMoved</attr>
+  <attr path="/api/namespace/object[@cname='GtkMenuShell']/signal[@name='MoveFocus']" name="name">FocusMoved</attr>
+  <attr path="/api/namespace/object[@cname='GtkMenuShell']/signal[@name='ToggleCursorVisible']" name="name">CursorVisibleToggled</attr>
+  <attr path="/api/namespace/object[@cname='GtkMenuShell']/signal[@name='FocusHomeOrEnd']" name="name">HomeOrEndFocused</attr>
+  <attr path="/api/namespace/object[@cname='GtkMenuShell']/signal[@name='KeynavFailed']" name="name">KeynavFail</attr>
   <attr path="/api/namespace/object[@cname='GtkMessageDialog']/constructor[@cname='gtk_message_dialog_new']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkMessageDialog']/constructor[@cname='gtk_message_dialog_new_with_markup']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkNotebook']/property[@name='Homogeneous']" name="deprecated">1</attr>
@@ -826,8 +838,10 @@
   <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='Focus']" name="name">Focused</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='GrabFocus']" name="name">FocusGrabbed</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='Hide']" name="name">Hidden</attr>
+  <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='KeynavFailed']" name="name">KeynavFail</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='Map']" name="name">Mapped</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='MnemonicActivate']" name="name">MnemonicActivated</attr>
+  <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='MoveFocus']" name="name">FocusMoved</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='Realize']" name="name">Realized</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='ShowHelp']" name="name">HelpShown</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/signal[@name='Show']" name="name">Shown</attr>
@@ -853,6 +867,7 @@
   <attr path="/api/namespace/object[@cname='GtkWindow']/property[@name='Screen']" name="new_flag">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWindow']/signal[@name='ActivateDefault']" name="name">DefaultActivated</attr>
   <attr path="/api/namespace/object[@cname='GtkWindow']/signal[@name='ActivateFocus']" name="name">FocusActivated</attr>
+  <attr path="/api/namespace/object[@cname='GtkWindow']/signal[@name='MoveFocus']" name="name">FocusMoved</attr>
   <attr path="/api/namespace/struct[@cname='GtkBindingArg']" name="hidden">1</attr>
   <attr path="/api/namespace/struct[@cname='GtkBindingEntry']" name="hidden">1</attr>
   <attr path="/api/namespace/struct[@cname='GtkBindingSet']" name="hidden">1</attr>
