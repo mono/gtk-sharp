@@ -30,7 +30,7 @@ using System;
 
 namespace Cairo
 {
-	public struct Rectangle
+	public struct Rectangle : IEquatable<Rectangle>
 	{
 		double x;
 		double y;
@@ -74,6 +74,11 @@ namespace Cairo
 			if (obj is Rectangle)
 				return this == (Rectangle)obj;
 			return false;
+		}
+
+		public bool Equals (Rectangle other)
+		{
+			return this == other;
 		}
 		
 		public override int GetHashCode ()

@@ -30,7 +30,7 @@ namespace GLib {
 	using System.Runtime.InteropServices;
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct GType {
+	public struct GType : IEquatable<GType> {
 
 		IntPtr val;
 
@@ -233,6 +233,11 @@ namespace GLib {
 				return false;
 
 			return ((GType) o) == this;
+		}
+
+		public bool Equals (GType other)
+		{
+			return this == other;
 		}
 
 		public static bool operator == (GType a, GType b)
