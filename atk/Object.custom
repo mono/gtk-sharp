@@ -61,16 +61,11 @@
 
 		static RefChildDelegate RefChildCallback;
 
-		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
-		static extern IntPtr g_object_ref (IntPtr handle);
-
 		static IntPtr RefChild_cb (IntPtr raw, int i)
 		{
 			try {
 				Atk.Object obj = GLib.Object.GetObject (raw, false) as Atk.Object;
 				Atk.Object child = obj.OnRefChild (i);
-				if (child != null)
-					g_object_ref (child.Handle);
 				return child == null ? IntPtr.Zero : child.Handle;
 			} catch (Exception e) {
 				GLib.ExceptionManager.RaiseUnhandledException (e, false);
@@ -126,8 +121,6 @@
 			try {
 				Atk.Object obj = GLib.Object.GetObject (raw, false) as Atk.Object;
 				Atk.StateSet state_set = obj.OnRefStateSet ();
-				if (state_set != null)
-					g_object_ref (state_set.Handle);
 				return state_set == null ? IntPtr.Zero : state_set.Handle;
 			} catch (Exception e) {
 				GLib.ExceptionManager.RaiseUnhandledException (e, false);
@@ -202,8 +195,6 @@
 			try {
 				Atk.Object obj = GLib.Object.GetObject (raw, false) as Atk.Object;
 				Atk.RelationSet relation_set = obj.OnRefRelationSet ();
-				if (relation_set != null)
-					g_object_ref (relation_set.Handle);
 				return relation_set == null ? IntPtr.Zero : relation_set.Handle;
 			} catch (Exception e) {
 				GLib.ExceptionManager.RaiseUnhandledException (e, false);

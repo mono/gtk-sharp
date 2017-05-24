@@ -66,9 +66,6 @@
 				this.gtype = gtype;
 			}
 
-			[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
-			static extern IntPtr g_object_ref (IntPtr handle);
-
 			IntPtr CreateAccessible_cb (IntPtr raw)
 			{
 				try {
@@ -76,8 +73,6 @@
 					if (obj == null)
 						return IntPtr.Zero;
 					Atk.Object ret = obj.OnCreateAccessible (GLib.Object.GetObject (raw, false));
-					if (ret != null)
-						g_object_ref (ret.Handle);
 					return ret == null ? IntPtr.Zero : ret.Handle;
 				} catch (Exception e) {
 					GLib.ExceptionManager.RaiseUnhandledException (e, false);
