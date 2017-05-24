@@ -57,35 +57,26 @@ namespace GLib {
 	{
 		class SignalClosure : IDisposable
 		{
-
-			IntPtr handle;
+			internal Signal signal;
 			IntPtr raw_closure;
-			internal string name;
 			uint id = UInt32.MaxValue;
-			System.Type args_type;
 			GCHandle? gch;
-			internal bool before_closure;
 
 			static Dictionary<IntPtr, SignalClosure> closures = new Dictionary<IntPtr, SignalClosure> (IntPtrEqualityComparer.Instance);
 
-			public SignalClosure (IntPtr obj, string signal_name, System.Type args_type, bool before_closure)
+			public SignalClosure (Signal sig, System.Type args_type)
 			{
 				raw_closure = glibsharp_closure_new (Marshaler, Notify, IntPtr.Zero);
 				closures [raw_closure] = this;
-				handle = obj;
-				name = signal_name;
-				this.args_type = args_type;
-				this.before_closure = before_closure;
+				signal = sig;
 			}
 
-			public SignalClosure (IntPtr obj, string signal_name, Delegate custom_marshaler, Signal signal, bool before_closure)
+			public SignalClosure (Signal sig, Delegate custom_marshaler)
 			{
-				gch = GCHandle.Alloc (signal);
+				gch = GCHandle.Alloc (sig);
 				raw_closure = g_cclosure_new (custom_marshaler, (IntPtr)gch, Notify);
 				closures [raw_closure] = this;
-				handle = obj;
-				name = signal_name;
-				this.before_closure = before_closure;
+				signal = sig;
 			}
 
 			public event EventHandler Disposed;
@@ -93,15 +84,15 @@ namespace GLib {
 
 			public void Connect (bool is_after)
 			{
-				IntPtr native_name = GLib.Marshaller.StringToPtrGStrdup (name);
-				id = g_signal_connect_closure (handle, native_name, raw_closure, is_after);
+				IntPtr native_name = GLib.Marshaller.StringToPtrGStrdup (signal.name);
+				id = g_signal_connect_closure (signal.tref.Handle, native_name, raw_closure, is_after);
 				GLib.Marshaller.Free (native_name);
 			}
 
 			public void Disconnect ()
 			{
-				if (id != UInt32.MaxValue && g_signal_handler_is_connected (handle, id))
-					g_signal_handler_disconnect (handle, id);
+				if (id != UInt32.MaxValue && g_signal_handler_is_connected (signal.tref.Handle, id))
+					g_signal_handler_disconnect (signal.tref.Handle, id);
 			}
 
 			public void Dispose ()
@@ -149,12 +140,12 @@ namespace GLib {
 					if (__obj == null)
 						return;
 
-					if (closure.args_type == typeof (EventArgs)) {
+					if (closure.signal.args_type == typeof (EventArgs)) {
 						closure.Invoke (new ClosureInvokedArgs (__obj, EventArgs.Empty));
 						return;
 					}
 
-					SignalArgs args = FastActivator.CreateSignalArgs (closure.args_type);
+					SignalArgs args = FastActivator.CreateSignalArgs (closure.signal.args_type);
 					args.Args = new object [n_param_vals - 1];
 					for (int i = 1; i < n_param_vals; i++) {
 						args.Args [i - 1] = param_values [i].Val;
@@ -170,7 +161,7 @@ namespace GLib {
 					return_val->Val = args.RetVal;
 				} catch (Exception e) {
 					if (closure != null)
-						Console.WriteLine ("Marshaling {0} signal", closure.name);
+						Console.WriteLine ("Marshaling {0} signal", closure.signal.name);
 					ExceptionManager.RaiseUnhandledException (e, false);
 				}
 			}
