@@ -345,11 +345,7 @@ namespace GLib {
 			else if (t.IsSubclassOf (typeof (GLib.Opaque)))
 				return (GLib.Opaque) this;
 
-			MethodInfo mi = t.GetMethod ("New", BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy);
-			if (mi == null)
-				return Marshal.PtrToStructure (boxed_ptr, t);
-			else
-				return mi.Invoke (null, new object[] {boxed_ptr});
+			return FastActivator.CreateBoxed (boxed_ptr, t);
 		}
 
 		public object Val

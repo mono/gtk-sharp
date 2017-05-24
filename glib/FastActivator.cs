@@ -40,6 +40,26 @@ namespace GLib
 			return method;
 		}
 
+		delegate object FastCreateBoxed (IntPtr ptr);
+		static FastCreateBoxed FastBoxed (Type t, Dictionary<Type, FastCreateBoxed> cache)
+		{
+			FastCreateBoxed method;
+			lock (cache) {
+				if (!cache.TryGetValue (t, out method)) {
+					var newMethod = t.GetMethod ("New", BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy);
+					if (newMethod != null) {
+						var param = Expression.Parameter (typeof (IntPtr));
+						var call = Expression.Call (newMethod, param);
+						var callWithConvert = Expression.Convert (call, typeof (object));
+						cache [t] = method = (FastCreateBoxed)Expression.Lambda (typeof(FastCreateBoxed), callWithConvert, param).Compile ();
+					} else {
+						cache [t] = method = ptr => System.Runtime.InteropServices.Marshal.PtrToStructure (ptr, t);
+					}
+				}
+			}
+			return method;
+		}
+
 		static readonly Dictionary<Type, FastCreateObjectPtr> cacheOpaque = new Dictionary<Type, FastCreateObjectPtr> (new TypeEqualityComparer ());
 		public static Opaque CreateOpaque (IntPtr o, Type type)
 		{
@@ -56,6 +76,12 @@ namespace GLib
 		public static SignalArgs CreateSignalArgs (Type type)
 		{
 			return (SignalArgs)FastCtor (type, cacheSignalArgs)();
+		}
+
+		static readonly Dictionary<Type, FastCreateBoxed> cacheBoxed = new Dictionary<Type, FastCreateBoxed> (new TypeEqualityComparer ());
+		public static object CreateBoxed (IntPtr o, Type type)
+		{
+			return FastBoxed (type, cacheBoxed) (o);
 		}
 
 		class TypeEqualityComparer : IEqualityComparer<Type>
