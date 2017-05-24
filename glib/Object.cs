@@ -35,7 +35,6 @@ namespace GLib {
 
 		IntPtr handle;
 		ToggleRef tref;
-		bool disposed = false;
 		internal protected bool owned = false;
 		Hashtable data;
 		static Dictionary<IntPtr, ToggleRef> Objects = new Dictionary<IntPtr, ToggleRef>(IntPtrEqualityComparer.Instance);
@@ -47,13 +46,12 @@ namespace GLib {
 		{
 			lock (lockObject) {
 				lock (Objects) {
-					ToggleRef res;
-					if (Objects.TryGetValue (handle, out res))
-						PendingDestroys.Add (res);
+					if (tref != null)
+						PendingDestroys.Add (tref);
 					Objects.Remove (Handle);
 				}
 				if (!idle_queued){
-					Timeout.Add (50, new TimeoutHandler (PerformQueuedUnrefs));
+					Timeout.Add (50, PerformQueuedUnrefs);
 					idle_queued = true;
 				}
 			}
@@ -80,21 +78,20 @@ namespace GLib {
 
 		public virtual void Dispose ()
 		{
-			if (disposed)
+			if (Handle == IntPtr.Zero)
 				return;
-
-			disposed = true;
-			ToggleRef toggle_ref;
+			
 			lock(Objects) {
-				Objects.TryGetValue (Handle, out toggle_ref);
 				Objects.Remove (Handle);
-			}
-			try {
-				if (toggle_ref != null)
-					toggle_ref.Free ();
-			} catch (Exception e) {
-				Console.WriteLine ("Exception while disposing a " + this + " in Gtk#");
-				throw e;
+				try {
+					if (tref != null) {
+						tref.Free ();
+						tref = null;
+					}
+				} catch (Exception e) {
+					Console.WriteLine ("Exception while disposing a " + this + " in Gtk#");
+					throw e;
+				}
 			}
 			handle = IntPtr.Zero;
 			GC.SuppressFinalize (this);
