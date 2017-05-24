@@ -32,7 +32,7 @@ namespace GLib {
 		Swapped = 1 << 1,
 	}
 
-	public class Signal {
+	public partial class Signal {
 
 		[Flags]
 		public enum Flags {
