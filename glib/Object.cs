@@ -251,7 +251,7 @@ namespace GLib {
 		static void GetPropertyCallback (IntPtr handle, uint property_id, ref GLib.Value value, IntPtr param_spec)
 		{
 			GLib.Object obj = GLib.Object.GetObject (handle, false);
-			value.Val = (Properties [param_spec] as PropertyInfo).GetValue (obj, new object [0]);
+			value.Val = (Properties [param_spec] as PropertyInfo).GetValue (obj);
 		}
 
 		static GetPropertyDelegate get_property_handler;
@@ -269,7 +269,7 @@ namespace GLib {
 		static void SetPropertyCallback(IntPtr handle, uint property_id, ref GLib.Value value, IntPtr param_spec)
 		{
 			GLib.Object obj = GLib.Object.GetObject (handle, false);
-			(Properties [param_spec] as PropertyInfo).SetValue (obj, value.Val, new object [0]);
+			(Properties [param_spec] as PropertyInfo).SetValue (obj, value.Val);
 		}
 
 		static SetPropertyDelegate set_property_handler;
