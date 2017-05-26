@@ -75,7 +75,7 @@ atksharp_object_base_get_n_children (AtkObject *base)
 {
 	AtkObjectClass *parent = (AtkObjectClass *)get_threshold_class (G_OBJECT (base));
 	if (parent->get_n_children)
-		(*parent->get_n_children) (base);
+		return (*parent->get_n_children) (base);
 	return 0;
 }
 
@@ -93,7 +93,7 @@ atksharp_object_base_ref_child (AtkObject *base, gint i)
 {
 	AtkObjectClass *parent = (AtkObjectClass *)get_threshold_class (G_OBJECT (base));
 	if (parent->ref_child)
-		(*parent->ref_child) (base, i);
+		return (*parent->ref_child) (base, i);
 	return NULL;
 }
 
