@@ -25,6 +25,9 @@
 		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int atksharp_misc_override_threads_enter (IntPtr type, ThreadDelegate cb);
 
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern void atksharp_misc_base_threads_enter (IntPtr raw);
+
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void ThreadDelegate (IntPtr raw);
 
@@ -50,10 +53,13 @@
 		[GLib.DefaultSignalHandler (Type=typeof (Atk.Misc), ConnectionMethod="OverrideThreadsEnter")]
 		protected virtual void OnThreadsEnter ()
 		{
+			atksharp_misc_base_threads_enter (Handle);
 		}
 
 		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int atksharp_misc_override_threads_leave (IntPtr type, ThreadDelegate cb);
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern void atksharp_misc_base_threads_leave (IntPtr raw);
 
 		static ThreadDelegate ThreadsLeaveCallback;
 
@@ -77,6 +83,7 @@
 		[GLib.DefaultSignalHandler (Type=typeof (Atk.Misc), ConnectionMethod="OverrideThreadsLeave")]
 		protected virtual void OnThreadsLeave ()
 		{
+			atksharp_misc_base_threads_leave (Handle);
 		}
 
 		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]

@@ -21,8 +21,23 @@
 
 #include <atk/atk.h>
 
+static const gchar *__prefix = "__gtksharp_";
+
+#define HAS_PREFIX(a) (*((guint64 *)(a)) == *((guint64 *) __prefix))
+
+static GObjectClass *
+get_threshold_class (GObject *obj)
+{
+	GType gtype = G_TYPE_FROM_INSTANCE (obj);
+	while (HAS_PREFIX (g_type_name (gtype)))
+		gtype = g_type_parent (gtype);
+	GObjectClass *klass = g_type_class_peek (gtype);
+	if (klass == NULL) klass = g_type_class_ref (gtype);
+	return klass;
+}
 
 void atksharp_misc_override_threads_enter (GType gtype, gpointer cb);
+void atksharp_misc_base_threads_enter (AtkMisc *misc);
 
 void 
 atksharp_misc_override_threads_enter (GType gtype, gpointer cb)
@@ -33,7 +48,16 @@ atksharp_misc_override_threads_enter (GType gtype, gpointer cb)
 	((AtkMiscClass *) klass)->threads_enter = cb;
 }
 
+void 
+atksharp_misc_base_threads_enter (AtkMisc *misc)
+{
+	AtkMiscClass *parent = (AtkMiscClass *)get_threshold_class (G_OBJECT (misc));
+	if (parent->threads_enter)
+		(*parent->threads_enter) (misc);
+}
+
 void atksharp_misc_override_threads_leave (GType gtype, gpointer cb);
+void atksharp_misc_base_threads_leave (AtkMisc *misc);
 
 void 
 atksharp_misc_override_threads_leave (GType gtype, gpointer cb)
@@ -42,6 +66,14 @@ atksharp_misc_override_threads_leave (GType gtype, gpointer cb)
 	if (!klass)
 		klass = g_type_class_ref (gtype);
 	((AtkMiscClass *) klass)->threads_leave = cb;
+}
+
+void 
+atksharp_misc_base_threads_leave (AtkMisc *misc)
+{
+	AtkMiscClass *parent = (AtkMiscClass *)get_threshold_class (G_OBJECT (misc));
+	if (parent->threads_leave)
+		(*parent->threads_leave) (misc);
 }
 
 void atksharp_misc_set_singleton_instance (AtkMisc *misc);
