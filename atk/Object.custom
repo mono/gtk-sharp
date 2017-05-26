@@ -233,7 +233,7 @@
 		static extern void atksharp_object_override_get_attributes (IntPtr type, GetAttributesDelegate cb);
 
 		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
-		static extern IntPtr atksharp_base_override_get_attributes (IntPtr raw);
+		static extern IntPtr atksharp_object_base_get_attributes (IntPtr raw);
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr GetAttributesDelegate (IntPtr raw);
@@ -266,7 +266,7 @@
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.Object), ConnectionMethod="OverrideGetAttributes")]
 		protected virtual Attribute [] OnGetAttributes ()
 		{
-			IntPtr raw = atksharp_base_override_get_attributes(Handle);
+			IntPtr raw = atksharp_object_base_get_attributes(Handle);
 			if (raw == IntPtr.Zero)
 				return new Attribute [0];
 
