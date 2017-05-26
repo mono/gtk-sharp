@@ -24,6 +24,9 @@
 		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_object_override_get_n_children (IntPtr type, NChildrenDelegate cb);
 
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern int atksharp_object_base_get_n_children (IntPtr raw);
+
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate int NChildrenDelegate (IntPtr raw);
 
@@ -50,11 +53,14 @@
 
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.Object), ConnectionMethod="OverrideNChildren")]
 		protected virtual int OnGetNChildren() {
-			return 0;
+			return atksharp_object_base_get_n_children (Handle);
 		}
 
 		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_object_override_ref_child (IntPtr type, RefChildDelegate cb);
+
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern IntPtr atksharp_object_base_ref_child (IntPtr raw, int i);
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr RefChildDelegate (IntPtr raw, int i);
@@ -83,8 +89,10 @@
 		}
 
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.Object), ConnectionMethod="OverrideRefChild")]
-		protected virtual Atk.Object OnRefChild (int i) {
-			return null;
+		protected virtual Atk.Object OnRefChild (int i)
+		{
+			IntPtr raw = atksharp_object_base_ref_child (Handle, i);
+			return GLib.Object.GetObject (raw, true) as Atk.Object;
 		}
 
 		protected void EmitChildrenChanged (ChildrenChangedDetail detail, uint child_index, Atk.Object child)
@@ -146,6 +154,9 @@
 		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_object_override_get_index_in_parent (IntPtr type, IndexInParentDelegate cb);
 
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern int atksharp_object_base_get_index_in_parent (IntPtr raw);
+
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate int IndexInParentDelegate (IntPtr raw);
 
@@ -172,7 +183,7 @@
 
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.Object), ConnectionMethod="OverrideIndexInParent")]
 		protected virtual int OnGetIndexInParent() {
-			return -1;
+			return atksharp_object_base_get_index_in_parent (Handle);
 		}
 
 		public void NotifyStateChange (Atk.StateType state, bool value) {
@@ -221,6 +232,9 @@
 		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_object_override_get_attributes (IntPtr type, GetAttributesDelegate cb);
 
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern IntPtr atksharp_base_override_get_attributes (IntPtr raw);
+
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate IntPtr GetAttributesDelegate (IntPtr raw);
 
@@ -252,7 +266,13 @@
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.Object), ConnectionMethod="OverrideGetAttributes")]
 		protected virtual Attribute [] OnGetAttributes ()
 		{
-			return new Attribute [0];
+			IntPtr raw = atksharp_base_override_get_attributes(Handle);
+			if (raw == IntPtr.Zero)
+				return new Attribute [0];
+
+			Attribute[] attrs = GLib.Marshaller.ListPtrToArray<Attribute> (raw, typeof(GLib.SList), false, false);
+			atk_attribute_set_free(raw);
+			return attrs;
 		}
 
 		protected void EmitFocusEvent (bool gained)
@@ -268,9 +288,6 @@
 
 		public Atk.Attribute[] Attributes { 
 			get {
-				IntPtr raw_ret = atk_object_get_attributes(Handle);
-				Atk.Attribute[] ret = GLib.Marshaller.ListPtrToArray<Atk.Attribute> (raw_ret, typeof(GLib.SList), false, false);
-				atk_attribute_set_free(raw_ret);
-				return ret;
+				return OnGetAttributes();
 			}
 		}
