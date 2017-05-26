@@ -21,7 +21,7 @@ namespace GLib
 						throw new MissingMethodException ();
 
 					var newExpr = Expression.New (ctor, param);
-					cache [t] = method = (FastCreateObjectPtr)Expression.Lambda (typeof (FastCreateObjectPtr), newExpr, param).Compile ();
+					cache [t] = method = Expression.Lambda<FastCreateObjectPtr> (newExpr, param).Compile ();
 				}
 			}
 			return method;
@@ -34,7 +34,27 @@ namespace GLib
 			lock (cache) {
 				if (!cache.TryGetValue (t, out method)) {
 					var newExpr = Expression.New (t);
-					cache [t] = method = (FastCreateObject)Expression.Lambda (typeof (FastCreateObject), newExpr).Compile ();
+					cache [t] = method = Expression.Lambda<FastCreateObject> (newExpr).Compile ();
+				}
+			}
+			return method;
+		}
+
+		delegate object FastCreateBoxed (IntPtr ptr);
+		static FastCreateBoxed FastBoxed (Type t, Dictionary<Type, FastCreateBoxed> cache)
+		{
+			FastCreateBoxed method;
+			lock (cache) {
+				if (!cache.TryGetValue (t, out method)) {
+					var newMethod = t.GetMethod ("New", BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy);
+					if (newMethod != null) {
+						var param = Expression.Parameter (typeof (IntPtr));
+						var call = Expression.Call (newMethod, param);
+						var callWithConvert = Expression.Convert (call, typeof (object));
+						cache [t] = method = Expression.Lambda<FastCreateBoxed> (callWithConvert, param).Compile ();
+					} else {
+						cache [t] = method = ptr => System.Runtime.InteropServices.Marshal.PtrToStructure (ptr, t);
+					}
 				}
 			}
 			return method;
@@ -56,6 +76,12 @@ namespace GLib
 		public static SignalArgs CreateSignalArgs (Type type)
 		{
 			return (SignalArgs)FastCtor (type, cacheSignalArgs)();
+		}
+
+		static readonly Dictionary<Type, FastCreateBoxed> cacheBoxed = new Dictionary<Type, FastCreateBoxed> (new TypeEqualityComparer ());
+		public static object CreateBoxed (IntPtr o, Type type)
+		{
+			return FastBoxed (type, cacheBoxed) (o);
 		}
 
 		class TypeEqualityComparer : IEqualityComparer<Type>
