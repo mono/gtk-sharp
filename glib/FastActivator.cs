@@ -21,7 +21,7 @@ namespace GLib
 						throw new MissingMethodException ();
 
 					var newExpr = Expression.New (ctor, param);
-					cache [t] = method = (FastCreateObjectPtr)Expression.Lambda (typeof (FastCreateObjectPtr), newExpr, param).Compile ();
+					cache [t] = method = Expression.Lambda<FastCreateObjectPtr> (newExpr, param).Compile ();
 				}
 			}
 			return method;
@@ -34,7 +34,7 @@ namespace GLib
 			lock (cache) {
 				if (!cache.TryGetValue (t, out method)) {
 					var newExpr = Expression.New (t);
-					cache [t] = method = (FastCreateObject)Expression.Lambda (typeof (FastCreateObject), newExpr).Compile ();
+					cache [t] = method = Expression.Lambda<FastCreateObject> (newExpr).Compile ();
 				}
 			}
 			return method;
@@ -51,7 +51,7 @@ namespace GLib
 						var param = Expression.Parameter (typeof (IntPtr));
 						var call = Expression.Call (newMethod, param);
 						var callWithConvert = Expression.Convert (call, typeof (object));
-						cache [t] = method = (FastCreateBoxed)Expression.Lambda (typeof(FastCreateBoxed), callWithConvert, param).Compile ();
+						cache [t] = method = Expression.Lambda<FastCreateBoxed> (callWithConvert, param).Compile ();
 					} else {
 						cache [t] = method = ptr => System.Runtime.InteropServices.Marshal.PtrToStructure (ptr, t);
 					}
