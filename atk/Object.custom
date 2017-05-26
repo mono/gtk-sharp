@@ -281,10 +281,7 @@
 		}
 
 		[DllImport("libatk-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
-		static extern IntPtr atk_attribute_set_free(IntPtr raw);
-
-		[DllImport("libatk-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
-		static extern IntPtr atk_object_get_attributes(IntPtr raw);
+		static extern void atk_attribute_set_free(IntPtr raw);
 
 		public Atk.Attribute[] Attributes { 
 			get {
