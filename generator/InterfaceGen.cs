@@ -139,10 +139,10 @@ namespace GtkSharp.Generation {
 		{
 			sw.WriteLine ("\t\tstatic void Initialize (IntPtr ifaceptr, IntPtr data)");
 			sw.WriteLine ("\t\t{");
-			sw.WriteLine ("\t\t\t" + IfaceName + " native_iface = (" + IfaceName + ") Marshal.PtrToStructure (ifaceptr, typeof (" + IfaceName + "));");
+			sw.WriteLine ("\t\t\t" + IfaceName + " native_iface = Marshal.PtrToStructure<" + IfaceName + "> (ifaceptr);");
 			foreach (VirtualMethod vm in vms)
 				sw.WriteLine ("\t\t\tnative_iface." + vm.CName + " = iface." + vm.CName + ";");
-			sw.WriteLine ("\t\t\tMarshal.StructureToPtr (native_iface, ifaceptr, false);");
+			sw.WriteLine ("\t\t\tMarshal.StructureToPtr<" + IfaceName + "> (native_iface, ifaceptr, false);");
 			sw.WriteLine ("\t\t\tGCHandle gch = (GCHandle) data;");
 			sw.WriteLine ("\t\t\tgch.Free ();");
 			sw.WriteLine ("\t\t}");

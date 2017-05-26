@@ -39,7 +39,7 @@ namespace Gdk {
 
 		public Rectangle Area {
 			get {
-				return (Gdk.Rectangle) Marshal.PtrToStructure (gtksharp_gdk_event_expose_get_area (Handle), typeof (Gdk.Rectangle));
+				return Marshal.PtrToStructure<Gdk.Rectangle> (gtksharp_gdk_event_expose_get_area (Handle));
 			}
 		}
 

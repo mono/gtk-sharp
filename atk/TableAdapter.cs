@@ -548,7 +548,7 @@ namespace Atk {
 		}
 		static void Initialize (IntPtr ifaceptr, IntPtr data)
 		{
-			TableIface native_iface = (TableIface) Marshal.PtrToStructure (ifaceptr, typeof (TableIface));
+			TableIface native_iface = Marshal.PtrToStructure<TableIface> (ifaceptr);
 			native_iface.ref_at = iface.ref_at;
 			native_iface.get_index_at = iface.get_index_at;
 			native_iface.get_column_at_index = iface.get_column_at_index;
