@@ -80,7 +80,7 @@ namespace GtkSharp.Generation {
 					}
 					glue_sw.WriteLine ("");
 				}
-				glue_sw.WriteLine ("const gchar *__prefix = \"__gtksharp_\";\n");
+				glue_sw.WriteLine ("static const gchar *__prefix = \"__gtksharp_\";\n");
 				glue_sw.WriteLine ("#define HAS_PREFIX(a) (*((guint64 *)(a)) == *((guint64 *) __prefix))\n");
 				glue_sw.WriteLine ("static GObjectClass *");
 				glue_sw.WriteLine ("get_threshold_class (GObject *obj)");
