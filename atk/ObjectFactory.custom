@@ -140,10 +140,14 @@
 			GetMarshaler (gtype).ConnectCreateAccessible ();
 		}
 
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern IntPtr atksharp_object_factory_base_create_accessible (IntPtr raw, IntPtr obj);
+
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.ObjectFactory), ConnectionMethod="OverrideCreateAccessible")]
 		protected virtual Atk.Object OnCreateAccessible (GLib.Object obj)
 		{
-			return null;
+			var raw = atksharp_object_factory_base_create_accessible (Handle, obj.Handle);
+			return GLib.Object.GetObject (raw, true) as Atk.Object;
 		}
 
 		static void OverrideInvalidate (GLib.GType gtype)
@@ -151,9 +155,13 @@
 			GetMarshaler (gtype).ConnectInvalidate ();
 		}
 
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern IntPtr atksharp_object_factory_base_invalidate (IntPtr raw);
+
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.ObjectFactory), ConnectionMethod="OverrideInvalidate")]
 		protected virtual void OnInvalidate ()
 		{
+			atksharp_object_factory_base_invalidate (Handle);
 		}
 
 		static void OverrideGetAccessibleType (GLib.GType gtype)
@@ -161,8 +169,11 @@
 			GetMarshaler (gtype).ConnectGetAccessibleType ();
 		}
 
+		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern IntPtr atksharp_object_factory_base_get_accessible_type (IntPtr raw);
+
 		[GLib.DefaultSignalHandler (Type=typeof(Atk.ObjectFactory), ConnectionMethod="OverrideGetAccessibleType")]
 		protected virtual GLib.GType OnGetAccessibleType ()
 		{
-			return GLib.GType.Invalid;
+			return new GLib.GType (atksharp_object_factory_base_get_accessible_type (Handle));
 		}
