@@ -23,7 +23,7 @@
 
 
 		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
-		static extern int atksharp_misc_override_threads_enter (IntPtr type, ThreadDelegate cb);
+		static extern void atksharp_misc_override_threads_enter (IntPtr type, ThreadDelegate cb);
 
 		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_misc_base_threads_enter (IntPtr raw);
@@ -57,7 +57,7 @@
 		}
 
 		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
-		static extern int atksharp_misc_override_threads_leave (IntPtr type, ThreadDelegate cb);
+		static extern void atksharp_misc_override_threads_leave (IntPtr type, ThreadDelegate cb);
 		[DllImport("atksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void atksharp_misc_base_threads_leave (IntPtr raw);
 
