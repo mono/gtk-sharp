@@ -10,78 +10,90 @@ namespace GLib
 		const BindingFlags flags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | BindingFlags.CreateInstance;
 
 		delegate object FastCreateObjectPtr (IntPtr ptr);
-		static FastCreateObjectPtr FastCtorPtr (Type t, Dictionary<Type, FastCreateObjectPtr> cache)
+		static object fastCtorPtrLock = new object ();
+		volatile static Dictionary<Type, FastCreateObjectPtr> cacheFastCtorPtr = new Dictionary<Type, FastCreateObjectPtr> (new TypeEqualityComparer ()); 
+		static FastCreateObjectPtr FastCtorPtr (Type t)
 		{
 			FastCreateObjectPtr method;
-			lock (cache) {
-				if (!cache.TryGetValue (t, out method)) {
+			var local = cacheFastCtorPtr;
+			if (!local.TryGetValue (t, out method)) {
+				lock (fastCtorPtrLock) {
 					var param = Expression.Parameter (typeof (IntPtr));
 					var ctor = t.GetConstructor (flags, null, new [] { typeof (IntPtr) }, new ParameterModifier [0]);
 					if (ctor == null)
 						throw new MissingMethodException ();
 
 					var newExpr = Expression.New (ctor, param);
-					cache [t] = method = Expression.Lambda<FastCreateObjectPtr> (newExpr, param).Compile ();
+					var copy = new Dictionary<Type, FastCreateObjectPtr> (local);
+					copy [t] = method = Expression.Lambda<FastCreateObjectPtr> (newExpr, param).Compile ();
+					cacheFastCtorPtr = copy;
 				}
 			}
 			return method;
 		}
 
 		delegate object FastCreateObject ();
-		static FastCreateObject FastCtor (Type t, Dictionary<Type, FastCreateObject> cache)
+		static object fastCtorLock = new object ();
+		volatile static Dictionary<Type, FastCreateObject> cacheFastCtor = new Dictionary<Type, FastCreateObject> (new TypeEqualityComparer ());
+		static FastCreateObject FastCtor (Type t)
 		{
 			FastCreateObject method;
-			lock (cache) {
-				if (!cache.TryGetValue (t, out method)) {
+			var local = cacheFastCtor;
+			if (!local.TryGetValue (t, out method)) {
+				lock (fastCtorLock) {
 					var newExpr = Expression.New (t);
-					cache [t] = method = Expression.Lambda<FastCreateObject> (newExpr).Compile ();
+					var copy = new Dictionary<Type, FastCreateObject> (local);
+					copy [t] = method = Expression.Lambda<FastCreateObject> (newExpr).Compile ();
+					cacheFastCtor = copy;
 				}
 			}
 			return method;
 		}
 
 		delegate object FastCreateBoxed (IntPtr ptr);
-		static FastCreateBoxed FastBoxed (Type t, Dictionary<Type, FastCreateBoxed> cache)
+		static object fastBoxedLock = new object ();
+		volatile static Dictionary<Type, FastCreateBoxed> cacheBoxed = new Dictionary<Type, FastCreateBoxed> (new TypeEqualityComparer ());
+		static FastCreateBoxed FastBoxed (Type t)
 		{
 			FastCreateBoxed method;
-			lock (cache) {
-				if (!cache.TryGetValue (t, out method)) {
+			var local = cacheBoxed;
+			if (!local.TryGetValue (t, out method)) {
+				lock (fastBoxedLock) {
 					var newMethod = t.GetMethod ("New", BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy);
+					var copy = new Dictionary<Type, FastCreateBoxed> (local);
 					if (newMethod != null) {
 						var param = Expression.Parameter (typeof (IntPtr));
 						var call = Expression.Call (newMethod, param);
 						var callWithConvert = Expression.Convert (call, typeof (object));
-						cache [t] = method = Expression.Lambda<FastCreateBoxed> (callWithConvert, param).Compile ();
+						copy [t] = method = Expression.Lambda<FastCreateBoxed> (callWithConvert, param).Compile ();
 					} else {
-						cache [t] = method = ptr => System.Runtime.InteropServices.Marshal.PtrToStructure (ptr, t);
+						copy [t] = method = ptr => System.Runtime.InteropServices.Marshal.PtrToStructure (ptr, t);
 					}
+					cacheBoxed = copy;
 				}
 			}
 			return method;
 		}
 
-		static readonly Dictionary<Type, FastCreateObjectPtr> cacheOpaque = new Dictionary<Type, FastCreateObjectPtr> (new TypeEqualityComparer ());
+
 		public static Opaque CreateOpaque (IntPtr o, Type type)
 		{
-			return (Opaque)FastCtorPtr (type, cacheOpaque)(o);
+			return (Opaque)FastCtorPtr (type) (o);
 		}
 
-		static readonly Dictionary<Type, FastCreateObjectPtr> cacheObject = new Dictionary<Type, FastCreateObjectPtr> (new TypeEqualityComparer ());
 		public static Object CreateObject (IntPtr o, Type type)
 		{
-			return (Object)FastCtorPtr (type, cacheObject)(o);
+			return (Object)FastCtorPtr (type) (o);
 		}
 
-		static readonly Dictionary<Type, FastCreateObject> cacheSignalArgs = new Dictionary<Type, FastCreateObject> (new TypeEqualityComparer ());
 		public static SignalArgs CreateSignalArgs (Type type)
 		{
-			return (SignalArgs)FastCtor (type, cacheSignalArgs)();
+			return (SignalArgs)FastCtor (type) ();
 		}
 
-		static readonly Dictionary<Type, FastCreateBoxed> cacheBoxed = new Dictionary<Type, FastCreateBoxed> (new TypeEqualityComparer ());
 		public static object CreateBoxed (IntPtr o, Type type)
 		{
-			return FastBoxed (type, cacheBoxed) (o);
+			return FastBoxed (type) (o);
 		}
 
 		class TypeEqualityComparer : IEqualityComparer<Type>
