@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Threading;
 
 namespace GLib
 {
@@ -54,32 +55,32 @@ namespace GLib
 			return method;
 		}
 
-		[ThreadStatic]
-		static readonly Dictionary<Type, FastCreateObjectPtr> cacheOpaque = new Dictionary<Type, FastCreateObjectPtr> (new TypeEqualityComparer ());
+		static readonly ThreadLocal<Dictionary<Type, FastCreateObjectPtr>> cacheOpaque =
+			new ThreadLocal<Dictionary<Type, FastCreateObjectPtr>> (() => new Dictionary<Type, FastCreateObjectPtr> (new TypeEqualityComparer ()));
 		public static Opaque CreateOpaque (IntPtr o, Type type)
 		{
-			return (Opaque)FastCtorPtr (type, cacheOpaque)(o);
+			return (Opaque)FastCtorPtr (type, cacheOpaque.Value)(o);
 		}
 
-		[ThreadStatic]
-		static readonly Dictionary<Type, FastCreateObjectPtr> cacheObject = new Dictionary<Type, FastCreateObjectPtr> (new TypeEqualityComparer ());
+		static readonly ThreadLocal<Dictionary<Type, FastCreateObjectPtr>> cacheObject =
+			new ThreadLocal<Dictionary<Type, FastCreateObjectPtr>> (() => new Dictionary<Type, FastCreateObjectPtr> (new TypeEqualityComparer ()));
 		public static Object CreateObject (IntPtr o, Type type)
 		{
-			return (Object)FastCtorPtr (type, cacheObject)(o);
+			return (Object)FastCtorPtr (type, cacheObject.Value)(o);
 		}
 
-		[ThreadStatic]
-		static readonly Dictionary<Type, FastCreateObject> cacheSignalArgs = new Dictionary<Type, FastCreateObject> (new TypeEqualityComparer ());
+		static readonly ThreadLocal<Dictionary<Type, FastCreateObject>> cacheSignalArgs =
+			new ThreadLocal<Dictionary<Type, FastCreateObject>> (() => new Dictionary<Type, FastCreateObject> (new TypeEqualityComparer ()));
 		public static SignalArgs CreateSignalArgs (Type type)
 		{
-			return (SignalArgs)FastCtor (type, cacheSignalArgs)();
+			return (SignalArgs)FastCtor (type, cacheSignalArgs.Value)();
 		}
 
-		[ThreadStatic]
-		static readonly Dictionary<Type, FastCreateBoxed> cacheBoxed = new Dictionary<Type, FastCreateBoxed> (new TypeEqualityComparer ());
+		static readonly ThreadLocal<Dictionary<Type, FastCreateBoxed>> cacheBoxed =
+			new ThreadLocal<Dictionary<Type, FastCreateBoxed>> (() => new Dictionary<Type, FastCreateBoxed> (new TypeEqualityComparer ()));
 		public static object CreateBoxed (IntPtr o, Type type)
 		{
-			return FastBoxed (type, cacheBoxed) (o);
+			return FastBoxed (type, cacheBoxed.Value) (o);
 		}
 
 		class TypeEqualityComparer : IEqualityComparer<Type>
