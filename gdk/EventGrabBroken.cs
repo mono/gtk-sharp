@@ -41,7 +41,7 @@ namespace Gdk {
 
 		public EventGrabBroken (IntPtr raw) : base (raw) 
 		{
-			native_struct = (NativeEventGrabBroken) Marshal.PtrToStructure (raw, typeof (NativeEventGrabBroken));
+			native_struct = Marshal.PtrToStructure<NativeEventGrabBroken> (raw);
 		} 
 
 		public bool Keyboard {

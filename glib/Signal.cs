@@ -84,7 +84,7 @@ namespace GLib {
 				int valueSize = Marshal.SizeOf (typeof (Value));
 				for (int i = 0; i < n_pvals; i++) {
 					IntPtr p = new IntPtr ((long) pvals_ptr + i * valueSize);
-					Value v = (Value) Marshal.PtrToStructure (p, typeof (Value));
+					Value v = Marshal.PtrToStructure<Value> (p);
 					pvals [i] = v.Val;
 				}
 				bool result = handler (hint, pvals);

@@ -40,7 +40,7 @@ namespace Gdk {
 		}
 
 		NativeStruct Native {
-			get { return (NativeStruct) Marshal.PtrToStructure (Handle, typeof (NativeStruct)); }
+			get { return Marshal.PtrToStructure<NativeStruct> (Handle); }
 		}
 
 		public uint Owner {

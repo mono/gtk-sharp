@@ -390,6 +390,13 @@ namespace GLib {
 			return result;
 		}
 
+		public static IntPtr StructureToPtrAlloc<T> (T o)
+		{
+			IntPtr result = Marshal.AllocHGlobal (Marshal.SizeOf (o));
+			Marshal.StructureToPtr (o, result, false);
+			return result;
+		}
+
 		[Obsolete ("Use the ListPtrToArray<T> overload.")]
 		public static Array ListPtrToArray (IntPtr list_ptr, Type list_type, bool owned, bool elements_owned, Type elem_type)
 		{

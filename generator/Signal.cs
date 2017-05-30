@@ -468,12 +468,12 @@ namespace GtkSharp.Generation {
 						cleanup += indent + p.Name + " = (" + p.CSType + ") vals [" + i + "];\n";
 					} else {
 						if (p.PassAs == "ref")
-							sw.WriteLine (indent + "IntPtr " + p.Name + "_ptr = GLib.Marshaller.StructureToPtrAlloc (" + p.Generatable.CallByName (p.Name) + ");");
+							sw.WriteLine (indent + "IntPtr " + p.Name + "_ptr = GLib.Marshaller.StructureToPtrAlloc<" + p.MarshalType + "> (" + p.Generatable.CallByName (p.Name) + ");");
 						else
 							sw.WriteLine (indent + "IntPtr " + p.Name + "_ptr = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (" + p.MarshalType + ")));");
 
 						sw.WriteLine (indent + "using (var val" + i + " = new GLib.Value (" + p.Name + "_ptr)) {");
-						cleanup += indent + p.Name + " = " + p.FromNative ("(" + p.MarshalType + ") Marshal.PtrToStructure (" + p.Name + "_ptr, typeof (" + p.MarshalType + "))") + ";\n";
+						cleanup += indent + p.Name + " = " + p.FromNative ("Marshal.PtrToStructure<" + p.MarshalType + "> (" + p.Name + "_ptr)") + ";\n";
 						cleanup += indent + "Marshal.FreeHGlobal (" + p.Name + "_ptr);\n";
 					}
 				} else if (p.IsLength && parms [i - 1].IsString)
