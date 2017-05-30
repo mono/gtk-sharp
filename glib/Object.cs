@@ -335,13 +335,17 @@ namespace GLib {
 			GLib.Marshaller.Free (native_name);
 			GLib.GType.Register (gtype, t);
 
-			var attributes = t.GetCustomAttributes (typeof (IgnoreRegistrationAttribute), false);
-			if (attributes.Length == 0) {
+			var attribute = t.Assembly.GetCustomAttribute<IgnoreRegistrationAttribute> ();
+			if (attribute == null) {
+				var attributes = t.GetCustomAttributes (typeof (IgnoreRegistrationAttribute), false);
+				attribute = attributes.Length > 0 ? (IgnoreRegistrationAttribute)attributes[0] : null;
+			}
+
+			if (attribute == null) {
 				AddProperties (gtype, t);
 				ConnectDefaultHandlers (gtype, t);
 				AddInterfaces (gtype, t);
 			} else {
-				var attribute = (IgnoreRegistrationAttribute)attributes [0];
 				if (!attribute.Properties)
 					AddProperties (gtype, t);
 				if (!attribute.DefaultHandlers)

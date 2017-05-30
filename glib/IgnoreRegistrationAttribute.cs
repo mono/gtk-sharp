@@ -1,7 +1,7 @@
 ﻿using System;
 namespace GLib
 {
-	[AttributeUsage (AttributeTargets.Class, Inherited = false)]
+	[AttributeUsage (AttributeTargets.Class | AttributeTargets.Assembly, Inherited = false)]
 	public sealed class IgnoreRegistrationAttribute : Attribute
 	{
 		public IgnoreRegistrationAttribute()
