@@ -53,7 +53,8 @@ namespace Gdk {
 		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_gdk_event_motion_get_axes (IntPtr evt);
 
-		public EventMotion (IntPtr raw) : base (raw) {} 
+		public EventMotion (IntPtr raw) : base (raw) { }
+		public EventMotion (IntPtr raw, bool owned) : base (raw, owned) { }
 
 		public uint Time {
 			get {

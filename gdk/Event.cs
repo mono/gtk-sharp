@@ -41,10 +41,26 @@ namespace Gdk {
 		static extern IntPtr gdk_event_get_type ();
 
 		IntPtr raw;
+		bool owned;
 
-		public Event(IntPtr raw) 
+		[DllImport ("libgdk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void gdk_event_free (IntPtr raw);
+
+		~Event()
+		{
+			gdk_event_free (raw);
+		}
+
+		public Event(IntPtr raw) : this(raw, false)
+		{
+		}
+
+		public Event(IntPtr raw, bool owned) 
 		{
 			this.raw = raw;
+			this.owned = owned;
+			if (!owned)
+				System.GC.SuppressFinalize (this);
 		}
 
 		public IntPtr Handle {
@@ -85,62 +101,67 @@ namespace Gdk {
 
 		public static Event GetEvent (IntPtr raw)
 		{
+			return GetEvent (raw, false);
+		}
+
+		public static Event GetEvent (IntPtr raw, bool owned)
+		{
 			if (raw == IntPtr.Zero)
 				return null;
 
 			switch (gtksharp_gdk_event_get_event_type (raw)) {
 			case EventType.Expose:
-				return new EventExpose (raw);
+				return new EventExpose (raw, owned);
 			case EventType.MotionNotify:
-				return new EventMotion (raw);
+				return new EventMotion (raw, owned);
 			case EventType.ButtonPress:
 			case EventType.TwoButtonPress:
 			case EventType.ThreeButtonPress:
 			case EventType.ButtonRelease:
-				return new EventButton (raw);
+				return new EventButton (raw, owned);
 			case EventType.KeyPress:
 			case EventType.KeyRelease:
-				return new EventKey (raw);
+				return new EventKey (raw, owned);
 			case EventType.EnterNotify:
 			case EventType.LeaveNotify:
-				return new EventCrossing (raw);
+				return new EventCrossing (raw, owned);
 			case EventType.FocusChange:
-				return new EventFocus (raw);
+				return new EventFocus (raw, owned);
 			case EventType.Configure:
-				return new EventConfigure (raw);
+				return new EventConfigure (raw, owned);
 			case EventType.PropertyNotify:
-				return new EventProperty (raw);
+				return new EventProperty (raw, owned);
 			case EventType.SelectionClear:
 			case EventType.SelectionRequest:
 			case EventType.SelectionNotify:
-				return new EventSelection (raw);
+				return new EventSelection (raw, owned);
 			case EventType.ProximityIn:
 			case EventType.ProximityOut:
-				return new EventProximity (raw);
+				return new EventProximity (raw, owned);
 			case EventType.DragEnter:
 			case EventType.DragLeave:
 			case EventType.DragMotion:
 			case EventType.DragStatus:
 			case EventType.DropStart:
 			case EventType.DropFinished:
-				return new EventDND (raw);
+				return new EventDND (raw, owned);
 			case EventType.ClientEvent:
-				return new EventClient (raw);
+				return new EventClient (raw, owned);
 			case EventType.VisibilityNotify:
-				return new EventVisibility (raw);
+				return new EventVisibility (raw, owned);
 			case EventType.Scroll:
-				return new EventScroll (raw);
+				return new EventScroll (raw, owned);
 			case EventType.WindowState:
-				return new EventWindowState (raw);
+				return new EventWindowState (raw, owned);
 			case EventType.Setting:
-				return new EventSetting (raw);
+				return new EventSetting (raw, owned);
 #if GTK_SHARP_2_6
 			case EventType.OwnerChange:
-				return new EventOwnerChange (raw);
+				return new EventOwnerChange (raw, owned);
 #endif
 #if GTK_SHARP_2_8
 			case EventType.GrabBroken:
-				return new EventGrabBroken (raw);
+				return new EventGrabBroken (raw, owned);
 #endif
 			case EventType.Map:
 			case EventType.Unmap:
@@ -148,7 +169,7 @@ namespace Gdk {
 			case EventType.Delete:
 			case EventType.Destroy:
 			default:
-				return new Gdk.Event (raw);
+				return new Gdk.Event (raw, owned);
 			}
 		}
 	}

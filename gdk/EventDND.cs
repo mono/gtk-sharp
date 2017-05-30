@@ -38,7 +38,8 @@ namespace Gdk {
 		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern short gtksharp_gdk_event_dnd_get_y_root (IntPtr evt);
 
-		public EventDND (IntPtr raw) : base (raw) {} 
+		public EventDND (IntPtr raw) : base (raw) { }
+		public EventDND (IntPtr raw, bool owned) : base (raw, owned) { }
 
 		public DragContext Context {
 			get {

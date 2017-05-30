@@ -29,7 +29,8 @@ namespace Gdk {
 		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern VisibilityState gtksharp_gdk_event_visibility_get_state (IntPtr evt);
 
-		public EventVisibility (IntPtr raw) : base (raw) {} 
+		public EventVisibility (IntPtr raw) : base (raw) { }
+		public EventVisibility (IntPtr raw, bool owned) : base (raw, owned) { }
 
 		public VisibilityState State {
 			get {

@@ -44,9 +44,7 @@
 		public static Gdk.Event CurrentEvent { 
 			get {
 				IntPtr raw_ret = gtk_get_current_event();
-				Gdk.Event ret = Gdk.Event.GetEvent (raw_ret);
-				if (raw_ret != IntPtr.Zero)
-					gdk_event_free (raw_ret);
+				Gdk.Event ret = Gdk.Event.GetEvent (raw_ret, true);
 				return ret;
 			}
 		}

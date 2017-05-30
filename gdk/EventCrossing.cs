@@ -56,7 +56,8 @@ namespace Gdk {
 		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool gtksharp_gdk_event_crossing_get_focus (IntPtr evt);
 
-		public EventCrossing (IntPtr raw) : base (raw) {} 
+		public EventCrossing (IntPtr raw) : base (raw) { }
+		public EventCrossing (IntPtr raw, bool owned) : base (raw, owned) { }
 
 		public uint Time {
 			get {

@@ -50,7 +50,8 @@ namespace Gdk {
 		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_gdk_event_scroll_get_device (IntPtr evt);
 
-		public EventScroll (IntPtr raw) : base (raw) {} 
+		public EventScroll (IntPtr raw) : base (raw) { }
+		public EventScroll (IntPtr raw, bool owned) : base (raw, owned) { }
 
 		public uint Time {
 			get {

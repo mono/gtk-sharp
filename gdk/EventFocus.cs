@@ -29,7 +29,8 @@ namespace Gdk {
 		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern short gtksharp_gdk_event_focus_get_in (IntPtr evt);
 
-		public EventFocus (IntPtr raw) : base (raw) {} 
+		public EventFocus (IntPtr raw) : base (raw) { }
+		public EventFocus (IntPtr raw, bool owned) : base (raw, owned) { }
 
 		public bool In {
 			get {

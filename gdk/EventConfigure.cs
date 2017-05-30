@@ -38,7 +38,8 @@ namespace Gdk {
 		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern int gtksharp_gdk_event_configure_get_height (IntPtr evt);
 
-		public EventConfigure (IntPtr raw) : base (raw) {} 
+		public EventConfigure (IntPtr raw) : base (raw) { }
+		public EventConfigure (IntPtr raw, bool owned) : base (raw, owned) { }
 
 		public int X {
 			get {

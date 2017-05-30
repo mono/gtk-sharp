@@ -41,7 +41,8 @@ namespace Gdk {
 		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern uint gtksharp_gdk_event_selection_get_requestor (IntPtr evt);
 
-		public EventSelection (IntPtr raw) : base (raw) {} 
+		public EventSelection (IntPtr raw) : base (raw) { }
+		public EventSelection (IntPtr raw, bool owned) : base (raw, owned) { }
 
 		public Atom Property {
 			get {
