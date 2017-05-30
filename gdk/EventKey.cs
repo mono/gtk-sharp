@@ -41,7 +41,8 @@ namespace Gdk {
 		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern byte gtksharp_gdk_event_key_get_group (IntPtr evt);
 
-		public EventKey (IntPtr raw) : base (raw) {} 
+		public EventKey (IntPtr raw) : base (raw) { }
+		public EventKey (IntPtr raw, bool owned) : base (raw, owned) { }
 
 		public uint Time {
 			get {

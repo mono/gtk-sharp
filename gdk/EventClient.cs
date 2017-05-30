@@ -35,7 +35,8 @@ namespace Gdk {
 		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_gdk_event_client_get_data (IntPtr evt);
 
-		public EventClient (IntPtr raw) : base (raw) {} 
+		public EventClient (IntPtr raw) : base (raw) { }
+		public EventClient (IntPtr raw, bool owned) : base (raw, owned) { }
 
 		public Atom MessageType {
 			get {

@@ -35,7 +35,8 @@ namespace Gdk {
 		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern PropertyState gtksharp_gdk_event_property_get_state (IntPtr evt);
 
-		public EventProperty (IntPtr raw) : base (raw) {} 
+		public EventProperty (IntPtr raw) : base (raw) { }
+		public EventProperty (IntPtr raw, bool owned) : base (raw, owned) { }
 
 		public Atom Atom {
 			get {

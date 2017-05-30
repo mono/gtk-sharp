@@ -32,7 +32,8 @@ namespace Gdk {
 		[DllImport("gdksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_gdk_event_proximity_get_device (IntPtr evt);
 
-		public EventProximity (IntPtr raw) : base (raw) {} 
+		public EventProximity (IntPtr raw) : base (raw) { }
+		public EventProximity (IntPtr raw, bool owned) : base (raw, owned) { }
 
 		public Device Device {
 			get {

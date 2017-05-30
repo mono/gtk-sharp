@@ -36,6 +36,7 @@ namespace Gdk {
 		static extern int gtksharp_gdk_event_expose_get_count (IntPtr evt);
 
 		public EventExpose (IntPtr raw) : base (raw) {} 
+		public EventExpose (IntPtr raw, bool owned) : base (raw, owned) {}
 
 		public Rectangle Area {
 			get {

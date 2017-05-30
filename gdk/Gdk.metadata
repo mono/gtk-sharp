@@ -81,6 +81,8 @@
   <attr path="/api/namespace/object[@cname='GdkDisplay']/method[@name='SupportsComposite']" name="name">GetSupportsComposite</attr>
   <attr path="/api/namespace/object[@cname='GdkDisplay']/method[@name='SupportsInputShapes']" name="name">GetSupportsInputShapes</attr>
   <attr path="/api/namespace/object[@cname='GdkDisplay']/method[@name='SupportsShapes']" name="name">GetSupportsShapes</attr>
+  <attr path="/api/namespace/object[@cname='GdkDisplay']/method[@name='PeekEvent']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='GdkDisplay']/method[@name='GetEvent']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GdkDisplayManager']/method[@name='ListDisplays']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GdkDragContext']/field[@cname='protocol']" name="name">DragProtocol</attr>
   <attr path="/api/namespace/object[@cname='GdkDragContext']/field[@cname='targets']" name="hidden">1</attr>
