@@ -334,10 +334,22 @@ namespace GLib {
 			GType gtype = new GType (gtksharp_register_type (native_name, parent_gtype.Val));
 			GLib.Marshaller.Free (native_name);
 			GLib.GType.Register (gtype, t);
-			AddProperties (gtype, t);
-			ConnectDefaultHandlers (gtype, t);
+
+			var attributes = t.GetCustomAttributes (typeof (IgnoreRegistrationAttribute), false);
+			if (attributes.Length == 0) {
+				AddProperties (gtype, t);
+				ConnectDefaultHandlers (gtype, t);
+				AddInterfaces (gtype, t);
+			} else {
+				var attribute = (IgnoreRegistrationAttribute)attributes [0];
+				if (!attribute.Properties)
+					AddProperties (gtype, t);
+				if (!attribute.DefaultHandlers)
+					ConnectDefaultHandlers (gtype, t);
+				if (!attribute.Interfaces)
+					AddInterfaces (gtype, t);
+			}
 			InvokeClassInitializers (gtype, t);
-			AddInterfaces (gtype, t);
 			g_types[t] = gtype;
 			return gtype;
 		}

@@ -40,6 +40,7 @@ sources =		 			\
 	GTypeAttribute.cs			\
 	Idle.cs					\
 	IgnoreClassInitializersAttribute.cs	\
+	IgnoreRegistrationAttribute.cs	\
 	InitiallyUnowned.cs			\
 	IntPtrEqualityComparer.cs	\
 	IOChannel.cs				\

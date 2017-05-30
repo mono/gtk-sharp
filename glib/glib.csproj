@@ -194,6 +194,7 @@
     <Compile Include="WeakObject.cs" />
     <Compile Include="IntPtrEqualityComparer.cs" />
     <Compile Include="FastActivator.cs" />
+    <Compile Include="IgnoreRegistrationAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
