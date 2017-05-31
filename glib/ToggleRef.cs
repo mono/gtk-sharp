@@ -33,14 +33,14 @@ namespace GLib {
 		GCHandle gch;
 		Hashtable signals;
 
-		public ToggleRef (GLib.Object target)
+		public ToggleRef (GLib.Object target, IntPtr handle)
 		{
-			handle = target.Handle;
+			this.handle = handle;
 			gch = GCHandle.Alloc (this);
 			reference = target;
-			g_object_add_toggle_ref (target.Handle, ToggleNotifyCallback, (IntPtr) gch);
+			g_object_add_toggle_ref (handle, ToggleNotifyCallback, (IntPtr) gch);
 			if (target.owned && !(target is InitiallyUnowned))
-				g_object_unref (target.Handle);
+				g_object_unref (handle);
 		}
 
 		public IntPtr Handle {

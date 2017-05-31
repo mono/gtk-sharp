@@ -88,34 +88,9 @@ namespace GLib {
 			}
 		}
 
-		static object lockObject = new object ();
-		static List<Opaque> PendingFrees = new List<Opaque> ();
-		static bool idleQueued;
-
-		bool PerformQueuedFrees ()
-		{
-			List<Opaque> references;
-			lock (lockObject) {
-				references = PendingFrees;
-				PendingFrees = new List<Opaque> ();
-				idleQueued = false;
-			}
-
-			foreach (var opaque in references)
-				opaque.Raw = IntPtr.Zero;
-			
-			return false;
-		}
-
 		~Opaque ()
 		{
-			lock (lockObject) {
-				PendingFrees.Add (this);
-				if (!idleQueued) {
-					idleQueued = true;
-					Timeout.Add (50, new TimeoutHandler (PerformQueuedFrees));
-				}
-			}
+			Raw = IntPtr.Zero;
 		}
 
 		public virtual void Dispose ()

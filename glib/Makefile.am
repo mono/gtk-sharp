@@ -59,6 +59,7 @@ sources =		 			\
 	Opaque.cs				\
 	PropertyAttribute.cs			\
 	PtrArray.cs				\
+	SafeObjectHandle.cs			\
 	Signal.cs				\
 	SignalArgs.cs				\
 	SignalAttribute.cs			\
