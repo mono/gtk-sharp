@@ -67,33 +67,8 @@ namespace GLib {
 			if (Handle == IntPtr.Zero)
 				return;
 
-			lock (lockObject) {
-				PendingFrees.Add (handle);
-
-				if (! idle_queued) {
-					Timeout.Add (50, new TimeoutHandler (PerformFrees));
-					idle_queued = true;
-				}
-			}
-
+			g_value_array_free (Handle);
 			handle = IntPtr.Zero;
-		}
-
-		static bool PerformFrees ()
-		{
-			List<IntPtr> handles;
-
-			lock (lockObject) {
-				idle_queued = false;
-
-				handles = PendingFrees;
-				PendingFrees = new List<IntPtr> (8);
-			}
-
-			for (int i = 0; i < handles.Count; ++i)
-				g_value_array_free (handles [i]);
-
-			return false;
 		}
 		
 		public IntPtr Handle {
