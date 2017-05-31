@@ -30,6 +30,8 @@ namespace Pango {
 		{
 			this.raw = raw;
 			this.owned = owned;
+			if (!owned)
+				GC.SuppressFinalize (this);
 		}
 
 		[DllImport("pangosharpglue-2", CallingConvention=CallingConvention.Cdecl)]
