@@ -47,6 +47,7 @@ customs = 			\
 	DragContext.custom	\
 	Drawable.custom		\
 	EdgeTable.custom	\
+	EventHelper.custom	\
 	GCValues.custom		\
 	Global.custom		\
 	Input.custom		\
