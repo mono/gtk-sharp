@@ -58,6 +58,7 @@ sources =		 			\
 	ObjectManager.cs			\
 	Opaque.cs				\
 	PropertyAttribute.cs			\
+	PointerWrapper.cs				\
 	PtrArray.cs				\
 	Signal.cs				\
 	SignalArgs.cs				\
