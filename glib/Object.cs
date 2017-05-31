@@ -32,69 +32,23 @@ namespace GLib {
 	using System.Text;
 
 	public class Object : IWrapper, IDisposable {
-
-		IntPtr handle;
-		ToggleRef tref;
+		
 		internal protected bool owned = false;
 		Hashtable data;
-		static Dictionary<IntPtr, ToggleRef> Objects = new Dictionary<IntPtr, ToggleRef>(IntPtrEqualityComparer.Instance);
-		static object lockObject = new object ();
-		static List<ToggleRef> PendingDestroys = new List<ToggleRef> ();
-		static bool idle_queued;
-
-		~Object ()
-		{
-			lock (lockObject) {
-				lock (Objects) {
-					if (tref != null)
-						PendingDestroys.Add (tref);
-					Objects.Remove (Handle);
-				}
-				if (!idle_queued){
-					Timeout.Add (50, PerformQueuedUnrefs);
-					idle_queued = true;
-				}
-			}
-		}
+		internal SafeObjectHandle handle = SafeObjectHandle.Zero;
 
 		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_object_unref (IntPtr raw);
 
-		static bool PerformQueuedUnrefs ()
-		{
-			List<ToggleRef> references;
-
-			lock (lockObject) {
-				references = PendingDestroys;
-				PendingDestroys = new List<ToggleRef> ();
-				idle_queued = false;
-			}
-
-			foreach (ToggleRef r in references)
-				r.Free ();
-
-			return false;
-		}
-
 		public virtual void Dispose ()
 		{
-			if (Handle == IntPtr.Zero)
-				return;
-			
-			lock(Objects) {
-				Objects.Remove (Handle);
-				try {
-					if (tref != null) {
-						tref.Free ();
-						tref = null;
-					}
-				} catch (Exception e) {
-					Console.WriteLine ("Exception while disposing a " + this + " in Gtk#");
-					throw e;
-				}
+			try {
+				handle.Dispose ();
+				handle = null;
+			} catch (Exception e) {
+				Console.WriteLine ("Exception while disposing a " + this + " in Gtk#");
+				throw e;
 			}
-			handle = IntPtr.Zero;
-			GC.SuppressFinalize (this);
 		}
 
 		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
@@ -105,14 +59,9 @@ namespace GLib {
 			if (o == IntPtr.Zero)
 				return null;
 
-			ToggleRef tr;
-			lock(Objects)
-				Objects.TryGetValue (o, out tr);
-			if (tr != null) {
-				return tr.Target;
-			}
-
-			return null;
+			Object obj;
+			SafeObjectHandle.TryGetObject (o, out obj);
+			return obj;
 		}
 
 		public static Object GetObject(IntPtr o, bool owned_ref)
@@ -120,15 +69,9 @@ namespace GLib {
 			if (o == IntPtr.Zero)
 				return null;
 
-			Object obj = null;
-			ToggleRef toggle_ref = null;
-			lock(Objects)
-				Objects.TryGetValue (o, out toggle_ref);
+			Object obj;
 
-			if (toggle_ref != null)
-				obj = toggle_ref.Target;
-
-			if (obj != null && obj.Handle == o)
+			if (SafeObjectHandle.TryGetObject (o, out obj) && obj.Handle == o)
 				return obj;
 
 			obj = GLib.ObjectManager.CreateObject (o);
@@ -417,28 +360,16 @@ namespace GLib {
 
 		protected virtual IntPtr Raw {
 			get {
-				return handle;
+				return Handle;
 			}
 			set {
-				if (handle == value)
+				if (handle.DangerousGetHandle () == value)
 					return;
 
-				lock(Objects) {
-					if (handle != IntPtr.Zero) {
-						Objects.Remove (handle);
-						if (tref != null) {
-							tref.Free ();
-							tref = null;
-						}
-					}
-					handle = value;
-					if (value != IntPtr.Zero) {
-						tref = new ToggleRef (this);
-						Objects [value] = tref;
-					}
-				}
+				handle.Dispose ();
+				handle = SafeObjectHandle.Create (this, value);
 			}
-        	}
+		}
 
 		public static GLib.GType GType {
 			get {
@@ -463,20 +394,20 @@ namespace GLib {
 
 		internal ToggleRef ToggleRef {
 			get {
-				return tref;
+				return handle.tref;
 			}
 		}
 
 		public IntPtr Handle {
 			get {
-				return handle;
+				return handle.DangerousGetHandle ();
 			}
 		}
 
 		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		public IntPtr OwnedHandle {
 			get {
-				return g_object_ref (handle);
+				return g_object_ref (Handle);
 			}
 		}
 
@@ -660,7 +591,7 @@ namespace GLib {
 
 		internal void Harden ()
 		{
-			tref.Harden ();
+			handle.tref.Harden ();
 		}
 
 		static Object ()
