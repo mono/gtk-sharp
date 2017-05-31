@@ -1,0 +1,46 @@
+
+
+		[DllImport("libgdk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern IntPtr gdk_event_new(int type);
+
+		public static Gdk.Event New(Gdk.EventType type) {
+			IntPtr raw_ret = gdk_event_new((int) type);
+			Gdk.Event ret = Gdk.Event.GetEvent (raw_ret, true);
+			return ret;
+		}
+
+		[DllImport("libgdk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern IntPtr gdk_event_get();
+
+		public static Gdk.Event Get() {
+			IntPtr raw_ret = gdk_event_get();
+			Gdk.Event ret = Gdk.Event.GetEvent (raw_ret, true);
+			return ret;
+		}
+
+		[DllImport("libgdk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern IntPtr gdk_event_copy(IntPtr evnt);
+
+		public static Gdk.Event Copy(Gdk.Event evnt) {
+			IntPtr raw_ret = gdk_event_copy(evnt == null ? IntPtr.Zero : evnt.Handle);
+			Gdk.Event ret = Gdk.Event.GetEvent (raw_ret, true);
+			return ret;
+		}
+
+		[DllImport("libgdk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern IntPtr gdk_event_get_graphics_expose(IntPtr window);
+
+		public static Gdk.Event GetGraphicsExpose(Gdk.Window window) {
+			IntPtr raw_ret = gdk_event_get_graphics_expose(window == null ? IntPtr.Zero : window.Handle);
+			Gdk.Event ret = Gdk.Event.GetEvent (raw_ret, true);
+			return ret;
+		}
+
+		[DllImport("libgdk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern IntPtr gdk_event_peek();
+
+		public static Gdk.Event Peek() {
+			IntPtr raw_ret = gdk_event_peek();
+			Gdk.Event ret = Gdk.Event.GetEvent (raw_ret, true);
+			return ret;
+		}
