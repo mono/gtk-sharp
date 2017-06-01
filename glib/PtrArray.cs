@@ -63,7 +63,7 @@ namespace GLib {
 			this.elements_owned = elements_owned;
 			this.free_func = free_func;
 		}
-		internal PtrArray (IntPtr raw, System.Type element_type, bool owned, bool elements_owned) : this(raw, element_type, owned, elements_owned, g_free)
+		internal PtrArray (IntPtr raw, System.Type element_type, bool owned, bool elements_owned) : this(raw, element_type, owned, elements_owned, GFreeFunc)
 		{
 		}
 		public PtrArray (IntPtr raw, System.Type element_type) : this (raw, element_type, false, false) {}
@@ -90,6 +90,15 @@ namespace GLib {
 
 		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern void g_free (IntPtr item);
+
+		static ListElementFree gFreeFunc;
+		protected static ListElementFree GFreeFunc {
+			get {
+				if (gFreeFunc == null)
+					gFreeFunc = new ListElementFree (g_free); ;
+				return gFreeFunc;
+			}
+		}
 
 		void Dispose (bool disposing)
 		{

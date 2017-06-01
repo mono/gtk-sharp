@@ -86,7 +86,7 @@ namespace GLib {
 
 		public SList (IntPtr raw, System.Type element_type) : this (raw, element_type, false, false) {}
 
-		public SList (IntPtr raw, System.Type element_type, bool owned, bool elements_owned) : base (raw, element_type, owned, elements_owned, g_free) { }
+		public SList (IntPtr raw, System.Type element_type, bool owned, bool elements_owned) : base (raw, element_type, owned, elements_owned, GFreeFunc) { }
 
 		public SList (IntPtr raw, System.Type element_type, bool owned, bool elements_owned, ListElementFree free_func) : base (raw, element_type, owned, elements_owned, free_func) { }
 

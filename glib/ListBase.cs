@@ -41,6 +41,20 @@ namespace GLib {
 		abstract internal IntPtr Append (IntPtr current, IntPtr raw);
 		abstract internal IntPtr Prepend (IntPtr current, IntPtr raw);
 
+
+
+		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void g_free (IntPtr item);
+
+		static ListElementFree gFreeFunc;
+		protected static ListElementFree GFreeFunc {
+			get {
+				if (gFreeFunc == null)
+					gFreeFunc = new ListElementFree (g_free);;
+				return gFreeFunc;
+			}
+		}
+
 		internal ListBase (IntPtr list, System.Type element_type, bool owned, bool elements_owned, ListElementFree free_func)
 		{
 			list_ptr = list;
