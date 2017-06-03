@@ -180,6 +180,7 @@ namespace GtkSharp.Generation {
 			foreach (string attr in custom_attrs)
 				sw.WriteLine ("\t" + attr);
 			GenerateAttribute (sw);
+			sw.WriteLine ("\t" + GetIgnoreAttribute());
 			sw.Write ("\t{0} {1}class " + Name, IsInternal ? "internal" : "public", IsAbstract ? "abstract " : "");
 			string cs_parent = table.GetCSType(Elem.GetAttribute("parent"));
 			if (cs_parent != "") {

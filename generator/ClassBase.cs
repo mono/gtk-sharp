@@ -26,6 +26,7 @@
 namespace GtkSharp.Generation {
 	using System;
 	using System.Collections;
+	using System.Collections.Generic;
 	using System.IO;
 	using System.Xml;
 
@@ -253,6 +254,27 @@ namespace GtkSharp.Generation {
 			default:
 				return false;
 			}
+		}
+
+		public string GetIgnoreAttribute ()
+		{
+			var list = new List<string> ();
+			OnGenerateIgnoreAttribute (list);
+
+			for (int i = 0; i < list.Count; ++i)
+				list [i] = list [i] + "=false";
+
+			return string.Format ("[GLib.IgnoreRegistration ({0})]", string.Join (", ", list.ToArray ()));
+;		}
+
+		protected virtual void OnGenerateIgnoreAttribute (List<string> ignoreItems)
+		{
+			if (props.Count > 0)
+				ignoreItems.Add ("Properties");
+			if (sigs != null && sigs.Count > 0)
+				ignoreItems.Add ("DefaultHandlers");
+			if (interfaces.Count > 0 || managed_interfaces.Count > 0)
+				ignoreItems.Add ("Interfaces");
 		}
 
 		public void GenProperties (GenerationInfo gen_info, ClassBase implementor)
