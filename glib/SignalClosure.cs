@@ -64,7 +64,7 @@ namespace GLib {
 
 			static Dictionary<IntPtr, SignalClosure> closures = new Dictionary<IntPtr, SignalClosure> (IntPtrEqualityComparer.Instance);
 
-			public SignalClosure (Signal sig, System.Type args_type)
+			public SignalClosure (Signal sig)
 			{
 				raw_closure = glibsharp_closure_new (Marshaler, Notify, IntPtr.Zero);
 				closures [raw_closure] = this;

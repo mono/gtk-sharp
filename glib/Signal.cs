@@ -258,7 +258,7 @@ namespace GLib {
 				tref.Target.BeforeSignals [name] = Delegate.Combine (tref.Target.BeforeSignals [name] as Delegate, d);
 				if (before_closure == null) {
 					if (marshaler == null)
-						before_closure = new SignalClosure (this, args_type);
+						before_closure = new SignalClosure (this);
 					else
 						before_closure = new SignalClosure (this, marshaler);
 					before_closure.Disposed += ClosureDisposedHandler;
@@ -269,7 +269,7 @@ namespace GLib {
 				tref.Target.AfterSignals [name] = Delegate.Combine (tref.Target.AfterSignals [name] as Delegate, d);
 				if (after_closure == null) {
 					if (marshaler == null)
-						after_closure = new SignalClosure (this, args_type);
+						after_closure = new SignalClosure (this);
 					else
 						after_closure = new SignalClosure (this, marshaler);
 					after_closure.Disposed += ClosureDisposedHandler;
