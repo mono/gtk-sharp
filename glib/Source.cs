@@ -34,12 +34,12 @@ namespace GLib {
 	//
 	internal abstract class SourceProxy {
 		internal uint ID;
-		internal readonly GSourceFuncInternal Handler;
 		internal bool needsAdd = true;
+		internal GCHandle handle;
 
 		protected SourceProxy ()
 		{
-			Handler = new GSourceFuncInternal (HandlerInternal);
+			handle = GCHandle.Alloc (this);
 		}
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
@@ -52,15 +52,26 @@ namespace GLib {
 					needsAdd = false;
 				else
 					Source.source_handlers.Remove (ID);
+				handle.Free ();
 			}
 		}
 
-		bool HandlerInternal (IntPtr data)
+		static GSourceFuncInternal sourceHandler;
+		public static GSourceFuncInternal SourceHandler {
+			get {
+				if (sourceHandler == null)
+					sourceHandler = new GSourceFuncInternal (HandlerInternal);
+				return sourceHandler;
+			}
+		}
+
+		static bool HandlerInternal (IntPtr data)
 		{
 			try {
-				bool cont = Invoke (data);
+				SourceProxy proxy = (SourceProxy)((GCHandle)data).Target;
+				bool cont = proxy.Invoke ();
 				if (!cont)
-					Remove ();
+					proxy.Remove ();
 				return cont;
 			} catch (Exception e) {
 				ExceptionManager.RaiseUnhandledException (e, false);
@@ -68,7 +79,7 @@ namespace GLib {
 			return false;
 		}
 
-		protected abstract bool Invoke (IntPtr data);
+		protected abstract bool Invoke ();
 	}
 	
         public class Source {
