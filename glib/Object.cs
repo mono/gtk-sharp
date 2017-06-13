@@ -459,7 +459,7 @@ namespace GLib {
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void NotifyDelegate (IntPtr handle, IntPtr pspec, IntPtr gch);
 
-		void NotifyCallback (IntPtr handle, IntPtr pspec, IntPtr gch)
+		static void NotifyCallback (IntPtr handle, IntPtr pspec, IntPtr gch)
 		{
 			try {
 				GLib.Signal sig = ((GCHandle) gch).Target as GLib.Signal;
