@@ -30,7 +30,6 @@ namespace GLib {
 
 		EventArgs args;
 		GLib.Object obj;
-		object result;
 
 		public ClosureInvokedArgs (GLib.Object obj, EventArgs args)
 		{
