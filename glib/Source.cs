@@ -33,28 +33,12 @@ namespace GLib {
 	// Base class for IdleProxy and TimeoutProxy
 	//
 	internal abstract class SourceProxy {
-		internal uint ID;
-		internal bool needsAdd = true;
-		internal GCHandle handle;
-
 		protected SourceProxy ()
 		{
-			handle = GCHandle.Alloc (this);
 		}
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		internal delegate bool GSourceFuncInternal (IntPtr ptr);
-
-		public void Remove ()
-		{
-			lock (Source.source_handlers) {
-				if (needsAdd)
-					needsAdd = false;
-				else
-					Source.source_handlers.Remove (ID);
-				handle.Free ();
-			}
-		}
 
 		static GSourceFuncInternal sourceHandler;
 		public static GSourceFuncInternal SourceHandler {
@@ -69,10 +53,7 @@ namespace GLib {
 		{
 			try {
 				SourceProxy proxy = (SourceProxy)((GCHandle)data).Target;
-				bool cont = proxy.Invoke ();
-				if (!cont)
-					proxy.Remove ();
-				return cont;
+				return proxy.Invoke ();
 			} catch (Exception e) {
 				ExceptionManager.RaiseUnhandledException (e, false);
 			}
@@ -85,34 +66,12 @@ namespace GLib {
         public class Source {
 		private Source () {}
 		
-		internal static Dictionary<uint, SourceProxy> source_handlers = new Dictionary<uint, SourceProxy>();
-		
 		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool g_source_remove (uint tag);
 
-		internal static void Add (SourceProxy proxy)
-		{
-			lock (source_handlers) {
-				if (proxy.needsAdd) {
-					proxy.needsAdd = false;
-					source_handlers [proxy.ID] = proxy;
-				}
-			}
-		}
-
 		public static bool Remove (uint tag)
 		{
-			// g_source_remove always returns true, so we follow that
-			bool ret = true;
-
-			lock (source_handlers) {
-				SourceProxy handler;
-				if (source_handlers.TryGetValue (tag, out handler)) {
-					ret = g_source_remove (tag);
-					handler.Remove ();
-				}
-			}
-			return ret;
+			return g_source_remove (tag);
 		}
 	}
 }

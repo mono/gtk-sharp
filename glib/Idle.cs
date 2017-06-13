@@ -26,14 +26,19 @@ namespace GLib {
 	using System;
 	using System.Collections;
 	using System.Collections.Generic;
+	using System.Linq;
 	using System.Runtime.InteropServices;
 
 	public delegate bool IdleHandler ();
 
-	public class Idle {
-
-		internal class IdleProxy : SourceProxy {
+	public class Idle
+	{
+		internal class IdleProxy : SourceProxy
+		{
 			internal readonly IdleHandler real_handler;
+			internal uint ID;
+			internal bool needsAdd = true;
+
 			public IdleProxy (IdleHandler real)
 			{
 				real_handler = real;
@@ -44,44 +49,92 @@ namespace GLib {
 				return real_handler ();
 			}
 		}
-		
+
 		private Idle ()
 		{
 		}
-		
-		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
-		static extern uint g_idle_add (SourceProxy.GSourceFuncInternal d, IntPtr data);
+
+		static readonly int defaultPriority = glibsharp_idle_priority_default ();
+
+		[DllImport ("glibsharpglue-2", CallingConvention = CallingConvention.Cdecl)]
+		static extern int glibsharp_idle_priority_default ();
+
+		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern uint g_idle_add_full (int priority, SourceProxy.GSourceFuncInternal d, IntPtr data, DestroyNotify notify);
 
 		public static uint Add (IdleHandler hndlr)
 		{
 			IdleProxy p = new IdleProxy (hndlr);
-			p.ID = g_idle_add (SourceProxy.SourceHandler, (IntPtr)p.handle);
-			Source.Add (p);
+			var handle = GCHandle.Alloc (p);
+
+			p.ID = g_idle_add_full (defaultPriority, SourceProxy.SourceHandler, (IntPtr)handle, NotifyHandler);
+
+			lock (idle_handlers) {
+				if (p.needsAdd) {
+					p.needsAdd = false;
+					idle_handlers [p.ID] = p;
+				}
+			}
 
 			return p.ID;
 		}
-		
-		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+
+		internal static Dictionary<uint, IdleProxy> idle_handlers = new Dictionary<uint, IdleProxy> ();
+
+		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern bool g_source_remove (uint id);
-                                                                                
+
+		[Obsolete ("This method is inefficient, please use the GLib.Source.Remove(uint) method")]
 		public static bool Remove (IdleHandler hndlr)
 		{
 			bool result = false;
 
-			lock (Source.source_handlers) {
-				foreach (KeyValuePair<uint, SourceProxy> kvp in Source.source_handlers) {
+			lock (idle_handlers) {
+				// While we could delegate the removal by userdata to native,
+				// that method is slower, as it would lock and iterate the whole source
+				// list instead of a simple hashtable lookup.
+				foreach (KeyValuePair<uint, IdleProxy> kvp in idle_handlers.ToArray ()) {
 					uint code = kvp.Key;
-					IdleProxy p = kvp.Value as IdleProxy;
-				
+					IdleProxy p = kvp.Value;
+
 					if (p != null && p.real_handler == hndlr) {
 						result = g_source_remove (code);
-						p.Remove ();
 					}
 				}
 			}
 
 			return result;
 		}
+
+		#region IdleProxy DestroyNotify
+		static void ReleaseGCHandle (IntPtr data)
+		{
+			if (data == IntPtr.Zero)
+				return;
+
+			GCHandle gch = (GCHandle)data;
+			IdleProxy proxy = (IdleProxy)gch.Target;
+
+			lock (idle_handlers) {
+				if (proxy.needsAdd)
+					proxy.needsAdd = false;
+				else
+					idle_handlers.Remove (proxy.ID);
+			}
+
+			gch.Free ();
+		}
+
+		static DestroyNotify release_gchandle;
+
+		public static DestroyNotify NotifyHandler {
+			get {
+				if (release_gchandle == null)
+					release_gchandle = new DestroyNotify (ReleaseGCHandle);
+				return release_gchandle;
+			}
+		}
+		#endregion
 	}
 }
 
