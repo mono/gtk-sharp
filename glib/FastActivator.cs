@@ -49,7 +49,7 @@ namespace GLib
 					var callWithConvert = Expression.Convert (call, typeof (object));
 					cache [t] = method = Expression.Lambda<FastCreateBoxed> (callWithConvert, param).Compile ();
 				} else {
-					cache [t] = method = ptr => System.Runtime.InteropServices.Marshal.PtrToStructure (ptr, t);
+					cache [t] = method = null;
 				}
 			}
 			return method;
@@ -80,7 +80,10 @@ namespace GLib
 			new ThreadLocal<Dictionary<Type, FastCreateBoxed>> (() => new Dictionary<Type, FastCreateBoxed> (new TypeEqualityComparer ()));
 		public static object CreateBoxed (IntPtr o, Type type)
 		{
-			return FastBoxed (type, cacheBoxed.Value) (o);
+			var activator = FastBoxed (type, cacheBoxed.Value);
+			if (activator != null)
+				return activator (o);
+			return System.Runtime.InteropServices.Marshal.PtrToStructure (o, type);
 		}
 
 		class TypeEqualityComparer : IEqualityComparer<Type>
