@@ -43,17 +43,20 @@ namespace GLib {
 
 		private Timeout () {}
 
+		static readonly int defaultPriority = glibsharp_timeout_priority_default ();
+
+		[DllImport ("glibsharpglue-2", CallingConvention = CallingConvention.Cdecl)]
+		static extern int glibsharp_timeout_priority_default ();
+
 		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
-		static extern uint g_timeout_add (uint interval, SourceProxy.GSourceFuncInternal d, IntPtr data);
+		static extern uint g_timeout_add_full (int priority, uint interval, SourceProxy.GSourceFuncInternal d, IntPtr data, DestroyNotify notify);
 
 		public static uint Add (uint interval, TimeoutHandler hndlr)
 		{
 			TimeoutProxy p = new TimeoutProxy (hndlr);
+			var handle = GCHandle.Alloc (p);
 
-			p.ID = g_timeout_add (interval, SourceProxy.SourceHandler, (IntPtr)p.handle);
-			Source.Add (p);
-
-			return p.ID;
+			return g_timeout_add_full (defaultPriority, interval, SourceProxy.SourceHandler, (IntPtr)handle, DestroyHelper.NotifyHandler);
 		}
 	}
 }

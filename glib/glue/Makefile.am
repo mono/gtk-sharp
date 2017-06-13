@@ -8,6 +8,7 @@ libglibsharpglue_2_la_SOURCES = 	\
 	object.c		\
 	ptrarray.c \
 	signal.c		\
+	source.c		\
 	type.c			\
 	unichar.c		\
 	value.c			\
