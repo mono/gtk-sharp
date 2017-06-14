@@ -71,7 +71,7 @@ namespace GLib {
 
 		public static bool Remove (uint tag)
 		{
-			return g_source_remove (tag);
+			return tag == 0 || g_source_remove (tag);
 		}
 	}
 }
