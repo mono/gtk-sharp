@@ -67,6 +67,9 @@
   <attr path="/api/namespace/callback[@cname='GtkTreeViewRowSeparatorFunc']" name="has_invoker">1</attr>
   <remove-node path="/api/namespace/callback[@cname='GtkTextBufferSerializeFunc']" />
   <remove-node path="/api/namespace/object[@cname='GtkTextBuffer']/method[@name='RegisterSerializeFormat']" />
+  <!--
+<attr path="/api/namespace/callback[@cname='GtkClipboardTargetsReceivedFunc']/parameters/parameter[@name='atoms']" name="array">1</attr>
+-->
 <attr path="/api/namespace/callback[@cname='GtkTreeModelFilterModifyFunc']/parameters/parameter[@name='value']" name="pass_as">ref</attr>
   <attr path="/api/namespace/callback[@cname='GtkModuleDisplayInitFunc']" name="hidden">1</attr>
   <attr path="/api/namespace/callback[@cname='GtkModuleInitFunc']" name="hidden">1</attr>
@@ -316,8 +319,12 @@
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='RequestImage']/*/*[@name='callback']" name="scope">async</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='RequestTargets']/*/*[@name='callback']" name="scope">async</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='RequestText']/*/*[@name='callback']" name="scope">async</attr>
+  <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='SetCanStore']/*/*[@name='targets']" name="array">1</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='SetWithData']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='SetWithOwner']" name="hidden">1</attr>
+  <!--
+  <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForTargets']/parameters/parameter[@name='targets']" name="array">1</attr>
+  -->
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForTargets']/parameters/parameter[@name='targets']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForImage']/return-type" name="owned">true</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForContents']/return-type" name="owned">true</attr>
@@ -621,6 +628,8 @@
   <attr path="/api/namespace/object[@cname='GtkScrolledWindow']/method[@name='GetPolicy']/*/*[@type='GtkPolicyType*']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkScrolledWindow']/method[@name='GetVscrollbar']" name="name">GetVScrollbar</attr>
   <attr path="/api/namespace/object[@cname='GtkScrolledWindow']/signal[@name='ScrollChild']/return-type" name="type">void</attr>
+  <attr path="/api/namespace/*[@cname='GtkSelection_']/method[@name='AddTargets']/*/*[@name='targets']" name="array">1</attr>
+  <attr path="/api/namespace/*[@cname='GtkSelection_']/method[@name='AddTargets']/*/*[@name='ntargets']" name="name">n_targets</attr>
   <attr path="/api/namespace/object[@cname='GtkSeparatorToolItem']/property[@name='Draw']" name="new_flag">1</attr>
   <attr path="/api/namespace/object[@cname='GtkSizeGroup']/method[@name='GetWidgets']/return-type" name="element_type">GtkWidget*</attr>
   <attr path="/api/namespace/object[@cname='GtkSpinButton']/constructor[@cname='gtk_spin_button_new_with_range']" name="hidden">1</attr>
@@ -919,6 +928,11 @@
   <attr path="/api/namespace/*[@cname='GtkTargetList']/field" name="access">private</attr>
   <attr path="/api/namespace/*[@cname='GtkTargetList']/method[@name='AddTable']/*/*[@name='targets']" name="array">1</attr>
   <attr path="/api/namespace/*[@cname='GtkTargetList']/method[@name='AddTable']/*/*[@name='ntargets']" name="name">n_targets</attr>
+  <attr path="/api/namespace/*[@cname='GtkTarget_']/method[@name='TableFree']/*/*[@name='targets']" name="array">1</attr>
+  <!--
+  <attr path="/api/namespace/*[@cname='GtkTarget_']/method[@name='TableNewFromList']/*/*[@name='targets']" name="array">1</attr>
+  <attr path="/api/namespace/*[@cname='GtkTarget_']/method[@name='TableNewFromList']/return-type" name="array">1</attr>
+  -->
   <attr path="/api/namespace/struct[@cname='GtkTextAppearance']/field[@cname='underline']" name="type">PangoUnderline</attr>
   <attr path="/api/namespace/struct[@cname='GtkTextAppearance']/field[@cname='draw_bg']" name="hidden">1</attr>
   <attr path="/api/namespace/struct[@cname='GtkTextAppearance']/field[@cname='inside_selection']" name="hidden">1</attr>
