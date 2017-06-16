@@ -397,6 +397,12 @@ namespace GLib {
 			}
 		}
 
+		internal void FreeSignals ()
+		{
+			if (handle != null)
+				handle.tref.FreeSignals ();
+		}
+
 		internal ToggleRef ToggleRef {
 			get {
 				return handle != null ? handle.tref : null;

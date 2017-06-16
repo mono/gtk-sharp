@@ -83,6 +83,7 @@
 			if (obj == null)
 				return;
 			obj.OnDestroyed ();
+			obj.FreeSignals ();
 		}
 		
 		static EventHandler native_destroy_handler;

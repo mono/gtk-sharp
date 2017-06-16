@@ -77,14 +77,19 @@ namespace GLib {
 			signals.Remove (name);
 		}
 
-  		public void Free ()
-  		{
+		public void FreeSignals ()
+		{
 			if (signals != null) {
 				var copy = signals.Values;
 				signals = null;
 				foreach (Signal s in copy)
 					s.Free ();
 			}
+		}
+
+		public void Free ()
+		{
+			FreeSignals ();
 
 			if (hardened)
 				g_object_unref (handle);
