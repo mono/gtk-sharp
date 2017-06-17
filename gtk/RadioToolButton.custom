@@ -27,7 +27,7 @@
 		public RadioToolButton (GLib.SList group) : base (IntPtr.Zero)
 		{
 			if (GetType () != typeof (RadioToolButton)) {
-				CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
+				CreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);
 				Group = group;
 				return;
 			}

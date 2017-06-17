@@ -203,7 +203,7 @@ namespace GLib {
 		public static string[] NullTermPtrToStringArray (IntPtr null_term_array, bool owned)
 		{
 			if (null_term_array == IntPtr.Zero)
-				return new string [0];
+				return Array.Empty<string> ();
 
 			int count = 0;
 			var result = new System.Collections.Generic.List<string> ();
@@ -222,7 +222,7 @@ namespace GLib {
 		public static string[] PtrToStringArrayGFree (IntPtr string_array)
 		{
 			if (string_array == IntPtr.Zero)
-				return new string [0];
+				return Array.Empty<string> ();
 	
 			int count = 0;
 			while (Marshal.ReadIntPtr (string_array, count*IntPtr.Size) != IntPtr.Zero)
@@ -338,7 +338,7 @@ namespace GLib {
 		public static string[] ArrayPtrToArgv (IntPtr array, int argc)
 		{
 			if (argc == 0)
-				return new string[0];
+				return Array.Empty<string> ();
 
 			if (check_sixtyfour ())
 				return unmarshal_64 (array, argc);

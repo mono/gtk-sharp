@@ -323,7 +323,7 @@ namespace GLib {
 
 		protected Object ()
 		{
-			CreateNativeObject (new string [0], new GLib.Value [0]);
+			CreateNativeObject (Array.Empty<string> (), Array.Empty<GLib.Value> ());
 		}
 
 		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]

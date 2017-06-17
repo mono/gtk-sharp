@@ -152,7 +152,7 @@
             get {
                 int [] selected = null;
                 int raw_ret = atk_table_get_selected_rows(Handle, out selected);
-                return raw_ret == 0 ? new int[0] : selected;
+                return raw_ret == 0 ? Array.Empty<int> () : selected;
             }
 		}
 
@@ -190,7 +190,7 @@
             get {
                 int [] selected = null;
                 int raw_ret = atk_table_get_selected_columns(Handle, out selected);
-                return raw_ret == 0 ? new int[0] : selected;
+                return raw_ret == 0 ? Array.Empty<int> () : selected;
             }
 		}
 

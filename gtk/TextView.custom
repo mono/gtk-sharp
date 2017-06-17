@@ -27,7 +27,7 @@
 		public TextView (TextBuffer buffer) : base (IntPtr.Zero)
 		{
 			if (GetType() != typeof (TextView)) {
-				CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
+				CreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);
 				Buffer = buffer;
 				return;
 			}

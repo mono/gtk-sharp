@@ -23,6 +23,6 @@
 		
 		protected TextMark () : base (IntPtr.Zero)
 		{
-			CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
+			CreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);
 		}
 

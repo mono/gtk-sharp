@@ -84,7 +84,7 @@
 			set {
 				IntPtr[] native_path;
 				if (value == null)
-					native_path = new IntPtr [0];
+					native_path = Array.Empty<IntPtr> ();
 				else
 					native_path = GLib.Marshaller.StringArrayToNullTermPointer (value);
 
