@@ -28,7 +28,7 @@
 		{
 			GdkSharp.InputFunctionWrapper function_wrapper = new GdkSharp.InputFunctionWrapper (function);
 			GCHandle gch = GCHandle.Alloc (function_wrapper);
-			return gdk_input_add_full (source, (int) condition, function_wrapper.NativeDelegate, (IntPtr) gch, GLib.DestroyHelper.NotifyHandler);
+			return gdk_input_add_full (source, (int) condition, GdkSharp.InputFunctionWrapper.NativeDelegate, (IntPtr) gch, GLib.DestroyHelper.NotifyHandler);
 		}
 
 		[Obsolete]
@@ -36,5 +36,5 @@
 		{
 			GdkSharp.InputFunctionWrapper function_wrapper = new GdkSharp.InputFunctionWrapper (function);
 			GCHandle gch = GCHandle.Alloc (function_wrapper);
-			return gdk_input_add_full (source, (int) condition, function_wrapper.NativeDelegate, (IntPtr) gch, GLib.DestroyHelper.NotifyHandler);
+			return gdk_input_add_full (source, (int) condition, GdkSharp.InputFunctionWrapper.NativeDelegate, (IntPtr) gch, GLib.DestroyHelper.NotifyHandler);
 		}

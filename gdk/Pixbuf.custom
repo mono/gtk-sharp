@@ -380,11 +380,13 @@
 		public unsafe void SaveToCallback (PixbufSaveFunc save_func, string type, string[] option_keys, string[] option_values)
 		{
 			GdkSharp.PixbufSaveFuncWrapper save_func_wrapper = new GdkSharp.PixbufSaveFuncWrapper (save_func);
+			GCHandle gch = GCHandle.Alloc (save_func_wrapper);
 			IntPtr error = IntPtr.Zero;
 			IntPtr ntype = GLib.Marshaller.StringToPtrGStrdup (type);
 			IntPtr[] nkeys = NullTerm (option_keys);
 			IntPtr[] nvals = NullTerm (option_values);
-			bool saved = gdk_pixbuf_save_to_callbackv (Handle, save_func_wrapper.NativeDelegate, IntPtr.Zero, ntype, nkeys, nvals, out error);
+			bool saved = gdk_pixbuf_save_to_callbackv (Handle, GdkSharp.PixbufSaveFuncWrapper.NativeDelegate, (IntPtr)gch, ntype, nkeys, nvals, out error);
+			gch.Free ();
 			GLib.Marshaller.Free (ntype);
 			ReleaseArray (nkeys);
 			ReleaseArray (nvals);
