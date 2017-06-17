@@ -85,6 +85,10 @@ namespace GtkSharp.Generation {
 				Parser p = new Parser ();
 				IGeneratable[] curr_gens = p.Parse (filename);
 				table.AddTypes (curr_gens);
+				if (!generate) {
+					foreach (var gen in curr_gens)
+						gen.Validate ();
+				}
 				if (generate)
 					gens.AddRange (curr_gens);
 			}
