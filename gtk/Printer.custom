@@ -35,6 +35,6 @@
 				func_data = (IntPtr) GCHandle.Alloc (func_wrapper);
 				destroy = GLib.DestroyHelper.NotifyHandler;
 			}
-			gtk_enumerate_printers (func_wrapper.NativeDelegate, func_data, destroy, wait);
+			gtk_enumerate_printers (GtkSharp.PrinterFuncWrapper.NativeDelegate, func_data, destroy, wait);
 		}
 
