@@ -219,7 +219,7 @@ public Gdk.Atom RegisterSerializeFormat(string mime_type, Gtk.TextBufferSerializ
 		user_data = (IntPtr) GCHandle.Alloc (function_wrapper);
 		user_data_destroy = GLib.DestroyHelper.NotifyHandler;
 	}
-	IntPtr raw_ret = gtk_text_buffer_register_serialize_format(Handle, native_mime_type, function_wrapper.NativeDelegate, user_data, user_data_destroy);
+	IntPtr raw_ret = gtk_text_buffer_register_serialize_format(Handle, native_mime_type, GtkSharp.TextBufferSerializeFuncWrapper.NativeDelegate, user_data, user_data_destroy);
 	Gdk.Atom ret = raw_ret == IntPtr.Zero ? null : (Gdk.Atom) GLib.Opaque.GetOpaque (raw_ret, typeof (Gdk.Atom), false);
 	GLib.Marshaller.Free (native_mime_type);
 	return ret;

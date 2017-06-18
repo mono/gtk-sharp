@@ -69,12 +69,15 @@ namespace GtkSharp {
 
 	internal class TextBufferSerializeFuncWrapper {
 
-		public IntPtr NativeCallback (IntPtr register_buffer, IntPtr content_buffer, IntPtr start, IntPtr end, out UIntPtr length, IntPtr user_data)
+		public static IntPtr NativeCallback (IntPtr register_buffer, IntPtr content_buffer, IntPtr start, IntPtr end, out UIntPtr length, IntPtr user_data)
 		{
 			try {
 				ulong mylength;
 
-				byte [] __ret = managed (GLib.Object.GetObject(register_buffer) as Gtk.TextBuffer, GLib.Object.GetObject(content_buffer) as Gtk.TextBuffer, Gtk.TextIter.New (start), Gtk.TextIter.New (end), out mylength);
+				var gch = (GCHandle)user_data;
+				var wrapper = (TextBufferSerializeFuncWrapper)gch.Target;
+
+				byte [] __ret = wrapper.managed (GLib.Object.GetObject(register_buffer) as Gtk.TextBuffer, GLib.Object.GetObject(content_buffer) as Gtk.TextBuffer, Gtk.TextIter.New (start), Gtk.TextIter.New (end), out mylength);
 
 				length = new UIntPtr (mylength);
 
@@ -86,7 +89,7 @@ namespace GtkSharp {
 					ret_ptr = IntPtr.Zero;
 				}
 
-				if (release_on_call)
+				if (wrapper.release_on_call)
 					gch.Free ();
 				return ret_ptr;
 			} catch (Exception e) {
@@ -99,20 +102,18 @@ namespace GtkSharp {
 		bool release_on_call = false;
 		GCHandle gch;
 
-		public void PersistUntilCalled ()
+		public GCHandle PersistUntilCalled ()
 		{
 			release_on_call = true;
-			gch = GCHandle.Alloc (this);
+			return GCHandle.Alloc (this);
 		}
 
-		internal TextBufferSerializeFuncNative NativeDelegate;
+		internal static TextBufferSerializeFuncNative NativeDelegate = new TextBufferSerializeFuncNative (NativeCallback);
 		Gtk.TextBufferSerializeFunc managed;
 
 		public TextBufferSerializeFuncWrapper (Gtk.TextBufferSerializeFunc managed)
 		{
 			this.managed = managed;
-			if (managed != null)
-				NativeDelegate = new TextBufferSerializeFuncNative (NativeCallback);
 		}
 
 		public static Gtk.TextBufferSerializeFunc GetManagedDelegate (TextBufferSerializeFuncNative native)
