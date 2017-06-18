@@ -41,7 +41,7 @@
 		public Plug (Gdk.Display display, uint socket_id) : base (IntPtr.Zero)
 		{
 			if (GetType () != typeof (Plug)) {
-				CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
+				CreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);
 				ConstructForDisplay (display, socket_id);
 				return;
 			}

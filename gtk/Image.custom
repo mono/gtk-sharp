@@ -25,13 +25,15 @@
 		public Image (Gtk.IconSet icon_set, Gtk.IconSize size) : base (IntPtr.Zero)
 		{
 			if (GetType () != typeof (Image)) {
-				var vals = new GLib.Value[2];
-				var names = new IntPtr[2];
-				names[0] = GLib.Marshaller.StringToPtrGStrdup ("icon_set");
-				vals[0] = new GLib.Value (icon_set);
-				names[1] = GLib.Marshaller.StringToPtrGStrdup ("icon_size");
-				vals[1] = new GLib.Value ((int)size);
-				CreateNativeObject (names, vals, 2);
+				unsafe {
+					var vals = stackalloc GLib.Value[2];
+					var names = stackalloc IntPtr[2];
+					names[0] = GLib.Marshaller.StringToPtrGStrdup ("icon_set");
+					vals[0] = new GLib.Value (icon_set);
+					names[1] = GLib.Marshaller.StringToPtrGStrdup ("icon_size");
+					vals[1] = new GLib.Value ((int)size);
+					CreateNativeObject (names, vals, 2);
+				}
 				return;
 			}
 			owned = true;
@@ -44,13 +46,15 @@
 		public Image (string stock_id, Gtk.IconSize size) : base (IntPtr.Zero)
 		{
 			if (GetType () != typeof (Image)) {
-				var vals = new GLib.Value[2];
-				var names = new IntPtr[2];
-				names[0] = GLib.Marshaller.StringToPtrGStrdup ("stock");
-				vals[0] = new GLib.Value (stock_id);
-				names[1] = GLib.Marshaller.StringToPtrGStrdup ("icon_size");
-				vals[1] = new GLib.Value ((int)size);
-				CreateNativeObject (names, vals, 2);
+				unsafe {
+					var vals = stackalloc GLib.Value[2];
+					var names = stackalloc IntPtr[2];
+					names[0] = GLib.Marshaller.StringToPtrGStrdup ("stock");
+					vals[0] = new GLib.Value (stock_id);
+					names[1] = GLib.Marshaller.StringToPtrGStrdup ("icon_size");
+					vals[1] = new GLib.Value ((int)size);
+					CreateNativeObject (names, vals, 2);
+				}
 				return;
 			}
 			owned = true;
