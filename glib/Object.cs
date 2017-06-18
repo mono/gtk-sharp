@@ -345,7 +345,7 @@ namespace GLib {
 
 		protected void CreateNativeObject (string [] names, GLib.Value [] vals, int count)
 		{
-			IntPtr[] native_names = new IntPtr [count];
+			IntPtr [] native_names = count == 0 ? Array.Empty<IntPtr> () : new IntPtr[count];
 			for (int i = 0; i < count; i++)
 				native_names [i] = GLib.Marshaller.StringToPtrGStrdup (names [i]);
 			CreateNativeObject (native_names, vals, count);
