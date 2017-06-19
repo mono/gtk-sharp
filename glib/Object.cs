@@ -590,6 +590,10 @@ namespace GLib {
 		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		protected static extern void g_signal_chain_from_overridden (IntPtr args, ref GLib.Value retval);
 
+
+		[DllImport ("libgobject-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		unsafe protected static extern void g_signal_chain_from_overridden (GLib.Value* args, ref GLib.Value retval);
+
 		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool gtksharp_is_object (IntPtr obj);
 
