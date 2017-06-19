@@ -294,21 +294,23 @@
 			int dummy;
 			OnRowsReordered (path, iter, out dummy);
 			GLib.Value ret = GLib.Value.Empty;
-			GLib.ValueArray inst_and_params = new GLib.ValueArray (4);
-			using (var val0 = new GLib.Value (this)) {
-				inst_and_params.Append (val0);
-				using (var val1 = new GLib.Value (path)) {
-					inst_and_params.Append (val1);
-					using (var val2 = new GLib.Value (iter)) {
-						inst_and_params.Append (val2);
+			unsafe {
+				GLib.Value* inst_and_params = stackalloc GLib.Value [4];
+				using (var val0 = new GLib.Value (this)) {
+					inst_and_params [0] = val0;
+					using (var val1 = new GLib.Value (path)) {
+						inst_and_params [1] = val1;
+						using (var val2 = new GLib.Value (iter)) {
+							inst_and_params [2] = val2;
 
-						int cnt = IterNChildren ();
-						IntPtr new_order_ptr = Marshal.AllocHGlobal (sizeof (int) * cnt);
-						Marshal.Copy (new_order, 0, new_order_ptr, cnt);
-						using (var val3 = new GLib.Value (new_order_ptr)) {
-							inst_and_params.Append (val3);
-							g_signal_chain_from_overridden (inst_and_params.ArrayPtr, ref ret);
-							Marshal.FreeHGlobal (new_order_ptr);
+							int cnt = IterNChildren ();
+							IntPtr new_order_ptr = Marshal.AllocHGlobal (sizeof (int) * cnt);
+							Marshal.Copy (new_order, 0, new_order_ptr, cnt);
+							using (var val3 = new GLib.Value (new_order_ptr)) {
+								inst_and_params [3] = val3;
+								g_signal_chain_from_overridden (inst_and_params, ref ret);
+								Marshal.FreeHGlobal (new_order_ptr);
+							}
 						}
 					}
 				}
