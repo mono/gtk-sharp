@@ -206,9 +206,8 @@ namespace Gtk {
 
 		internal class InvokeProxyWithArgs : InvokeProxy
 		{
-			readonly EventHandler d;
 			readonly object sender;
-			protected EventArgs args;
+			readonly EventArgs args;
 
 			internal InvokeProxyWithArgs (EventHandler d, object sender, EventArgs args) : base (d)
 			{
