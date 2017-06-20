@@ -72,6 +72,7 @@ namespace GLib
 		static readonly object lockObject = new object ();
 		static bool idle_queued;
 
+		static TimeoutHandler PerformQueuedUnrefsHandler = PerformQueuedUnrefs;
 		static bool PerformQueuedUnrefs ()
 		{
 			List<ToggleRef> references;
@@ -101,7 +102,7 @@ namespace GLib
 				if (tref != null) {
 					PendingDestroys.Add (tref);
 					if (!idle_queued) {
-						Timeout.Add (50, PerformQueuedUnrefs);
+						Timeout.Add (50, PerformQueuedUnrefsHandler);
 						idle_queued = true;
 					}
 				}

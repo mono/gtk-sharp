@@ -92,7 +92,8 @@ namespace GLib {
 		static List<Opaque> PendingFrees = new List<Opaque> ();
 		static bool idleQueued;
 
-		bool PerformQueuedFrees ()
+		static TimeoutHandler PerformQueuedFreesHandler = PerformQueuedFrees;
+		static bool PerformQueuedFrees ()
 		{
 			List<Opaque> references;
 			lock (lockObject) {
@@ -113,7 +114,7 @@ namespace GLib {
 				PendingFrees.Add (this);
 				if (!idleQueued) {
 					idleQueued = true;
-					Timeout.Add (50, new TimeoutHandler (PerformQueuedFrees));
+					Timeout.Add (50, PerformQueuedFreesHandler);
 				}
 			}
 		}
