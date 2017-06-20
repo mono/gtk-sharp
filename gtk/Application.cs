@@ -223,6 +223,40 @@ namespace Gtk {
 			}
 		}
 
+		internal class InvokeProxyAction : GLib.SourceProxy
+		{
+			readonly System.Action act;
+
+			internal InvokeProxyAction (System.Action act)
+			{
+				this.act = act;
+			}
+
+			protected override bool Invoke ()
+			{
+				act ();
+				return false;
+			}
+		}
+
+		internal class InvokeProxyAction<T> : GLib.SourceProxy
+		{
+			readonly Action<T> act;
+			readonly T arg;
+
+			internal InvokeProxyAction (Action<T> act, T arg)
+			{
+				this.act = act;
+				this.arg = arg;
+			}
+
+			protected override bool Invoke ()
+			{
+				act (arg);
+				return false;
+			}
+		}
+
 		public static void Invoke (EventHandler d)
 		{
 			var p = new InvokeProxy (d);
@@ -234,6 +268,22 @@ namespace Gtk {
 		public static void Invoke (object sender, EventArgs args, EventHandler d)
 		{
 			var p = new InvokeProxyWithArgs (d, sender, args);
+			var handle = GCHandle.Alloc (p);
+
+			GLib.Timeout.Add (0, handle);
+		}
+
+		public static void Invoke (System.Action act)
+		{
+			var p = new InvokeProxyAction (act);
+			var handle = GCHandle.Alloc (p);
+
+			GLib.Timeout.Add (0, handle);
+		}
+
+		public static void Invoke<T> (Action<T> act, T arg)
+		{
+			var p = new InvokeProxyAction<T> (act, arg);
 			var handle = GCHandle.Alloc (p);
 
 			GLib.Timeout.Add (0, handle);
