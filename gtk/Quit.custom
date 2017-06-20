@@ -21,35 +21,54 @@
 
 		class QuitProxy {
 
-			GtkSharp.FunctionWrapper function;
-			GtkSharp.CallbackMarshalWrapper marshal;
+			Function function;
+			CallbackMarshal marshal;
 			IntPtr data;
 			DestroyNotify destroy;
-			GLib.DestroyNotify handler;
 
-			public QuitProxy (GtkSharp.FunctionWrapper function, GtkSharp.CallbackMarshalWrapper marshal, IntPtr data, DestroyNotify destroy)
+			public QuitProxy (Function function, CallbackMarshal marshal, IntPtr data, DestroyNotify destroy)
 			{
 				this.marshal = marshal;
 				this.function = function;
 				this.destroy = destroy;
 				this.data = data;
-				handler = new GLib.DestroyNotify (OnDestroy);
 			}
 
-			void OnDestroy (IntPtr data)
+			static void OnDestroy (IntPtr data)
 			{
-				if (destroy != null)
-					destroy ();
+				var gch = (GCHandle)data;
+				var proxy = (QuitProxy)gch.Target;
 
-				GCHandle gch = (GCHandle) data;
+				if (proxy.destroy != null)
+					proxy.destroy ();
+
 				gch.Free ();
 			}
 
-			public GLib.DestroyNotify Handler {
-				get {
-					return handler;
+			static bool OnFunction (IntPtr data)
+			{
+				var gch = (GCHandle)data;
+				var proxy = (QuitProxy)gch.Target;
+
+				return proxy.function ();
+			}
+
+			static void OnCallbackMarshal (IntPtr objekt, IntPtr data, uint n_args, IntPtr args)
+			{
+				var gch = (GCHandle)data;
+				var proxy = (QuitProxy)gch.Target;
+
+				try {
+					if (proxy.marshal != null)
+						proxy.marshal (GLib.Object.GetObject (objekt) as Gtk.Object, proxy.data, n_args, Gtk.Arg.New (args));
+				} catch (Exception e) {
+					GLib.ExceptionManager.RaiseUnhandledException (e, false);
 				}
 			}
+
+			public static GtkSharp.CallbackMarshalNative MarshalHandler = new GtkSharp.CallbackMarshalNative (OnCallbackMarshal);
+			public static GtkSharp.FunctionNative FunctionHandler = new GtkSharp.FunctionNative (OnFunction);
+			public static GLib.DestroyNotify DestroyHandler = new GLib.DestroyNotify (OnDestroy);
 		}
 
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
@@ -58,17 +77,16 @@
 		[Obsolete ("Replaced by Add method")]
 		public static uint AddFull (uint main_level, Function function, CallbackMarshal marshal, IntPtr data, DestroyNotify destroy) 
 		{
-			GtkSharp.FunctionWrapper function_wrapper = new GtkSharp.FunctionWrapper (function);
-			GtkSharp.CallbackMarshalWrapper marshal_wrapper = new GtkSharp.CallbackMarshalWrapper (marshal);
-			QuitProxy proxy = new QuitProxy (function_wrapper, marshal_wrapper, data, destroy);
+			QuitProxy proxy = new QuitProxy (function, marshal, data, destroy);
 			GCHandle gch = GCHandle.Alloc (proxy);
-			return gtk_quit_add_full (main_level, function_wrapper.NativeDelegate, marshal_wrapper.NativeDelegate, (IntPtr) gch, proxy.Handler);
+			return gtk_quit_add_full (main_level, QuitProxy.FunctionHandler, QuitProxy.MarshalHandler, (IntPtr) gch, QuitProxy.DestroyHandler);
 		}
 
-		public static uint Add (uint main_level, Function function) 
+		public static uint Add (uint main_level, Function function)
 		{
-			GtkSharp.FunctionWrapper function_wrapper = new GtkSharp.FunctionWrapper (function);
-			GCHandle gch = GCHandle.Alloc (function_wrapper);
-			return gtk_quit_add_full (main_level, function_wrapper.NativeDelegate, null, (IntPtr) gch, GLib.DestroyHelper.NotifyHandler);
+			QuitProxy proxy = new QuitProxy (function, null, IntPtr.Zero, null);
+			GCHandle gch = GCHandle.Alloc (proxy);
+			return gtk_quit_add_full (main_level, GtkSharp.FunctionWrapper.NativeDelegate, null, (IntPtr) gch, GLib.DestroyHelper.NotifyHandler);
 		}
+
 
