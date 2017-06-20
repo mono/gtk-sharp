@@ -41,7 +41,6 @@ namespace Gdk {
 		static extern IntPtr gdk_event_get_type ();
 
 		IntPtr raw;
-		bool owned;
 
 		[DllImport ("libgdk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern void gdk_event_free (IntPtr raw);
@@ -58,7 +57,6 @@ namespace Gdk {
 		public Event(IntPtr raw, bool owned) 
 		{
 			this.raw = raw;
-			this.owned = owned;
 			if (!owned)
 				System.GC.SuppressFinalize (this);
 		}
