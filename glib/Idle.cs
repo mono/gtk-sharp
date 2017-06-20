@@ -67,7 +67,7 @@ namespace GLib {
 			IdleProxy p = new IdleProxy (hndlr);
 			var handle = GCHandle.Alloc (p);
 
-			p.ID = g_idle_add_full (defaultPriority, SourceProxy.SourceHandler, (IntPtr)handle, NotifyHandler);
+			p.ID = g_idle_add_full (defaultPriority, SourceProxy.SourceHandler, (IntPtr)handle, FreeGCHandleAndRemoveFromDictionary);
 
 			lock (idle_handlers) {
 				if (p.needsAdd) {
@@ -127,7 +127,7 @@ namespace GLib {
 
 		static DestroyNotify release_gchandle;
 
-		public static DestroyNotify NotifyHandler {
+		static DestroyNotify FreeGCHandleAndRemoveFromDictionary {
 			get {
 				if (release_gchandle == null)
 					release_gchandle = new DestroyNotify (ReleaseGCHandle);

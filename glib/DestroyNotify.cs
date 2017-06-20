@@ -40,6 +40,10 @@ namespace GLib {
 
 		static DestroyNotify release_gchandle;
 
+		/// <summary>
+		/// Frees the GCHandle passed as data to the method.
+		/// </summary>
+		/// <value>The notify handler.</value>
 		public static DestroyNotify NotifyHandler {
 			get {
 				if (release_gchandle == null)
