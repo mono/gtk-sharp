@@ -59,6 +59,12 @@ namespace GLib {
 			return Add (interval, handle);
 		}
 
+		/// <summary>
+		/// The handle will be freed automatically on source removal.
+		/// </summary>
+		/// <returns>The add.</returns>
+		/// <param name="interval">Interval.</param>
+		/// <param name="handle">Handle.</param>
 		internal static uint Add (uint interval, GCHandle handle)
 		{
 			return g_timeout_add_full (defaultPriority, interval, SourceProxy.SourceHandler, (IntPtr)handle, DestroyHelper.NotifyHandler);
