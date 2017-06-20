@@ -33,14 +33,16 @@
 		public TreeView (Gtk.TreeModel model) : base (IntPtr.Zero)
 		{
 			if (GetType () != typeof (TreeView)) {
-				var vals = new GLib.Value[1];
-				var names = new IntPtr[1];
-				var param_count = 0;
-				if (model != null) {
-					names[param_count] = GLib.Marshaller.StringToPtrGStrdup ("model");
-					vals[param_count++] = new GLib.Value (model);
+				unsafe {
+					var vals = stackalloc GLib.Value[1];
+					var names = stackalloc IntPtr[1];
+					var param_count = 0;
+					if (model != null) {
+						names[param_count] = GLib.Marshaller.StringToPtrGStrdup ("model");
+						vals[param_count++] = new GLib.Value (model);
+					}
+					CreateNativeObject (names, vals, param_count);
 				}
-				CreateNativeObject (names, vals, param_count);
 				return;
 			}
 			owned = true;
@@ -53,11 +55,13 @@
 		public TreeView (NodeStore store) : base (IntPtr.Zero)
 		{
 			if (GetType() != typeof (TreeView)) {
-				var names = new IntPtr[1];
-				GLib.Value[] vals = new GLib.Value [1];
-				names [0] = GLib.Marshaller.StringToPtrGStrdup ("model");
-				vals [0] = new GLib.Value (store);
-				CreateNativeObject (names, vals, 1);
+				unsafe {
+					var vals = stackalloc GLib.Value[1];
+					var names = stackalloc IntPtr[1];
+					names [0] = GLib.Marshaller.StringToPtrGStrdup ("model");
+					vals [0] = new GLib.Value (store);
+					CreateNativeObject (names, vals, 1);
+				}
 				return;
 			}
 

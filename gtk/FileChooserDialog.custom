@@ -28,7 +28,7 @@
 		public FileChooserDialog (string title, Window parent, FileChooserAction action, params object[] button_data) : base (IntPtr.Zero)
 		{
 			if (GetType () != typeof (FileChooserDialog)) {
-				CreateNativeObject (new IntPtr[0], new GLib.Value[0], 0);
+				CreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);
 				Title = title;
 				if (parent != null)
 					TransientFor = parent;

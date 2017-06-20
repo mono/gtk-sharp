@@ -29,11 +29,13 @@ static extern IntPtr gtk_dialog_new_with_buttons (IntPtr title, IntPtr i, int fl
 public Dialog (string title, Gtk.Window parent, Gtk.DialogFlags flags, params object[] button_data) : base(IntPtr.Zero)
 {
 	if (GetType() != typeof (Dialog)) {
-		GLib.Value[] vals = new GLib.Value [1];
-		var names = new IntPtr [1];
-		names [0] = GLib.Marshaller.StringToPtrGStrdup ("title");
-		vals [0] = new GLib.Value (title);
-		CreateNativeObject (names, vals, 1);
+		unsafe {
+			var vals = stackalloc GLib.Value [1];
+			var names = stackalloc IntPtr [1];
+			names [0] = GLib.Marshaller.StringToPtrGStrdup ("title");
+			vals [0] = new GLib.Value (title);
+			CreateNativeObject (names, vals, 1);
+		}
 		TransientFor = parent;
 		if ((flags & DialogFlags.Modal) > 0)
 			Modal = true;

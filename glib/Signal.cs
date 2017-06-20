@@ -81,12 +81,13 @@ namespace GLib {
 			bool NativeCallback (ref InvocationHint hint, uint n_pvals, IntPtr pvals_ptr, IntPtr data)
 			{
 				object[] pvals = new object [n_pvals];
-				int valueSize = Marshal.SizeOf (typeof (Value));
-				for (int i = 0; i < n_pvals; i++) {
-					IntPtr p = new IntPtr ((long) pvals_ptr + i * valueSize);
-					Value v = Marshal.PtrToStructure<Value> (p);
-					pvals [i] = v.Val;
+
+				unsafe {
+					Value* vals = (Value *)pvals_ptr;
+					for (int i = 0; i < n_pvals; ++i)
+						pvals [i] = vals [i].Val;
 				}
+
 				bool result = handler (hint, pvals);
 				if (!result)
 					gch.Free ();
@@ -102,18 +103,19 @@ namespace GLib {
 			bool NativeInvoker (InvocationHint ihint, object[] pvals)
 			{
 				int val_sz = Marshal.SizeOf (typeof (Value));
-				IntPtr buf = Marshal.AllocHGlobal (pvals.Length * val_sz);
-				Value[] vals = new Value [pvals.Length];
-				for (int i = 0; i < pvals.Length; i++) {
-					vals [i] = new Value (pvals [i]);
-					IntPtr p = new IntPtr ((long) buf + i * val_sz);
-					Marshal.StructureToPtr (vals [i], p, false);
+				unsafe
+				{
+					Value* vals = stackalloc Value [pvals.Length];
+					for (int i = 0; i < pvals.Length; i++) {
+						vals [i] = new Value (pvals [i]);
+					}
+
+					bool result = cb (ref ihint, (uint)pvals.Length, (IntPtr)vals, user_data);
+
+					for (int i = 0; i < pvals.Length; ++i)
+						vals[i].Dispose ();
+					return result;
 				}
-				bool result = cb (ref ihint, (uint) pvals.Length, buf, user_data);
-				foreach (Value v in vals)
-					v.Dispose ();
-				Marshal.FreeHGlobal (buf);
-				return result;
 			}
 
 			public EmissionHook Invoker {
@@ -331,29 +333,29 @@ namespace GLib {
 			signal_id = GetSignalId (signal_name, instance);
 			if (signal_id <= 0)
 				throw new ArgumentException ("Invalid signal name: " + signal_name);
-			GLib.Value[] vals = new GLib.Value [args.Length + 1];
-			GLib.ValueArray inst_and_params = new GLib.ValueArray ((uint) args.Length + 1);
+			unsafe
+			{
+				int valsLength = args.Length + 1;
+				GLib.Value *vals = stackalloc GLib.Value [valsLength];
 
-			vals [0] = new GLib.Value (instance);
-			inst_and_params.Append (vals [0]);
-			for (int i = 1; i < vals.Length; i++) {
-				vals [i] = new GLib.Value (args [i - 1]);
-				inst_and_params.Append (vals [i]);
+				vals [0] = new GLib.Value (instance);
+				for (int i = 1; i < valsLength; i++)
+					vals [i] = new GLib.Value (args [i - 1]);
+
+				object ret_obj = null;
+				if (glibsharp_signal_get_return_type (signal_id) != GType.None.Val) {
+					GLib.Value ret = GLib.Value.Empty;
+					g_signal_emitv (vals, signal_id, gquark, ref ret);
+					ret_obj = ret.Val;
+					ret.Dispose ();
+				} else
+					g_signal_emitv (vals, signal_id, gquark, IntPtr.Zero);
+
+				for (int i = 0; i < valsLength; ++i)
+					vals[i].Dispose ();
+
+				return ret_obj;
 			}
-
-			object ret_obj = null;
-			if (glibsharp_signal_get_return_type (signal_id) != GType.None.Val) {
-				GLib.Value ret = GLib.Value.Empty;
-				g_signal_emitv (inst_and_params.ArrayPtr, signal_id, gquark, ref ret);
-				ret_obj = ret.Val;
-				ret.Dispose ();
-			} else
-				g_signal_emitv (inst_and_params.ArrayPtr, signal_id, gquark, IntPtr.Zero);
-
-			foreach (GLib.Value val in vals)
-				val.Dispose ();
-
-			return ret_obj;
 		}
 
 		private static uint GetGQuarkFromString (string str) {
@@ -392,10 +394,10 @@ namespace GLib {
 		static extern IntPtr g_signal_get_invocation_hint (IntPtr instance);
 
 		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
-		static extern void g_signal_emitv (IntPtr instance_and_params, uint signal_id, uint gquark_detail, ref GLib.Value return_value);
+		unsafe static extern void g_signal_emitv (GLib.Value* instance_and_params, uint signal_id, uint gquark_detail, ref GLib.Value return_value);
 
 		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
-		static extern void g_signal_emitv (IntPtr instance_and_params, uint signal_id, uint gquark_detail, IntPtr return_value);
+		unsafe static extern void g_signal_emitv (GLib.Value* instance_and_params, uint signal_id, uint gquark_detail, IntPtr return_value);
 
 		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr glibsharp_signal_get_return_type (uint signal_id);

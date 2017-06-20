@@ -449,16 +449,17 @@ namespace GtkSharp.Generation {
 			if (IsVoid)
 				sw.WriteLine ("\t\t\tGLib.Value ret = GLib.Value.Empty;");
 			else
-				sw.WriteLine ("\t\t\tGLib.Value ret = new GLib.Value (" + ReturnGType + ");");
+				sw.WriteLine ("\t\t\tGLib.Value ret = new GLib\t\t.Value (" + ReturnGType + ");");
 
-			sw.WriteLine ("\t\t\tGLib.ValueArray inst_and_params = new GLib.ValueArray (" + parms.Count + ");");
-			sw.WriteLine ("\t\t\tusing (var val0 = new GLib.Value (this)) {");
-			sw.WriteLine ("\t\t\t\tinst_and_params.Append (val0);");
+			sw.WriteLine ("\t\t\tunsafe {");
+			sw.WriteLine ("\t\t\t\tGLib.Value* inst_and_params = stackalloc GLib.Value [" + parms.Count + "];");
+			sw.WriteLine ("\t\t\t\tusing (var val0 = new GLib.Value (this)) {");
+			sw.WriteLine ("\t\t\t\t\tinst_and_params[0] = val0;");
 			string cleanup = "";
-			string indent = new string ('\t', 4);
+			string indent = new string ('\t', 5);
 			for (int i = 1; i < parms.Count; i++) {
 				Parameter p = parms [i];
-				indent = new string ('\t', 3 + i);
+				indent = new string ('\t', 4 + i);
 				if (p.PassAs != "") {
 					if (SymbolTable.Table.IsBoxed (p.CType)) {
 						if (p.PassAs == "ref")
@@ -473,24 +474,26 @@ namespace GtkSharp.Generation {
 							sw.WriteLine (indent + "IntPtr " + p.Name + "_ptr = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (" + p.MarshalType + ")));");
 
 						sw.WriteLine (indent + "using (var val" + i + " = new GLib.Value (" + p.Name + "_ptr)) {");
-						cleanup += indent + p.Name + " = " + p.FromNative ("Marshal.PtrToStructure<" + p.MarshalType + "> (" + p.Name + "_ptr)") + ";\n";
-						cleanup += indent + "Marshal.FreeHGlobal (" + p.Name + "_ptr);\n";
+						cleanup += indent + "\t" + p.Name + " = " + p.FromNative ("Marshal.PtrToStructure<" + p.MarshalType + "> (" + p.Name + "_ptr)") + ";\n";
+						cleanup += indent + "\t" + "Marshal.FreeHGlobal (" + p.Name + "_ptr);\n";
 					}
 				} else if (p.IsLength && parms [i - 1].IsString)
 					sw.WriteLine (indent + "using (var val" + i + " = new GLib.Value (System.Text.Encoding.UTF8.GetByteCount (" + parms [i-1].Name + "))) {");
 				else
 					sw.WriteLine (indent + "using (var val" + i + " = new GLib.Value (" + p.Name + ")) {");
 
-				sw.WriteLine (indent + "inst_and_params.Append (val" + i + ");");
+				indent += "\t";
+				sw.WriteLine (indent + "inst_and_params [" + i + "] = val" + i + ";");
 			}
 
-			sw.WriteLine (indent + "g_signal_chain_from_overridden (inst_and_params.ArrayPtr, ref ret);");
+			sw.WriteLine (indent + "g_signal_chain_from_overridden (inst_and_params, ref ret);");
 			if (cleanup != "")
 				sw.WriteLine (cleanup);
 			for (int i = 1; i < parms.Count; ++i) {
 				indent = new string ('\t', parms.Count - i + 3);
-				sw.WriteLine (indent + "}");
+				sw.WriteLine (indent + "\t}");
 			}
+			sw.WriteLine ("\t\t\t\t}");
 			sw.WriteLine ("\t\t\t}");
 			if (!IsVoid) {
 				IGeneratable igen = SymbolTable.Table [retval.CType];

@@ -38,7 +38,7 @@ namespace Gdk {
 			int count = gdk_text_property_to_utf8_list(encoding.Handle, format, text, length, out list_ptr);
 
 			if (count == 0)
-				return new string [0];
+				return Array.Empty<string> ();
 
 			string[] result = new string [count];
 			for (int i = 0; i < count; i++) {
@@ -58,7 +58,7 @@ namespace Gdk {
 			int count = gdk_text_property_to_utf8_list_for_display (display.Handle, encoding.Handle, format, text, length, out list_ptr);
 
 			if (count == 0)
-				return new string [0];
+				return Array.Empty<string> ();
 
 			string[] result = new string [count];
 			for (int i = 0; i < count; i++) {
