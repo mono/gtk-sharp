@@ -71,7 +71,7 @@ namespace GLib {
 				PendingFrees.Add (handle);
 
 				if (! idle_queued) {
-					Timeout.Add (50, new TimeoutHandler (PerformFrees));
+					Timeout.Add (50, PerformFreesHandler);
 					idle_queued = true;
 				}
 			}
@@ -79,6 +79,7 @@ namespace GLib {
 			handle = IntPtr.Zero;
 		}
 
+		static TimeoutHandler PerformFreesHandler = new TimeoutHandler (PerformFrees);
 		static bool PerformFrees ()
 		{
 			List<IntPtr> handles;
