@@ -189,26 +189,34 @@ namespace Gtk {
 			}
 		}
 
-		internal class InvokeCB {
-			EventHandler d;
-			object sender;
-			EventArgs args;
+		internal class InvokeProxy : GLib.SourceProxy {
+			readonly protected EventHandler d;
 
-			internal InvokeCB (EventHandler d)
+			internal InvokeProxy (EventHandler d)
 			{
 				this.d = d;
-				args = EventArgs.Empty;
-				sender = this;
 			}
 
-			internal InvokeCB (EventHandler d, object sender, EventArgs args)
+			protected override bool Invoke ()
 			{
-				this.d = d;
+				d (this, EventArgs.Empty);
+				return false;
+			}
+		}
+
+		internal class InvokeProxyWithArgs : InvokeProxy
+		{
+			readonly EventHandler d;
+			readonly object sender;
+			protected EventArgs args;
+
+			internal InvokeProxyWithArgs (EventHandler d, object sender, EventArgs args) : base (d)
+			{
 				this.args = args;
 				this.sender = sender;
 			}
 
-			internal bool Invoke ()
+			protected override bool Invoke ()
 			{
 				d (sender, args);
 				return false;
@@ -217,16 +225,18 @@ namespace Gtk {
 
 		public static void Invoke (EventHandler d)
 		{
-			InvokeCB icb = new InvokeCB (d);
+			var p = new InvokeProxy (d);
+			var handle = GCHandle.Alloc (p);
 
-			GLib.Timeout.Add (0, new GLib.TimeoutHandler (icb.Invoke));
+			GLib.Timeout.Add (0, handle);
 		}
 
 		public static void Invoke (object sender, EventArgs args, EventHandler d)
 		{
-			InvokeCB icb = new InvokeCB (d, sender, args);
+			var p = new InvokeProxyWithArgs (d, sender, args);
+			var handle = GCHandle.Alloc (p);
 
-			GLib.Timeout.Add (0, new GLib.TimeoutHandler (icb.Invoke));
+			GLib.Timeout.Add (0, handle);
 		}
 	}
 }

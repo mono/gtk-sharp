@@ -56,6 +56,11 @@ namespace GLib {
 			TimeoutProxy p = new TimeoutProxy (hndlr);
 			var handle = GCHandle.Alloc (p);
 
+			return Add (interval, handle);
+		}
+
+		internal static uint Add (uint interval, GCHandle handle)
+		{
 			return g_timeout_add_full (defaultPriority, interval, SourceProxy.SourceHandler, (IntPtr)handle, DestroyHelper.NotifyHandler);
 		}
 	}
