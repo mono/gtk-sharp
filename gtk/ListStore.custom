@@ -123,57 +123,61 @@
 		}
 
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
-		static extern void gtk_list_store_insert_with_valuesv(IntPtr raw, out TreeIter iter, int position, int[] columns, GLib.Value[] values, int n_values);
+		unsafe static extern void gtk_list_store_insert_with_valuesv(IntPtr raw, out TreeIter iter, int position, int* columns, GLib.Value* values, int n_values);
 
 		public TreeIter InsertWithValues (int position, params object[] values)
 		{
-			int[] columns = new int[values.Length];
-			GLib.Value[] vals = new GLib.Value[values.Length];
-			int n_values = 0;
+			unsafe {
+				int* columns = stackalloc int[values.Length];
+				GLib.Value* vals = stackalloc GLib.Value[values.Length];
+				int n_values = 0;
 
-			for (int i = 0; i < values.Length; i++) {
-				if (values[i] != null) {
-					columns[n_values] = i;
-					vals[n_values] = new GLib.Value (values[i]);
-					n_values++;
+				for (int i = 0; i < values.Length; i++) {
+					if (values[i] != null) {
+						columns[n_values] = i;
+						vals[n_values] = new GLib.Value (values[i]);
+						n_values++;
+					}
 				}
+
+				TreeIter iter;
+				gtk_list_store_insert_with_valuesv (Handle, out iter, position, columns, vals, n_values);
+
+				for (int i = 0; i < n_values; i++)
+					vals[i].Dispose ();
+
+				return iter;
 			}
-
-			TreeIter iter;
-			gtk_list_store_insert_with_valuesv (Handle, out iter, position, columns, vals, n_values);
-
-			for (int i = 0; i < n_values; i++)
-				vals[i].Dispose ();
-
-			return iter;
 		}
 
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
-		static extern void gtk_list_store_set_valuesv(IntPtr raw, ref TreeIter iter, int[] columns, GLib.Value[] values, int n_values);
+		unsafe static extern void gtk_list_store_set_valuesv(IntPtr raw, ref TreeIter iter, int* columns, GLib.Value* values, int n_values);
 
 		public void SetValues (TreeIter iter, params object[] values)
 		{
-			int[] columns = new int[values.Length];
-			GLib.Value[] vals = new GLib.Value[values.Length];
-			int n_values = 0;
+			unsafe {
+				int* columns = stackalloc int[values.Length];
+				GLib.Value* vals = stackalloc GLib.Value[values.Length];
+				int n_values = 0;
 
-			for (int i = 0; i < values.Length; i++) {
-				if (values[i] != null) {
-					columns[n_values] = i;
-					vals[n_values] = new GLib.Value (values[i]);
-					n_values++;
+				for (int i = 0; i < values.Length; i++) {
+					if (values[i] != null) {
+						columns[n_values] = i;
+						vals[n_values] = new GLib.Value (values[i]);
+						n_values++;
+					}
 				}
+
+				gtk_list_store_set_valuesv (Handle, ref iter, columns, vals, n_values);
+
+				for (int i = 0; i < n_values; i++)
+					vals[i].Dispose ();
 			}
-
-			gtk_list_store_set_valuesv (Handle, ref iter, columns, vals, n_values);
-
-			for (int i = 0; i < n_values; i++)
-				vals[i].Dispose ();
 		}
 
 		public ListStore (params GLib.GType[] types) : base (IntPtr.Zero)
 		{
-			CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
+			CreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);
 			ColumnTypes = types;
 		}
 
@@ -186,7 +190,7 @@
 				i++;
 			}
 
-			CreateNativeObject (new IntPtr [0], new GLib.Value [0], 0);
+			CreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);
 			ColumnTypes = gtypes;
 		}
 
@@ -290,21 +294,23 @@
 			int dummy;
 			OnRowsReordered (path, iter, out dummy);
 			GLib.Value ret = GLib.Value.Empty;
-			GLib.ValueArray inst_and_params = new GLib.ValueArray (4);
-			using (var val0 = new GLib.Value (this)) {
-				inst_and_params.Append (val0);
-				using (var val1 = new GLib.Value (path)) {
-					inst_and_params.Append (val1);
-					using (var val2 = new GLib.Value (iter)) {
-						inst_and_params.Append (val2);
+			unsafe {
+				GLib.Value* inst_and_params = stackalloc GLib.Value [4];
+				using (var val0 = new GLib.Value (this)) {
+					inst_and_params [0] = val0;
+					using (var val1 = new GLib.Value (path)) {
+						inst_and_params [1] = val1;
+						using (var val2 = new GLib.Value (iter)) {
+							inst_and_params [2] = val2;
 
-						int cnt = IterNChildren ();
-						IntPtr new_order_ptr = Marshal.AllocHGlobal (sizeof (int) * cnt);
-						Marshal.Copy (new_order, 0, new_order_ptr, cnt);
-						using (var val3 = new GLib.Value (new_order_ptr)) {
-							inst_and_params.Append (val3);
-							g_signal_chain_from_overridden (inst_and_params.ArrayPtr, ref ret);
-							Marshal.FreeHGlobal (new_order_ptr);
+							int cnt = IterNChildren ();
+							IntPtr new_order_ptr = Marshal.AllocHGlobal (sizeof (int) * cnt);
+							Marshal.Copy (new_order, 0, new_order_ptr, cnt);
+							using (var val3 = new GLib.Value (new_order_ptr)) {
+								inst_and_params [3] = val3;
+								g_signal_chain_from_overridden (inst_and_params, ref ret);
+								Marshal.FreeHGlobal (new_order_ptr);
+							}
 						}
 					}
 				}

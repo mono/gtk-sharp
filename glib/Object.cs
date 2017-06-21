@@ -323,7 +323,7 @@ namespace GLib {
 
 		protected Object ()
 		{
-			CreateNativeObject (new string [0], new GLib.Value [0]);
+			CreateNativeObject (Array.Empty<string> (), Array.Empty<GLib.Value> ());
 		}
 
 		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
@@ -345,13 +345,26 @@ namespace GLib {
 
 		protected void CreateNativeObject (string [] names, GLib.Value [] vals, int count)
 		{
-			IntPtr[] native_names = new IntPtr [count];
+			IntPtr [] native_names = count == 0 ? Array.Empty<IntPtr> () : new IntPtr[count];
 			for (int i = 0; i < count; i++)
 				native_names [i] = GLib.Marshaller.StringToPtrGStrdup (names [i]);
 			CreateNativeObject (native_names, vals, count);
 		}
 
 		protected void CreateNativeObject (IntPtr [] native_names, GLib.Value [] vals, int count)
+		{
+			owned = true;
+			Raw = gtksharp_object_newv (LookupGType ().Val, count, native_names, vals);
+			for (int i = 0; i < count; ++i) {
+				GLib.Marshaller.Free (native_names [i]);
+				vals [i].Dispose ();
+			}
+		}
+
+		[DllImport ("glibsharpglue-2", CallingConvention = CallingConvention.Cdecl)]
+		unsafe static extern IntPtr gtksharp_object_newv (IntPtr gtype, int n_params, IntPtr* names, GLib.Value* vals);
+
+		unsafe protected void CreateNativeObject (IntPtr* native_names, GLib.Value* vals, int count)
 		{
 			owned = true;
 			Raw = gtksharp_object_newv (LookupGType ().Val, count, native_names, vals);
@@ -582,6 +595,10 @@ namespace GLib {
 
 		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		protected static extern void g_signal_chain_from_overridden (IntPtr args, ref GLib.Value retval);
+
+
+		[DllImport ("libgobject-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		unsafe protected static extern void g_signal_chain_from_overridden (GLib.Value* args, ref GLib.Value retval);
 
 		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool gtksharp_is_object (IntPtr obj);

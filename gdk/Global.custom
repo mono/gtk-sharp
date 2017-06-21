@@ -62,12 +62,11 @@
 				int count;
 				IntPtr raw_ret = gtksharp_get_gdk_net_client_list (out count);
 				if (raw_ret == IntPtr.Zero)
-					return new Gdk.Window [0];
+					return Array.Empty<Gdk.Window> ();
 				Gdk.Window [] windows = new Gdk.Window [count];
 				int offset = 0;
 				for (int i = 0; i < count; i++) {
 					int windowID = Marshal.ReadInt32 (raw_ret, offset);
-					Console.WriteLine ("WinID: {0}", windowID);
 					offset += IntPtr.Size;
 					windows [i] = Gdk.Window.ForeignNew ((uint) windowID);
 				}
@@ -102,7 +101,6 @@
 				uint windowID = gtksharp_get_gdk_net_active_window ();
 				if (windowID == 0)
 					return Gdk.Global.DefaultRootWindow;
-				Console.WriteLine ("Active Window ID: {0}", windowID);
 				Gdk.Window window = Gdk.Window.ForeignNew (windowID);
 				return window;
 			}

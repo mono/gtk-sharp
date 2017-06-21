@@ -139,13 +139,14 @@ namespace GtkSharp.Generation {
 									break;
 								}
 							}
-							sw.WriteLine ("\t\t\t\tvar vals = new GLib.Value[{0}];", Parameters.Count);
-							sw.WriteLine ("\t\t\t\tvar names = new IntPtr[{0}];", names.Count);
+							sw.WriteLine ("\t\t\t\tunsafe {");
+							sw.WriteLine ("\t\t\t\t\tvar vals = stackalloc GLib.Value[{0}];", Parameters.Count);
+							sw.WriteLine ("\t\t\t\t\tvar names = stackalloc IntPtr[{0}];", names.Count);
 							if (!genFixedDimension)
-								sw.WriteLine ("\t\t\t\tvar param_count = 0;");
+								sw.WriteLine ("\t\t\t\t\tvar param_count = 0;");
 							for (int i = 0; i < names.Count; i++) {
 								Parameter p = Parameters [i];
-								string indent = "\t\t\t\t";
+								string indent = "\t\t\t\t\t";
 								if (IsNullable (p.Generatable)) {
 									sw.WriteLine (indent + "if (" + p.Name + " != null) {");
 									indent += "\t";
@@ -159,14 +160,15 @@ namespace GtkSharp.Generation {
 								}
 
 								if (IsNullable (p.Generatable))
-									sw.WriteLine ("\t\t\t\t}");
+									sw.WriteLine ("\t\t\t\t\t}");
 							}
 
 							if (genFixedDimension)
-								sw.WriteLine ("\t\t\t\tCreateNativeObject (names, vals, {0});", names.Count);
+								sw.WriteLine ("\t\t\t\t\tCreateNativeObject (names, vals, {0});", names.Count);
 							else
-								sw.WriteLine ("\t\t\t\tCreateNativeObject (names, vals, param_count);");
-							
+								sw.WriteLine ("\t\t\t\t\tCreateNativeObject (names, vals, param_count);");
+
+							sw.WriteLine ("\t\t\t\t}");
 							sw.WriteLine ("\t\t\t\treturn;");
 						} else
 							sw.WriteLine ("\t\t\t\tthrow new InvalidOperationException (\"Can't override this constructor.\");");
