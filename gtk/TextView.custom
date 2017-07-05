@@ -85,10 +85,8 @@
 			GLib.Value ret = GLib.Value.Empty;
 			unsafe {
 				GLib.Value* inst_and_params = stackalloc GLib.Value [2];
-				using (var val0 = new GLib.Value (this)) {
-					inst_and_params [0] = val0;
-					using (var val1 = new GLib.Value (direction)) {
-						inst_and_params [1] = val1;
+				using (inst_and_params [0] = new GLib.Value (this)) {
+					using (inst_and_params [1] = new GLib.Value (direction)) {
 						g_signal_chain_from_overridden (inst_and_params, ref ret);
 					}
 				}
