@@ -293,8 +293,7 @@
 			GLib.Value ret = GLib.Value.Empty;
 			unsafe {
 				GLib.Value* inst_and_params = stackalloc GLib.Value [1];
-				using (var val0 = new GLib.Value (this)) {
-					inst_and_params[0] = val0;
+				using (inst_and_params[0] = new GLib.Value (this)) {
 					g_signal_chain_from_overridden (inst_and_params, ref ret);
 				}
 			}
@@ -340,12 +339,9 @@
 			GLib.Value ret = GLib.Value.Empty;
 			unsafe {
 				GLib.Value* inst_and_params = stackalloc GLib.Value [3];
-				using (var val0 = new GLib.Value (this)) {
-					inst_and_params [0] = val0;
-					using (var val1 = new GLib.Value (column)) {
-						inst_and_params [1] = val1;
-						using (var val2 = new GLib.Value (num_deleted)) {
-							inst_and_params [2] = val2;
+				using (inst_and_params [0] = new GLib.Value (this)) {
+					using (inst_and_params [1] = new GLib.Value (column)) {
+						using (inst_and_params [2] = new GLib.Value (num_deleted)) {
 							g_signal_chain_from_overridden (inst_and_params, ref ret);
 						}
 					}
@@ -393,8 +389,7 @@
 			GLib.Value ret = GLib.Value.Empty;
 			unsafe {
 				GLib.Value* inst_and_params = stackalloc GLib.Value [1];
-				using (var val0 = new GLib.Value (this)) {
-					inst_and_params[0] = val0;
+				using (inst_and_params [0] = new GLib.Value (this)) {
 					g_signal_chain_from_overridden (inst_and_params, ref ret);
 				}
 			}
@@ -440,12 +435,9 @@
 			GLib.Value ret = GLib.Value.Empty;
 			unsafe {
 				GLib.Value* inst_and_params = stackalloc GLib.Value [3];
-				using (var val0 = new GLib.Value (this)) {
-					inst_and_params [0] = val0;
-					using (var val1 = new GLib.Value (column)) {
-						inst_and_params [1] = val1;
-						using (var val2 = new GLib.Value (num_inserted)) {
-							inst_and_params [2] = val2;
+				using (inst_and_params [0] = new GLib.Value (this)) {
+					using (inst_and_params [1] = new GLib.Value (column)) {
+						using (inst_and_params [2] = new GLib.Value (num_inserted)) {
 							g_signal_chain_from_overridden (inst_and_params, ref ret);
 						}
 					}
@@ -493,8 +485,7 @@
 			GLib.Value ret = GLib.Value.Empty;
 			unsafe {
 				GLib.Value* inst_and_params = stackalloc GLib.Value [1];
-				using (var val0 = new GLib.Value (this)) {
-					inst_and_params[0] = val0;
+				using (inst_and_params [0] = new GLib.Value (this)) {
 					g_signal_chain_from_overridden (inst_and_params, ref ret);
 				}
 			}
@@ -540,12 +531,9 @@
 			GLib.Value ret = GLib.Value.Empty;
 			unsafe {
 				GLib.Value* inst_and_params = stackalloc GLib.Value [3];
-				using (var val0 = new GLib.Value (this)) {
-					inst_and_params [0] = val0;
-					using (var val1 = new GLib.Value (row)) {
-						inst_and_params [1] = val1;
-						using (var val2 = new GLib.Value (num_inserted)) {
-							inst_and_params [2] = val2;
+				using (inst_and_params [0] = new GLib.Value (this)) {
+					using (inst_and_params [1] = new GLib.Value (row)) {
+						using (inst_and_params [2] = new GLib.Value (num_inserted)) {
 							g_signal_chain_from_overridden (inst_and_params, ref ret);
 						}
 					}
@@ -593,12 +581,9 @@
 			GLib.Value ret = GLib.Value.Empty;
 			unsafe {
 				GLib.Value* inst_and_params = stackalloc GLib.Value [3];
-				using (var val0 = new GLib.Value (this)) {
-					inst_and_params [0] = val0;
-					using (var val1 = new GLib.Value (row)) {
-						inst_and_params [1] = val1;
-						using (var val2 = new GLib.Value (num_deleted)) {
-							inst_and_params [2] = val2;
+				using (inst_and_params [0] = new GLib.Value (this)) {
+					using (inst_and_params [1] = new GLib.Value (row)) {
+						using (inst_and_params [2] = new GLib.Value (num_deleted)) {
 							g_signal_chain_from_overridden (inst_and_params, ref ret);
 						}
 					}
