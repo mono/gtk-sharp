@@ -272,7 +272,7 @@ namespace Gtk {
 			GLib.Timeout.Add (0, handle);
 		}
 
-		public static void Invoke (System.Action act)
+		public static void InvokeAction (System.Action act)
 		{
 			var p = new InvokeProxyAction (act);
 			var handle = GCHandle.Alloc (p);
@@ -280,7 +280,7 @@ namespace Gtk {
 			GLib.Timeout.Add (0, handle);
 		}
 
-		public static void Invoke<T> (Action<T> act, T arg)
+		public static void InvokeAction<T> (Action<T> act, T arg)
 		{
 			var p = new InvokeProxyAction<T> (act, arg);
 			var handle = GCHandle.Alloc (p);
