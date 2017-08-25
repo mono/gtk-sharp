@@ -58,7 +58,7 @@
   <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyValue']" name="cname">accessible-value</attr>
   <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyRole']" name="cname">accessible-role</attr>
   <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyComponentLayer']" name="cname">accessible-component-layer</attr>
-  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyMdiZorder']" name="cname">accessible-mdi-zorder</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyComponentMdiZorder']" name="cname">accessible-component-mdi-zorder</attr>
   <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyTableCaption']" name="cname">accessible-table-caption</attr>
   <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyTableColumnDescription']" name="cname">accessible-table-column-description</attr>
   <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyTableColumnHeader']" name="cname">accessible-table-column-header</attr>
@@ -66,5 +66,5 @@
   <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyTableRowHeader']" name="cname">accessible-row-header</attr>
   <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyTableSummary']" name="cname">accessible-table-summary</attr>
   <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyTableCaptionObject']" name="cname">accessible-table-caption-object</attr>
-  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyTableHypertextNumLinks']" name="cname">accessible-table-hypertext-nlinks</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyHypertextNumLinks']" name="cname">accessible-hypertext-nlinks</attr>
 </metadata>
