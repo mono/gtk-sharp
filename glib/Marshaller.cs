@@ -76,30 +76,21 @@ namespace GLib {
 			return ret;
 		}
 
-		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
-		unsafe static extern char* g_utf8_to_utf16 (IntPtr native_str, IntPtr len, IntPtr items_read, ref IntPtr items_written, out IntPtr error);
-
-		[DllImport ("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
-		unsafe static extern IntPtr g_utf16_to_utf8 (char* native_str, IntPtr len, IntPtr items_read, IntPtr items_written, out IntPtr error);
-
 		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern UIntPtr glibsharp_strlen (IntPtr mem);
 		public static string Utf8PtrToString (IntPtr ptr) 
 		{
 			if (ptr == IntPtr.Zero)
 				return null;
-			unsafe
-			{
-				IntPtr written = IntPtr.Zero;
-				IntPtr error;
-				char *utf16 = g_utf8_to_utf16 (ptr, new IntPtr (-1), IntPtr.Zero, ref written, out error);
-				if (error != IntPtr.Zero)
-					throw new GLib.GException (error);
-				
-				var result = new string (utf16, 0, (int)written);
-				g_free ((IntPtr)utf16);
-				return result;
-			}
+
+			int len = (int) (uint)glibsharp_strlen (ptr);
+#if HAVE_NET_4_6
+			if (hasFastGetStringOverload)
+				return Utf8PtrToStringFast (ptr, len);
+#endif
+			byte [] bytes = new byte [len];
+			Marshal.Copy (ptr, bytes, 0, len);
+			return System.Text.Encoding.UTF8.GetString (bytes);
 		}
 
 		public static string[] Utf8PtrToString (IntPtr[] ptrs) {
@@ -138,20 +129,18 @@ namespace GLib {
 			if (str == null)
 				return IntPtr.Zero;
 
-			IntPtr dummy, error;
-			IntPtr utf8 = StringToPtrGStrdup (str);
+			int len = System.Text.Encoding.UTF8.GetByteCount (str);
+			IntPtr result = g_malloc (new UIntPtr ((uint)len + 1));
 
-			IntPtr result;
+			unsafe
+			{
+				fixed (char* p = str)
+				{
+					System.Text.Encoding.UTF8.GetBytes (p, str.Length, (byte*)result, len);
+				}
+			}
 
-			if (Global.IsWindowsPlatform)
-				result = g_filename_from_utf8_utf8 (utf8, -1, IntPtr.Zero, out dummy, out error);
-			else
-				result = g_filename_from_utf8 (utf8, -1, IntPtr.Zero, out dummy, out error);
-
-			g_free (utf8);
-			if (error != IntPtr.Zero)
-				throw new GException (error);
-
+			Marshal.WriteByte (result, len, 0);
 			return result;
 		}
 
