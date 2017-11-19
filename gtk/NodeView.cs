@@ -55,6 +55,7 @@ namespace Gtk {
 				gtk_tree_view_set_model (Handle, storeHandle);
 				if (storeHandle != IntPtr.Zero)
 					g_object_unref (storeHandle);
+				store = value;
 			}
 		}
 
