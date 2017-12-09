@@ -805,6 +805,8 @@ namespace GtkSharp.Generation {
 					p = new ByRefParameter (parm);
 				} else if (gen is CallbackGen) {
 					has_cb = true;
+					if (p.Scope == "async")
+						((CallbackGen)gen).hasAsyncCall = true;
 				}
 				param_list.Add (p);
 			}

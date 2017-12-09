@@ -32,6 +32,8 @@ namespace GtkSharp.Generation {
 		private Signature sig = null;
 		private ReturnValue retval;
 		private bool valid = true;
+		internal bool hasAsyncCall = false;
+		internal bool hasGetManagedDelegate = false;
 
 		public CallbackGen (XmlElement ns, XmlElement elem) : base (ns, elem)
 		{
@@ -199,6 +201,8 @@ namespace GtkSharp.Generation {
 					}
 					if (Elem.HasAttribute ("force_instance"))
 						withParamGCHandle = false;
+					if (hasGetManagedDelegate)
+						withParamGCHandle = false;
 				}
 				return withParamGCHandle.Value;
 			}
@@ -229,10 +233,11 @@ namespace GtkSharp.Generation {
 			GenInvoker (gen_info, sw);
 			sw.WriteLine ("\tinternal class " + Name + "Wrapper {");
 			sw.WriteLine ();
-			ManagedCallString call = new ManagedCallString (parms, false);
 
 			sw.WriteLine ("\t\tpublic " + (WithParamGCHandle ? "static " : "") + retval.MarshalType + " NativeCallback (" + parms.CallbackImportSignature + ")");
 			sw.WriteLine ("\t\t{");
+
+			ManagedCallString call = new ManagedCallString (parms, false);
 			string unconditional = call.Unconditional ("\t\t\t");
 			if (unconditional.Length > 0)
 				sw.WriteLine (unconditional);
