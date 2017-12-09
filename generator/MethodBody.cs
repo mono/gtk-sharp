@@ -127,9 +127,8 @@ namespace GtkSharp.Generation {
 					case "async":
 						sw.WriteLine (indent + "\t\t\t{0} {1}_wrapper = new {0} ({1});", wrapper, name);
 						if (cbgen.WithParamGCHandle)
-							sw.WriteLine (indent + "\t\t\tGCHandle gch = {0}_wrapper.PersistUntilCalled ();", name);
-						else
-							sw.WriteLine (indent + "\t\t\t{0}_wrapper.PersistUntilCalled ();", name);
+							sw.Write (indent + "\t\t\tGCHandle gch = ");
+						sw.WriteLine ("{0}_wrapper.PersistUntilCalled ();", name);
 						break;
 					case "call":
 					default:

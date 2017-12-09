@@ -260,7 +260,8 @@ namespace GtkSharp.Generation {
 			string finish = call.Finish ("\t\t\t\t");
 			if (finish.Length > 0)
 				sw.WriteLine (finish);
-			sw.WriteLine ("\t\t\t\tif ({0}release_on_call)\n\t\t\t\t\tgch.Free ();", callPrefix);
+			if (hasAsyncCall)
+				sw.WriteLine ("\t\t\t\tif ({0}release_on_call)\n\t\t\t\t\tgch.Free ();", callPrefix);
 			if (retval.CSType != "void")
 				sw.WriteLine ("\t\t\t\treturn {0};", retval.ToNative ("__ret"));
 
@@ -279,21 +280,23 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\t\t\t}");
 			sw.WriteLine ("\t\t}");
 			sw.WriteLine ();
-			sw.WriteLine ("\t\tbool release_on_call = false;");
-			if (!WithParamGCHandle)
-				sw.WriteLine ("\t\tGCHandle gch;");
-			sw.WriteLine ();
-			if (WithParamGCHandle)
-				sw.WriteLine ("\t\tpublic GCHandle PersistUntilCalled ()");
-			else
-				sw.WriteLine ("\t\tpublic void PersistUntilCalled ()");
-			sw.WriteLine ("\t\t{");
-			sw.WriteLine ("\t\t\trelease_on_call = true;");
-			if (WithParamGCHandle)
-				sw.WriteLine ("\t\t\treturn GCHandle.Alloc (this);");
-			else
-				sw.WriteLine ("\t\t\tgch = GCHandle.Alloc (this);");
-			sw.WriteLine ("\t\t}");
+			if (hasAsyncCall) {
+				sw.WriteLine ("\t\tbool release_on_call = false;");
+				if (!WithParamGCHandle)
+					sw.WriteLine ("\t\tGCHandle gch;");
+				sw.WriteLine ();
+				if (WithParamGCHandle)
+					sw.WriteLine ("\t\tpublic GCHandle PersistUntilCalled ()");
+				else
+					sw.WriteLine ("\t\tpublic void PersistUntilCalled ()");
+				sw.WriteLine ("\t\t{");
+				sw.WriteLine ("\t\t\trelease_on_call = true;");
+				if (WithParamGCHandle)
+					sw.WriteLine ("\t\t\treturn GCHandle.Alloc (this);");
+				else
+					sw.WriteLine ("\t\t\tgch = GCHandle.Alloc (this);");
+				sw.WriteLine ("\t\t}");
+			}
 			sw.WriteLine ();
 			sw.Write ("\t\tinternal " + (WithParamGCHandle ? "static " : "") + wrapper + " NativeDelegate");
 			if (WithParamGCHandle)
@@ -311,15 +314,17 @@ namespace GtkSharp.Generation {
 			}
 			sw.WriteLine ("\t\t}");
 			sw.WriteLine ();
-			sw.WriteLine ("\t\tpublic static " + NS + "." + Name + " GetManagedDelegate (" + wrapper + " native)");
-			sw.WriteLine ("\t\t{");
-			sw.WriteLine ("\t\t\tif (native == null)");
-			sw.WriteLine ("\t\t\t\treturn null;");
-			sw.WriteLine ("\t\t\t" + Name + "Wrapper wrapper = (" + Name + "Wrapper) native.Target;");
-			sw.WriteLine ("\t\t\tif (wrapper == null)");
-			sw.WriteLine ("\t\t\t\treturn null;");
-			sw.WriteLine ("\t\t\treturn wrapper.managed;");
-			sw.WriteLine ("\t\t}");
+			if (hasGetManagedDelegate) {
+				sw.WriteLine ("\t\tpublic static " + NS + "." + Name + " GetManagedDelegate (" + wrapper + " native)");
+				sw.WriteLine ("\t\t{");
+				sw.WriteLine ("\t\t\tif (native == null)");
+				sw.WriteLine ("\t\t\t\treturn null;");
+				sw.WriteLine ("\t\t\t" + Name + "Wrapper wrapper = (" + Name + "Wrapper) native.Target;");
+				sw.WriteLine ("\t\t\tif (wrapper == null)");
+				sw.WriteLine ("\t\t\t\treturn null;");
+				sw.WriteLine ("\t\t\treturn wrapper.managed;");
+				sw.WriteLine ("\t\t}");
+			}
 			sw.WriteLine ("\t}");
 			sw.WriteLine ("#endregion");
 			sw.WriteLine ("}");
