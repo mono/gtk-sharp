@@ -120,18 +120,20 @@
 
 	public static void AddFilterForAll (FilterFunc func)
 	{
-		GdkSharp.FilterFuncWrapper wrapper = new GdkSharp.FilterFuncWrapper (func);
-		FilterAllHash [func] = wrapper;
-		gdk_window_add_filter (IntPtr.Zero, wrapper.NativeDelegate, IntPtr.Zero);
+		var gch = GCHandle.Alloc (func);
+		FilterAllHash [func] = gch;
+		gdk_window_add_filter (IntPtr.Zero, GdkSharp.FilterFuncWrapper.NativeDelegate, (IntPtr)gch);
 	}
 
 	public static void RemoveFilterForAll (FilterFunc func)
 	{
-		GdkSharp.FilterFuncWrapper wrapper = FilterAllHash [func] as GdkSharp.FilterFuncWrapper;
-		if (wrapper == null)
+		var ret = FilterAllHash [func];
+		if (ret == null)
 			return;
+		GCHandle gch = (GCHandle)ret;
 		FilterAllHash.Remove (func);
-		gdk_window_remove_filter (IntPtr.Zero, wrapper.NativeDelegate, IntPtr.Zero);
+		gdk_window_remove_filter (IntPtr.Zero, GdkSharp.FilterFuncWrapper.NativeDelegate, (IntPtr)gch);
+		gch.Free();
 	}
 
 	public void AddFilter (FilterFunc function)
@@ -139,19 +141,21 @@
 		if (!PersistentData.Contains ("filter_func_hash"))
 			PersistentData ["filter_func_hash"] = new Hashtable ();
 		Hashtable hash = PersistentData ["filter_func_hash"] as Hashtable;
-		GdkSharp.FilterFuncWrapper wrapper = new GdkSharp.FilterFuncWrapper (function);
-		hash [function] = wrapper;
-		gdk_window_add_filter (Handle, wrapper.NativeDelegate, IntPtr.Zero);
+		var gch = GCHandle.Alloc (function);
+		hash [function] = gch;
+		gdk_window_add_filter (Handle, GdkSharp.FilterFuncWrapper.NativeDelegate, (IntPtr)gch);
 	}
 
 	public void RemoveFilter (FilterFunc function)
 	{
 		Hashtable hash = PersistentData ["filter_func_hash"] as Hashtable;
-		GdkSharp.FilterFuncWrapper wrapper = hash [function] as GdkSharp.FilterFuncWrapper;
-		if (wrapper == null)
+		var ret = hash [function];
+		if (ret == null)
 			return;
+		GCHandle gch = (GCHandle)ret;
 		hash.Remove (function);
-		gdk_window_remove_filter (Handle, wrapper.NativeDelegate, IntPtr.Zero);
+		gdk_window_remove_filter (Handle, GdkSharp.FilterFuncWrapper.NativeDelegate, (IntPtr)gch);
+		gch.Free();
 	}
 
 #if MANLY_ENOUGH_TO_INCLUDE

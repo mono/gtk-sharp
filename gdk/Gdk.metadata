@@ -14,7 +14,6 @@
   <attr path="/api/namespace/boxed[@cname='GdkRectangle']/method[@name='Intersect']/*/*[@name='dest']" name="pass_as">out</attr>
   <attr path="/api/namespace/boxed[@cname='GdkRectangle']/method[@name='Union']/*/*[@name='dest']" name="pass_as">out</attr>
   <attr path="/api/namespace/callback[@cname='GdkPixbufDestroyNotify']/*/*[@type='guchar*']" name="array">1</attr>
-  <attr path="/api/namespace/callback[@cname='GdkFilterFunc']" name="force_instance">1</attr>
   <attr path="/api/namespace/class[@cname='GdkCairo_']" name="name">CairoHelper</attr>
   <attr path="/api/namespace/class[@cname='GdkColors_']" name="hidden">1</attr>
   <attr path="/api/namespace/class[@cname='GdkDrag_']/method[@name='Begin']" name="hidden">1</attr>
