@@ -26,15 +26,13 @@
 		[Obsolete]
 		public static int AddFull (int source, Gdk.InputCondition condition, Gdk.InputFunction function, IntPtr data, Gdk.DestroyNotify destroy) 
 		{
-			GdkSharp.InputFunctionWrapper function_wrapper = new GdkSharp.InputFunctionWrapper (function);
-			GCHandle gch = GCHandle.Alloc (function_wrapper);
+			GCHandle gch = GCHandle.Alloc (function);
 			return gdk_input_add_full (source, (int) condition, GdkSharp.InputFunctionWrapper.NativeDelegate, (IntPtr) gch, GLib.DestroyHelper.NotifyHandler);
 		}
 
 		[Obsolete]
 		public static int Add (int source, Gdk.InputCondition condition, Gdk.InputFunction function) 
 		{
-			GdkSharp.InputFunctionWrapper function_wrapper = new GdkSharp.InputFunctionWrapper (function);
-			GCHandle gch = GCHandle.Alloc (function_wrapper);
+			GCHandle gch = GCHandle.Alloc (function);
 			return gdk_input_add_full (source, (int) condition, GdkSharp.InputFunctionWrapper.NativeDelegate, (IntPtr) gch, GLib.DestroyHelper.NotifyHandler);
 		}

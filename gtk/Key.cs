@@ -34,8 +34,6 @@ namespace Gtk {
 
 		public static uint SnooperInstall (Gtk.KeySnoopFunc snooper) 
 		{
-			GtkSharp.KeySnoopFuncWrapper snooper_wrapper = new GtkSharp.KeySnoopFuncWrapper (snooper);
-
 			var gch = GCHandle.Alloc (snooper);
 			uint ret = gtk_key_snooper_install (GtkSharp.KeySnoopFuncWrapper.NativeDelegate, (IntPtr)gch);
 			wrappers [ret] = gch;

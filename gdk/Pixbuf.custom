@@ -379,8 +379,7 @@
 
 		public unsafe void SaveToCallback (PixbufSaveFunc save_func, string type, string[] option_keys, string[] option_values)
 		{
-			GdkSharp.PixbufSaveFuncWrapper save_func_wrapper = new GdkSharp.PixbufSaveFuncWrapper (save_func);
-			GCHandle gch = GCHandle.Alloc (save_func_wrapper);
+			GCHandle gch = GCHandle.Alloc (save_func);
 			IntPtr error = IntPtr.Zero;
 			IntPtr ntype = GLib.Marshaller.StringToPtrGStrdup (type);
 			IntPtr[] nkeys = NullTerm (option_keys);

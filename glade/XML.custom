@@ -26,7 +26,7 @@
 
 		// keep this around so it doesn't get GC'd
 		static GCHandle gch;
-		static GladeSharp.XMLCustomWidgetHandlerWrapper callback_wrapper = null;
+		static Glade.XMLCustomWidgetHandler callback_wrapper = null;
 
 		[DllImport("libglade-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void glade_set_custom_handler (GladeSharp.XMLCustomWidgetHandlerNative handler, IntPtr user_data);
@@ -37,8 +37,7 @@
 					gch.Free ();
 				}
 
-				callback_wrapper = new GladeSharp.XMLCustomWidgetHandlerWrapper (value);
-				gch = GCHandle.Alloc (callback_wrapper);
+				gch = GCHandle.Alloc (value);
 				glade_set_custom_handler(GladeSharp.XMLCustomWidgetHandlerWrapper.NativeDelegate, (IntPtr)gch);
 			}
 		}
