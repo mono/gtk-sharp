@@ -27,7 +27,7 @@ namespace Gtk {
 
 	public class Key {
 
-		static Dictionary<uint, GtkSharp.KeySnoopFuncWrapper> wrappers = new Dictionary<uint, GtkSharp.KeySnoopFuncWrapper> ();
+		static Dictionary<uint, GCHandle> wrappers = new Dictionary<uint, GCHandle> ();
 
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern uint gtk_key_snooper_install (GtkSharp.KeySnoopFuncNative snooper, IntPtr func_data);
@@ -35,8 +35,11 @@ namespace Gtk {
 		public static uint SnooperInstall (Gtk.KeySnoopFunc snooper) 
 		{
 			GtkSharp.KeySnoopFuncWrapper snooper_wrapper = new GtkSharp.KeySnoopFuncWrapper (snooper);
-			uint ret = gtk_key_snooper_install (snooper_wrapper.NativeDelegate, IntPtr.Zero);
-			wrappers [ret] = snooper_wrapper;
+
+			var gch = GCHandle.Alloc (snooper);
+			uint ret = gtk_key_snooper_install (GtkSharp.KeySnoopFuncWrapper.NativeDelegate, (IntPtr)gch);
+			wrappers [ret] = gch;
+
 			return ret;
 		}
 
@@ -46,7 +49,12 @@ namespace Gtk {
 		public static void SnooperRemove (uint snooper_handler_id) 
 		{
 			gtk_key_snooper_remove(snooper_handler_id);
-			wrappers.Remove (snooper_handler_id);
+
+			GCHandle gch;
+			if (wrappers.TryGetValue (snooper_handler_id, out gch)) {
+				gch.Free ();
+				wrappers.Remove (snooper_handler_id);
+			}
 		}
 	}
 }

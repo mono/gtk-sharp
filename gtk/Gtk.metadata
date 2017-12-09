@@ -55,6 +55,8 @@
   <attr path="/api/namespace/boxed[@cname='GtkTreeRowReference']/method[@name='Free']" name="deprecated">1</attr>
   <attr path="/api/namespace/boxed[@cname='GtkTreeRowReference']/method[@name='GetPath']/return-type" name="owned">true</attr>
   <attr path="/api/namespace/callback[@cname='GtkAccelMapForeach']" name="force_instance">1</attr>
+  <attr path="/api/namespace/callback[@cname='GtkClipboardGetFunc']" name="force_instance">1</attr>
+  <attr path="/api/namespace/callback[@cname='GtkClipboardClearFunc']" name="force_instance">1</attr>
   <attr path="/api/namespace/callback[@cname='GtkClipboardRichTextReceivedFunc']" name="hidden">1</attr>
   <attr path="/api/namespace/callback[@cname='GtkItemFactoryCallback2']" name="hidden">1</attr>
   <attr path="/api/namespace/callback[@cname='GtkTextBufferDeserializeFunc']/*/*[@name='data']" name="array">1</attr>

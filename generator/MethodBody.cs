@@ -160,7 +160,7 @@ namespace GtkSharp.Generation {
 					sw.WriteLine (indent + "\t\t\t" + s);
 
 				var cbgen = p.Generatable as CallbackGen;
-				if (cbgen != null && p.Scope != "notified" && p.Scope != "async" & cbgen.WithParamGCHandle) {
+				if (cbgen != null && p.Scope != "notified" && p.Scope != "async" && cbgen.WithParamGCHandle) {
 					sw.WriteLine (indent + "\t\t\tgch.Free();");
 				}
 			}

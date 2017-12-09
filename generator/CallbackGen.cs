@@ -197,14 +197,17 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ();
 		}
 
+		Parameter gcHandleParam;
 		bool? withParamGCHandle;
 		public bool WithParamGCHandle {
 			get {
 				if (withParamGCHandle == null) {
 					withParamGCHandle = false;
 					for (int i = 0; i < parms.Count; ++i) {
-						if (parms [i].Name == "data" && parms [i].CSType == "IntPtr")
+						if (parms [i].IsUserData) {
 							withParamGCHandle = true;
+							gcHandleParam = parms [i];
+						}
 					}
 					if (Elem.HasAttribute ("force_instance"))
 						withParamGCHandle = false;
@@ -254,7 +257,7 @@ namespace GtkSharp.Generation {
 				sw.WriteLine (call_setup);
 
 			if (WithParamGCHandle) {
-				sw.WriteLine ("\t\t\t\tvar gch = (GCHandle)data;");
+				sw.WriteLine ("\t\t\t\tvar gch = (GCHandle){0};", gcHandleParam.Name);
 				sw.WriteLine ("\t\t\t\tvar wrapper = ({0}Wrapper)gch.Target;", Name);
 			}
 
