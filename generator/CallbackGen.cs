@@ -23,7 +23,9 @@
 namespace GtkSharp.Generation {
 
 	using System;
+	using System.Collections.Generic;
 	using System.IO;
+	using System.Linq;
 	using System.Xml;
 
 	public class CallbackGen : GenBase, IAccessor {
@@ -32,7 +34,7 @@ namespace GtkSharp.Generation {
 		private Signature sig = null;
 		private ReturnValue retval;
 		private bool valid = true;
-		internal bool hasAsyncCall = false;
+		internal List<string> parameterScopeList = new List<string> ();
 		internal bool hasGetManagedDelegate = false;
 		internal bool hasInvoker = false;
 
@@ -219,9 +221,21 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public bool HasOnlyAsyncCall {
+			get {
+				return parameterScopeList.All (x => x == "async");
+			}
+		}
+
+		bool HasAsyncCall {
+			get {
+				return parameterScopeList.Any (x => x == "async");
+			}
+		}
+
 		public bool GenerateStaticWrapper {
 			get {
-				return WithParamGCHandle && !hasGetManagedDelegate && !hasAsyncCall;
+				return WithParamGCHandle && !hasGetManagedDelegate && (!HasAsyncCall || HasOnlyAsyncCall);
 			}
 		}
 
@@ -282,8 +296,12 @@ namespace GtkSharp.Generation {
 			string finish = call.Finish ("\t\t\t\t");
 			if (finish.Length > 0)
 				sw.WriteLine (finish);
-			if (hasAsyncCall)
-				sw.WriteLine ("\t\t\t\tif ({0}release_on_call)\n\t\t\t\t\tgch.Free ();", callPrefix);
+			if (HasAsyncCall) {
+				if (!HasOnlyAsyncCall)
+					sw.WriteLine ("\t\t\t\tif ({0}release_on_call)\n\t\t\t\t\tgch.Free ();", callPrefix);
+				else
+					sw.WriteLine ("\t\t\t\t\tgch.Free ();");
+			}
 			if (retval.CSType != "void")
 				sw.WriteLine ("\t\t\t\treturn {0};", retval.ToNative ("__ret"));
 
@@ -302,7 +320,7 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\t\t\t}");
 			sw.WriteLine ("\t\t}");
 			sw.WriteLine ();
-			if (hasAsyncCall) {
+			if (!GenerateStaticWrapper && HasAsyncCall) {
 				sw.WriteLine ("\t\tbool release_on_call = false;");
 				if (!WithParamGCHandle)
 					sw.WriteLine ("\t\tGCHandle gch;");
@@ -320,7 +338,7 @@ namespace GtkSharp.Generation {
 				sw.WriteLine ("\t\t}");
 			}
 			sw.WriteLine ();
-			sw.Write ("\t\tinternal " + (WithParamGCHandle ? "static " : "") + wrapper + " NativeDelegate");
+			sw.Write ("\t\tinternal " + (WithParamGCHandle ? "static " : "") + "readonly " + wrapper + " NativeDelegate");
 			if (WithParamGCHandle)
 				sw.WriteLine (" = new " + wrapper + " (NativeCallback);");
 			else

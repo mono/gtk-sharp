@@ -127,10 +127,14 @@ namespace GtkSharp.Generation {
 						break;
 
 					case "async":
-						sw.WriteLine (indent + "\t\t\t{0} {1}_wrapper = new {0} ({1});", wrapper, name);
-						if (cbgen.WithParamGCHandle)
-							sw.Write (indent + "\t\t\tGCHandle gch = ");
-						sw.WriteLine ("{0}_wrapper.PersistUntilCalled ();", name);
+						if (cbgen.GenerateStaticWrapper) {
+							sw.WriteLine (indent + "\t\t\tGCHandle gch = GCHandle.Alloc ({0});", name);
+						} else {
+							sw.WriteLine (indent + "\t\t\t{0} {1}_wrapper = new {0} ({1});", wrapper, name);
+							if (cbgen.WithParamGCHandle)
+								sw.Write (indent + "\t\t\tGCHandle gch = ");
+							sw.WriteLine ("{0}_wrapper.PersistUntilCalled ();", name);
+						}
 						break;
 					case "call":
 					default:
