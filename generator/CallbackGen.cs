@@ -34,6 +34,7 @@ namespace GtkSharp.Generation {
 		private bool valid = true;
 		internal bool hasAsyncCall = false;
 		internal bool hasGetManagedDelegate = false;
+		internal bool hasInvoker = false;
 
 		public CallbackGen (XmlElement ns, XmlElement elem) : base (ns, elem)
 		{
@@ -61,6 +62,9 @@ namespace GtkSharp.Generation {
 				valid = false;
 				return false;
 			}
+
+			if (!ManagedCallString.Validate (parms))
+				return false;
 
 			valid = true;
 			return true;
@@ -137,6 +141,9 @@ namespace GtkSharp.Generation {
 
 		void GenInvoker (GenerationInfo gen_info, StreamWriter sw)
 		{
+			if (!hasInvoker)
+				return;
+			
 			if (sig == null)
 				sig = new Signature (parms);
 

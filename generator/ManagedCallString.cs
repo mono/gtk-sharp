@@ -61,6 +61,17 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public static bool Validate (Parameters parms)
+		{
+			for (int i = 0; i < parms.Count; i++) {
+				var gen = parms [i].Generatable as CallbackGen;
+				if (gen != null)
+					gen.hasInvoker = true;
+			}
+
+			return true;
+		}
+
 		public bool HasOutParam {
 			get {
 				foreach (Parameter p in parms) {
