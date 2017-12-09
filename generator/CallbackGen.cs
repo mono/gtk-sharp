@@ -89,6 +89,15 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public override string MarshalReturnType {
+			get {
+				if (valid)
+					return "IntPtr";
+				else
+					return "";
+			}
+		}
+
 		public override string CallByName (string var_name)
 		{
 			if (WithParamGCHandle)
@@ -98,7 +107,10 @@ namespace GtkSharp.Generation {
 
 		public override string FromNative (string var)
 		{
-			return NS + "Sharp." + Name + "Wrapper.GetManagedDelegate (" + var + ")";
+			if (GenerateStaticWrapper)
+				return "(" + var + " == IntPtr.Zero ? null : (" + Name + ")((GCHandle)" + var + ").Target)";
+			else
+				return NS + "Sharp." + Name + "Wrapper.GetManagedDelegate (" + var + ")";
 		}
 
 		public void WriteAccessors (StreamWriter sw, string indent, string var)
@@ -213,8 +225,6 @@ namespace GtkSharp.Generation {
 						}
 					}
 					if (Elem.HasAttribute ("force_instance"))
-						withParamGCHandle = false;
-					if (hasGetManagedDelegate)
 						withParamGCHandle = false;
 				}
 				return withParamGCHandle.Value;

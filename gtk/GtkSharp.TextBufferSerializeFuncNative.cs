@@ -10,64 +10,7 @@ namespace GtkSharp {
 	[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 	internal delegate IntPtr TextBufferSerializeFuncNative(IntPtr register_buffer, IntPtr content_buffer, IntPtr start, IntPtr end, out UIntPtr length, IntPtr user_data);
 
-	internal class TextBufferSerializeFuncInvoker {
-
-		TextBufferSerializeFuncNative native_cb;
-		IntPtr __data;
-		GLib.DestroyNotify __notify;
-
-		~TextBufferSerializeFuncInvoker ()
-		{
-			if (__notify == null)
-				return;
-			__notify (__data);
-		}
-
-		internal TextBufferSerializeFuncInvoker (TextBufferSerializeFuncNative native_cb) : this (native_cb, IntPtr.Zero, null) {}
-
-		internal TextBufferSerializeFuncInvoker (TextBufferSerializeFuncNative native_cb, IntPtr data) : this (native_cb, data, null) {}
-
-		internal TextBufferSerializeFuncInvoker (TextBufferSerializeFuncNative native_cb, IntPtr data, GLib.DestroyNotify notify)
-		{
-			this.native_cb = native_cb;
-			__data = data;
-			__notify = notify;
-		}
-
-		internal Gtk.TextBufferSerializeFunc Handler {
-			get {
-				return new Gtk.TextBufferSerializeFunc(InvokeNative);
-			}
-		}
-
-		private static readonly byte [] empty_byte_array = new byte[0];
-		byte [] InvokeNative (Gtk.TextBuffer register_buffer, Gtk.TextBuffer content_buffer, Gtk.TextIter start, Gtk.TextIter end, out ulong length)
-		{
-			IntPtr native_start = GLib.Marshaller.StructureToPtrAlloc (start);
-			IntPtr native_end = GLib.Marshaller.StructureToPtrAlloc (end);
-			UIntPtr native_length;
-			IntPtr result_ptr = native_cb (register_buffer == null ? IntPtr.Zero : register_buffer.Handle, content_buffer == null ? IntPtr.Zero : content_buffer.Handle, native_start, native_end, out native_length, __data);
-			start = Gtk.TextIter.New (native_start);
-			Marshal.FreeHGlobal (native_start);
-			end = Gtk.TextIter.New (native_end);
-			Marshal.FreeHGlobal (native_end);
-			length = (ulong) native_length;
-
-			byte [] result = null;
-			if (length > 0 && result_ptr != IntPtr.Zero) {
-					result = new byte [length];
-					Marshal.Copy (result_ptr, result, 0, (int)length);
-			}
-
-			if (result_ptr != IntPtr.Zero) {
-				GLib.Marshaller.Free (result_ptr);
-			}
-
-			return result == null ? empty_byte_array : result;
-		}
-	}
-
-	internal class TextBufferSerializeFuncWrapper {
+	internal static class TextBufferSerializeFuncWrapper {
 
 		public static IntPtr NativeCallback (IntPtr register_buffer, IntPtr content_buffer, IntPtr start, IntPtr end, out UIntPtr length, IntPtr user_data)
 		{
@@ -75,9 +18,9 @@ namespace GtkSharp {
 				ulong mylength;
 
 				var gch = (GCHandle)user_data;
-				var wrapper = (TextBufferSerializeFuncWrapper)gch.Target;
+				var managed = (Gtk.TextBufferSerializeFunc)gch.Target;
 
-				byte [] __ret = wrapper.managed (GLib.Object.GetObject(register_buffer) as Gtk.TextBuffer, GLib.Object.GetObject(content_buffer) as Gtk.TextBuffer, Gtk.TextIter.New (start), Gtk.TextIter.New (end), out mylength);
+				byte [] __ret = managed (GLib.Object.GetObject(register_buffer) as Gtk.TextBuffer, GLib.Object.GetObject(content_buffer) as Gtk.TextBuffer, Gtk.TextIter.New (start), Gtk.TextIter.New (end), out mylength);
 
 				length = new UIntPtr (mylength);
 
@@ -88,9 +31,6 @@ namespace GtkSharp {
 				} else {
 					ret_ptr = IntPtr.Zero;
 				}
-
-				if (wrapper.release_on_call)
-					gch.Free ();
 				return ret_ptr;
 			} catch (Exception e) {
 				GLib.ExceptionManager.RaiseUnhandledException (e, true);
@@ -99,31 +39,6 @@ namespace GtkSharp {
 			}
 		}
 
-		bool release_on_call = false;
-		GCHandle gch;
-
-		public GCHandle PersistUntilCalled ()
-		{
-			release_on_call = true;
-			return GCHandle.Alloc (this);
-		}
-
 		internal static TextBufferSerializeFuncNative NativeDelegate = new TextBufferSerializeFuncNative (NativeCallback);
-		Gtk.TextBufferSerializeFunc managed;
-
-		public TextBufferSerializeFuncWrapper (Gtk.TextBufferSerializeFunc managed)
-		{
-			this.managed = managed;
-		}
-
-		public static Gtk.TextBufferSerializeFunc GetManagedDelegate (TextBufferSerializeFuncNative native)
-		{
-			if (native == null)
-				return null;
-			TextBufferSerializeFuncWrapper wrapper = (TextBufferSerializeFuncWrapper) native.Target;
-			if (wrapper == null)
-				return null;
-			return wrapper.managed;
-		}
 	}
 }

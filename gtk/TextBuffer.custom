@@ -209,14 +209,13 @@ static extern IntPtr gtk_text_buffer_register_serialize_format(IntPtr raw, IntPt
 
 public Gdk.Atom RegisterSerializeFormat(string mime_type, Gtk.TextBufferSerializeFunc function) {
 	IntPtr native_mime_type = GLib.Marshaller.StringToPtrGStrdup (mime_type);
-	GtkSharp.TextBufferSerializeFuncWrapper function_wrapper = new GtkSharp.TextBufferSerializeFuncWrapper (function);
 	IntPtr user_data;
 	GLib.DestroyNotify user_data_destroy;
 	if (function == null) {
 		user_data = IntPtr.Zero;
 		user_data_destroy = null;
 	} else {
-		user_data = (IntPtr) GCHandle.Alloc (function_wrapper);
+		user_data = (IntPtr) GCHandle.Alloc (function);
 		user_data_destroy = GLib.DestroyHelper.NotifyHandler;
 	}
 	IntPtr raw_ret = gtk_text_buffer_register_serialize_format(Handle, native_mime_type, GtkSharp.TextBufferSerializeFuncWrapper.NativeDelegate, user_data, user_data_destroy);
