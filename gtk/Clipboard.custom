@@ -25,13 +25,13 @@
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool gtk_clipboard_set_with_owner(IntPtr raw, TargetEntry[] targets, int n_targets, GtkSharp.ClipboardGetFuncNative get_func, GtkSharp.ClipboardClearFuncNative clear_func, IntPtr owner);
 
-		void ClearProxy (Clipboard clipboard)
+		static void ClearProxy (Clipboard clipboard)
 		{
-			if (PersistentData ["clear_func"] != null)  {
-				ClipboardClearFunc clear = PersistentData ["clear_func"] as ClipboardClearFunc;
+			if (clipboard.PersistentData ["clear_func"] != null)  {
+				ClipboardClearFunc clear = clipboard.PersistentData ["clear_func"] as ClipboardClearFunc;
 				clear (clipboard);
 			}
-			SetPersistentData (null, null, null);
+			clipboard.SetPersistentData (null, null, null);
 		}
 
 		void SetPersistentData (object get_func_wrapper, object clear_func, object clear_proxy_wrapper)
@@ -41,9 +41,9 @@
 			PersistentData ["clear_proxy_wrapper"] = clear_proxy_wrapper;
 		}
 
+		static readonly ClipboardClearFunc clear_proxy = ClearProxy;
 		public bool SetWithData (TargetEntry[] targets, ClipboardGetFunc get_func, ClipboardClearFunc clear_func)
 		{
-			ClipboardClearFunc clear_proxy = new ClipboardClearFunc (ClearProxy);
 			GtkSharp.ClipboardGetFuncWrapper get_func_wrapper = new GtkSharp.ClipboardGetFuncWrapper (get_func);
 			GtkSharp.ClipboardClearFuncWrapper clear_proxy_wrapper = new GtkSharp.ClipboardClearFuncWrapper (clear_proxy);
 			bool ret = gtk_clipboard_set_with_data (Handle, targets, targets.Length, get_func_wrapper.NativeDelegate, clear_proxy_wrapper.NativeDelegate, IntPtr.Zero);
@@ -53,7 +53,6 @@
 
 		public bool SetWithOwner (TargetEntry[] targets, ClipboardGetFunc get_func, ClipboardClearFunc clear_func, GLib.Object owner)
 		{
-			ClipboardClearFunc clear_proxy = new ClipboardClearFunc (ClearProxy);
 			GtkSharp.ClipboardGetFuncWrapper get_func_wrapper = new GtkSharp.ClipboardGetFuncWrapper (get_func);
 			GtkSharp.ClipboardClearFuncWrapper clear_proxy_wrapper = new GtkSharp.ClipboardClearFuncWrapper (clear_proxy);
 			bool ret = gtk_clipboard_set_with_owner (Handle, targets, targets.Length, get_func_wrapper.NativeDelegate, clear_proxy_wrapper.NativeDelegate, owner == null ? IntPtr.Zero : owner.Handle);
@@ -87,13 +86,12 @@
 
 		public delegate void RichTextReceivedFunc (Gtk.Clipboard clipboard, Gdk.Atom format, byte[] text);
 
-		static RichTextReceivedFuncNative rt_rcvd_marshaler;
+		static readonly RichTextReceivedFuncNative rt_rcvd_marshaler = new RichTextReceivedFuncNative (RichTextReceivedCallback);
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void RichTextReceivedFuncNative (IntPtr clipboard, IntPtr format, IntPtr text, UIntPtr length, IntPtr data);
 
-
-		void RichTextReceivedCallback (IntPtr clipboard_ptr, IntPtr format_ptr, IntPtr text_ptr, UIntPtr length, IntPtr data)
+		static void RichTextReceivedCallback (IntPtr clipboard_ptr, IntPtr format_ptr, IntPtr text_ptr, UIntPtr length, IntPtr data)
 		{
 			try {
 				Gtk.Clipboard clipboard = GLib.Object.GetObject(clipboard_ptr) as Gtk.Clipboard;
@@ -115,7 +113,5 @@
 
 		public void RequestRichText (Gtk.TextBuffer buffer, RichTextReceivedFunc cb)
 		{
-			if (rt_rcvd_marshaler == null)
-				rt_rcvd_marshaler = new RichTextReceivedFuncNative (RichTextReceivedCallback);
 			gtk_clipboard_request_rich_text (Handle, buffer == null ? IntPtr.Zero : buffer.Handle, rt_rcvd_marshaler, (IntPtr) GCHandle.Alloc (cb));
 		}
