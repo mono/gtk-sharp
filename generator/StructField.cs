@@ -41,7 +41,7 @@ namespace GtkSharp.Generation {
 			IGeneratable gen = table [CType];
 
 			if (gen is CallbackGen) {
-				((CallbackGen)gen).hasGetManagedDelegate = true;
+				((CallbackGen)gen).hasInvoker = true;
 			}
 			return true;
 		}

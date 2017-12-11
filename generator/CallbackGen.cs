@@ -35,7 +35,6 @@ namespace GtkSharp.Generation {
 		private ReturnValue retval;
 		private bool valid = true;
 		internal List<string> parameterScopeList = new List<string> ();
-		internal bool hasGetManagedDelegate = false;
 		internal bool hasInvoker = false;
 
 		public CallbackGen (XmlElement ns, XmlElement elem) : base (ns, elem)
@@ -89,15 +88,6 @@ namespace GtkSharp.Generation {
 			}
 		}
 
-		public override string MarshalReturnType {
-			get {
-				if (valid)
-					return "IntPtr";
-				else
-					return "";
-			}
-		}
-
 		public override string CallByName (string var_name)
 		{
 			if (WithParamGCHandle)
@@ -107,16 +97,13 @@ namespace GtkSharp.Generation {
 
 		public override string FromNative (string var)
 		{
-			if (GenerateStaticWrapper)
-				return "(" + var + " == IntPtr.Zero ? null : (" + Name + ")((GCHandle)" + var + ").Target)";
-			else
-				return NS + "Sharp." + Name + "Wrapper.GetManagedDelegate (" + var + ")";
+			return "new " + NS + "Sharp." + Name + "Invoker (" + var + ").Handler";
 		}
 
 		public void WriteAccessors (StreamWriter sw, string indent, string var)
 		{
 			sw.WriteLine (indent + "get {");
-			sw.WriteLine (indent + "\treturn " + FromNative (var) + ";");
+			sw.WriteLine (indent + "\treturn new GtkSharp." + Name + "Invoker (" + var + ").Handler;");
 			sw.WriteLine (indent + "}");
 		}
 
@@ -245,7 +232,7 @@ namespace GtkSharp.Generation {
 
 		public bool GenerateStaticWrapper {
 			get {
-				return WithParamGCHandle && !hasGetManagedDelegate && (!HasAsyncCall || HasOnlyAsyncCall);
+				return WithParamGCHandle && (!HasAsyncCall || HasOnlyAsyncCall);
 			}
 		}
 
@@ -365,17 +352,6 @@ namespace GtkSharp.Generation {
 				}
 				sw.WriteLine ("\t\t}");
 				sw.WriteLine ();
-				if (hasGetManagedDelegate) {
-					sw.WriteLine ("\t\tpublic static " + NS + "." + Name + " GetManagedDelegate (" + wrapper + " native)");
-					sw.WriteLine ("\t\t{");
-					sw.WriteLine ("\t\t\tif (native == null)");
-					sw.WriteLine ("\t\t\t\treturn null;");
-					sw.WriteLine ("\t\t\t" + Name + "Wrapper wrapper = (" + Name + "Wrapper) native.Target;");
-					sw.WriteLine ("\t\t\tif (wrapper == null)");
-					sw.WriteLine ("\t\t\t\treturn null;");
-					sw.WriteLine ("\t\t\treturn wrapper.managed;");
-					sw.WriteLine ("\t\t}");
-				}
 			}
 			sw.WriteLine ("\t}");
 			sw.WriteLine ("#endregion");
