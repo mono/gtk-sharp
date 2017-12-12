@@ -75,6 +75,7 @@
 
 		public void AddClientMessageFilter (Gdk.Atom message_type, Gdk.FilterFunc func) 
 		{
+			// Purposefully leak this indefinitely, there's no gdk_display_remove_client_message_filter.
 			var gch = GCHandle.Alloc (func);
 			gdk_display_add_client_message_filter (Handle, message_type == null ? IntPtr.Zero : message_type.Handle, GdkSharp.FilterFuncWrapper.NativeDelegate, (IntPtr)gch);
 		}
