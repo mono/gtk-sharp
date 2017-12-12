@@ -511,7 +511,6 @@
   <attr path="/api/namespace/object[@cname='GtkLabel']/property[@name='WrapMode']" name="name">LineWrapMode</attr>
   <attr path="/api/namespace/object[@cname='GtkLayout']/signal[@name='SetScrollAdjustments']" name="name">ScrollAdjustmentsSet</attr>
   <attr path="/api/namespace/object[@cname='GtkLinkButton']/method[@name='SetUriHook']" name="hidden">1</attr>
-  <attr path="/api/namespace/object[@cname='GtkLinkButton']/method[@name='GtkUriHook']" name="hidden">1</attr>
   <add-node path="/api/namespace/object[@name='ListStore']"><implements><interface name="IEnumerable" /></implements></add-node>
 
   <attr path="/api/namespace/object[@cname='GtkListStore']/constructor[@cname='gtk_list_store_new']" name="hidden">1</attr>
