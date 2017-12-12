@@ -1,0 +1,64 @@
+// Pango.CairoHelper.custom - Pango Cairo Helper class customizations
+//
+// Authors:  Marius Ungureanu <maungu@microsoft.com>
+//
+// Copyright (c) 2017 Microsoft, Inc.
+//
+// This code is inserted after the automatically generated code.
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of version 2 of the Lesser GNU General 
+// Public License as published by the Free Software Foundation.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this program; if not, write to the
+// Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+// Boston, MA 02111-1307, USA.
+
+
+		[DllImport ("libpangocairo-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern PangoSharp.CairoShapeRendererFuncNative pango_cairo_context_get_shape_renderer (IntPtr context, IntPtr data);
+
+		const string renderer_key = "ContextGetShapeRenderer";
+		public static Pango.CairoShapeRendererFunc ContextGetShapeRenderer (Pango.Context context, IntPtr data)
+		{
+			Pango.CairoShapeRendererFunc toRet = null;
+			var lastHandler = context.Data [renderer_key];
+			if (lastHandler != null)
+				((WeakReference<Pango.CairoShapeRendererFunc>)lastHandler).TryGetTarget (out toRet);
+			
+			PangoSharp.CairoShapeRendererFuncNative raw_ret = pango_cairo_context_get_shape_renderer (context == null ? IntPtr.Zero : context.Handle, data);
+			if (raw_ret == PangoSharp.CairoShapeRendererFuncWrapper.NativeDelegate)
+				return toRet;
+
+			if (raw_ret == null)
+				return null;
+
+			Pango.CairoShapeRendererFunc ret = new PangoSharp.CairoShapeRendererFuncInvoker (raw_ret).Handler;
+			return ret;
+		}
+
+		[DllImport ("libpangocairo-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void pango_cairo_context_set_shape_renderer (IntPtr context, PangoSharp.CairoShapeRendererFuncNative func, IntPtr data, GLib.DestroyNotify dnotify);
+
+		public static void ContextSetShapeRenderer (Pango.Context context, Pango.CairoShapeRendererFunc func)
+		{
+			IntPtr data;
+			GLib.DestroyNotify dnotify;
+
+			if (func == null) {
+				data = IntPtr.Zero;
+				dnotify = null;
+				context.Data.Remove (renderer_key);
+			} else {
+				data = (IntPtr)GCHandle.Alloc (func);
+				dnotify = GLib.DestroyHelper.NotifyHandler;
+				context.Data [renderer_key] = func;
+			}
+			pango_cairo_context_set_shape_renderer (context == null ? IntPtr.Zero : context.Handle, PangoSharp.CairoShapeRendererFuncWrapper.NativeDelegate, data, dnotify);
+		}
