@@ -32,13 +32,15 @@
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern GtkSharp.AboutDialogActivateLinkFuncNative gtk_about_dialog_set_url_hook(GtkSharp.AboutDialogActivateLinkFuncNative func, IntPtr data, GLib.DestroyNotify destroy);
 
-		static IntPtr urlManagedFunc;
+		static WeakReference<Gtk.AboutDialogActivateLinkFunc> urlManagedFunc = new WeakReference<Gtk.AboutDialogActivateLinkFunc> (null);
 		public static Gtk.AboutDialogActivateLinkFunc SetUrlHook(Gtk.AboutDialogActivateLinkFunc func) {
 			Gtk.Application.AssertMainThread();
 			IntPtr data;
-			GLib.DestroyNotify destroy;
+			GLib.DestroyNotify destroy;	
 
-			IntPtr toRet = urlManagedFunc;
+			Gtk.AboutDialogActivateLinkFunc toRet;
+			urlManagedFunc.TryGetTarget (out toRet);
+
 			if (func == null) {
 				data = IntPtr.Zero;
 				destroy = null;
@@ -46,12 +48,15 @@
 				data = (IntPtr) GCHandle.Alloc (func);
 				destroy = GLib.DestroyHelper.NotifyHandler;
 			}
-			urlManagedFunc = data;
+			urlManagedFunc.SetTarget (func);
 
 			var raw_ret = gtk_about_dialog_set_url_hook(GtkSharp.AboutDialogActivateLinkFuncWrapper.NativeDelegate, data, destroy);
 			if (raw_ret == GtkSharp.AboutDialogActivateLinkFuncWrapper.NativeDelegate)
-				return toRet == IntPtr.Zero ? null : (Gtk.AboutDialogActivateLinkFunc)((GCHandle)toRet).Target;
-			
+				return toRet;
+
+			if (raw_ret == null)
+				return null;
+
 			Gtk.AboutDialogActivateLinkFunc ret = new GtkSharp.AboutDialogActivateLinkFuncInvoker (raw_ret).Handler;
 			return ret;
 		}
@@ -59,13 +64,15 @@
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern GtkSharp.AboutDialogActivateLinkFuncNative gtk_about_dialog_set_email_hook(GtkSharp.AboutDialogActivateLinkFuncNative func, IntPtr data, GLib.DestroyNotify destroy);
 
-		static IntPtr emailManagedFunc;
+		static WeakReference<Gtk.AboutDialogActivateLinkFunc> emailManagedFunc = new WeakReference<Gtk.AboutDialogActivateLinkFunc> (null);
 		public static Gtk.AboutDialogActivateLinkFunc SetEmailHook(Gtk.AboutDialogActivateLinkFunc func) {
 			Gtk.Application.AssertMainThread();
 			IntPtr data;
 			GLib.DestroyNotify destroy;
 
-			IntPtr toRet = emailManagedFunc;
+			Gtk.AboutDialogActivateLinkFunc toRet;
+			emailManagedFunc.TryGetTarget (out toRet);
+
 			if (func == null) {
 				data = IntPtr.Zero;
 				destroy = null;
@@ -73,12 +80,15 @@
 				data = (IntPtr) GCHandle.Alloc (func);
 				destroy = GLib.DestroyHelper.NotifyHandler;
 			}
-			emailManagedFunc = data;
+			emailManagedFunc.SetTarget (func);
 
 			var raw_ret = gtk_about_dialog_set_url_hook(GtkSharp.AboutDialogActivateLinkFuncWrapper.NativeDelegate, data, destroy);
 			if (raw_ret == GtkSharp.AboutDialogActivateLinkFuncWrapper.NativeDelegate)
-				return toRet == IntPtr.Zero ? null : (Gtk.AboutDialogActivateLinkFunc)((GCHandle)toRet).Target;
-			
+				return toRet;
+
+			if (raw_ret == null)
+				return null;
+
 			Gtk.AboutDialogActivateLinkFunc ret = new GtkSharp.AboutDialogActivateLinkFuncInvoker (raw_ret).Handler;
 			return ret;
 		}
