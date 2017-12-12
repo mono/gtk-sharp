@@ -95,6 +95,7 @@ customs = 				\
 	Input.custom			\
 	ItemFactory.custom		\
 	Label.custom			\
+	LinkButton.custom		\
 	ListStore.custom		\
 	MessageDialog.custom		\
 	Menu.custom			\

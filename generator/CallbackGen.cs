@@ -42,6 +42,7 @@ namespace GtkSharp.Generation {
 			retval = new ReturnValue (elem ["return-type"]);
 			parms = new Parameters (elem ["parameters"]);
 			parms.HideData = true;
+			hasInvoker = elem.HasAttribute ("has_invoker");
 		}
 
 		public override string DefaultValue {

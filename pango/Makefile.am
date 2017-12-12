@@ -42,6 +42,7 @@ customs =			\
 	Analysis.custom		\
 	AttrIterator.custom	\
 	AttrList.custom		\
+	CairoHelper.custom	\
 	Context.custom		\
 	Coverage.custom		\
 	FontFamily.custom	\

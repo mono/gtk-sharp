@@ -29,3 +29,57 @@
 			}
 		}
 
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern GtkSharp.AboutDialogActivateLinkFuncNative gtk_about_dialog_set_url_hook(GtkSharp.AboutDialogActivateLinkFuncNative func, IntPtr data, GLib.DestroyNotify destroy);
+
+		static IntPtr urlManagedFunc;
+		public static Gtk.AboutDialogActivateLinkFunc SetUrlHook(Gtk.AboutDialogActivateLinkFunc func) {
+			Gtk.Application.AssertMainThread();
+			IntPtr data;
+			GLib.DestroyNotify destroy;
+
+			IntPtr toRet = urlManagedFunc;
+			if (func == null) {
+				data = IntPtr.Zero;
+				destroy = null;
+			} else {
+				data = (IntPtr) GCHandle.Alloc (func);
+				destroy = GLib.DestroyHelper.NotifyHandler;
+			}
+			urlManagedFunc = data;
+
+			var raw_ret = gtk_about_dialog_set_url_hook(GtkSharp.AboutDialogActivateLinkFuncWrapper.NativeDelegate, data, destroy);
+			if (raw_ret == GtkSharp.AboutDialogActivateLinkFuncWrapper.NativeDelegate)
+				return toRet == IntPtr.Zero ? null : (Gtk.AboutDialogActivateLinkFunc)((GCHandle)toRet).Target;
+			
+			Gtk.AboutDialogActivateLinkFunc ret = new GtkSharp.AboutDialogActivateLinkFuncInvoker (raw_ret).Handler;
+			return ret;
+		}
+
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern GtkSharp.AboutDialogActivateLinkFuncNative gtk_about_dialog_set_email_hook(GtkSharp.AboutDialogActivateLinkFuncNative func, IntPtr data, GLib.DestroyNotify destroy);
+
+		static IntPtr emailManagedFunc;
+		public static Gtk.AboutDialogActivateLinkFunc SetEmailHook(Gtk.AboutDialogActivateLinkFunc func) {
+			Gtk.Application.AssertMainThread();
+			IntPtr data;
+			GLib.DestroyNotify destroy;
+
+			IntPtr toRet = emailManagedFunc;
+			if (func == null) {
+				data = IntPtr.Zero;
+				destroy = null;
+			} else {
+				data = (IntPtr) GCHandle.Alloc (func);
+				destroy = GLib.DestroyHelper.NotifyHandler;
+			}
+			emailManagedFunc = data;
+
+			var raw_ret = gtk_about_dialog_set_url_hook(GtkSharp.AboutDialogActivateLinkFuncWrapper.NativeDelegate, data, destroy);
+			if (raw_ret == GtkSharp.AboutDialogActivateLinkFuncWrapper.NativeDelegate)
+				return toRet == IntPtr.Zero ? null : (Gtk.AboutDialogActivateLinkFunc)((GCHandle)toRet).Target;
+			
+			Gtk.AboutDialogActivateLinkFunc ret = new GtkSharp.AboutDialogActivateLinkFuncInvoker (raw_ret).Handler;
+			return ret;
+		}
+
