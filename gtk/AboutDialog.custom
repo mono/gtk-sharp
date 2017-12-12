@@ -82,7 +82,7 @@
 			}
 			emailManagedFunc.SetTarget (func);
 
-			var raw_ret = gtk_about_dialog_set_url_hook(GtkSharp.AboutDialogActivateLinkFuncWrapper.NativeDelegate, data, destroy);
+			var raw_ret = gtk_about_dialog_set_email_hook(GtkSharp.AboutDialogActivateLinkFuncWrapper.NativeDelegate, data, destroy);
 			if (raw_ret == GtkSharp.AboutDialogActivateLinkFuncWrapper.NativeDelegate)
 				return toRet;
 
