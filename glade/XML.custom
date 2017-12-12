@@ -38,6 +38,7 @@
 				}
 
 				gch = GCHandle.Alloc (value);
+				callback_wrapper = value;
 				glade_set_custom_handler(GladeSharp.XMLCustomWidgetHandlerWrapper.NativeDelegate, (IntPtr)gch);
 			}
 		}
