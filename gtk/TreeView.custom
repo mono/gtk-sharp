@@ -215,3 +215,117 @@
 		public void GetVisibleRect(Gdk.Rectangle visible_rect) {
 			;
 		}
+
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern GtkSharp.TreeViewRowSeparatorFuncNative gtk_tree_view_get_row_separator_func(IntPtr raw);
+
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void gtk_tree_view_set_row_separator_func(IntPtr raw, GtkSharp.TreeViewRowSeparatorFuncNative func, IntPtr data, GLib.DestroyNotify destroy);
+
+		WeakReference<Gtk.TreeViewRowSeparatorFunc> lastRowSeparatorFunc = new WeakReference<Gtk.TreeViewRowSeparatorFunc> (null);
+		public Gtk.TreeViewRowSeparatorFunc RowSeparatorFunc { 
+			get {
+				GtkSharp.TreeViewRowSeparatorFuncNative raw_ret = gtk_tree_view_get_row_separator_func(Handle);
+				if (raw_ret == GtkSharp.TreeViewRowSeparatorFuncWrapper.NativeDelegate) {
+					Gtk.TreeViewRowSeparatorFunc result;
+					lastRowSeparatorFunc.TryGetTarget (out result);
+					return result;
+				}
+
+				if (raw_ret == null)
+					return null;
+
+				Gtk.TreeViewRowSeparatorFunc ret = new GtkSharp.TreeViewRowSeparatorFuncInvoker (raw_ret).Handler;
+				return ret;
+			}
+			set {
+				Gtk.Application.AssertMainThread();
+				IntPtr data;
+				GLib.DestroyNotify destroy;
+				if (value == null) {
+					data = IntPtr.Zero;
+					destroy = null;
+				} else {
+					data = (IntPtr) GCHandle.Alloc (value);
+					destroy = GLib.DestroyHelper.NotifyHandler;
+				}
+				lastRowSeparatorFunc.SetTarget (value);
+				gtk_tree_view_set_row_separator_func(Handle, GtkSharp.TreeViewRowSeparatorFuncWrapper.NativeDelegate, data, destroy);
+			}
+		}
+
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern GtkSharp.TreeViewSearchEqualFuncNative gtk_tree_view_get_search_equal_func(IntPtr raw);
+
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void gtk_tree_view_set_search_equal_func(IntPtr raw, GtkSharp.TreeViewSearchEqualFuncNative search_equal_func, IntPtr search_user_data, GLib.DestroyNotify search_destroy);
+
+		WeakReference<Gtk.TreeViewSearchEqualFunc> lastSearchEqualFunc = new WeakReference<Gtk.TreeViewSearchEqualFunc> (null);
+		public Gtk.TreeViewSearchEqualFunc SearchEqualFunc { 
+			get {
+				GtkSharp.TreeViewSearchEqualFuncNative raw_ret = gtk_tree_view_get_search_equal_func(Handle);
+				if (raw_ret == GtkSharp.TreeViewSearchEqualFuncWrapper.NativeDelegate) {
+					Gtk.TreeViewSearchEqualFunc result;
+					lastSearchEqualFunc.TryGetTarget (out result);
+					return result;
+				}
+
+				if (raw_ret == null)
+					return null;
+
+				Gtk.TreeViewSearchEqualFunc ret = new GtkSharp.TreeViewSearchEqualFuncInvoker (raw_ret).Handler;
+				return ret;
+			}
+			set {
+				Gtk.Application.AssertMainThread();
+				IntPtr search_user_data;
+				GLib.DestroyNotify search_destroy;
+				if (value == null) {
+					search_user_data = IntPtr.Zero;
+					search_destroy = null;
+				} else {
+					search_user_data = (IntPtr) GCHandle.Alloc (value);
+					search_destroy = GLib.DestroyHelper.NotifyHandler;
+				}
+				lastSearchEqualFunc.SetTarget (value);
+				gtk_tree_view_set_search_equal_func(Handle, GtkSharp.TreeViewSearchEqualFuncWrapper.NativeDelegate, search_user_data, search_destroy);
+			}
+		}
+
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern GtkSharp.TreeViewSearchPositionFuncNative gtk_tree_view_get_search_position_func(IntPtr raw);
+
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void gtk_tree_view_set_search_position_func(IntPtr raw, GtkSharp.TreeViewSearchPositionFuncNative func, IntPtr data, GLib.DestroyNotify destroy);
+
+		WeakReference<Gtk.TreeViewSearchPositionFunc> lastSearchPositionFunc = new WeakReference<Gtk.TreeViewSearchPositionFunc> (null);
+		public Gtk.TreeViewSearchPositionFunc SearchPositionFunc { 
+			get {
+				GtkSharp.TreeViewSearchPositionFuncNative raw_ret = gtk_tree_view_get_search_position_func(Handle);
+				if (raw_ret == GtkSharp.TreeViewSearchPositionFuncWrapper.NativeDelegate) {
+					Gtk.TreeViewSearchPositionFunc result;
+					lastSearchPositionFunc.TryGetTarget (out result);
+					return result;
+				}
+
+				if (raw_ret == null)
+					return null;
+
+				Gtk.TreeViewSearchPositionFunc ret = new GtkSharp.TreeViewSearchPositionFuncInvoker (raw_ret).Handler;
+				return ret;
+			}
+			set {
+				Gtk.Application.AssertMainThread();
+				IntPtr data;
+				GLib.DestroyNotify destroy;
+				if (value == null) {
+					data = IntPtr.Zero;
+					destroy = null;
+				} else {
+					data = (IntPtr) GCHandle.Alloc (value);
+					destroy = GLib.DestroyHelper.NotifyHandler;
+				}
+				lastSearchPositionFunc.SetTarget (value);
+				gtk_tree_view_set_search_position_func(Handle, GtkSharp.TreeViewSearchPositionFuncWrapper.NativeDelegate, data, destroy);
+			}
+		}

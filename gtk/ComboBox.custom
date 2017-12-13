@@ -39,3 +39,41 @@
 				AddAttribute (cell, (string) attrs [i], (int) attrs [i + 1]);
 			}
 		}
+
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern GtkSharp.TreeViewRowSeparatorFuncNative gtk_combo_box_get_row_separator_func(IntPtr raw);
+
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void gtk_combo_box_set_row_separator_func(IntPtr raw, GtkSharp.TreeViewRowSeparatorFuncNative func, IntPtr data, GLib.DestroyNotify destroy);
+
+		WeakReference<Gtk.TreeViewRowSeparatorFunc> lastRowSeparatorFunc = new WeakReference<Gtk.TreeViewRowSeparatorFunc> (null);
+		public Gtk.TreeViewRowSeparatorFunc RowSeparatorFunc { 
+			get {
+				GtkSharp.TreeViewRowSeparatorFuncNative raw_ret = gtk_combo_box_get_row_separator_func(Handle);
+				if (raw_ret == GtkSharp.TreeViewRowSeparatorFuncWrapper.NativeDelegate) {
+					Gtk.TreeViewRowSeparatorFunc result;
+					lastRowSeparatorFunc.TryGetTarget (out result);
+					return result;
+				}
+
+				if (raw_ret == null)
+					return null;
+
+				Gtk.TreeViewRowSeparatorFunc ret = new GtkSharp.TreeViewRowSeparatorFuncInvoker (raw_ret).Handler;
+				return ret;
+			}
+			set {
+				Gtk.Application.AssertMainThread();
+				IntPtr data;
+				GLib.DestroyNotify destroy;
+				if (value == null) {
+					data = IntPtr.Zero;
+					destroy = null;
+				} else {
+					data = (IntPtr) GCHandle.Alloc (value);
+					destroy = GLib.DestroyHelper.NotifyHandler;
+				}
+				lastRowSeparatorFunc.SetTarget (value);
+				gtk_combo_box_set_row_separator_func(Handle, GtkSharp.TreeViewRowSeparatorFuncWrapper.NativeDelegate, data, destroy);
+			}
+		}

@@ -23,7 +23,9 @@
 namespace GtkSharp.Generation {
 
 	using System;
+	using System.Collections.Generic;
 	using System.IO;
+	using System.Linq;
 	using System.Xml;
 
 	public class CallbackGen : GenBase, IAccessor {
@@ -32,12 +34,15 @@ namespace GtkSharp.Generation {
 		private Signature sig = null;
 		private ReturnValue retval;
 		private bool valid = true;
+		internal List<string> parameterScopeList = new List<string> ();
+		internal bool hasInvoker = false;
 
 		public CallbackGen (XmlElement ns, XmlElement elem) : base (ns, elem)
 		{
 			retval = new ReturnValue (elem ["return-type"]);
 			parms = new Parameters (elem ["parameters"]);
 			parms.HideData = true;
+			hasInvoker = elem.HasAttribute ("has_invoker");
 		}
 
 		public override string DefaultValue {
@@ -59,6 +64,9 @@ namespace GtkSharp.Generation {
 				valid = false;
 				return false;
 			}
+
+			if (!ManagedCallString.Validate (parms))
+				return false;
 
 			valid = true;
 			return true;
@@ -83,18 +91,20 @@ namespace GtkSharp.Generation {
 
 		public override string CallByName (string var_name)
 		{
+			if (WithParamGCHandle)
+				return NS + "Sharp." + Name + "Wrapper.NativeDelegate";
 			return var_name + ".NativeDelegate";
 		}
 
 		public override string FromNative (string var)
 		{
-			return NS + "Sharp." + Name + "Wrapper.GetManagedDelegate (" + var + ")";
+			return "new " + NS + "Sharp." + Name + "Invoker (" + var + ").Handler";
 		}
 
 		public void WriteAccessors (StreamWriter sw, string indent, string var)
 		{
 			sw.WriteLine (indent + "get {");
-			sw.WriteLine (indent + "\treturn " + FromNative (var) + ";");
+			sw.WriteLine (indent + "\treturn new GtkSharp." + Name + "Invoker (" + var + ").Handler;");
 			sw.WriteLine (indent + "}");
 		}
 
@@ -133,6 +143,9 @@ namespace GtkSharp.Generation {
 
 		void GenInvoker (GenerationInfo gen_info, StreamWriter sw)
 		{
+			if (!hasInvoker)
+				return;
+			
 			if (sig == null)
 				sig = new Signature (parms);
 
@@ -186,6 +199,44 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ();
 		}
 
+		Parameter gcHandleParam;
+		bool? withParamGCHandle;
+		public bool WithParamGCHandle {
+			get {
+				if (withParamGCHandle == null) {
+					withParamGCHandle = false;
+					for (int i = 0; i < parms.Count; ++i) {
+						if (parms [i].IsUserData) {
+							withParamGCHandle = true;
+							gcHandleParam = parms [i];
+							break;
+						}
+					}
+					if (Elem.HasAttribute ("force_instance"))
+						withParamGCHandle = false;
+				}
+				return withParamGCHandle.Value;
+			}
+		}
+
+		public bool HasOnlyAsyncCall {
+			get {
+				return parameterScopeList.All (x => x == "async");
+			}
+		}
+
+		bool HasAsyncCall {
+			get {
+				return parameterScopeList.Any (x => x == "async");
+			}
+		}
+
+		public bool GenerateStaticWrapper {
+			get {
+				return WithParamGCHandle && (!HasAsyncCall || HasOnlyAsyncCall);
+			}
+		}
+
 		public string GenWrapper (GenerationInfo gen_info)
 		{
 			string wrapper = Name + "Native";
@@ -209,11 +260,13 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\tinternal delegate " + retval.MarshalType + " " + wrapper + "(" + parms.CallbackImportSignature + ");");
 			sw.WriteLine ();
 			GenInvoker (gen_info, sw);
-			sw.WriteLine ("\tinternal class " + Name + "Wrapper {");
+			sw.WriteLine ("\tinternal {0}class {1}Wrapper {{", GenerateStaticWrapper ? "static " : "", Name);
 			sw.WriteLine ();
-			ManagedCallString call = new ManagedCallString (parms, false);
-			sw.WriteLine ("\t\tpublic " + retval.MarshalType + " NativeCallback (" + parms.CallbackImportSignature + ")");
+
+			sw.WriteLine ("\t\tpublic " + (WithParamGCHandle ? "static " : "") + retval.MarshalType + " NativeCallback (" + parms.CallbackImportSignature + ")");
 			sw.WriteLine ("\t\t{");
+
+			ManagedCallString call = new ManagedCallString (parms, false);
 			string unconditional = call.Unconditional ("\t\t\t");
 			if (unconditional.Length > 0)
 				sw.WriteLine (unconditional);
@@ -221,14 +274,32 @@ namespace GtkSharp.Generation {
 			string call_setup = call.Setup ("\t\t\t\t");
 			if (call_setup.Length > 0)
 				sw.WriteLine (call_setup);
+
+			if (WithParamGCHandle) {
+				sw.WriteLine ("\t\t\t\tvar gch = (GCHandle){0};", gcHandleParam.Name);
+				if (GenerateStaticWrapper)
+					sw.WriteLine ("\t\t\t\tvar managed = ({0})gch.Target;", QualifiedName);
+				else
+					sw.WriteLine ("\t\t\t\tvar wrapper = ({0}Wrapper)gch.Target;", Name);
+			}
+
+			string callPrefix = string.Empty;
+			if (WithParamGCHandle && !GenerateStaticWrapper)
+				callPrefix = "wrapper.";
+
 			if (retval.CSType == "void")
-				sw.WriteLine ("\t\t\t\tmanaged ({0});", call);
+				sw.WriteLine ("\t\t\t\t{0}managed ({1});", callPrefix, call);
 			else
-				sw.WriteLine ("\t\t\t\t{0} __ret = managed ({1});", retval.CSType, call);
+				sw.WriteLine ("\t\t\t\t{0} __ret = {1}managed ({2});", retval.CSType, callPrefix, call);
 			string finish = call.Finish ("\t\t\t\t");
 			if (finish.Length > 0)
 				sw.WriteLine (finish);
-			sw.WriteLine ("\t\t\t\tif (release_on_call)\n\t\t\t\t\tgch.Free ();");
+			if (HasAsyncCall) {
+				if (!HasOnlyAsyncCall)
+					sw.WriteLine ("\t\t\t\tif ({0}release_on_call)\n\t\t\t\t\tgch.Free ();", callPrefix);
+				else
+					sw.WriteLine ("\t\t\t\t\tgch.Free ();");
+			}
 			if (retval.CSType != "void")
 				sw.WriteLine ("\t\t\t\treturn {0};", retval.ToNative ("__ret"));
 
@@ -247,34 +318,42 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\t\t\t}");
 			sw.WriteLine ("\t\t}");
 			sw.WriteLine ();
-			sw.WriteLine ("\t\tbool release_on_call = false;");
-			sw.WriteLine ("\t\tGCHandle gch;");
+			if (!GenerateStaticWrapper && HasAsyncCall) {
+				sw.WriteLine ("\t\tbool release_on_call = false;");
+				if (!WithParamGCHandle)
+					sw.WriteLine ("\t\tGCHandle gch;");
+				sw.WriteLine ();
+				if (WithParamGCHandle)
+					sw.WriteLine ("\t\tpublic GCHandle PersistUntilCalled ()");
+				else
+					sw.WriteLine ("\t\tpublic void PersistUntilCalled ()");
+				sw.WriteLine ("\t\t{");
+				sw.WriteLine ("\t\t\trelease_on_call = true;");
+				if (WithParamGCHandle)
+					sw.WriteLine ("\t\t\treturn GCHandle.Alloc (this);");
+				else
+					sw.WriteLine ("\t\t\tgch = GCHandle.Alloc (this);");
+				sw.WriteLine ("\t\t}");
+			}
 			sw.WriteLine ();
-			sw.WriteLine ("\t\tpublic void PersistUntilCalled ()");
-			sw.WriteLine ("\t\t{");
-			sw.WriteLine ("\t\t\trelease_on_call = true;");
-			sw.WriteLine ("\t\t\tgch = GCHandle.Alloc (this);");
-			sw.WriteLine ("\t\t}");
-			sw.WriteLine ();
-			sw.WriteLine ("\t\tinternal " + wrapper + " NativeDelegate;");
-			sw.WriteLine ("\t\t" + NS + "." + Name + " managed;");
-			sw.WriteLine ();
-			sw.WriteLine ("\t\tpublic " + Name + "Wrapper (" + NS + "." + Name + " managed)");
-			sw.WriteLine ("\t\t{");
-			sw.WriteLine ("\t\t\tthis.managed = managed;");
-			sw.WriteLine ("\t\t\tif (managed != null)");
-			sw.WriteLine ("\t\t\t\tNativeDelegate = new " + wrapper + " (NativeCallback);");
-			sw.WriteLine ("\t\t}");
-			sw.WriteLine ();
-			sw.WriteLine ("\t\tpublic static " + NS + "." + Name + " GetManagedDelegate (" + wrapper + " native)");
-			sw.WriteLine ("\t\t{");
-			sw.WriteLine ("\t\t\tif (native == null)");
-			sw.WriteLine ("\t\t\t\treturn null;");
-			sw.WriteLine ("\t\t\t" + Name + "Wrapper wrapper = (" + Name + "Wrapper) native.Target;");
-			sw.WriteLine ("\t\t\tif (wrapper == null)");
-			sw.WriteLine ("\t\t\t\treturn null;");
-			sw.WriteLine ("\t\t\treturn wrapper.managed;");
-			sw.WriteLine ("\t\t}");
+			sw.Write ("\t\tinternal " + (WithParamGCHandle ? "static " : "") + "readonly " + wrapper + " NativeDelegate");
+			if (WithParamGCHandle)
+				sw.WriteLine (" = new " + wrapper + " (NativeCallback);");
+			else
+				sw.WriteLine (";");
+			if (!GenerateStaticWrapper) {
+				sw.WriteLine ("\t\t" + NS + "." + Name + " managed;");
+				sw.WriteLine ();
+				sw.WriteLine ("\t\tpublic " + Name + "Wrapper (" + NS + "." + Name + " managed)");
+				sw.WriteLine ("\t\t{");
+				sw.WriteLine ("\t\t\tthis.managed = managed;");
+				if (!WithParamGCHandle) {
+					sw.WriteLine ("\t\t\tif (managed != null)");
+					sw.WriteLine ("\t\t\t\tNativeDelegate = new " + wrapper + " (NativeCallback);");
+				}
+				sw.WriteLine ("\t\t}");
+				sw.WriteLine ();
+			}
 			sw.WriteLine ("\t}");
 			sw.WriteLine ("#endregion");
 			sw.WriteLine ("}");

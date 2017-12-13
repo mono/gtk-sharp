@@ -25,15 +25,21 @@
 // Boston, MA 02111-1307, USA.
 
 		// keep this around so it doesn't get GC'd
-		static GladeSharp.XMLCustomWidgetHandlerWrapper callback_wrapper = null;
+		static GCHandle gch;
+		static Glade.XMLCustomWidgetHandler callback_wrapper = null;
 
 		[DllImport("libglade-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void glade_set_custom_handler (GladeSharp.XMLCustomWidgetHandlerNative handler, IntPtr user_data);
 
 		public static Glade.XMLCustomWidgetHandler CustomHandler {
 			set {
-				callback_wrapper = new GladeSharp.XMLCustomWidgetHandlerWrapper (value);
-				glade_set_custom_handler(callback_wrapper.NativeDelegate, IntPtr.Zero);
+				if (callback_wrapper != null) {
+					gch.Free ();
+				}
+
+				gch = GCHandle.Alloc (value);
+				callback_wrapper = value;
+				glade_set_custom_handler(GladeSharp.XMLCustomWidgetHandlerWrapper.NativeDelegate, (IntPtr)gch);
 			}
 		}
 

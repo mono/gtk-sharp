@@ -229,8 +229,10 @@ class SignalConnector
 	static extern void gtk_builder_connect_signals_full(IntPtr raw, GtkSharp.BuilderConnectFuncNative func, IntPtr user_data);
 
 	public void ConnectSignals() {
-		GtkSharp.BuilderConnectFuncWrapper func_wrapper = new GtkSharp.BuilderConnectFuncWrapper (ConnectFunc);
-		gtk_builder_connect_signals_full(builder.Handle, func_wrapper.NativeDelegate, IntPtr.Zero);
+		BuilderConnectFunc func = ConnectFunc;
+		var gch = GCHandle.Alloc (func);
+		gtk_builder_connect_signals_full(builder.Handle, GtkSharp.BuilderConnectFuncWrapper.NativeDelegate, (IntPtr)gch);
+		gch.Free ();
 	}
 
 	public void ConnectFunc (Builder builder, GLib.Object objekt, string signal_name, string handler_name, GLib.Object connect_object, GLib.ConnectFlags flags)

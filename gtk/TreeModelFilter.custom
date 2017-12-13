@@ -65,12 +65,20 @@
 
 		public void SetModifyFunc (int n_columns, GLib.GType[] types, TreeModelFilterModifyFunc func)
 		{
-			GtkSharp.TreeModelFilterModifyFuncWrapper func_wrapper = new GtkSharp.TreeModelFilterModifyFuncWrapper (func);
 			IntPtr[] native_types = new IntPtr [types.Length];
 			for (int i = 0; i < types.Length; i++)
 				native_types [i] = types [i].Val;
-			GCHandle gch = GCHandle.Alloc (func_wrapper);
-			gtk_tree_model_filter_set_modify_func (Handle, n_columns, native_types, func_wrapper.NativeDelegate, (IntPtr) gch, GLib.DestroyHelper.NotifyHandler);
+			IntPtr data;
+			GLib.DestroyNotify destroy;
+			if (func == null) {
+				data = IntPtr.Zero;
+				destroy = null;
+			} else {
+				data = (IntPtr)GCHandle.Alloc (func);
+				destroy = GLib.DestroyHelper.NotifyHandler;
+			}
+
+			gtk_tree_model_filter_set_modify_func (Handle, n_columns, native_types, GtkSharp.TreeModelFilterModifyFuncWrapper.NativeDelegate, data, destroy);
 		}
 
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]

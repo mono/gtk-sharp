@@ -74,6 +74,9 @@ namespace GtkSharp.Generation {
 				return false;
 			}
 
+			if (!ManagedCallString.Validate (parms))
+				return false;
+
 			return true;
 		}
 

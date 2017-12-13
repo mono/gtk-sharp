@@ -173,6 +173,10 @@ namespace GtkSharp.Generation {
 				return false;
 			}
 
+			if (IGen is CallbackGen) {
+				((CallbackGen)IGen).hasInvoker = true;
+			}
+
 			return true;
 		}
 	}

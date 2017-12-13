@@ -812,6 +812,13 @@ namespace GtkSharp.Generation {
 			if (has_cb && Count > 2 && this [Count - 3].Generatable is CallbackGen && this [Count - 2].IsUserData && this [Count - 1].IsDestroyNotify)
 				this [Count - 3].Scope = "notified";
 
+			if (has_cb) {
+				foreach (Parameter p in param_list) {
+					if (p.Generatable is CallbackGen)
+						((CallbackGen)p.Generatable).parameterScopeList.Add (p.Scope);
+				}
+			}
+
 			valid = true;
 			return true;
 		}

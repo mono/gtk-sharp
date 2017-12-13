@@ -214,7 +214,7 @@
   <attr path="/api/namespace/struct[@cname='GdkTimeCoord']/field[@cname='axes']" name="array_len">128</attr>
   <attr path="/api/namespace/struct[@cname='GdkWindowObject']" name="hidden">1</attr>
   <attr path="/api/namespace/struct[@cname='GdkPixbufFormat']/method[@cname='gdk_pixbuf_format_get_extensions']/return-type" name="owned">true</attr>
-  <attr path="/api/namespace/struct[@cname='GdkPixbufFormat']/method[@cname='gdk_pixbuf_format_get_mime_types ']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/struct[@cname='GdkPixbufFormat']/method[@cname='gdk_pixbuf_format_get_mime_types']/return-type" name="owned">true</attr>
   <attr path="/api/namespace/class[@cname='GdkChar_']/method[@cname='gdk_char_height']/parameters/parameter[@name='character']" name="type">guchar</attr>
   <attr path="/api/namespace/class[@cname='GdkChar_']/method[@cname='gdk_char_width']/parameters/parameter[@name='character']" name="type">guchar</attr>
   <attr path="/api/namespace/class[@cname='GdkChar_']/method[@cname='gdk_char_measure']/parameters/parameter[@name='character']" name="type">guchar</attr>

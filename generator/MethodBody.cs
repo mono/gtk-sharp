@@ -66,7 +66,11 @@ namespace GtkSharp.Generation {
 
 				if (p.IsUserData && parameters.IsHidden (p) && !parameters.HideData &&
 					   (i == 0 || parameters [i - 1].Scope != "notified")) {
-					call_parm = "IntPtr.Zero"; 
+					var cb = parameters [i - 1].Generatable as CallbackGen;
+					if (cb != null && cb.WithParamGCHandle)
+						call_parm = "(IntPtr)gch";
+					else
+						call_parm = "IntPtr.Zero";
 				}
 
 				result [i] += call_parm;
@@ -108,29 +112,43 @@ namespace GtkSharp.Generation {
 					string wrapper = cbgen.GenWrapper(gen_info);
 					switch (p.Scope) {
 					case "notified":
-						sw.WriteLine (indent + "\t\t\t{0} {1}_wrapper = new {0} ({1});", wrapper, name);
+						if (!cbgen.GenerateStaticWrapper) {
+							sw.WriteLine (indent + "\t\t\t{0} {1}_wrapper = new {0} ({1});", wrapper, name);
+						}
 						sw.WriteLine (indent + "\t\t\tIntPtr {0};", parameters [i + 1].Name);
 						sw.WriteLine (indent + "\t\t\t{0} {1};", parameters [i + 2].CSType, parameters [i + 2].Name);
 						sw.WriteLine (indent + "\t\t\tif ({0} == null) {{", name);
 						sw.WriteLine (indent + "\t\t\t\t{0} = IntPtr.Zero;", parameters [i + 1].Name);
 						sw.WriteLine (indent + "\t\t\t\t{0} = null;", parameters [i + 2].Name);
 						sw.WriteLine (indent + "\t\t\t} else {");
-						sw.WriteLine (indent + "\t\t\t\t{0} = (IntPtr) GCHandle.Alloc ({1}_wrapper);", parameters [i + 1].Name, name);
+						sw.WriteLine (indent + "\t\t\t\t{0} = (IntPtr) GCHandle.Alloc ({1});", parameters [i + 1].Name, cbgen.GenerateStaticWrapper ? name : name + "_wrapper");
 						sw.WriteLine (indent + "\t\t\t\t{0} = GLib.DestroyHelper.NotifyHandler;", parameters [i + 2].Name, parameters [i + 2].CSType);
 						sw.WriteLine (indent + "\t\t\t}");
 						break;
 
 					case "async":
-						sw.WriteLine (indent + "\t\t\t{0} {1}_wrapper = new {0} ({1});", wrapper, name);
-						sw.WriteLine (indent + "\t\t\t{0}_wrapper.PersistUntilCalled ();", name);
+						if (cbgen.GenerateStaticWrapper) {
+							sw.WriteLine (indent + "\t\t\tGCHandle gch = GCHandle.Alloc ({0});", name);
+						} else {
+							sw.WriteLine (indent + "\t\t\t{0} {1}_wrapper = new {0} ({1});", wrapper, name);
+							if (cbgen.WithParamGCHandle)
+								sw.Write (indent + "\t\t\tGCHandle gch = ");
+							sw.WriteLine ("{0}_wrapper.PersistUntilCalled ();", name);
+						}
 						break;
 					case "call":
 					default:
 						if (p.Scope == String.Empty)
 							Console.WriteLine ("Defaulting " + gen.Name + " param to 'call' scope in method " + gen_info.CurrentMember);
-						sw.WriteLine (indent + "\t\t\t{0} {1}_wrapper = new {0} ({1});", wrapper, name);
+						if (!cbgen.GenerateStaticWrapper) {
+							sw.WriteLine (indent + "\t\t\t{0} {1}_wrapper = new {0} ({1});", wrapper, name);
+							if (cbgen.WithParamGCHandle)
+								sw.WriteLine (indent + "\t\t\tGCHandle gch = GCHandle.Alloc ({0}_wrapper);", name);
+						} else
+							sw.WriteLine (indent + "\t\t\tGCHandle gch = GCHandle.Alloc ({0});", name);
 						break;
 					}
+
 				}
 			}
 
@@ -149,6 +167,11 @@ namespace GtkSharp.Generation {
 				var finish = is_callback ? p.FinishCallback : p.Finish;
 				foreach (string s in finish)
 					sw.WriteLine (indent + "\t\t\t" + s);
+
+				var cbgen = p.Generatable as CallbackGen;
+				if (cbgen != null && p.Scope != "notified" && p.Scope != "async" && cbgen.WithParamGCHandle) {
+					sw.WriteLine (indent + "\t\t\tgch.Free();");
+				}
 			}
 		}
 

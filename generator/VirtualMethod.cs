@@ -160,6 +160,9 @@ namespace GtkSharp.Generation {
 				return false;
 			}
 
+			if (!ManagedCallString.Validate (parms))
+				return false;
+
 			vstate = ValidState.Valid;
 			return true;
 		}

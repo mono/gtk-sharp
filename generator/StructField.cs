@@ -32,6 +32,20 @@ namespace GtkSharp.Generation {
 
 		public StructField (XmlElement elem, ClassBase container_type) : base (elem, container_type) {}
 
+		public override bool Validate()
+		{
+			if (!base.Validate ())
+				return false;
+
+			SymbolTable table = SymbolTable.Table;
+			IGeneratable gen = table [CType];
+
+			if (gen is CallbackGen) {
+				((CallbackGen)gen).hasInvoker = true;
+			}
+			return true;
+		}
+
 		protected override string DefaultAccess {
 			get {
 				if (IsPadding)

@@ -25,69 +25,64 @@
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void InputFunctionNative(IntPtr data, int source, int condition);
 
-		class InputFunctionWrapper {
-
-			public void NativeCallback (IntPtr data, int source, int condition)
-			{
-				try {
-					IntPtr _arg0 = data;
-					int _arg1 = source;
-					Gdk.InputCondition _arg2 = (Gdk.InputCondition) condition;
-					managed ( _arg0,  _arg1,  _arg2);
-				} catch (Exception e) {
-					GLib.ExceptionManager.RaiseUnhandledException (e, false);
-				}
-			}
-
-			internal InputFunctionNative NativeDelegate;
-			Gdk.InputFunction managed;
-
-			public InputFunctionWrapper (Gdk.InputFunction managed)
-			{
-				this.managed = managed;
-				if (managed != null)
-					NativeDelegate = new InputFunctionNative (NativeCallback);
-			}
-		}
-
 		class InputProxy {
 
-			InputFunctionWrapper function;
-			GtkSharp.CallbackMarshalWrapper marshal;
+			Gdk.InputFunction function;
+			Gtk.CallbackMarshal marshal;
 			IntPtr data;
 			DestroyNotify destroy;
-			GLib.DestroyNotify handler;
 
-			public InputProxy (InputFunctionWrapper function, GtkSharp.CallbackMarshalWrapper marshal, IntPtr data, DestroyNotify destroy)
+			public InputProxy (Gdk.InputFunction function, Gtk.CallbackMarshal marshal, IntPtr data, DestroyNotify destroy)
 			{
 				this.marshal = marshal;
 				this.function = function;
 				this.destroy = destroy;
 				this.data = data;
-				handler = new GLib.DestroyNotify (OnDestroy);
 			}
 
-			void OnDestroy (IntPtr data)
+			static void OnDestroy (IntPtr data)
 			{
-				if (destroy != null)
-					destroy ();
+				var gch = (GCHandle)data;
+				var proxy = (InputProxy)gch.Target;
 
-				GCHandle gch = (GCHandle) data;
+				if (proxy.destroy != null)
+					proxy.destroy ();
+
 				gch.Free ();
 			}
 
-			public GLib.DestroyNotify Handler {
-				get {
-					return handler;
+			static void OnInputFunction (IntPtr data, int source, int condition)
+			{
+				var gch = (GCHandle)data;
+				var proxy = (InputProxy)gch.Target;
+
+				try {
+					proxy.function (data, source, (Gdk.InputCondition)condition);
+				} catch (Exception e) {
+					GLib.ExceptionManager.RaiseUnhandledException (e, false);
 				}
 			}
+
+			static void OnCallbackMarshal (IntPtr objekt, IntPtr data, uint n_args, IntPtr args)
+			{
+				var gch = (GCHandle)data;
+				var proxy = (InputProxy)gch.Target;
+
+				try {
+					proxy.marshal (GLib.Object.GetObject (objekt) as Gtk.Object, proxy.data, n_args, Gtk.Arg.New (args));
+				} catch (Exception e) {
+					GLib.ExceptionManager.RaiseUnhandledException (e, false);
+				}
+			}
+
+			public static GtkSharp.CallbackMarshalNative MarshalHandler = new GtkSharp.CallbackMarshalNative (OnCallbackMarshal);
+			public static InputFunctionNative FunctionHandler = new InputFunctionNative (OnInputFunction);
+			public static GLib.DestroyNotify DestroyHandler = new GLib.DestroyNotify (OnDestroy);
 		}
 
 		[Obsolete]
 		public static uint AddFull(int source, Gdk.InputCondition condition, Gdk.InputFunction function, Gtk.CallbackMarshal marshal, IntPtr data, Gtk.DestroyNotify destroy) {
-			InputFunctionWrapper function_wrapper = new InputFunctionWrapper (function);
-			GtkSharp.CallbackMarshalWrapper marshal_wrapper = new GtkSharp.CallbackMarshalWrapper (marshal);
-			InputProxy proxy = new InputProxy (function_wrapper, marshal_wrapper, data, destroy);
+			InputProxy proxy = new InputProxy (function, marshal, data, destroy);
 			GCHandle gch = GCHandle.Alloc (proxy);
-			return gtk_input_add_full (source, (int) condition, function_wrapper.NativeDelegate, marshal_wrapper.NativeDelegate, (IntPtr) gch, proxy.Handler);
+			return gtk_input_add_full (source, (int) condition, InputProxy.FunctionHandler, InputProxy.MarshalHandler, (IntPtr) gch, InputProxy.DestroyHandler);
 		}
