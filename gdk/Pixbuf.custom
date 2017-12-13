@@ -184,14 +184,11 @@
 		}
 
 		class DestroyHelper {
-
-			GCHandle gch;
 			GCHandle data_handle;
 			PixbufDestroyNotify notify;
 
 			public DestroyHelper (byte[] data, PixbufDestroyNotify notify)
 			{
-				gch = GCHandle.Alloc (this);
 				data_handle = GCHandle.Alloc (data, GCHandleType.Pinned);
 				this.notify = notify;
 			}
@@ -199,18 +196,21 @@
 			[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 			public delegate void NativeDelegate (IntPtr buf, IntPtr data);
 
-			void ReleaseHandles (IntPtr buf, IntPtr data)
+			static void ReleaseHandles (IntPtr buf, IntPtr data)
 			{
-				if (notify != null)
-					notify ((byte[])data_handle.Target);
-				data_handle.Free ();
+				var gch = (GCHandle)data;
+
+				var wrapper = (DestroyHelper)gch.Target;
+				if (wrapper.notify != null)
+					wrapper.notify ((byte[])wrapper.data_handle.Target);
+
+				wrapper.data_handle.Free ();
 				gch.Free ();
 			}
 
-			NativeDelegate handler;
-			public NativeDelegate Handler {
+			static NativeDelegate handler = new NativeDelegate (ReleaseHandles);
+			public static NativeDelegate Handler {
 				get {
-					handler = new NativeDelegate (ReleaseHandles);
 					return handler;
 				}
 			}
@@ -224,8 +224,9 @@
 			if (GetType () != typeof (Pixbuf)) {
 				throw new InvalidOperationException ("Can't override this constructor.");
 			}
-			DestroyHelper helper = new DestroyHelper (data, destroy_fn);
-			Raw = gdk_pixbuf_new_from_data(data, (int) colorspace, has_alpha, bits_per_sample, width, height, rowstride, helper.Handler, IntPtr.Zero);
+			var helper = new DestroyHelper (data, destroy_fn);
+			var gch = GCHandle.Alloc (helper);
+			Raw = gdk_pixbuf_new_from_data(data, (int) colorspace, has_alpha, bits_per_sample, width, height, rowstride, DestroyHelper.Handler, (IntPtr)gch);
 		}
 
 		// overload to default the colorspace

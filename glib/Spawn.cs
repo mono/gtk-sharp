@@ -63,29 +63,17 @@ namespace GLib {
 	[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 	internal delegate void SpawnChildSetupFuncNative (IntPtr gch);
 
-	internal class SpawnChildSetupWrapper {
+	internal static class SpawnChildSetupWrapper {
 
-		SpawnChildSetupFunc handler;
-
-		public SpawnChildSetupWrapper (SpawnChildSetupFunc handler)
-		{
-			if (handler == null)
-				return;
-
-			this.handler = handler;
-			Data = (IntPtr) GCHandle.Alloc (this);
-			NativeCallback = new SpawnChildSetupFuncNative (InvokeHandler);
-		}
-
-		public IntPtr Data;
-		public SpawnChildSetupFuncNative NativeCallback;
+		public static SpawnChildSetupFuncNative NativeCallback = InvokeHandler;
 
 		static void InvokeHandler (IntPtr data)
 		{
 			if (data == IntPtr.Zero)
 				return;
 			GCHandle gch = (GCHandle) data;
-			(gch.Target as SpawnChildSetupWrapper).handler ();
+			var func = (SpawnChildSetupFunc)gch.Target;
+			func ();
 			gch.Free ();
 		}
 	}
@@ -123,13 +111,13 @@ namespace GLib {
 			IntPtr native_dir = Marshaller.StringToPtrGStrdup (working_directory);
 			IntPtr[] native_argv = Marshaller.StringArrayToNullTermPointer (argv);
 			IntPtr[] native_envp = Marshaller.StringArrayToNullTermPointer (envp);
-			SpawnChildSetupWrapper wrapper = new SpawnChildSetupWrapper (child_setup);
+			var data = (IntPtr)GCHandle.Alloc (child_setup);
 			bool result;
 
 			if (Global.IsWindowsPlatform)
-				result = g_spawn_async_utf8 (native_dir, native_argv, native_envp, (int) flags, wrapper.NativeCallback, wrapper.Data, out pid, out error);
+				result = g_spawn_async_utf8 (native_dir, native_argv, native_envp, (int) flags, SpawnChildSetupWrapper.NativeCallback, data, out pid, out error);
 			else
-				result = g_spawn_async (native_dir, native_argv, native_envp, (int) flags, wrapper.NativeCallback, wrapper.Data, out pid, out error);
+				result = g_spawn_async (native_dir, native_argv, native_envp, (int) flags, SpawnChildSetupWrapper.NativeCallback, data, out pid, out error);
 
 			child_process = new Process (pid);
 			Marshaller.Free (native_dir);
@@ -152,16 +140,16 @@ namespace GLib {
 			IntPtr native_dir = Marshaller.StringToPtrGStrdup (working_directory);
 			IntPtr[] native_argv = Marshaller.StringArrayToNullTermPointer (argv);
 			IntPtr[] native_envp = Marshaller.StringArrayToNullTermPointer (envp);
-			SpawnChildSetupWrapper wrapper = new SpawnChildSetupWrapper (child_setup);
+			var data = (IntPtr)GCHandle.Alloc (child_setup);
 			IntPtr in_ptr = stdin == IgnorePipe ? IntPtr.Zero : Marshal.AllocHGlobal (4);
 			IntPtr out_ptr = stdout == IgnorePipe ? IntPtr.Zero : Marshal.AllocHGlobal (4);
 			IntPtr err_ptr = stderr == IgnorePipe ? IntPtr.Zero : Marshal.AllocHGlobal (4);
 			bool result;
 
 			if (Global.IsWindowsPlatform)
-				result = g_spawn_async_with_pipes_utf8 (native_dir, native_argv, native_envp, (int) flags, wrapper.NativeCallback, wrapper.Data, out pid, in_ptr, out_ptr, err_ptr, out error);
+				result = g_spawn_async_with_pipes_utf8 (native_dir, native_argv, native_envp, (int) flags, SpawnChildSetupWrapper.NativeCallback, data, out pid, in_ptr, out_ptr, err_ptr, out error);
 			else
-				result = g_spawn_async_with_pipes (native_dir, native_argv, native_envp, (int) flags, wrapper.NativeCallback, wrapper.Data, out pid, in_ptr, out_ptr, err_ptr, out error);
+				result = g_spawn_async_with_pipes (native_dir, native_argv, native_envp, (int) flags, SpawnChildSetupWrapper.NativeCallback, data, out pid, in_ptr, out_ptr, err_ptr, out error);
 
 			child_process = new Process (pid);
 			if (in_ptr != IntPtr.Zero) {
@@ -195,13 +183,13 @@ namespace GLib {
 			IntPtr native_dir = Marshaller.StringToPtrGStrdup (working_directory);
 			IntPtr[] native_argv = Marshaller.StringArrayToNullTermPointer (argv);
 			IntPtr[] native_envp = Marshaller.StringArrayToNullTermPointer (envp);
-			SpawnChildSetupWrapper wrapper = new SpawnChildSetupWrapper (child_setup);
+			var data = (IntPtr)GCHandle.Alloc (child_setup);
 			bool result;
 
 			if (Global.IsWindowsPlatform)
-				result = g_spawn_sync (native_dir, native_argv, native_envp, (int) flags, wrapper.NativeCallback, wrapper.Data, out native_stdout, out native_stderr, out exit_status, out error);
+				result = g_spawn_sync (native_dir, native_argv, native_envp, (int) flags, SpawnChildSetupWrapper.NativeCallback, data, out native_stdout, out native_stderr, out exit_status, out error);
 			else
-				result = g_spawn_sync (native_dir, native_argv, native_envp, (int) flags, wrapper.NativeCallback, wrapper.Data, out native_stdout, out native_stderr, out exit_status, out error);
+				result = g_spawn_sync (native_dir, native_argv, native_envp, (int) flags, SpawnChildSetupWrapper.NativeCallback, data, out native_stdout, out native_stderr, out exit_status, out error);
 
 			Marshaller.Free (native_dir);
 			Marshaller.Free (native_argv);
