@@ -68,8 +68,17 @@
 			IntPtr[] native_types = new IntPtr [types.Length];
 			for (int i = 0; i < types.Length; i++)
 				native_types [i] = types [i].Val;
-			GCHandle gch = func != null ? GCHandle.Alloc (func) : (GCHandle)IntPtr.Zero;
-			gtk_tree_model_filter_set_modify_func (Handle, n_columns, native_types, GtkSharp.TreeModelFilterModifyFuncWrapper.NativeDelegate, (IntPtr) gch, GLib.DestroyHelper.NotifyHandler);
+			IntPtr data;
+			GLib.DestroyNotify destroy;
+			if (func == null) {
+				data = IntPtr.Zero;
+				destroy = null;
+			} else {
+				data = (IntPtr)GCHandle.Alloc (func);
+				destroy = GLib.DestroyHelper.NotifyHandler;
+			}
+
+			gtk_tree_model_filter_set_modify_func (Handle, n_columns, native_types, GtkSharp.TreeModelFilterModifyFuncWrapper.NativeDelegate, data, destroy);
 		}
 
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
