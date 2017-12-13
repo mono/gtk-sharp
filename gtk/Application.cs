@@ -189,28 +189,31 @@ namespace Gtk {
 			}
 		}
 
-		internal class InvokeProxy : GLib.SourceProxy {
-			readonly protected EventHandler d;
+		internal static class InvokeProxy  {
+			internal static readonly GLib.SourceProxy.GSourceFuncInternal SourceHandler = HandlerInternal;
 
-			internal InvokeProxy (EventHandler d)
+			static bool HandlerInternal (IntPtr data)
 			{
-				this.d = d;
-			}
-
-			protected override bool Invoke ()
-			{
-				d (this, EventArgs.Empty);
+				try {
+					var proxy = (EventHandler)((GCHandle)data).Target;
+					proxy.Invoke (proxy, EventArgs.Empty);
+					return false;
+				} catch (Exception e) {
+					GLib.ExceptionManager.RaiseUnhandledException (e, false);
+				}
 				return false;
 			}
 		}
 
-		internal class InvokeProxyWithArgs : InvokeProxy
+		internal class InvokeProxyWithArgs : GLib.SourceProxy
 		{
+			readonly EventHandler d;
 			readonly object sender;
 			readonly EventArgs args;
 
-			internal InvokeProxyWithArgs (EventHandler d, object sender, EventArgs args) : base (d)
+			internal InvokeProxyWithArgs (EventHandler d, object sender, EventArgs args)
 			{
+				this.d = d;
 				this.args = args;
 				this.sender = sender;
 			}
@@ -222,18 +225,19 @@ namespace Gtk {
 			}
 		}
 
-		internal class InvokeProxyAction : GLib.SourceProxy
+		internal static class InvokeProxyAction
 		{
-			readonly System.Action act;
+			internal static readonly GLib.SourceProxy.GSourceFuncInternal SourceHandler = HandlerInternal;
 
-			internal InvokeProxyAction (System.Action act)
+			static bool HandlerInternal (IntPtr data)
 			{
-				this.act = act;
-			}
-
-			protected override bool Invoke ()
-			{
-				act ();
+				try {
+					var proxy = (System.Action)((GCHandle)data).Target;
+					proxy.Invoke ();
+					return false;
+				} catch (Exception e) {
+					GLib.ExceptionManager.RaiseUnhandledException (e, false);
+				}
 				return false;
 			}
 		}
@@ -258,10 +262,9 @@ namespace Gtk {
 
 		public static void Invoke (EventHandler d)
 		{
-			var p = new InvokeProxy (d);
-			var handle = GCHandle.Alloc (p);
+			var handle = GCHandle.Alloc (d);
 
-			GLib.Timeout.Add (0, handle);
+			GLib.Timeout.Add (0, InvokeProxy.SourceHandler, handle);
 		}
 
 		public static void Invoke (object sender, EventArgs args, EventHandler d)
@@ -269,15 +272,14 @@ namespace Gtk {
 			var p = new InvokeProxyWithArgs (d, sender, args);
 			var handle = GCHandle.Alloc (p);
 
-			GLib.Timeout.Add (0, handle);
+			GLib.Timeout.Add (0, GLib.SourceProxy.SourceHandler, handle);
 		}
 
 		public static void InvokeAction (System.Action act)
 		{
-			var p = new InvokeProxyAction (act);
-			var handle = GCHandle.Alloc (p);
+			var handle = GCHandle.Alloc (act);
 
-			GLib.Timeout.Add (0, handle);
+			GLib.Timeout.Add (0, InvokeProxyAction.SourceHandler, handle);
 		}
 
 		public static void InvokeAction<T> (Action<T> act, T arg)
@@ -285,7 +287,7 @@ namespace Gtk {
 			var p = new InvokeProxyAction<T> (act, arg);
 			var handle = GCHandle.Alloc (p);
 
-			GLib.Timeout.Add (0, handle);
+			GLib.Timeout.Add (0, GLib.SourceProxy.SourceHandler, handle);
 		}
 	}
 }

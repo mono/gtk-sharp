@@ -28,16 +28,18 @@ namespace GLib {
 
 	public class Timeout {
 
-		internal class TimeoutProxy : SourceProxy {
-			readonly TimeoutHandler real_handler;
-			public TimeoutProxy (TimeoutHandler real)
-			{
-				real_handler = real;
-			}
+		internal static class TimeoutProxy  {
+			internal static readonly SourceProxy.GSourceFuncInternal SourceHandler = HandlerInternal;
 
-			protected override bool Invoke ()
+			static bool HandlerInternal (IntPtr data)
 			{
-				return real_handler ();
+				try {
+					var proxy = (TimeoutHandler)((GCHandle)data).Target;
+					return proxy.Invoke ();
+				} catch (Exception e) {
+					ExceptionManager.RaiseUnhandledException (e, false);
+				}
+				return false;
 			}
 		}
 
@@ -53,10 +55,9 @@ namespace GLib {
 
 		public static uint Add (uint interval, TimeoutHandler hndlr)
 		{
-			TimeoutProxy p = new TimeoutProxy (hndlr);
-			var handle = GCHandle.Alloc (p);
+			var handle = GCHandle.Alloc (hndlr);
 
-			return Add (interval, handle);
+			return Add (interval, TimeoutProxy.SourceHandler, handle);
 		}
 
 		/// <summary>
@@ -65,9 +66,9 @@ namespace GLib {
 		/// <returns>The add.</returns>
 		/// <param name="interval">Interval.</param>
 		/// <param name="handle">Handle.</param>
-		internal static uint Add (uint interval, GCHandle handle)
+		internal static uint Add (uint interval, SourceProxy.GSourceFuncInternal handler, GCHandle handle)
 		{
-			return g_timeout_add_full (defaultPriority, interval, SourceProxy.SourceHandler, (IntPtr)handle, DestroyHelper.NotifyHandler);
+			return g_timeout_add_full (defaultPriority, interval, handler, (IntPtr)handle, DestroyHelper.NotifyHandler);
 		}
 	}
 }
