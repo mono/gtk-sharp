@@ -40,15 +40,7 @@ namespace GLib {
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		internal delegate bool GSourceFuncInternal (IntPtr ptr);
 
-		static GSourceFuncInternal sourceHandler;
-		public static GSourceFuncInternal SourceHandler {
-			get {
-				if (sourceHandler == null)
-					sourceHandler = new GSourceFuncInternal (HandlerInternal);
-				return sourceHandler;
-			}
-		}
-
+		internal static readonly GSourceFuncInternal SourceHandler = HandlerInternal;
 		static bool HandlerInternal (IntPtr data)
 		{
 			try {
