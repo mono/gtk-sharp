@@ -28,20 +28,13 @@ namespace GLibSharp {
 	[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 	internal delegate bool IOFuncNative(IntPtr source, int condition, IntPtr data);
 
-	internal class IOFuncWrapper {
-
-		IOFunc managed;
-
-		public IOFuncNative NativeDelegate;
-
-		public IOFuncWrapper (IOFunc managed)
-		{
-			this.managed = managed;
-			NativeDelegate = new IOFuncNative (NativeCallback);
-		}
-		bool NativeCallback (IntPtr source, int condition, IntPtr data)
+	internal static class IOFuncWrapper {
+		
+		public static IOFuncNative NativeDelegate;
+		static bool NativeCallback (IntPtr source, int condition, IntPtr data)
 		{
 			try {
+				var managed = (IOFunc)((GCHandle)data).Target;
 				return managed (IOChannel.FromHandle (source), (IOCondition) condition);
 			} catch (Exception e) {
 				ExceptionManager.RaiseUnhandledException (e, false);
@@ -185,15 +178,13 @@ namespace GLib {
 
 		public uint AddWatch (int priority, IOCondition condition, IOFunc func)
 		{
-			IOFuncWrapper func_wrapper = null;
 			IntPtr user_data = IntPtr.Zero;
 			DestroyNotify notify = null;
 			if (func != null) {
-				func_wrapper = new IOFuncWrapper (func);
-				user_data = (IntPtr) GCHandle.Alloc (func_wrapper);
+				user_data = (IntPtr) GCHandle.Alloc (func);
 				notify = DestroyHelper.NotifyHandler;
 			}
-			return g_io_add_watch_full (Handle, priority, (int) condition, func_wrapper.NativeDelegate, user_data, notify);
+			return g_io_add_watch_full (Handle, priority, (int) condition, IOFuncWrapper.NativeDelegate, user_data, notify);
 		}
 
 		public IOStatus Flush ()
