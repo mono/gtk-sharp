@@ -31,6 +31,7 @@
 		static extern bool gtk_tree_model_iter_children (IntPtr raw, out Gtk.TreeIter iter, IntPtr parent);
 		public bool IterChildren (out Gtk.TreeIter iter)
 		{
+			Gtk.Application.AssertMainThread();
 			bool raw_ret = gtk_tree_model_iter_children (Handle, out iter, IntPtr.Zero);
 			bool ret = raw_ret;
 			return ret;
@@ -41,6 +42,7 @@
 
 		public int IterNChildren ()
 		{
+			Gtk.Application.AssertMainThread();
 			int raw_ret = gtk_tree_model_iter_n_children_ptr (Handle, IntPtr.Zero);
 			int ret = raw_ret;
 			return ret;
@@ -50,6 +52,7 @@
 		static extern bool gtk_tree_model_iter_nth_child (IntPtr raw, out Gtk.TreeIter iter, IntPtr parent, int n);
 		public bool IterNthChild (out Gtk.TreeIter iter, int n)
 		{
+			Gtk.Application.AssertMainThread();
 			bool raw_ret = gtk_tree_model_iter_nth_child (Handle, out iter, IntPtr.Zero, n);
 			bool ret = raw_ret;
 			return ret;
@@ -127,6 +130,7 @@
 
 		public TreeIter InsertWithValues (int position, params object[] values)
 		{
+			Gtk.Application.AssertMainThread();
 			unsafe {
 				int* columns = stackalloc int[values.Length];
 				GLib.Value* vals = stackalloc GLib.Value[values.Length];
@@ -155,6 +159,7 @@
 
 		public void SetValues (TreeIter iter, params object[] values)
 		{
+			Gtk.Application.AssertMainThread();
 			unsafe {
 				int* columns = stackalloc int[values.Length];
 				GLib.Value* vals = stackalloc GLib.Value[values.Length];
@@ -177,12 +182,14 @@
 
 		public ListStore (params GLib.GType[] types) : base (IntPtr.Zero)
 		{
+			Gtk.Application.AssertMainThread();
 			CreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);
 			ColumnTypes = types;
 		}
 
 		public ListStore (params Type[] types) : base (IntPtr.Zero)
 		{
+			Gtk.Application.AssertMainThread();
 			GLib.GType[] gtypes = new GLib.GType[types.Length];
 			int i = 0;
 			foreach (Type type in types) {
