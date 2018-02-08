@@ -32,7 +32,6 @@
 		[Obsolete ("Replaced by AppendNode")]
 		public TreeIter Append (TreeIter parent)
 		{
-			Gtk.Application.AssertMainThread();
 			TreeIter iter;
 			gtk_tree_store_append (Handle, out iter, ref parent);
 			return iter;
@@ -41,13 +40,11 @@
 		[Obsolete ("Replaced by AppendNode")]
 		public void Append (out TreeIter iter)
 		{
-			Gtk.Application.AssertMainThread();
 			gtk_tree_store_append (Handle, out iter, IntPtr.Zero);
 		}
 
 		public TreeIter AppendNode ()
 		{
-			Gtk.Application.AssertMainThread();
 			TreeIter iter;
 			gtk_tree_store_append (Handle, out iter, IntPtr.Zero);
 			return iter;
@@ -55,7 +52,6 @@
 
 		public TreeIter AppendNode (TreeIter parent)
 		{
-			Gtk.Application.AssertMainThread();
 			TreeIter iter;
 			gtk_tree_store_append (Handle, out iter, ref parent);
 			return iter;
@@ -70,7 +66,6 @@
 		[Obsolete ("Replaced by InsertNode")]
 		public TreeIter Insert (TreeIter parent, int position)
 		{
-			Gtk.Application.AssertMainThread();
 			TreeIter iter;
 			gtk_tree_store_insert (Handle, out iter, ref parent, position);
 			return iter;
@@ -79,13 +74,11 @@
 		[Obsolete ("Replaced by InsertNode")]
 		public void Insert (out TreeIter iter, int position)
 		{
-			Gtk.Application.AssertMainThread();
 			gtk_tree_store_insert (Handle, out iter, IntPtr.Zero, position);
 		}
 
 		public TreeIter InsertNode (TreeIter parent, int position)
 		{
-			Gtk.Application.AssertMainThread();
 			TreeIter iter;
 			gtk_tree_store_insert (Handle, out iter, ref parent, position);
 			return iter;
@@ -93,7 +86,6 @@
 
 		public TreeIter InsertNode (int position)
 		{
-			Gtk.Application.AssertMainThread();
 			TreeIter iter;
 			gtk_tree_store_insert (Handle, out iter, IntPtr.Zero, position);
 			return iter;
@@ -108,7 +100,6 @@
 		[Obsolete ("Replaced by PrependNode")]
 		public TreeIter Prepend(TreeIter parent)
 		{
-			Gtk.Application.AssertMainThread();
 			TreeIter iter;
 			gtk_tree_store_prepend (Handle, out iter, ref parent);
 			return iter;
@@ -117,13 +108,11 @@
 		[Obsolete ("Replaced by PrependNode")]
 		public void Prepend (out TreeIter iter)
 		{
-			Gtk.Application.AssertMainThread();
 			gtk_tree_store_append (Handle, out iter, IntPtr.Zero);
 		}
 
 		public TreeIter PrependNode (TreeIter parent)
 		{
-			Gtk.Application.AssertMainThread();
 			TreeIter iter;
 			gtk_tree_store_prepend (Handle, out iter, ref parent);
 			return iter;
@@ -131,7 +120,6 @@
 
 		public TreeIter PrependNode ()
 		{
-			Gtk.Application.AssertMainThread();
 			TreeIter iter;
 			gtk_tree_store_prepend (Handle, out iter, IntPtr.Zero);
 			return iter;
@@ -146,7 +134,6 @@
 		[Obsolete ("Replaced by InsertNodeBefore")]
 		public TreeIter InsertBefore (TreeIter parent, TreeIter sibling)
 		{
-			Gtk.Application.AssertMainThread();
 			TreeIter iter;
 			gtk_tree_store_insert_before (Handle, out iter, ref parent, ref sibling);
 			return iter;
@@ -155,13 +142,11 @@
 		[Obsolete ("Replaced by InsertNodeBefore")]
 		public void InsertBefore (out TreeIter iter, TreeIter sibling)
 		{
-			Gtk.Application.AssertMainThread();
 			gtk_tree_store_insert_before (Handle, out iter, IntPtr.Zero, ref sibling);
 		}
 
 		public TreeIter InsertNodeBefore (TreeIter sibling)
 		{
-			Gtk.Application.AssertMainThread();
 			TreeIter iter;
 			gtk_tree_store_insert_before (Handle, out iter, IntPtr.Zero, ref sibling);
 			return iter;
@@ -169,7 +154,6 @@
 
 		public TreeIter InsertNodeBefore (TreeIter parent, TreeIter sibling)
 		{
-			Gtk.Application.AssertMainThread();
 			TreeIter iter;
 			gtk_tree_store_insert_before (Handle, out iter, ref parent, ref sibling);
 			return iter;
@@ -184,7 +168,6 @@
 		[Obsolete ("Replaced by InsertNodeAfter")]
 		public TreeIter InsertAfter (TreeIter parent, TreeIter sibling)
 		{
-			Gtk.Application.AssertMainThread();
 			TreeIter iter;
 			gtk_tree_store_insert_after (Handle, out iter, ref parent, ref sibling);
 			return iter;
@@ -193,13 +176,11 @@
 		[Obsolete ("Replaced by InsertNodeAfter")]
 		public void InsertAfter (out TreeIter iter, TreeIter sibling)
 		{
-			Gtk.Application.AssertMainThread();
 			gtk_tree_store_insert_after (Handle, out iter, IntPtr.Zero, ref sibling);
 		}
 
 		public TreeIter InsertNodeAfter (TreeIter sibling)
 		{
-			Gtk.Application.AssertMainThread();
 			TreeIter iter;
 			gtk_tree_store_insert_after (Handle, out iter, IntPtr.Zero, ref sibling);
 			return iter;
@@ -207,7 +188,6 @@
 
 		public TreeIter InsertNodeAfter (TreeIter parent, TreeIter sibling)
 		{
-			Gtk.Application.AssertMainThread();
 			TreeIter iter;
 			gtk_tree_store_insert_after (Handle, out iter, ref parent, ref sibling);
 			return iter;
@@ -216,7 +196,6 @@
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool gtk_tree_model_iter_children (IntPtr raw, out Gtk.TreeIter iter, IntPtr parent);
 		public bool IterChildren (out Gtk.TreeIter iter) {
-			Gtk.Application.AssertMainThread();
 			bool raw_ret = gtk_tree_model_iter_children (Handle, out iter, IntPtr.Zero);
 			bool ret = raw_ret;
 			return ret;
@@ -227,7 +206,6 @@
 
 		public int IterNChildren ()
 		{
-			Gtk.Application.AssertMainThread();
 			int raw_ret = gtk_tree_model_iter_n_children_ptr (Handle, IntPtr.Zero);
 			int ret = raw_ret;
 			return ret;
@@ -236,7 +214,6 @@
 		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern bool gtk_tree_model_iter_nth_child (IntPtr raw, out Gtk.TreeIter iter, IntPtr parent, int n);
 		public bool IterNthChild (out Gtk.TreeIter iter, int n) {
-			Gtk.Application.AssertMainThread();
 			bool raw_ret = gtk_tree_model_iter_nth_child (Handle, out iter, IntPtr.Zero, n);
 			bool ret = raw_ret;
 			return ret;
@@ -333,7 +310,6 @@
 
 		private TreeIter InsertWithValues (bool hasParent, TreeIter parent, int position, params object[] values)
 		{
-			Gtk.Application.AssertMainThread();
 			unsafe {
 				int* columns = stackalloc int[values.Length];
 				GLib.Value* vals = stackalloc GLib.Value[values.Length];
@@ -365,7 +341,6 @@
 
 		public void SetValues (TreeIter iter, params object[] values)
 		{
-			Gtk.Application.AssertMainThread();
 			unsafe {
 				int *columns = stackalloc int[values.Length];
 				GLib.Value *vals = stackalloc GLib.Value[values.Length];
@@ -388,14 +363,12 @@
 
 		public TreeStore (params GLib.GType[] types) : base (IntPtr.Zero)
 		{
-			Gtk.Application.AssertMainThread();
 			CreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);
 			ColumnTypes = types;
 		}
 
 		public TreeStore (params Type[] types) : base (IntPtr.Zero)
 		{
-			Gtk.Application.AssertMainThread();
 			GLib.GType[] gtypes = new GLib.GType[types.Length];
 			int i = 0;
 			foreach (Type type in types) {
