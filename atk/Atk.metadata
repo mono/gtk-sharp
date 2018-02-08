@@ -67,4 +67,27 @@
   <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyTableSummary']" name="cname">accessible-table-summary</attr>
   <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyTableCaptionObject']" name="cname">accessible-table-caption-object</attr>
   <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyHypertextNumLinks']" name="cname">accessible-hypertext-nlinks</attr>
+  <!-- These can not be generated automatically. The scope of the callback is persistent until a matching remove call -->
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@cname='atk_object_connect_property_change_handler']" name="hidden">1</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@cname='atk_object_remove_property_change_handler']" name="hidden">1</attr>
+  <attr path="/api/namespace/class[@cname='AtkGlobal']/*[@cname='atk_add_focus_tracker']" name="hidden">1</attr>
+  <attr path="/api/namespace/class[@cname='AtkGlobal']/*[@cname='atk_remove_focus_tracker']" name="hidden">1</attr>
+  <attr path="/api/namespace/class[@cname='AtkGlobal']/*[@cname='atk_add_key_event_listener']" name="hidden">1</attr>
+  <attr path="/api/namespace/class[@cname='AtkGlobal']/*[@cname='atk_remove_key_event_listener']" name="hidden">1</attr>
+
+  <add-node path="/api/namespace/object[@cname='AtkNoOpObject']">
+      <interface_hide>
+      </interface_hide>
+  </add-node>
+
+  <add-node path="/api/namespace/object[@cname='AtkNoOpObject']/interface_hide">
+      <method cname="atk_component_add_focus_handler" />
+  </add-node>
+  <add-node path="/api/namespace/object[@cname='AtkNoOpObject']/interface_hide">
+      <method cname="atk_component_remove_focus_handler" />
+  </add-node>
+
+  <!-- Init functions can be async scope -->
+  <attr path="/api/namespace/class[@cname='AtkFocus_']/*[@cname='atk_focus_tracker_init']/parameters/parameter[@name='init']" name="scope">async</attr>
+
 </metadata>

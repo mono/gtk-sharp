@@ -229,6 +229,21 @@ namespace GtkSharp.Generation {
 			if (!Validate ())
 				return;
 
+			if (implementor != null) {
+				foreach (XmlNode node in implementor.Elem.ChildNodes) {
+					if (node.Name != "interface_hide")
+						continue;
+
+					foreach (XmlElement hidden_interface in node.ChildNodes) {
+						if (hidden_interface.Name != "method")
+							continue;
+						
+						if (CName == hidden_interface.GetAttribute ("cname"))
+							return;
+					}
+				}
+			}
+
 			Method comp = null;
 
 			gen_info.CurrentMember = Name;

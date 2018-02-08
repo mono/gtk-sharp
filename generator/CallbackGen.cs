@@ -295,7 +295,7 @@ namespace GtkSharp.Generation {
 			if (finish.Length > 0)
 				sw.WriteLine (finish);
 			if (HasAsyncCall) {
-				if (!HasOnlyAsyncCall)
+				if (!HasOnlyAsyncCall || !WithParamGCHandle)
 					sw.WriteLine ("\t\t\t\tif ({0}release_on_call)\n\t\t\t\t\tgch.Free ();", callPrefix);
 				else
 					sw.WriteLine ("\t\t\t\t\tgch.Free ();");
