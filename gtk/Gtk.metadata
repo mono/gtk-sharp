@@ -986,4 +986,8 @@
   <attr path="/api/namespace/boxed[@cname='GtkRecentInfo']/method[@cname='gtk_recent_info_get_applications']" name="name">GetRecentApplications</attr>
   <attr path="/api/namespace/boxed[@cname='GtkRecentInfo']/method[@cname='gtk_recent_info_get_groups']" name="name">GetRecentGroups</attr>
   <attr path="/api/namespace/boxed[@cname='GtkTreeIter']" name="iequatable">1</attr>
+
+  <!-- Fixup callback generation scopes -->
+  <attr path="/api/namespace/object[@cname='GtkItemFactory']/*[@cname='gtk_item_factory_popup_with_data']/parameters/parameter[@name='destroy']" name="scope">async</attr>
+  <attr path="/api/namespace/class[@cname='GtkInit_']/*[@cname='gtk_init_add']/parameters/parameter[@name='function']" name="scope">async</attr>
 </metadata>
