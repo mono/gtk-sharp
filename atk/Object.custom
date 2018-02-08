@@ -288,3 +288,37 @@
 				return OnGetAttributes();
 			}
 		}
+
+		static System.Collections.Generic.Dictionary<uint, GCHandle> handlers = new System.Collections.Generic.Dictionary<uint, GCHandle> ();
+
+		[DllImport("libatk-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern uint atk_object_connect_property_change_handler(IntPtr raw, AtkSharp.PropertyChangeHandlerNative handler);
+
+		public uint ConnectPropertyChangeHandler(Atk.PropertyChangeHandler handler) {
+			AtkSharp.PropertyChangeHandlerWrapper handler_wrapper = new AtkSharp.PropertyChangeHandlerWrapper (handler);
+			var gch = GCHandle.Alloc (handler_wrapper);
+
+			uint ret = atk_object_connect_property_change_handler(Handle, handler_wrapper.NativeDelegate);
+
+			if (ret != 0) {
+				lock (handlers)
+					handlers.Add (ret, gch);
+			}
+
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void atk_object_remove_property_change_handler(IntPtr raw, uint handler_id);
+
+		public void RemovePropertyChangeHandler(uint handler_id) {
+			atk_object_remove_property_change_handler(Handle, handler_id);
+
+			GCHandle gch;
+
+			lock (handlers) {
+				handlers.TryGetValue (handler_id, out gch);
+				handlers.Remove (handler_id);
+			}
+			gch.Free();
+		}

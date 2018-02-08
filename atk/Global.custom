@@ -32,4 +32,69 @@
 			GLib.Marshaller.Free (native_event_type);
 			return id;
 		}
+
+		static System.Collections.Generic.Dictionary<uint, GCHandle> keyListeners = new System.Collections.Generic.Dictionary<uint, GCHandle> ();
+
+		[DllImport("libatk-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern uint atk_add_key_event_listener(AtkSharp.KeySnoopFuncNative listener, IntPtr data);
+
+		public static uint AddKeyEventListener(Atk.KeySnoopFunc listener) {
+			GCHandle gch = GCHandle.Alloc (listener);
+			uint ret = atk_add_key_event_listener(AtkSharp.KeySnoopFuncWrapper.NativeDelegate, (IntPtr)gch);
+
+			if (ret != 0) {
+				lock (keyListeners)
+					keyListeners.Add (ret, gch);
+			}
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void atk_remove_key_event_listener(uint listener_id);
+
+		public static void RemoveKeyEventListener(uint listener_id) {
+			atk_remove_key_event_listener(listener_id);
+
+			GCHandle gch;
+
+			lock (keyListeners) {
+				keyListeners.TryGetValue (listener_id, out gch);
+				keyListeners.Remove (listener_id);
+			}
+			gch.Free();
+		}
+
+		static System.Collections.Generic.Dictionary<uint, GCHandle> focusTrackers = new System.Collections.Generic.Dictionary<uint, GCHandle> ();
+
+		[DllImport("libatk-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern uint atk_add_focus_tracker(AtkSharp.EventListenerNative focus_tracker);
+
+		public static uint AddFocusTracker(Atk.EventListener focus_tracker) {
+			AtkSharp.EventListenerWrapper focus_tracker_wrapper = new AtkSharp.EventListenerWrapper (focus_tracker);
+			GCHandle gch = GCHandle.Alloc (focus_tracker_wrapper);
+
+			uint ret = atk_add_focus_tracker(focus_tracker_wrapper.NativeDelegate);
+
+			if (ret != 0) {
+				lock (focusTrackers)
+					focusTrackers.Add (ret, gch);
+			}
+
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void atk_remove_focus_tracker(uint tracker_id);
+
+		public static void RemoveFocusTracker(uint tracker_id) {
+			atk_remove_focus_tracker(tracker_id);
+
+			GCHandle gch;
+
+			lock (focusTrackers) {
+				focusTrackers.TryGetValue (tracker_id, out gch);
+				focusTrackers.Remove (tracker_id);
+			}
+			gch.Free();
+		}
                

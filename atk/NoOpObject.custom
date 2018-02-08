@@ -626,3 +626,37 @@
 				return ret;
 			}
 		}
+
+		static System.Collections.Generic.Dictionary<uint, GCHandle> handlers = new System.Collections.Generic.Dictionary<uint, GCHandle> ();
+
+		[DllImport("libatk-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern uint atk_component_add_focus_handler(IntPtr raw, AtkSharp.FocusHandlerNative handler);
+
+		public uint AddFocusHandler(Atk.FocusHandler handler) {
+			AtkSharp.FocusHandlerWrapper handler_wrapper = new AtkSharp.FocusHandlerWrapper (handler);
+			var gch = GCHandle.Alloc (handler_wrapper);
+
+			uint ret = atk_component_add_focus_handler(Handle, handler_wrapper.NativeDelegate);
+
+			if (ret != 0) {
+				lock (handlers)
+					handlers.Add (ret, gch);
+			}
+
+			return ret;
+		}
+
+		[DllImport("libatk-1.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void atk_component_remove_focus_handler(IntPtr raw, uint handler_id);
+
+		public void RemoveFocusHandler(uint handler_id) {
+			atk_component_remove_focus_handler(Handle, handler_id);
+
+			GCHandle gch;
+
+			lock (handlers) {
+				handlers.TryGetValue (handler_id, out gch);
+				handlers.Remove (handler_id);
+			}
+			gch.Free();
+		}
