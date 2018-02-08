@@ -66,7 +66,8 @@ namespace GtkSharp.Generation {
 
 				if (p.IsUserData && parameters.IsHidden (p) && !parameters.HideData &&
 					   (i == 0 || parameters [i - 1].Scope != "notified")) {
-					var cb = parameters [i - 1].Generatable as CallbackGen;
+					var param = parameters [i - 1];
+					var cb = param.Generatable as CallbackGen;
 					if (cb != null && cb.WithParamGCHandle)
 						call_parm = "(IntPtr)gch";
 					else
@@ -128,7 +129,10 @@ namespace GtkSharp.Generation {
 
 					case "async":
 						if (cbgen.GenerateStaticWrapper) {
-							sw.WriteLine (indent + "\t\t\tGCHandle gch = GCHandle.Alloc ({0});", name);
+							sw.WriteLine (indent + "\t\t\tIntPtr gch = IntPtr.Zero;");
+							sw.WriteLine (indent + "\t\t\tif ({0} != null) {{", name);
+							sw.WriteLine (indent + "\t\t\t\tgch = (IntPtr)GCHandle.Alloc ({0});", name);
+							sw.WriteLine (indent + "\t\t\t}");
 						} else {
 							sw.WriteLine (indent + "\t\t\t{0} {1}_wrapper = new {0} ({1});", wrapper, name);
 							if (cbgen.WithParamGCHandle)

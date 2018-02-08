@@ -278,8 +278,14 @@ namespace GtkSharp.Generation {
 				string call_parm;
 
 				IGeneratable gen = Generatable;
-				if (gen is CallbackGen)
-					return SymbolTable.Table.CallByName (CType, CallName + "_wrapper");
+				if (gen is CallbackGen) {
+					var cb = (CallbackGen)gen;
+					if (cb.GenerateStaticWrapper) {
+						return SymbolTable.Table.CallByName (CType, CallName);
+					} else {
+						return SymbolTable.Table.CallByName (CType, CallName + "_wrapper");
+					}
+				}
 				else if (PassAs != String.Empty) {
 					call_parm = PassAs + " ";
 					if (CSType != MarshalType)
