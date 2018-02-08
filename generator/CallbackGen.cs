@@ -92,7 +92,7 @@ namespace GtkSharp.Generation {
 		public override string CallByName (string var_name)
 		{
 			if (WithParamGCHandle)
-				return NS + "Sharp." + Name + "Wrapper.NativeDelegate";
+				return "(" + var_name + " == null) ? null : " + NS + "Sharp." + Name + "Wrapper.NativeDelegate";
 			return var_name + ".NativeDelegate";
 		}
 
