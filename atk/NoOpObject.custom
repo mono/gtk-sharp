@@ -641,7 +641,8 @@
 			if (ret != 0) {
 				lock (handlers)
 					handlers.Add (ret, gch);
-			}
+			} else
+				gch.Free ();
 
 			return ret;
 		}

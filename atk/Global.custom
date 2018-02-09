@@ -45,7 +45,9 @@
 			if (ret != 0) {
 				lock (keyListeners)
 					keyListeners.Add (ret, gch);
-			}
+			} else
+				gch.Free ();
+
 			return ret;
 		}
 
@@ -78,7 +80,8 @@
 			if (ret != 0) {
 				lock (focusTrackers)
 					focusTrackers.Add (ret, gch);
-			}
+			} else
+				gch.Free ();
 
 			return ret;
 		}
