@@ -19,17 +19,16 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
+using System;
+using System.Collections.Generic;
 
 namespace GtkSharp.Generation {
-
-	using System;
-	using System.Collections;
 
 	public class SymbolTable {
 		
 		static SymbolTable table = null;
 
-		Hashtable types = new Hashtable ();
+		Dictionary<string, IGeneratable> types = new Dictionary<string, IGeneratable>();
 		
 		public static SymbolTable Table {
 			get {
@@ -160,7 +159,7 @@ namespace GtkSharp.Generation {
 			}
 		}
 		
-		public IEnumerable Generatables {
+		public IEnumerable<IGeneratable> Generatables {
 			get {
 				return types.Values;
 			}
