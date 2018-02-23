@@ -1,4 +1,4 @@
-// GtkSharp.Generation.Property.cs - The Property Generatable.
+﻿// GtkSharp.Generation.Property.cs - The Property Generatable.
 //
 // Author: Mike Kestner <mkestner@speakeasy.net>
 //
@@ -44,22 +44,22 @@ namespace GtkSharp.Generation {
 
 		bool Readable {
 			get {
-				return elem.GetAttribute ("readable") == "true";
+				return elem.GetAttribute (Constants.Readable) == "true";
 			}
 		}
 
 		bool Writable {
 			get {
-				return elem.GetAttribute ("writeable") == "true" &&
-					!elem.HasAttribute ("construct-only");
+				return elem.GetAttribute (Constants.Writeable) == "true" &&
+					       !elem.HasAttribute (Constants.ConstructOnly);
 			}
 		}
 
 		bool IsDeprecated {
 			get {
 				return !container_type.IsDeprecated &&
-					(elem.GetAttribute ("deprecated") == "1" ||
-					 elem.GetAttribute ("deprecated") == "true");
+					(elem.GetAttribute (Constants.Deprecated) == "1" ||
+					 elem.GetAttribute (Constants.Deprecated) == "true");
 			}
 		}
 

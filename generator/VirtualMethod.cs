@@ -1,4 +1,4 @@
-// GtkSharp.Generation.VirtualMethod.cs - The VirtualMethod Generatable.
+﻿// GtkSharp.Generation.VirtualMethod.cs - The VirtualMethod Generatable.
 //
 // Author: Mike Kestner <mkestner@novell.com>
 //
@@ -36,8 +36,8 @@ namespace GtkSharp.Generation {
 		public VirtualMethod (XmlElement elem, ClassBase container_type) : base (elem, container_type)
 		{
 			this.elem = elem;
-			retval = new ReturnValue (elem ["return-type"]);
-			parms = new Parameters (elem["parameters"]);
+			retval = new ReturnValue (elem [Constants.ReturnType]);
+			parms = new Parameters (elem[Constants.Parameters]);
 			parms.HideData = true;
 		}
 
@@ -61,7 +61,7 @@ namespace GtkSharp.Generation {
 
 		public string MarshalReturnType {
 			get {
-				return SymbolTable.Table.GetMarshalReturnType (elem["return-type"].GetAttribute("type"));
+				return SymbolTable.Table.GetMarshalReturnType (elem[Constants.ReturnType].GetAttribute(Constants.Type));
 			}
 		}
 

@@ -41,13 +41,13 @@ namespace GtkSharp.Generation {
 
 		protected virtual bool Readable {
 			get {
-				return elem.GetAttribute ("readable") != "false";
+				return elem.GetAttribute (Constants.Readable) != "false";
 			}
 		}
 
 		protected virtual bool Writable {
 			get {
-				return elem.GetAttribute ("writeable") != "false";
+				return elem.GetAttribute (Constants.Writeable) != "false";
 			}
 		}
 
@@ -55,25 +55,25 @@ namespace GtkSharp.Generation {
 
 		protected string Access {
 			get {
-				return elem.HasAttribute ("access") ? elem.GetAttribute ("access") : DefaultAccess;
+				return elem.HasAttribute (Constants.Access) ? elem.GetAttribute (Constants.Access) : DefaultAccess;
 			}
 		}
 
 		public bool IsArray {
 			get {
-				return elem.HasAttribute("array_len") || elem.HasAttribute("array");
+				return elem.HasAttribute(Constants.ArrayLen) || elem.HasAttribute(Constants.Array);
 			}
 		}
 
 		public bool IsNullTermArray {
 			get {
-				return elem.HasAttribute ("null_term_array");
+				return elem.HasAttribute (Constants.NullTermArray);
 			}
 		}
 
 		public bool IsBitfield {
 			get {
-				return elem.HasAttribute("bits");
+				return elem.HasAttribute(Constants.Bits);
 			}
 		}
 
@@ -158,7 +158,7 @@ namespace GtkSharp.Generation {
 
 			SymbolTable table = SymbolTable.Table;
 			StreamWriter sw = gen_info.Writer;
-			string modifiers = elem.HasAttribute ("new_flag") ? "new " : "";
+			string modifiers = elem.HasAttribute (Constants.NewFlag) ? "new " : "";
 			bool is_struct = table.IsStruct (CType) || table.IsBoxed (CType);
 
 			sw.WriteLine (indent + "public " + modifiers + CSType + " " + Name + " {");

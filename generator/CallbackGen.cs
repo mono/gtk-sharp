@@ -1,4 +1,4 @@
-// GtkSharp.Generation.CallbackGen.cs - The Callback Generatable.
+﻿// GtkSharp.Generation.CallbackGen.cs - The Callback Generatable.
 //
 // Author: Mike Kestner <mkestner@novell.com>
 //
@@ -39,10 +39,10 @@ namespace GtkSharp.Generation {
 
 		public CallbackGen (XmlElement ns, XmlElement elem) : base (ns, elem)
 		{
-			retval = new ReturnValue (elem ["return-type"]);
-			parms = new Parameters (elem ["parameters"]);
+			retval = new ReturnValue (elem [Constants.ReturnType]);
+			parms = new Parameters (elem [Constants.Parameters]);
 			parms.HideData = true;
-			hasInvoker = elem.HasAttribute ("has_invoker");
+			hasInvoker = elem.HasAttribute (Constants.HasInvoker);
 		}
 
 		public override string DefaultValue {
@@ -212,7 +212,7 @@ namespace GtkSharp.Generation {
 							break;
 						}
 					}
-					if (Elem.HasAttribute ("force_instance"))
+					if (Elem.HasAttribute (Constants.ForceInstance))
 						withParamGCHandle = false;
 				}
 				return withParamGCHandle.Value;

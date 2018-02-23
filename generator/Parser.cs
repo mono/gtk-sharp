@@ -1,4 +1,4 @@
-// GtkSharp.Generation.Parser.cs - The XML Parsing engine.
+﻿// GtkSharp.Generation.Parser.cs - The XML Parsing engine.
 //
 // Author: Mike Kestner <mkestner@speakeasy.net>
 //
@@ -67,10 +67,10 @@ namespace GtkSharp.Generation {
 					continue;
 
 				switch (child.Name) {
-				case "namespace":
+				case Constants.Namespace:
 					gens.AddRange (ParseNamespace (elem));
 					break;
-				case "symbol":
+				case Constants.Symbol:
 					gens.Add (ParseSymbol (elem));
 					break;
 				default:
@@ -92,41 +92,41 @@ namespace GtkSharp.Generation {
 				if (elem == null)
 					continue;
 
-				if (elem.HasAttribute("hidden"))
+				if (elem.HasAttribute(Constants.Hidden))
 					continue;
 
 				bool is_opaque = false;
-				if (elem.GetAttribute ("opaque") == "true" ||
-				    elem.GetAttribute ("opaque") == "1")
+				if (elem.GetAttribute (Constants.Opaque) == "true" ||
+				    elem.GetAttribute (Constants.Opaque) == "1")
 					is_opaque = true;
 
 				switch (def.Name) {
-				case "alias":
-					string aname = elem.GetAttribute("cname");
-					string atype = elem.GetAttribute("type");
+				case Constants.Alias:
+					string aname = elem.GetAttribute(Constants.CName);
+					string atype = elem.GetAttribute(Constants.Type);
 					if ((aname == "") || (atype == ""))
 						continue;
 					result.Add (new AliasGen (aname, atype));
 					break;
-				case "boxed":
+				case Constants.Boxed:
 					result.Add (is_opaque ? new OpaqueGen (ns, elem) as object : new BoxedGen (ns, elem) as object);
 					break;
-				case "callback":
+				case Constants.Callback:
 					result.Add (new CallbackGen (ns, elem));
 					break;
-				case "enum":
+				case Constants.Enumeration:
 					result.Add (new EnumGen (ns, elem));
 					break;
-				case "interface":
+				case Constants.Interface:
 					result.Add (new InterfaceGen (ns, elem));
 					break;
-				case "object":
+				case Constants.Object:
 					result.Add (new ObjectGen (ns, elem));
 					break;
-				case "class":
+				case Constants.Class:
 					result.Add (new ClassGen (ns, elem));
 					break;
-				case "struct":
+				case Constants.Struct:
 					result.Add (is_opaque ? new OpaqueGen (ns, elem) as object : new StructGen (ns, elem) as object);
 					break;
 				default:
@@ -140,26 +140,26 @@ namespace GtkSharp.Generation {
 
 		private IGeneratable ParseSymbol (XmlElement symbol)
 		{
-			string type = symbol.GetAttribute ("type");
-			string cname = symbol.GetAttribute ("cname");
-			string name = symbol.GetAttribute ("name");
+			string type = symbol.GetAttribute (Constants.Type);
+			string cname = symbol.GetAttribute (Constants.CName);
+			string name = symbol.GetAttribute (Constants.Name);
 			IGeneratable result = null;
 
-			if (type == "simple") {
-				if (symbol.HasAttribute ("default_value"))
-					result = new SimpleGen (cname, name, symbol.GetAttribute ("default_value"));
+			if (type == Constants.Simple) {
+				if (symbol.HasAttribute (Constants.DefaultValue))
+					result = new SimpleGen (cname, name, symbol.GetAttribute (Constants.DefaultValue));
 				else {
 					Console.WriteLine ("Simple type element " + cname + " has no specified default value");
 					result = new SimpleGen (cname, name, String.Empty);
 				}
-			} else if (type == "manual")
+			} else if (type == Constants.Manual)
 				result = new ManualGen (cname, name);
-			else if (type == "alias")
+			else if (type == Constants.Alias)
 				result = new AliasGen (cname, name);
-			else if (type == "marshal") {
-				string mtype = symbol.GetAttribute ("marshal_type");
-				string call = symbol.GetAttribute ("call_fmt");
-				string from = symbol.GetAttribute ("from_fmt");
+			else if (type == Constants.Marshal) {
+				string mtype = symbol.GetAttribute (Constants.MarshalType);
+				string call = symbol.GetAttribute (Constants.CallFmt);
+				string from = symbol.GetAttribute (Constants.FromFmt);
 				result = new MarshalGen (cname, name, mtype, call, from);
 			} else
 				Console.WriteLine ("Parser::ParseSymbol - Unexpected symbol type " + type);

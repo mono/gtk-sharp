@@ -1,4 +1,4 @@
-// GtkSharp.Generation.Signal.cs - The Signal Generatable.
+﻿// GtkSharp.Generation.Signal.cs - The Signal Generatable.
 //
 // Author: Mike Kestner <mkestner@speakeasy.net>
 //
@@ -40,10 +40,10 @@ namespace GtkSharp.Generation {
 		public Signal (XmlElement elem, ClassBase container_type)
 		{
 			this.elem = elem;
-			name = elem.GetAttribute ("name");
-			marshaled = elem.GetAttribute ("manual") == "true";
-			retval = new ReturnValue (elem ["return-type"]);
-			parms = new Parameters (elem["parameters"]);
+			name = elem.GetAttribute (Constants.Name);
+			marshaled = elem.GetAttribute (Constants.Manual) == "true";
+			retval = new ReturnValue (elem [Constants.ReturnType]);
+			parms = new Parameters (elem[Constants.Parameters]);
 			this.container_type = container_type;
 		}
 
@@ -82,7 +82,7 @@ namespace GtkSharp.Generation {
 
  		public void GenerateDecl (StreamWriter sw)
  		{
-			if (elem.HasAttribute("new_flag") || (container_type != null && container_type.GetSignalRecursively (Name) != null))
+			if (elem.HasAttribute(Constants.NewFlag) || (container_type != null && container_type.GetSignalRecursively (Name) != null))
 				sw.Write("new ");
 
  			sw.WriteLine ("\t\tevent " + EventHandlerQualifiedName + " " + Name + ";");
@@ -90,7 +90,7 @@ namespace GtkSharp.Generation {
 
 		public string CName {
 			get {
-				return "\"" + elem.GetAttribute("cname") + "\"";
+				return "\"" + elem.GetAttribute(Constants.CName) + "\"";
 			}
 		}
 
@@ -159,7 +159,7 @@ namespace GtkSharp.Generation {
 
 		string ClassFieldName {
 			get {
-				return elem.HasAttribute ("field_name") ? elem.GetAttribute("field_name") : String.Empty;
+				return elem.HasAttribute (Constants.FieldName) ? elem.GetAttribute(Constants.FieldName) : String.Empty;
 			}
 		}
 
@@ -292,7 +292,7 @@ namespace GtkSharp.Generation {
 
 		private bool NeedNew (ClassBase implementor)
 		{
-			return elem.HasAttribute ("new_flag") ||
+			return elem.HasAttribute (Constants.NewFlag) ||
 				(container_type != null && container_type.GetSignalRecursively (Name) != null) ||
 				(implementor != null && implementor.GetSignalRecursively (Name) != null);
 		}

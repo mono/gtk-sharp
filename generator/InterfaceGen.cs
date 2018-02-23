@@ -1,4 +1,4 @@
-// GtkSharp.Generation.InterfaceGen.cs - The Interface Generatable.
+﻿// GtkSharp.Generation.InterfaceGen.cs - The Interface Generatable.
 //
 // Author: Mike Kestner <mkestner@speakeasy.net>
 //
@@ -35,16 +35,16 @@ namespace GtkSharp.Generation {
 
 		public InterfaceGen (XmlElement ns, XmlElement elem) : base (ns, elem) 
 		{
-			consume_only = elem.HasAttribute ("consume_only");
+			consume_only = elem.HasAttribute (Constants.ConsumeOnly);
 			foreach (XmlNode node in elem.ChildNodes) {
 				switch (node.Name) {
-				case "virtual_method":
+				case Constants.VirtualMethod:
 					VirtualMethod vm = new VirtualMethod (node as XmlElement, this);
 					vms.Add (vm);
 					members.Add (vm);
 					break;
-				case "signal":
-					object sig = sigs [(node as XmlElement).GetAttribute ("name")];
+				case Constants.Signal:
+					object sig = sigs [(node as XmlElement).GetAttribute (Constants.Name)];
 					if (sig == null)
 						sig = new Signal (node as XmlElement, this);
 					members.Add (sig);
