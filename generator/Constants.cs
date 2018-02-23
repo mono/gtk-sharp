@@ -20,7 +20,7 @@
 
 namespace GtkSharp.Generation
 {
-	public static class Constants
+	static class Constants
 	{
 		public const string Namespace = "namespace";
 		public const string Symbol = "symbol";
