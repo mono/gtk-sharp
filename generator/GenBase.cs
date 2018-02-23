@@ -28,42 +28,50 @@ namespace GtkSharp.Generation {
 
 	public abstract class GenBase : IGeneratable {
 		
-		private XmlElement ns;
-		private XmlElement elem;
+		string Documentation;
 
-		protected GenBase (XmlElement ns, XmlElement elem)
+		public void Parse (XmlElement ns, XmlElement elem)
 		{
-			this.ns = ns;
-			this.elem = elem;
+			ParseElement (ns, elem);
 		}
 
-		public string CName {
-			get {
-				return elem.GetCType ();
+		protected virtual void ParseElement (XmlElement ns, XmlElement elem)
+		{
+			Name = elem.GetName ();
+			CName = elem.GetCType ();
+
+			Namespace = ns;
+			// TODO: Grab the correct library name to pinvoke
+			LibraryName = ns.GetAttribute (Constants.Library);
+			NS = ns.GetAttribute (Constants.Name);
+
+			if (elem.HasAttribute (Constants.Internal)) {
+				string attr = elem.GetAttribute (Constants.Internal);
+				IsInternal = attr == "1" || attr == "true";
+			}
+
+			foreach (XmlElement child in elem.ChildNodes) {
+				ParseChildElement (ns, child);
 			}
 		}
 
-		public XmlElement Elem {
-			get {
-				return elem;
+		protected virtual void ParseChildElement (XmlElement ns, XmlElement childElement)
+		{
+			if (childElement.Name == Constants.Documentation) {
+				Documentation = childElement.InnerText;
+				return;
 			}
+
+			Console.WriteLine ("{0} - Unexpected node {1} in {2}", GetType().Name, childElement.Name, Name);
 		}
 
-		public bool IsInternal {
-			get {
-				if (elem.HasAttribute (Constants.Internal)) {
-					string attr = elem.GetAttribute (Constants.Internal);
-					return attr == "1" || attr == "true";
-				}
-				return false;
-			}
-		}
+		public string CName { get; private set; }
 
-		public string LibraryName {
-			get {
-				return ns.GetAttribute (Constants.Library);
-			}
-		}
+		public bool IsInternal { get; private set; }
+
+		public string LibraryName { get; private set; }
+
+		public string Name { get; private set; }
 
 		public virtual string MarshalReturnType { 
 			get {
@@ -79,17 +87,7 @@ namespace GtkSharp.Generation {
 
 		public abstract string MarshalType { get; }
 
-		public string Name {
-			get {
-				return elem.GetAttribute (Constants.Name);
-			}
-		}
-
-		public string NS {
-			get {
-				return ns.GetAttribute (Constants.Name);
-			}
-		}
+		public string NS { get; private set; }
 
 		public abstract string DefaultValue { get; }
 
@@ -141,9 +139,11 @@ namespace GtkSharp.Generation {
 
 		public abstract bool Validate ();
 
+		internal XmlElement Namespace { get; private set; }
+
 		public void Generate ()
 		{
-			GenerationInfo geninfo = new GenerationInfo (ns);
+			GenerationInfo geninfo = new GenerationInfo (Namespace);
 			Generate (geninfo);
 		}
 

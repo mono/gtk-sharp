@@ -109,10 +109,14 @@ namespace GtkSharp.Generation {
 			return "Marshal.FreeHGlobal (" +var + ")";
 		}
 
-		private bool DisableNew {
-			get {
-				return Elem.HasAttribute (Constants.DisableNew);
-			}
+		bool DisableNew;
+		bool isIEquatable;
+		protected override void ParseElement(XmlElement ns, XmlElement elem)
+		{
+			base.ParseElement(ns, elem);
+
+			DisableNew = elem.HasAttribute (Constants.DisableNew);
+			isIEquatable = elem.HasAttribute (Constants.IEquatable) && elem.GetAttribute (Constants.IEquatable) == "1";
 		}
 
 		protected new void GenFields (GenerationInfo gen_info)
@@ -149,7 +153,7 @@ namespace GtkSharp.Generation {
 
 		string GetInterfaceImplExtra ()
 		{
-			if (Elem.HasAttribute (Constants.IEquatable) && Elem.GetAttribute (Constants.IEquatable) == "1")
+			if (isIEquatable)
 				return " : IEquatable<" + Name + ">";
 			return string.Empty;
 		}

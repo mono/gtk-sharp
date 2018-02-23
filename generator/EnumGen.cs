@@ -35,53 +35,93 @@ namespace GtkSharp.Generation {
 		// TODO:
 		// See marshalling without casting
 
-		class EnumMember
+		class EnumMember : GenBase
 		{
-			public string Name { get; private set; }
+			public string MemberName { get; private set; }
 			public string Value { get; private set; }
+
 			bool isBitField;
 
-			public EnumMember (XmlElement elem, bool isBitField)
+			public EnumMember (bool isBitField)
 			{
 				this.isBitField = isBitField;
-
-				Name = elem.GetName ();
-				Value = elem.GetAttribute (Constants.Value);
 			}
 
-			public bool Validate ()
+			protected override void ParseElement (XmlElement ns, XmlElement elem)
 			{
+				base.ParseElement (ns, elem);
+
+				MemberName = elem.GetName ();
+				Value = elem.GetAttribute (Constants.Value);
+
 				if (isBitField) {
 					int value = int.Parse (Value);
 					Value = string.Format ("0x{0:X}", value);
 				}
-				return true;
 			}
 
-			public string Generate ()
+			public override void Generate (GenerationInfo geninfo)
 			{
-				return Name + " = " + Value + ",";
+				geninfo.Writer.WriteLine (MemberName + " = " + Value + ",");
+			}
+
+			// These will be removed from GenBase to another layer.
+			public override string MarshalType {
+				get {
+					throw new NotImplementedException ();
+				}
+			}
+
+			public override string DefaultValue {
+				get {
+					throw new NotImplementedException ();
+				}
+			}
+
+			public override string CallByName (string var)
+			{
+				throw new NotImplementedException ();
+			}
+
+			public override string FromNative (string var)
+			{
+				throw new NotImplementedException ();
+			}
+
+			public override bool Validate ()
+			{
+				return true;
 			}
 		}
 
-		string enum_type = String.Empty;
 		readonly List<EnumMember> members = new List<EnumMember> ();
-		bool isBitField;
+		readonly bool isBitField;
+		bool hasGetGType;
+		string getGTypeMethod;
 
-		public EnumGen (XmlElement ns, XmlElement elem, bool isBitField) : base (ns, elem)
+		public EnumGen (bool isBitField)
 		{
 			this.isBitField = isBitField;
-			foreach (XmlElement member in elem.ChildNodes) {
-				switch (member.Name) {
-				case Constants.Member:
-					var em = new EnumMember (member, isBitField);
-					members.Add (em);
-					break;
-				default:
-					Console.WriteLine ("EnumGen - Unexpected node {0} in {1}", member.Name, Name);
-					break;
-				}
+		}
+
+		protected override void ParseElement(XmlElement ns, XmlElement elem)
+		{
+			base.ParseElement (ns, elem);
+
+			hasGetGType = elem.HasAttribute (Constants.GetGType);
+			getGTypeMethod = elem.GetAttribute (Constants.GetGType);
+		}
+
+		protected override void ParseChildElement(XmlElement ns, XmlElement childElement)
+		{
+			switch (childElement.Name) {
+			case Constants.Member:
+				var em = new EnumMember (isBitField);
+				em.Parse (ns, childElement);
+				members.Add (em);
+				return;
 			}
+			base.ParseChildElement(ns, childElement);
 		}
 
 		public override bool Validate ()
@@ -121,6 +161,7 @@ namespace GtkSharp.Generation {
 		public override void Generate (GenerationInfo gen_info)
 		{
 			StreamWriter sw = gen_info.OpenStream (Name);
+			gen_info.Writer = sw;
 
 			sw.WriteLine ("namespace " + NS + " {");
 			sw.WriteLine ();
@@ -132,26 +173,33 @@ namespace GtkSharp.Generation {
 
 			if (isBitField)
 				sw.WriteLine ("\t[Flags]");
-			if (Elem.HasAttribute(Constants.GetGType))
+			if (hasGetGType)
 				sw.WriteLine ("\t[{0}]", Name);
 
 			string access = IsInternal ? "internal" : "public";
-			sw.WriteLine ("\t" + access + " enum " + Name + enum_type + " {");
+			sw.WriteLine ("\t" + access + " enum " + Name + " {");
 			sw.WriteLine ();
 
-			foreach (var member in members)
-				sw.WriteLine ("\t\t" + member.Generate ());
+			foreach (var member in members) {
+				sw.Write ("\t\t"); 
+				member.Generate (gen_info);
+			}
 
 			sw.WriteLine ("\t}");
 
-			if (Elem.HasAttribute (Constants.GetGType)) {
-				AttributeHelper.Gen (sw, Name, LibraryName, Elem.GetAttribute (Constants.GetGType));
+			if (hasGetGType) {
+				AttributeHelper.Gen (sw, Name, LibraryName, getGTypeMethod);
 			}
 
 			sw.WriteLine ("#endregion");
 			sw.WriteLine ("}");
 			sw.Close ();
-			Statistics.EnumCount++;
+			gen_info.Writer = null;
+
+			if (isBitField)
+				Statistics.FlagsCount++;
+			else
+				Statistics.EnumCount++;
 		}
 	}
 }

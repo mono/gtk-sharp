@@ -20,6 +20,8 @@
 // Boston, MA 02111-1307, USA.
 
 
+using System.Xml;
+
 namespace GtkSharp.Generation {
 
 	public interface IGeneratable  {
@@ -64,6 +66,8 @@ namespace GtkSharp.Generation {
 
 		// Generates an expression to convert var to ToNativeReturnType
 		string ToNativeReturn (string var);
+
+		void Parse (XmlElement ns, XmlElement elem);
 
 		bool Validate ();
 

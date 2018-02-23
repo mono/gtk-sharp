@@ -25,6 +25,7 @@ namespace GtkSharp.Generation
 		public const string Member = "member";
 		public const string Namespace = "namespace";
 		public const string Symbol = "symbol";
+		public const string Documentation = "doc";
 
 		public const string GetGType = "glib:get-type";
 
@@ -36,7 +37,7 @@ namespace GtkSharp.Generation
 		public const string Bitfield = "bitfield";
 		public const string Boxed = "boxed";
 		public const string Callback = "callback";
-		public const string Enumeration = "enum";
+		public const string Enumeration = "enumeration";
 		public const string Interface = "interface";
 		public const string Object = "object";
 		public const string Class = "class";

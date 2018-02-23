@@ -22,6 +22,7 @@
 namespace GtkSharp.Generation {
 
 	using System;
+	using System.Xml;
 
 	public abstract class SimpleBase : IGeneratable  {
 		
@@ -40,6 +41,10 @@ namespace GtkSharp.Generation {
 			else if (toks.Length == 2)
 				this.ns = toks[0];
 			this.default_value = default_value;
+		}
+
+		public void Parse (XmlElement ns, XmlElement elem)
+		{
 		}
 		
 		public string CName {

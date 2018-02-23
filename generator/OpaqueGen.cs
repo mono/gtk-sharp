@@ -32,11 +32,16 @@ namespace GtkSharp.Generation {
 			return var + " == IntPtr.Zero ? null : (" + QualifiedName + ") GLib.Opaque.GetOpaque (" + var + ", typeof (" + QualifiedName + "), " + (owned ? "true" : "false") + ")";
 		}
 
-		private bool DisableRawCtor {
-			get {
-				return Elem.HasAttribute (Constants.DisableRawCtor);
-			}
+		protected override void ParseElement(XmlElement ns, XmlElement elem)
+		{
+			base.ParseElement (ns, elem);
+
+			DisableRawCtor = elem.HasAttribute (Constants.DisableRawCtor);
+			parentType = elem.GetAttribute (Constants.Parent);
 		}
+
+		private bool DisableRawCtor { get; set; }
+		string parentType;
 
 		ClassBase GetParentWithGType (ClassBase start)
 		{
@@ -85,7 +90,7 @@ namespace GtkSharp.Generation {
 				sw.WriteLine ("\t[Obsolete]");
 			GenerateAttribute (sw);
 			sw.Write ("\t{0} class " + Name, IsInternal ? "internal" : "public");
-			string cs_parent = table.GetCSType(Elem.GetAttribute(Constants.Parent));
+			string cs_parent = table.GetCSType(parentType);
 			if (cs_parent != "")
 				sw.Write (" : " + cs_parent);
 			else

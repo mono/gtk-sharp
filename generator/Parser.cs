@@ -99,46 +99,50 @@ namespace GtkSharp.Generation {
 				    elem.GetAttribute (Constants.Opaque) == "1")
 					is_opaque = true;
 
+				IGeneratable gen;
 				switch (def.Name) {
 				case Constants.Alias:
 					string aname = elem.GetAttribute(Constants.CName);
 					string atype = elem.GetAttribute(Constants.Type);
 					if ((aname == "") || (atype == ""))
 						continue;
-					result.Add (new AliasGen (aname, atype));
+					gen = new AliasGen (aname, atype);
 					break;
 				case Constants.Boxed:
 					if (is_opaque)
-						result.Add(new OpaqueGen(ns, elem));
+						gen = new OpaqueGen(ns, elem);
 					else
-						result.Add(new BoxedGen(ns, elem));
+						gen = new BoxedGen(ns, elem);
 					break;
 				case Constants.Callback:
-					result.Add (new CallbackGen (ns, elem));
+					gen = new CallbackGen (ns, elem);
 					break;
 				case Constants.Bitfield:
 				case Constants.Enumeration:
-					result.Add (new EnumGen (ns, elem, def.Name == Constants.Bitfield));
+					gen = new EnumGen (def.Name == Constants.Bitfield);
 					break;
 				case Constants.Interface:
-					result.Add (new InterfaceGen (ns, elem));
+					gen = new InterfaceGen (ns, elem);
 					break;
 				case Constants.Object:
-					result.Add (new ObjectGen (ns, elem));
+					gen = new ObjectGen (ns, elem);
 					break;
 				case Constants.Class:
-					result.Add (new ClassGen (ns, elem));
+					gen = new ClassGen (ns, elem);
 					break;
 				case Constants.Struct:
 					if (is_opaque)
-						result.Add(new OpaqueGen(ns, elem));
+						gen = new OpaqueGen(ns, elem);
 					else
-						result.Add(new StructGen (ns, elem));
+						gen = new StructGen (ns, elem);
 					break;
 				default:
 					Console.WriteLine ("Parser::ParseNamespace - Unexpected node: " + def.Name);
-					break;
+					continue;
 				}
+
+				gen.Parse (ns, elem);
+				result.Add (gen);
 			}
 
 			return result;
