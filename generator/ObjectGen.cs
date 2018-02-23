@@ -91,17 +91,19 @@ namespace GtkSharp.Generation {
 			return base.Validate ();
 		}
 
-		private bool DisableVoidCtor {
-			get {
-				return Elem.HasAttribute (Constants.DisableVoidCtor);
-			}
+		protected override void ParseElement(XmlElement ns, XmlElement elem)
+		{
+			base.ParseElement (ns, elem);
+
+			DisableVoidCtor = elem.HasAttribute (Constants.DisableVoidCtor);
+			DisableGTypeCtor = elem.HasAttribute (Constants.DisableGTypeCtor);
+			parentType = elem.GetAttribute (Constants.Parent);
 		}
 
-		private bool DisableGTypeCtor {
-			get {
-				return Elem.HasAttribute (Constants.DisableGTypeCtor);
-			}
-		}
+		string parentType;
+		private bool DisableVoidCtor;
+
+		private bool DisableGTypeCtor;
 
 		private class DirectoryInfo {
 			public string assembly_name;
@@ -180,7 +182,7 @@ namespace GtkSharp.Generation {
 				sw.WriteLine ("\t" + attr);
 			GenerateAttribute (sw);
 			sw.Write ("\t{0} {1}class " + Name, IsInternal ? "internal" : "public", IsAbstract ? "abstract " : "");
-			string cs_parent = table.GetCSType(Elem.GetAttribute(Constants.Parent));
+			string cs_parent = table.GetCSType(parentType);
 			if (cs_parent != "") {
 				di.objects.Add (CName, QualifiedName);
 				sw.Write (" : " + cs_parent);
@@ -214,7 +216,7 @@ namespace GtkSharp.Generation {
 				}
 			}
 
-			if (has_sigs && Elem.HasAttribute(Constants.Parent)) {
+			if (has_sigs && !string.IsNullOrEmpty (parentType)) {
 				GenSignals (gen_info, null);
 			}
 
@@ -286,7 +288,7 @@ namespace GtkSharp.Generation {
 
 		protected override void GenCtors (GenerationInfo gen_info)
 		{
-			if (!Elem.HasAttribute(Constants.Parent))
+			if (!string.IsNullOrEmpty (parentType))
 				return;
 
 			if (!DisableGTypeCtor) {

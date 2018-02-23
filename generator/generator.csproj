@@ -183,5 +183,7 @@
     </Compile>
     <Compile Include="AttributeHelper.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="XmlElementExtensions.cs" />
+    <Compile Include="RecordGen.cs" />
   </ItemGroup>
 </Project>

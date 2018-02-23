@@ -53,12 +53,18 @@ namespace GtkSharp.Generation {
 			get {
 				return sigs;
 			}
-		}	
+		}
+
+		string parent;
+		protected override void ParseElement(XmlElement ns, XmlElement elem)
+		{
+			base.ParseElement (ns, elem);
+
+			parent = elem.GetAttribute (Constants.Parent);
+		}
 
 		public ClassBase Parent {
 			get {
-				string parent = Elem.GetAttribute(Constants.Parent);
-
 				if (parent == "")
 					return null;
 				else
@@ -66,7 +72,7 @@ namespace GtkSharp.Generation {
 			}
 		}
 
-		protected ClassBase (XmlElement ns, XmlElement elem) : base (ns, elem) {
+		protected ClassBase (XmlElement ns, XmlElement elem) {
 					
 			if (elem.HasAttribute (Constants.Deprecated)) {
 				string attr = elem.GetAttribute (Constants.Deprecated);

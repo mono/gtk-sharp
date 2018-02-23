@@ -227,20 +227,20 @@ namespace GtkSharp.Generation {
 			if (!Validate ())
 				return;
 
-			if (implementor != null) {
-				foreach (XmlNode node in implementor.Elem.ChildNodes) {
-					if (node.Name != "interface_hide")
-						continue;
+			//if (implementor != null) {
+			//	foreach (XmlNode node in implementor.Elem.ChildNodes) {
+			//		if (node.Name != "interface_hide")
+			//			continue;
 
-					foreach (XmlElement hidden_interface in node.ChildNodes) {
-						if (hidden_interface.Name != "method")
-							continue;
+			//		foreach (XmlElement hidden_interface in node.ChildNodes) {
+			//			if (hidden_interface.Name != "method")
+			//				continue;
 						
-						if (CName == hidden_interface.GetAttribute (Constants.CName))
-							return;
-					}
-				}
-			}
+			//			if (CName == hidden_interface.GetAttribute (Constants.CName))
+			//				return;
+			//		}
+			//	}
+			//}
 
 			Method comp = null;
 

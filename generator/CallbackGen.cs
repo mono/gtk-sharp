@@ -36,13 +36,21 @@ namespace GtkSharp.Generation {
 		private bool valid = true;
 		internal List<string> parameterScopeList = new List<string> ();
 		internal bool hasInvoker = false;
+		bool force_instance;
 
-		public CallbackGen (XmlElement ns, XmlElement elem) : base (ns, elem)
+		public CallbackGen (XmlElement ns, XmlElement elem)
 		{
 			retval = new ReturnValue (elem [Constants.ReturnType]);
 			parms = new Parameters (elem [Constants.Parameters]);
 			parms.HideData = true;
 			hasInvoker = elem.HasAttribute (Constants.HasInvoker);
+		}
+
+		protected override void ParseElement(XmlElement ns, XmlElement elem)
+		{
+			base.ParseElement (ns, elem);
+
+			force_instance = elem.HasAttribute (Constants.ForceInstance);
 		}
 
 		public override string DefaultValue {
@@ -212,7 +220,7 @@ namespace GtkSharp.Generation {
 							break;
 						}
 					}
-					if (Elem.HasAttribute (Constants.ForceInstance))
+					if (force_instance)
 						withParamGCHandle = false;
 				}
 				return withParamGCHandle.Value;

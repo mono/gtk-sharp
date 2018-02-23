@@ -22,6 +22,7 @@
 namespace GtkSharp.Generation {
 
 	using System;
+	using System.Xml;
 
 	public abstract class SimpleBase : IGeneratable  {
 		
@@ -29,6 +30,10 @@ namespace GtkSharp.Generation {
 		string ctype;
 		string ns = String.Empty;
 		string default_value = String.Empty;
+
+		protected SimpleBase ()
+		{
+		}
 
 		public SimpleBase (string ctype, string type, string default_value)
 		{
@@ -41,16 +46,44 @@ namespace GtkSharp.Generation {
 				this.ns = toks[0];
 			this.default_value = default_value;
 		}
+
+		public void Parse (XmlElement ns, XmlElement elem)
+		{
+			ParseElement (ns, elem);
+		}
+
+		protected virtual void ParseElement (XmlElement ns, XmlElement elem)
+		{
+			this.ns = ns.GetName ();
+
+			foreach (XmlElement child in elem.ChildNodes)
+				ParseChildElement (ns, child);
+		}
+
+		protected virtual void ParseChildElement (XmlElement ns, XmlElement childElement)
+		{
+			if (childElement.Name == Constants.Documentation) {
+				// TODO: Use this
+				return;
+			}
+			Console.WriteLine ("{0} - Unexpected node {1} in {2}", GetType ().Name, childElement.Name, Name);
+		}
 		
 		public string CName {
 			get {
 				return ctype;
+			}
+			protected set {
+				ctype = value;
 			}
 		}
 
 		public string Name {
 			get {
 				return type;
+			}
+			protected set {
+				type = value;
 			}
 		}
 

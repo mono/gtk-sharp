@@ -327,12 +327,6 @@ namespace GtkSharp.Generation {
 			return false;
 		}
 	
-		public bool IsEnumFlags(string c_type)
-		{
-			EnumGen gen = this [c_type] as EnumGen;
-			return (gen != null && gen.Elem.GetAttribute (Constants.Type) == "flags");
-		}
-	
 		public bool IsInterface(string c_type)
 		{
 			if (this[c_type] is InterfaceGen)

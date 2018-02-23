@@ -49,6 +49,8 @@ namespace GtkSharp.Generation {
 			}
 		}
 
+		public static int FlagsCount { get; set; }
+
 		public static int EnumCount {
 			get {
 				return enums;
@@ -177,6 +179,7 @@ namespace GtkSharp.Generation {
 			Console.WriteLine();
 			Console.WriteLine("Generation Summary:");
 			Console.Write("  Enums: " + enums);
+			Console.Write("  Flags: " + FlagsCount);
 			Console.Write("  Structs: " + structs);
 			Console.Write("  Boxed: " + boxed);
 			Console.Write("  Opaques: " + opaques);
