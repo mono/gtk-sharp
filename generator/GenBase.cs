@@ -39,7 +39,7 @@ namespace GtkSharp.Generation {
 
 		public string CName {
 			get {
-				return elem.GetAttribute (Constants.CName);
+				return elem.GetCType ();
 			}
 		}
 

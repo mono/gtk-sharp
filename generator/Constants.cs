@@ -31,7 +31,7 @@ namespace GtkSharp.Generation
 		public const string Hidden = "hidden";
 		public const string Opaque = "opaque";
 		public const string Alias = "alias";
-		public const string CName = "cname";
+		public const string CName = "c:type";
 		public const string Type = "type";
 		public const string Bitfield = "bitfield";
 		public const string Boxed = "boxed";

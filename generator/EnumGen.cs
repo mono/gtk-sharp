@@ -45,26 +45,17 @@ namespace GtkSharp.Generation {
 			{
 				this.isBitField = isBitField;
 
-				Name = elem.GetAttribute (Constants.Name);
+				Name = elem.GetName ();
 				Value = elem.GetAttribute (Constants.Value);
 			}
 
 			public bool Validate ()
 			{
-				if (IsUnsigned) {
-					Value = Value.TrimEnd ('u', 'U');
-				}
 				if (isBitField) {
 					int value = int.Parse (Value);
 					Value = string.Format ("0x{0:X}", value);
 				}
 				return true;
-			}
-
-			public bool IsUnsigned {
-				get {
-					return Value.EndsWith ("U", StringComparison.OrdinalIgnoreCase);
-				}
 			}
 
 			public string Generate ()
@@ -96,9 +87,6 @@ namespace GtkSharp.Generation {
 		public override bool Validate ()
 		{
 			foreach (var member in members) {
-				if (member.IsUnsigned)
-					enum_type = " : uint";
-
 				if (!member.Validate ())
 					return false;
 			}

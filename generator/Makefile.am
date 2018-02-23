@@ -56,7 +56,8 @@ sources = 				\
 	StructGen.cs			\
 	SymbolTable.cs			\
 	VirtualMethod.cs		\
-	VMSignature.cs
+	VMSignature.cs			\
+	XmlElementExtensions.cs
 
 build_sources = $(addprefix $(srcdir)/, $(sources))
 dist_sources = $(sources)
