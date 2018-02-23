@@ -19,13 +19,12 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Xml;
 
 namespace GtkSharp.Generation {
-
-	using System;
-	using System.Collections;
-	using System.IO;
-	using System.Xml;
 
 	public class Parameter {
 
@@ -389,7 +388,7 @@ namespace GtkSharp.Generation {
 				if (CSType == MarshalType)
 					return new string [0];
 
-				ArrayList result = new ArrayList ();
+				var result = new List<string> ();
 				result.Add (String.Format ("int cnt_{0} = {0} == null ? 0 : {0}.Length;", CallName));
 				result.Add (String.Format ("{0}[] native_{1} = new {0} [cnt_{1}" + (NullTerminated ? " + 1" : "") + "];", MarshalType.TrimEnd ('[', ']'), CallName));
 				IGeneratable gen = Generatable;
@@ -405,7 +404,7 @@ namespace GtkSharp.Generation {
 				if (NullTerminated)
 					result.Add (String.Format ("native_{0} [cnt_{0}] = IntPtr.Zero;", CallName));
 				
-				return (string[]) result.ToArray (typeof (string));
+				return result.ToArray();
 			}
 		}
 
@@ -423,7 +422,7 @@ namespace GtkSharp.Generation {
 				if (CSType == MarshalType)
 					return new string [0];
 
-				var result = new System.Collections.Generic.List<string> ();
+				var result = new List<string> ();
 				IGeneratable gen = Generatable;
 				if (gen is IManualMarshaler || (gen is MarshalGen && ((MarshalGen)gen).FreeAfterUse)) {
 					result.Add ("for (int i = 0; i < cnt_" + CallName + "; i++) {");
@@ -647,9 +646,9 @@ namespace GtkSharp.Generation {
 		}
 	}
 
-	public class Parameters : IEnumerable {
-		
-		ArrayList param_list = new ArrayList ();
+	public class Parameters : IEnumerable<Parameter> {
+
+		List<Parameter> param_list = new List<Parameter>();
 		XmlElement elem;
 
 		public Parameters (XmlElement elem) 
@@ -746,9 +745,19 @@ namespace GtkSharp.Generation {
 			param_list = null;
 		}
 
-		public IEnumerator GetEnumerator ()
+		public IEnumerator<Parameter> GetEnumerator()
 		{
-			return param_list.GetEnumerator ();
+			return param_list.GetEnumerator();
+		}
+
+		IEnumerator<Parameter> IEnumerable<Parameter>.GetEnumerator()
+		{
+			return GetEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
 		}
 
 		bool valid = false;

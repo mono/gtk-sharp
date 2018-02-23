@@ -23,6 +23,7 @@
 *.wixobj
 *.wixpdb
 *.FileListAbsolute.txt
+.vs
 bin
 obj
 

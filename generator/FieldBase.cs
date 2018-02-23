@@ -18,12 +18,11 @@
 // Boston, MA 02111-1307, USA.
 
 
-namespace GtkSharp.Generation {
+using System;
+using System.IO;
+using System.Xml;
 
-	using System;
-	using System.Collections;
-	using System.IO;
-	using System.Xml;
+namespace GtkSharp.Generation {
 
 	public abstract class FieldBase : PropertyBase {
 		public FieldBase (XmlElement elem, ClassBase container_type) : base (elem, container_type) {}

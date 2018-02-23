@@ -19,13 +19,12 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml;
 
 namespace GtkSharp.Generation {
-
-	using System;
-	using System.Collections;
-	using System.IO;
-	using System.Xml;
 
 	public class Parser  {
 		
@@ -59,7 +58,7 @@ namespace GtkSharp.Generation {
 				return null;
 			}
 
-			ArrayList gens = new ArrayList ();
+			var gens = new List<IGeneratable>();
 
 			foreach (XmlNode child in root.ChildNodes) {
 				XmlElement elem = child as XmlElement;
@@ -79,12 +78,12 @@ namespace GtkSharp.Generation {
 				}
 			}
 
-			return (IGeneratable[]) gens.ToArray (typeof (IGeneratable));
+			return gens.ToArray();
 		}
 
-		private ArrayList ParseNamespace (XmlElement ns)
+		private List<IGeneratable> ParseNamespace (XmlElement ns)
 		{
-			ArrayList result = new ArrayList ();
+			var result = new List<IGeneratable>();
 
 			foreach (XmlNode def in ns.ChildNodes) {
 
@@ -109,7 +108,10 @@ namespace GtkSharp.Generation {
 					result.Add (new AliasGen (aname, atype));
 					break;
 				case Constants.Boxed:
-					result.Add (is_opaque ? new OpaqueGen (ns, elem) as object : new BoxedGen (ns, elem) as object);
+					if (is_opaque)
+						result.Add(new OpaqueGen(ns, elem));
+					else
+						result.Add(new BoxedGen(ns, elem));
 					break;
 				case Constants.Callback:
 					result.Add (new CallbackGen (ns, elem));
@@ -127,7 +129,10 @@ namespace GtkSharp.Generation {
 					result.Add (new ClassGen (ns, elem));
 					break;
 				case Constants.Struct:
-					result.Add (is_opaque ? new OpaqueGen (ns, elem) as object : new StructGen (ns, elem) as object);
+					if (is_opaque)
+						result.Add(new OpaqueGen(ns, elem));
+					else
+						result.Add(new StructGen (ns, elem));
 					break;
 				default:
 					Console.WriteLine ("Parser::ParseNamespace - Unexpected node: " + def.Name);

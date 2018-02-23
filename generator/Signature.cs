@@ -18,16 +18,13 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
+using System;
+using System.Collections.Generic;
 
 namespace GtkSharp.Generation {
 
-	using System;
-	using System.Collections;
-	using System.Xml;
-
 	public class Signature  {
-		
-		private ArrayList parms = new ArrayList ();
+		readonly List<Parameter> parms = new List<Parameter>();
 
 		public Signature (Parameters parms) 
 		{

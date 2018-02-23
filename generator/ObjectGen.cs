@@ -18,23 +18,22 @@
 // License along with this program; if not, write to the
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
+using System.Collections.Generic;
 
+using System;
+using System.IO;
+using System.Xml;
+using System.Linq;
 
 namespace GtkSharp.Generation {
 
-	using System;
-	using System.Collections;
-	using System.IO;
-	using System.Text;
-	using System.Xml;
-
 	public class ObjectGen : ObjectBase  {
 
-		private ArrayList custom_attrs = new ArrayList();
-		private ArrayList strings = new ArrayList();
-		private ArrayList vm_nodes = new ArrayList();
-		private Hashtable childprops = new Hashtable();
-		private static Hashtable dirs = new Hashtable ();
+		List<string> custom_attrs = new List<string>();
+		List<XmlNode> strings = new List<XmlNode>();
+		List<XmlElement> vm_nodes = new List<XmlElement>();
+		Dictionary<string, ChildProperty> childprops = new Dictionary<string, ChildProperty>();
+		static Dictionary<string, DirectoryInfo> dirs = new Dictionary<string, DirectoryInfo>();
 
 		public ObjectGen (XmlElement ns, XmlElement elem) : base (ns, elem) 
 		{
@@ -78,16 +77,16 @@ namespace GtkSharp.Generation {
 
 		public override bool Validate ()
 		{
-			ArrayList invalids = new ArrayList ();
+			var invalids = new List<string>();
 
-			foreach (ChildProperty prop in childprops.Values) {
-				if (!prop.Validate ()) {
+			foreach (var prop in childprops) {
+				if (!prop.Value.Validate ()) {
 					Console.WriteLine ("in Object " + QualifiedName);
-					invalids.Add (prop);
+					invalids.Add (prop.Key);
 				}
 			}
-			foreach (ChildProperty prop in invalids)
-				childprops.Remove (prop);
+			foreach (var item in invalids)
+				childprops.Remove (item);
 
 			return base.Validate ();
 		}
@@ -106,11 +105,11 @@ namespace GtkSharp.Generation {
 
 		private class DirectoryInfo {
 			public string assembly_name;
-			public Hashtable objects;
+			public Dictionary<string, string> objects;
 
 			public DirectoryInfo (string assembly_name) {
 				this.assembly_name = assembly_name;
-				objects = new Hashtable ();
+				objects = new Dictionary<string, string>();
 			}
 		}
 
@@ -231,15 +230,15 @@ namespace GtkSharp.Generation {
 			GenMethods (gen_info, null, null);
 			
 			if (interfaces.Count != 0) {
-				Hashtable all_methods = new Hashtable ();
+				Dictionary<string, Method> all_methods = new Dictionary<string, Method>();
 				foreach (Method m in Methods.Values)
 					all_methods[m.Name] = m;
-				Hashtable collisions = new Hashtable ();
+				var collisions = new Dictionary<string, bool>();
 				foreach (string iface in interfaces) {
 					ClassBase igen = table.GetClassGen (iface);
 					foreach (Method m in igen.Methods.Values) {
-						Method collision = all_methods[m.Name] as Method;
-						if (collision != null && collision.Signature.Types == m.Signature.Types)
+						Method collision;
+						if (all_methods.TryGetValue (m.Name, out collision) && collision.Signature.Types == m.Signature.Types)
 							collisions[m.Name] = true;
 						else
 							all_methods[m.Name] = m;
@@ -386,10 +385,10 @@ namespace GtkSharp.Generation {
 			throw new ArgumentException ("cname doesn't follow the NamespaceType capitalization style: " + cname);
 		}
 
-		private static bool NeedsMap (Hashtable objs, string assembly_name)
+		private static bool NeedsMap (Dictionary<string, string> objs, string assembly_name)
 		{
 			foreach (string key in objs.Keys)
-				if (GetExpected (key) != ((string) objs[key]))
+				if (GetExpected (key) != objs[key])
 					return true;
 			
 			return false;

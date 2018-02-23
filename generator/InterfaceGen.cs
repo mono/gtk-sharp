@@ -19,19 +19,19 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml;
 
 namespace GtkSharp.Generation {
-
-	using System;
-	using System.Collections;
-	using System.IO;
-	using System.Xml;
 
 	public class InterfaceGen : ObjectBase {
 
 		bool consume_only;
-		ArrayList vms = new ArrayList ();
-		ArrayList members = new ArrayList ();
+		List<VirtualMethod> vms = new List<VirtualMethod> ();
+		// FIXME, This is being used for both VirtualMethod and Signal :(
+		List<object> members = new List<object> ();
 
 		public InterfaceGen (XmlElement ns, XmlElement elem) : base (ns, elem) 
 		{
@@ -44,8 +44,8 @@ namespace GtkSharp.Generation {
 					members.Add (vm);
 					break;
 				case Constants.Signal:
-					object sig = sigs [(node as XmlElement).GetAttribute (Constants.Name)];
-					if (sig == null)
+					Signal sig;
+					if (!sigs.TryGetValue ((node as XmlElement).GetAttribute (Constants.Name), out sig))
 						sig = new Signal (node as XmlElement, this);
 					members.Add (sig);
 					break;
@@ -73,7 +73,7 @@ namespace GtkSharp.Generation {
 
 		public override bool ValidateForSubclass ()
 		{
-			ArrayList invalids = new ArrayList ();
+			var invalids = new List<Method> ();
 
 			foreach (Method method in methods.Values) {
 				if (!method.Validate ()) {
@@ -109,7 +109,7 @@ namespace GtkSharp.Generation {
 					sw.WriteLine ("\t\t\tpublic IntPtr {0};", sig.CName.Replace ("\"", "").Replace ("-", "_"));
 				} else if (member is VirtualMethod) {
 					VirtualMethod vm = member as VirtualMethod;
-					bool has_target = methods [vm.Name] != null;
+					bool has_target = methods.ContainsKey (vm.Name);
 					if (!has_target)
 						Console.WriteLine ("Interface " + QualifiedName + " virtual method " + vm.Name + " has no matching method to invoke.");
 					string type = has_target && vm.IsValid ? vm.Name + "Delegate" : "IntPtr";
@@ -127,7 +127,7 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\t\t{");
 			sw.WriteLine ("\t\t\tGLib.GType.Register (_gtype, typeof({0}Adapter));", Name);
 			foreach (VirtualMethod vm in vms) {
-				bool has_target = methods [vm.Name] != null;
+				bool has_target = methods.ContainsKey (vm.Name);
 				if (has_target && vm.IsValid)
 					sw.WriteLine ("\t\t\tiface.{0} = new {1}Delegate ({1}Callback);", vm.CName, vm.Name);
 			}
@@ -152,7 +152,7 @@ namespace GtkSharp.Generation {
 		void GenerateCallbacks (StreamWriter sw)
 		{
 			foreach (VirtualMethod vm in vms) {
-				if (methods [vm.Name] != null) {
+				if (methods.ContainsKey (vm.Name)) {
 					sw.WriteLine ();
 					vm.GenerateCallback (sw);
 				}
@@ -272,10 +272,10 @@ namespace GtkSharp.Generation {
 			foreach (Signal sig in sigs.Values)
 				sig.GenEvent (sw, null, "GLib.Object.GetObject (Handle)");
 
-			Method temp = methods ["GetType"] as Method;
-			if (temp != null)
+			Method temp;
+			if (methods.TryGetValue ("GetType", out temp))
 				methods.Remove ("GetType");
-			GenMethods (gen_info, new Hashtable (), this);
+			GenMethods (gen_info, new Dictionary<string, bool>(), this);
 			if (temp != null)
 				methods ["GetType"] = temp;
 
@@ -300,19 +300,19 @@ namespace GtkSharp.Generation {
 			string access = IsInternal ? "internal" : "public";
 			sw.WriteLine ("\t" + access + " interface " + Name + "Implementor : GLib.IWrapper {");
 			sw.WriteLine ();
-			Hashtable vm_table = new Hashtable ();
+			var vm_table = new Dictionary<string, VirtualMethod>();
 			foreach (VirtualMethod vm in vms)
 				vm_table [vm.Name] = vm;
 			foreach (VirtualMethod vm in vms) {
-				if (vm_table [vm.Name] == null)
+				if (!vm_table.ContainsKey (vm.Name))
 					continue;
 				else if (!vm.IsValid) {
 					vm_table.Remove (vm.Name);
 					continue;
 				} else if (vm.IsGetter || vm.IsSetter) {
 					string cmp_name = (vm.IsGetter ? "Set" : "Get") + vm.Name.Substring (3);
-					VirtualMethod cmp = vm_table [cmp_name] as VirtualMethod;
-					if (cmp != null && (cmp.IsGetter || cmp.IsSetter)) {
+					VirtualMethod cmp;
+					if (vm_table.TryGetValue (cmp_name, out cmp) && (cmp.IsGetter || cmp.IsSetter)) {
 						if (vm.IsSetter)
 							cmp.GenerateDeclaration (sw, vm);
 						else

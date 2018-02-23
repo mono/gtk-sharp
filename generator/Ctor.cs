@@ -19,14 +19,12 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml;
 
 namespace GtkSharp.Generation {
-
-	using System;
-	using System.Collections;
-	using System.IO;
-	using System.Linq;
-	using System.Xml;
 
 	public class Ctor : MethodBase  {
 
@@ -118,8 +116,8 @@ namespace GtkSharp.Generation {
 						sw.WriteLine ("\t\t\t\tCreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);");
 						sw.WriteLine ("\t\t\t\treturn;");
 					} else {
-						ArrayList names = new ArrayList ();
-						ArrayList values = new ArrayList ();
+						var names = new List<string> ();
+						var values = new List<string> ();
 						for (int i = 0; i < Parameters.Count; i++) {
 							Parameter p = Parameters[i];
 							if (container_type.GetPropertyRecursively (p.StudlyName) != null) {

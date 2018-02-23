@@ -19,17 +19,16 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
+using System;
+using System.Collections.Generic;
 
 namespace GtkSharp.Generation {
-
-	using System;
-	using System.Collections;
 
 	public class SymbolTable {
 		
 		static SymbolTable table = null;
 
-		Hashtable types = new Hashtable ();
+		Dictionary<string, IGeneratable> types = new Dictionary<string, IGeneratable>();
 		
 		public static SymbolTable Table {
 			get {
@@ -160,7 +159,7 @@ namespace GtkSharp.Generation {
 			}
 		}
 		
-		public IEnumerable Generatables {
+		public IEnumerable<IGeneratable> Generatables {
 			get {
 				return types.Values;
 			}
@@ -168,7 +167,7 @@ namespace GtkSharp.Generation {
 		
 		public IGeneratable this [string ctype] {
 			get {
-				return DeAlias (ctype) as IGeneratable;
+				return DeAlias (ctype);
 			}
 		}
 
@@ -200,16 +199,20 @@ namespace GtkSharp.Generation {
 			return trim_type;
 		}
 
-		private object DeAlias (string type)
+		private IGeneratable DeAlias (string type)
 		{
 			type = Trim (type);
-			while (types [type] is AliasGen) {
-				IGeneratable igen = types [type] as AliasGen;
-				types [type] = types [igen.Name];
+			IGeneratable gen;
+			while (types.TryGetValue (type, out gen) && gen is AliasGen) {
+				IGeneratable igen = gen as AliasGen;
+				IGeneratable temp;
+				if (types.TryGetValue (igen.Name, out temp))
+					types [type] = temp;
 				type = igen.Name;
 			}
 
-			return types [type];
+			types.TryGetValue (type, out gen);
+			return gen;
 		}
 
 		public string FromNativeReturn(string c_type, string val)
