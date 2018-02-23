@@ -85,6 +85,7 @@ namespace GtkSharp.Generation {
 		{
 			var result = new List<IGeneratable>();
 
+			var seen = new HashSet<string> ();
 			foreach (XmlNode def in ns.ChildNodes) {
 
 				XmlElement elem = def as XmlElement;
@@ -101,48 +102,52 @@ namespace GtkSharp.Generation {
 
 				IGeneratable gen;
 				switch (def.Name) {
-				case Constants.Alias:
-					string aname = elem.GetAttribute(Constants.CName);
-					string atype = elem.GetAttribute(Constants.Type);
-					if ((aname == "") || (atype == ""))
-						continue;
-					gen = new AliasGen (aname, atype);
-					break;
-				case Constants.Boxed:
-					if (is_opaque)
-						gen = new OpaqueGen(ns, elem);
-					else
-						gen = new BoxedGen(ns, elem);
-					break;
-				case Constants.Callback:
-					gen = new CallbackGen (ns, elem);
-					break;
+				//case Constants.Alias:
+				//	string aname = elem.GetAttribute(Constants.CName);
+				//	string atype = elem.GetAttribute(Constants.Type);
+				//	if ((aname == "") || (atype == ""))
+				//		continue;
+				//	gen = new AliasGen (aname, atype);
+				//	break;
+				//case Constants.Boxed:
+				//	if (is_opaque)
+				//		gen = new OpaqueGen(ns, elem);
+				//	else
+				//		gen = new BoxedGen(ns, elem);
+				//	break;
+				//case Constants.Callback:
+					//gen = new CallbackGen (ns, elem);
+					//break;
 				case Constants.Bitfield:
 				case Constants.Enumeration:
 					gen = new EnumGen (def.Name == Constants.Bitfield);
 					break;
-				case Constants.Interface:
-					gen = new InterfaceGen (ns, elem);
-					break;
-				case Constants.Object:
-					gen = new ObjectGen (ns, elem);
-					break;
-				case Constants.Class:
-					gen = new ClassGen (ns, elem);
-					break;
-				case Constants.Struct:
-					if (is_opaque)
-						gen = new OpaqueGen(ns, elem);
-					else
-						gen = new StructGen (ns, elem);
-					break;
+				//case Constants.Interface:
+				//	gen = new InterfaceGen (ns, elem);
+				//	break;
+				//case Constants.Object:
+				//	gen = new ObjectGen (ns, elem);
+				//	break;
+				//case Constants.Class:
+				//	gen = new ClassGen (ns, elem);
+				//	break;
+				//case Constants.Struct:
+					//if (is_opaque)
+					//	gen = new OpaqueGen(ns, elem);
+					//else
+					//	gen = new StructGen (ns, elem);
+					//break;
 				default:
-					Console.WriteLine ("Parser::ParseNamespace - Unexpected node: " + def.Name);
+					seen.Add (def.Name);
 					continue;
 				}
 
 				gen.Parse (ns, elem);
 				result.Add (gen);
+			}
+
+			foreach (var nodeName in seen) {
+				Console.WriteLine ("Parser::ParseNamespace - Unexpected node: " + nodeName);
 			}
 
 			return result;
