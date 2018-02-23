@@ -116,8 +116,9 @@ namespace GtkSharp.Generation {
 				case Constants.Callback:
 					result.Add (new CallbackGen (ns, elem));
 					break;
+				case Constants.Bitfield:
 				case Constants.Enumeration:
-					result.Add (new EnumGen (ns, elem));
+					result.Add (new EnumGen (ns, elem, def.Name == Constants.Bitfield));
 					break;
 				case Constants.Interface:
 					result.Add (new InterfaceGen (ns, elem));

@@ -22,14 +22,18 @@ namespace GtkSharp.Generation
 {
 	static class Constants
 	{
+		public const string Member = "member";
 		public const string Namespace = "namespace";
 		public const string Symbol = "symbol";
+
+		public const string GetGType = "glib:get-type";
 
 		public const string Hidden = "hidden";
 		public const string Opaque = "opaque";
 		public const string Alias = "alias";
 		public const string CName = "cname";
 		public const string Type = "type";
+		public const string Bitfield = "bitfield";
 		public const string Boxed = "boxed";
 		public const string Callback = "callback";
 		public const string Enumeration = "enum";
