@@ -19,19 +19,19 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml;
 
 namespace GtkSharp.Generation {
-
-	using System;
-	using System.Collections;
-	using System.IO;
-	using System.Xml;
 
 	public class InterfaceGen : ObjectBase {
 
 		bool consume_only;
-		ArrayList vms = new ArrayList ();
-		ArrayList members = new ArrayList ();
+		List<VirtualMethod> vms = new List<VirtualMethod> ();
+		// FIXME, This is being used for both VirtualMethod and Signal :(
+		List<object> members = new List<object> ();
 
 		public InterfaceGen (XmlElement ns, XmlElement elem) : base (ns, elem) 
 		{
@@ -73,7 +73,7 @@ namespace GtkSharp.Generation {
 
 		public override bool ValidateForSubclass ()
 		{
-			ArrayList invalids = new ArrayList ();
+			var invalids = new List<Method> ();
 
 			foreach (Method method in methods.Values) {
 				if (!method.Validate ()) {
@@ -275,7 +275,7 @@ namespace GtkSharp.Generation {
 			Method temp = methods ["GetType"] as Method;
 			if (temp != null)
 				methods.Remove ("GetType");
-			GenMethods (gen_info, new Hashtable (), this);
+			GenMethods (gen_info, new Dictionary<string, bool>(), this);
 			if (temp != null)
 				methods ["GetType"] = temp;
 
@@ -300,7 +300,7 @@ namespace GtkSharp.Generation {
 			string access = IsInternal ? "internal" : "public";
 			sw.WriteLine ("\t" + access + " interface " + Name + "Implementor : GLib.IWrapper {");
 			sw.WriteLine ();
-			Hashtable vm_table = new Hashtable ();
+			var vm_table = new Dictionary<string, VirtualMethod>();
 			foreach (VirtualMethod vm in vms)
 				vm_table [vm.Name] = vm;
 			foreach (VirtualMethod vm in vms) {
@@ -311,7 +311,7 @@ namespace GtkSharp.Generation {
 					continue;
 				} else if (vm.IsGetter || vm.IsSetter) {
 					string cmp_name = (vm.IsGetter ? "Set" : "Get") + vm.Name.Substring (3);
-					VirtualMethod cmp = vm_table [cmp_name] as VirtualMethod;
+					VirtualMethod cmp = vm_table [cmp_name];
 					if (cmp != null && (cmp.IsGetter || cmp.IsSetter)) {
 						if (vm.IsSetter)
 							cmp.GenerateDeclaration (sw, vm);

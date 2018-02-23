@@ -22,34 +22,34 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml;
 
 namespace GtkSharp.Generation {
-	using System;
-	using System.Collections;
-	using System.IO;
-	using System.Xml;
 
 	public abstract class ClassBase : GenBase {
-		protected Hashtable props = new Hashtable();
-		protected Hashtable fields = new Hashtable();
-		protected Hashtable sigs = new Hashtable();
-		protected Hashtable methods = new Hashtable();
-		protected ArrayList interfaces = new ArrayList();
-		protected ArrayList managed_interfaces = new ArrayList();
-		protected ArrayList ctors = new ArrayList();
+		protected Dictionary<string, Property> props = new Dictionary<string, Property>();
+		protected Dictionary<string, ObjectField> fields = new Dictionary<string, ObjectField>();
+		protected Dictionary<string, Signal> sigs = new Dictionary<string, Signal>();
+		protected Dictionary<string, Method> methods = new Dictionary<string, Method>();
+		protected List<string> interfaces = new List<string>();
+		protected List<string> managed_interfaces = new List<string>();
+		protected List<Ctor> ctors = new List<Ctor>();
 
 		private bool ctors_initted = false;
-		private Hashtable clash_map;
+		private Dictionary<string, Ctor> clash_map;
 		private bool deprecated = false;
 		private bool isabstract = false;
 
-		public Hashtable Methods {
+		public Dictionary<string, Method> Methods {
 			get {
 				return methods;
 			}
 		}	
 
-		public Hashtable Signals {
+		public Dictionary<string, Signal> Signals {
 			get {
 				return sigs;
 			}
@@ -144,64 +144,62 @@ namespace GtkSharp.Generation {
 				}
 			}
 
-			ArrayList invalids = new ArrayList ();
-
+			var invalidProperties = new List<Property>();
 			foreach (Property prop in props.Values) {
 				if (!prop.Validate ()) {
 					Console.WriteLine ("in type " + QualifiedName);
-					invalids.Add (prop);
+					invalidProperties.Add (prop);
 				}
 			}
-			foreach (Property prop in invalids)
+			foreach (Property prop in invalidProperties)
 				props.Remove (prop.Name);
-			invalids.Clear ();
 
+			var invalidSignals = new List<Signal>();
 			foreach (Signal sig in sigs.Values) {
 				if (!sig.Validate ()) {
 					Console.WriteLine ("in type " + QualifiedName);
-					invalids.Add (sig);
+					invalidSignals.Add (sig);
 				}
 			}
-			foreach (Signal sig in invalids)
+			foreach (Signal sig in invalidSignals)
 				sigs.Remove (sig.Name);
-			invalids.Clear ();
 
+			var invalidObjectFields = new List<ObjectField>();
 			foreach (ObjectField field in fields.Values) {
 				if (!field.Validate ()) {
 					Console.WriteLine ("in type " + QualifiedName);
-					invalids.Add (field);
+					invalidObjectFields.Add (field);
 				}
 			}
-			foreach (ObjectField field in invalids)
+			foreach (ObjectField field in invalidObjectFields)
 				fields.Remove (field.Name);
-			invalids.Clear ();
 
+			var invalidMethods = new List<Method>();
 			foreach (Method method in methods.Values) {
 				if (!method.Validate ()) {
 					Console.WriteLine ("in type " + QualifiedName);
-					invalids.Add (method);
+					invalidMethods.Add (method);
 				}
 			}
-			foreach (Method method in invalids)
+			foreach (Method method in invalidMethods)
 				methods.Remove (method.Name);
-			invalids.Clear ();
 
+			var invalidCtors = new List<Ctor>();
 			foreach (Ctor ctor in ctors) {
 				if (!ctor.Validate ()) {
 					Console.WriteLine ("in type " + QualifiedName);
-					invalids.Add (ctor);
+					invalidCtors.Add (ctor);
 				}
 			}
-			foreach (Ctor ctor in invalids)
+			foreach (Ctor ctor in invalidCtors)
 				ctors.Remove (ctor);
-			invalids.Clear ();
 
 			return true;
 		}
 
 		public virtual bool ValidateForSubclass ()
 		{
-			ArrayList invalids = new ArrayList ();
+			var invalids = new List<Signal>();
 
 			foreach (Signal sig in sigs.Values) {
 				if (!sig.Validate ()) {
@@ -305,7 +303,7 @@ namespace GtkSharp.Generation {
 				 (fields != null) && fields.ContainsKey(mname.Substring(3))));
 		}
 
-		public void GenMethods (GenerationInfo gen_info, Hashtable collisions, ClassBase implementor)
+		public void GenMethods (GenerationInfo gen_info, Dictionary<string, bool> collisions, ClassBase implementor)
 		{		
 			if (methods == null)
 				return;
@@ -315,7 +313,7 @@ namespace GtkSharp.Generation {
 				    	continue;
 
 				string oname = null, oprotection = null;
-				if (collisions != null && collisions.Contains (method.Name)) {
+				if (collisions != null && collisions.ContainsKey (method.Name)) {
 					oname = method.Name;
 					oprotection = method.Protection;
 					method.Name = QualifiedName + "." + method.Name;
@@ -331,17 +329,17 @@ namespace GtkSharp.Generation {
 
 		public Method GetMethod (string name)
 		{
-			return (Method) methods[name];
+			return methods[name];
 		}
 
 		public Property GetProperty (string name)
 		{
-			return (Property) props[name];
+			return props[name];
 		}
 
 		public Signal GetSignal (string name)
 		{
-			return (Signal) sigs[name];
+			return sigs[name];
 		}
 
 		public Method GetMethodRecursively (string name)
@@ -376,7 +374,7 @@ namespace GtkSharp.Generation {
 			ClassBase klass = this;
 			Property p = null;
 			while (klass != null && p == null) {
-				p = (Property) klass.GetProperty (name);
+				p = klass.GetProperty(name);
 				klass = klass.Parent;
 			}
 
@@ -420,7 +418,7 @@ namespace GtkSharp.Generation {
 				return false;
 		}
 
-		public ArrayList Ctors { get { return ctors; } }
+		public List<Ctor> Ctors { get { return ctors; } }
 
 		bool HasStaticCtor (string name) 
 		{
@@ -442,11 +440,11 @@ namespace GtkSharp.Generation {
 			if (Parent != null)
 				Parent.InitializeCtors ();
 
-			ArrayList valid_ctors = new ArrayList();
-			clash_map = new Hashtable();
+			List<Ctor> valid_ctors = new List<Ctor>();
+			clash_map = new Dictionary<string, Ctor>();
 
 			foreach (Ctor ctor in ctors) {
-				if (clash_map.Contains (ctor.Signature.Types)) {
+				if (clash_map.ContainsKey (ctor.Signature.Types)) {
 					Ctor clash = clash_map [ctor.Signature.Types] as Ctor;
 					Ctor alter = ctor.Preferred ? clash : ctor;
 					alter.IsStatic = true;

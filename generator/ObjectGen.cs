@@ -18,6 +18,7 @@
 // License along with this program; if not, write to the
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
+using System.Collections.Generic;
 
 
 namespace GtkSharp.Generation {
@@ -234,7 +235,7 @@ namespace GtkSharp.Generation {
 				Hashtable all_methods = new Hashtable ();
 				foreach (Method m in Methods.Values)
 					all_methods[m.Name] = m;
-				Hashtable collisions = new Hashtable ();
+				var collisions = new Dictionary<string, bool>();
 				foreach (string iface in interfaces) {
 					ClassBase igen = table.GetClassGen (iface);
 					foreach (Method m in igen.Methods.Values) {
