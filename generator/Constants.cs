@@ -48,7 +48,7 @@ namespace GtkSharp.Generation
 		public const string Signal = "signal";
 		public const string Implements = "implements";
 		public const string Constructor = "constructor";
-		public const string DisabledDefaultConstructor = "disableddefaultconstructor";
+		public const string DisableDefaultConstructor = "disabledefaultconstructor";
 
 		public const string Name = "name";
 		public const string Simple = "simple";

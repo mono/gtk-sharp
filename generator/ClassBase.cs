@@ -247,7 +247,7 @@ namespace GtkSharp.Generation {
 			case Constants.Signal:
 			case Constants.Implements:
 			case Constants.Constructor:
-			case Constants.DisabledDefaultConstructor:
+			case Constants.DisableDefaultConstructor:
 				return true;
 				
 			default:
