@@ -19,12 +19,10 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
+using System;
+using System.Collections.Generic;
 
 namespace GtkSharp.Generation {
-
-	using System;
-	using System.Collections;
-	using System.Xml;
 
 	public class CodeGenerator  {
 
@@ -44,7 +42,7 @@ namespace GtkSharp.Generation {
 			string gluelib_name = "";
 
 			SymbolTable table = SymbolTable.Table;
-			ArrayList gens = new ArrayList ();
+			var gens = new List<IGeneratable> ();
 			foreach (string arg in args) {
 				string filename = arg;
 				if (arg == "--generate") {
@@ -95,7 +93,7 @@ namespace GtkSharp.Generation {
 
 			// Now that everything is loaded, validate all the to-be-
 			// generated generatables and then remove the invalid ones.
-			ArrayList invalids = new ArrayList ();
+			var invalids = new List<IGeneratable> ();
 			foreach (IGeneratable gen in gens) {
 				if (!gen.Validate ())
 					invalids.Add (gen);
