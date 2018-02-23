@@ -26,7 +26,7 @@ namespace GtkSharp.Generation
 		public const string Symbol = "symbol";
 
 		public const string Hidden = "hidden";
-		public const string Opaque = "opague";
+		public const string Opaque = "opaque";
 		public const string Alias = "alias";
 		public const string CName = "cname";
 		public const string Type = "type";
