@@ -205,7 +205,9 @@ namespace GtkSharp.Generation {
 			IGeneratable gen;
 			while (types.TryGetValue (type, out gen) && gen is AliasGen) {
 				IGeneratable igen = gen as AliasGen;
-				types [type] = types [igen.Name];
+				IGeneratable temp;
+				if (types.TryGetValue (igen.Name, out temp))
+					types [type] = temp;
 				type = igen.Name;
 			}
 
