@@ -18,17 +18,15 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
+using System;
+using System.Collections.Generic;
 
 namespace GtkSharp.Generation {
 
-	using System;
-	using System.Collections;
-	using System.IO;
-
 	public class ManagedCallString {
-		
-		ArrayList parms = new ArrayList ();
-		ArrayList special = new ArrayList ();
+
+		List<Parameter> parms = new List<Parameter>();
+		List<bool> special = new List<bool>();
 		string error_param = null;
 		string user_data_param = null;
 		string destroy_param = null;
