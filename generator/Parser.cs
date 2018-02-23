@@ -102,13 +102,9 @@ namespace GtkSharp.Generation {
 
 				IGeneratable gen;
 				switch (def.Name) {
-				//case Constants.Alias:
-				//	string aname = elem.GetAttribute(Constants.CName);
-				//	string atype = elem.GetAttribute(Constants.Type);
-				//	if ((aname == "") || (atype == ""))
-				//		continue;
-				//	gen = new AliasGen (aname, atype);
-				//	break;
+				case Constants.Alias:
+					gen = new AliasGen ();
+					break;
 				//case Constants.Boxed:
 				//	if (is_opaque)
 				//		gen = new OpaqueGen(ns, elem);
@@ -169,8 +165,8 @@ namespace GtkSharp.Generation {
 				}
 			} else if (type == Constants.Manual)
 				result = new ManualGen (cname, name);
-			else if (type == Constants.Alias)
-				result = new AliasGen (cname, name);
+			//else if (type == Constants.Alias)
+				//result = new AliasGen (cname, name);
 			else if (type == Constants.Marshal) {
 				string mtype = symbol.GetAttribute (Constants.MarshalType);
 				string call = symbol.GetAttribute (Constants.CallFmt);

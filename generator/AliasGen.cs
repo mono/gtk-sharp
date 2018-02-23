@@ -21,10 +21,25 @@
 namespace GtkSharp.Generation {
 
 	using System;
+	using System.Xml;
 
 	public class AliasGen : SimpleBase {
 		
-		public AliasGen (string ctype, string type) : base (ctype, type, String.Empty) {}
+		protected override void ParseElement(XmlElement ns, XmlElement elem)
+		{
+			base.ParseElement(ns, elem);
+
+			Name = elem.GetName ();
+		}
+
+		protected override void ParseChildElement(XmlElement ns, XmlElement childElement)
+		{
+			if (childElement.Name == Constants.Type) {
+				CName = childElement.GetCType ();
+				return;
+			}
+			base.ParseChildElement(ns, childElement);
+		}
 	}
 }
 
