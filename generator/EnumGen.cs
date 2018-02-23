@@ -78,7 +78,7 @@ namespace GtkSharp.Generation {
 					members.Add (em);
 					break;
 				default:
-					Console.WriteLine ("Unable to parse element {0} of <{1}>", member.Name, Constants.Enumeration);
+					Console.WriteLine ("EnumGen - Unexpected node {0} in {1}", member.Name, Name);
 					break;
 				}
 			}
