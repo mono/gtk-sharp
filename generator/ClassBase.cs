@@ -1,4 +1,4 @@
-// GtkSharp.Generation.ClassBase.cs - Common code between object
+﻿// GtkSharp.Generation.ClassBase.cs - Common code between object
 // and interface wrappers
 //
 // Authors: Rachel Hestilow <hestilow@ximian.com>
@@ -57,7 +57,7 @@ namespace GtkSharp.Generation {
 
 		public ClassBase Parent {
 			get {
-				string parent = Elem.GetAttribute("parent");
+				string parent = Elem.GetAttribute(Constants.Parent);
 
 				if (parent == "")
 					return null;
@@ -68,57 +68,57 @@ namespace GtkSharp.Generation {
 
 		protected ClassBase (XmlElement ns, XmlElement elem) : base (ns, elem) {
 					
-			if (elem.HasAttribute ("deprecated")) {
-				string attr = elem.GetAttribute ("deprecated");
+			if (elem.HasAttribute (Constants.Deprecated)) {
+				string attr = elem.GetAttribute (Constants.Deprecated);
 				deprecated = attr == "1" || attr == "true";
 			}
 			
-			if (elem.HasAttribute ("abstract")) {
-				string attr = elem.GetAttribute ("abstract");
+			if (elem.HasAttribute (Constants.Abstract)) {
+				string attr = elem.GetAttribute (Constants.Abstract);
 				isabstract = attr == "1" || attr == "true";
 			}
 
 			foreach (XmlNode node in elem.ChildNodes) {
 				if (!(node is XmlElement)) continue;
 				XmlElement member = (XmlElement) node;
-				if (member.HasAttribute ("hidden"))
+				if (member.HasAttribute (Constants.Hidden))
 					continue;
 				
 				string name;
 				switch (node.Name) {
-				case "method":
-					name = member.GetAttribute("name");
+				case Constants.Method:
+					name = member.GetAttribute(Constants.Name);
 					while (methods.ContainsKey(name))
 						name += "mangled";
 					methods.Add (name, new Method (member, this));
 					break;
 
-				case "property":
-					name = member.GetAttribute("name");
+				case Constants.Property:
+					name = member.GetAttribute(Constants.Name);
 					while (props.ContainsKey(name))
 						name += "mangled";
 					props.Add (name, new Property (member, this));
 					break;
 
-				case "field":
-					name = member.GetAttribute("name");
+				case Constants.Field:
+					name = member.GetAttribute(Constants.Name);
 					while (fields.ContainsKey (name))
 						name += "mangled";
 					fields.Add (name, new ObjectField (member, this));
 					break;
 
-				case "signal":
-					name = member.GetAttribute("name");
+				case Constants.Signal:
+					name = member.GetAttribute(Constants.Name);
 					while (sigs.ContainsKey(name))
 						name += "mangled";
 					sigs.Add (name, new Signal (member, this));
 					break;
 
-				case "implements":
+				case Constants.Implements:
 					ParseImplements (member);
 					break;
 
-				case "constructor":
+				case Constants.Constructor:
 					ctors.Add (new Ctor (member, this));
 					break;
 
@@ -241,13 +241,13 @@ namespace GtkSharp.Generation {
 		protected bool IsNodeNameHandled (string name)
 		{
 			switch (name) {
-			case "method":
-			case "property":
-			case "field":
-			case "signal":
-			case "implements":
-			case "constructor":
-			case "disabledefaultconstructor":
+			case Constants.Method:
+			case Constants.Property:
+			case Constants.Field:
+			case Constants.Signal:
+			case Constants.Implements:
+			case Constants.Constructor:
+			case Constants.DisabledDefaultConstructor:
 				return true;
 				
 			default:
@@ -282,15 +282,15 @@ namespace GtkSharp.Generation {
 		private void ParseImplements (XmlElement member)
 		{
 			foreach (XmlNode node in member.ChildNodes) {
-				if (node.Name != "interface")
+				if (node.Name != Constants.Interface)
 					continue;
 				XmlElement element = (XmlElement) node;
-				if (element.HasAttribute ("hidden"))
+				if (element.HasAttribute (Constants.Hidden))
 					continue;
-				if (element.HasAttribute ("cname"))
-					interfaces.Add (element.GetAttribute ("cname"));
-				else if (element.HasAttribute ("name"))
-					managed_interfaces.Add (element.GetAttribute ("name"));
+				if (element.HasAttribute (Constants.CName))
+					interfaces.Add (element.GetAttribute (Constants.CName));
+				else if (element.HasAttribute (Constants.Name))
+					managed_interfaces.Add (element.GetAttribute (Constants.Name));
 			}
 		}
 		

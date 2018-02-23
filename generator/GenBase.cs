@@ -1,4 +1,4 @@
-// GtkSharp.Generation.GenBase.cs - The Generatable base class.
+﻿// GtkSharp.Generation.GenBase.cs - The Generatable base class.
 //
 // Author: Mike Kestner <mkestner@novell.com>
 //
@@ -39,7 +39,7 @@ namespace GtkSharp.Generation {
 
 		public string CName {
 			get {
-				return elem.GetAttribute ("cname");
+				return elem.GetAttribute (Constants.CName);
 			}
 		}
 
@@ -51,8 +51,8 @@ namespace GtkSharp.Generation {
 
 		public bool IsInternal {
 			get {
-				if (elem.HasAttribute ("internal")) {
-					string attr = elem.GetAttribute ("internal");
+				if (elem.HasAttribute (Constants.Internal)) {
+					string attr = elem.GetAttribute (Constants.Internal);
 					return attr == "1" || attr == "true";
 				}
 				return false;
@@ -61,7 +61,7 @@ namespace GtkSharp.Generation {
 
 		public string LibraryName {
 			get {
-				return ns.GetAttribute ("library");
+				return ns.GetAttribute (Constants.Library);
 			}
 		}
 
@@ -81,13 +81,13 @@ namespace GtkSharp.Generation {
 
 		public string Name {
 			get {
-				return elem.GetAttribute ("name");
+				return elem.GetAttribute (Constants.Name);
 			}
 		}
 
 		public string NS {
 			get {
-				return ns.GetAttribute ("name");
+				return ns.GetAttribute (Constants.Name);
 			}
 		}
 

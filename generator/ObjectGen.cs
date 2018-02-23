@@ -1,4 +1,4 @@
-// GtkSharp.Generation.ObjectGen.cs - The Object Generatable.
+﻿// GtkSharp.Generation.ObjectGen.cs - The Object Generatable.
 //
 // Author: Mike Kestner <mkestner@ximian.com>
 //
@@ -45,24 +45,24 @@ namespace GtkSharp.Generation {
 				XmlElement member = (XmlElement) node;
 
 				switch (node.Name) {
-				case "callback":
+				case Constants.Callback:
 					Statistics.IgnoreCount++;
 					break;
 
-				case "custom-attribute":
+				case Constants.CustomAttribute:
 					custom_attrs.Add (member.InnerXml);
 					break;
 
-				case "virtual_method":
+				case Constants.VirtualMethod:
 					Statistics.IgnoreCount++;
 					break;
 
-				case "static-string":
+				case Constants.StaticString:
 					strings.Add (node);
 					break;
 
-				case "childprop":
-					name = member.GetAttribute ("name");
+				case Constants.ChildProp:
+					name = member.GetAttribute (Constants.Name);
 					while (childprops.ContainsKey (name))
 						name += "mangled";
 					childprops.Add (name, new ChildProperty (member, this));
@@ -94,13 +94,13 @@ namespace GtkSharp.Generation {
 
 		private bool DisableVoidCtor {
 			get {
-				return Elem.HasAttribute ("disable_void_ctor");
+				return Elem.HasAttribute (Constants.DisableVoidCtor);
 			}
 		}
 
 		private bool DisableGTypeCtor {
 			get {
-				return Elem.HasAttribute ("disable_gtype_ctor");
+				return Elem.HasAttribute (Constants.DisableGTypeCtor);
 			}
 		}
 
@@ -181,7 +181,7 @@ namespace GtkSharp.Generation {
 				sw.WriteLine ("\t" + attr);
 			GenerateAttribute (sw);
 			sw.Write ("\t{0} {1}class " + Name, IsInternal ? "internal" : "public", IsAbstract ? "abstract " : "");
-			string cs_parent = table.GetCSType(Elem.GetAttribute("parent"));
+			string cs_parent = table.GetCSType(Elem.GetAttribute(Constants.Parent));
 			if (cs_parent != "") {
 				di.objects.Add (CName, QualifiedName);
 				sw.Write (" : " + cs_parent);
@@ -215,7 +215,7 @@ namespace GtkSharp.Generation {
 				}
 			}
 
-			if (has_sigs && Elem.HasAttribute("parent")) {
+			if (has_sigs && Elem.HasAttribute(Constants.Parent)) {
 				GenSignals (gen_info, null);
 			}
 
@@ -257,8 +257,8 @@ namespace GtkSharp.Generation {
 			}
 
 			foreach (XmlElement str in strings) {
-				sw.Write ("\t\tpublic static string " + str.GetAttribute ("name"));
-				sw.WriteLine (" {\n\t\t\t get { return \"" + str.GetAttribute ("value") + "\"; }\n\t\t}");
+				sw.Write ("\t\tpublic static string " + str.GetAttribute (Constants.Name));
+				sw.WriteLine (" {\n\t\t\t get { return \"" + str.GetAttribute (Constants.Value) + "\"; }\n\t\t}");
 			}
 
 			if (cs_parent != String.Empty && GetExpected (CName) != QualifiedName) {
@@ -287,7 +287,7 @@ namespace GtkSharp.Generation {
 
 		protected override void GenCtors (GenerationInfo gen_info)
 		{
-			if (!Elem.HasAttribute("parent"))
+			if (!Elem.HasAttribute(Constants.Parent))
 				return;
 
 			if (!DisableGTypeCtor) {
@@ -342,7 +342,7 @@ namespace GtkSharp.Generation {
 		{
 			StreamWriter sw = gen_info.GlueWriter;
 
-			string vm_name = elem.GetAttribute ("cname");
+			string vm_name = elem.GetAttribute (Constants.CName);
 			string method = gen_info.GluelibName + "_" + NS + Name + "_override_" + vm_name;
 			sw.WriteLine ();
 			sw.WriteLine ("void " + method + " (GType type, gpointer cb);");

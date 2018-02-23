@@ -62,9 +62,9 @@ namespace GtkSharp.Generation {
 				
 				int result;
 				try {
-					result = Int32.Parse (elem.GetAttribute("array_len"));
+					result = Int32.Parse (elem.GetAttribute(Constants.ArrayLen));
 				} catch (Exception) {
-					Console.Write ("Non-numeric array_len: " + elem.GetAttribute("array_len"));
+					Console.Write ("Non-numeric array_len: " + elem.GetAttribute(Constants.ArrayLen));
 					Console.WriteLine (" warning: array field {0} incorrectly generated", Name);
 					result = 0;
 				}

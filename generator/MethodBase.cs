@@ -1,4 +1,4 @@
-// GtkSharp.Generation.MethodBase.cs - function element base class.
+﻿// GtkSharp.Generation.MethodBase.cs - function element base class.
 //
 // Author: Mike Kestner <mkestner@novell.com>
 //
@@ -39,13 +39,13 @@ namespace GtkSharp.Generation {
 		{
 			this.elem = elem;
 			this.container_type = container_type;
-			this.name = elem.GetAttribute ("name");
-			parms = new Parameters (elem ["parameters"]);
-			IsStatic = elem.GetAttribute ("shared") == "true";
-			if (elem.HasAttribute ("new_flag"))
+			this.name = elem.GetAttribute (Constants.Name);
+			parms = new Parameters (elem [Constants.Parameters]);
+			IsStatic = elem.GetAttribute (Constants.Shared) == "true";
+			if (elem.HasAttribute (Constants.NewFlag))
 				mods = "new ";
-			if (elem.HasAttribute ("accessibility")) {
-				string attr = elem.GetAttribute ("accessibility");
+			if (elem.HasAttribute (Constants.Accessibility)) {
+				string attr = elem.GetAttribute (Constants.Accessibility);
 				switch (attr) {
 					case "public":
 					case "protected":
@@ -60,7 +60,7 @@ namespace GtkSharp.Generation {
 
 		public bool Hidden {
 			get {
-				return elem.HasAttribute ("hidden");
+				return elem.HasAttribute (Constants.Hidden);
 			}
 		}
 
@@ -85,7 +85,7 @@ namespace GtkSharp.Generation {
 
 		public string CName {
 			get {
-				return SymbolTable.Table.MangleName (elem.GetAttribute ("cname"));
+				return SymbolTable.Table.MangleName (elem.GetAttribute (Constants.CName));
 			}
 		}
 
@@ -125,8 +125,8 @@ namespace GtkSharp.Generation {
 
 		public string LibraryName {
 			get {
-				if (elem.HasAttribute ("library"))
-					return elem.GetAttribute ("library");
+				if (elem.HasAttribute (Constants.Library))
+					return elem.GetAttribute (Constants.Library);
 				return container_type.LibraryName;
 			}
 		}

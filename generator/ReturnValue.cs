@@ -1,4 +1,4 @@
-// GtkSharp.Generation.ReturnValue.cs - The ReturnValue Generatable.
+﻿// GtkSharp.Generation.ReturnValue.cs - The ReturnValue Generatable.
 //
 // Author: Mike Kestner <mkestner@novell.com>
 //
@@ -38,13 +38,13 @@ namespace GtkSharp.Generation {
 		public ReturnValue (XmlElement elem) 
 		{
 			if (elem != null) {
-				is_null_term = elem.HasAttribute ("null_term_array");
-				is_array = elem.HasAttribute ("array");
-				elements_owned = elem.GetAttribute ("elements_owned") == "true";
-				owned = elem.GetAttribute ("owned") == "true";
-				ctype = elem.GetAttribute("type");
-				element_ctype = elem.GetAttribute ("element_type");
-				needs_ref = elem.GetAttribute ("needs_ref") == "true";
+				is_null_term = elem.HasAttribute (Constants.NullTermArray);
+				is_array = elem.HasAttribute (Constants.Array);
+				elements_owned = elem.GetAttribute (Constants.ElementsOwned) == "true";
+				owned = elem.GetAttribute (Constants.Owned) == "true";
+				ctype = elem.GetAttribute(Constants.Type);
+				element_ctype = elem.GetAttribute (Constants.ElementType);
+				needs_ref = elem.GetAttribute (Constants.NeedsRef) == "true";
 			}
 		}
 

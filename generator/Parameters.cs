@@ -1,4 +1,4 @@
-// GtkSharp.Generation.Parameters.cs - The Parameters Generation Class.
+﻿// GtkSharp.Generation.Parameters.cs - The Parameters Generation Class.
 //
 // Author: Mike Kestner <mkestner@speakeasy.net>
 //
@@ -51,7 +51,7 @@ namespace GtkSharp.Generation {
 
 		public string CType {
 			get {
-				string type = elem.GetAttribute("type");
+				string type = elem.GetAttribute(Constants.Type);
 				if (type == "void*")
 					type = "gpointer";
 				return type;
@@ -60,7 +60,7 @@ namespace GtkSharp.Generation {
 
 		public string CSType {
 			get {
-				string cstype = SymbolTable.Table.GetCSType( elem.GetAttribute("type"));
+				string cstype = SymbolTable.Table.GetCSType( elem.GetAttribute(Constants.Type));
 				if (cstype == "void")
 					cstype = "System.IntPtr";
 				if (IsArray) {
@@ -81,13 +81,13 @@ namespace GtkSharp.Generation {
 
 		public bool IsArray {
 			get {
-				return elem.HasAttribute("array") || elem.HasAttribute("null_term_array");
+				return elem.HasAttribute(Constants.Array) || elem.HasAttribute(Constants.NullTermArray);
 			}
 		}
 
 		public bool IsEllipsis {
 			get {
-				return elem.HasAttribute("ellipsis");
+				return elem.HasAttribute(Constants.Ellipsis);
 			}
 		}
 
@@ -139,7 +139,7 @@ namespace GtkSharp.Generation {
 
 		public bool IsParams {
 			get {
-				return elem.HasAttribute("params");
+				return elem.HasAttribute(Constants.Params);
 			}
 		}
 
@@ -157,7 +157,7 @@ namespace GtkSharp.Generation {
 
 		public virtual string MarshalType {
 			get {
-				string type = SymbolTable.Table.GetMarshalType( elem.GetAttribute("type"));
+				string type = SymbolTable.Table.GetMarshalType( elem.GetAttribute(Constants.Type));
 				if (type == "void" || Generatable is IManualMarshaler)
 					type = "IntPtr";
 				if (IsArray) {
@@ -170,7 +170,7 @@ namespace GtkSharp.Generation {
 
 		public virtual string MarshalCallbackType {
 			get {
-				string type = SymbolTable.Table.GetMarshalCallbackType (elem.GetAttribute ("type"));
+				string type = SymbolTable.Table.GetMarshalCallbackType (elem.GetAttribute (Constants.Type));
 				if (type == "void" || Generatable is IManualMarshaler)
 					type = "IntPtr";
 				if (IsArray) {
@@ -183,13 +183,13 @@ namespace GtkSharp.Generation {
 
 		public string Name {
 			get {
-				return SymbolTable.Table.MangleName (elem.GetAttribute("name"));
+				return SymbolTable.Table.MangleName (elem.GetAttribute(Constants.Name));
 			}
 		}
 
 		public bool Owned {
 			get {
-				return elem.GetAttribute ("owned") == "true";
+				return elem.GetAttribute (Constants.Owned) == "true";
 			}
 		}
 
@@ -213,7 +213,7 @@ namespace GtkSharp.Generation {
 
 		public string PropertyName {
 			get {
-				return elem.GetAttribute("property_name");
+				return elem.GetAttribute(Constants.PropertyName);
 			}
 		}
 
@@ -224,8 +224,8 @@ namespace GtkSharp.Generation {
 				if (pass_as != null)
 					return pass_as;
 
-				if (elem.HasAttribute ("pass_as"))
-					return elem.GetAttribute ("pass_as");
+				if (elem.HasAttribute (Constants.PassAs))
+					return elem.GetAttribute (Constants.PassAs);
 
 				if (IsArray || CSType.EndsWith ("IntPtr"))
 					return "";
@@ -244,7 +244,7 @@ namespace GtkSharp.Generation {
 		public string Scope {
 			get {
 				if (scope == null)
-					scope = elem.GetAttribute ("scope");
+					scope = elem.GetAttribute (Constants.Scope);
 				return scope;
 			}
 			set {
@@ -346,7 +346,7 @@ namespace GtkSharp.Generation {
 
 		public string StudlyName {
 			get {
-				string name = elem.GetAttribute("name");
+				string name = elem.GetAttribute(Constants.Name);
 				string[] segs = name.Split('_');
 				string studly = "";
 				foreach (string s in segs) {
@@ -366,7 +366,7 @@ namespace GtkSharp.Generation {
 
 		public ArrayParameter (XmlElement elem) : base (elem) 
 		{
-			null_terminated = elem.HasAttribute ("null_term_array");
+			null_terminated = elem.HasAttribute (Constants.NullTermArray);
 		}
 
 		public override string MarshalType {
@@ -458,13 +458,13 @@ namespace GtkSharp.Generation {
 
 		string CountNativeType {
 			get {
-				return SymbolTable.Table.GetMarshalType(count_elem.GetAttribute("type"));
+				return SymbolTable.Table.GetMarshalType(count_elem.GetAttribute(Constants.Type));
 			}
 		}
 
 		string CountType {
 			get {
-				return SymbolTable.Table.GetCSType(count_elem.GetAttribute("type"));
+				return SymbolTable.Table.GetCSType(count_elem.GetAttribute(Constants.Type));
 			}
 		}
 
@@ -479,14 +479,14 @@ namespace GtkSharp.Generation {
 
 		string CountName {
 			get {
-				return SymbolTable.Table.MangleName (count_elem.GetAttribute("name"));
+				return SymbolTable.Table.MangleName (count_elem.GetAttribute(Constants.Name));
 			}
 		}
 
 		string CallCount (string name)
 		{
 			string result = CountCast + "(" + name + " == null ? 0 : " + name + ".Length)";
-			IGeneratable gen = SymbolTable.Table[count_elem.GetAttribute("type")];
+			IGeneratable gen = SymbolTable.Table[count_elem.GetAttribute(Constants.Type)];
 			return gen.CallByName (result);
 		}
 

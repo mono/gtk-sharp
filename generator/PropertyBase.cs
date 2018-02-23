@@ -1,4 +1,4 @@
-// GtkSharp.Generation.PropertyBase.cs - base class for properties and
+﻿// GtkSharp.Generation.PropertyBase.cs - base class for properties and
 // fields
 //
 // Copyright (c) 2005 Novell, Inc.
@@ -36,13 +36,13 @@ namespace GtkSharp.Generation {
 
 		public string Name {
 			get {
-				return elem.GetAttribute ("name");
+				return elem.GetAttribute (Constants.Name);
 			}
 		}
 
 		public string CName {
 			get {
-				return elem.GetAttribute ("cname");
+				return elem.GetAttribute (Constants.CName);
 			}
 		}
 
@@ -50,10 +50,10 @@ namespace GtkSharp.Generation {
 		public string CType {
 			get {
 				if (ctype == null) {
-					if (elem.GetAttribute("bits") == "1")
+					if (elem.GetAttribute(Constants.Bits) == "1")
 						ctype = "gboolean";
 					else
-						ctype = elem.GetAttribute("type");
+						ctype = elem.GetAttribute(Constants.Type);
 				}
 				return ctype;
 			}
@@ -70,13 +70,13 @@ namespace GtkSharp.Generation {
 
 		public bool Hidden {
 			get {
-				return elem.HasAttribute("hidden");
+				return elem.HasAttribute(Constants.Hidden);
 			}
 		}
 
 		protected bool IsNew {
 			get {
-				return elem.HasAttribute("new_flag");
+				return elem.HasAttribute(Constants.NewFlag);
 			}
 		}
 

@@ -1,4 +1,4 @@
-// GtkSharp.Generation.SymbolTable.cs - The Symbol Table Class.
+﻿// GtkSharp.Generation.SymbolTable.cs - The Symbol Table Class.
 //
 // Author: Mike Kestner <mkestner@novell.com>
 //
@@ -327,7 +327,7 @@ namespace GtkSharp.Generation {
 		public bool IsEnumFlags(string c_type)
 		{
 			EnumGen gen = this [c_type] as EnumGen;
-			return (gen != null && gen.Elem.GetAttribute ("type") == "flags");
+			return (gen != null && gen.Elem.GetAttribute (Constants.Type) == "flags");
 		}
 	
 		public bool IsInterface(string c_type)
@@ -376,7 +376,7 @@ namespace GtkSharp.Generation {
 				return "evnt";
 			case "null":
 				return "is_null";
-			case "object":
+			case Constants.Object:
 				return "objekt";
 			case "params":
 				return "parms";
@@ -396,11 +396,11 @@ namespace GtkSharp.Generation {
 				return "_base";
 			case "lock":
 				return "_lock";
-			case "callback":
+			case Constants.Callback:
 				return "cb";
 			case "readonly":
 				return "read_only";
-			case "interface":
+			case Constants.Interface:
 				return "iface";
 			case "internal":
 				return "_internal";

@@ -37,7 +37,7 @@ namespace GtkSharp.Generation {
 
 		private bool DisableRawCtor {
 			get {
-				return Elem.HasAttribute ("disable_raw_ctor");
+				return Elem.HasAttribute (Constants.DisableRawCtor);
 			}
 		}
 
@@ -88,7 +88,7 @@ namespace GtkSharp.Generation {
 				sw.WriteLine ("\t[Obsolete]");
 			GenerateAttribute (sw);
 			sw.Write ("\t{0} class " + Name, IsInternal ? "internal" : "public");
-			string cs_parent = table.GetCSType(Elem.GetAttribute("parent"));
+			string cs_parent = table.GetCSType(Elem.GetAttribute(Constants.Parent));
 			if (cs_parent != "")
 				sw.Write (" : " + cs_parent);
 			else

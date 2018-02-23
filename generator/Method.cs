@@ -1,4 +1,4 @@
-// GtkSharp.Generation.Method.cs - The Method Generatable.
+﻿// GtkSharp.Generation.Method.cs - The Method Generatable.
 //
 // Author: Mike Kestner <mkestner@speakeasy.net>
 //
@@ -40,15 +40,15 @@ namespace GtkSharp.Generation {
 
 		public Method (XmlElement elem, ClassBase container_type) : base (elem, container_type)
 		{
-			this.retval = new ReturnValue (elem["return-type"]);
+			this.retval = new ReturnValue (elem[Constants.ReturnType]);
 
-			if (!container_type.IsDeprecated && elem.HasAttribute ("deprecated")) {
-				string attr = elem.GetAttribute ("deprecated");
+			if (!container_type.IsDeprecated && elem.HasAttribute (Constants.Deprecated)) {
+				string attr = elem.GetAttribute (Constants.Deprecated);
 				deprecated = attr == "1" || attr == "true";
 			}
 
-			if (elem.HasAttribute ("win32_utf8_variant")) {
-				string attr = elem.GetAttribute ("win32_utf8_variant");
+			if (elem.HasAttribute (Constants.Win32Utf8Variant)) {
+				string attr = elem.GetAttribute (Constants.Win32Utf8Variant);
 				win32_utf8_variant = attr == "1" || attr.ToLower () == "true";
 			}
 
@@ -238,7 +238,7 @@ namespace GtkSharp.Generation {
 						if (hidden_interface.Name != "method")
 							continue;
 						
-						if (CName == hidden_interface.GetAttribute ("cname"))
+						if (CName == hidden_interface.GetAttribute (Constants.CName))
 							return;
 					}
 				}

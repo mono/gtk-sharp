@@ -1,4 +1,4 @@
-// GtkSharp.Generation.StructBase.cs - The Structure/Boxed Base Class.
+﻿// GtkSharp.Generation.StructBase.cs - The Structure/Boxed Base Class.
 //
 // Author: Mike Kestner <mkestner@speakeasy.net>
 //
@@ -39,11 +39,11 @@ namespace GtkSharp.Generation {
 				XmlElement member = (XmlElement) node;
 
 				switch (node.Name) {
-				case "field":
+				case Constants.Field:
 					fields.Add (new StructField (member, this));
 					break;
 
-				case "callback":
+				case Constants.Callback:
 					Statistics.IgnoreCount++;
 					break;
 
@@ -113,7 +113,7 @@ namespace GtkSharp.Generation {
 
 		private bool DisableNew {
 			get {
-				return Elem.HasAttribute ("disable_new");
+				return Elem.HasAttribute (Constants.DisableNew);
 			}
 		}
 
@@ -151,7 +151,7 @@ namespace GtkSharp.Generation {
 
 		string GetInterfaceImplExtra ()
 		{
-			if (Elem.HasAttribute ("iequatable") && Elem.GetAttribute ("iequatable") == "1")
+			if (Elem.HasAttribute (Constants.IEquatable) && Elem.GetAttribute (Constants.IEquatable) == "1")
 				return " : IEquatable<" + Name + ">";
 			return string.Empty;
 		}

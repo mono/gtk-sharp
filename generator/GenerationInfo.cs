@@ -1,4 +1,4 @@
-// GtkSharp.Generation.GenerationInfo.cs - Generation information class.
+﻿// GtkSharp.Generation.GenerationInfo.cs - Generation information class.
 //
 // Author: Mike Kestner <mkestner@ximian.com>
 //
@@ -38,7 +38,7 @@ namespace GtkSharp.Generation {
 
 		public GenerationInfo (XmlElement ns)
 		{
-			string ns_name = ns.GetAttribute ("name");
+			string ns_name = ns.GetAttribute (Constants.Name);
 			char sep = Path.DirectorySeparatorChar;
 			dir = ".." + sep + ns_name.ToLower () + sep + "generated";
 			custom_dir = ".." + sep + ns_name.ToLower ();
