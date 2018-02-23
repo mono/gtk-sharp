@@ -329,17 +329,26 @@ namespace GtkSharp.Generation {
 
 		public Method GetMethod (string name)
 		{
-			return methods[name];
+			if (methods.ContainsKey(name))
+				return methods[name];
+
+			return null;
 		}
 
 		public Property GetProperty (string name)
 		{
-			return props[name];
+			if (props.ContainsKey (name))
+				return props[name];
+
+			return null;
 		}
 
 		public Signal GetSignal (string name)
 		{
-			return sigs[name];
+			if (sigs.ContainsKey(name))
+				return sigs[name];
+
+			return null;
 		}
 
 		public Method GetMethodRecursively (string name)
