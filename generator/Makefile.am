@@ -45,6 +45,7 @@ sources = 				\
 	Parser.cs			\
 	Property.cs			\
 	PropertyBase.cs			\
+	RecordGen.cs			\
 	ReturnValue.cs			\
 	Signal.cs			\
 	Signature.cs			\
