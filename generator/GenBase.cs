@@ -147,6 +147,21 @@ namespace GtkSharp.Generation {
 			Generate (geninfo);
 		}
 
+		public void GenerateDocumentation (GenerationInfo info)
+		{
+			if (string.IsNullOrEmpty (Documentation))
+				return;
+
+			// FIXME: Indent
+			info.Writer.WriteLine ("/// <summary>");
+			foreach (var line in Documentation.Split ('\n')) {
+				info.Writer.Write ("/// ");
+				info.Writer.WriteLine (line);
+			}
+			info.Writer.WriteLine ("/// </summary>");
+		}
+
+
 		public abstract void Generate (GenerationInfo geninfo);
 	}
 }

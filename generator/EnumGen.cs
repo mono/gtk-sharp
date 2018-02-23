@@ -177,11 +177,14 @@ namespace GtkSharp.Generation {
 				sw.WriteLine ("\t[{0}]", Name);
 
 			string access = IsInternal ? "internal" : "public";
+			GenerateDocumentation (gen_info);
 			sw.WriteLine ("\t" + access + " enum " + Name + " {");
 			sw.WriteLine ();
 
 			foreach (var member in members) {
-				sw.Write ("\t\t"); 
+				sw.Write ("\t\t");
+				member.GenerateDocumentation (gen_info);
+
 				member.Generate (gen_info);
 			}
 
