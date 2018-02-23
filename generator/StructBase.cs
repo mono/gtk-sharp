@@ -18,18 +18,16 @@
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 
+using System;
+using System.IO;
+using System.Xml;
+using System.Collections.Generic;
 
 namespace GtkSharp.Generation {
 
-	using System;
-	using System.Collections;
-	using System.IO;
-	using System.Text.RegularExpressions;
-	using System.Xml;
-
 	public abstract class StructBase : ClassBase, IManualMarshaler {
-	
-		internal new ArrayList fields = new ArrayList ();
+
+		internal new List<StructField> fields = new List<StructField>();
 
 		protected StructBase (XmlElement ns, XmlElement elem) : base (ns, elem)
 		{
