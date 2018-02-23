@@ -167,7 +167,7 @@ namespace GtkSharp.Generation {
 		
 		public IGeneratable this [string ctype] {
 			get {
-				return DeAlias (ctype) as IGeneratable;
+				return DeAlias (ctype);
 			}
 		}
 
@@ -199,16 +199,18 @@ namespace GtkSharp.Generation {
 			return trim_type;
 		}
 
-		private object DeAlias (string type)
+		private IGeneratable DeAlias (string type)
 		{
 			type = Trim (type);
-			while (types [type] is AliasGen) {
-				IGeneratable igen = types [type] as AliasGen;
+			IGeneratable gen;
+			while (types.TryGetValue (type, out gen) && gen is AliasGen) {
+				IGeneratable igen = gen as AliasGen;
 				types [type] = types [igen.Name];
 				type = igen.Name;
 			}
 
-			return types [type];
+			types.TryGetValue (type, out gen);
+			return gen;
 		}
 
 		public string FromNativeReturn(string c_type, string val)

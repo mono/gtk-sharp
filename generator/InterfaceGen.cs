@@ -44,8 +44,8 @@ namespace GtkSharp.Generation {
 					members.Add (vm);
 					break;
 				case Constants.Signal:
-					object sig = sigs [(node as XmlElement).GetAttribute (Constants.Name)];
-					if (sig == null)
+					Signal sig;
+					if (!sigs.TryGetValue ((node as XmlElement).GetAttribute (Constants.Name), out sig))
 						sig = new Signal (node as XmlElement, this);
 					members.Add (sig);
 					break;
@@ -109,7 +109,7 @@ namespace GtkSharp.Generation {
 					sw.WriteLine ("\t\t\tpublic IntPtr {0};", sig.CName.Replace ("\"", "").Replace ("-", "_"));
 				} else if (member is VirtualMethod) {
 					VirtualMethod vm = member as VirtualMethod;
-					bool has_target = methods [vm.Name] != null;
+					bool has_target = methods.ContainsKey (vm.Name);
 					if (!has_target)
 						Console.WriteLine ("Interface " + QualifiedName + " virtual method " + vm.Name + " has no matching method to invoke.");
 					string type = has_target && vm.IsValid ? vm.Name + "Delegate" : "IntPtr";
@@ -127,7 +127,7 @@ namespace GtkSharp.Generation {
 			sw.WriteLine ("\t\t{");
 			sw.WriteLine ("\t\t\tGLib.GType.Register (_gtype, typeof({0}Adapter));", Name);
 			foreach (VirtualMethod vm in vms) {
-				bool has_target = methods [vm.Name] != null;
+				bool has_target = methods.ContainsKey (vm.Name);
 				if (has_target && vm.IsValid)
 					sw.WriteLine ("\t\t\tiface.{0} = new {1}Delegate ({1}Callback);", vm.CName, vm.Name);
 			}
@@ -152,7 +152,7 @@ namespace GtkSharp.Generation {
 		void GenerateCallbacks (StreamWriter sw)
 		{
 			foreach (VirtualMethod vm in vms) {
-				if (methods [vm.Name] != null) {
+				if (methods.ContainsKey (vm.Name)) {
 					sw.WriteLine ();
 					vm.GenerateCallback (sw);
 				}
@@ -272,8 +272,8 @@ namespace GtkSharp.Generation {
 			foreach (Signal sig in sigs.Values)
 				sig.GenEvent (sw, null, "GLib.Object.GetObject (Handle)");
 
-			Method temp = methods ["GetType"] as Method;
-			if (temp != null)
+			Method temp;
+			if (methods.TryGetValue ("GetType", out temp))
 				methods.Remove ("GetType");
 			GenMethods (gen_info, new Dictionary<string, bool>(), this);
 			if (temp != null)
@@ -304,15 +304,15 @@ namespace GtkSharp.Generation {
 			foreach (VirtualMethod vm in vms)
 				vm_table [vm.Name] = vm;
 			foreach (VirtualMethod vm in vms) {
-				if (vm_table [vm.Name] == null)
+				if (!vm_table.ContainsKey (vm.Name))
 					continue;
 				else if (!vm.IsValid) {
 					vm_table.Remove (vm.Name);
 					continue;
 				} else if (vm.IsGetter || vm.IsSetter) {
 					string cmp_name = (vm.IsGetter ? "Set" : "Get") + vm.Name.Substring (3);
-					VirtualMethod cmp = vm_table [cmp_name];
-					if (cmp != null && (cmp.IsGetter || cmp.IsSetter)) {
+					VirtualMethod cmp;
+					if (vm_table.TryGetValue (cmp_name, out cmp) && (cmp.IsGetter || cmp.IsSetter)) {
 						if (vm.IsSetter)
 							cmp.GenerateDeclaration (sw, vm);
 						else

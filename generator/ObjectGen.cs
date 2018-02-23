@@ -237,8 +237,8 @@ namespace GtkSharp.Generation {
 				foreach (string iface in interfaces) {
 					ClassBase igen = table.GetClassGen (iface);
 					foreach (Method m in igen.Methods.Values) {
-						Method collision = all_methods[m.Name] as Method;
-						if (collision != null && collision.Signature.Types == m.Signature.Types)
+						Method collision;
+						if (all_methods.TryGetValue (m.Name, out collision) && collision.Signature.Types == m.Signature.Types)
 							collisions[m.Name] = true;
 						else
 							all_methods[m.Name] = m;

@@ -329,26 +329,23 @@ namespace GtkSharp.Generation {
 
 		public Method GetMethod (string name)
 		{
-			if (methods.ContainsKey(name))
-				return methods[name];
-
-			return null;
+			Method method;
+			methods.TryGetValue (name, out method);
+			return method;
 		}
 
 		public Property GetProperty (string name)
 		{
-			if (props.ContainsKey (name))
-				return props[name];
-
-			return null;
+			Property prop;
+			props.TryGetValue (name, out prop);
+			return prop;
 		}
 
 		public Signal GetSignal (string name)
 		{
-			if (sigs.ContainsKey(name))
-				return sigs[name];
-
-			return null;
+			Signal sig;
+			sigs.TryGetValue (name, out sig);
+			return sig;
 		}
 
 		public Method GetMethodRecursively (string name)
@@ -453,8 +450,8 @@ namespace GtkSharp.Generation {
 			clash_map = new Dictionary<string, Ctor>();
 
 			foreach (Ctor ctor in ctors) {
-				if (clash_map.ContainsKey (ctor.Signature.Types)) {
-					Ctor clash = clash_map [ctor.Signature.Types] as Ctor;
+				Ctor clash;
+				if (clash_map.TryGetValue (ctor.Signature.Types, out clash)) {
 					Ctor alter = ctor.Preferred ? clash : ctor;
 					alter.IsStatic = true;
 					if (Parent != null && Parent.HasStaticCtor (alter.StaticName))

@@ -31,7 +31,8 @@ namespace GtkSharp.Generation {
 
 		public override void Generate (GenerationInfo gen_info)
 		{
-			Method copy = methods["Copy"] as Method;
+			Method copy;
+			methods.TryGetValue ("Copy", out copy);
 			methods.Remove ("Copy");
 			methods.Remove ("Free");
 
