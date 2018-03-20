@@ -70,14 +70,17 @@ namespace GLib {
 				handlers = new Hashtable ();
 		}
 
-		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
-		static extern void glibsharp_log_msg (IntPtr log_domain, LogLevelFlags flags, IntPtr message);
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		// CallingConvention.Cdecl is used to allow binding the the C varargs signature, and each possible call signature must be enumerated.
+		// __argslist was an option, but is an undocumented feature that should likely not be used here.
+		static extern void g_log (IntPtr log_domain, LogLevelFlags flags, IntPtr format, IntPtr arg1);
 
+		static IntPtr SingleStringFormat = Marshaller.StringToPtrGStrdup ("%s");
 		public static void Write (string logDomain, LogLevelFlags flags, string format, params object [] args)
 		{
 			IntPtr ndom = Marshaller.StringToPtrGStrdup (logDomain);
 			IntPtr nmessage = Marshaller.StringToPtrGStrdup (String.Format (format, args));
-			glibsharp_log_msg (ndom, flags, nmessage);
+			g_log (ndom, flags, SingleStringFormat, nmessage);
 			Marshaller.Free (ndom);
 			Marshaller.Free (nmessage);
 		}
@@ -87,7 +90,7 @@ namespace GLib {
 		{
 			IntPtr ndom = Marshaller.StringToPtrGStrdup (logDomain);
 			IntPtr nmessage = Marshaller.StringToPtrGStrdup (String.Format (format, args));
-			glibsharp_log_msg (ndom, flags, nmessage);
+			g_log (ndom, flags, SingleStringFormat, nmessage);
 			Marshaller.Free (ndom);
 			Marshaller.Free (nmessage);
 		}
