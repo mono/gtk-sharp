@@ -5,6 +5,7 @@ libglibsharpglue_2_la_LDFLAGS = -module -avoid-version -no-undefined
 libglibsharpglue_2_la_SOURCES = 	\
 	closure.c		\
 	error.c			\
+	log.c			\
 	object.c		\
 	ptrarray.c \
 	signal.c		\
