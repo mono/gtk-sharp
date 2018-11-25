@@ -1,0 +1,442 @@
+<Type Name="Region" FullName="Gdk.Region">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class Region : GLib.Opaque" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Region extends GLib.Opaque" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.Opaque</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents an area of the screen.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Region ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Region (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">a <see cref="T:System.IntPtr" /></param>
+        <summary>To be added</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Clipbox">
+      <MemberSignature Language="C#" Value="public Gdk.Rectangle Clipbox { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Rectangle Clipbox" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Rectangle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:Gdk.Rectangle" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Copy">
+      <MemberSignature Language="C#" Value="public Gdk.Region Copy ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gdk.Region Copy() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Region</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="M:Gdk.Region" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Destroy">
+      <MemberSignature Language="C#" Value="public void Destroy ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Destroy() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Gdk.Region is now freed automatically")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Empty">
+      <MemberSignature Language="C#" Value="public bool Empty ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Empty() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="M:System.Boolean" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Equal">
+      <MemberSignature Language="C#" Value="public bool Equal (Gdk.Region region2);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Equal(class Gdk.Region region2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="region2" Type="Gdk.Region" />
+      </Parameters>
+      <Docs>
+        <param name="region2">a <see cref="M:Gdk.Region" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="M:System.Boolean" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Finalize">
+      <MemberSignature Language="C#" Value="~Region ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Free">
+      <MemberSignature Language="C#" Value="protected override void Free (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Free(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRectangles">
+      <MemberSignature Language="C#" Value="public Gdk.Rectangle[] GetRectangles ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Gdk.Rectangle[] GetRectangles() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Rectangle[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Rectangle[]" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Intersect">
+      <MemberSignature Language="C#" Value="public void Intersect (Gdk.Region source2);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Intersect(class Gdk.Region source2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="source2" Type="Gdk.Region" />
+      </Parameters>
+      <Docs>
+        <param name="source2">a <see cref="M:Gdk.Region" /></param>
+        <summary>To be added</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Offset">
+      <MemberSignature Language="C#" Value="public void Offset (int dx, int dy);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Offset(int32 dx, int32 dy) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dx" Type="System.Int32" />
+        <Parameter Name="dy" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="dx">a <see cref="M:System.Int32" /></param>
+        <param name="dy">a <see cref="M:System.Int32" /></param>
+        <summary>To be added</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="PointIn">
+      <MemberSignature Language="C#" Value="public bool PointIn (int x, int y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool PointIn(int32 x, int32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Int32" />
+        <Parameter Name="y" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="x">a <see cref="M:System.Int32" /></param>
+        <param name="y">a <see cref="M:System.Int32" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="M:System.Boolean" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Polygon">
+      <MemberSignature Language="C#" Value="public static Gdk.Region Polygon (Gdk.Point[] points, Gdk.FillRule fill_rule);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Region Polygon(valuetype Gdk.Point[] points, valuetype Gdk.FillRule fill_rule) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Region</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="points" Type="Gdk.Point[]" />
+        <Parameter Name="fill_rule" Type="Gdk.FillRule" />
+      </Parameters>
+      <Docs>
+        <param name="points">a <see cref="T:Gdk.Point" /></param>
+        <param name="fill_rule">a <see cref="T:System.Int32" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Region" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Rectangle">
+      <MemberSignature Language="C#" Value="public static Gdk.Region Rectangle (Gdk.Rectangle rectangle);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Region Rectangle(valuetype Gdk.Rectangle rectangle) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Region</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rectangle" Type="Gdk.Rectangle" />
+      </Parameters>
+      <Docs>
+        <param name="rectangle">a <see cref="M:Gdk.Rectangle" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="M:Gdk.Region" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="RectIn">
+      <MemberSignature Language="C#" Value="public Gdk.OverlapType RectIn (Gdk.Rectangle rectangle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Gdk.OverlapType RectIn(valuetype Gdk.Rectangle rectangle) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.OverlapType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rectangle" Type="Gdk.Rectangle" />
+      </Parameters>
+      <Docs>
+        <param name="rectangle">a <see cref="M:Gdk.Rectangle" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="M:Gdk.OverlapType" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Shrink">
+      <MemberSignature Language="C#" Value="public void Shrink (int dx, int dy);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Shrink(int32 dx, int32 dy) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dx" Type="System.Int32" />
+        <Parameter Name="dy" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="dx">a <see cref="M:System.Int32" /></param>
+        <param name="dy">a <see cref="M:System.Int32" /></param>
+        <summary>To be added</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="SpansIntersectForeach">
+      <MemberSignature Language="C#" Value="public void SpansIntersectForeach (Gdk.Span spans, int n_spans, bool sorted, Gdk.SpanFunc function);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SpansIntersectForeach(valuetype Gdk.Span spans, int32 n_spans, bool sorted, class Gdk.SpanFunc function) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="spans" Type="Gdk.Span" />
+        <Parameter Name="n_spans" Type="System.Int32" />
+        <Parameter Name="sorted" Type="System.Boolean" />
+        <Parameter Name="function" Type="Gdk.SpanFunc" />
+      </Parameters>
+      <Docs>
+        <param name="spans">a <see cref="M:Gdk.Span" /></param>
+        <param name="n_spans">a <see cref="M:System.Int32" /></param>
+        <param name="sorted">a <see cref="M:System.Boolean" /></param>
+        <param name="function">a <see cref="M:Gdk.SpanFunc" /></param>
+        <summary>To be added</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Subtract">
+      <MemberSignature Language="C#" Value="public void Subtract (Gdk.Region source2);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Subtract(class Gdk.Region source2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="source2" Type="Gdk.Region" />
+      </Parameters>
+      <Docs>
+        <param name="source2">a <see cref="M:Gdk.Region" /></param>
+        <summary>To be added</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Union">
+      <MemberSignature Language="C#" Value="public void Union (Gdk.Region source2);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Union(class Gdk.Region source2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="source2" Type="Gdk.Region" />
+      </Parameters>
+      <Docs>
+        <param name="source2">a <see cref="M:Gdk.Region" /></param>
+        <summary>To be added</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="UnionWithRect">
+      <MemberSignature Language="C#" Value="public void UnionWithRect (Gdk.Rectangle rect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnionWithRect(valuetype Gdk.Rectangle rect) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rect" Type="Gdk.Rectangle" />
+      </Parameters>
+      <Docs>
+        <param name="rect">a <see cref="M:Gdk.Rectangle" /></param>
+        <summary>To be added</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Xor">
+      <MemberSignature Language="C#" Value="public void Xor (Gdk.Region source2);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Xor(class Gdk.Region source2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="source2" Type="Gdk.Region" />
+      </Parameters>
+      <Docs>
+        <param name="source2">a <see cref="M:Gdk.Region" /></param>
+        <summary>To be added</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

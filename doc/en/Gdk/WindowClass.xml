@@ -1,0 +1,62 @@
+<Type Name="WindowClass" FullName="Gdk.WindowClass">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum WindowClass" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed WindowClass extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gdk.WindowClassGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Describes the class of a window.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="InputOnly">
+      <MemberSignature Language="C#" Value="InputOnly" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.WindowClass InputOnly = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.WindowClass</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>
+		Window for events only. These windows are invisible; they are used to trap events, 
+		but can not be drawn on.
+	</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InputOutput">
+      <MemberSignature Language="C#" Value="InputOutput" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.WindowClass InputOutput = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.WindowClass</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>A "normal" window for graphics and events.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,126 @@
+<Type Name="GdkHelper" FullName="Gnome.GdkHelper">
+  <TypeSignature Language="C#" Value="public class GdkHelper" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit GdkHelper extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gnome-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public GdkHelper ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PixbufNewFromUri">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixbuf PixbufNewFromUri (string uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixbuf PixbufNewFromUri(string uri) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixbuf</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="uri">a <see cref="T:System.String" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Pixbuf" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PixbufNewFromUriAsync">
+      <MemberSignature Language="C#" Value="public static Gnome.GdkPixbufAsyncHandle PixbufNewFromUriAsync (string uri, Gnome.GdkPixbufLoadCallback load_callback, Gnome.GdkPixbufDoneCallback done_callback);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gnome.GdkPixbufAsyncHandle PixbufNewFromUriAsync(string uri, class Gnome.GdkPixbufLoadCallback load_callback, class Gnome.GdkPixbufDoneCallback done_callback) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.GdkPixbufAsyncHandle</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="System.String" />
+        <Parameter Name="load_callback" Type="Gnome.GdkPixbufLoadCallback" />
+        <Parameter Name="done_callback" Type="Gnome.GdkPixbufDoneCallback" />
+      </Parameters>
+      <Docs>
+        <param name="uri">a <see cref="T:System.String" /></param>
+        <param name="load_callback">a <see cref="T:Gnome.GdkPixbufLoadCallback" /></param>
+        <param name="done_callback">a <see cref="T:Gnome.GdkPixbufDoneCallback" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gnome.GdkPixbufAsyncHandle" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PixbufNewFromUriAtScale">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixbuf PixbufNewFromUriAtScale (string uri, int width, int height, bool preserve_aspect_ratio);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixbuf PixbufNewFromUriAtScale(string uri, int32 width, int32 height, bool preserve_aspect_ratio) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixbuf</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="System.String" />
+        <Parameter Name="width" Type="System.Int32" />
+        <Parameter Name="height" Type="System.Int32" />
+        <Parameter Name="preserve_aspect_ratio" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="uri">To be added.</param>
+        <param name="width">To be added.</param>
+        <param name="height">To be added.</param>
+        <param name="preserve_aspect_ratio">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <since version="Gnome# 2.16" />
+      </Docs>
+    </Member>
+    <Member MemberName="PixbufNewFromUriCancel">
+      <MemberSignature Language="C#" Value="public static void PixbufNewFromUriCancel (Gnome.GdkPixbufAsyncHandle handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void PixbufNewFromUriCancel(class Gnome.GdkPixbufAsyncHandle handle) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="Gnome.GdkPixbufAsyncHandle" />
+      </Parameters>
+      <Docs>
+        <param name="handle">a <see cref="T:Gnome.GdkPixbufAsyncHandle" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

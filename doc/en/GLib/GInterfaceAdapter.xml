@@ -1,0 +1,79 @@
+<Type Name="GInterfaceAdapter" FullName="GLib.GInterfaceAdapter">
+  <TypeSignature Language="C#" Value="public abstract class GInterfaceAdapter" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit GInterfaceAdapter extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>glib-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>GInterfaceAdapter abstract class.</summary>
+    <remarks>The members of this abstract base class are used internally to register GInterfaces with the native type system.  They are not useful to application authors.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected GInterfaceAdapter ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Protected Constructor.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public abstract GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>The native GInterface type value.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Handle">
+      <MemberSignature Language="C#" Value="public abstract IntPtr Handle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int Handle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Handle property.</summary>
+        <value>a pointer to a native object.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="InitHandler">
+      <MemberSignature Language="C#" Value="protected GLib.GInterfaceInitHandler InitHandler { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class GLib.GInterfaceInitHandler InitHandler" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GInterfaceInitHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>InitHandler Property.</summary>
+        <value>The Initialization Handler for the Adapter.</value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

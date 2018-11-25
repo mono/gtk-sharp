@@ -1,0 +1,351 @@
+<Type Name="CellRendererAccel" FullName="Gtk.CellRendererAccel">
+  <TypeSignature Language="C#" Value="public class CellRendererAccel : Gtk.CellRendererText" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CellRendererAccel extends Gtk.CellRendererText" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Gtk.CellRendererText</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+    <since version="Gtk# 2.10" />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CellRendererAccel ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected CellRendererAccel (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CellRendererAccel (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AccelCleared">
+      <MemberSignature Language="C#" Value="public event Gtk.AccelClearedHandler AccelCleared;" />
+      <MemberSignature Language="ILAsm" Value=".event class Gtk.AccelClearedHandler AccelCleared" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("accel-cleared")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.AccelClearedHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AccelEdited">
+      <MemberSignature Language="C#" Value="public event Gtk.AccelEditedHandler AccelEdited;" />
+      <MemberSignature Language="ILAsm" Value=".event class Gtk.AccelEditedHandler AccelEdited" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("accel-edited")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.AccelEditedHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AccelKey">
+      <MemberSignature Language="C#" Value="public uint AccelKey { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 AccelKey" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("accel-key")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AccelMode">
+      <MemberSignature Language="C#" Value="public Gtk.CellRendererAccelMode AccelMode { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.CellRendererAccelMode AccelMode" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("accel-mode")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.CellRendererAccelMode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AccelMods">
+      <MemberSignature Language="C#" Value="public Gdk.ModifierType AccelMods { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.ModifierType AccelMods" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("accel-mods")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.ModifierType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSize">
+      <MemberSignature Language="C#" Value="public override void GetSize (Gtk.Widget widget, ref Gdk.Rectangle cell_area, out int x_offset, out int y_offset, out int width, out int height);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void GetSize(class Gtk.Widget widget, valuetype Gdk.Rectangle cell_area, int32 x_offset, int32 y_offset, int32 width, int32 height) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="widget" Type="Gtk.Widget" />
+        <Parameter Name="cell_area" Type="Gdk.Rectangle&amp;" RefType="ref" />
+        <Parameter Name="x_offset" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="y_offset" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="width" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="height" Type="System.Int32&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="widget">To be added.</param>
+        <param name="cell_area">To be added.</param>
+        <param name="x_offset">To be added.</param>
+        <param name="y_offset">To be added.</param>
+        <param name="width">To be added.</param>
+        <param name="height">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Keycode">
+      <MemberSignature Language="C#" Value="public uint Keycode { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Keycode" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("keycode")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnAccelCleared">
+      <MemberSignature Language="C#" Value="protected virtual void OnAccelCleared (string path_string);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnAccelCleared(string path_string) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideAccelCleared", Type=typeof(Gtk.CellRendererAccel))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="path_string" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="path_string">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnAccelEdited">
+      <MemberSignature Language="C#" Value="protected virtual void OnAccelEdited (string path_string, uint accel_key, Gdk.ModifierType accel_mods, uint hardware_keycode);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnAccelEdited(string path_string, unsigned int32 accel_key, valuetype Gdk.ModifierType accel_mods, unsigned int32 hardware_keycode) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideAccelEdited", Type=typeof(Gtk.CellRendererAccel))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="path_string" Type="System.String" />
+        <Parameter Name="accel_key" Type="System.UInt32" />
+        <Parameter Name="accel_mods" Type="Gdk.ModifierType" />
+        <Parameter Name="hardware_keycode" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="path_string">To be added.</param>
+        <param name="accel_key">To be added.</param>
+        <param name="accel_mods">To be added.</param>
+        <param name="hardware_keycode">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Render">
+      <MemberSignature Language="C#" Value="protected override void Render (Gdk.Drawable window, Gtk.Widget widget, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, Gdk.Rectangle expose_area, Gtk.CellRendererState flags);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Render(class Gdk.Drawable window, class Gtk.Widget widget, valuetype Gdk.Rectangle background_area, valuetype Gdk.Rectangle cell_area, valuetype Gdk.Rectangle expose_area, valuetype Gtk.CellRendererState flags) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="window" Type="Gdk.Drawable" />
+        <Parameter Name="widget" Type="Gtk.Widget" />
+        <Parameter Name="background_area" Type="Gdk.Rectangle" />
+        <Parameter Name="cell_area" Type="Gdk.Rectangle" />
+        <Parameter Name="expose_area" Type="Gdk.Rectangle" />
+        <Parameter Name="flags" Type="Gtk.CellRendererState" />
+      </Parameters>
+      <Docs>
+        <param name="window">To be added.</param>
+        <param name="widget">To be added.</param>
+        <param name="background_area">To be added.</param>
+        <param name="cell_area">To be added.</param>
+        <param name="expose_area">To be added.</param>
+        <param name="flags">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StartEditing">
+      <MemberSignature Language="C#" Value="public override Gtk.CellEditable StartEditing (Gdk.Event evnt, Gtk.Widget widget, string path, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, Gtk.CellRendererState flags);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Gtk.CellEditable StartEditing(class Gdk.Event evnt, class Gtk.Widget widget, string path, valuetype Gdk.Rectangle background_area, valuetype Gdk.Rectangle cell_area, valuetype Gtk.CellRendererState flags) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.CellEditable</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="evnt" Type="Gdk.Event" />
+        <Parameter Name="widget" Type="Gtk.Widget" />
+        <Parameter Name="path" Type="System.String" />
+        <Parameter Name="background_area" Type="Gdk.Rectangle" />
+        <Parameter Name="cell_area" Type="Gdk.Rectangle" />
+        <Parameter Name="flags" Type="Gtk.CellRendererState" />
+      </Parameters>
+      <Docs>
+        <param name="evnt">To be added.</param>
+        <param name="widget">To be added.</param>
+        <param name="path">To be added.</param>
+        <param name="background_area">To be added.</param>
+        <param name="cell_area">To be added.</param>
+        <param name="flags">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

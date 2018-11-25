@@ -1,0 +1,42 @@
+<Type Name="Markup" FullName="GLib.Markup">
+  <TypeSignature Language="C#" Value="public class Markup" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Markup extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>glib-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the &lt;link location="node:gtk-sharp/programming/threads"&gt;Gtk# Thread Programming&lt;/link&gt; for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Wrapper for glib markup</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="EscapeText">
+      <MemberSignature Language="C#" Value="public static string EscapeText (string s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string EscapeText(string s) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="s">some valid Utf8 text</param>
+        <summary>Escapes text so that the markup parser will parse it verbatim.</summary>
+        <returns>escaped text</returns>
+        <remarks>Less than, greater than, ampersand, etc. are replaced with the corresponding entities. This function would typically be used when writing out a file to be parsed with the markup parser.
+Note that this function does not protect whitespace and line endings from being processed according to the XML rules for normalization of line endings and attribute values.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

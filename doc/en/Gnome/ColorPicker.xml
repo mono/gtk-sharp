@@ -1,0 +1,462 @@
+<Type Name="ColorPicker" FullName="Gnome.ColorPicker">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class ColorPicker : Gtk.Button" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ColorPicker extends Gtk.Button" />
+  <AssemblyInfo>
+    <AssemblyName>gnome-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Button</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Obsolete</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>A button for selecting a color.</summary>
+    <remarks>ColorPicker provides a button for selecting a color. When pressed, a dialog is opened allowing the user to select a color.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ColorPicker ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Create a new ColorPicker widget.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected ColorPicker (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ColorPicker (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Alpha">
+      <MemberSignature Language="C#" Value="public uint Alpha { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Alpha" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("alpha")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The alpha value for the color in the widget.</summary>
+        <value>The current value of the channel.</value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Blue">
+      <MemberSignature Language="C#" Value="public uint Blue { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Blue" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("blue")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The blue value for the color in the widget.</summary>
+        <value>The current value of the channel.</value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColorSet">
+      <MemberSignature Language="C#" Value="public event Gnome.ColorSetHandler ColorSet;" />
+      <MemberSignature Language="ILAsm" Value=".event class Gnome.ColorSetHandler ColorSet" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("color_set")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gnome.ColorSetHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted when a color is selected in the color dialog.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dither">
+      <MemberSignature Language="C#" Value="public bool Dither { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Dither" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("dither")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Whether the sample is dithered or simply a solid color.</summary>
+        <value>Current dither settings for the widget.</value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetD">
+      <MemberSignature Language="C#" Value="public void GetD (out double r, out double g, out double b, out double a);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetD(float64 r, float64 g, float64 b, float64 a) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="System.Double&amp;" RefType="out" />
+        <Parameter Name="g" Type="System.Double&amp;" RefType="out" />
+        <Parameter Name="b" Type="System.Double&amp;" RefType="out" />
+        <Parameter Name="a" Type="System.Double&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="r">Location to store the red value.</param>
+        <param name="g">Location to store the green value.</param>
+        <param name="b">Location to store the blue value.</param>
+        <param name="a">Location to store the alpha value.</param>
+        <summary>Get the doubles for the current color in the widget.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetI16">
+      <MemberSignature Language="C#" Value="public void GetI16 (out ushort r, out ushort g, out ushort b, out ushort a);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetI16(unsigned int16 r, unsigned int16 g, unsigned int16 b, unsigned int16 a) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="System.UInt16&amp;" RefType="out" />
+        <Parameter Name="g" Type="System.UInt16&amp;" RefType="out" />
+        <Parameter Name="b" Type="System.UInt16&amp;" RefType="out" />
+        <Parameter Name="a" Type="System.UInt16&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="r">Location to store the red value.</param>
+        <param name="g">Location to store the green value.</param>
+        <param name="b">Location to store the blue value.</param>
+        <param name="a">Location to store the alpha value.</param>
+        <summary>Get the UInt16s for the current color in the widget.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetI8">
+      <MemberSignature Language="C#" Value="public void GetI8 (out byte r, out byte g, out byte b, out byte a);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetI8(unsigned int8 r, unsigned int8 g, unsigned int8 b, unsigned int8 a) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="System.Byte&amp;" RefType="out" />
+        <Parameter Name="g" Type="System.Byte&amp;" RefType="out" />
+        <Parameter Name="b" Type="System.Byte&amp;" RefType="out" />
+        <Parameter Name="a" Type="System.Byte&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="r">Location to store the red value.</param>
+        <param name="g">Location to store the green value.</param>
+        <param name="b">Location to store the blue value.</param>
+        <param name="a">Location to store the alpha value.</param>
+        <summary>Get the bytes for the current color in the widget.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Green">
+      <MemberSignature Language="C#" Value="public uint Green { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Green" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("green")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The green value for the color in the widget.</summary>
+        <value>The current value of the channel.</value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gnome.ColorPicker" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnColorSet">
+      <MemberSignature Language="C#" Value="protected virtual void OnColorSet (uint r, uint g, uint b, uint a);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnColorSet(unsigned int32 r, unsigned int32 g, unsigned int32 b, unsigned int32 a) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideColorSet", Type=typeof(Gnome.ColorPicker))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="System.UInt32" />
+        <Parameter Name="g" Type="System.UInt32" />
+        <Parameter Name="b" Type="System.UInt32" />
+        <Parameter Name="a" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="r">a <see cref="T:System.UInt32" /></param>
+        <param name="g">a <see cref="T:System.UInt32" /></param>
+        <param name="b">a <see cref="T:System.UInt32" /></param>
+        <param name="a">a <see cref="T:System.UInt32" /></param>
+        <summary>Default handler for the <see cref="M:Gnome.ColorPicker.ColorSet" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gnome.ColorPicker.ColorSet" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Red">
+      <MemberSignature Language="C#" Value="public uint Red { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Red" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("red")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The red value for the color in the widget.</summary>
+        <value>The current value of the channel.</value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetD">
+      <MemberSignature Language="C#" Value="public void SetD (double r, double g, double b, double a);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetD(float64 r, float64 g, float64 b, float64 a) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="System.Double" />
+        <Parameter Name="g" Type="System.Double" />
+        <Parameter Name="b" Type="System.Double" />
+        <Parameter Name="a" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="r">The red value to set.</param>
+        <param name="g">The green value to set.</param>
+        <param name="b">The blue value to set.</param>
+        <param name="a">The alpha value to set.</param>
+        <summary>Set the color in the widget.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetI16">
+      <MemberSignature Language="C#" Value="public void SetI16 (ushort r, ushort g, ushort b, ushort a);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetI16(unsigned int16 r, unsigned int16 g, unsigned int16 b, unsigned int16 a) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="System.UInt16" />
+        <Parameter Name="g" Type="System.UInt16" />
+        <Parameter Name="b" Type="System.UInt16" />
+        <Parameter Name="a" Type="System.UInt16" />
+      </Parameters>
+      <Docs>
+        <param name="r">The red value to set.</param>
+        <param name="g">The green value to set.</param>
+        <param name="b">The blue value to set.</param>
+        <param name="a">The alpha value to set.</param>
+        <summary>Set the color in the widget.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetI8">
+      <MemberSignature Language="C#" Value="public void SetI8 (byte r, byte g, byte b, byte a);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetI8(unsigned int8 r, unsigned int8 g, unsigned int8 b, unsigned int8 a) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="System.Byte" />
+        <Parameter Name="g" Type="System.Byte" />
+        <Parameter Name="b" Type="System.Byte" />
+        <Parameter Name="a" Type="System.Byte" />
+      </Parameters>
+      <Docs>
+        <param name="r">The red value to set.</param>
+        <param name="g">The green value to set.</param>
+        <param name="b">The blue value to set.</param>
+        <param name="a">The alpha value to set.</param>
+        <summary>Set the color in the widget.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Title">
+      <MemberSignature Language="C#" Value="public string Title { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Title" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("title")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The title to be displayed on the color selection dialog.</summary>
+        <value>Current text to be used for the color selection dialog.</value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UseAlpha">
+      <MemberSignature Language="C#" Value="public bool UseAlpha { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool UseAlpha" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("use_alpha")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Enable/Disable support for an alpha channel for the color.</summary>
+        <value>Curren rule for the use of the alpha channel.</value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

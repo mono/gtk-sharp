@@ -1,0 +1,122 @@
+<Type Name="PropertyEditorOptionMenu" FullName="GConf.PropertyEditors.PropertyEditorOptionMenu">
+  <TypeSignature Language="C#" Value="public class PropertyEditorOptionMenu : GConf.PropertyEditors.PropertyEditorEnum" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PropertyEditorOptionMenu extends GConf.PropertyEditors.PropertyEditorEnum" />
+  <AssemblyInfo>
+    <AssemblyName>gconf-sharp-peditors</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the &lt;link location="node:gtk-sharp/programming/threads"&gt;Gtk# Thread Programming&lt;/link&gt; for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GConf.PropertyEditors.PropertyEditorEnum</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public PropertyEditorOptionMenu (string key, Gtk.OptionMenu menu);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string key, class Gtk.OptionMenu menu) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="menu" Type="Gtk.OptionMenu" />
+      </Parameters>
+      <Docs>
+        <param name="key">To be added: an object of type 'string'</param>
+        <param name="menu">To be added: an object of type 'Gtk.OptionMenu'</param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public PropertyEditorOptionMenu (string key, Gtk.OptionMenu menu, Type enum_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string key, class Gtk.OptionMenu menu, class System.Type enum_type) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="menu" Type="Gtk.OptionMenu" />
+        <Parameter Name="enum_type" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="key">To be added: an object of type 'string'</param>
+        <param name="menu">To be added: an object of type 'Gtk.OptionMenu'</param>
+        <param name="enum_type">To be added: an object of type 'Type'</param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public PropertyEditorOptionMenu (string key, Gtk.OptionMenu menu, Type enum_type, int[] enum_values);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string key, class Gtk.OptionMenu menu, class System.Type enum_type, int32[] enum_values) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="menu" Type="Gtk.OptionMenu" />
+        <Parameter Name="enum_type" Type="System.Type" />
+        <Parameter Name="enum_values" Type="System.Int32[]" />
+      </Parameters>
+      <Docs>
+        <param name="key">To be added: an object of type 'string'</param>
+        <param name="menu">To be added: an object of type 'Gtk.OptionMenu'</param>
+        <param name="enum_type">To be added: an object of type 'Type'</param>
+        <param name="enum_values">To be added: an object of type 'int []'</param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConnectHandlers">
+      <MemberSignature Language="C#" Value="protected override void ConnectHandlers ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void ConnectHandlers() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ValueChanged">
+      <MemberSignature Language="C#" Value="protected override void ValueChanged (object sender, GConf.NotifyEventArgs args);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void ValueChanged(object sender, class GConf.NotifyEventArgs args) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sender" Type="System.Object" />
+        <Parameter Name="args" Type="GConf.NotifyEventArgs" />
+      </Parameters>
+      <Docs>
+        <param name="sender">To be added.</param>
+        <param name="args">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

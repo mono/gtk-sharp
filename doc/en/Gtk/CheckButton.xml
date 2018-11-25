@@ -1,0 +1,182 @@
+<Type Name="CheckButton" FullName="Gtk.CheckButton">
+  <TypeSignature Language="C#" Maintainer="Kevin Breit" Value="public class CheckButton : Gtk.ToggleButton" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CheckButton extends Gtk.ToggleButton" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.ToggleButton</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>A <see cref="T:Gtk.CheckButton" /> places a discrete <see cref="T:Gtk.ToggleButton" /> next to a widget.</summary>
+    <remarks>
+      <para>
+        A <see cref="T:Gtk.CheckButton" /> places a discrete <see cref="T:Gtk.ToggleButton" /> next to a widget, usually a <see cref="T:Gtk.Label" />. See <see cref="T:Gtk.ToggleButton" /> for more information about toggle/check buttons.
+</para>
+      <example>
+        <code lang="C#">
+using System;
+using Gtk;
+
+class CheckButtonSample
+{
+	CheckButton cb;
+	static void Main ()
+	{
+		new CheckButtonSample ();
+	}
+
+	CheckButtonSample ()
+	{
+		Application.Init ();
+		Window win = new Window ("CheckButtonSample");
+		win.DeleteEvent += new DeleteEventHandler (OnWinDelete);
+		VBox vbox = new VBox (true, 1);
+		win.Add (vbox);
+		cb = new CheckButton ("Checked");
+		cb.Toggled += new EventHandler (OnCheckToggled);
+		vbox.Add (cb);
+		win.ShowAll ();
+		Application.Run ();
+	}
+
+	void OnCheckToggled (object obj, EventArgs args)
+	{
+		if (cb.Label == "Checked")
+		{
+			cb.Label = "Unchecked";
+		}
+		else
+		{
+			cb.Label = "Checked";
+		}
+	}
+
+	void OnWinDelete (object obj, DeleteEventArgs args)
+	{
+		Application.Quit ();
+	}
+} 
+  </code>
+      </example>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CheckButton ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Constructor</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected CheckButton (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CheckButton (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CheckButton (string label);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string label) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="label">A string for the <see cref="T:Gtk.Label" />.</param>
+        <summary>Constructor</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.CheckButton" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NewWithLabel">
+      <MemberSignature Language="C#" Value="public static Gtk.CheckButton NewWithLabel (string label);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gtk.CheckButton NewWithLabel(string label) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.CheckButton</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="label">The label displayed to the right of the <see cref="T:Gtk.CheckButton" />.</param>
+        <summary>Creates a new <see cref="T:Gtk.CheckButton" /> object with a label to the right of it.</summary>
+        <returns>The newly created <see cref="T:Gtk.CheckButton" />.</returns>
+        <remarks>Creates a new <see cref="T:Gtk.CheckButton" /> object with a <see cref="T:Gtk.Label" /> to the
+        right of it</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

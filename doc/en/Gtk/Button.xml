@@ -1,0 +1,873 @@
+<Type Name="Button" FullName="Gtk.Button">
+  <TypeSignature Language="C#" Maintainer="Duncan Mak" Value="public class Button : Gtk.Bin" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Button extends Gtk.Bin" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Bin</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>A widget that creates a signal when clicked on.</summary>
+    <remarks>
+      <para>
+        The <see cref="T:Gtk.Button" /> widget is generally used to attach to a function that is called when the button is pressed.
+        The <see cref="T:Gtk.Button" /> widget can hold any valid child widget.
+				That is, it can hold most any other standard <see cref="T:Gtk.Widget" />. The most commonly used child is the <see cref="T:Gtk.Label" />.
+      </para>
+      <example>
+        <code lang="C#">
+using Gtk;
+using System;
+	
+public class ButtonApp  {
+
+	public static int Main (string[] args)
+	{
+		Application.Init ();
+		Window win = new Window ("Button Tester");
+		win.SetDefaultSize (200, 150);
+		win.DeleteEvent += new DeleteEventHandler (Window_Delete);
+		Button btn = new Button ("Click Me");
+		btn.Clicked += new EventHandler (btn_click);
+		win.Add (btn);
+		win.ShowAll ();
+		Application.Run ();
+		return 0;
+	}
+
+	static void btn_click (object obj, EventArgs args)
+	{
+		Console.WriteLine ("Button Clicked");
+	}
+
+	static void Window_Delete (object obj, DeleteEventArgs args)
+	{
+		Application.Quit ();
+		args.RetVal = true;
+	}
+
+}
+				</code>
+      </example>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Button ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Default parameterless constructor.</summary>
+        <remarks>This is the default constructor for the <see cref="T:Gtk.Button" /> class.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Button (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Button (Gtk.Widget widget);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Gtk.Widget widget) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="widget" Type="Gtk.Widget" />
+      </Parameters>
+      <Docs>
+        <param name="widget">a child <see cref="T:Gtk.Widget" /></param>
+        <summary>Constructs a button containing a specified Child widget.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Button (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">an object of type <see cref="T:System.IntPtr" /></param>
+        <summary>Internal constructor</summary>
+        <remarks>This is not typically used by C# code.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Button (string stock_id);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string stock_id) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="stock_id" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="stock_id">a <see cref="T:System.String" /></param>
+        <summary>Creates a new <see cref="T:Gtk.Button" /> containing the image and text from a stock item.</summary>
+        <remarks>The valid names of Stock items can be found in the <see cref="T:Gtk.Stock" /> class. If <paramref name="stock_id" /> is unknown, then it will be treated as a simple label.
+
+
+<para>
+This for example creates a stock OK button. It sets a localized label, a standard icon (choosed from your GTK theme), and the appropriate keyboard accelerator: 
+</para><example><code lang="C#">
+     Button b = new Button (Stock.Ok);
+  </code></example></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ActionGetType">
+      <MemberSignature Language="C#" Value="public static GLib.GType ActionGetType ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype GLib.GType ActionGetType() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns the kind of action this button does.</summary>
+        <returns>a <see cref="T:GLib.GType" /></returns>
+        <remarks>There are four possible options: "ignored", "selects", "drags",
+	  and "expands".</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Activated">
+      <MemberSignature Language="C#" Value="public event EventHandler Activated;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Activated" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("activate")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+          Event launched when the <see cref="T:Gtk.Button" /> is activated.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Click">
+      <MemberSignature Language="C#" Value="public void Click ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Click() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emits a <see cref="E:Gtk.Button.Clicked" /> signal to the given <see cref="T:Gtk.Button" />.</summary>
+        <remarks>Emits a <see cref="E:Gtk.Button.Clicked" /> signal to the given <see cref="T:Gtk.Button" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Clicked">
+      <MemberSignature Language="C#" Value="public event EventHandler Clicked;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Clicked" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("clicked")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+          Event launched when the <see cref="T:Gtk.Button" /> is clicked.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Enter">
+      <MemberSignature Language="C#" Value="public void Enter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Enter() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emits a <see cref="E:Gtk.Button.Entered" /> signal to the given <see cref="T:Gtk.Button" />.</summary>
+        <remarks>Emits a <see cref="E:Gtk.Button.Entered" /> signal to the given <see cref="T:Gtk.Button" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Entered">
+      <MemberSignature Language="C#" Value="public event EventHandler Entered;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Entered" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("enter")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+          Event launched when the cursor enters the <see cref="T:Gtk.Button" /> area.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="FocusOnClick">
+      <MemberSignature Language="C#" Value="public bool FocusOnClick { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool FocusOnClick" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("focus-on-click")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+	  Whether the button grabs focus when it is clicked with the mouse.
+	</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="GetAlignment">
+      <MemberSignature Language="C#" Value="public void GetAlignment (out float xalign, out float yalign);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetAlignment(float32 xalign, float32 yalign) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="xalign" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="yalign" Type="System.Single&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="xalign">a <see cref="T:System.Single" /> to put the horizontal alignment in</param>
+        <param name="yalign">a <see cref="T:System.Single" /> to put the vertical alignment in</param>
+        <summary>Gets the alignment of the child in the button.</summary>
+        <remarks>A convenience method; shouldn't be </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.Button" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Image">
+      <MemberSignature Language="C#" Value="public Gtk.Widget Image { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Widget Image" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("image")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.Widget</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Child widget to appear next to the button text.</summary>
+        <value>A <see cref="T:Gtk.Widget" />.</value>
+        <remarks />
+        <since version="Gtk# 2.6" />
+      </Docs>
+    </Member>
+    <Member MemberName="ImagePosition">
+      <MemberSignature Language="C#" Value="public Gtk.PositionType ImagePosition { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.PositionType ImagePosition" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("image-position")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.PositionType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Position of the image relative to the text.</summary>
+        <value>a <see cref="T:Gtk.PositionType" />.</value>
+        <remarks />
+        <since version="Gtk# 2.10" />
+      </Docs>
+    </Member>
+    <Member MemberName="InButton">
+      <MemberSignature Language="C#" Value="public bool InButton { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool InButton" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Whether or not the cursor is inside the button.</summary>
+        <value>a <see cref="T:System.Boolean" />, true if the cursor is inside the button.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Label">
+      <MemberSignature Language="C#" Value="public string Label { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Label" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("label")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The text of the <see cref="T:Gtk.Label" /> in the <see cref="T:Gtk.Button" />.</summary>
+        <value>The <see cref="T:System.String" /> contained by the <see cref="T:Gtk.Button" />.</value>
+        <remarks>If you want the Label to have a mnemonic you need to set <see cref="P:Gtk.Button.UseUnderline" /> to <see langword="true" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Leave">
+      <MemberSignature Language="C#" Value="public void Leave ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Leave() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emits a <see cref="E:Gtk.Button.Left" /> signal to the given <see cref="T:Gtk.Button" />.</summary>
+        <remarks>Emits a <see cref="E:Gtk.Button.Left" /> signal to the given <see cref="T:Gtk.Button" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Left">
+      <MemberSignature Language="C#" Value="public event EventHandler Left;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Left" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("leave")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+          Event launched when the cursor leaves the <see cref="T:Gtk.Button" /> area.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="NewWithLabel">
+      <MemberSignature Language="C#" Value="public static Gtk.Button NewWithLabel (string label);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gtk.Button NewWithLabel(string label) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Button</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="label">
+          The text you want the <see cref="T:Gtk.Label" /> to hold.
+        </param>
+        <summary>Creates a <see cref="T:Gtk.Button" /> widget with a <see cref="T:Gtk.Label" /> child containing the given text.</summary>
+        <returns>The newly created <see cref="T:Gtk.Button" /> widget.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="NewWithMnemonic">
+      <MemberSignature Language="C#" Value="public static Gtk.Button NewWithMnemonic (string label);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gtk.Button NewWithMnemonic(string label) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Button</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="label">a <see cref="T:System.String" /></param>
+        <summary>Creates a labeled <see cref="T:Gtk.Button" />.</summary>
+        <returns>a <see cref="T:Gtk.Button" /></returns>
+        <remarks>Constructor that creates a labeled <see cref="T:Gtk.Button" />. The label
+  shows the string passed as parameter.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnActivated">
+      <MemberSignature Language="C#" Value="protected virtual void OnActivated ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnActivated() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideActivated", Type=typeof(Gtk.Button))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.Button.Activated" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Button.Activated" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnClicked">
+      <MemberSignature Language="C#" Value="protected virtual void OnClicked ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnClicked() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideClicked", Type=typeof(Gtk.Button))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.Button.Clicked" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Button.Clicked" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnEntered">
+      <MemberSignature Language="C#" Value="protected virtual void OnEntered ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnEntered() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideEntered", Type=typeof(Gtk.Button))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.Button.Entered" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Button.Entered" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnLeft">
+      <MemberSignature Language="C#" Value="protected virtual void OnLeft ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnLeft() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideLeft", Type=typeof(Gtk.Button))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.Button.Left" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Button.Left" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnPressed">
+      <MemberSignature Language="C#" Value="protected virtual void OnPressed ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnPressed() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverridePressed", Type=typeof(Gtk.Button))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.Button.Pressed" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Button.Pressed" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnReleased">
+      <MemberSignature Language="C#" Value="protected virtual void OnReleased ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnReleased() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideReleased", Type=typeof(Gtk.Button))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.Button.Released" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Button.Released" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Press">
+      <MemberSignature Language="C#" Value="public void Press ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Press() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emits a <see cref="E:Gtk.Button.Pressed" /> signal to the given <see cref="T:Gtk.Button" />.</summary>
+        <remarks>Emits a <see cref="E:Gtk.Button.Pressed" /> signal to the given <see cref="T:Gtk.Button" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Pressed">
+      <MemberSignature Language="C#" Value="public event EventHandler Pressed;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Pressed" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("pressed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+          Event launched when the <see cref="T:Gtk.Button" /> is pressed.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Release">
+      <MemberSignature Language="C#" Value="public void Release ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Release() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emits a <see cref="E:Gtk.Button.Released" /> signal to the given <see cref="T:Gtk.Button" />.</summary>
+        <remarks>Emits a <see cref="E:Gtk.Button.Released" /> signal to the given <see cref="T:Gtk.Button" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Released">
+      <MemberSignature Language="C#" Value="public event EventHandler Released;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Released" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("released")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+          Event launched when the <see cref="T:Gtk.Button" /> is released.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Relief">
+      <MemberSignature Language="C#" Value="public Gtk.ReliefStyle Relief { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.ReliefStyle Relief" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("relief")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.ReliefStyle</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The <see cref="T:Gtk.ReliefStyle" /> for the <see cref="T:Gtk.Button" />.</summary>
+        <value>An instance of <see cref="T:Gtk.ReliefStyle" /> that
+  represents the relief style of the <see cref="T:Gtk.Button" />.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="SetAlignment">
+      <MemberSignature Language="C#" Value="public void SetAlignment (float xalign, float yalign);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetAlignment(float32 xalign, float32 yalign) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="xalign" Type="System.Single" />
+        <Parameter Name="yalign" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="xalign">a <see cref="T:System.Single" />,  
+	  the horizontal position of the child; 0.0 is left aligned, 
+	  1.0 is right aligned.</param>
+        <param name="yalign">a <see cref="T:System.Single" />,
+	  the vertical position of the child; 0.0 is top aligned, 
+	  1.0 is bottom aligned.</param>
+        <summary>	   
+	  Sets the alignment of the child. 
+	</summary>
+        <remarks>
+	  This has no effect
+	  unless the button's child is a <see cref="T:Gtk.Misc" /> 
+	  or <see cref="T:Gtk.Alignment" />.
+	</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="UseStock">
+      <MemberSignature Language="C#" Value="public bool UseStock { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool UseStock" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("use-stock")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Whether the <see cref="T:Gtk.Button" /> should use a <see cref="T:Gtk.Stock" />.</summary>
+        <value>Gets a value indicating if the <see cref="T:Gtk.Button" /> uses a <see cref="T:Gtk.Stock" />.</value>
+        <remarks>It is possible to create a <see cref="T:Gtk.Button" /> from <see cref="T:Gtk.Stock" />, which is recommended for consistency in <see cref="N:Gnome" />
+  apps. They also provide a <see cref="T:Gtk.Label" /> and a key shortcut. 
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UseUnderline">
+      <MemberSignature Language="C#" Value="public bool UseUnderline { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool UseUnderline" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("use-underline")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Indicates if a mnemonic is associated with the <see cref="T:Gtk.Button" />.</summary>
+        <value>Gets a value indicating if the <see cref="T:Gtk.Button" /> uses underline
+  or not.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Xalign">
+      <MemberSignature Language="C#" Value="public float Xalign { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Xalign" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("xalign")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+	   If the child of the button is a <see cref="T:Gtk.Misc" /> 
+	   or <see cref="T:Gtk.Alignment" />, this property 
+	   can be used to control its horizontal alignment. 
+	</summary>
+        <value>a <see cref="T:System.Single" />; 
+	  0.0 is left aligned, 1.0 is right aligned.
+	</value>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Yalign">
+      <MemberSignature Language="C#" Value="public float Yalign { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Yalign" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("yalign")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+	   If the child of the button is a <see cref="T:Gtk.Misc" /> 
+	   or <see cref="T:Gtk.Alignment" />, this property 
+	   can be used to control its vertical alignment. 
+	</summary>
+        <value>
+	  a <see cref="T:System.Single" />;
+	  0.0 is top aligned, 1.0 is bottom aligned.
+	</value>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

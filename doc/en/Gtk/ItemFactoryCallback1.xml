@@ -1,0 +1,28 @@
+<Type Name="ItemFactoryCallback1" FullName="Gtk.ItemFactoryCallback1">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public delegate void ItemFactoryCallback1(IntPtr callback_data, uint callback_action, Widget widget);" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed ItemFactoryCallback1 extends System.MulticastDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="callback_data" Type="System.IntPtr" />
+    <Parameter Name="callback_action" Type="System.UInt32" />
+    <Parameter Name="widget" Type="Gtk.Widget" />
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Void</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <param name="callback_data">To be added.</param>
+    <param name="callback_action">To be added.</param>
+    <param name="widget">To be added.</param>
+    <summary>Delegate function to be invoked by <see cref="T:Gtk.ItemFactory" />.</summary>
+    <remarks />
+  </Docs>
+  <Members />
+</Type>

@@ -1,0 +1,306 @@
+<Type Name="Visual" FullName="Gdk.Visual">
+  <TypeSignature Language="C#" Maintainer="miguel" Value="public class Visual : GLib.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Visual extends GLib.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>Describes a particular video hardware display format.</summary>
+    <remarks>
+      <para>
+	A Gdk.Visual describes a particular video hardware display
+	format. It includes information about the number of bits used
+	for each color, the way the bits are translated into an RGB
+	value for display, and the way the bits are stored in
+	memory. For example, a piece of display hardware might support
+	24-bit color, 16-bit color, or 8-bit color; meaning
+	24/16/8-bit pixel sizes. For a given pixel size, pixels can be
+	in different formats; for example the "red" element of an RGB
+	pixel may be in the top 8 bits of the pixel, or may be in the
+	lower 4 bits.
+      </para>
+      <para>
+	Usually you can avoid thinking about visuals in GTK+. Visuals
+	are useful to interpret the contents of a <see cref="T:Gdk.Image" />, but you should avoid GdkImage precisely
+	because its contents depend on the display hardware; use <see cref="T:Gdk.Pixbuf" /> instead, for all but the most low-level
+	purposes.  Also, anytime you provide a <see cref="T:Gdk.Colormap" />, the visual is implied as part of the
+	colormap (<see cref="P:Gdk.Colormap.Visual" />), so you won't
+	have to provide a visual in addition.
+      </para>
+      <para>
+	There are several standard visuals.  The visual returned by
+	<see cref="P:Gdk.Visual.System" /> is the system's default
+	visual.  <see cref="P:Gdk.Rgb.Visual" /> return the visual most
+	suited to displaying full-color image data. If you use the
+	calls in <see cref="T:Gdk.RGB" />, you should create your
+	windows using this visual (and the colormap returned by <see cref="P:Gdk.Rgb.Colormap" />).
+      </para>
+      <para>
+	A number of functions are provided for determining the "best"
+	available visual.  For the purposes of making this
+	determination, higher bit depths are considered better, and
+	for visuals of the same bit depth, <see cref="E:Gdk.VisualType.PseudoColor" /> is preferred at 8bpp,
+	otherwise, the visual types are ranked in the order of
+	(highest to lowest) <see cref="E:Gdk.VisualType.DirectColor" /><see cref="E:Gdk.VisualType.TrueColor" />, <see cref="E:Gdk.VisualType.PseudoColor" />, <see cref="Gdk.VisualType.StaticColor" />, <see cref="Gdk.VisualType.Grayscale" />, then
+	<see cref="E:Gdk.VisualType.StaticGray" />.
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Visual ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Default constructor.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Visual (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Visual (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Best">
+      <MemberSignature Language="C#" Value="public static Gdk.Visual Best { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class Gdk.Visual Best" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Visual</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Visual with the most available colors for the default GDK screen.</summary>
+        <value>The best visual.</value>
+        <remarks>Get the visual with the most available colors for the default GDK screen. </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BestDepth">
+      <MemberSignature Language="C#" Value="public static int BestDepth { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property int32 BestDepth" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Best depth for the default Gdk screen.</summary>
+        <value>The best depth</value>
+        <remarks>
+          <para>
+	    Get the best available depth for the default GDK
+	    screen. "Best" means "largest," i.e. 32 preferred over 24
+	    preferred over 8 bits per pixel.
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BestType">
+      <MemberSignature Language="C#" Value="public static Gdk.VisualType BestType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype Gdk.VisualType BestType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.VisualType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Best visual type for the default Gdk screen</summary>
+        <value>The best visual type available.</value>
+        <remarks>Return the best available visual type for the default GDK screen.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetBestWithBoth">
+      <MemberSignature Language="C#" Value="public static Gdk.Visual GetBestWithBoth (int depth, Gdk.VisualType visual_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Visual GetBestWithBoth(int32 depth, valuetype Gdk.VisualType visual_type) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Visual</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="depth" Type="System.Int32" />
+        <Parameter Name="visual_type" Type="Gdk.VisualType" />
+      </Parameters>
+      <Docs>
+        <param name="depth">Required depth.</param>
+        <param name="visual_type">Required visual type.</param>
+        <summary>Get the best visual given a visual type and a
+        required depth.</summary>
+        <returns>Best visual of the given type and depth.</returns>
+        <remarks>
+          <para>
+	    Get the best visual of the given <paramref name="visual_type" /> at the given <paramref name="depth" />for the default GDK screen.  Visuals with
+	    higher color depths are considered better. The return
+	    value should not be freed. <see langword="null" /> may be
+	    returned if no visual that match the type <paramref name="visual_type" /> and <paramref name="depth" />.
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetBestWithDepth">
+      <MemberSignature Language="C#" Value="public static Gdk.Visual GetBestWithDepth (int depth);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Visual GetBestWithDepth(int32 depth) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Visual</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="depth" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="depth">A bit depth</param>
+        <summary>Get the best visual with depth depth for the default GDK screen.</summary>
+        <returns>Best visual for the given depth.</returns>
+        <remarks>
+          <para>
+	    Get the best visual with depth depth for the default GDK
+	    screen.  Color visuals and visuals with mutable colormaps
+	    are preferred over grayscale or fixed-colormap visuals.
+	    The return value should not be freed. <see langword="null" /> may be returned if no visual supports
+	    <paramref name="depth" />.
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetBestWithType">
+      <MemberSignature Language="C#" Value="public static Gdk.Visual GetBestWithType (Gdk.VisualType visual_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Visual GetBestWithType(valuetype Gdk.VisualType visual_type) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Visual</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="visual_type" Type="Gdk.VisualType" />
+      </Parameters>
+      <Docs>
+        <param name="visual_type">Required visual type.</param>
+        <summary>Get the best visual of the given visual_type for the default GDK screen.</summary>
+        <returns>Best visual of the given type</returns>
+        <remarks>
+          <para>
+	    Get the best visual of the given <paramref name="visual_type" /> for the default GDK screen.  Visuals
+	    with higher color depths are considered better. The return
+	    value should not be freed. <see langword="null" /> may be
+	    returned if no visual has type <paramref name="visual_type" />.
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gdk.Visual" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Screen">
+      <MemberSignature Language="C#" Value="public Gdk.Screen Screen { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Screen Screen" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Screen</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Gets the screen to which this visual belongs.</summary>
+        <value>The <see cref="T:Gdk.Screen" /> to which this visual belongs.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="System">
+      <MemberSignature Language="C#" Value="public static Gdk.Visual System { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class Gdk.Visual System" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Visual</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The system'sdefault visual for the default GDK
+        screen.</summary>
+        <value>The system visual</value>
+        <remarks>Get the system'sdefault visual for the default GDK
+        screen. This is the visual for the root window of the
+        display.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

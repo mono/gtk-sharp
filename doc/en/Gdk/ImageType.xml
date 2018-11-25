@@ -1,0 +1,76 @@
+<Type Name="ImageType" FullName="Gdk.ImageType">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum ImageType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed ImageType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gdk.ImageTypeGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Specifies the type of a <see cref="T:Gdk.Image" />.</summary>
+    <remarks>None.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Fastest">
+      <MemberSignature Language="C#" Value="Fastest" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.ImageType Fastest = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.ImageType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Specifies that Shared should be tried first, and if that fails, then Normal will be used.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Normal">
+      <MemberSignature Language="C#" Value="Normal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.ImageType Normal = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.ImageType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The original X image type, which is quite slow since the image has to be transferred from the client to the server to display it.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Shared">
+      <MemberSignature Language="C#" Value="Shared" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.ImageType Shared = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.ImageType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>A faster image type, which uses shared memory to transfer the image data between the client and server. However this will only be available if the client and server are on the same machine and the shared memory extension is supported by the server.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

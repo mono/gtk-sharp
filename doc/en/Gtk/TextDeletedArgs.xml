@@ -1,0 +1,88 @@
+<Type Name="TextDeletedArgs" FullName="Gtk.TextDeletedArgs">
+  <TypeSignature Language="C#" Value="public class TextDeletedArgs : GLib.SignalArgs" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit TextDeletedArgs extends GLib.SignalArgs" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Event data.</summary>
+    <remarks>
+      <para>The following events invoke <see cref="T:Gtk.TextDeletedHandler" /> delegates which pass event data via this class:</para>
+      <para>
+        <list type="bullet">
+          <item>
+            <term>
+              <see cref="M:Gnome.Entry.TextDeleted" />
+            </term>
+          </item>
+          <item>
+            <term>
+              <see cref="M:Gnome.FileEntry.TextDeleted" />
+            </term>
+          </item>
+          <item>
+            <term>
+              <see cref="M:Gtk.Entry.TextDeleted" />
+            </term>
+          </item>
+        </list>
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TextDeletedArgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Public Constructor.</summary>
+        <remarks>Create a new <see cref="T:Gtk.TextDeletedArgs" /> instance with this constructor if you need to invoke a <see cref="T:Gtk.TextDeletedHandler" /> delegate.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EndPos">
+      <MemberSignature Language="C#" Value="public int EndPos { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 EndPos" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The end position within the widget for the text that was deleted.</summary>
+        <value>An integer for the end position; this character is not included in the deleted text.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="StartPos">
+      <MemberSignature Language="C#" Value="public int StartPos { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 StartPos" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The start position within the widget for the text that was deleted.</summary>
+        <value>An integer for the start position.</value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

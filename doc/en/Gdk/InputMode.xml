@@ -1,0 +1,76 @@
+<Type Name="InputMode" FullName="Gdk.InputMode">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum InputMode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed InputMode extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gdk.InputModeGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>An enumeration that describes the mode of an input device.</summary>
+    <remarks>None.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Disabled">
+      <MemberSignature Language="C#" Value="Disabled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.InputMode Disabled = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.InputMode</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The device is disabled and will not report any events.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Screen">
+      <MemberSignature Language="C#" Value="Screen" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.InputMode Screen = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.InputMode</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The device is enabled. The device's coordinate space maps to the entire screen.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Window">
+      <MemberSignature Language="C#" Value="Window" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.InputMode Window = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.InputMode</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The device is enabled. The device's coordinate space is mapped to a single window. The manner in which this window is chosen is undefined, but it will typically be the same way in which the focus window for key events is determined.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

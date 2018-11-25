@@ -1,0 +1,102 @@
+<Type Name="HTMLCursorSkipType" FullName="Gtk.HTMLCursorSkipType">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum HTMLCursorSkipType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed HTMLCursorSkipType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gtkhtml-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>3.16.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>Units for allowing the HTML widget's cursor to skip.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="All">
+      <MemberSignature Language="C#" Value="All" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLCursorSkipType All = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLCursorSkipType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Skip units should encompass the whole document. Use for skipping to the beginning or end of the document.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="None">
+      <MemberSignature Language="C#" Value="None" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLCursorSkipType None = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLCursorSkipType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="One">
+      <MemberSignature Language="C#" Value="One" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLCursorSkipType One = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLCursorSkipType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Skip units should be counted in characters.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Page">
+      <MemberSignature Language="C#" Value="Page" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLCursorSkipType Page = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLCursorSkipType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Skip units should be counted in pages.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Word">
+      <MemberSignature Language="C#" Value="Word" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLCursorSkipType Word = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLCursorSkipType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Skip units should be counted in words.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

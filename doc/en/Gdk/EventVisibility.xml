@@ -1,0 +1,90 @@
+<Type Name="EventVisibility" FullName="Gdk.EventVisibility">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class EventVisibility : Gdk.Event" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit EventVisibility extends Gdk.Event" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gdk.Event</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Generated when the window visibility status has changed.</summary>
+    <remarks>
+      <para>
+	The type member is set to the event type constant name that
+        uniquely identifies it.
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public EventVisibility (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">raw unmanaged pointer.</param>
+        <summary>Internal constructor.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="State">
+      <MemberSignature Language="C#" Value="public Gdk.VisibilityState State { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.VisibilityState State" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.VisibilityState</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The visibility state for the window.</summary>
+        <value>a <see cref="T:Gdk.VisibilityState" /></value>
+        <remarks>
+          <para>
+	    The state member is set to the state of the window's
+	    visibility and can be VisibilityUnobscured,
+	    VisibilityPartiallyObscured, or VisibilityFullyObscured.
+	    The X server ignores all of a window's subwindows when
+	    determining the visibility state of the window and
+	    processes VisibilityNotify events according to the
+	    following:
+	  </para>
+          <para>
+	    When the window changes state from partially obscured, fully
+            obscured, or not viewable to viewable and completely unobscured,
+            the X server generates the event with the state member of the
+            EventVisibility structure set to Gdk.Visibility.Unobscured.
+	  </para>
+          <para>
+	    When the window changes state from viewable and completely unob-
+            scured or not viewable to viewable and partially obscured, the X
+            server generates the event with the state member of the XVisibili-
+            tyEvent structure set to Gdk.Visibility.Partial.
+	  </para>
+          <para>
+	    When the window changes state from viewable and completely
+            unobscured, viewable and partially obscured, or not
+            viewable to viewable and fully obscured, the X server
+            generates the event with the state member of the
+            XVisibilityEvent structure set to
+            Gdk.Visibility.FullyObscured.
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

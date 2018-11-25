@@ -1,0 +1,127 @@
+<Type Name="PixbufError" FullName="Gdk.PixbufError">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum PixbufError" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed PixbufError extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gdk.PixbufErrorGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Possible errors that can be thrown by a <see cref="T:Gdk.Pixbuf" />.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="BadOption">
+      <MemberSignature Language="C#" Value="BadOption" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.PixbufError BadOption = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.PixbufError</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An invalid option was specified.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CorruptImage">
+      <MemberSignature Language="C#" Value="CorruptImage" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.PixbufError CorruptImage = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.PixbufError</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The image file is corrupt.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Failed">
+      <MemberSignature Language="C#" Value="Failed" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.PixbufError Failed = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.PixbufError</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The operation failed.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InsufficientMemory">
+      <MemberSignature Language="C#" Value="InsufficientMemory" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.PixbufError InsufficientMemory = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.PixbufError</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>There is insufficient memory to hold this pixbuf data.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnknownType">
+      <MemberSignature Language="C#" Value="UnknownType" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.PixbufError UnknownType = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.PixbufError</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The given file type is not allowed.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnsupportedOperation">
+      <MemberSignature Language="C#" Value="UnsupportedOperation" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.PixbufError UnsupportedOperation = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.PixbufError</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The given operation is not supported.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

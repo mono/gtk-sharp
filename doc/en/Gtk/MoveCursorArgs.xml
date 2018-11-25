@@ -1,0 +1,93 @@
+<Type Name="MoveCursorArgs" FullName="Gtk.MoveCursorArgs">
+  <TypeSignature Language="C#" Value="public class MoveCursorArgs : GLib.SignalArgs" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit MoveCursorArgs extends GLib.SignalArgs" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Event data.</summary>
+    <remarks>
+      <para>The following events invoke <see cref="T:Gtk.MoveCursorHandler" /> delegates which pass event data via this class:</para>
+      <para>
+        <list type="bullet">
+          <item>
+            <term>
+              <see cref="M:Gtk.Label.MoveCursor" />
+            </term>
+          </item>
+          <item>
+            <term>
+              <see cref="M:Gtk.Entry.MoveCursor" />
+            </term>
+          </item>
+          <item>
+            <term>
+              <see cref="M:Gtk.TextView.MoveCursor" />
+            </term>
+          </item>
+          <item>
+            <term>
+              <see cref="M:Gtk.TreeView.MoveCursor" />
+            </term>
+          </item>
+        </list>
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MoveCursorArgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Public Constructor.</summary>
+        <remarks>Create a new <see cref="T:Gtk.MoveCursorArgs" /> instance with this constructor if you need to invoke a <see cref="T:Gtk.MoveCursorHandler" /> delegate.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Count">
+      <MemberSignature Language="C#" Value="public int Count { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Count" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>How many steps the cursor moved.</summary>
+        <value>A <see cref="T:System.Int32" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Step">
+      <MemberSignature Language="C#" Value="public Gtk.MovementStep Step { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.MovementStep Step" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.MovementStep</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The kind of movement being counted in this event.</summary>
+        <value>A <see cref="T:Gtk.MovementStep" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

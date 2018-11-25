@@ -1,0 +1,128 @@
+<Type Name="NotifyType" FullName="Gdk.NotifyType">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum NotifyType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed NotifyType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gdk.NotifyTypeGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Specifies the kind of crossing for <see cref="T:Gdk.EventCrossing" /><para />
+See the X11 protocol specification of LeaveNotify for full details of crossing event generation.</summary>
+    <remarks>None.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Ancestor">
+      <MemberSignature Language="C#" Value="Ancestor" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.NotifyType Ancestor = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.NotifyType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The window is entered from an ancestor or left towards an ancestor.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Inferior">
+      <MemberSignature Language="C#" Value="Inferior" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.NotifyType Inferior = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.NotifyType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The window is entered from an inferior or left towards an inferior.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Nonlinear">
+      <MemberSignature Language="C#" Value="Nonlinear" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.NotifyType Nonlinear = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.NotifyType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The window is entered from or left towards a window which is neither an ancestor nor an inferior. </summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NonlinearVirtual">
+      <MemberSignature Language="C#" Value="NonlinearVirtual" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.NotifyType NonlinearVirtual = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.NotifyType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The pointer moves between two windows which are not ancestors of each other and the window is part of the ancestor chain between one of these windows and their least common ancestor.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Unknown">
+      <MemberSignature Language="C#" Value="Unknown" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.NotifyType Unknown = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.NotifyType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An unknown type.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Virtual">
+      <MemberSignature Language="C#" Value="Virtual" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.NotifyType Virtual = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.NotifyType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The pointer moves between an ancestor and an inferior of the window.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

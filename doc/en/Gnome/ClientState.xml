@@ -1,0 +1,145 @@
+<Type Name="ClientState" FullName="Gnome.ClientState">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum ClientState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed ClientState extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gnome-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gnome.ClientStateGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>The state which the <see cref="T:Gnome.Client" /> is in</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Disconnected">
+      <MemberSignature Language="C#" Value="Disconnected" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.ClientState Disconnected = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.ClientState</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The client is in state disconnected</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Frozen">
+      <MemberSignature Language="C#" Value="Frozen" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.ClientState Frozen = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.ClientState</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The client is in state frozen</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Idle">
+      <MemberSignature Language="C#" Value="Idle" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.ClientState Idle = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.ClientState</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The client is in state idle</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Registering">
+      <MemberSignature Language="C#" Value="Registering" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.ClientState Registering = int32(6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.ClientState</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The client is in state registering</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SavingPhase1">
+      <MemberSignature Language="C#" Value="SavingPhase1" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.ClientState SavingPhase1 = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.ClientState</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The client is in state saving phase 1</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SavingPhase2">
+      <MemberSignature Language="C#" Value="SavingPhase2" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.ClientState SavingPhase2 = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.ClientState</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The client is in state saving phase 2</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WaitingForPhase2">
+      <MemberSignature Language="C#" Value="WaitingForPhase2" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.ClientState WaitingForPhase2 = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.ClientState</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The client is in state waiting for phase 2</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,789 @@
+<Type Name="Action" FullName="Gtk.Action">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class Action : GLib.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Action extends GLib.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>[00 24 00 00 04 80 00 00 94 00 00 00 06 02 00 00 00 24 00 00 52 53 41 31 00 04 00 00 01 00 01 00 71 EB 6C 55 75 52 9C BF 72 44 F7 A6 EA 05 62 84 F9 EA E0 3B CF F2 CC 13 2C 9C 49 0A B3 09 EA B0 B5 6B CE 44 9D F5 03 D9 C0 A8 1E 52 05 85 CD BE 70 E2 FB 90 43 4B AC 04 FA 62 22 A8 00 98 B7 A1 A7 B3 AF 99 1A 41 23 24 BB 43 25 F6 B8 65 BB 64 EB F6 D1 C2 06 D5 73 2D DF BC 70 A7 38 9E E5 3E 0C 24 6E 32 79 74 1A D0 05 03 E4 98 42 E1 9B F3 7B 19 8B 40 21 26 CB 36 89 C2 EA 64 96 A4 7C B4]</AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>An action which can be triggered by a menu or toolbar item.</summary>
+    <remarks>
+      <para>
+Actions represent operations that the user can be perform, along with some information how it should be presented in the interface. Each action provides methods to create icons, menu items and toolbar items representing itself.
+
+<para>
+As well as the callback that is called when the action gets activated, the following also gets associated with the action:
+<list type="bullet"><item><term>a name (not translated, for path lookup)</term></item><item><term>a label (translated, for display)</term></item><item><term>an accelerator</term></item><item><term>whether label indicates a stock id</term></item><item><term>a tooltip (optional, translated)</term></item><item><term>a toolbar label (optional, shorter than label)</term></item></list></para><para>
+The action will also have some state information:
+<list type="bullet"><item><term>visible (shown/hidden)</term></item><item><term>sensitive (enabled/disabled)</term></item></list></para><para>
+Apart from regular actions, there are toggle actions, which can be toggled between two states and radio actions, of which only one in a group can be in the "active" state. Other actions can be implemented as <see cref="T:Gtk.Action" /> subclasses.
+</para><para>
+Each action can have one or more proxy menu item, toolbar button or other proxy widgets. Proxies mirror the state of the action (text label, tooltip, icon, visible, sensitive, etc), and should change when the action's state changes. When the proxy is activated, it should activate its action.
+</para></para>
+    </remarks>
+    <since version="Gtk# 2.4" />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Action (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Internal constructor</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Action (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">a <see cref="T:System.IntPtr" /></param>
+        <summary>Internal constructor</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Action (string name, string label);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string name, string label) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="label" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="name">A unique name for the action</param>
+        <param name="label"> the label displayed in menu items and on buttons</param>
+        <summary>Creates a new action from the <paramref name="name" /> and <paramref name="label" />.</summary>
+        <remarks>Convenience constructor for <see cref="C:Gtk.Action(System.String,System.String.System.String,System.String)" /> passing in <see langword="null" /> for the last two parameters.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Action (string name, string label, string tooltip, string stock_id);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string name, string label, string tooltip, string stock_id) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="label" Type="System.String" />
+        <Parameter Name="tooltip" Type="System.String" />
+        <Parameter Name="stock_id" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="name">A unique name for the action</param>
+        <param name="label"> the label displayed in menu items and on buttons</param>
+        <param name="tooltip">a tooltip for the action, or <see langword="null" /> for no tooltip</param>
+        <param name="stock_id">the stock icon to display in widgets representing the action, or <see langword="null" /></param>
+        <summary>Creates a new action from the <paramref name="name" />, <paramref name="label" />, <paramref name="tooltip" />, and <paramref name="stock_id" />.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="AccelGroup">
+      <MemberSignature Language="C#" Value="public Gtk.AccelGroup AccelGroup { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.AccelGroup AccelGroup" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.AccelGroup</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The <see cref="T:Gtk.AccelGroup" /> in which the accelerator for this action will be installed.</summary>
+        <value>a <see cref="T:Gtk.AccelGroup" /> or <see langword="null" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="AccelPath">
+      <MemberSignature Language="C#" Value="public string AccelPath { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string AccelPath" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The accel path for this action.</summary>
+        <value>a <see cref="T:System.String" /></value>
+        <remarks>All proxy widgets associated with the action will have this accel path, so that their accelerators are consistent.</remarks>
+        <since version="Gtk# 2.6" />
+      </Docs>
+    </Member>
+    <Member MemberName="ActionGroup">
+      <MemberSignature Language="C#" Value="public Gtk.ActionGroup ActionGroup { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.ActionGroup ActionGroup" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("action-group")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.ActionGroup</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The GtkActionGroup this GtkAction is associated with.</summary>
+        <value>a <see cref="T:Gtk.ActionGroup" /></value>
+        <remarks>Can be set to <see langword="null" /> for internal use.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Activate">
+      <MemberSignature Language="C#" Value="public void Activate ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Activate() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emits <see cref="E:Gtk.Action.Activated" /> on the specified action, if it is not insensitive.</summary>
+        <remarks>This gets called by the proxy widgets when they get activated.
+It can also be used to manually activate an action.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Activated">
+      <MemberSignature Language="C#" Value="public event EventHandler Activated;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Activated" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("activate")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Event raised when this action is activated.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BlockActivateFrom">
+      <MemberSignature Language="C#" Value="public void BlockActivateFrom (Gtk.Widget proxy);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void BlockActivateFrom(class Gtk.Widget proxy) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="proxy" Type="Gtk.Widget" />
+      </Parameters>
+      <Docs>
+        <param name="proxy">a <see cref="T:Gtk.Widget" /></param>
+        <summary>Disables calls to the <see cref="M:Gtk.Action.Activate()" /> function by signals on the given proxy widget.</summary>
+        <remarks>This is used to break notification loops for things like check or radio actions.
+This function is intended for use by action implementations.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConnectAccelerator">
+      <MemberSignature Language="C#" Value="public void ConnectAccelerator ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ConnectAccelerator() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Installs the accelerator for action if action has an AccelPath and AccelGroup.</summary>
+        <remarks>See <see cref="P:Gtk.Action.AccelPath" /> and <see cref="P:Gtk.Action.AccelGroup" /><para>
+Since multiple proxies may independently trigger the installation of the accelerator, the action counts the number of times this function has been called and does not remove the accelerator until <see cref="M:Gtk.Action.DisconnectAccelerator()" /> has been called as many times.
+</para></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConnectProxy">
+      <MemberSignature Language="C#" Value="public void ConnectProxy (Gtk.Widget proxy);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ConnectProxy(class Gtk.Widget proxy) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="proxy" Type="Gtk.Widget" />
+      </Parameters>
+      <Docs>
+        <param name="proxy">a <see cref="T:Gtk.Widget" /></param>
+        <summary>Connects a widget to an action object as a proxy.</summary>
+        <remarks>Synchronises various properties of the action with the widget (such as label text, icon, tooltip, etc), and attaches a callback so that the action gets activated when the proxy widget does.
+If the widget is already connected to an action, it is disconnected first.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateIcon">
+      <MemberSignature Language="C#" Value="public Gtk.Widget CreateIcon (Gtk.IconSize icon_size);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gtk.Widget CreateIcon(valuetype Gtk.IconSize icon_size) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Widget</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="icon_size" Type="Gtk.IconSize" />
+      </Parameters>
+      <Docs>
+        <param name="icon_size">a <see cref="T:System.Int32" />, the size of the icon that should be created.</param>
+        <summary>This function is intended for use by action implementations to create icons displayed in the proxy widgets.</summary>
+        <returns>a <see cref="T:Gtk.Widget" />  that displays the icon for this action.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="CreateMenu">
+      <MemberSignature Language="C#" Value="public Gtk.Widget CreateMenu ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gtk.Widget CreateMenu() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Widget</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <since version="Gtk# 2.12" />
+      </Docs>
+    </Member>
+    <Member MemberName="CreateMenuItem">
+      <MemberSignature Language="C#" Value="public Gtk.Widget CreateMenuItem ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gtk.Widget CreateMenuItem() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Widget</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Creates a menu item widget that proxies for the given action.</summary>
+        <returns>a <see cref="T:Gtk.Widget" /> that is a menu item connected to the action.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="CreateToolItem">
+      <MemberSignature Language="C#" Value="public Gtk.Widget CreateToolItem ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gtk.Widget CreateToolItem() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Widget</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Creates a toolbar item widget that proxies for the given action.</summary>
+        <returns>a <see cref="T:Gtk.Widget" /> that is a toolbar item connected to the action.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="DisconnectAccelerator">
+      <MemberSignature Language="C#" Value="public void DisconnectAccelerator ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DisconnectAccelerator() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Undoes the effect of one call to <see cref="M:Gtk.Action.ConnectAccelerator()" />.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="DisconnectProxy">
+      <MemberSignature Language="C#" Value="public void DisconnectProxy (Gtk.Widget proxy);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DisconnectProxy(class Gtk.Widget proxy) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="proxy" Type="Gtk.Widget" />
+      </Parameters>
+      <Docs>
+        <param name="proxy">a <see cref="T:Gtk.Widget" /></param>
+        <summary>Disconnects a proxy widget from an action.</summary>
+        <remarks>Does not destroy the widget, however.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.Action" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HideIfEmpty">
+      <MemberSignature Language="C#" Value="public bool HideIfEmpty { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool HideIfEmpty" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("hide-if-empty")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>When <see langword="true" />, empty menu proxies for this action are hidden.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>Default value: <see langword="true" /></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IconName">
+      <MemberSignature Language="C#" Value="public string IconName { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string IconName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("icon-name")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The name of the icon from the icon theme.</summary>
+        <value>the icon name.</value>
+        <remarks />
+        <since version="Gtk# 2.10" />
+      </Docs>
+    </Member>
+    <Member MemberName="IsImportant">
+      <MemberSignature Language="C#" Value="public bool IsImportant { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsImportant" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("is-important")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Whether the action is considered important.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>When <see langword="true" />, toolitem proxies for this action show text in <see cref="F:Gtk.ToolbarStyle.BothHoriz" /> mode.
+
+Default value: <see langword="false" /></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsSensitive">
+      <MemberSignature Language="C#" Value="public bool IsSensitive { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsSensitive" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Whether the action is effectively sensitive.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>
+          <see langword="true" /> if the action and its associated action group are both sensitive. </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsVisible">
+      <MemberSignature Language="C#" Value="public bool IsVisible { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsVisible" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Whether the action is effectively visible.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>
+          <see langword="true" /> if the action and its associated action group are both visible.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Label">
+      <MemberSignature Language="C#" Value="public string Label { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Label" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("label")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The label used for menu items and buttons that activate this action.</summary>
+        <value>a <see cref="T:System.String" /></value>
+        <remarks>Default value is <see langword="null" /></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("name")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>A unique name for the action.</summary>
+        <value>a <see cref="T:System.String" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="OnActivated">
+      <MemberSignature Language="C#" Value="protected virtual void OnActivated ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnActivated() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideActivated", Type=typeof(Gtk.Action))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.Action.Activated" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Action.Activated" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Proxies">
+      <MemberSignature Language="C#" Value="public Gtk.Widget[] Proxies { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Widget[] Proxies" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Widget[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns the proxy widgets for an action.</summary>
+        <value>a <see cref="T:Gtk.Widget[]" /> of proxy widgets.</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Sensitive">
+      <MemberSignature Language="C#" Value="public bool Sensitive { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Sensitive" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("sensitive")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Whether the action itself is sensitive.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>
+          <block subset="none" type="note">
+            <para>
+This does not necessarily mean effective sensitivity. See <see cref="P:Gtk.Action.IsSensitive" /> for that.
+  </para>
+          </block>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShortLabel">
+      <MemberSignature Language="C#" Value="public string ShortLabel { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string ShortLabel" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("short-label")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>A shorter label that may be used on toolbar buttons.</summary>
+        <value>a <see cref="T:System.String" /></value>
+        <remarks>Default value is <see langword="null" /></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StockId">
+      <MemberSignature Language="C#" Value="public string StockId { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string StockId" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("stock-id")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The stock icon displayed in widgets representing this action.</summary>
+        <value>a <see cref="T:System.String" /></value>
+        <remarks>Default value is <see langword="null" /></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Tooltip">
+      <MemberSignature Language="C#" Value="public string Tooltip { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Tooltip" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("tooltip")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>A tooltip for this action.</summary>
+        <value>a <see cref="T:System.String" /></value>
+        <remarks>Default value is <see langword="null" /></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnblockActivateFrom">
+      <MemberSignature Language="C#" Value="public void UnblockActivateFrom (Gtk.Widget proxy);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnblockActivateFrom(class Gtk.Widget proxy) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="proxy" Type="Gtk.Widget" />
+      </Parameters>
+      <Docs>
+        <param name="proxy">a <see cref="T:Gtk.Widget" /></param>
+        <summary>Re-enables calls to the <see cref="M:Gtk.ActionActivate()" /> function by signals on the given proxy widget.</summary>
+        <remarks>This undoes the blocking done by <see cref="M:Gtk.Action.BlockActivateFrom()" />.
+This function is intended for use by action implementations.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Visible">
+      <MemberSignature Language="C#" Value="public bool Visible { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Visible" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("visible")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Whether the action itself is visible.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>
+          <block subset="none" type="note">
+            <para>
+This does not necessarily mean effective visibility. See <see cref="P:Gtk.Action.IsVisible" /> for that.
+  </para>
+          </block>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VisibleHorizontal">
+      <MemberSignature Language="C#" Value="public bool VisibleHorizontal { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool VisibleHorizontal" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("visible-horizontal")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Whether the toolbar item is visible when the toolbar is in a horizontal orientation.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>Default value is <see langword="true" /></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VisibleOverflown">
+      <MemberSignature Language="C#" Value="public bool VisibleOverflown { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool VisibleOverflown" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("visible-overflown")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>When <see langword="true" />, toolitem proxies for this action are represented in the toolbar overflow menu.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>Default value is <see langword="true" />.</remarks>
+        <since version="Gtk# 2.6" />
+      </Docs>
+    </Member>
+    <Member MemberName="VisibleVertical">
+      <MemberSignature Language="C#" Value="public bool VisibleVertical { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool VisibleVertical" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("visible-vertical")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>When <see langword="true" />, toolitem proxies for this action are represented in the toolbar overflow menu.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>Default value is <see langword="true" /></remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

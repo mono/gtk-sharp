@@ -1,0 +1,106 @@
+<Type Name="IOCondition" FullName="GLib.IOCondition">
+  <TypeSignature Language="C#" Value="public enum IOCondition" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed IOCondition extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>glib-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>IOCondition enumeration.</summary>
+    <remarks>Flags to configure watches on an event source.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Err">
+      <MemberSignature Language="C#" Value="Err" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOCondition Err = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.IOCondition</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Error condition.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Hup">
+      <MemberSignature Language="C#" Value="Hup" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOCondition Hup = int32(16)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.IOCondition</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Hung up. The connection has been broken.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="In">
+      <MemberSignature Language="C#" Value="In" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOCondition In = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.IOCondition</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>There is data to read.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Nval">
+      <MemberSignature Language="C#" Value="Nval" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOCondition Nval = int32(32)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.IOCondition</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Invalid request.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Out">
+      <MemberSignature Language="C#" Value="Out" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOCondition Out = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.IOCondition</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Data can be written without blocking.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Pri">
+      <MemberSignature Language="C#" Value="Pri" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOCondition Pri = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.IOCondition</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>There is urgent data to be read.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

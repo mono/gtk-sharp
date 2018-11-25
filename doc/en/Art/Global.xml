@@ -1,0 +1,152 @@
+<Type Name="Global" FullName="Art.Global">
+  <TypeSignature Language="C#" Value="public class Global" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Global extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>art-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Global API elements for <see cref="N:Art" /></summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Global ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Default constructor</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="BezierToVec">
+      <MemberSignature Language="C#" Value="public static Art.Point BezierToVec (double x0, double y0, double x1, double y1, double x2, double y2, double x3, double y3, Art.Point p, int level);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Art.Point BezierToVec(float64 x0, float64 y0, float64 x1, float64 y1, float64 x2, float64 y2, float64 x3, float64 y3, valuetype Art.Point p, int32 level) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Art.Point</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x0" Type="System.Double" />
+        <Parameter Name="y0" Type="System.Double" />
+        <Parameter Name="x1" Type="System.Double" />
+        <Parameter Name="y1" Type="System.Double" />
+        <Parameter Name="x2" Type="System.Double" />
+        <Parameter Name="y2" Type="System.Double" />
+        <Parameter Name="x3" Type="System.Double" />
+        <Parameter Name="y3" Type="System.Double" />
+        <Parameter Name="p" Type="Art.Point" />
+        <Parameter Name="level" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="x0">a <see cref="T:System.Double" /></param>
+        <param name="y0">a <see cref="T:System.Double" /></param>
+        <param name="x1">a <see cref="T:System.Double" /></param>
+        <param name="y1">a <see cref="T:System.Double" /></param>
+        <param name="x2">a <see cref="T:System.Double" /></param>
+        <param name="y2">a <see cref="T:System.Double" /></param>
+        <param name="x3">a <see cref="T:System.Double" /></param>
+        <param name="y3">a <see cref="T:System.Double" /></param>
+        <param name="p">a <see cref="T:Art.Point" /></param>
+        <param name="level">a <see cref="T:System.Int32" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Art.Point" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BezPathToVec">
+      <MemberSignature Language="C#" Value="public static Art.Vpath BezPathToVec (Art.Bpath bez, double flatness);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Art.Vpath BezPathToVec(valuetype Art.Bpath bez, float64 flatness) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Art.Vpath</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="bez" Type="Art.Bpath" />
+        <Parameter Name="flatness" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="bez">a <see cref="T:Art.Bpath" /></param>
+        <param name="flatness">a <see cref="T:System.Double" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Art.Vpath" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GraySvpAa">
+      <MemberSignature Language="C#" Value="public static byte GraySvpAa (Art.SVP svp, int x0, int y0, int x1, int y1, int rowstride);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int8 GraySvpAa(valuetype Art.SVP svp, int32 x0, int32 y0, int32 x1, int32 y1, int32 rowstride) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="svp" Type="Art.SVP" />
+        <Parameter Name="x0" Type="System.Int32" />
+        <Parameter Name="y0" Type="System.Int32" />
+        <Parameter Name="x1" Type="System.Int32" />
+        <Parameter Name="y1" Type="System.Int32" />
+        <Parameter Name="rowstride" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="svp">The given Sorted Vector Path.</param>
+        <param name="x0">The left coordinate of the viewport.</param>
+        <param name="y0">The top coordinate of the viewport.</param>
+        <param name="x1">The right coordinate of the viewport.</param>
+        <param name="y1">The bottom coordinate of the viewport.</param>
+        <param name="rowstride">The row stride of the pixel buffer.</param>
+        <summary>Renders the Sorted Vector Path into the given byte[].</summary>
+        <returns>The function is void, it should get the byte[] were to render... Its a bug.</returns>
+        <remarks>Is only renders inside the area of the viewport.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RectListFromUta">
+      <MemberSignature Language="C#" Value="public static Art.IRect RectListFromUta (Art.Uta uta, int max_width, int max_height, out int p_nrects);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Art.IRect RectListFromUta(valuetype Art.Uta uta, int32 max_width, int32 max_height, int32 p_nrects) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Art.IRect</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uta" Type="Art.Uta" />
+        <Parameter Name="max_width" Type="System.Int32" />
+        <Parameter Name="max_height" Type="System.Int32" />
+        <Parameter Name="p_nrects" Type="System.Int32&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="uta">The given UTA.</param>
+        <param name="max_width">The maximum width of the resulting rectangles.</param>
+        <param name="max_height">The maximum height of the resulting rectangles.</param>
+        <param name="p_nrects">The number of rectangles generated. Should be an out. Its unnecessary.</param>
+        <summary>Decomposes a UTA into a list of rectangles.</summary>
+        <returns>It should return a IRect[]. Yup, a bug. </returns>
+        <remarks>This routine provides a precise implementation, meaning that the rectangles cover exactly the same are as the uta.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,691 @@
+<Type Name="Object" FullName="Gtk.Object">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class Object : GLib.InitiallyUnowned" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Object extends GLib.InitiallyUnowned" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.InitiallyUnowned</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary> Base class for the Gtk object hierarchy.</summary>
+    <remarks>Base object for the Gtk object hierarchy.
+      <para>
+	The difference between Gtk.Object and GLib.<see cref="T:GLib.Object" /> is a historical one, and it matters little in Gtk#.
+      </para></remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Object ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Internal.</summary>
+        <remarks>Internal constructor.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Object (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Object (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddArgType">
+      <MemberSignature Language="C#" Value="public static void AddArgType (string arg_name, GLib.GType arg_type, uint arg_flags, uint arg_id);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void AddArgType(string arg_name, valuetype GLib.GType arg_type, unsigned int32 arg_flags, unsigned int32 arg_id) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="arg_name" Type="System.String" />
+        <Parameter Name="arg_type" Type="GLib.GType" />
+        <Parameter Name="arg_flags" Type="System.UInt32" />
+        <Parameter Name="arg_id" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="arg_name">a <see cref="T:System.String" /></param>
+        <param name="arg_type">a <see cref="T:GLib.GType" /></param>
+        <param name="arg_flags">a <see cref="T:System.UInt32" /></param>
+        <param name="arg_id">a <see cref="T:System.UInt32" /></param>
+        <summary>Deprecated. Do not use in new code.</summary>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="CreateNativeObject">
+      <MemberSignature Language="C#" Value="protected override void CreateNativeObject (string[] names, GLib.Value[] vals);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void CreateNativeObject(string[] names, valuetype GLib.Value[] vals) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="names" Type="System.String[]" />
+        <Parameter Name="vals" Type="GLib.Value[]" />
+      </Parameters>
+      <Docs>
+        <param name="names">To be added.</param>
+        <param name="vals">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Destroy">
+      <MemberSignature Language="C#" Value="public virtual void Destroy ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Destroy() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Request all holders to the object to release the reference.</summary>
+        <remarks>This method is used to notify objects that might hold a reference to this object to release the reference.
+<para>
+This invokes the <see cref="M:Gtk.Object.OnDestroyed" /> method and triggers the <see cref="E:Gtk.OBject.Destroyed" /> event.
+</para><para>
+The object is only destroyed if all the references to the object are released, this is just a mechanism to request that references be released.
+</para></remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Destroyed">
+      <MemberSignature Language="C#" Value="public event EventHandler Destroyed;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Destroyed" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("destroy")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Raised to signal that all references to this object should be removed.</summary>
+        <remarks>This event is triggered if someone has invoked the <see cref="T:Gtk.Object" />'s <see cref="M:Gtk.Object.Destroy" /> method.  It is used to inform that all references to the object must be discarded at this point.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public override void Dispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Dispose() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetData">
+      <MemberSignature Language="C#" Value="public IntPtr GetData (string key);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance native int GetData(string key) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="key">a <see cref="T:System.String" /></param>
+        <summary>Deprecated. Do not use.</summary>
+        <returns>a <see cref="T:System.IntPtr" /></returns>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="GetDataById">
+      <MemberSignature Language="C#" Value="public IntPtr GetDataById (int data_id);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance native int GetDataById(int32 data_id) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data_id" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="data_id">a <see cref="T:System.Int32" /></param>
+        <summary>Deprecated. Do not use.</summary>
+        <returns>a <see cref="T:System.IntPtr" /></returns>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.Object" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsFloating">
+      <MemberSignature Language="C#" Value="public bool IsFloating { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsFloating" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Determines if the object reference is floating.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>An object is floating until it is added to a container which claims ownership of the floating reference.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnDestroyed">
+      <MemberSignature Language="C#" Value="protected virtual void OnDestroyed ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnDestroyed() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideDestroyed", Type=typeof(Gtk.Object))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Invoked to request that references to the object be released.</summary>
+        <remarks>This method is invoked when someone has called the <see cref="T:Gtk.Object's" />'s <see cref="T:Gtk.Object.Destroy" /> method.  Any references to the object held should be released at this point.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Raw">
+      <MemberSignature Language="C#" Value="protected override IntPtr Raw { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int Raw" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+	  Diagnostic method to print the raw object and its reference count
+	as debug information.
+	</summary>
+        <value>a <see cref="T:System.IntPtr" />, the internal C data underlying this object.</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Ref">
+      <MemberSignature Language="C#" Value="public Gtk.Object Ref ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gtk.Object Ref() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.Object</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Deprecated. Do not use.</summary>
+        <returns>a <see cref="T:Gtk.Object" /></returns>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveData">
+      <MemberSignature Language="C#" Value="public void RemoveData (string key);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveData(string key) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="key">a <see cref="T:System.String" /></param>
+        <summary>Deprecated. Do not use.</summary>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveDataById">
+      <MemberSignature Language="C#" Value="public void RemoveDataById (int data_id);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveDataById(int32 data_id) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data_id" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="data_id">a <see cref="T:System.Int32" /></param>
+        <summary>Deprecated. Do not use.</summary>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveNoNotify">
+      <MemberSignature Language="C#" Value="public void RemoveNoNotify (string key);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveNoNotify(string key) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="key">a <see cref="T:System.String" /></param>
+        <summary>Deprecated. Do not use.</summary>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveNoNotifyById">
+      <MemberSignature Language="C#" Value="public void RemoveNoNotifyById (int key_id);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveNoNotifyById(int32 key_id) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key_id" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="key_id">a <see cref="T:System.Int32" /></param>
+        <summary>Deprecated. Do not use.</summary>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="SetData">
+      <MemberSignature Language="C#" Value="public void SetData (string key, IntPtr data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetData(string key, native int data) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="data" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="key">a <see cref="T:System.String" /></param>
+        <param name="data">a <see cref="T:System.IntPtr" /></param>
+        <summary>Deprecated. Do not use.</summary>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="SetDataById">
+      <MemberSignature Language="C#" Value="public void SetDataById (int data_id, IntPtr data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDataById(int32 data_id, native int data) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data_id" Type="System.Int32" />
+        <Parameter Name="data" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="data_id">a <see cref="T:System.Int32" /></param>
+        <param name="data">a <see cref="T:System.IntPtr" /></param>
+        <summary>Deprecated. Do not use.</summary>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="SetDataByIdFull">
+      <MemberSignature Language="C#" Value="public void SetDataByIdFull (int data_id, IntPtr data, Gtk.DestroyNotify destroy);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDataByIdFull(int32 data_id, native int data, class Gtk.DestroyNotify destroy) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data_id" Type="System.Int32" />
+        <Parameter Name="data" Type="System.IntPtr" />
+        <Parameter Name="destroy" Type="Gtk.DestroyNotify" />
+      </Parameters>
+      <Docs>
+        <param name="data_id">a <see cref="T:System.Int32" /></param>
+        <param name="data">a <see cref="T:System.IntPtr" /></param>
+        <param name="destroy">a <see cref="T:Gtk.DestroyNotify" /></param>
+        <summary>Deprecated. Do not use.</summary>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="SetDataFull">
+      <MemberSignature Language="C#" Value="public void SetDataFull (string key, IntPtr data, Gtk.DestroyNotify destroy);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDataFull(string key, native int data, class Gtk.DestroyNotify destroy) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="data" Type="System.IntPtr" />
+        <Parameter Name="destroy" Type="Gtk.DestroyNotify" />
+      </Parameters>
+      <Docs>
+        <param name="key">a <see cref="T:System.String" /></param>
+        <param name="data">a <see cref="T:System.IntPtr" /></param>
+        <param name="destroy">a <see cref="T:Gtk.DestroyNotify" /></param>
+        <summary>Deprecated. Do not use.</summary>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Sink">
+      <MemberSignature Language="C#" Value="public void Sink ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Sink() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Removes the floating reference from a <see cref="T:Gtk.Object" />, if it exists; otherwise does
+        nothing. 
+	</summary>
+        <remarks>See the <see cref="T:Gtk.Object" /> overview
+        documentation at the top of the page.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Unref">
+      <MemberSignature Language="C#" Value="public void Unref ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Unref() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Deprecated. Do not use.</summary>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="UserData">
+      <MemberSignature Language="C#" Value="public IntPtr UserData { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int UserData" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("user-data")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Helper property to associate information with an object.</summary>
+        <value />
+        <remarks>This is not very useful with the Gtk# binding as it is with the C binding. </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Weakref">
+      <MemberSignature Language="C#" Value="public void Weakref (Gtk.DestroyNotify notify);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Weakref(class Gtk.DestroyNotify notify) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="notify" Type="Gtk.DestroyNotify" />
+      </Parameters>
+      <Docs>
+        <param name="notify">a <see cref="T:Gtk.DestroyNotify" /></param>
+        <summary>Deprecated. Do not use.</summary>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Weakunref">
+      <MemberSignature Language="C#" Value="public void Weakunref (Gtk.DestroyNotify notify);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Weakunref(class Gtk.DestroyNotify notify) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="notify" Type="Gtk.DestroyNotify" />
+      </Parameters>
+      <Docs>
+        <param name="notify">a <see cref="T:Gtk.DestroyNotify" /></param>
+        <summary>Deprecated. Do not use.</summary>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

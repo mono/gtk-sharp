@@ -1,0 +1,69 @@
+<Type Name="PageHorizontallyArgs" FullName="Gtk.PageHorizontallyArgs">
+  <TypeSignature Language="C#" Value="public class PageHorizontallyArgs : GLib.SignalArgs" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PageHorizontallyArgs extends GLib.SignalArgs" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Event data.</summary>
+    <remarks>
+      <para>The <see cref="M:Gtk.TextView.PageHorizontally" /> event invokes <see cref="T:Gtk.PageHorizontallyHandler" /> delegates which pass event data via this class.</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public PageHorizontallyArgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Public Constructor.</summary>
+        <remarks>Create a new <see cref="T:Gtk.PageHorizontallyArgs" /> instance with this constructor if you need to invoke a <see cref="T:Gtk.PageHorizontallyHandler" /> delegate.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Count">
+      <MemberSignature Language="C#" Value="public int Count { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Count" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>How many pages to move horizontally.</summary>
+        <value>A <see cref="T:System.Int32" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ExtendSelection">
+      <MemberSignature Language="C#" Value="public bool ExtendSelection { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ExtendSelection" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Whether a selection is currently in progress that should be extended by the horizontal-page action.</summary>
+        <value>A <see cref="T:System.Boolean" />, true if a selection is in progress.</value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

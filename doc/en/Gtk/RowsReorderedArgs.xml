@@ -1,0 +1,126 @@
+<Type Name="RowsReorderedArgs" FullName="Gtk.RowsReorderedArgs">
+  <TypeSignature Language="C#" Value="public class RowsReorderedArgs : GLib.SignalArgs" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit RowsReorderedArgs extends GLib.SignalArgs" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Event data.</summary>
+    <remarks>
+      <para>The following events invoke <see cref="T:Gtk.RowsReorderedHandler" /> delegates which pass event data via this class:</para>
+      <para>
+        <list type="bullet">
+          <item>
+            <term>
+              <see cref="M:Gtk.ListStore.RowsReordered" />
+            </term>
+          </item>
+          <item>
+            <term>
+              <see cref="M:Gtk.TreeModelSort.RowsReordered" />
+            </term>
+          </item>
+          <item>
+            <term>
+              <see cref="M:Gtk.TreeStore.RowsReordered" />
+            </term>
+          </item>
+        </list>
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public RowsReorderedArgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Public Constructor.</summary>
+        <remarks>Create a new <see cref="T:Gtk.RowsReorderedArgs" /> instance with this constructor if you need to invoke a <see cref="T:Gtk.RowsReorderedHandler" /> delegate.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Iter">
+      <MemberSignature Language="C#" Value="public Gtk.TreeIter Iter { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.TreeIter Iter" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.TreeIter</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Gets a pointer to the <see cref="T:Gtk.TreeNode" /> whose rows have been reordered.</summary>
+        <value>A <see cref="Gtk.TreeIter" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="NewChildOrder">
+      <MemberSignature Language="C#" Value="public int[] NewChildOrder { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32[] NewChildOrder" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>New Child Order list.</summary>
+        <value>an array of old position indices.</value>
+        <remarks>The value of the nth array element contains the old index of the current nth child.</remarks>
+        <since version="Gtk# 2.10" />
+      </Docs>
+    </Member>
+    <Member MemberName="NewOrder">
+      <MemberSignature Language="C#" Value="public int NewOrder { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 NewOrder" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Replaced by NewChildOrder property")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The new order of the rows.</summary>
+        <value>A <see cref="T:System.Int32" /></value>
+        <remarks>FIXME: shouldn't this be an array?</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Path">
+      <MemberSignature Language="C#" Value="public Gtk.TreePath Path { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.TreePath Path" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.TreePath</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>A path for the <see cref="T:Gtk.TreeNode" /> whose rows have been reordered.</summary>
+        <value>A <see cref="Gtk.TreePath" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

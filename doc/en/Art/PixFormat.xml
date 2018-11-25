@@ -1,0 +1,39 @@
+<Type Name="PixFormat" FullName="Art.PixFormat">
+  <TypeSignature Language="C#" Value="public enum PixFormat" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed PixFormat extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>art-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Rgb">
+      <MemberSignature Language="C#" Value="Rgb" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Art.PixFormat Rgb = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Art.PixFormat</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

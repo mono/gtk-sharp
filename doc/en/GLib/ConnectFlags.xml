@@ -1,0 +1,50 @@
+<Type Name="ConnectFlags" FullName="GLib.ConnectFlags">
+  <TypeSignature Language="C#" Value="public enum ConnectFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed ConnectFlags extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>glib-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>ConnectFlags enumeration.</summary>
+    <remarks>Signal connection flags.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="After">
+      <MemberSignature Language="C#" Value="After" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.ConnectFlags After = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.ConnectFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Handler runs after virtual method invocation.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Swapped">
+      <MemberSignature Language="C#" Value="Swapped" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.ConnectFlags Swapped = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.ConnectFlags</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Swaps instance and data parameters.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

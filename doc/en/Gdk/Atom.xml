@@ -1,0 +1,101 @@
+<Type Name="Atom" FullName="Gdk.Atom">
+  <TypeSignature Language="C#" Maintainer="John Luke" Value="public class Atom : GLib.Opaque" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Atom extends GLib.Opaque" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.Opaque</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>An opaque type representing a string as an index into a table of strings on the X server.</summary>
+    <remarks>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Atom (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Intern">
+      <MemberSignature Language="C#" Value="public static Gdk.Atom Intern (string atom_name, bool only_if_exists);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Atom Intern(string atom_name, bool only_if_exists) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Atom</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="atom_name" Type="System.String" />
+        <Parameter Name="only_if_exists" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="atom_name">an object of type <see cref="T:System.String" /></param>
+        <param name="only_if_exists">an object of type <see cref="T:System.Boolean" /></param>
+        <summary>Finds or creates an <see cref="T:Gdk.Atom" /> corresponding to a given string.</summary>
+        <returns>an object of type <see cref="T:Gdk.Atom" /></returns>
+        <remarks>If <paramref name="only_if_exists" /> is <see langword="true" />, do not create a new atom, but just return the atom if it already exists.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Determines the string corresponding to an atom.</summary>
+        <value>A newly-allocated string containing the string corresponding to the atom.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static string op_Implicit (Gdk.Atom atom);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname string op_Implicit(class Gdk.Atom atom) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="atom" Type="Gdk.Atom" />
+      </Parameters>
+      <Docs>
+        <param name="atom">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

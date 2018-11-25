@@ -1,0 +1,59 @@
+<Type Name="CoordType" FullName="Atk.CoordType">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum CoordType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CoordType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>atk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Atk.CoordTypeGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Specifies how xy coordinates are to be interpreted.</summary>
+    <remarks>Used by functions such as <see cref="M:Atk.Component.GetPosition()" /> and <see cref="M:Atk.Text.GetCharacterExtents()" /></remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Screen">
+      <MemberSignature Language="C#" Value="Screen" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Atk.CoordType Screen = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Atk.CoordType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary> specifies xy coordinates relative to the screen</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Window">
+      <MemberSignature Language="C#" Value="Window" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Atk.CoordType Window = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Atk.CoordType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary> specifies xy coordinates relative to the widget's top-level window</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

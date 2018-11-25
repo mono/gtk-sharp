@@ -1,0 +1,53 @@
+<Type Name="InsertionColorChangedArgs" FullName="Gtk.InsertionColorChangedArgs">
+  <TypeSignature Language="C#" Value="public class InsertionColorChangedArgs : GLib.SignalArgs" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit InsertionColorChangedArgs extends GLib.SignalArgs" />
+  <AssemblyInfo>
+    <AssemblyName>gtkhtml-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>3.16.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Event data.</summary>
+    <remarks>
+      <para>The <see cref="M:Gtk.HTML.InsertionColorChanged" /> event invokes <see cref="T:Gtk.InsertionColorChangedHandler" /> delegates which pass event data via this class.</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public InsertionColorChangedArgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Public Constructor.</summary>
+        <remarks>Create a new <see cref="T:Gtk.InsertionColorChangedArgs" /> instance with this constructor if you need to invoke a <see cref="T:Gtk.InsertionColorChangedHandler" /> delegate.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Color">
+      <MemberSignature Language="C#" Value="public Gdk.Color Color { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Color Color" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The color under the insertion point after the change.</summary>
+        <value>The new color, a <see cref="T:Gdk.Color" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

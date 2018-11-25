@@ -1,0 +1,414 @@
+// Pixbuf.custom - Gdk Pixbuf class customizations
+//
+// Authors:
+// 	Vladimir Vukicevic <vladimir@pobox.com>
+// 	Miguel de Icaza <miguel@ximian.com>
+// 	Mike Kestner <mkestner@ximian.com>
+// 	Duncan Mak <duncan@ximian.com>
+//	Gonzalo Paniagua Javier <gonzalo@ximian.com>
+//	Martin Willemoes Hansen <mwh@sysrq.dk>
+//	Jose Faria   <spigaz@gmail.com>
+//
+// Copyright (c) 2002 Vladimir Vukicevic
+// Copyright (c) 2003 Ximian, Inc. (Miguel de Icaza)
+// Copyright (c) 2003 Ximian, Inc. (Duncan Mak)
+// Copyright (c) 2003 Ximian, Inc. (Gonzalo Paniagua Javier)
+// Copyright (c) 2003 Martin Willemoes Hansen
+// Copyright (c) 2004-2005 Novell, Inc.
+//
+// This code is inserted after the automatically generated code.
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of version 2 of the Lesser GNU General
+// Public License as published by the Free Software Foundation.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this program; if not, write to the
+// Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+// Boston, MA 02111-1307, USA.
+
+		[DllImport("libgdk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern IntPtr gdk_pixbuf_get_from_drawable(IntPtr raw, IntPtr src, IntPtr cmap, int src_x, int src_y, int dest_x, int dest_y, int width, int height);
+
+		public Gdk.Pixbuf GetFromDrawable(Gdk.Drawable src, Gdk.Colormap cmap, int src_x, int src_y, int dest_x, int dest_y, int width, int height) {
+			var oldHandle = Handle;
+			IntPtr raw_ret = gdk_pixbuf_get_from_drawable(Handle, src.Handle, cmap.Handle, src_x, src_y, dest_x, dest_y, width, height);
+			Gdk.Pixbuf ret;
+			if (raw_ret == IntPtr.Zero)
+				ret = null;
+			else
+				ret = (Gdk.Pixbuf) GLib.Object.GetObject(raw_ret, oldHandle == IntPtr.Zero);
+			return ret;
+		}
+
+		[DllImport("libgdk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern IntPtr gdk_pixbuf_get_from_image(IntPtr raw, IntPtr src, IntPtr cmap, int src_x, int src_y, int dest_x, int dest_y, int width, int height);
+
+		public Gdk.Pixbuf GetFromImage(Gdk.Image src, Gdk.Colormap cmap, int src_x, int src_y, int dest_x, int dest_y, int width, int height) {
+			var oldHandle = Handle;
+			IntPtr raw_ret = gdk_pixbuf_get_from_image(Handle, src.Handle, cmap.Handle, src_x, src_y, dest_x, dest_y, width, height);
+			Gdk.Pixbuf ret;
+			if (raw_ret == IntPtr.Zero)
+				ret = null;
+			else
+				ret = (Gdk.Pixbuf) GLib.Object.GetObject(raw_ret, oldHandle == IntPtr.Zero);
+			return ret;
+		}
+
+		[DllImport("libgdk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern void gdk_pixbuf_render_pixmap_and_mask (IntPtr raw, out IntPtr pixmap_return, out IntPtr mask_return, int alpha_threshold);
+
+		public void RenderPixmapAndMask (out Pixmap pixmap_return, out Pixmap mask_return, int alpha_threshold)
+		{
+			IntPtr mask_handle, pixmap_handle;
+			gdk_pixbuf_render_pixmap_and_mask (Handle, out pixmap_handle, out mask_handle, alpha_threshold);
+			pixmap_return = GLib.Object.GetObject (pixmap_handle) as Pixmap;
+			mask_return = GLib.Object.GetObject (mask_handle) as Pixmap;
+		}
+
+		[DllImport("libgdk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern void gdk_pixbuf_render_pixmap_and_mask_for_colormap (IntPtr raw, IntPtr colormap, out IntPtr pixmap_return, out IntPtr mask_return, int alpha_threshold);
+
+		public void RenderPixmapAndMaskForColormap (Colormap colormap, out Pixmap pixmap_return, out Pixmap mask_return, int alpha_threshold)
+		{
+			IntPtr mask_handle, pixmap_handle;
+			gdk_pixbuf_render_pixmap_and_mask_for_colormap (Handle, colormap == null ? IntPtr.Zero : colormap.Handle, out pixmap_handle, out mask_handle, alpha_threshold);
+			pixmap_return = GLib.Object.GetObject (pixmap_handle) as Pixmap;
+			mask_return = GLib.Object.GetObject (mask_handle) as Pixmap;
+		}
+
+		[DllImport("libgdk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern void gdk_pixbuf_render_threshold_alpha(IntPtr raw, IntPtr bitmap, int src_x, int src_y, int dest_x, int dest_y, int width, int height, int alpha_threshold);
+
+		public void RenderThresholdAlpha(Gdk.Pixmap bitmap, int src_x, int src_y, int dest_x, int dest_y, int width, int height, int alpha_threshold) {
+			gdk_pixbuf_render_threshold_alpha(Handle, bitmap.Handle, src_x, src_y, dest_x, dest_y, width, height, alpha_threshold);
+		}
+
+		[DllImport("libgdk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern void gdk_pixbuf_render_to_drawable(IntPtr raw, IntPtr drawable, IntPtr gc, int src_x, int src_y, int dest_x, int dest_y, int width, int height, int dither, int x_dither, int y_dither);
+
+		public void RenderToDrawable(Gdk.Drawable drawable, Gdk.GC gc, int src_x, int src_y, int dest_x, int dest_y, int width, int height, Gdk.RgbDither dither, int x_dither, int y_dither) {
+			gdk_pixbuf_render_to_drawable(Handle, drawable.Handle, gc.Handle, src_x, src_y, dest_x, dest_y, width, height, (int) dither, x_dither, y_dither);
+		}
+
+		[DllImport("libgdk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern void gdk_pixbuf_render_to_drawable_alpha(IntPtr raw, IntPtr drawable, int src_x, int src_y, int dest_x, int dest_y, int width, int height, int alpha_mode, int alpha_threshold, int dither, int x_dither, int y_dither);
+
+		public void RenderToDrawableAlpha(Gdk.Drawable drawable, int src_x, int src_y, int dest_x, int dest_y, int width, int height, Gdk.PixbufAlphaMode alpha_mode, int alpha_threshold, Gdk.RgbDither dither, int x_dither, int y_dither) {
+			gdk_pixbuf_render_to_drawable_alpha(Handle, drawable.Handle, src_x, src_y, dest_x, dest_y, width, height, (int) alpha_mode, alpha_threshold, (int) dither, x_dither, y_dither);
+		}
+
+		public Pixbuf (System.IO.Stream stream) : base (IntPtr.Zero)
+		{
+			using (PixbufLoader pl = new PixbufLoader (stream)) {
+				owned = true;
+				Raw = pl.PixbufHandle;
+			}
+		}
+
+		public Pixbuf (System.IO.Stream stream, int width, int height) : base (IntPtr.Zero)
+		{
+			using (PixbufLoader pl = new PixbufLoader (stream, width, height)) {
+				owned = true;
+				Raw = pl.PixbufHandle;
+			}
+		}
+
+		public Pixbuf (System.Reflection.Assembly assembly, string resource) : base (IntPtr.Zero)
+		{
+			using (PixbufLoader pl = new PixbufLoader (assembly == null ? System.Reflection.Assembly.GetCallingAssembly () : assembly, resource)) {
+				owned = true;
+				Raw = pl.PixbufHandle;
+			}
+		}
+
+		public Pixbuf (System.Reflection.Assembly assembly, string resource, int width, int height) : base (IntPtr.Zero)
+		{
+			using (PixbufLoader pl = new PixbufLoader (assembly == null ? System.Reflection.Assembly.GetCallingAssembly () : assembly, resource, width, height)) {
+				owned = true;
+				Raw = pl.PixbufHandle;
+			}
+		}
+
+		public Pixbuf (byte[] buffer) : base (IntPtr.Zero)
+		{
+			using (PixbufLoader pl = new PixbufLoader (buffer)) {
+				owned = true;
+				Raw = pl.PixbufHandle;
+			}
+		}
+
+		public Pixbuf (byte[] buffer, int width, int height) : base (IntPtr.Zero)
+		{
+			using (PixbufLoader pl = new PixbufLoader (buffer, width, height)) {
+				owned = true;
+				Raw = pl.PixbufHandle;
+			}
+		}
+
+		static public Pixbuf LoadFromResource (string resource)
+		{
+			return new Pixbuf (System.Reflection.Assembly.GetCallingAssembly (), resource);
+		}
+
+		[DllImport("libgdk_pixbuf-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern IntPtr gdk_pixbuf_scale_simple(IntPtr raw, int dest_width, int dest_height, int interp_type);
+
+		public Gdk.Pixbuf ScaleSimple(int dest_width, int dest_height, Gdk.InterpType interp_type) {
+			IntPtr raw_ret = gdk_pixbuf_scale_simple(Handle, dest_width, dest_height, (int) interp_type);
+			Gdk.Pixbuf ret = (Gdk.Pixbuf) GLib.Object.GetObject(raw_ret, true);
+			return ret;
+		}
+
+		[DllImport("libgdk_pixbuf-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern IntPtr gdk_pixbuf_composite_color_simple(IntPtr raw, int dest_width, int dest_height, int interp_type, int overall_alpha, int check_size, uint color1, uint color2);
+
+		public Gdk.Pixbuf CompositeColorSimple(int dest_width, int dest_height, Gdk.InterpType interp_type, int overall_alpha, int check_size, uint color1, uint color2) {
+			IntPtr raw_ret = gdk_pixbuf_composite_color_simple(Handle, dest_width, dest_height, (int) interp_type, overall_alpha, check_size, color1, color2);
+			Gdk.Pixbuf ret = (Gdk.Pixbuf) GLib.Object.GetObject(raw_ret, true);
+			return ret;
+		}
+
+		[DllImport("libgdk_pixbuf-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern IntPtr gdk_pixbuf_add_alpha(IntPtr raw, bool substitute_color, byte r, byte g, byte b);
+
+		public Gdk.Pixbuf AddAlpha(bool substitute_color, byte r, byte g, byte b) {
+			IntPtr raw_ret = gdk_pixbuf_add_alpha(Handle, substitute_color, r, g, b);
+			Gdk.Pixbuf ret = (Gdk.Pixbuf) GLib.Object.GetObject(raw_ret, true);
+			return ret;
+		}
+
+		class DestroyHelper {
+
+			GCHandle gch;
+			GCHandle data_handle;
+			PixbufDestroyNotify notify;
+
+			public DestroyHelper (byte[] data, PixbufDestroyNotify notify)
+			{
+				gch = GCHandle.Alloc (this);
+				data_handle = GCHandle.Alloc (data, GCHandleType.Pinned);
+				this.notify = notify;
+			}
+
+			[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
+			public delegate void NativeDelegate (IntPtr buf, IntPtr data);
+
+			void ReleaseHandles (IntPtr buf, IntPtr data)
+			{
+				if (notify != null)
+					notify ((byte[])data_handle.Target);
+				data_handle.Free ();
+				gch.Free ();
+			}
+
+			NativeDelegate handler;
+			public NativeDelegate Handler {
+				get {
+					handler = new NativeDelegate (ReleaseHandles);
+					return handler;
+				}
+			}
+		}
+
+		[DllImport("libgdk_pixbuf-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern IntPtr gdk_pixbuf_new_from_data(byte[] data, int colorspace, bool has_alpha, int bits_per_sample, int width, int height, int rowstride, DestroyHelper.NativeDelegate destroy_fn, IntPtr destroy_fn_data);
+
+		public Pixbuf (byte[] data, Gdk.Colorspace colorspace, bool has_alpha, int bits_per_sample, int width, int height, int rowstride, Gdk.PixbufDestroyNotify destroy_fn) : base (IntPtr.Zero)
+		{
+			if (GetType () != typeof (Pixbuf)) {
+				throw new InvalidOperationException ("Can't override this constructor.");
+			}
+			DestroyHelper helper = new DestroyHelper (data, destroy_fn);
+			Raw = gdk_pixbuf_new_from_data(data, (int) colorspace, has_alpha, bits_per_sample, width, height, rowstride, helper.Handler, IntPtr.Zero);
+		}
+
+		// overload to default the colorspace
+		public Pixbuf(byte [] data, bool has_alpha, int bits_per_sample, int width, int height, int rowstride, Gdk.PixbufDestroyNotify destroy_fn) : this (data, Gdk.Colorspace.Rgb, has_alpha, bits_per_sample, width, height, rowstride, destroy_fn) {}
+
+		public Pixbuf(byte [] data, bool has_alpha, int bits_per_sample, int width, int height, int rowstride) : this (data, Gdk.Colorspace.Rgb, has_alpha, bits_per_sample, width, height, rowstride, null) {}
+
+		public Pixbuf(byte [] data, Gdk.Colorspace colorspace, bool has_alpha, int bits_per_sample, int width, int height, int rowstride) : this (data, colorspace, has_alpha, bits_per_sample, width, height, rowstride, null) {}
+
+		public unsafe Pixbuf(byte[] data, bool copy_pixels) : base (IntPtr.Zero)
+		{
+			IntPtr error = IntPtr.Zero;
+			Raw = gdk_pixbuf_new_from_inline(data.Length, data, copy_pixels, out error);
+			if (error != IntPtr.Zero) throw new GLib.GException (error);
+		}
+
+		[DllImport("libgdk_pixbuf-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern unsafe IntPtr gdk_pixbuf_new_from_inline(int len, IntPtr data, bool copy_pixels, out IntPtr error);
+
+		public unsafe Pixbuf(int data_length, void *data, bool copy_pixels) : base (IntPtr.Zero)
+		{
+			IntPtr error = IntPtr.Zero;
+			Raw = gdk_pixbuf_new_from_inline(data_length, (IntPtr) data, copy_pixels, out error);
+			if (error != IntPtr.Zero) throw new GLib.GException (error);
+		}
+
+//
+// ICloneable interface
+//
+
+		public object Clone ()
+		{
+			return Copy ();
+		}
+
+
+//
+// These are factory versions of a couple of existing methods, but simplify
+// the process by reducing the number of steps required.  Here a single
+// operation will create the Pixbuf instead of two
+//
+
+		public static Gdk.Pixbuf FromDrawable (Gdk.Drawable src, Gdk.Colormap cmap, int src_x, int src_y, int dest_x, int dest_y, int width, int height) {
+			IntPtr raw_ret = gdk_pixbuf_get_from_drawable(IntPtr.Zero, src.Handle, cmap.Handle, src_x, src_y, dest_x, dest_y, width, height);
+			return GLib.Object.GetObject (raw_ret, true) as Gdk.Pixbuf;
+		}
+
+		[Obsolete ("Replaced by static FromDrawable method")]
+		public Gdk.Pixbuf CreateFromDrawable (Gdk.Drawable src, Gdk.Colormap cmap, int src_x, int src_y, int dest_x, int dest_y, int width, int height) {
+			IntPtr raw_ret = gdk_pixbuf_get_from_drawable((IntPtr) 0, src.Handle, cmap.Handle, src_x, src_y, dest_x, dest_y, width, height);
+			return GLib.Object.GetObject (raw_ret, true) as Gdk.Pixbuf;
+		}
+
+//
+// the 'Pixels' property
+//
+		[DllImport("libgdk_pixbuf-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern IntPtr gdk_pixbuf_get_pixels(IntPtr raw);
+
+                public IntPtr Pixels {
+                	get {
+                		IntPtr ret = gdk_pixbuf_get_pixels (Handle);
+                		return ret;
+                	}
+                }
+
+		[DllImport("libgdk_pixbuf-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern IntPtr gdk_pixbuf_get_formats();
+
+		public static PixbufFormat[] Formats {
+			get {
+				IntPtr list_ptr = gdk_pixbuf_get_formats ();
+				if (list_ptr == IntPtr.Zero)
+					return new PixbufFormat [0];
+				return GLib.Marshaller.ListPtrToArray<PixbufFormat> (list_ptr, typeof (GLib.SList), true, false);
+			}
+		}
+
+		[DllImport("libgdk_pixbuf-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern unsafe bool gdk_pixbuf_save(IntPtr raw, IntPtr filename, IntPtr type, out IntPtr error, IntPtr dummy);
+
+		public unsafe bool Save(string filename, string type) {
+			IntPtr error = IntPtr.Zero;
+			IntPtr nfilename = GLib.Marshaller.StringToPtrGStrdup (filename);
+			IntPtr ntype = GLib.Marshaller.StringToPtrGStrdup (type);
+			bool ret = gdk_pixbuf_save(Handle, nfilename, ntype, out error, IntPtr.Zero);
+			GLib.Marshaller.Free (nfilename);
+			GLib.Marshaller.Free (ntype);
+			if (error != IntPtr.Zero) throw new GLib.GException (error);
+			return ret;
+		}
+
+		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern void g_free (IntPtr raw);
+
+		[DllImport("libgdk_pixbuf-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern unsafe bool gdk_pixbuf_save_to_bufferv (IntPtr raw, out IntPtr buffer, out IntPtr buffer_size, IntPtr type, IntPtr[] option_keys, IntPtr[] option_values, out IntPtr error);
+
+		IntPtr[] NullTerm (string[] src)
+		{
+			if (src.Length == 0)
+				return null;
+			IntPtr[] result = new IntPtr [src.Length + 1];
+			for (int i = 0; i < src.Length; i++)
+				result [i] = GLib.Marshaller.StringToPtrGStrdup (src [i]);
+			result [src.Length] = IntPtr.Zero;
+			return result;
+		}
+
+		void ReleaseArray (IntPtr[] ptrs)
+		{
+			if (ptrs == null)
+				return;
+			foreach (IntPtr p in ptrs)
+				GLib.Marshaller.Free (p);
+		}
+
+		public unsafe byte[] SaveToBuffer (string type)
+		{
+			return SaveToBuffer (type, Array.Empty<string> (), Array.Empty<string> ());
+		}
+
+		public unsafe byte[] SaveToBuffer (string type, string[] option_keys, string[] option_values)
+		{
+			IntPtr error = IntPtr.Zero;
+			IntPtr buffer;
+			IntPtr buffer_size;
+			IntPtr ntype = GLib.Marshaller.StringToPtrGStrdup (type);
+			IntPtr[] nkeys = NullTerm (option_keys);
+			IntPtr[] nvals = NullTerm (option_values);
+			bool saved = gdk_pixbuf_save_to_bufferv (Handle, out buffer, out buffer_size, ntype, nkeys, nvals, out error);
+			GLib.Marshaller.Free (ntype);
+			ReleaseArray (nkeys);
+			ReleaseArray (nvals);
+
+			if (!saved)
+				throw new GLib.GException (error);
+			byte[] result = new byte [(int)buffer_size];
+			Marshal.Copy (buffer, result, 0, (int) buffer_size);
+			g_free (buffer);
+			return result;
+		}
+
+		[DllImport("libgdk_pixbuf-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern unsafe bool gdk_pixbuf_save_to_callbackv (IntPtr raw, GdkSharp.PixbufSaveFuncNative save_func, IntPtr user_data, IntPtr type, IntPtr[] option_keys, IntPtr[] option_values, out IntPtr error);
+
+		public unsafe void SaveToCallback (PixbufSaveFunc save_func, string type)
+		{
+			SaveToCallback (save_func, type, Array.Empty<string> (), Array.Empty<string> ());
+		}
+
+		public unsafe void SaveToCallback (PixbufSaveFunc save_func, string type, string[] option_keys, string[] option_values)
+		{
+			GdkSharp.PixbufSaveFuncWrapper save_func_wrapper = new GdkSharp.PixbufSaveFuncWrapper (save_func);
+			IntPtr error = IntPtr.Zero;
+			IntPtr ntype = GLib.Marshaller.StringToPtrGStrdup (type);
+			IntPtr[] nkeys = NullTerm (option_keys);
+			IntPtr[] nvals = NullTerm (option_values);
+			bool saved = gdk_pixbuf_save_to_callbackv (Handle, save_func_wrapper.NativeDelegate, IntPtr.Zero, ntype, nkeys, nvals, out error);
+			GLib.Marshaller.Free (ntype);
+			ReleaseArray (nkeys);
+			ReleaseArray (nvals);
+
+			if (!saved)
+				throw new GLib.GException (error);
+		}
+
+		[DllImport("libgdk_pixbuf-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern unsafe bool gdk_pixbuf_savev(IntPtr raw, IntPtr filename, IntPtr type, IntPtr[] option_keys, IntPtr[] option_values, out IntPtr error);
+
+		public unsafe bool Savev(string filename, string type, string[] option_keys, string[] option_values) {
+			IntPtr error = IntPtr.Zero;
+			IntPtr native_filename = GLib.Marshaller.StringToPtrGStrdup (filename);
+			IntPtr native_type = GLib.Marshaller.StringToPtrGStrdup (type);
+			IntPtr[] native_option_keys = NullTerm (option_keys);
+			IntPtr[] native_option_values = NullTerm (option_values);
+			bool saved = gdk_pixbuf_savev(Handle, native_filename, native_type, native_option_keys, native_option_values, out error);
+			GLib.Marshaller.Free (native_filename);
+			GLib.Marshaller.Free (native_type);
+			ReleaseArray (native_option_keys);
+			ReleaseArray (native_option_values);
+
+			if (!saved)
+				throw new GLib.GException (error);
+			return saved;
+		}

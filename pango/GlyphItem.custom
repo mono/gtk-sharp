@@ -1,0 +1,48 @@
+// Pango.GlyphItem.custom - Pango GlyphItem class customizations
+//
+// Author: Mike Kestner  <mkestner@ximian.com>
+//
+// Copyright (c) 2004-2005 Novell, Inc.
+//
+// This code is inserted after the automatically generated code.
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of version 2 of the Lesser GNU General 
+// Public License as published by the Free Software Foundation.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this program; if not, write to the
+// Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+// Boston, MA 02111-1307, USA.
+
+
+		[DllImport("libpango-1.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		static extern IntPtr pango_glyph_item_apply_attrs(ref Pango.GlyphItem raw, IntPtr text, IntPtr list);
+
+		[DllImport("libpango-1.0-0.dll", EntryPoint="pango_glyph_item_free", CallingConvention = CallingConvention.Cdecl)]
+		static extern void pango_glyph_item_free_ptr (IntPtr raw);
+
+		public GlyphItem[] ApplyAttrs (string text, Pango.AttrList list)
+		{
+			IntPtr native_text = GLib.Marshaller.StringToPtrGStrdup (text);
+			IntPtr list_handle = pango_glyph_item_apply_attrs (ref this, native_text, list.Handle);
+			GLib.Marshaller.Free (native_text);
+			if (list_handle == IntPtr.Zero)
+				return new GlyphItem [0];
+			return GLib.Marshaller.ListPtrToArray<GlyphItem> (list_handle, typeof (GLib.SList), true, true, pango_glyph_item_free_ptr);
+		}
+
+		[Obsolete ("Replaced by Glyphs property")]
+		public Pango.GlyphString glyphs {
+			get { return Glyphs; }
+		}
+
+		[Obsolete ("Replaced by Item property")]
+		public Pango.Item item {
+			get { return Item; }
+		}

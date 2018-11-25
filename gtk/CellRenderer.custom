@@ -1,0 +1,180 @@
+//
+// CellRenderer.custom - Gtk CellRenderer class customizations
+//
+// Author: Todd Berman <tberman@sevenl.net>,
+//         Peter Johanson <peter@peterjohanson.com>
+//
+// Copyright (C) 2004 Todd Berman
+// Copyright (C) 2007 Peter Johanson
+//
+// This code is inserted after the automatically generated code.
+//
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of version 2 of the Lesser GNU General
+// Public License as published by the Free Software Foundation.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this program; if not, write to the
+// Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+// Boston, MA 02111-1307, USA.
+
+
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern void gtksharp_cellrenderer_base_get_size (IntPtr handle, IntPtr widget, ref Gdk.Rectangle cell_area, out int x_offset, out int y_offset, out int width, out int height);
+
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern void gtksharp_cellrenderer_override_get_size (IntPtr gtype, GetSizeDelegate cb);
+
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
+		delegate void GetSizeDelegate (IntPtr item, IntPtr widget, IntPtr cell_area_ptr, IntPtr x_offset, IntPtr y_offset, IntPtr width, IntPtr height);
+
+		static GetSizeDelegate GetSizeCallback;
+
+		static void GetSize_cb (IntPtr item, IntPtr widget, IntPtr cell_area_ptr, IntPtr x_offset, IntPtr y_offset, IntPtr width, IntPtr height)
+		{
+			try {
+				CellRenderer obj = GLib.Object.GetObject (item, false) as CellRenderer;
+				Gtk.Widget widg = GLib.Object.GetObject (widget, false) as Gtk.Widget;
+				Gdk.Rectangle cell_area = Gdk.Rectangle.New (cell_area_ptr);
+				int a, b, c, d;
+
+				obj.GetSize (widg, ref cell_area, out a, out b, out c, out d);
+				if (x_offset != IntPtr.Zero)
+					Marshal.WriteInt32 (x_offset, a);
+				if (y_offset != IntPtr.Zero)
+					Marshal.WriteInt32 (y_offset, b);
+				if (width != IntPtr.Zero)
+					Marshal.WriteInt32 (width, c);
+				if (height != IntPtr.Zero)
+					Marshal.WriteInt32 (height, d);
+			} catch (Exception e) {
+				GLib.ExceptionManager.RaiseUnhandledException (e, false);
+			}
+		}
+
+		static void OverrideGetSize (GLib.GType gtype)
+		{
+			if (GetSizeCallback == null)
+				GetSizeCallback = new GetSizeDelegate (GetSize_cb);
+			gtksharp_cellrenderer_override_get_size (gtype.Val, GetSizeCallback);
+		}
+
+		[GLib.DefaultSignalHandler (Type=typeof(Gtk.CellRenderer), ConnectionMethod="OverrideGetSize")]
+		public virtual void GetSize(Gtk.Widget widget, ref Gdk.Rectangle cell_area, out int x_offset, out int y_offset, out int width, out int height)
+		{
+			gtksharp_cellrenderer_base_get_size(Handle, widget.Handle, ref cell_area, out x_offset, out y_offset, out width, out height);
+		}
+
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern void gtksharp_cellrenderer_invoke_get_size (IntPtr gtype, IntPtr handle, IntPtr widget, ref Gdk.Rectangle cell_area, out int x_offset, out int y_offset, out int width, out int height);
+
+		internal static void InternalGetSize (GLib.GType gtype, Gtk.CellRenderer cell, Gtk.Widget widget, ref Gdk.Rectangle cell_area, out int x_offset, out int y_offset, out int width, out int height)
+		{
+			gtksharp_cellrenderer_invoke_get_size (gtype.Val, cell.Handle, widget.Handle, ref cell_area, out x_offset, out y_offset, out width, out height);
+		}
+
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern void gtksharp_cellrenderer_base_render (IntPtr handle, IntPtr window, IntPtr widget, ref Gdk.Rectangle background_area, ref Gdk.Rectangle cell_area, ref Gdk.Rectangle expose_area, Gtk.CellRendererState flags);
+
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern void gtksharp_cellrenderer_override_render (IntPtr gtype, RenderDelegate cb);
+
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
+		delegate void RenderDelegate (IntPtr item, IntPtr window, IntPtr widget, ref Gdk.Rectangle background_area, ref Gdk.Rectangle cell_area, ref Gdk.Rectangle expose_area, Gtk.CellRendererState flags);
+
+		static RenderDelegate RenderCallback;
+
+		static void Render_cb (IntPtr item, IntPtr window, IntPtr widget, ref Gdk.Rectangle background_area, ref Gdk.Rectangle cell_area, ref Gdk.Rectangle expose_area, Gtk.CellRendererState flags)
+		{
+			try {
+				CellRenderer obj = GLib.Object.GetObject (item, false) as CellRenderer;
+				Gdk.Drawable wind = GLib.Object.GetObject (window, false) as Gdk.Drawable;
+				Gtk.Widget widg = GLib.Object.GetObject (widget, false) as Gtk.Widget;
+				obj.Render (wind, widg, background_area, cell_area, expose_area, flags);
+			} catch (Exception e) {
+				GLib.ExceptionManager.RaiseUnhandledException (e, false);
+			}
+		}
+
+		static void OverrideRender (GLib.GType gtype)
+		{
+			if (RenderCallback == null)
+				RenderCallback = new RenderDelegate (Render_cb);
+			gtksharp_cellrenderer_override_render (gtype.Val, RenderCallback);
+		}
+
+		[GLib.DefaultSignalHandler (Type=typeof(Gtk.CellRenderer), ConnectionMethod="OverrideRender")]
+		protected virtual void Render (Gdk.Drawable window, Gtk.Widget widget, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, Gdk.Rectangle expose_area, Gtk.CellRendererState flags)
+		{
+			gtksharp_cellrenderer_base_render (Handle, window.Handle, widget.Handle, ref background_area, ref cell_area, ref expose_area, flags);
+		}
+
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern void gtksharp_cellrenderer_invoke_render (IntPtr gtype, IntPtr handle, IntPtr window, IntPtr widget, ref Gdk.Rectangle background_area, ref Gdk.Rectangle cell_area, ref Gdk.Rectangle expose_area, Gtk.CellRendererState flags);
+
+		internal static void InternalRender (GLib.GType gtype, Gtk.CellRenderer cell, Gdk.Drawable window, Gtk.Widget widget, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, Gdk.Rectangle expose_area, Gtk.CellRendererState flags)
+		{
+			gtksharp_cellrenderer_invoke_render (gtype.Val, cell.Handle, window.Handle, widget.Handle, ref background_area, ref cell_area, ref expose_area, flags);
+		}
+
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern void gtksharp_cellrenderer_override_start_editing (IntPtr gtype, StartEditingDelegate cb);
+
+		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
+		delegate IntPtr StartEditingDelegate (IntPtr raw, IntPtr evnt, IntPtr widget, IntPtr path, ref Gdk.Rectangle background_area, ref Gdk.Rectangle cell_area, Gtk.CellRendererState flags);
+
+		static StartEditingDelegate StartEditingCallback;
+
+		static IntPtr StartEditing_cb (IntPtr raw, IntPtr evnt, IntPtr widget, IntPtr path, ref Gdk.Rectangle background_area, ref Gdk.Rectangle cell_area, Gtk.CellRendererState flags)
+		{
+			try {
+				CellRenderer obj = GLib.Object.GetObject (raw, false) as CellRenderer;
+				Gdk.Event _event = evnt != IntPtr.Zero ? new Gdk.Event (evnt) : null;
+				Widget widg = GLib.Object.GetObject (widget, false) as Gtk.Widget;
+				CellEditable retval = obj.StartEditing (_event, widg, GLib.Marshaller.Utf8PtrToString (path), background_area, cell_area, flags);
+				if (retval == null)
+					return IntPtr.Zero;
+				return retval.Handle;
+			} catch (Exception e) {
+				GLib.ExceptionManager.RaiseUnhandledException (e, false);
+			}
+
+			return IntPtr.Zero;
+		}
+
+		static void OverrideStartEditing (GLib.GType gtype)
+		{
+			if (StartEditingCallback == null)
+				StartEditingCallback = new StartEditingDelegate (StartEditing_cb);
+			gtksharp_cellrenderer_override_start_editing (gtype.Val, StartEditingCallback);
+		}
+
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern IntPtr gtksharp_cellrenderer_base_start_editing(IntPtr raw, IntPtr evnt, IntPtr widget, IntPtr path, ref Gdk.Rectangle background_area, ref Gdk.Rectangle cell_area, int flags);
+
+		[GLib.DefaultSignalHandler (Type=typeof(Gtk.CellRenderer), ConnectionMethod="OverrideStartEditing")]
+		public virtual Gtk.CellEditable StartEditing(Gdk.Event evnt, Gtk.Widget widget, string path, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, Gtk.CellRendererState flags) {
+			IntPtr native = GLib.Marshaller.StringToPtrGStrdup (path);
+			IntPtr raw_ret = gtksharp_cellrenderer_base_start_editing(Handle, evnt != null ? evnt.Handle : IntPtr.Zero, widget.Handle, native, ref background_area, ref cell_area, (int) flags);
+			GLib.Marshaller.Free (native);
+			Gtk.CellEditable ret = (Gtk.CellEditable) GLib.Object.GetObject(raw_ret);
+			return ret;
+		}
+
+		[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+		static extern IntPtr gtksharp_cellrenderer_invoke_start_editing(IntPtr gtype, IntPtr raw, IntPtr evnt, IntPtr widget, IntPtr path, ref Gdk.Rectangle background_area, ref Gdk.Rectangle cell_area, int flags);
+
+		internal static Gtk.CellEditable InternalStartEditing(GLib.GType gtype, Gtk.CellRenderer cell, Gdk.Event evnt, Gtk.Widget widget, string path, ref Gdk.Rectangle background_area, ref Gdk.Rectangle cell_area, Gtk.CellRendererState flags)
+		{
+			IntPtr native = GLib.Marshaller.StringToPtrGStrdup (path);
+			IntPtr raw_ret = gtksharp_cellrenderer_invoke_start_editing(gtype.Val, cell.Handle, evnt.Handle, widget.Handle, native, ref background_area, ref cell_area, (int) flags);
+			GLib.Marshaller.Free (native);
+			Gtk.CellEditable ret = GLib.Object.GetObject(raw_ret) as Gtk.CellEditable;
+			return ret;
+		}

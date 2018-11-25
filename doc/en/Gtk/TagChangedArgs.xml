@@ -1,0 +1,69 @@
+<Type Name="TagChangedArgs" FullName="Gtk.TagChangedArgs">
+  <TypeSignature Language="C#" Value="public class TagChangedArgs : GLib.SignalArgs" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit TagChangedArgs extends GLib.SignalArgs" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Event data for changing a tag.</summary>
+    <remarks>
+      <para>The <see cref="M:Gtk.TextTagTable.TagChanged" /> event invokes <see cref="T:Gtk.TagChangedHandler" /> delegates which pass event data via this class.</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TagChangedArgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Public Constructor.</summary>
+        <remarks>Create a new <see cref="T:Gtk.TagChangedArgs" /> instance with this constructor if you need to invoke a <see cref="T:Gtk.TagChangedHandler" /> delegate.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SizeChanged">
+      <MemberSignature Language="C#" Value="public bool SizeChanged { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool SizeChanged" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Whether or not the size of the tag changed with this event.</summary>
+        <value>A <see cref="T:System.Boolean" />, true if the size of the tag changed.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Tag">
+      <MemberSignature Language="C#" Value="public Gtk.TextTag Tag { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.TextTag Tag" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.TextTag</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The tag that changed.</summary>
+        <value>A <see cref="T:Gtk.TextTag" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

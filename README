@@ -1,11 +1,110 @@
-Gtk# is a C# binding for the Gtk toolkit (www.gtk.org).  The target is the
-2.0 platform, and no plans are currently in place to backport to 1.2.
+The Gtk# website can be found at: http://gtk-sharp.sourceforge.net/
 
-The effort essentially boils down to an exercise in PInvoke against the C
-dynamic libraries.  It may end up being slow as hell, but we'll see when we get 
-there and adjust accordingly.
+Gtk# is a .NET language binding for the GTK+ toolkit and assorted GNOME
+libraries.  Gtk# is free software, licensed under the GNU LGPL.  The target
+is the 2.6 platform.
 
-The "Hello World" application in the sample directory has been executed
-on Win32 using the Gtk and associated binaries provided by the Gimp Win32 
-porting project.  Links to these binaries can be found on the Gtk Homepage.
+Building & Installing Gtk#:
+---------------------------
 
+    Install the gtk-2 development headers first. On Debian, this can be done using:
+    apt-get install libgtk2.0-dev libpango1.0-dev libglade2-dev
+
+    The build is the traditional:
+
+        ./configure
+        make
+        make install
+
+    You may want to consider using configure's prefix option to install
+    Gtk# using the same prefix as Mono.  That way all of your .NET assemblies
+    get placed in the same place, and you don't need to do any extra "configuring"
+    to make it so mono (and mint) can find your assemblies.  In other words,
+    doing something like:
+
+        ./configure --prefix=/the/path/that/was/used/for/mono
+        make
+        make install
+
+    (Of course, replace "/the/path/that/was/used/for/mono" with whatever path
+    which was used for Mono.  This might have been "/usr", "/usr/local", or
+    something similar.)
+
+    If you are compiling from SVN, you will need libtool and the auto* tools
+    and will need to replace the configure above with bootstrap-2.n for whichever
+    API version you are building.
+
+    To build a win32 installer, cygwin is required.  Use the mingw-gcc compiler
+    and ensure that the autotools are installed, but do not install any of the
+    gtk+ libraries from cygwin.  You will need to get the zip bundles for gtk+
+    and dependencies, along with libglade and libxml2 from:
+
+    ftp.gnome.org/pub/gnome/binaries
+
+    for the platform you are building.  Extract all these zips, including the devel
+    zips into a single directory and setup your path so that it can access the
+    pkg-config tool provided.  You will also want to edit the lib/pkgconfig/*.pc
+    files to specify the prefix you installed to.
+
+    Once all that is done, configure away.
+
+    There is a special make target which supports the process of building msi
+    installers.  You can make installer-bundle to create a subdirectory named
+    gtk-sharp-binaries-<version> which will contain a wxs script and all the
+    binaries from the build.  You will also need to copy into this directory the
+    msm modules for gtk+, libglade, and mono-cairo.  These can be built
+    from svn trunk module win32-installers.  Once those msm's are in place,
+    execute the build-installer script to produce the msi.
+
+Discussion & Support:
+---------------------
+
+    A mailing list for Gtk# discussion is available.
+
+    You can subscribe to the mailing list by visiting:
+
+        http://lists.ximian.com/mailman/listinfo/gtk-sharp-list
+
+    And following the instructions (on that page) to subscribe.
+    Messages are posted on this mailing list by sending them to:
+
+        gtk-sharp-list@ximian.com
+
+    (The mailing list requires you to subscribe in order to post
+    messages.)
+
+    An archive of this mailing list can be found at:
+
+        http://lists.ximian.com/archives/public/gtk-sharp-list/
+
+    Further, a Wiki is available for Gtk#, and can be found at:
+
+        http://www.nullenvoid.com/gtksharp/wiki/
+
+    Also, people can get help with and discuss Gtk# on IRC via the
+    #mono channel on the irc.gnome.org IRC server.
+
+    People looking for general help with C# should visit the
+    #c# channel on irc.freenode.net IRC server.
+
+
+Developers:
+-----------
+
+    For developers wishing to "get started" with Gtk#, they are encouraged
+    to read the Mono Hand Book:
+
+        http://www.go-mono.com/tutorial
+
+    In the Mono Hand Book, Chapter 21 is on Gtk#.  (In the Mono Hand Book,
+    the Gtk# .NET bindings are refered to as GNOME.NET.)
+
+
+Hackers:
+--------
+
+    For those who wish to help with the development of Gtk#, they should
+    read the file named: HACKING.
+
+    Also, anyone wishing to hack Gtk# is encouraged to join the Gtk#
+    mailing list.  And to visit the #mono IRC channel (on irc.gnome.org).

@@ -1,0 +1,129 @@
+<Type Name="SelectionMode" FullName="Gtk.SelectionMode">
+  <TypeSignature Language="C#" Maintainer="Hector Gomez M" Value="public enum SelectionMode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed SelectionMode extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gtk.SelectionModeGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>An enumeration used by TreeSelection.</summary>
+    <remarks>
+      <para>
+      This enumeration is used by <see cref="T:Gtk.TreeSelection" /> to decide how selection behaves.
+     </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Browse">
+      <MemberSignature Language="C#" Value="Browse" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.SelectionMode Browse = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.SelectionMode</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Only one item can be selected at any given moment. Any item currently having focus will be marked as selected.</summary>
+        <remarks>
+          <para>
+          Only one item can be selected at any given moment. Any item currently having focus will be marked as selected.
+         </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Extended">
+      <MemberSignature Language="C#" Value="Extended" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.SelectionMode Extended = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.SelectionMode</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>This is the same as "Multiple", but deprecated. Use Multiple instead.</summary>
+        <remarks>
+          <para>
+          Note that extended selection should only be used where all items share the exact same callback routine.
+         </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Multiple">
+      <MemberSignature Language="C#" Value="Multiple" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.SelectionMode Multiple = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.SelectionMode</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Several items may be selected or unselected with a click or using the spacebar. The selection can be done using the Ctrl and Shift modifier keys in the usual way.</summary>
+        <remarks>
+          <para>
+          Note that multiple selection should only be used where all items share the exact same callback routine.
+         </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="None">
+      <MemberSignature Language="C#" Value="None" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.SelectionMode None = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.SelectionMode</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Nothing can be selected.</summary>
+        <remarks>
+          <para>
+          Nothing can be selected.
+         </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Single">
+      <MemberSignature Language="C#" Value="Single" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.SelectionMode Single = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.SelectionMode</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Only one item can be selected at any given moment. Other items can have focus, but will not be marked as selected.</summary>
+        <remarks>
+          <para>
+          Only one item can be selected at any given moment. Other items can have focus, but will not be marked as selected.
+         </para>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

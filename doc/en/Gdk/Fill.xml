@@ -1,0 +1,93 @@
+<Type Name="Fill" FullName="Gdk.Fill">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum Fill" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed Fill extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gdk.FillGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Determines how primitives are drawn.</summary>
+    <remarks>None.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="OpaqueStippled">
+      <MemberSignature Language="C#" Value="OpaqueStippled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Fill OpaqueStippled = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Fill</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Draw using the stipple bitmap. Pixels corresponding to bits in the stipple bitmap that are set will be drawn in the foreground color; pixels corresponding to bits that are not set will be drawn with the background color.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Solid">
+      <MemberSignature Language="C#" Value="Solid" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Fill Solid = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Fill</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Draw with the foreground color.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Stippled">
+      <MemberSignature Language="C#" Value="Stippled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Fill Stippled = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Fill</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Draw using the stipple bitmap. Pixels corresponding to bits in the stipple bitmap that are set will be drawn in he foreground color; pixels corresponding to bits that are not set will be left untouched.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Tiled">
+      <MemberSignature Language="C#" Value="Tiled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.Fill Tiled = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Fill</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Draw with a tiled pixmap.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

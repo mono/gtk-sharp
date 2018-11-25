@@ -1,0 +1,76 @@
+<Type Name="RgbDither" FullName="Gdk.RgbDither">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum RgbDither" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed RgbDither extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gdk.RgbDitherGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Selects whether or not <see cref="T:Gdk.Rgb" /> applies dithering to the image on display.</summary>
+    <remarks>Since <see cref="T:Gdk.Rgb" /> currently only handles images with 8 bits per component, dithering on 24 bit per pixel displays is a moot point.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Max">
+      <MemberSignature Language="C#" Value="Max" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.RgbDither Max = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.RgbDither</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Use dithering in 16 bits per pixel and below.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="None">
+      <MemberSignature Language="C#" Value="None" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.RgbDither None = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.RgbDither</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Never use dithering.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Normal">
+      <MemberSignature Language="C#" Value="Normal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.RgbDither Normal = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.RgbDither</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Use dithering in 8 bits per pixel (and below) only.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

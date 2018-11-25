@@ -1,0 +1,37 @@
+<Type Name="SizeFunc" FullName="Rsvg.SizeFunc">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public delegate void SizeFunc(out int width, out int height);" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed SizeFunc extends System.MulticastDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>rsvg2-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.16.0.0</AssemblyVersion>
+    <AssemblyVersion>2.18.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="width" Type="System.Int32&amp;" RefType="out" />
+    <Parameter Name="height" Type="System.Int32&amp;" RefType="out" />
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Void</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <param name="width">To be added.</param>
+    <param name="height">To be added.</param>
+    <summary>Function to let a user of the library specify the SVG's dimensions
+</summary>
+    <remarks>
+      <para>
+width: the output width the SVG should be
+</para>
+      <para>
+height: the output height the SVG should be user_data: user data
+</para>
+    </remarks>
+  </Docs>
+  <Members />
+</Type>

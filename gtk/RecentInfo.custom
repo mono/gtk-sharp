@@ -1,0 +1,17 @@
+		[Obsolete ("Use GetRecentApplications")]
+		public string GetApplications (out ulong length)
+		{
+			var res = GetRecentApplications (out length);
+			if (length > 0)
+				return res [0];
+			return null;
+		}
+
+		[Obsolete ("Use GetRecentGroups")]
+		public string GetGroups (out ulong length)
+		{
+			var res = GetRecentGroups (out length);
+			if (length > 0)
+				return res [0];
+			return null;
+		}

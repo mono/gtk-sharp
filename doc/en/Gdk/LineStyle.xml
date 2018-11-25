@@ -1,0 +1,77 @@
+<Type Name="LineStyle" FullName="Gdk.LineStyle">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum LineStyle" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed LineStyle extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gdk.LineStyleGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Determines how lines are drawn.</summary>
+    <remarks>None.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="DoubleDash">
+      <MemberSignature Language="C#" Value="DoubleDash" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.LineStyle DoubleDash = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.LineStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+			Even segments are normally. Odd segments are drawn in the background color 
+			if the fill style is Fill.Solid, or in the background color masked by the stipple if 
+			the fill style is Fill.Stippled.
+		</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnOffDash">
+      <MemberSignature Language="C#" Value="OnOffDash" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.LineStyle OnOffDash = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.LineStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Even segments are drawn; odd segments are not drawn.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Solid">
+      <MemberSignature Language="C#" Value="Solid" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.LineStyle Solid = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.LineStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Lines are drawn solid.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,239 @@
+<Type Name="FontSelectionDialog" FullName="Gtk.FontSelectionDialog">
+  <TypeSignature Language="C#" Maintainer="Lee Mallabone" Value="public class FontSelectionDialog : Gtk.Dialog" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit FontSelectionDialog extends Gtk.Dialog" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Dialog</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>A FontSelectionDialog is a widget that opens a window requesting the user to select a font</summary>
+    <remarks>
+      <para>The FontSelectionDialog widget displays a window listing the available fonts, styles and sizes, allowing the user to select a font. It effectively places a <see cref="T:Gtk.FontSelection" /> widget in a <see cref="T:Gtk.Dialog" />.</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected FontSelectionDialog (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public FontSelectionDialog (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public FontSelectionDialog (string title);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string title) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="title" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="title">A title that will appear in the window's title bar.</param>
+        <summary>Create a new FontSelectionDialog</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ApplyButton">
+      <MemberSignature Language="C#" Value="public Gtk.Button ApplyButton { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Button ApplyButton" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Button</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The dialog's "Apply" button.</summary>
+        <value>a <see cref="T:Gtk.Widget" /></value>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="CancelButton">
+      <MemberSignature Language="C#" Value="public Gtk.Button CancelButton { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Button CancelButton" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Button</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The dialog's "Cancel" button.</summary>
+        <value>a <see cref="T:Gtk.Widget" /></value>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Font">
+      <MemberSignature Language="C#" Value="public Gdk.Font Font { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Font Font" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.Font</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The font that was selected using the dialog.</summary>
+        <value>a <see cref="T:Gdk.Font" /></value>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="FontName">
+      <MemberSignature Language="C#" Value="public string FontName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string FontName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The name of the font that is selected in this widget</summary>
+        <value>The name of the currently selected font.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.FontSelectionDialog" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OkButton">
+      <MemberSignature Language="C#" Value="public Gtk.Button OkButton { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Button OkButton" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Button</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The dialog's "OK" button.</summary>
+        <value>a <see cref="T:Gtk.Widget" /></value>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="PreviewText">
+      <MemberSignature Language="C#" Value="public string PreviewText { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string PreviewText" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The text used to display a preview of the selected font.</summary>
+        <value>The text currently displaying the selected font.</value>
+        <remarks>
+          <para>This property determines the exact string that is displayed in the 'preview area' of the FontSelectionDialog.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetFontName">
+      <MemberSignature Language="C#" Value="public bool SetFontName (string fontname);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SetFontName(string fontname) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="fontname" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="fontname">The name of a system font to select.</param>
+        <summary>Sets the name of the font that is selected in this widget.</summary>
+        <returns>
+          <see langword="true" /> if <paramref name="fontname" /> was a valid font, <see langword="false" /> otherwise.</returns>
+        <remarks>
+          <para>If this property is used to alter the widget's font name to a font that could not be found, the widget will retain its original font selection.</para>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,1147 @@
+<?xml version="1.0" ?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Module Id="unmanaged" Language="1033" Version="2.16.6">
+    <Package Id="2ee2af11-dc29-11dc-b7b3-005056c00008" InstallerVersion="200" Manufacturer="Gtk+ Project"/>
+
+    <Binary Id="redirector.exe" SourceFile="redirector.exe" />
+    <CustomAction Id="setup_pixbuf_loaders" BinaryKey="redirector.exe" Execute="deferred" Impersonate="no" ExeCommand="&quot;[MergeRedirectFolder]bin\gdk-pixbuf-query-loaders.exe&quot; &quot;[MergeRedirectFolder]etc\gtk-2.0\gdk-pixbuf.loaders"/>
+    <CustomAction Id="setup_immodules" BinaryKey="redirector.exe" Execute="deferred" Impersonate="no" ExeCommand="&quot;[MergeRedirectFolder]bin\gtk-query-immodules-2.0.exe&quot; &quot;[MergeRedirectFolder]etc\gtk-2.0\gtk.immodules"/>
+
+    <InstallExecuteSequence>
+      <Custom Action="setup_pixbuf_loaders" Before="InstallFinalize">Not Installed</Custom>
+      <Custom Action="setup_immodules" Before="InstallFinalize">Not Installed</Custom>
+    </InstallExecuteSequence>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="MergeRedirectFolder">
+        <Component Id="environment1" Guid="3b0cc0e1-df0e-11dc-9533-005056c00008">
+          <Environment Id="pathenv" Action="set" Name="PATH" Part="last" Permanent="yes" System="yes" Value="[MergeRedirectFolder]bin" />
+          <Environment Id="basepath" Action="set" Name="GTK_BASEPATH" Permanent="no" System="yes" Value="[MergeRedirectFolder]" />
+          <CreateFolder />
+        </Component>
+        <Directory Id="etc" Name="etc">
+          <Directory Id="fonts" Name="fonts">
+            <Component Id="fontconfs" Guid="c3d68580-dc2c-11dc-8157-005056c00008">
+              <File Id="fonts.conf" Name="fonts.conf" Source="source\etc\fonts\fonts.conf" Vital="yes"/>
+              <File Id="fonts.dtd" Name="fonts.dtd" Source="source\etc\fonts\fonts.dtd" Vital="yes"/>
+            </Component>
+          </Directory>
+          <Directory Id="gtk2.0" Name="gtk-2.0">
+            <Component Id="etcgtk2.0" Guid="5be9cbc0-dc2d-11dc-8163-005056c00008">
+              <File Id="gtk.immodules" Name="gtk.immodules" Source="source\etc\gtk-2.0\gtk.immodules" Vital="yes"/>
+              <File Id="gtkrc" Name="gtkrc" Source="custom\etc\gtk-2.0\gtkrc" Vital="no"/>
+              <File Id="immultipress.conf" Name="immultipress.conf" Source="source\etc\gtk-2.0\im-multipress.conf" Vital="yes"/>
+            </Component>
+          </Directory>
+          <Directory Id="pango" Name="pango">
+            <Component Id="etcpango" Guid="6ce1d211-dc2d-11dc-940f-005056c00008">
+              <File Id="pango.modules" Name="pango.modules" Source="source\etc\pango\pango.modules" Vital="yes"/>
+            </Component>
+          </Directory>
+        </Directory>
+        <Directory Id="share" Name="share">
+          <Directory Id="locale" Name="locale">
+            <Directory Id="af" Name="af">
+              <Directory Id="af_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="af_locale" Guid="8e15a5fd-e650-4bb2-bfb7-1d4fbbe58138">
+                  <File Id="af_atk10.mo" Name="af_atk10.mo" Source="source\share\locale\af\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="af_gtk20.mo" Name="af_gtk20.mo" Source="source\share\locale\af\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="af_gtk20_properties.mo" Name="af_gtk20-properties.mo" Source="source\share\locale\af\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="am" Name="am">
+              <Directory Id="am_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="am_locale" Guid="4537aed3-45c6-4131-a7b4-c55baae37f95">
+                  <File Id="am_atk10.mo" Name="am_atk10.mo" Source="source\share\locale\am\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="am_glib20.mo" Name="am_glib20.mo" Source="source\share\locale\am\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="am_gtk20.mo" Name="am_gtk20.mo" Source="source\share\locale\am\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="am_gtk20_properties.mo" Name="am_gtk20-properties.mo" Source="source\share\locale\am\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ang" Name="ang">
+              <Directory Id="ang_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ang_locale" Guid="da19654c-7f18-46ae-8eec-72760409f170">
+                  <File Id="ang_gtk20.mo" Name="ang_gtk20.mo" Source="source\share\locale\ang\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ang_gtk20_properties.mo" Name="ang_gtk20-properties.mo" Source="source\share\locale\ang\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ar" Name="ar">
+              <Directory Id="ar_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ar_locale" Guid="0706398c-b31b-46a1-89ca-ef3ac1002b3b">
+                  <File Id="ar_atk10.mo" Name="ar_atk10.mo" Source="source\share\locale\ar\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="ar_glib20.mo" Name="ar_glib20.mo" Source="source\share\locale\ar\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="ar_gtk20.mo" Name="ar_gtk20.mo" Source="source\share\locale\ar\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ar_gtk20_properties.mo" Name="ar_gtk20-properties.mo" Source="source\share\locale\ar\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="as" Name="as">
+              <Directory Id="as_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="as_locale" Guid="19a52d48-4cc8-454e-a0a4-2c0160a6924f">
+                  <File Id="as_atk10.mo" Name="as_atk10.mo" Source="source\share\locale\as\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="as_glib20.mo" Name="as_glib20.mo" Source="source\share\locale\as\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="as_gtk20.mo" Name="as_gtk20.mo" Source="source\share\locale\as\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="as_gtk20_properties.mo" Name="as_gtk20-properties.mo" Source="source\share\locale\as\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ast" Name="ast">
+              <Directory Id="ast_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ast_locale" Guid="2ef8d042-e9dd-4c3f-923f-984e074a8127">
+                  <File Id="ast_gtk20.mo" Name="ast_gtk20.mo" Source="source\share\locale\ast\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ast_gtk20_properties.mo" Name="ast_gtk20-properties.mo" Source="source\share\locale\ast\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="az_IR" Name="az_IR">
+              <Directory Id="az_IR_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="az_IR_locale" Guid="be5dea1b-a49d-4f3c-9a26-034334fa06c6">
+                  <File Id="az_IR_gtk20.mo" Name="az_IR_gtk20.mo" Source="source\share\locale\az_IR\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="az_IR_gtk20_properties.mo" Name="az_IR_gtk20-properties.mo" Source="source\share\locale\az_IR\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="az" Name="az">
+              <Directory Id="az_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="az_locale" Guid="144b62ac-48d9-42c3-ada6-3e5748f4c396">
+                  <File Id="az_atk10.mo" Name="az_atk10.mo" Source="source\share\locale\az\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="az_glib20.mo" Name="az_glib20.mo" Source="source\share\locale\az\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="az_gtk20.mo" Name="az_gtk20.mo" Source="source\share\locale\az\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="az_gtk20_properties.mo" Name="az_gtk20-properties.mo" Source="source\share\locale\az\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="be_latin" Name="be@latin">
+              <Directory Id="be_latin_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="be_latin_locale" Guid="538a363c-6d78-4ccd-8750-d100d077946a">
+                  <File Id="be_latin_atk10.mo" Name="be@latin_atk10.mo" Source="source\share\locale\be@latin\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="be_latin_glib20.mo" Name="be@latin_glib20.mo" Source="source\share\locale\be@latin\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="be_latin_gtk20.mo" Name="be@latin_gtk20.mo" Source="source\share\locale\be@latin\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="be_latin_gtk20_properties.mo" Name="be@latin_gtk20-properties.mo" Source="source\share\locale\be@latin\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="be" Name="be">
+              <Directory Id="be_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="be_locale" Guid="68d06a67-4501-4b0f-ae40-136280c696e4">
+                  <File Id="be_atk10.mo" Name="be_atk10.mo" Source="source\share\locale\be\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="be_glib20.mo" Name="be_glib20.mo" Source="source\share\locale\be\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="be_gtk20.mo" Name="be_gtk20.mo" Source="source\share\locale\be\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="be_gtk20_properties.mo" Name="be_gtk20-properties.mo" Source="source\share\locale\be\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="bg" Name="bg">
+              <Directory Id="bg_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="bg_locale" Guid="0ca79749-99e9-49e7-b598-c72a60cc7359">
+                  <File Id="bg_atk10.mo" Name="bg_atk10.mo" Source="source\share\locale\bg\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="bg_glib20.mo" Name="bg_glib20.mo" Source="source\share\locale\bg\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="bg_gtk20.mo" Name="bg_gtk20.mo" Source="source\share\locale\bg\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="bg_gtk20_properties.mo" Name="bg_gtk20-properties.mo" Source="source\share\locale\bg\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="bn_IN" Name="bn_IN">
+              <Directory Id="bn_IN_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="bn_IN_locale" Guid="8172aeda-bc5d-45aa-beba-48a45b2f7100">
+                  <File Id="bn_IN_atk10.mo" Name="bn_IN_atk10.mo" Source="source\share\locale\bn_IN\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="bn_IN_glib20.mo" Name="bn_IN_glib20.mo" Source="source\share\locale\bn_IN\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="bn_IN_gtk20.mo" Name="bn_IN_gtk20.mo" Source="source\share\locale\bn_IN\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="bn_IN_gtk20_properties.mo" Name="bn_IN_gtk20-properties.mo" Source="source\share\locale\bn_IN\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="bn" Name="bn">
+              <Directory Id="bn_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="bn_locale" Guid="2c99e63f-5fff-478a-860d-9dec4319582c">
+                  <File Id="bn_atk10.mo" Name="bn_atk10.mo" Source="source\share\locale\bn\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="bn_glib20.mo" Name="bn_glib20.mo" Source="source\share\locale\bn\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="bn_gtk20.mo" Name="bn_gtk20.mo" Source="source\share\locale\bn\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="bn_gtk20_properties.mo" Name="bn_gtk20-properties.mo" Source="source\share\locale\bn\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="br" Name="br">
+              <Directory Id="br_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="br_locale" Guid="eb8d5743-5a62-40f5-8ade-ab80f4f7ebe9">
+                  <File Id="br_gtk20.mo" Name="br_gtk20.mo" Source="source\share\locale\br\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="br_gtk20_properties.mo" Name="br_gtk20-properties.mo" Source="source\share\locale\br\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="bs" Name="bs">
+              <Directory Id="bs_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="bs_locale" Guid="96d0f812-93d1-4ca7-8865-67506ca93e14">
+                  <File Id="bs_atk10.mo" Name="bs_atk10.mo" Source="source\share\locale\bs\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="bs_glib20.mo" Name="bs_glib20.mo" Source="source\share\locale\bs\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="bs_gtk20.mo" Name="bs_gtk20.mo" Source="source\share\locale\bs\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="bs_gtk20_properties.mo" Name="bs_gtk20-properties.mo" Source="source\share\locale\bs\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ca" Name="ca">
+              <Directory Id="ca_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ca_locale" Guid="63397c3c-4a42-4926-abc5-83d877b2cf34">
+                  <File Id="ca_atk10.mo" Name="ca_atk10.mo" Source="source\share\locale\ca\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="ca_glib20.mo" Name="ca_glib20.mo" Source="source\share\locale\ca\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="ca_gtk20.mo" Name="ca_gtk20.mo" Source="source\share\locale\ca\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ca_gtk20_properties.mo" Name="ca_gtk20-properties.mo" Source="source\share\locale\ca\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ca_valencia" Name="ca@valencia">
+              <Directory Id="ca_valencia_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ca_valencia_locale" Guid="3feaba16-9710-4076-907c-2b2203928625">
+                  <File Id="ca_valencia_atk10.mo" Name="ca@valencia_atk10.mo" Source="source\share\locale\ca@valencia\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="ca_valencia_glib20.mo" Name="ca@valencia_glib20.mo" Source="source\share\locale\ca@valencia\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="ca_valencia_gtk20.mo" Name="ca@valencia_gtk20.mo" Source="source\share\locale\ca@valencia\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ca_valencia_gtk20_properties.mo" Name="ca@valencia_gtk20-properties.mo" Source="source\share\locale\ca@valencia\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="crh" Name="crh">
+              <Directory Id="crh_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="crh_locale" Guid="f091e752-0f8c-4921-a41e-043033172566">
+                  <File Id="crh_gtk20.mo" Name="crh_gtk20.mo" Source="source\share\locale\crh\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="crh_gtk20_properties.mo" Name="crh_gtk20-properties.mo" Source="source\share\locale\crh\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="cs" Name="cs">
+              <Directory Id="cs_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="cs_locale" Guid="583486b3-1551-4598-989f-493e0ef7e3e1">
+                  <File Id="cs_atk10.mo" Name="cs_atk10.mo" Source="source\share\locale\cs\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="cs_glib20.mo" Name="cs_glib20.mo" Source="source\share\locale\cs\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="cs_gtk20.mo" Name="cs_gtk20.mo" Source="source\share\locale\cs\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="cs_gtk20_properties.mo" Name="cs_gtk20-properties.mo" Source="source\share\locale\cs\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="cy" Name="cy">
+              <Directory Id="cy_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="cy_locale" Guid="1e6ac7f1-feba-4e74-a062-6eb1796196de">
+                  <File Id="cy_atk10.mo" Name="cy_atk10.mo" Source="source\share\locale\cy\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="cy_glib20.mo" Name="cy_glib20.mo" Source="source\share\locale\cy\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="cy_gtk20.mo" Name="cy_gtk20.mo" Source="source\share\locale\cy\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="cy_gtk20_properties.mo" Name="cy_gtk20-properties.mo" Source="source\share\locale\cy\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="da" Name="da">
+              <Directory Id="da_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="da_locale" Guid="ca7424a2-a063-46a2-b200-107d87e3450e">
+                  <File Id="da_atk10.mo" Name="da_atk10.mo" Source="source\share\locale\da\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="da_glib20.mo" Name="da_glib20.mo" Source="source\share\locale\da\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="da_gtk20.mo" Name="da_gtk20.mo" Source="source\share\locale\da\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="da_gtk20_properties.mo" Name="da_gtk20-properties.mo" Source="source\share\locale\da\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="de" Name="de">
+              <Directory Id="de_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="de_locale" Guid="dfa38997-f939-46da-a732-4dd31fd329f5">
+                  <File Id="de_atk10.mo" Name="de_atk10.mo" Source="source\share\locale\de\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="de_glib20.mo" Name="de_glib20.mo" Source="source\share\locale\de\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="de_gtk20.mo" Name="de_gtk20.mo" Source="source\share\locale\de\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="de_gtk20_properties.mo" Name="de_gtk20-properties.mo" Source="source\share\locale\de\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="dz" Name="dz">
+              <Directory Id="dz_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="dz_locale" Guid="3afb9ae4-36b2-40ad-8042-0a88f3ef1bf7">
+                  <File Id="dz_atk10.mo" Name="dz_atk10.mo" Source="source\share\locale\dz\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="dz_glib20.mo" Name="dz_glib20.mo" Source="source\share\locale\dz\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="dz_gtk20.mo" Name="dz_gtk20.mo" Source="source\share\locale\dz\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="dz_gtk20_properties.mo" Name="dz_gtk20-properties.mo" Source="source\share\locale\dz\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="el" Name="el">
+              <Directory Id="el_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="el_locale" Guid="2170c7d8-69d6-47f7-8523-c3e40816a242">
+                  <File Id="el_atk10.mo" Name="el_atk10.mo" Source="source\share\locale\el\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="el_glib20.mo" Name="el_glib20.mo" Source="source\share\locale\el\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="el_gtk20.mo" Name="el_gtk20.mo" Source="source\share\locale\el\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="el_gtk20_properties.mo" Name="el_gtk20-properties.mo" Source="source\share\locale\el\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="en_CA" Name="en_CA">
+              <Directory Id="en_CA_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="en_CA_locale" Guid="b4a4f2fe-e80e-4242-99c7-a4851b6a0414">
+                  <File Id="en_CA_atk10.mo" Name="en_CA_atk10.mo" Source="source\share\locale\en_CA\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="en_CA_glib20.mo" Name="en_CA_glib20.mo" Source="source\share\locale\en_CA\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="en_CA_gtk20.mo" Name="en_CA_gtk20.mo" Source="source\share\locale\en_CA\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="en_CA_gtk20_properties.mo" Name="en_CA_gtk20-properties.mo" Source="source\share\locale\en_CA\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="en_GB" Name="en_GB">
+              <Directory Id="en_GB_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="en_GB_locale" Guid="0e95e49a-19aa-4e21-9d0e-839a33b6a50b">
+                  <File Id="en_GB_atk10.mo" Name="en_GB_atk10.mo" Source="source\share\locale\en_GB\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="en_GB_glib20.mo" Name="en_GB_glib20.mo" Source="source\share\locale\en_GB\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="en_GB_gtk20.mo" Name="en_GB_gtk20.mo" Source="source\share\locale\en_GB\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="en_GB_gtk20_properties.mo" Name="en_GB_gtk20-properties.mo" Source="source\share\locale\en_GB\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="eo" Name="eo">
+              <Directory Id="eo_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="eo_locale" Guid="611467c1-bd8b-44a5-96d0-75a52990706c">
+                  <File Id="eo_atk10.mo" Name="eo_atk10.mo" Source="source\share\locale\eo\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="eo_glib20.mo" Name="eo_glib20.mo" Source="source\share\locale\eo\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="eo_gtk20.mo" Name="eo_gtk20.mo" Source="source\share\locale\eo\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="eo_gtk20_properties.mo" Name="eo_gtk20-properties.mo" Source="source\share\locale\eo\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="es" Name="es">
+              <Directory Id="es_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="es_locale" Guid="69cb0ee2-d1d2-449c-9796-7ecf279d4e95">
+                  <File Id="es_atk10.mo" Name="es_atk10.mo" Source="source\share\locale\es\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="es_glib20.mo" Name="es_glib20.mo" Source="source\share\locale\es\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="es_gtk20.mo" Name="es_gtk20.mo" Source="source\share\locale\es\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="es_gtk20_properties.mo" Name="es_gtk20-properties.mo" Source="source\share\locale\es\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="et" Name="et">
+              <Directory Id="et_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="et_locale" Guid="b4bd07df-7327-4c43-9f78-c60f7a094038">
+                  <File Id="et_atk10.mo" Name="et_atk10.mo" Source="source\share\locale\et\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="et_glib20.mo" Name="et_glib20.mo" Source="source\share\locale\et\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="et_gtk20.mo" Name="et_gtk20.mo" Source="source\share\locale\et\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="et_gtk20_properties.mo" Name="et_gtk20-properties.mo" Source="source\share\locale\et\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="eu" Name="eu">
+              <Directory Id="eu_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="eu_locale" Guid="40d61a5e-393f-4d28-ae39-bbf7f0802e45">
+                  <File Id="eu_atk10.mo" Name="eu_atk10.mo" Source="source\share\locale\eu\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="eu_glib20.mo" Name="eu_glib20.mo" Source="source\share\locale\eu\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="eu_gtk20.mo" Name="eu_gtk20.mo" Source="source\share\locale\eu\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="eu_gtk20_properties.mo" Name="eu_gtk20-properties.mo" Source="source\share\locale\eu\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="fa" Name="fa">
+              <Directory Id="fa_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="fa_locale" Guid="4513ceee-7d66-419e-a017-879ef8444727">
+                  <File Id="fa_atk10.mo" Name="fa_atk10.mo" Source="source\share\locale\fa\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="fa_glib20.mo" Name="fa_glib20.mo" Source="source\share\locale\fa\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="fa_gtk20.mo" Name="fa_gtk20.mo" Source="source\share\locale\fa\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="fa_gtk20_properties.mo" Name="fa_gtk20-properties.mo" Source="source\share\locale\fa\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="fi" Name="fi">
+              <Directory Id="fi_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="fi_locale" Guid="c832bd78-9e2e-4a87-8bb3-5f8178aa243d">
+                  <File Id="fi_atk10.mo" Name="fi_atk10.mo" Source="source\share\locale\fi\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="fi_glib20.mo" Name="fi_glib20.mo" Source="source\share\locale\fi\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="fi_gtk20.mo" Name="fi_gtk20.mo" Source="source\share\locale\fi\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="fi_gtk20_properties.mo" Name="fi_gtk20-properties.mo" Source="source\share\locale\fi\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="fr" Name="fr">
+              <Directory Id="fr_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="fr_locale" Guid="141434cc-291b-46c5-a89f-48711398a9e8">
+                  <File Id="fr_atk10.mo" Name="fr_atk10.mo" Source="source\share\locale\fr\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="fr_glib20.mo" Name="fr_glib20.mo" Source="source\share\locale\fr\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="fr_gtk20.mo" Name="fr_gtk20.mo" Source="source\share\locale\fr\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="fr_gtk20_properties.mo" Name="fr_gtk20-properties.mo" Source="source\share\locale\fr\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ga" Name="ga">
+              <Directory Id="ga_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ga_locale" Guid="718df836-6da5-4657-9c67-a7372c63d27b">
+                  <File Id="ga_atk10.mo" Name="ga_atk10.mo" Source="source\share\locale\ga\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="ga_glib20.mo" Name="ga_glib20.mo" Source="source\share\locale\ga\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="ga_gtk20.mo" Name="ga_gtk20.mo" Source="source\share\locale\ga\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ga_gtk20_properties.mo" Name="ga_gtk20-properties.mo" Source="source\share\locale\ga\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="gl" Name="gl">
+              <Directory Id="gl_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="gl_locale" Guid="2f7a9560-aac7-4d7a-910d-6609bed04479">
+                  <File Id="gl_atk10.mo" Name="gl_atk10.mo" Source="source\share\locale\gl\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="gl_glib20.mo" Name="gl_glib20.mo" Source="source\share\locale\gl\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="gl_gtk20.mo" Name="gl_gtk20.mo" Source="source\share\locale\gl\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="gl_gtk20_properties.mo" Name="gl_gtk20-properties.mo" Source="source\share\locale\gl\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="gu" Name="gu">
+              <Directory Id="gu_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="gu_locale" Guid="9761f66d-3b17-4782-be49-a5ae3c3eddc8">
+                  <File Id="gu_atk10.mo" Name="gu_atk10.mo" Source="source\share\locale\gu\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="gu_glib20.mo" Name="gu_glib20.mo" Source="source\share\locale\gu\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="gu_gtk20.mo" Name="gu_gtk20.mo" Source="source\share\locale\gu\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="gu_gtk20_properties.mo" Name="gu_gtk20-properties.mo" Source="source\share\locale\gu\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="he" Name="he">
+              <Directory Id="he_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="he_locale" Guid="4866d843-4719-422e-939b-67edce469a85">
+                  <File Id="he_atk10.mo" Name="he_atk10.mo" Source="source\share\locale\he\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="he_glib20.mo" Name="he_glib20.mo" Source="source\share\locale\he\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="he_gtk20.mo" Name="he_gtk20.mo" Source="source\share\locale\he\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="he_gtk20_properties.mo" Name="he_gtk20-properties.mo" Source="source\share\locale\he\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="hi" Name="hi">
+              <Directory Id="hi_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="hi_locale" Guid="aecee995-6be8-4f80-9c4f-70b70cb30d3d">
+                  <File Id="hi_atk10.mo" Name="hi_atk10.mo" Source="source\share\locale\hi\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="hi_glib20.mo" Name="hi_glib20.mo" Source="source\share\locale\hi\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="hi_gtk20.mo" Name="hi_gtk20.mo" Source="source\share\locale\hi\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="hi_gtk20_properties.mo" Name="hi_gtk20-properties.mo" Source="source\share\locale\hi\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="hr" Name="hr">
+              <Directory Id="hr_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="hr_locale" Guid="cd71ee96-b0ed-496e-9aa6-a13bd7e7123b">
+                  <File Id="hr_atk10.mo" Name="hr_atk10.mo" Source="source\share\locale\hr\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="hr_glib20.mo" Name="hr_glib20.mo" Source="source\share\locale\hr\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="hr_gtk20.mo" Name="hr_gtk20.mo" Source="source\share\locale\hr\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="hr_gtk20_properties.mo" Name="hr_gtk20-properties.mo" Source="source\share\locale\hr\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="hu" Name="hu">
+              <Directory Id="hu_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="hu_locale" Guid="f16f6bd2-a564-46fe-8d2d-bc786db4b866">
+                  <File Id="hu_atk10.mo" Name="hu_atk10.mo" Source="source\share\locale\hu\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="hu_glib20.mo" Name="hu_glib20.mo" Source="source\share\locale\hu\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="hu_gtk20.mo" Name="hu_gtk20.mo" Source="source\share\locale\hu\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="hu_gtk20_properties.mo" Name="hu_gtk20-properties.mo" Source="source\share\locale\hu\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="hy" Name="hy">
+              <Directory Id="hy_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="hy_locale" Guid="7ac83e95-cdc9-4276-8c0d-edc2305aca4e">
+                  <File Id="hy_glib20.mo" Name="hy_glib20.mo" Source="source\share\locale\hy\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="hy_gtk20.mo" Name="hy_gtk20.mo" Source="source\share\locale\hy\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="hy_gtk20_properties.mo" Name="hy_gtk20-properties.mo" Source="source\share\locale\hy\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ia" Name="ia">
+              <Directory Id="ia_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ia_locale" Guid="a2115971-02d6-4b5a-ac23-d853f05811d4">
+                  <File Id="ia_gtk20.mo" Name="ia_gtk20.mo" Source="source\share\locale\ia\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ia_gtk20_properties.mo" Name="ia_gtk20-properties.mo" Source="source\share\locale\ia\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="id" Name="id">
+              <Directory Id="id_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="id_locale" Guid="a1531225-1602-4436-a3a2-0ca218c6dfab">
+                  <File Id="id_atk10.mo" Name="id_atk10.mo" Source="source\share\locale\id\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="id_glib20.mo" Name="id_glib20.mo" Source="source\share\locale\id\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="id_gtk20.mo" Name="id_gtk20.mo" Source="source\share\locale\id\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="id_gtk20_properties.mo" Name="id_gtk20-properties.mo" Source="source\share\locale\id\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="io" Name="io">
+              <Directory Id="io_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="io_locale" Guid="b3634ae7-87cd-4402-b163-a739da23d43d">
+                  <File Id="io_gtk20.mo" Name="io_gtk20.mo" Source="source\share\locale\io\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="io_gtk20_properties.mo" Name="io_gtk20-properties.mo" Source="source\share\locale\io\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="is" Name="is">
+              <Directory Id="is_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="is_locale" Guid="fbafb2d1-4c57-4a0f-966a-ae05d5800021">
+                  <File Id="is_atk10.mo" Name="is_atk10.mo" Source="source\share\locale\is\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="is_glib20.mo" Name="is_glib20.mo" Source="source\share\locale\is\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="is_gtk20.mo" Name="is_gtk20.mo" Source="source\share\locale\is\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="is_gtk20_properties.mo" Name="is_gtk20-properties.mo" Source="source\share\locale\is\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="it" Name="it">
+              <Directory Id="it_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="it_locale" Guid="1de52533-554a-478f-8ba5-cc9228a827e6">
+                  <File Id="it_atk10.mo" Name="it_atk10.mo" Source="source\share\locale\it\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="it_glib20.mo" Name="it_glib20.mo" Source="source\share\locale\it\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="it_gtk20.mo" Name="it_gtk20.mo" Source="source\share\locale\it\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="it_gtk20_properties.mo" Name="it_gtk20-properties.mo" Source="source\share\locale\it\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ja" Name="ja">
+              <Directory Id="ja_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ja_locale" Guid="e93d5252-e02f-4fc5-9b7f-334119a0042d">
+                  <File Id="ja_atk10.mo" Name="ja_atk10.mo" Source="source\share\locale\ja\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="ja_glib20.mo" Name="ja_glib20.mo" Source="source\share\locale\ja\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="ja_gtk20.mo" Name="ja_gtk20.mo" Source="source\share\locale\ja\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ja_gtk20_properties.mo" Name="ja_gtk20-properties.mo" Source="source\share\locale\ja\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ka" Name="ka">
+              <Directory Id="ka_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ka_locale" Guid="6a9e7ec2-0a5f-49df-b121-17cf2a05d8d7">
+                  <File Id="ka_atk10.mo" Name="ka_atk10.mo" Source="source\share\locale\ka\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="ka_glib20.mo" Name="ka_glib20.mo" Source="source\share\locale\ka\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="ka_gtk20.mo" Name="ka_gtk20.mo" Source="source\share\locale\ka\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ka_gtk20_properties.mo" Name="ka_gtk20-properties.mo" Source="source\share\locale\ka\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="kn" Name="kn">
+              <Directory Id="kn_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="kn_locale" Guid="07f9c275-4d26-40e4-b2dc-62c3f500ecef">
+                  <File Id="kn_atk10.mo" Name="kn_atk10.mo" Source="source\share\locale\kn\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="kn_glib20.mo" Name="kn_glib20.mo" Source="source\share\locale\kn\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="kn_gtk20.mo" Name="kn_gtk20.mo" Source="source\share\locale\kn\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="kn_gtk20_properties.mo" Name="kn_gtk20-properties.mo" Source="source\share\locale\kn\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ko" Name="ko">
+              <Directory Id="ko_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ko_locale" Guid="b98ea796-b61e-496b-9028-6377002ac182">
+                  <File Id="ko_atk10.mo" Name="ko_atk10.mo" Source="source\share\locale\ko\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="ko_glib20.mo" Name="ko_glib20.mo" Source="source\share\locale\ko\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="ko_gtk20.mo" Name="ko_gtk20.mo" Source="source\share\locale\ko\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ko_gtk20_properties.mo" Name="ko_gtk20-properties.mo" Source="source\share\locale\ko\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ku" Name="ku">
+              <Directory Id="ku_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ku_locale" Guid="33738db8-482f-4be2-ac30-ca84dddda3fb">
+                  <File Id="ku_atk10.mo" Name="ku_atk10.mo" Source="source\share\locale\ku\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="ku_glib20.mo" Name="ku_glib20.mo" Source="source\share\locale\ku\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="ku_gtk20.mo" Name="ku_gtk20.mo" Source="source\share\locale\ku\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ku_gtk20_properties.mo" Name="ku_gtk20-properties.mo" Source="source\share\locale\ku\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="li" Name="li">
+              <Directory Id="li_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="li_locale" Guid="92f0e295-5465-412c-8011-9be8a45ccdb6">
+                  <File Id="li_atk10.mo" Name="li_atk10.mo" Source="source\share\locale\li\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="li_gtk20.mo" Name="li_gtk20.mo" Source="source\share\locale\li\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="li_gtk20_properties.mo" Name="li_gtk20-properties.mo" Source="source\share\locale\li\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="lt" Name="lt">
+              <Directory Id="lt_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="lt_locale" Guid="e306f109-0a23-4309-a6f3-940c9d7553c2">
+                  <File Id="lt_atk10.mo" Name="lt_atk10.mo" Source="source\share\locale\lt\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="lt_glib20.mo" Name="lt_glib20.mo" Source="source\share\locale\lt\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="lt_gtk20.mo" Name="lt_gtk20.mo" Source="source\share\locale\lt\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="lt_gtk20_properties.mo" Name="lt_gtk20-properties.mo" Source="source\share\locale\lt\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="lv" Name="lv">
+              <Directory Id="lv_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="lv_locale" Guid="d4cb54ab-ac1d-465e-b2f4-5718fa0d6834">
+                  <File Id="lv_atk10.mo" Name="lv_atk10.mo" Source="source\share\locale\lv\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="lv_glib20.mo" Name="lv_glib20.mo" Source="source\share\locale\lv\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="lv_gtk20.mo" Name="lv_gtk20.mo" Source="source\share\locale\lv\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="lv_gtk20_properties.mo" Name="lv_gtk20-properties.mo" Source="source\share\locale\lv\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="mai" Name="mai">
+              <Directory Id="mai_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="mai_locale" Guid="e473f133-ba55-4a91-ac15-edcc0a0940b4">
+                  <File Id="mai_atk10.mo" Name="mai_atk10.mo" Source="source\share\locale\mai\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="mai_glib20.mo" Name="mai_glib20.mo" Source="source\share\locale\mai\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="mai_gtk20.mo" Name="mai_gtk20.mo" Source="source\share\locale\mai\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="mai_gtk20_properties.mo" Name="mai_gtk20-properties.mo" Source="source\share\locale\mai\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="mg" Name="mg">
+              <Directory Id="mg_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="mg_locale" Guid="3dd4847b-1267-4fee-a164-8fcc2c5f0ab5">
+                  <File Id="mg_glib20.mo" Name="mg_glib20.mo" Source="source\share\locale\mg\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="mi" Name="mi">
+              <Directory Id="mi_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="mi_locale" Guid="8f8da11b-4817-4455-a5df-adbbab39d186">
+                  <File Id="mi_gtk20.mo" Name="mi_gtk20.mo" Source="source\share\locale\mi\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="mi_gtk20_properties.mo" Name="mi_gtk20-properties.mo" Source="source\share\locale\mi\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="mk" Name="mk">
+              <Directory Id="mk_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="mk_locale" Guid="93006b4d-3f0d-4dd1-ac88-9db98e9a21d6">
+                  <File Id="mk_atk10.mo" Name="mk_atk10.mo" Source="source\share\locale\mk\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="mk_glib20.mo" Name="mk_glib20.mo" Source="source\share\locale\mk\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="mk_gtk20.mo" Name="mk_gtk20.mo" Source="source\share\locale\mk\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="mk_gtk20_properties.mo" Name="mk_gtk20-properties.mo" Source="source\share\locale\mk\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ml" Name="ml">
+              <Directory Id="ml_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ml_locale" Guid="d1ed71f8-bbc6-464b-9749-c8ac9d57149d">
+                  <File Id="ml_atk10.mo" Name="ml_atk10.mo" Source="source\share\locale\ml\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="ml_glib20.mo" Name="ml_glib20.mo" Source="source\share\locale\ml\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="ml_gtk20.mo" Name="ml_gtk20.mo" Source="source\share\locale\ml\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ml_gtk20_properties.mo" Name="ml_gtk20-properties.mo" Source="source\share\locale\ml\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="mn" Name="mn">
+              <Directory Id="mn_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="mn_locale" Guid="bb6ebc2c-3b9d-4106-a2ad-68f01735bf03">
+                  <File Id="mn_atk10.mo" Name="mn_atk10.mo" Source="source\share\locale\mn\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="mn_glib20.mo" Name="mn_glib20.mo" Source="source\share\locale\mn\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="mn_gtk20.mo" Name="mn_gtk20.mo" Source="source\share\locale\mn\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="mn_gtk20_properties.mo" Name="mn_gtk20-properties.mo" Source="source\share\locale\mn\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="mr" Name="mr">
+              <Directory Id="mr_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="mr_locale" Guid="54cc4f2a-4678-4d18-acab-d6e7bfed1d2c">
+                  <File Id="mr_atk10.mo" Name="mr_atk10.mo" Source="source\share\locale\mr\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="mr_glib20.mo" Name="mr_glib20.mo" Source="source\share\locale\mr\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="mr_gtk20.mo" Name="mr_gtk20.mo" Source="source\share\locale\mr\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="mr_gtk20_properties.mo" Name="mr_gtk20-properties.mo" Source="source\share\locale\mr\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ms" Name="ms">
+              <Directory Id="ms_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ms_locale" Guid="0f785879-d222-4cf0-8cce-34f72b5b9ec3">
+                  <File Id="ms_atk10.mo" Name="ms_atk10.mo" Source="source\share\locale\ms\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="ms_glib20.mo" Name="ms_glib20.mo" Source="source\share\locale\ms\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="ms_gtk20.mo" Name="ms_gtk20.mo" Source="source\share\locale\ms\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ms_gtk20_properties.mo" Name="ms_gtk20-properties.mo" Source="source\share\locale\ms\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="nb" Name="nb">
+              <Directory Id="nb_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="nb_locale" Guid="b884b080-a348-49e7-926d-ef3c90f2e295">
+                  <File Id="nb_atk10.mo" Name="nb_atk10.mo" Source="source\share\locale\nb\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="nb_glib20.mo" Name="nb_glib20.mo" Source="source\share\locale\nb\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="nb_gtk20.mo" Name="nb_gtk20.mo" Source="source\share\locale\nb\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="nb_gtk20_properties.mo" Name="nb_gtk20-properties.mo" Source="source\share\locale\nb\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ne" Name="ne">
+              <Directory Id="ne_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ne_locale" Guid="b58d310d-d20f-4465-97a0-27f6ec3abf03">
+                  <File Id="ne_atk10.mo" Name="ne_atk10.mo" Source="source\share\locale\ne\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="ne_glib20.mo" Name="ne_glib20.mo" Source="source\share\locale\ne\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="ne_gtk20.mo" Name="ne_gtk20.mo" Source="source\share\locale\ne\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ne_gtk20_properties.mo" Name="ne_gtk20-properties.mo" Source="source\share\locale\ne\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="nl" Name="nl">
+              <Directory Id="nl_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="nl_locale" Guid="4be71979-d2d9-4f26-a357-37e9448bd205">
+                  <File Id="nl_atk10.mo" Name="nl_atk10.mo" Source="source\share\locale\nl\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="nl_glib20.mo" Name="nl_glib20.mo" Source="source\share\locale\nl\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="nl_gtk20.mo" Name="nl_gtk20.mo" Source="source\share\locale\nl\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="nl_gtk20_properties.mo" Name="nl_gtk20-properties.mo" Source="source\share\locale\nl\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="nn" Name="nn">
+              <Directory Id="nn_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="nn_locale" Guid="2d2abcaa-7f84-4466-9b9a-f0a89f78c3c5">
+                  <File Id="nn_atk10.mo" Name="nn_atk10.mo" Source="source\share\locale\nn\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="nn_glib20.mo" Name="nn_glib20.mo" Source="source\share\locale\nn\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="nn_gtk20.mo" Name="nn_gtk20.mo" Source="source\share\locale\nn\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="nn_gtk20_properties.mo" Name="nn_gtk20-properties.mo" Source="source\share\locale\nn\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="nso" Name="nso">
+              <Directory Id="nso_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="nso_locale" Guid="490cb187-6bee-4d36-b5be-a3f75c8952c3">
+                  <File Id="nso_gtk20.mo" Name="nso_gtk20.mo" Source="source\share\locale\nso\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="nso_gtk20_properties.mo" Name="nso_gtk20-properties.mo" Source="source\share\locale\nso\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="oc" Name="oc">
+              <Directory Id="oc_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="oc_locale" Guid="7667906f-0a8d-438a-bc34-5221624ef694">
+                  <File Id="oc_atk10.mo" Name="oc_atk10.mo" Source="source\share\locale\oc\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="oc_glib20.mo" Name="oc_glib20.mo" Source="source\share\locale\oc\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="oc_gtk20.mo" Name="oc_gtk20.mo" Source="source\share\locale\oc\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="oc_gtk20_properties.mo" Name="oc_gtk20-properties.mo" Source="source\share\locale\oc\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="or" Name="or">
+              <Directory Id="or_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="or_locale" Guid="b687f675-adab-469d-b2b4-aa4fc6406ed5">
+                  <File Id="or_atk10.mo" Name="or_atk10.mo" Source="source\share\locale\or\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="or_glib20.mo" Name="or_glib20.mo" Source="source\share\locale\or\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="or_gtk20.mo" Name="or_gtk20.mo" Source="source\share\locale\or\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="or_gtk20_properties.mo" Name="or_gtk20-properties.mo" Source="source\share\locale\or\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="pa" Name="pa">
+              <Directory Id="pa_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="pa_locale" Guid="4de82a9f-4673-4b36-8eaa-8fe4279366f0">
+                  <File Id="pa_atk10.mo" Name="pa_atk10.mo" Source="source\share\locale\pa\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="pa_glib20.mo" Name="pa_glib20.mo" Source="source\share\locale\pa\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="pa_gtk20.mo" Name="pa_gtk20.mo" Source="source\share\locale\pa\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="pa_gtk20_properties.mo" Name="pa_gtk20-properties.mo" Source="source\share\locale\pa\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="pl" Name="pl">
+              <Directory Id="pl_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="pl_locale" Guid="bb1d4db6-8628-44cd-aba6-3dad19e35e63">
+                  <File Id="pl_atk10.mo" Name="pl_atk10.mo" Source="source\share\locale\pl\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="pl_glib20.mo" Name="pl_glib20.mo" Source="source\share\locale\pl\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="pl_gtk20.mo" Name="pl_gtk20.mo" Source="source\share\locale\pl\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="pl_gtk20_properties.mo" Name="pl_gtk20-properties.mo" Source="source\share\locale\pl\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ps" Name="ps">
+              <Directory Id="ps_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ps_locale" Guid="1fb28bf9-780b-4074-91c7-964383a8e53b">
+                  <File Id="ps_atk10.mo" Name="ps_atk10.mo" Source="source\share\locale\ps\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="ps_glib20.mo" Name="ps_glib20.mo" Source="source\share\locale\ps\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="ps_gtk20.mo" Name="ps_gtk20.mo" Source="source\share\locale\ps\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ps_gtk20_properties.mo" Name="ps_gtk20-properties.mo" Source="source\share\locale\ps\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="pt_BR" Name="pt_BR">
+              <Directory Id="pt_BR_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="pt_BR_locale" Guid="a3d5fb43-6d6a-49bf-ab01-0bb30eac71d0">
+                  <File Id="pt_BR_atk10.mo" Name="pt_BR_atk10.mo" Source="source\share\locale\pt_BR\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="pt_BR_glib20.mo" Name="pt_BR_glib20.mo" Source="source\share\locale\pt_BR\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="pt_BR_gtk20.mo" Name="pt_BR_gtk20.mo" Source="source\share\locale\pt_BR\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="pt_BR_gtk20_properties.mo" Name="pt_BR_gtk20-properties.mo" Source="source\share\locale\pt_BR\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="pt" Name="pt">
+              <Directory Id="pt_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="pt_locale" Guid="7f66217a-1bd9-4ae5-8b4f-2d13cc7fb589">
+                  <File Id="pt_atk10.mo" Name="pt_atk10.mo" Source="source\share\locale\pt\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="pt_glib20.mo" Name="pt_glib20.mo" Source="source\share\locale\pt\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="pt_gtk20.mo" Name="pt_gtk20.mo" Source="source\share\locale\pt\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="pt_gtk20_properties.mo" Name="pt_gtk20-properties.mo" Source="source\share\locale\pt\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ro" Name="ro">
+              <Directory Id="ro_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ro_locale" Guid="56f147ed-f5d4-4640-8bf2-25f345282e47">
+                  <File Id="ro_atk10.mo" Name="ro_atk10.mo" Source="source\share\locale\ro\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="ro_glib20.mo" Name="ro_glib20.mo" Source="source\share\locale\ro\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="ro_gtk20.mo" Name="ro_gtk20.mo" Source="source\share\locale\ro\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ro_gtk20_properties.mo" Name="ro_gtk20-properties.mo" Source="source\share\locale\ro\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ru" Name="ru">
+              <Directory Id="ru_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ru_locale" Guid="1c1e07c4-62ea-46a6-8ffe-d7bd315b1f87">
+                  <File Id="ru_atk10.mo" Name="ru_atk10.mo" Source="source\share\locale\ru\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="ru_glib20.mo" Name="ru_glib20.mo" Source="source\share\locale\ru\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="ru_gtk20.mo" Name="ru_gtk20.mo" Source="source\share\locale\ru\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ru_gtk20_properties.mo" Name="ru_gtk20-properties.mo" Source="source\share\locale\ru\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="rw" Name="rw">
+              <Directory Id="rw_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="rw_locale" Guid="466703d2-0021-46ea-a09f-1717fa6c2bbd">
+                  <File Id="rw_atk10.mo" Name="rw_atk10.mo" Source="source\share\locale\rw\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="rw_glib20.mo" Name="rw_glib20.mo" Source="source\share\locale\rw\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="rw_gtk20.mo" Name="rw_gtk20.mo" Source="source\share\locale\rw\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="rw_gtk20_properties.mo" Name="rw_gtk20-properties.mo" Source="source\share\locale\rw\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="si" Name="si">
+              <Directory Id="si_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="si_locale" Guid="888cc6e5-66b2-4d3f-b848-7583a7d28de7">
+                  <File Id="si_atk10.mo" Name="si_atk10.mo" Source="source\share\locale\si\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="si_glib20.mo" Name="si_glib20.mo" Source="source\share\locale\si\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="si_gtk20.mo" Name="si_gtk20.mo" Source="source\share\locale\si\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="si_gtk20_properties.mo" Name="si_gtk20-properties.mo" Source="source\share\locale\si\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="sk" Name="sk">
+              <Directory Id="sk_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="sk_locale" Guid="5fb383e4-fd1a-4018-853f-580b6f92202e">
+                  <File Id="sk_atk10.mo" Name="sk_atk10.mo" Source="source\share\locale\sk\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="sk_glib20.mo" Name="sk_glib20.mo" Source="source\share\locale\sk\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="sk_gtk20.mo" Name="sk_gtk20.mo" Source="source\share\locale\sk\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="sk_gtk20_properties.mo" Name="sk_gtk20-properties.mo" Source="source\share\locale\sk\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="sl" Name="sl">
+              <Directory Id="sl_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="sl_locale" Guid="e215df9f-f126-4b10-9714-011be85f70fb">
+                  <File Id="sl_atk10.mo" Name="sl_atk10.mo" Source="source\share\locale\sl\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="sl_glib20.mo" Name="sl_glib20.mo" Source="source\share\locale\sl\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="sl_gtk20.mo" Name="sl_gtk20.mo" Source="source\share\locale\sl\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="sl_gtk20_properties.mo" Name="sl_gtk20-properties.mo" Source="source\share\locale\sl\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="sq" Name="sq">
+              <Directory Id="sq_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="sq_locale" Guid="72cb946a-6181-419d-b144-4aa91b86588c">
+                  <File Id="sq_atk10.mo" Name="sq_atk10.mo" Source="source\share\locale\sq\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="sq_glib20.mo" Name="sq_glib20.mo" Source="source\share\locale\sq\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="sq_gtk20.mo" Name="sq_gtk20.mo" Source="source\share\locale\sq\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="sq_gtk20_properties.mo" Name="sq_gtk20-properties.mo" Source="source\share\locale\sq\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="sr_ije" Name="sr@ije">
+              <Directory Id="sr_ije_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="sr_ije_locale" Guid="8b58351d-1fe3-4563-815e-7970b7640275">
+                  <File Id="sr_ije_atk10.mo" Name="sr@ije_atk10.mo" Source="source\share\locale\sr@ije\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="sr_ije_glib20.mo" Name="sr@ije_glib20.mo" Source="source\share\locale\sr@ije\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="sr_ije_gtk20.mo" Name="sr@ije_gtk20.mo" Source="source\share\locale\sr@ije\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="sr_ije_gtk20_properties.mo" Name="sr@ije_gtk20-properties.mo" Source="source\share\locale\sr@ije\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="sr_latin" Name="sr@latin">
+              <Directory Id="sr_latin_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="sr_latin_locale" Guid="aa9deee5-18db-4b18-a7f8-59af61f4c96d">
+                  <File Id="sr_latin_atk10.mo" Name="sr@latin_atk10.mo" Source="source\share\locale\sr@latin\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="sr_latin_glib20.mo" Name="sr@latin_glib20.mo" Source="source\share\locale\sr@latin\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="sr_latin_gtk20.mo" Name="sr@latin_gtk20.mo" Source="source\share\locale\sr@latin\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="sr_latin_gtk20_properties.mo" Name="sr@latin_gtk20-properties.mo" Source="source\share\locale\sr@latin\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="sr" Name="sr">
+              <Directory Id="sr_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="sr_locale" Guid="2774cb7f-a97c-42a0-a056-1faf30d1793d">
+                  <File Id="sr_atk10.mo" Name="sr_atk10.mo" Source="source\share\locale\sr\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="sr_glib20.mo" Name="sr_glib20.mo" Source="source\share\locale\sr\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="sr_gtk20.mo" Name="sr_gtk20.mo" Source="source\share\locale\sr\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="sr_gtk20_properties.mo" Name="sr_gtk20-properties.mo" Source="source\share\locale\sr\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="sv" Name="sv">
+              <Directory Id="sv_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="sv_locale" Guid="5ec564b1-3c8a-45bb-9019-8a2dfb3366ad">
+                  <File Id="sv_atk10.mo" Name="sv_atk10.mo" Source="source\share\locale\sv\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="sv_glib20.mo" Name="sv_glib20.mo" Source="source\share\locale\sv\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="sv_gtk20.mo" Name="sv_gtk20.mo" Source="source\share\locale\sv\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="sv_gtk20_properties.mo" Name="sv_gtk20-properties.mo" Source="source\share\locale\sv\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ta" Name="ta">
+              <Directory Id="ta_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ta_locale" Guid="5c5987c6-0245-4a3f-aa35-86d8af61f3e9">
+                  <File Id="ta_atk10.mo" Name="ta_atk10.mo" Source="source\share\locale\ta\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="ta_glib20.mo" Name="ta_glib20.mo" Source="source\share\locale\ta\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="ta_gtk20.mo" Name="ta_gtk20.mo" Source="source\share\locale\ta\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ta_gtk20_properties.mo" Name="ta_gtk20-properties.mo" Source="source\share\locale\ta\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="te" Name="te">
+              <Directory Id="te_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="te_locale" Guid="77d76be2-0e30-4831-a0b5-0313aea3f251">
+                  <File Id="te_atk10.mo" Name="te_atk10.mo" Source="source\share\locale\te\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="te_glib20.mo" Name="te_glib20.mo" Source="source\share\locale\te\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="te_gtk20.mo" Name="te_gtk20.mo" Source="source\share\locale\te\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="te_gtk20_properties.mo" Name="te_gtk20-properties.mo" Source="source\share\locale\te\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="th" Name="th">
+              <Directory Id="th_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="th_locale" Guid="0700a3f7-495e-4c5a-933e-f6cfbe208cd4">
+                  <File Id="th_atk10.mo" Name="th_atk10.mo" Source="source\share\locale\th\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="th_glib20.mo" Name="th_glib20.mo" Source="source\share\locale\th\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="th_gtk20.mo" Name="th_gtk20.mo" Source="source\share\locale\th\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="th_gtk20_properties.mo" Name="th_gtk20-properties.mo" Source="source\share\locale\th\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="tk" Name="tk">
+              <Directory Id="tk_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="tk_locale" Guid="cd7e82f9-e8e8-48a8-8beb-a38c6ba7a7ec">
+                  <File Id="tk_atk10.mo" Name="tk_atk10.mo" Source="source\share\locale\tk\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="tk_gtk20.mo" Name="tk_gtk20.mo" Source="source\share\locale\tk\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="tk_gtk20_properties.mo" Name="tk_gtk20-properties.mo" Source="source\share\locale\tk\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="tl" Name="tl">
+              <Directory Id="tl_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="tl_locale" Guid="e9dfefdb-6f92-4459-a3ef-c6d8d05583b5">
+                  <File Id="tl_glib20.mo" Name="tl_glib20.mo" Source="source\share\locale\tl\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="tr" Name="tr">
+              <Directory Id="tr_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="tr_locale" Guid="62e4d80d-7bf2-40b6-b0e3-5531b6010abd">
+                  <File Id="tr_atk10.mo" Name="tr_atk10.mo" Source="source\share\locale\tr\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="tr_glib20.mo" Name="tr_glib20.mo" Source="source\share\locale\tr\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="tr_gtk20.mo" Name="tr_gtk20.mo" Source="source\share\locale\tr\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="tr_gtk20_properties.mo" Name="tr_gtk20-properties.mo" Source="source\share\locale\tr\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="tt" Name="tt">
+              <Directory Id="tt_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="tt_locale" Guid="3fb03728-80d7-4e64-a561-c3210ff2dd2f">
+                  <File Id="tt_atk10.mo" Name="tt_atk10.mo" Source="source\share\locale\tt\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="tt_glib20.mo" Name="tt_glib20.mo" Source="source\share\locale\tt\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="tt_gtk20.mo" Name="tt_gtk20.mo" Source="source\share\locale\tt\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="tt_gtk20_properties.mo" Name="tt_gtk20-properties.mo" Source="source\share\locale\tt\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ug" Name="ug">
+              <Directory Id="ug_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ug_locale" Guid="3eaa484f-367a-4d69-8880-9d8582ad23b5">
+                  <File Id="ug_atk10.mo" Name="ug_atk10.mo" Source="source\share\locale\ug\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="uk" Name="uk">
+              <Directory Id="uk_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="uk_locale" Guid="90759a99-c356-424c-8b6b-db26d84a8976">
+                  <File Id="uk_atk10.mo" Name="uk_atk10.mo" Source="source\share\locale\uk\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="uk_glib20.mo" Name="uk_glib20.mo" Source="source\share\locale\uk\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="uk_gtk20.mo" Name="uk_gtk20.mo" Source="source\share\locale\uk\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="uk_gtk20_properties.mo" Name="uk_gtk20-properties.mo" Source="source\share\locale\uk\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="ur" Name="ur">
+              <Directory Id="ur_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="ur_locale" Guid="eb02b96e-609c-44a5-8af9-cff25396450f">
+                  <File Id="ur_gtk20.mo" Name="ur_gtk20.mo" Source="source\share\locale\ur\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="ur_gtk20_properties.mo" Name="ur_gtk20-properties.mo" Source="source\share\locale\ur\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="uz_cyrillic" Name="uz@cyrillic">
+              <Directory Id="uz_cyrillic_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="uz_cyrillic_locale" Guid="81a86034-ee89-400e-adb8-a0684118e8d6">
+                  <File Id="uz_cyrillic_gtk20.mo" Name="uz@cyrillic_gtk20.mo" Source="source\share\locale\uz@cyrillic\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="uz_cyrillic_gtk20_properties.mo" Name="uz@cyrillic_gtk20-properties.mo" Source="source\share\locale\uz@cyrillic\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="uz" Name="uz">
+              <Directory Id="uz_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="uz_locale" Guid="b71aa9e5-b47a-4fca-97ab-b41eaeac9ea1">
+                  <File Id="uz_gtk20.mo" Name="uz_gtk20.mo" Source="source\share\locale\uz\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="uz_gtk20_properties.mo" Name="uz_gtk20-properties.mo" Source="source\share\locale\uz\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="vi" Name="vi">
+              <Directory Id="vi_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="vi_locale" Guid="a415a622-2f2b-464a-8071-b26cf910e54c">
+                  <File Id="vi_atk10.mo" Name="vi_atk10.mo" Source="source\share\locale\vi\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="vi_glib20.mo" Name="vi_glib20.mo" Source="source\share\locale\vi\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="vi_gtk20.mo" Name="vi_gtk20.mo" Source="source\share\locale\vi\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="vi_gtk20_properties.mo" Name="vi_gtk20-properties.mo" Source="source\share\locale\vi\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="wa" Name="wa">
+              <Directory Id="wa_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="wa_locale" Guid="3381ef75-09a7-4a88-a2a4-444907e20c99">
+                  <File Id="wa_atk10.mo" Name="wa_atk10.mo" Source="source\share\locale\wa\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="wa_glib20.mo" Name="wa_glib20.mo" Source="source\share\locale\wa\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="wa_gtk20.mo" Name="wa_gtk20.mo" Source="source\share\locale\wa\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="wa_gtk20_properties.mo" Name="wa_gtk20-properties.mo" Source="source\share\locale\wa\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="xh" Name="xh">
+              <Directory Id="xh_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="xh_locale" Guid="7fd6c361-4148-49dc-867b-0eb13b67c4de">
+                  <File Id="xh_atk10.mo" Name="xh_atk10.mo" Source="source\share\locale\xh\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="xh_glib20.mo" Name="xh_glib20.mo" Source="source\share\locale\xh\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="xh_gtk20.mo" Name="xh_gtk20.mo" Source="source\share\locale\xh\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="xh_gtk20_properties.mo" Name="xh_gtk20-properties.mo" Source="source\share\locale\xh\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="yi" Name="yi">
+              <Directory Id="yi_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="yi_locale" Guid="51be0a0f-6cf9-4800-b94b-365b5e40c638">
+                  <File Id="yi_atk10.mo" Name="yi_atk10.mo" Source="source\share\locale\yi\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="yi_glib20.mo" Name="yi_glib20.mo" Source="source\share\locale\yi\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="yi_gtk20.mo" Name="yi_gtk20.mo" Source="source\share\locale\yi\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="yi_gtk20_properties.mo" Name="yi_gtk20-properties.mo" Source="source\share\locale\yi\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="zh_CN" Name="zh_CN">
+              <Directory Id="zh_CN_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="zh_CN_locale" Guid="4b7e6114-10aa-4c51-9846-807c0b69b26c">
+                  <File Id="zh_CN_atk10.mo" Name="zh_CN_atk10.mo" Source="source\share\locale\zh_CN\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="zh_CN_glib20.mo" Name="zh_CN_glib20.mo" Source="source\share\locale\zh_CN\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="zh_CN_gtk20.mo" Name="zh_CN_gtk20.mo" Source="source\share\locale\zh_CN\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="zh_CN_gtk20_properties.mo" Name="zh_CN_gtk20-properties.mo" Source="source\share\locale\zh_CN\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="zh_HK" Name="zh_HK">
+              <Directory Id="zh_HK_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="zh_HK_locale" Guid="d0a87af4-4dee-448c-8e42-15a63aa59632">
+                  <File Id="zh_HK_atk10.mo" Name="zh_HK_atk10.mo" Source="source\share\locale\zh_HK\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="zh_HK_glib20.mo" Name="zh_HK_glib20.mo" Source="source\share\locale\zh_HK\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="zh_HK_gtk20.mo" Name="zh_HK_gtk20.mo" Source="source\share\locale\zh_HK\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="zh_HK_gtk20_properties.mo" Name="zh_HK_gtk20-properties.mo" Source="source\share\locale\zh_HK\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="zh_TW" Name="zh_TW">
+              <Directory Id="zh_TW_LC_MESSAGES" Name="LC_MESSAGES">
+                <Component Id="zh_TW_locale" Guid="47c2863d-ecfb-46ef-b584-8585be5a9a3d">
+                  <File Id="zh_TW_atk10.mo" Name="zh_TW_atk10.mo" Source="source\share\locale\zh_TW\LC_MESSAGES\atk10.mo" Vital="yes"/>
+                  <File Id="zh_TW_glib20.mo" Name="zh_TW_glib20.mo" Source="source\share\locale\zh_TW\LC_MESSAGES\glib20.mo" Vital="yes"/>
+                  <File Id="zh_TW_gtk20.mo" Name="zh_TW_gtk20.mo" Source="source\share\locale\zh_TW\LC_MESSAGES\gtk20.mo" Vital="yes"/>
+                  <File Id="zh_TW_gtk20_properties.mo" Name="zh_TW_gtk20-properties.mo" Source="source\share\locale\zh_TW\LC_MESSAGES\gtk20-properties.mo" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+          </Directory>
+          <Directory Id="themes" Name="themes">
+            <Directory Id="MSWindows" Name="MS-Windows">
+              <Directory Id="mswindows.gtk2.0" Name="gtk-2.0">
+                <Component Id="mswgtk2" Guid="8f71a11e-dc2d-11dc-9a68-005056c00008">
+                  <File Id="mswgtkrc" Name="gtkrc" Source="source\share\themes\MS-Windows\gtk-2.0\gtkrc" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+            <Directory Id="Default" Name="Default">
+              <Component Id="defaultgtk2" Guid="af7d8470-dc2d-11dc-8c01-005056c00008">
+                <File Id="defaultgtkrc" Name="gtkrc" Source="source\share\themes\Default\gtk-2.0-key\gtkrc" Vital="yes"/>
+              </Component>
+            </Directory>
+          </Directory>
+          <Directory Id="icons" Name="icons">
+            <Directory Id="hicolor" Name="hicolor">
+              <Component Id="shareicons" Guid="d0484aee-dc2d-11dc-80c5-005056c00008">
+                <File Id="index.theme" Name="index.theme" Source="custom\share\icons\hicolor\index.theme" Vital="yes"/>
+              </Component>
+            </Directory>
+          </Directory>
+        </Directory>
+        <Directory Id="lib" Name="lib">
+          <Directory Id="libgtk2_0" Name="gtk-2.0">
+            <Directory Id="gtk_2_0_modules" Name="modules">
+              <Component Id="modules" Guid="5205f775-025b-4613-8866-645d93c12202">
+                <File Id="libgail.dll" Name="libgail.dll" Source="source\lib\gtk-2.0\modules\libgail.dll" Vital="yes"/>
+              </Component>
+            </Directory>
+            <Directory Id="gtk_2_02_10_0" Name="2.10.0">
+              <Directory Id="a2_10_0engines" Name="engines">
+                <Component Id="engines" Guid="0567a936-04da-11dd-a8d2-001a6bce76fb">
+                  <File Id="libpixmap.dll" Name="libpixmap.dll" Source="source\lib\gtk-2.0\2.10.0\engines\libpixmap.dll" Vital="yes"/>
+                  <File Id="libsvg.dll" Name="libsvg.dll" Source="source\lib\gtk-2.0\2.10.0\engines\libsvg.dll" Vital="yes"/>
+                  <File Id="libwimp.dll" Name="libwimp.dll" Source="source\lib\gtk-2.0\2.10.0\engines\libwimp.dll" Vital="yes"/>
+                </Component>
+              </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+
+        <Directory Id="bin" Name="bin">
+          <Component Id="binaries" Guid="f007e300-dc2d-11dc-9359-005056c00008">
+            <File Id="libfreetype6.dll" Name="libfreetype-6.dll" Source="source\bin\libfreetype-6.dll" Vital="yes"/>
+            <File Id="gdkpixbufqueryloaders.exe" Name="gdk-pixbuf-query-loaders.exe" Source="source\bin\gdk-pixbuf-query-loaders.exe" Vital="yes"/>
+            <File Id="gspawnwin32helper.exe" Name="gspawn-win32-helper.exe" Source="source\bin\gspawn-win32-helper.exe" Vital="yes"/>
+            <File Id="gspawnwin32helperconsole.exe" Name="gspawn-win32-helper-console.exe" Source="source\bin\gspawn-win32-helper-console.exe" Vital="yes"/>
+            <File Id="gtkqueryimmodules2.0.exe" Name="gtk-query-immodules-2.0.exe" Source="source\bin\gtk-query-immodules-2.0.exe" Vital="yes"/>
+            <File Id="intl.dll" Name="intl.dll" Source="source\bin\intl.dll" Vital="yes"/>
+            <File Id="libjpeg8.dll" Name="libjpeg-8.dll" Source="source\bin\libjpeg-8.dll" Vital="yes"/>
+            <File Id="libatk1.00.dll" Name="libatk-1.0-0.dll" Source="source\bin\libatk-1.0-0.dll" Vital="yes"/>
+            <File Id="libcairo2.dll" Name="libcairo-2.dll" Source="source\bin\libcairo-2.dll" Vital="yes"/>
+            <File Id="libcroco.dll" Name="libcroco-0.6-3.dll" Source="source\bin\libcroco-0.6-3.dll" Vital="yes"/>
+            <File Id="libgsf.dll" Name="libgsf-1-114.dll" Source="source\bin\libgsf-1-114.dll" Vital="yes"/>
+            <File Id="libfontconfig1.dll" Name="libfontconfig-1.dll" Source="source\bin\libfontconfig-1.dll" Vital="yes"/>
+            <File Id="libgailutil18.dll" Name="libgailutil-18.dll" Source="source\bin\libgailutil-18.dll" Vital="yes"/>
+            <File Id="libgdkwin322.00.dll" Name="libgdk-win32-2.0-0.dll" Source="source\bin\libgdk-win32-2.0-0.dll" Vital="yes"/>
+            <File Id="libgdk_pixbuf2.00.dll" Name="libgdk_pixbuf-2.0-0.dll" Source="source\bin\libgdk_pixbuf-2.0-0.dll" Vital="yes"/>
+            <File Id="libglade2.dll" Name="libglade-2.0-0.dll" Source="source\bin\libglade-2.0-0.dll" Vital="yes"/>
+            <File Id="libglib2.00.dll" Name="libglib-2.0-0.dll" Source="source\bin\libglib-2.0-0.dll" Vital="yes"/>
+            <File Id="libgmodule2.00.dll" Name="libgmodule-2.0-0.dll" Source="source\bin\libgmodule-2.0-0.dll" Vital="yes"/>
+            <File Id="libgobject2.00.dll" Name="libgobject-2.0-0.dll" Source="source\bin\libgobject-2.0-0.dll" Vital="yes"/>
+            <File Id="libgthread2.00.dll" Name="libgthread-2.0-0.dll" Source="source\bin\libgthread-2.0-0.dll" Vital="yes"/>
+            <File Id="libgtkwin322.00.dll" Name="libgtk-win32-2.0-0.dll" Source="source\bin\libgtk-win32-2.0-0.dll" Vital="yes"/>
+            <File Id="libpango1.00.dll" Name="libpango-1.0-0.dll" Source="source\bin\libpango-1.0-0.dll" Vital="yes"/>
+            <File Id="libpangocairo1.00.dll" Name="libpangocairo-1.0-0.dll" Source="source\bin\libpangocairo-1.0-0.dll" Vital="yes"/>
+            <File Id="libpangoft21.00.dll" Name="libpangoft2-1.0-0.dll" Source="source\bin\libpangoft2-1.0-0.dll" Vital="yes"/>
+            <File Id="libpangowin321.00.dll" Name="libpangowin32-1.0-0.dll" Source="source\bin\libpangowin32-1.0-0.dll" Vital="yes"/>
+            <File Id="libpng1515.dll" Name="libpng15-15.dll" Source="source\bin\libpng15-15.dll" Vital="yes"/>
+            <File Id="librsvg22.dll" Name="librsvg-2-2.dll" Source="source\bin\librsvg-2-2.dll" Vital="yes"/>
+            <File Id="libtiff5.dll" Name="libtiff-5.dll" Source="source\bin\libtiff-5.dll" Vital="yes"/>
+            <File Id="libxml2.dll" Name="libxml2-2.dll" Source="source\bin\libxml2-2.dll" Vital="yes"/>
+            <File Id="pangoquerymodules.exe" Name="pango-querymodules.exe" Source="source\bin\pango-querymodules.exe" Vital="yes"/>
+            <File Id="zlib1.dll" Name="zlib1.dll" Source="source\bin\zlib1.dll" Vital="yes"/>
+            <File Id="libgio2.00.dll" Name="libgio-2.0-0.dll" Source="source\bin\libgio-2.0-0.dll" Vital="yes"/>
+            <File Id="libexpat1.dll" Name="libexpat-1.dll" Source="source\bin\libexpat-1.dll" Vital="yes"/>
+            <File Id="libffi6.dll" Name="libffi-6.dll" Source="source\bin\libffi-6.dll" Vital="yes" />
+            <File Id="libgccssjlj1.dll" Name="libgcc_s_sjlj-1.dll" Source="source\bin\libgcc_s_sjlj-1.dll" Vital="yes" />
+            <File Id="libgsfwin321114.dll" Name="libgsf-win32-1-114.dll" Source="source\bin\libgsf-win32-1-114.dll" Vital="yes"/>
+            <File Id="libharfbuzz0.dll" Name="libharfbuzz-0.dll" Source="source\bin\libharfbuzz-0.dll" Vital="yes"/>
+            <File Id="libintl8.dll" Name="libintl-8.dll" Source="source\bin\libintl-8.dll" Vital="yes"/>
+            <File Id="libjasper1.dll" Name="libjasper-1.dll" Source="source\bin\libjasper-1.dll" Vital="yes"/>
+            <File Id="liblzma5.dll" Name="liblzma-5.dll" Source="source\bin\liblzma-5.dll" Vital="yes"/>
+            <File Id="libpixman10.dll" Name="libpixman-1-0.dll" Source="source\bin\libpixman-1-0.dll" Vital="yes" />
+            <File Id="libstdcpp6.dll" Name="libstdc++-6.dll" Source="source\bin\libstdc++-6.dll" Vital="yes" />
+
+            <!-- ICU -->
+            <File Id="icudata48.dll" Name="icudata48.dll" Source="source\bin\icudata48.dll" Vital="yes"/>
+            <File Id="icui18n48.dll" Name="icui18n48.dll" Source="source\bin\icui18n48.dll" Vital="yes"/>
+            <File Id="icuio48.dll" Name="icuio48.dll" Source="source\bin\icuio48.dll" Vital="yes"/>
+            <File Id="icule48.dll" Name="icule48.dll" Source="source\bin\icule48.dll" Vital="yes"/>
+            <File Id="iculx48.dll" Name="iculx48.dll" Source="source\bin\iculx48.dll" Vital="yes"/>
+            <File Id="icutu48.dll" Name="icutu48.dll" Source="source\bin\icutu48.dll" Vital="yes"/>
+            <File Id="icuuc48.dll" Name="icuuc48.dll" Source="source\bin\icuuc48.dll" Vital="yes"/>
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+  </Module>
+</Wix>

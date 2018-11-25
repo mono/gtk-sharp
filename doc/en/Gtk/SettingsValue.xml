@@ -1,0 +1,91 @@
+<Type Name="SettingsValue" FullName="Gtk.SettingsValue">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public struct SettingsValue" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit SettingsValue extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Data for <see cref="T:Gtk.Settings" />.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Gtk.SettingsValue New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gtk.SettingsValue New(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.SettingsValue</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">A <see cref="T:IntPtr" />, pointer to the underlying C object.</param>
+        <summary>Constructor.</summary>
+        <returns>A <see cref="T:Gtk.SettingsValue" /></returns>
+        <remarks>Not for general developer use.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Origin">
+      <MemberSignature Language="C#" Value="public string Origin;" />
+      <MemberSignature Language="ILAsm" Value=".field public string Origin" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The source of this data (usually an rcfile).</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Value">
+      <MemberSignature Language="C#" Value="public GLib.Value Value;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype GLib.Value Value" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.Value</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The data value.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Gtk.SettingsValue Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Gtk.SettingsValue Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.SettingsValue</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An empty value.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

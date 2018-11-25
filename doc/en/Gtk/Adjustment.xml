@@ -1,0 +1,452 @@
+<Type Name="Adjustment" FullName="Gtk.Adjustment">
+  <TypeSignature Language="C#" Maintainer="Lee Mallabone" Value="public class Adjustment : Gtk.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Adjustment extends Gtk.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>Encapsulates an adjustable bounded value.</summary>
+    <remarks>
+      <para>The Adjustment object represents a value with an associated <see cref="P:Gtk.Adjustment.Lower" /> and <see cref="P:Gtk.Adjustment.Upper" /> bound, together with a <see cref="P:Gtk.Adjustment.StepIncrement" />, <see cref="P:Gtk.Adjustment.PageIncrement" />, and a <see cref="P:Gtk.Adjustment.PageSize" />.</para>
+      <para>The Adjustment object does not update the value itself. Instead it is left up to the owner of the Adjustment to control the value. The owner of the Adjustment typically calls the <see cref="M:Gtk.Adjustment.ValueChanged" /> and <see cref="M:Gtk.Adjustment.Changed" /> methods after changing the value or its bounds, respectively. This results in the emission of the <see cref="F:Gtk.Adjustment.ValueChanged" /> or <see cref="F:Gtk.Adjustment.Changed" /> events respectively.</para>
+      <para>An Adjustment is used within several widgets, including <see cref="T:Gtk.SpinButton" />, <see cref="T:Gtk.Viewport" />, and <see cref="T:Gtk.Range" /> (which is a base class for <see cref="T:Gtk.HScrollbar" />, <see cref="T:Gtk.VScrollbar" />, <see cref="T:Gtk.HScale" />, and <see cref="T:Gtk.VScale" />).</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Adjustment ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Default constructor.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Adjustment (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Adjustment (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Adjustment (double value, double lower, double upper, double step_increment, double page_increment, double page_size);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float64 value, float64 lower, float64 upper, float64 step_increment, float64 page_increment, float64 page_size) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="value" Type="System.Double" />
+        <Parameter Name="lower" Type="System.Double" />
+        <Parameter Name="upper" Type="System.Double" />
+        <Parameter Name="step_increment" Type="System.Double" />
+        <Parameter Name="page_increment" Type="System.Double" />
+        <Parameter Name="page_size" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="value">The initial value.</param>
+        <param name="lower">The minimum value.</param>
+        <param name="upper">The maximum value.</param>
+        <param name="step_increment">The increment to use to make minor changes to the value.</param>
+        <param name="page_increment">The increment to use to make major changes to the value.</param>
+        <param name="page_size">The page size. In a <see cref="T:Gtk.Scrollbar" /> this is the size of the area that is currently visible.</param>
+        <summary>Creates an Adjustment with the specified value and bounds.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Change">
+      <MemberSignature Language="C#" Value="public void Change ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Change() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Fires the <see cref="F:Gtk.Adjustment.Changed" /> event.</summary>
+        <remarks>
+          <para>This method should be called manually after changing properties to notify all listening objects that one or more of the Adjustment's bounds have changed.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Changed">
+      <MemberSignature Language="C#" Value="public event EventHandler Changed;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Changed" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>This event is raised when <see cref="M:Gtk.Adjustment.Change" /> is called.</summary>
+        <remarks>
+          <para>If the Adjustment's properties change, (such as <see cref="P:Gtk.Adjustment.Upper" />, <see cref="P:Gtk.Adjustment.Lower" /> etc.), it is up to whichever class changes the values to call <see cref="M:Gtk.Adjustment.Change" /> to ensure this event is raised.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ChangeValue">
+      <MemberSignature Language="C#" Value="public void ChangeValue ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ChangeValue() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Fires the <see cref="F:Gtk.Adjustment.ValueChanged" /> event.</summary>
+        <remarks>
+          <para>This method should be called manually after changing properties to notify all listening objects that the Adjustment's <see cref="P:Gtk.Adjustment.Value" /> has changed.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ClampPage">
+      <MemberSignature Language="C#" Value="public void ClampPage (double lower, double upper);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ClampPage(float64 lower, float64 upper) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="lower" Type="System.Double" />
+        <Parameter Name="upper" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="lower">The lower value of the new range.</param>
+        <param name="upper">The upper value of the new range.</param>
+        <summary>Used to inform the Adjustment's view that a new visible range should be displayed.</summary>
+        <remarks>
+          <para>
+			 This method should be used to set the currently visible range to (<paramref name="lower" />, <paramref name="upper" />).?If necessary, the current <see cref="P:Gtk.Adjustment.Value" /> is changed to ensure that it is visible within the new scope.
+			 </para>
+          <para>
+			 If the specified range is larger than the <see cref="T:Gtk.Adjustment.PageSize" />, then only the start of it will make up the new "current page".
+			 </para>
+          <para>
+			 The <see cref="F:Gtk.Adjustment.ValueChanged" /> event will be raised if the <see cref="P:Gtk.Adjustment.Value" /> changes as a result of this method. <see cref="M:Gtk.Adjustment.Change" /> must be called manually if the <see cref="F:Gtk.Adjustment.Changed" /> event should be raised.
+			 </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.Adjustment" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Lower">
+      <MemberSignature Language="C#" Value="public double Lower { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 Lower" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("lower")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Retrieve the lower bound of this Adjustment.</summary>
+        <value>a <see cref="T:System.Double" /></value>
+        <remarks>The minimum possible value that is currently allowed.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnChanged">
+      <MemberSignature Language="C#" Value="protected virtual void OnChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnChanged() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideChanged", Type=typeof(Gtk.Adjustment))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Virtual method to override the <see cref="M:Gtk.Adjustment.Changed" /> event default handler.</summary>
+        <remarks>Override this method to change the default event handling for the <see cref="T:Gtk.Adjustment.Changed" /> event. </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnValueChanged">
+      <MemberSignature Language="C#" Value="protected virtual void OnValueChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnValueChanged() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideValueChanged", Type=typeof(Gtk.Adjustment))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Virtual method for <see cref="M:Gtk.Adjustment.ValueChanged" /> event default handling.</summary>
+        <remarks>Override this method to change the default event handling for the <see cref="M:Gtk.Adjustment.ValueChanged" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PageIncrement">
+      <MemberSignature Language="C#" Value="public double PageIncrement { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 PageIncrement" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("page-increment")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Manage the increment used to make major changes to the value.</summary>
+        <value>The current PageIncrement.</value>
+        <remarks>
+          <para>The usefulness of this value is entirely dependent upon the context in whic hthe Adjustment is used.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PageSize">
+      <MemberSignature Language="C#" Value="public double PageSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 PageSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("page-size")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Manage the size of a 'page'.</summary>
+        <value>The current size of pages in this Adjustment.</value>
+        <remarks>
+          <para>In a <see cref="T:Gtk.Scrollbar" /> this is the size of the area which is currently visible.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetBounds">
+      <MemberSignature Language="C#" Value="public void SetBounds (double lower, double upper, double step_increment, double page_increment, double page_size);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetBounds(float64 lower, float64 upper, float64 step_increment, float64 page_increment, float64 page_size) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="lower" Type="System.Double" />
+        <Parameter Name="upper" Type="System.Double" />
+        <Parameter Name="step_increment" Type="System.Double" />
+        <Parameter Name="page_increment" Type="System.Double" />
+        <Parameter Name="page_size" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="lower">The minimum value.</param>
+        <param name="upper">The maximum value.</param>
+        <param name="step_increment">The increment to use to make minor changes to the value.</param>
+        <param name="page_increment">The increment to use to make major changes to the value.</param>
+        <param name="page_size">The page size. In a <see cref="T:Gtk.Scrollbar" /> this is the size of the area that is currently visible.</param>
+        <summary>Sets all the properties of the Adjustment at the same time.</summary>
+        <remarks>
+          <para>When updating the values and properties of an Adjustment, remember to call the <see cref="M:Gtk.Adjustment.Changed" /> and/or <see cref="M:Gtk.Adjustment.ValueChanged" /> methods to ensure the correct events are raised.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StepIncrement">
+      <MemberSignature Language="C#" Value="public double StepIncrement { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 StepIncrement" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("step-increment")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The increment to use to make minor changes to the value.</summary>
+        <value>a <see cref="T:System.Double" /></value>
+        <remarks>
+          <para>In a <see cref="T:Gtk.Scrollbar" /> this increment is used when the mouse is clicked on the arrows at the top and bottom of the <see cref="T:Gtk.Scrollbar" />, to scroll by a small amount.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Upper">
+      <MemberSignature Language="C#" Value="public double Upper { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 Upper" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("upper")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Retrieve the upper bound of this Adjustment.</summary>
+        <value>a <see cref="T:System.Double" /></value>
+        <remarks>The maximum possible value that is currently allowed.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Value">
+      <MemberSignature Language="C#" Value="public double Value { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 Value" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("value")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Manage the current <paramref name="value" />.</summary>
+        <value>The current value of this adjustment.</value>
+        <remarks>
+          <para>If you set this property, you should manually call <see cref="M:Gtk.Adjustment.ChangeValue" /> so that all listening objects are notified of the change.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ValueChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler ValueChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler ValueChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("value_changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>This event is raised when <see cref="M:Gtk.Adjustment.ChangeValue" /> is called.</summary>
+        <remarks>
+          <para>This event can be handled to be notified of changes to the Adjustment's value. However, this relies on all objects that change the <see cref="P:Gtk.Adjustment.Value" /> calling <see cref="M:Gtk.Adjustment.ChangeValue" />.</para>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

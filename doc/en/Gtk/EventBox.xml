@@ -1,0 +1,195 @@
+<Type Name="EventBox" FullName="Gtk.EventBox">
+  <TypeSignature Language="C#" Maintainer="John Luke" Value="public class EventBox : Gtk.Bin" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit EventBox extends Gtk.Bin" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Bin</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>A widget used to catch events for widgets which do not have their own window.</summary>
+    <remarks>The <see cref="T:Gtk.EventBox" /> widget is a subclass of <see cref="T:Gtk.Bin" /> which also has its own window. It is useful since it allows you to catch events for widgets which do not have their own window.
+			<para><example><code lang="C#">
+using Gtk;
+using Gdk;
+using System;
+
+
+public class eventbox
+{
+
+	static void delete_event (object obj, DeleteEventArgs args)
+	{
+		Application.Quit();
+	}
+
+	static void exitbutton_event (object obj, ButtonPressEventArgs args)
+	{
+		Application.Quit();
+	}
+
+	public static void Main (string[] args)
+	{
+		Gtk.Window window;
+		EventBox eventbox;
+		Label label;
+
+		Application.Init();
+
+		window = new Gtk.Window ("Eventbox");
+		window.DeleteEvent += new DeleteEventHandler (delete_event);
+
+		window.BorderWidth = 10;
+
+		eventbox = new EventBox ();
+		window.Add (eventbox);
+		eventbox.Show();
+
+		label = new Label ("Click here to quit");
+		eventbox.Add(label);
+		label.Show();
+
+		label.SetSizeRequest(110, 20);
+
+		eventbox.ButtonPressEvent += new ButtonPressEventHandler (exitbutton_event);
+
+		eventbox.Realize();
+
+		window.Show();
+			
+		Application.Run();
+	}
+}
+				</code></example></para></remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public EventBox ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Creates a new <see cref="T:Gtk.EventBox" />.</summary>
+        <remarks>Creates a new <see cref="T:Gtk.EventBox" />.
+					<example><code lang="C#">EventBox eb = new EventBox();</code></example></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected EventBox (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public EventBox (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AboveChild">
+      <MemberSignature Language="C#" Value="public bool AboveChild { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool AboveChild" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("above-child")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Whether the event-trapping window of the eventbox is above the window of the child widget as opposed to below it.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.EventBox" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VisibleWindow">
+      <MemberSignature Language="C#" Value="public bool VisibleWindow { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool VisibleWindow" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("visible-window")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Whether the event box is visible, as opposed to invisible and only used to trap events.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

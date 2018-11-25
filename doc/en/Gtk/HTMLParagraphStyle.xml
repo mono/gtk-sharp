@@ -1,0 +1,241 @@
+<Type Name="HTMLParagraphStyle" FullName="Gtk.HTMLParagraphStyle">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum HTMLParagraphStyle" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed HTMLParagraphStyle extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gtkhtml-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>3.16.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>Enumeration of paragraph styles possible in <see cref="T:Gtk.HTML" />.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="Address">
+      <MemberSignature Language="C#" Value="Address" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLParagraphStyle Address = int32(7)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLParagraphStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Email address style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="H1">
+      <MemberSignature Language="C#" Value="H1" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLParagraphStyle H1 = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLParagraphStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Header 1 style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="H2">
+      <MemberSignature Language="C#" Value="H2" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLParagraphStyle H2 = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLParagraphStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Header 2 style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="H3">
+      <MemberSignature Language="C#" Value="H3" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLParagraphStyle H3 = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLParagraphStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Header 3 style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="H4">
+      <MemberSignature Language="C#" Value="H4" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLParagraphStyle H4 = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLParagraphStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Header 4 style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="H5">
+      <MemberSignature Language="C#" Value="H5" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLParagraphStyle H5 = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLParagraphStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Header 5 style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="H6">
+      <MemberSignature Language="C#" Value="H6" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLParagraphStyle H6 = int32(6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLParagraphStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Header 6 style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Itemalpha">
+      <MemberSignature Language="C#" Value="Itemalpha" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLParagraphStyle Itemalpha = int32(12)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLParagraphStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Greek-lettered ordered list.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Itemdigit">
+      <MemberSignature Language="C#" Value="Itemdigit" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLParagraphStyle Itemdigit = int32(11)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLParagraphStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Arabic-numbered ordered list.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Itemdotted">
+      <MemberSignature Language="C#" Value="Itemdotted" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLParagraphStyle Itemdotted = int32(9)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLParagraphStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Unnumbered list style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Itemroman">
+      <MemberSignature Language="C#" Value="Itemroman" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLParagraphStyle Itemroman = int32(10)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLParagraphStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Roman-numeral numbered list.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Normal">
+      <MemberSignature Language="C#" Value="Normal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLParagraphStyle Normal = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLParagraphStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Normal style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Pre">
+      <MemberSignature Language="C#" Value="Pre" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLParagraphStyle Pre = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLParagraphStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Preformatted text style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

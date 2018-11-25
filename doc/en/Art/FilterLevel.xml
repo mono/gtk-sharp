@@ -1,0 +1,93 @@
+<Type Name="FilterLevel" FullName="Art.FilterLevel">
+  <TypeSignature Language="C#" Value="public enum FilterLevel" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed FilterLevel extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>art-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>Allows the selection of the required filter level.</summary>
+    <remarks>Cubic filtering is missing because hyper is just as fast to implement and slightly better in quality.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Bilinear">
+      <MemberSignature Language="C#" Value="Bilinear" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Art.FilterLevel Bilinear = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Art.FilterLevel</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Bilinear interpolation. On enlargement its equivalent to point-sampling the ideal bilinear-interpolated image. On reduction, its equivalent to laying down samll tiles and integrating over the coverage area.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Hyper">
+      <MemberSignature Language="C#" Value="Hyper" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Art.FilterLevel Hyper = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Art.FilterLevel</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Slowest and highest quality reconstruction, derived from the hyperbolic filters in Wolberg's "Digital Image Warping". Hyperbolic-filter sampling the ideal hyperbolic-filter interpolated image (its designed to be idempotent for 1:1 pixel mapping).</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Nearest">
+      <MemberSignature Language="C#" Value="Nearest" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Art.FilterLevel Nearest = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Art.FilterLevel</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Nearest neighbor implementation. Fastest and lowest quality.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Tiles">
+      <MemberSignature Language="C#" Value="Tiles" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Art.FilterLevel Tiles = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Art.FilterLevel</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Accurate simulation of the PostScript image operator without any interpolation. Each pixed is rendered as a small parallelogra, of solid color, with its edges implemented with antialiasing. It looks like Nearest on enlargement and Bilinear on reduction.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

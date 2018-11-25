@@ -1,0 +1,507 @@
+<Type Name="CanvasShape" FullName="Gnome.CanvasShape">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class CanvasShape : Gnome.CanvasItem" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CanvasShape extends Gnome.CanvasItem" />
+  <AssemblyInfo>
+    <AssemblyName>gnome-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gnome.CanvasItem</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>Base class for canvas item shapes</summary>
+    <remarks>
+      <para>
+        Provides a base class for canvas item shapes, including:
+        <see cref="T:Gnome.CanvasBpath" />,
+        <see cref="T:Gnome.CanvasEllipse" />,
+        <see cref="T:Gnome.CanvasRect" />, and
+        <see cref="T:Gnome.CanvasPolygon" />.
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected CanvasShape ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected CanvasShape (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CanvasShape (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected CanvasShape (Gnome.CanvasGroup group, GLib.GType type);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Gnome.CanvasGroup group, valuetype GLib.GType type) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="group" Type="Gnome.CanvasGroup" />
+        <Parameter Name="type" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="group">a <see cref="T:Gnome.CanvasGroup" /></param>
+        <param name="type">a <see cref="T:GLib.GType" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CapStyle">
+      <MemberSignature Language="C#" Value="public Gdk.CapStyle CapStyle { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.CapStyle CapStyle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("cap_style")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.CapStyle</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Cap (end point) style for the Bezier path.</summary>
+        <value>Cap style used by the Bezier path</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dash">
+      <MemberSignature Language="C#" Value="public Art.VpathDash Dash { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Art.VpathDash Dash" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("dash")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Art.VpathDash</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:Art.VpathDash" /></value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FillColor">
+      <MemberSignature Language="C#" Value="public string FillColor { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string FillColor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("fill_color")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>
+          X color specification for fill color, or <see langword="null" /> pointer for no color (transparent).
+        </summary>
+        <value>X color specification</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FillColorGdk">
+      <MemberSignature Language="C#" Value="public Gdk.Color FillColorGdk { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Color FillColorGdk" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("fill_color_gdk")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Allocated <see cref="T:Gdk.Color" /> for fill.</summary>
+        <value>the <see cref="T:Gdk.Color" /> to fill</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FillColorRgba">
+      <MemberSignature Language="C#" Value="public uint FillColorRgba { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 FillColorRgba" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("fill_color_rgba")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Fill color with an alpha component (in the format 0xRRGGBBAA).</summary>
+        <value>the fill color</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FillStipple">
+      <MemberSignature Language="C#" Value="public Gdk.Drawable FillStipple { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Drawable FillStipple" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("fill_stipple")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.Drawable</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Stipple pattern for fill.</summary>
+        <value>Stipple pattern</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gnome.CanvasShape" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="JoinStyle">
+      <MemberSignature Language="C#" Value="public Gdk.JoinStyle JoinStyle { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.JoinStyle JoinStyle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("join_style")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.JoinStyle</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Vertex join style for the Bezier path.</summary>
+        <value>Verty join style used by the Bezier path</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Miterlimit">
+      <MemberSignature Language="C#" Value="public double Miterlimit { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 Miterlimit" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("miterlimit")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Minimum angle between segments, where miter join rule is applied.</summary>
+        <value>Minimum angle between segments, where miter join rule is applied.</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OutlineColor">
+      <MemberSignature Language="C#" Value="public string OutlineColor { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string OutlineColor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("outline_color")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>X color specification for outline color, or <see langword="null" /> pointer for no color (transparent).</summary>
+        <value>X color specification</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OutlineColorGdk">
+      <MemberSignature Language="C#" Value="public Gdk.Color OutlineColorGdk { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Color OutlineColorGdk" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("outline_color_gdk")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Allocated <see cref="T:Gdk.Color" /> for outline.</summary>
+        <value>the color of the outline</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OutlineColorRgba">
+      <MemberSignature Language="C#" Value="public uint OutlineColorRgba { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 OutlineColorRgba" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("outline_color_rgba")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Outline color with an alpha component (in the format 0xRRGGBBAA).</summary>
+        <value>outline color</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OutlineStipple">
+      <MemberSignature Language="C#" Value="public Gdk.Drawable OutlineStipple { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Drawable OutlineStipple" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("outline_stipple")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.Drawable</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Stipple pattern for outline.</summary>
+        <value>Stipple pattern used by the outline</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PathDef">
+      <MemberSignature Language="C#" Value="public Gnome.CanvasPathDef PathDef { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gnome.CanvasPathDef PathDef" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.CanvasPathDef</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The <see cref="T:Gnome.CanvasPathDef" /> used</summary>
+        <value>
+          a <see cref="T:Gnome.CanvasPathDef" /> or <see langword="null" /> if none is set for the shape.
+        </value>
+        <remarks>
+          <para>
+            It does not request updates, as it is meant to be used
+            from item implementations, from inside update queue.
+          </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WidthPixels">
+      <MemberSignature Language="C#" Value="public uint WidthPixels { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 WidthPixels" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("width_pixels")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Width of the outline in pixels. The outline will not be scaled when the canvas zoom factor is changed.</summary>
+        <value>width of the outline</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WidthUnits">
+      <MemberSignature Language="C#" Value="public double WidthUnits { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 WidthUnits" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("width_units")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Width of the outline in canvas units. The outline will be scaled when the canvas zoom factor is changed.</summary>
+        <value>width of the outline</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Wind">
+      <MemberSignature Language="C#" Value="public uint Wind { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Wind" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("wind")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Winding rule for the Bezier path</summary>
+        <value>winding rule used by the Bezier path</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

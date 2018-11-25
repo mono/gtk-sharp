@@ -1,0 +1,57 @@
+<Type Name="HTMLEditorAPI" FullName="Gtk.HTMLEditorAPI">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public struct HTMLEditorAPI" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit HTMLEditorAPI extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>gtkhtml-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>3.16.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Hooks for an HTML editor. Currently unsupported in Gtk#.</summary>
+    <remarks>See <see cref="M:Gtk.HTML.SetEditorApi" />.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Gtk.HTMLEditorAPI New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gtk.HTMLEditorAPI New(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLEditorAPI</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">A <see cref="T:IntPtr" />, pointer to the underlying C object.</param>
+        <summary>Default constructor.</summary>
+        <returns>A <see cref="T:Gtk.HTMLEditorAPI" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Gtk.HTMLEditorAPI Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Gtk.HTMLEditorAPI Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLEditorAPI</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An empty object.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

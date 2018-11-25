@@ -1,0 +1,217 @@
+<Type Name="EventButton" FullName="Gdk.EventButton">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class EventButton : Gdk.Event" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit EventButton extends Gdk.Event" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gdk.Event</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Used for button press and button release events.</summary>
+    <remarks>
+      <para>
+        Used for button press and button release events. The type
+        field will be one of <see cref="F:Gdk.EventType.ButtonPress" />,
+        <see cref="F:Gdk.EventType.TwoButtonPress" />,
+        <see cref="F:Gdk.EventType.ThreeButtonPress" />,
+        and <see cref="F:Gdk.EventType.ButtonRelease" /></para>
+      <para>
+        Double and triple-clicks result in a sequence of events being received. For double-clicks the order of events will be:
+
+        <list type="number"><item><term><see cref="T:Gdk.EventType.ButtonPress" /></term></item><item><term><see cref="T:Gdk.EventType.ButtonRelease" /></term></item><item><term><see cref="T:Gdk.EventType.ButtonPress" /></term></item><item><term><see cref="T:Gdk.EventType.TwoButtonPress" /></term></item><item><term><see cref="T:Gdk.EventType.ButtonRelease" /></term></item></list></para>
+      <para>
+        Note that the first click is received just like a normal
+        button press, while the second click results in a
+        <see cref="T:Gdk.EventType.TwoButtonPress" /> being received just after the
+        <see cref="T:Gdk.EventType.ButtonPress" />. Triple-clicks are very similar to
+        double-clicks, except that <see cref="T:Gdk.EventType.ThreeButtonPress" /> is inserted after
+        the third click. The order of the events is:
+
+        <list type="number"><item><term><see cref="T:Gdk.EventType.ButtonPress" /></term></item><item><term><see cref="T:Gdk.EventType.ButtonRelease" /></term></item><item><term><see cref="T:Gdk.EventType.ButtonPress" /></term></item><item><term><see cref="T:Gdk.EventType.TwoButtonPress" /></term></item><item><term><see cref="T:Gdk.EventType.ButtonRelease" /></term></item><item><term><see cref="T:Gdk.EventType.ButtonPress" /></term></item><item><term><see cref="T:Gdk.EventType.ThreeButtonPress" /></term></item><item><term><see cref="T:Gdk.EventType.ButtonRelease" /></term></item></list></para>
+      <para>
+        For a double click to occur, the second button press must
+        occur within 1/4 of a second of the first. For a triple click
+        to occur, the third button press must also occur within 1/2
+        second of the first button press.
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public EventButton (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">a <see cref="T:System.IntPtr" /> to a <see cref="T:Gdk.Event.Handle" /></param>
+        <summary>Internal constructor</summary>
+        <remarks>This constructor is internal and should not be used.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Axes">
+      <MemberSignature Language="C#" Value="public double[] Axes { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64[] Axes" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>x, y translated to the axes of device, or null if device is the mouse.</summary>
+        <value>a <see cref="T:System.Double[]" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Button">
+      <MemberSignature Language="C#" Value="public uint Button { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Button" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The button which was pressed or released, numbered from 1 to 5. Normally button 1 is the left mouse button, 2 is the middle button, and 3 is the right button. On 2-button mice, the middle button can often be simulated by pressing both mouse buttons together.</summary>
+        <value>a <see cref="T:System.UInt32" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Device">
+      <MemberSignature Language="C#" Value="public Gdk.Device Device { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Device Device" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Device</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The device where the event originated.</summary>
+        <value>a <see cref="T:Gdk.Device" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="State">
+      <MemberSignature Language="C#" Value="public Gdk.ModifierType State { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.ModifierType State" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.ModifierType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>A bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt) and the pointer buttons.</summary>
+        <value>a <see cref="T:Gdk.ModifierType" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Time">
+      <MemberSignature Language="C#" Value="public uint Time { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Time" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The time of the event in milliseconds.</summary>
+        <value>a <see cref="T:System.UInt32" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="X">
+      <MemberSignature Language="C#" Value="public double X { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 X" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The x coordinate of the pointer relative to the window.</summary>
+        <value>a <see cref="T:System.Double" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="XRoot">
+      <MemberSignature Language="C#" Value="public double XRoot { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 XRoot" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The x coordinate of the pointer relative to the root of the screen.</summary>
+        <value>a <see cref="T:System.Double" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Y">
+      <MemberSignature Language="C#" Value="public double Y { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 Y" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The y coordinate of the pointer relative to the window.</summary>
+        <value>a <see cref="T:System.Double" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="YRoot">
+      <MemberSignature Language="C#" Value="public double YRoot { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 YRoot" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The y coordinate of the pointer relative to the root of the screen.</summary>
+        <value>a <see cref="T:System.Double" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

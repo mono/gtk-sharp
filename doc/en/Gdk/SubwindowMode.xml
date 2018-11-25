@@ -1,0 +1,59 @@
+<Type Name="SubwindowMode" FullName="Gdk.SubwindowMode">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum SubwindowMode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed SubwindowMode extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gdk.SubwindowModeGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Determines how drawing onto a window will affect child windows of that window.</summary>
+    <remarks>None.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ClipByChildren">
+      <MemberSignature Language="C#" Value="ClipByChildren" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.SubwindowMode ClipByChildren = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.SubwindowMode</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Only draw onto the window itself.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IncludeInferiors">
+      <MemberSignature Language="C#" Value="IncludeInferiors" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.SubwindowMode IncludeInferiors = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.SubwindowMode</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Draw onto the window and child windows.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

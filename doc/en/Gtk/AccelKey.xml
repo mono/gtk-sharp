@@ -1,0 +1,130 @@
+<Type Name="AccelKey" FullName="Gtk.AccelKey">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public struct AccelKey" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit AccelKey extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>A class for holding information about a key that gets used as an accelerator.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AccelKey (Gdk.Key key, Gdk.ModifierType mods, Gtk.AccelFlags flags);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Gdk.Key key, valuetype Gdk.ModifierType mods, valuetype Gtk.AccelFlags flags) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="key" Type="Gdk.Key" />
+        <Parameter Name="mods" Type="Gdk.ModifierType" />
+        <Parameter Name="flags" Type="Gtk.AccelFlags" />
+      </Parameters>
+      <Docs>
+        <param name="key">a <see cref="T:System.Int32" /> enumerated in <see cref="T:Gdk.Key" /></param>
+        <param name="mods">a <see cref="T:System.Int32" /> enumerated in <see cref="T:Gdk.ModifierType" />, the modifiers (shift, ctrl, etc) that apply for this AccelKey</param>
+        <param name="flags">a <see cref="T:System.Int32" /> enumerated in <see cref="T:Gdk.AccelFlags" /> for whether this AccelKey should be displayed in the menu</param>
+        <summary>Public constructor.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="AccelFlags">
+      <MemberSignature Language="C#" Value="public Gtk.AccelFlags AccelFlags { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.AccelFlags AccelFlags" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.AccelFlags</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The flags for this AccelKey that determine whether <see cref="T:Gtk.AccelLabel" /> will display it.</summary>
+        <value>a <see cref="T:Gtk.AccelFlags" /></value>
+        <remarks />
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="AccelMods">
+      <MemberSignature Language="C#" Value="public Gdk.ModifierType AccelMods;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Gdk.ModifierType AccelMods" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.ModifierType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>A mask of the modifier keys that are relevant for this AccelKey.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Key">
+      <MemberSignature Language="C#" Value="public Gdk.Key Key;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Gdk.Key Key" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Key</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The main keyboard key to use for this AccelKey.</summary>
+        <remarks>Useful values are <see cref="T:System.Int32" /> enumerated in <see cref="T:Gdk.Key" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Gtk.AccelKey New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gtk.AccelKey New(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.AccelKey</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">an <see cref="T:IntPtr" /></param>
+        <summary>Make a new AccelKey object with the object key specified by <paramref name="raw" />.</summary>
+        <returns>An object of type <see cref="T:Gtk.AccelKey" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Gtk.AccelKey Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Gtk.AccelKey Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.AccelKey</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Make a new AccelKey object that has no global object key.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

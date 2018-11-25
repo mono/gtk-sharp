@@ -1,0 +1,387 @@
+<Type Name="Device" FullName="Gdk.Device">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class Device : GLib.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Device extends GLib.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>This class contains a detailed description of an extended input device.</summary>
+    <remarks>None.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Device ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Internal constructor.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Device (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Internal constructor</summary>
+        <remarks>This is a constructor used by derivative types of <see cref="T:Gdk.Device" /> that would have their own GLib.GType assigned to it.  This is not typically used by C# code.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Device (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CorePointer">
+      <MemberSignature Language="C#" Value="public static Gdk.Device CorePointer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class Gdk.Device CorePointer" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Device</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Returns the core pointer device for the default display.</summary>
+        <value>the core pointer device.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetAxis">
+      <MemberSignature Language="C#" Value="public bool GetAxis (double[] axes, Gdk.AxisUse use, out double value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool GetAxis(float64[] axes, valuetype Gdk.AxisUse use, float64 value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="axes" Type="System.Double[]" />
+        <Parameter Name="use" Type="Gdk.AxisUse" />
+        <Parameter Name="value" Type="System.Double&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="axes">a <see cref="T:System.Double" /></param>
+        <param name="use">a <see cref="T:System.Int32" /></param>
+        <param name="value">a <see cref="T:System.Double" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDeviceAxis">
+      <MemberSignature Language="C#" Value="public Gdk.DeviceAxis GetDeviceAxis (uint axis);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Gdk.DeviceAxis GetDeviceAxis(unsigned int32 axis) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.DeviceAxis</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="axis" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="axis">a <see cref="T:System.UInt32" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.DeviceAxis" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDeviceKey">
+      <MemberSignature Language="C#" Value="public Gdk.DeviceKey GetDeviceKey (uint axis);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Gdk.DeviceKey GetDeviceKey(unsigned int32 axis) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.DeviceKey</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="axis" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="axis">a <see cref="T:System.UInt32" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.DeviceKey" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetHistory">
+      <MemberSignature Language="C#" Value="public Gdk.TimeCoord[] GetHistory (Gdk.Window window, uint start, uint stop);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Gdk.TimeCoord[] GetHistory(class Gdk.Window window, unsigned int32 start, unsigned int32 stop) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.TimeCoord[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="window" Type="Gdk.Window" />
+        <Parameter Name="start" Type="System.UInt32" />
+        <Parameter Name="stop" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="window">a <see cref="T:Gdk.Window" /></param>
+        <param name="start">a <see cref="T:System.UInt32" /></param>
+        <param name="stop">a <see cref="T:System.UInt32" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.TimeCoord[]" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetState">
+      <MemberSignature Language="C#" Value="public void GetState (Gdk.Window window, out double[] axes, out Gdk.ModifierType mask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetState(class Gdk.Window window, float64[] axes, valuetype Gdk.ModifierType mask) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="window" Type="Gdk.Window" />
+        <Parameter Name="axes" Type="System.Double[]&amp;" RefType="out" />
+        <Parameter Name="mask" Type="Gdk.ModifierType&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="window">a <see cref="T:Gdk.Window" /></param>
+        <param name="axes">a <see cref="T:System.Double[]" /></param>
+        <param name="mask">a <see cref="T:Gdk.ModifierType" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gdk.Device" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HasCursor">
+      <MemberSignature Language="C#" Value="public bool HasCursor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool HasCursor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Mode">
+      <MemberSignature Language="C#" Value="public Gdk.InputMode Mode { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.InputMode Mode" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.InputMode</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:Gdk.InputMode" /></value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:System.String" /></value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumAxes">
+      <MemberSignature Language="C#" Value="public int NumAxes { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 NumAxes" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:System.Int32" /></value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumKeys">
+      <MemberSignature Language="C#" Value="public int NumKeys { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 NumKeys" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:System.Int32" /></value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetAxisUse">
+      <MemberSignature Language="C#" Value="public void SetAxisUse (uint index_, Gdk.AxisUse use);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetAxisUse(unsigned int32 index_, valuetype Gdk.AxisUse use) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index_" Type="System.UInt32" />
+        <Parameter Name="use" Type="Gdk.AxisUse" />
+      </Parameters>
+      <Docs>
+        <param name="index_">a <see cref="T:System.UInt32" /></param>
+        <param name="use">a <see cref="T:Gdk.AxisUse" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetKey">
+      <MemberSignature Language="C#" Value="public void SetKey (uint index_, uint keyval, Gdk.ModifierType modifiers);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetKey(unsigned int32 index_, unsigned int32 keyval, valuetype Gdk.ModifierType modifiers) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index_" Type="System.UInt32" />
+        <Parameter Name="keyval" Type="System.UInt32" />
+        <Parameter Name="modifiers" Type="Gdk.ModifierType" />
+      </Parameters>
+      <Docs>
+        <param name="index_">a <see cref="T:System.UInt32" /></param>
+        <param name="keyval">a <see cref="T:System.UInt32" /></param>
+        <param name="modifiers">a <see cref="T:Gdk.ModifierType" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetMode">
+      <MemberSignature Language="C#" Value="public bool SetMode (Gdk.InputMode mode);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SetMode(valuetype Gdk.InputMode mode) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="mode" Type="Gdk.InputMode" />
+      </Parameters>
+      <Docs>
+        <param name="mode">To be added: an object of type 'Gdk.InputMode'</param>
+        <summary>To be added</summary>
+        <returns>To be added: an object of type 'bool'</returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Source">
+      <MemberSignature Language="C#" Value="public Gdk.InputSource Source { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.InputSource Source" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.InputSource</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:Gdk.InputSource" /></value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

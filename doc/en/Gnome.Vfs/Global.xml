@@ -1,0 +1,972 @@
+<Type Name="Global" FullName="Gnome.Vfs.Global">
+  <TypeSignature Language="C#" Value="public class Global" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Global extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gnome-vfs-sharp</AssemblyName>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Global ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CloseCancellable">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result CloseCancellable (Gnome.Vfs.Handle handle, Gnome.Vfs.Context context);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result CloseCancellable(class Gnome.Vfs.Handle handle, class Gnome.Vfs.Context context) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="Gnome.Vfs.Handle" />
+        <Parameter Name="context" Type="Gnome.Vfs.Context" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="context">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConnectToServer">
+      <MemberSignature Language="C#" Value="public static void ConnectToServer (string uri, string display_name, string icon);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ConnectToServer(string uri, string display_name, string icon) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="System.String" />
+        <Parameter Name="display_name" Type="System.String" />
+        <Parameter Name="icon" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="uri">To be added.</param>
+        <param name="display_name">To be added.</param>
+        <param name="icon">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ExpandInitialTilde">
+      <MemberSignature Language="C#" Value="public static string ExpandInitialTilde (string path);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string ExpandInitialTilde(string path) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="path" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="path">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ForgetCache">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result ForgetCache (Gnome.Vfs.Handle handle, ulong offset, long size);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result ForgetCache(class Gnome.Vfs.Handle handle, unsigned int64 offset, int64 size) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="Gnome.Vfs.Handle" />
+        <Parameter Name="offset" Type="System.UInt64" />
+        <Parameter Name="size" Type="System.Int64" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="offset">To be added.</param>
+        <param name="size">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <since version="Gnome# 2.16" />
+      </Docs>
+    </Member>
+    <Member MemberName="GetFileInfo">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result GetFileInfo (string text_uri, Gnome.Vfs.FileInfo info, Gnome.Vfs.FileInfoOptions options);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result GetFileInfo(string text_uri, class Gnome.Vfs.FileInfo info, valuetype Gnome.Vfs.FileInfoOptions options) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="text_uri" Type="System.String" />
+        <Parameter Name="info" Type="Gnome.Vfs.FileInfo" />
+        <Parameter Name="options" Type="Gnome.Vfs.FileInfoOptions" />
+      </Parameters>
+      <Docs>
+        <param name="text_uri">To be added.</param>
+        <param name="info">To be added.</param>
+        <param name="options">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetFileInfoFromHandle">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result GetFileInfoFromHandle (Gnome.Vfs.Handle handle, Gnome.Vfs.FileInfo info, Gnome.Vfs.FileInfoOptions options);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result GetFileInfoFromHandle(class Gnome.Vfs.Handle handle, class Gnome.Vfs.FileInfo info, valuetype Gnome.Vfs.FileInfoOptions options) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="Gnome.Vfs.Handle" />
+        <Parameter Name="info" Type="Gnome.Vfs.FileInfo" />
+        <Parameter Name="options" Type="Gnome.Vfs.FileInfoOptions" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="info">To be added.</param>
+        <param name="options">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetFileInfoFromHandleCancellable">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result GetFileInfoFromHandleCancellable (Gnome.Vfs.Handle handle, Gnome.Vfs.FileInfo info, Gnome.Vfs.FileInfoOptions options, Gnome.Vfs.Context context);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result GetFileInfoFromHandleCancellable(class Gnome.Vfs.Handle handle, class Gnome.Vfs.FileInfo info, valuetype Gnome.Vfs.FileInfoOptions options, class Gnome.Vfs.Context context) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="Gnome.Vfs.Handle" />
+        <Parameter Name="info" Type="Gnome.Vfs.FileInfo" />
+        <Parameter Name="options" Type="Gnome.Vfs.FileInfoOptions" />
+        <Parameter Name="context" Type="Gnome.Vfs.Context" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="info">To be added.</param>
+        <param name="options">To be added.</param>
+        <param name="context">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetFileInfoUri">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result GetFileInfoUri (Gnome.Vfs.Uri uri, Gnome.Vfs.FileInfo info, Gnome.Vfs.FileInfoOptions options);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result GetFileInfoUri(class Gnome.Vfs.Uri uri, class Gnome.Vfs.FileInfo info, valuetype Gnome.Vfs.FileInfoOptions options) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="Gnome.Vfs.Uri" />
+        <Parameter Name="info" Type="Gnome.Vfs.FileInfo" />
+        <Parameter Name="options" Type="Gnome.Vfs.FileInfoOptions" />
+      </Parameters>
+      <Docs>
+        <param name="uri">To be added.</param>
+        <param name="info">To be added.</param>
+        <param name="options">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetFileInfoUriCancellable">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result GetFileInfoUriCancellable (Gnome.Vfs.Uri uri, Gnome.Vfs.FileInfo info, Gnome.Vfs.FileInfoOptions options, Gnome.Vfs.Context context);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result GetFileInfoUriCancellable(class Gnome.Vfs.Uri uri, class Gnome.Vfs.FileInfo info, valuetype Gnome.Vfs.FileInfoOptions options, class Gnome.Vfs.Context context) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="Gnome.Vfs.Uri" />
+        <Parameter Name="info" Type="Gnome.Vfs.FileInfo" />
+        <Parameter Name="options" Type="Gnome.Vfs.FileInfoOptions" />
+        <Parameter Name="context" Type="Gnome.Vfs.Context" />
+      </Parameters>
+      <Docs>
+        <param name="uri">To be added.</param>
+        <param name="info">To be added.</param>
+        <param name="options">To be added.</param>
+        <param name="context">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetLocalPathFromUri">
+      <MemberSignature Language="C#" Value="public static string GetLocalPathFromUri (string uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetLocalPathFromUri(string uri) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="uri">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMimeType">
+      <MemberSignature Language="C#" Value="public static string GetMimeType (string text_uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetMimeType(string text_uri) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="text_uri" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="text_uri">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMimeTypeCommon">
+      <MemberSignature Language="C#" Value="public static string GetMimeTypeCommon (Gnome.Vfs.Uri uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetMimeTypeCommon(class Gnome.Vfs.Uri uri) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="Gnome.Vfs.Uri" />
+      </Parameters>
+      <Docs>
+        <param name="uri">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMimeTypeForData">
+      <MemberSignature Language="C#" Value="public static string GetMimeTypeForData (IntPtr data, int data_size);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetMimeTypeForData(native int data, int32 data_size) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="System.IntPtr" />
+        <Parameter Name="data_size" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <param name="data_size">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMimeTypeForName">
+      <MemberSignature Language="C#" Value="public static string GetMimeTypeForName (string filename);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetMimeTypeForName(string filename) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="filename" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="filename">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <since version="Gnome# 2.16" />
+      </Docs>
+    </Member>
+    <Member MemberName="GetMimeTypeForNameAndData">
+      <MemberSignature Language="C#" Value="public static string GetMimeTypeForNameAndData (string filename, IntPtr data, long data_size);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetMimeTypeForNameAndData(string filename, native int data, int64 data_size) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="filename" Type="System.String" />
+        <Parameter Name="data" Type="System.IntPtr" />
+        <Parameter Name="data_size" Type="System.Int64" />
+      </Parameters>
+      <Docs>
+        <param name="filename">To be added.</param>
+        <param name="data">To be added.</param>
+        <param name="data_size">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <since version="Gnome# 2.16" />
+      </Docs>
+    </Member>
+    <Member MemberName="GetMimeTypeFromFileData">
+      <MemberSignature Language="C#" Value="public static string GetMimeTypeFromFileData (Gnome.Vfs.Uri uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetMimeTypeFromFileData(class Gnome.Vfs.Uri uri) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="Gnome.Vfs.Uri" />
+      </Parameters>
+      <Docs>
+        <param name="uri">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMimeTypeFromUri">
+      <MemberSignature Language="C#" Value="public static string GetMimeTypeFromUri (Gnome.Vfs.Uri uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetMimeTypeFromUri(class Gnome.Vfs.Uri uri) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="Gnome.Vfs.Uri" />
+      </Parameters>
+      <Docs>
+        <param name="uri">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSlowMimeType">
+      <MemberSignature Language="C#" Value="public static string GetSlowMimeType (string text_uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetSlowMimeType(string text_uri) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="text_uri" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="text_uri">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <since version="Gnome# 2.16" />
+      </Docs>
+    </Member>
+    <Member MemberName="GetSpecialMimeType">
+      <MemberSignature Language="C#" Value="public static string GetSpecialMimeType (Gnome.Vfs.Uri uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetSpecialMimeType(class Gnome.Vfs.Uri uri) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="Gnome.Vfs.Uri" />
+      </Parameters>
+      <Docs>
+        <param name="uri">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSupertypeFromMimeType">
+      <MemberSignature Language="C#" Value="public static string GetSupertypeFromMimeType (string mime_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetSupertypeFromMimeType(string mime_type) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="mime_type" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="mime_type">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetUriFromLocalPath">
+      <MemberSignature Language="C#" Value="public static string GetUriFromLocalPath (string local_full_path);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetUriFromLocalPath(string local_full_path) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="local_full_path" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="local_full_path">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetUriScheme">
+      <MemberSignature Language="C#" Value="public static string GetUriScheme (string uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string GetUriScheme(string uri) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="uri">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetVolumeFreeSpace">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result GetVolumeFreeSpace (Gnome.Vfs.Uri vfs_uri, out long size);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result GetVolumeFreeSpace(class Gnome.Vfs.Uri vfs_uri, int64 size) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="vfs_uri" Type="Gnome.Vfs.Uri" />
+        <Parameter Name="size" Type="System.Int64&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="vfs_uri">To be added.</param>
+        <param name="size">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IconPathFromFilename">
+      <MemberSignature Language="C#" Value="public static string IconPathFromFilename (string filename);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string IconPathFromFilename(string filename) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="filename" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="filename">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ListDeepFree">
+      <MemberSignature Language="C#" Value="public static void ListDeepFree (GLib.List list);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ListDeepFree(class GLib.List list) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="list" Type="GLib.List" />
+      </Parameters>
+      <Docs>
+        <param name="list">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegisteredMimeTypes">
+      <MemberSignature Language="C#" Value="public static GLib.List RegisteredMimeTypes { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class GLib.List RegisteredMimeTypes" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>GLib.List</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveDirectory">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result RemoveDirectory (string text_uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result RemoveDirectory(string text_uri) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="text_uri" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="text_uri">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveDirectoryFromUri">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result RemoveDirectoryFromUri (Gnome.Vfs.Uri uri);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result RemoveDirectoryFromUri(class Gnome.Vfs.Uri uri) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="Gnome.Vfs.Uri" />
+      </Parameters>
+      <Docs>
+        <param name="uri">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveDirectoryFromUriCancellable">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result RemoveDirectoryFromUriCancellable (Gnome.Vfs.Uri uri, Gnome.Vfs.Context context);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result RemoveDirectoryFromUriCancellable(class Gnome.Vfs.Uri uri, class Gnome.Vfs.Context context) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="Gnome.Vfs.Uri" />
+        <Parameter Name="context" Type="Gnome.Vfs.Context" />
+      </Parameters>
+      <Docs>
+        <param name="uri">To be added.</param>
+        <param name="context">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResultFromErrno">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result ResultFromErrno ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result ResultFromErrno() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResultFromErrnoCode">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result ResultFromErrnoCode (int errno_code);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result ResultFromErrnoCode(int32 errno_code) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="errno_code" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="errno_code">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResultFromHErrno">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result ResultFromHErrno ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result ResultFromHErrno() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResultFromHErrnoVal">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result ResultFromHErrnoVal (int h_errno_code);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result ResultFromHErrnoVal(int32 h_errno_code) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="h_errno_code" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="h_errno_code">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResultToString">
+      <MemberSignature Language="C#" Value="public static string ResultToString (Gnome.Vfs.Result result);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string ResultToString(valuetype Gnome.Vfs.Result result) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="result" Type="Gnome.Vfs.Result" />
+      </Parameters>
+      <Docs>
+        <param name="result">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SeekCancellable">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result SeekCancellable (Gnome.Vfs.Handle handle, Gnome.Vfs.SeekPosition whence, ulong offset, Gnome.Vfs.Context context);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result SeekCancellable(class Gnome.Vfs.Handle handle, valuetype Gnome.Vfs.SeekPosition whence, unsigned int64 offset, class Gnome.Vfs.Context context) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="Gnome.Vfs.Handle" />
+        <Parameter Name="whence" Type="Gnome.Vfs.SeekPosition" />
+        <Parameter Name="offset" Type="System.UInt64" />
+        <Parameter Name="context" Type="Gnome.Vfs.Context" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="whence">To be added.</param>
+        <param name="offset">To be added.</param>
+        <param name="context">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetFileInfo">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result SetFileInfo (string text_uri, Gnome.Vfs.FileInfo info, Gnome.Vfs.SetFileInfoMask mask);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result SetFileInfo(string text_uri, class Gnome.Vfs.FileInfo info, valuetype Gnome.Vfs.SetFileInfoMask mask) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="text_uri" Type="System.String" />
+        <Parameter Name="info" Type="Gnome.Vfs.FileInfo" />
+        <Parameter Name="mask" Type="Gnome.Vfs.SetFileInfoMask" />
+      </Parameters>
+      <Docs>
+        <param name="text_uri">To be added.</param>
+        <param name="info">To be added.</param>
+        <param name="mask">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetFileInfoCancellable">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result SetFileInfoCancellable (Gnome.Vfs.Uri a, Gnome.Vfs.FileInfo info, Gnome.Vfs.SetFileInfoMask mask, Gnome.Vfs.Context context);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result SetFileInfoCancellable(class Gnome.Vfs.Uri a, class Gnome.Vfs.FileInfo info, valuetype Gnome.Vfs.SetFileInfoMask mask, class Gnome.Vfs.Context context) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="Gnome.Vfs.Uri" />
+        <Parameter Name="info" Type="Gnome.Vfs.FileInfo" />
+        <Parameter Name="mask" Type="Gnome.Vfs.SetFileInfoMask" />
+        <Parameter Name="context" Type="Gnome.Vfs.Context" />
+      </Parameters>
+      <Docs>
+        <param name="a">To be added.</param>
+        <param name="info">To be added.</param>
+        <param name="mask">To be added.</param>
+        <param name="context">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetFileInfoUri">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result SetFileInfoUri (Gnome.Vfs.Uri uri, Gnome.Vfs.FileInfo info, Gnome.Vfs.SetFileInfoMask mask);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result SetFileInfoUri(class Gnome.Vfs.Uri uri, class Gnome.Vfs.FileInfo info, valuetype Gnome.Vfs.SetFileInfoMask mask) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="Gnome.Vfs.Uri" />
+        <Parameter Name="info" Type="Gnome.Vfs.FileInfo" />
+        <Parameter Name="mask" Type="Gnome.Vfs.SetFileInfoMask" />
+      </Parameters>
+      <Docs>
+        <param name="uri">To be added.</param>
+        <param name="info">To be added.</param>
+        <param name="mask">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetMeta">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result SetMeta (Gnome.Vfs.FileInfo info, string file_name, string meta_key);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result SetMeta(class Gnome.Vfs.FileInfo info, string file_name, string meta_key) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="info" Type="Gnome.Vfs.FileInfo" />
+        <Parameter Name="file_name" Type="System.String" />
+        <Parameter Name="meta_key" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="info">To be added.</param>
+        <param name="file_name">To be added.</param>
+        <param name="meta_key">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetMetaForList">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result SetMetaForList (Gnome.Vfs.FileInfo info, string file_name, GLib.List meta_keys);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result SetMetaForList(class Gnome.Vfs.FileInfo info, string file_name, class GLib.List meta_keys) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="info" Type="Gnome.Vfs.FileInfo" />
+        <Parameter Name="file_name" Type="System.String" />
+        <Parameter Name="meta_keys" Type="GLib.List" />
+      </Parameters>
+      <Docs>
+        <param name="info">To be added.</param>
+        <param name="file_name">To be added.</param>
+        <param name="meta_keys">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UrisMatch">
+      <MemberSignature Language="C#" Value="public static bool UrisMatch (string uri_1, string uri_2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool UrisMatch(string uri_1, string uri_2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri_1" Type="System.String" />
+        <Parameter Name="uri_2" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="uri_1">To be added.</param>
+        <param name="uri_2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VolumeMonitor">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.VolumeMonitor VolumeMonitor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class Gnome.Vfs.VolumeMonitor VolumeMonitor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.VolumeMonitor</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WriteCancellable">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result WriteCancellable (Gnome.Vfs.Handle handle, IntPtr buffer, long bytes, out long bytes_written, Gnome.Vfs.Context context);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result WriteCancellable(class Gnome.Vfs.Handle handle, native int buffer, int64 bytes, int64 bytes_written, class Gnome.Vfs.Context context) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="Gnome.Vfs.Handle" />
+        <Parameter Name="buffer" Type="System.IntPtr" />
+        <Parameter Name="bytes" Type="System.Int64" />
+        <Parameter Name="bytes_written" Type="System.Int64&amp;" RefType="out" />
+        <Parameter Name="context" Type="Gnome.Vfs.Context" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="buffer">To be added.</param>
+        <param name="bytes">To be added.</param>
+        <param name="bytes_written">To be added.</param>
+        <param name="context">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

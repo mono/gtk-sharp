@@ -1,0 +1,111 @@
+<Type Name="ToolbarChildType" FullName="Gtk.ToolbarChildType">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum ToolbarChildType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed ToolbarChildType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gtk.ToolbarChildTypeGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Set the type of new elements that are added to a <see cref="T:Gtk.Toolbar" />.</summary>
+    <remarks>
+      <see cref="T:Gtk.ToolbarChildType" /> is used to set the type of new elements that are added to a <see cref="T:Gtk.Toolbar" />.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Button">
+      <MemberSignature Language="C#" Value="Button" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.ToolbarChildType Button = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.ToolbarChildType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Add buttons to the toolbar.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Radiobutton">
+      <MemberSignature Language="C#" Value="Radiobutton" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.ToolbarChildType Radiobutton = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.ToolbarChildType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Add radio buttons to the toolbar.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Space">
+      <MemberSignature Language="C#" Value="Space" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.ToolbarChildType Space = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.ToolbarChildType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Add blank space to the toolbar.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Togglebutton">
+      <MemberSignature Language="C#" Value="Togglebutton" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.ToolbarChildType Togglebutton = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.ToolbarChildType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Add toggle buttons to the toolbar.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Widget">
+      <MemberSignature Language="C#" Value="Widget" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.ToolbarChildType Widget = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.ToolbarChildType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Add widgets to the toolbar.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

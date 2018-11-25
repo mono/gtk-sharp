@@ -1,0 +1,64 @@
+<Type Name="PageReorderedArgs" FullName="Gtk.PageReorderedArgs">
+  <TypeSignature Language="C#" Value="public class PageReorderedArgs : GLib.SignalArgs" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PageReorderedArgs extends GLib.SignalArgs" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Arguments for <see cref="T:Gtk.PageReorderedHandler" /> events.</summary>
+    <remarks />
+    <since version="Gtk# 2.10" />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public PageReorderedArgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Public constructor.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="P0">
+      <MemberSignature Language="C#" Value="public Gtk.Widget P0 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Widget P0" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Widget</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Reordered widget.</summary>
+        <value>a <see cref="T:Gtk.Widget" />.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="P1">
+      <MemberSignature Language="C#" Value="public uint P1 { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 P1" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Index of reordered widget.</summary>
+        <value>a <see cref="T:System.UInt32" />.</value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

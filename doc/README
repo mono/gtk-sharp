@@ -1,0 +1,28 @@
+Compiling and installing the Gtk# Documentation
+
+Compile and install monodoc
+    cd monodoc/
+	./autogen.sh --prefix=/usr/local
+	make
+	make install
+
+Compile the documentation for gtk-sharp
+
+    	cd gtk-sharp/doc
+	make assemble
+	cp gtk-sharp-docs.* `pkg-config monodoc --variable=sourcesdir`
+
+If things are fine, you should have in the Monodoc sources directory the 
+following files:
+
+gtk-sharp-docs.source
+gtk-sharp-docs.tree
+gtk-sharp-docs.zip
+netdocs.source
+netdocs.tree
+netdocs.zip
+
+Start monodoc, by typing `monodoc'
+
+If it doesn't run, please change the paths in the makefile and point
+ASSEMBLER and BROWSER to where you put your assembler.exe and browser.exe.

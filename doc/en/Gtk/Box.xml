@@ -1,0 +1,343 @@
+<Type Name="Box" FullName="Gtk.Box">
+  <TypeSignature Language="C#" Maintainer="Lee Mallabone" Value="public class Box : Gtk.Container" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Box extends Gtk.Container" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Container</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>A Box is a Gtk container that holds an arbitrary number of widgets. This means its sole purpose is to provide layout, size and spacing for other widgets.</summary>
+    <remarks>
+      <para>A Box is a rectangular area organized into either a single row or a single column of child widgets, depending upon whether the box is horizontally or vertically oriented, respectively.</para>
+      <para>A Box is abstract - specific layout containers are provided in its sub classes, including a horizontal box, (<see cref="T:Gtk.HBox" />), a vertical box (<see cref="T:Gtk.VBox" />), and button boxes, (<see cref="T:Gtk.ButtonBox" />).</para>
+      <para>
+    Widgets that are 'packed' into a box are considered to be the children of the box, and the box controls their layout. Properties such as <see cref="P:Homogeneous" /> control the layout of all the children in the box, whereas specific packing settings can be applied to each child individually, such as <see cref="M:SetChildPacking(Gtk.Widget,bool,bool,uint,Gtk.PackType)" />.
+    </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Box ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Protected constructor.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Box (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Box (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.Box" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Homogeneous">
+      <MemberSignature Language="C#" Value="public bool Homogeneous { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Homogeneous" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("homogeneous")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Set the size of all child widgets to be the same</summary>
+        <value>
+          <see langword="true" /> if child widgets size themselves equally, false otherwise.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public override Gtk.Container.ContainerChild this[Gtk.Widget child] { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Container/ContainerChild Item(class Gtk.Widget)" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Container+ContainerChild</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Gtk.Widget" />
+      </Parameters>
+      <Docs>
+        <param name="child">To be added.</param>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PackEnd">
+      <MemberSignature Language="C#" Value="public void PackEnd (Gtk.Widget widget);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PackEnd(class Gtk.Widget widget) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="widget" Type="Gtk.Widget" />
+      </Parameters>
+      <Docs>
+        <param name="widget">The child widget to add to the box.</param>
+        <summary>Add a widget to the 'end' of a box with default packing settings.</summary>
+        <remarks>
+          <para>The 'end' of a box is the right hand side in a <see cref="T:Gtk.HBox" /> and the bottom in a <see cref="T:Gtk.VBox" />.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PackEnd">
+      <MemberSignature Language="C#" Value="public void PackEnd (Gtk.Widget child, bool expand, bool fill, uint padding);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PackEnd(class Gtk.Widget child, bool expand, bool fill, unsigned int32 padding) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Gtk.Widget" />
+        <Parameter Name="expand" Type="System.Boolean" />
+        <Parameter Name="fill" Type="System.Boolean" />
+        <Parameter Name="padding" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="child">A widget to pack into the box.</param>
+        <param name="expand">If <see langword="true" />, the child widget will expand to use as much space as it is given.</param>
+        <param name="fill">If <see langword="true" />, the child widget will request as much space as is available.</param>
+        <param name="padding">The size (in pixels) of a border to place around the specified child widget.</param>
+        <summary>Add a widget to the 'end' of a box with the specified packing properties.</summary>
+        <remarks>
+          <para>To add a widget to the end of a box with default packing, use <see cref="M:PackEnd()" /></para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PackStart">
+      <MemberSignature Language="C#" Value="public void PackStart (Gtk.Widget widget);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PackStart(class Gtk.Widget widget) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="widget" Type="Gtk.Widget" />
+      </Parameters>
+      <Docs>
+        <param name="widget">The child widget to add to the box.</param>
+        <summary>Add a widget to the 'start' of a box with default packing settings.</summary>
+        <remarks>
+          <para>The 'start' of a box is the left hand side in a <see cref="T:Gtk.HBox" /> and the top in a <see cref="T:Gtk.VBox" />.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PackStart">
+      <MemberSignature Language="C#" Value="public void PackStart (Gtk.Widget child, bool expand, bool fill, uint padding);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PackStart(class Gtk.Widget child, bool expand, bool fill, unsigned int32 padding) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Gtk.Widget" />
+        <Parameter Name="expand" Type="System.Boolean" />
+        <Parameter Name="fill" Type="System.Boolean" />
+        <Parameter Name="padding" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="child">A widget to pack into the box.</param>
+        <param name="expand">If <see langword="true" />, the child widget will expand to use as much space as it is given.</param>
+        <param name="fill">If <see langword="true" />, the child widget will request as much space as is available.</param>
+        <param name="padding">The size (in pixels) of a border to place around the specified child widget.</param>
+        <summary>Add a widget to the 'start' of a box with the specified packing properties.</summary>
+        <remarks>
+          <para>To add a widget to the start of a box with default packing, use <see cref="M:PackStart()" /></para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="QueryChildPacking">
+      <MemberSignature Language="C#" Value="public void QueryChildPacking (Gtk.Widget child, out bool expand, out bool fill, out uint padding, out Gtk.PackType pack_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void QueryChildPacking(class Gtk.Widget child, bool expand, bool fill, unsigned int32 padding, valuetype Gtk.PackType pack_type) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Gtk.Widget" />
+        <Parameter Name="expand" Type="System.Boolean&amp;" RefType="out" />
+        <Parameter Name="fill" Type="System.Boolean&amp;" RefType="out" />
+        <Parameter Name="padding" Type="System.UInt32&amp;" RefType="out" />
+        <Parameter Name="pack_type" Type="Gtk.PackType&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="child">the <see cref="T:Gtk.Widget" /> of the child to query.</param>
+        <param name="expand">a <see cref="T:System.Boolean&amp;" />, the returned value of the expand field in the BoxChild object.</param>
+        <param name="fill">a <see cref="T:System.Boolean&amp;" />, the returned value of the fill field in the BoxChild object.</param>
+        <param name="padding">a <see cref="T:System.UInt32&amp;" />, the retuned value of the padding field in the BoxChild object.</param>
+        <param name="pack_type">a <see cref="T:Gtk.PackType&amp;" />, the returned value of the pack field in the BoxChild object.</param>
+        <summary>Returns information about how <paramref name="child" /> is packed into <paramref name="box" />.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ReorderChild">
+      <MemberSignature Language="C#" Value="public void ReorderChild (Gtk.Widget child, int position);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ReorderChild(class Gtk.Widget child, int32 position) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Gtk.Widget" />
+        <Parameter Name="position" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="child">A widget that has already been packed into this box.</param>
+        <param name="position">
+          <para>The new position for this widget, indexed from zero. If negative, the <paramref name="child" /> will be placed at the end of the box.</para>
+        </param>
+        <summary>Alters the position of a child widget that has already been packed into a Box.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="SetChildPacking">
+      <MemberSignature Language="C#" Value="public void SetChildPacking (Gtk.Widget child, bool expand, bool fill, uint padding, Gtk.PackType pack_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetChildPacking(class Gtk.Widget child, bool expand, bool fill, unsigned int32 padding, valuetype Gtk.PackType pack_type) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Gtk.Widget" />
+        <Parameter Name="expand" Type="System.Boolean" />
+        <Parameter Name="fill" Type="System.Boolean" />
+        <Parameter Name="padding" Type="System.UInt32" />
+        <Parameter Name="pack_type" Type="Gtk.PackType" />
+      </Parameters>
+      <Docs>
+        <param name="child">The child widget whose layout should be adjusted</param>
+        <param name="expand">If <see langword="true" />, the child widget will expand to use as much space as it is given.</param>
+        <param name="fill">If <see langword="true" />, the child widget will request as much space as is available.</param>
+        <param name="padding">The size (in pixels) of a border to place around the specified child widget.</param>
+        <param name="pack_type">Whether this child widget should be packed from the beginning of the box, (eg. the left, or the top), or from the end, (eg. the right or the bottom)</param>
+        <summary>Change the packing properties of a child that is currently in this box.</summary>
+        <remarks>
+          <para>It is more common to set any specific packing requirements on child widgets when they are initially added to the box. This can be done using <see cref="M:PackStart(Gtk.Widget,bool,bool,uint)" /> and <see cref="M:PackEnd(Gtk.Widget,bool,bool,uint)" />.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Spacing">
+      <MemberSignature Language="C#" Value="public int Spacing { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Spacing" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("spacing")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Adjust the spacing between child widgets.</summary>
+        <value>The current pixel spacing between child widgets</value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

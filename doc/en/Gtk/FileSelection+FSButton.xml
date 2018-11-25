@@ -1,0 +1,50 @@
+<Type Name="FileSelection+FSButton" FullName="Gtk.FileSelection+FSButton">
+  <TypeSignature Language="C#" Value="public class FileSelection.FSButton : Gtk.Button" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi beforefieldinit FileSelection/FSButton extends Gtk.Button" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Gtk.Button</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+      Helper class for <see cref="T:Gtk.Button" />s embedded inside a <see cref="T:Gtk.FileSelection" /></summary>
+    <remarks>
+      <para>
+        This class is used as a wrapper around buttons embedded inside
+        a  <see cref="T:Gtk.FileSelection" />. This class exposes an
+        additional property, <see cref="T:Gtk.FileSelection+FSButton.FileSelection" />, which
+        can be used to get back to the parent <see cref="T:Gtk.FileSelection" /> dialog.
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="FileSelection">
+      <MemberSignature Language="C#" Value="public Gtk.FileSelection FileSelection { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.FileSelection FileSelection" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.FileSelection</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Returns the parent <see cref="T:Gtk.FileSelection" /></summary>
+        <value>The parent <see cref="T:Gtk.FileSelection" /></value>
+        <remarks>
+          <para>
+            This class is only used by
+            <see cref="T:Gtk.Button" />s embedded inside a
+            <see cref="T:Gtk.FileSelection" />. From the
+            <see cref="P:Gtk.FileSelection.OKButton" />, you can use
+            this property to get back to the parent dialog box.
+          </para>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

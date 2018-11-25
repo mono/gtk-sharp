@@ -1,0 +1,820 @@
+<Type Name="Calendar" FullName="Gtk.Calendar">
+  <TypeSignature Language="C#" Maintainer="Lee Mallabone" Value="public class Calendar : Gtk.Widget" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Calendar extends Gtk.Widget" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Widget</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>Display a Calendar and/or allow the user to select a date.</summary>
+    <remarks>
+      <para>With a Calendar widget, dates are presented to the user one month at a time. Additional information and decorations can be added to the Calendar by using the <see cref="T:Gtk.CalendarDisplayOptions" /> enumeration with the <see cref="P:Gtk.DisplayOptions" /> property.</para>
+      <para>Days can be highlighted on the Calendar with <see cref="M:Gtk.Calendar.MarkDay" /> or <see cref="M:Gtk.Calendar.SelectDay" />.</para>
+      <para>The following example shows a method that creates a simple Calendar displaying day names, headings and week numbers.
+    <example><code lang="C#">
+// Create a calendar with some simple display options
+public Calendar CreateCalendar ()
+{
+    Calendar cal = new Calendar ();
+    cal.DisplayOptions = CalendarDisplayOptions.ShowHeading  | 
+                         CalendarDisplayOptions.ShowDayNames | 
+                         CalendarDisplayOptions.ShowWeekNumbers;
+    cal.DaySelected += new EventHandler(HandleDaySelected);
+    return cal;
+}
+    </code></example></para>
+      <para>The following example shows a typical event handler that outputs the date when one is selected.
+    <example><code lang="C#">
+// Typical event handler for capturing the selected date
+void HandleDaySelected (object obj, EventArgs args)
+{
+    Calendar activatedCalendar = (Calendar) obj;
+    Console.WriteLine (activatedCalendar.GetDate ().ToString ("yyyy/MM/dd"));
+}
+	 </code></example></para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Calendar ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Creates a new Calendar displaying the current month and having the current day selected</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Calendar (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Calendar (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ClearMarks">
+      <MemberSignature Language="C#" Value="public void ClearMarks ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ClearMarks() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Removes all visual marks that have been added to dates.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Date">
+      <MemberSignature Language="C#" Value="public DateTime Date { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.DateTime Date" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.DateTime</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>a DateTime that contains the current day for the Calendar widget</summary>
+        <value>a <see cref="T:System.DateTime" /></value>
+        <remarks>Setting the date fires Calendar changes events (Day, Month/Year)</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Day">
+      <MemberSignature Language="C#" Value="public int Day { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Day" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("day")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The selected day as a number between 1 and 31, or 0 to unselect the currently selected day.</summary>
+        <value>a <see cref="T:System.Int32" /></value>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="DaySelected">
+      <MemberSignature Language="C#" Value="public event EventHandler DaySelected;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DaySelected" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("day_selected")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Raised when a day is selected on the Calendar.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="DaySelectedDoubleClick">
+      <MemberSignature Language="C#" Value="public event EventHandler DaySelectedDoubleClick;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DaySelectedDoubleClick" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("day_selected_double_click")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Raised when the user "double clicks" on a day.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="DisplayOptions">
+      <MemberSignature Language="C#" Value="public Gtk.CalendarDisplayOptions DisplayOptions { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.CalendarDisplayOptions DisplayOptions" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.CalendarDisplayOptions</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Set the display options for this Calendar.</summary>
+        <value>One or more values from <see cref="T:Gtk.CalendarDisplayOptions" />, combined using a bit-wise OR.</value>
+        <remarks>
+          <para>This method allows fine control over which parts of the Calendar, such as day names, are displayed. The <see cref="T:Gtk.CalendarDisplayOptions" /> describe the choices in more detail.</para>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Freeze">
+      <MemberSignature Language="C#" Value="public void Freeze ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Freeze() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Stops the Calendar from visually updating.</summary>
+        <remarks>
+          <para>If used before a large number of graphical updates, (such as calls to <see cref="M:Gtk.Calendar.MarkDay" />), this method may prevent flicker. Once a batch of updates has taken place, call <see cref="M:Gtk.Calendar.Thaw" /> to render them.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDate">
+      <MemberSignature Language="C#" Value="public DateTime GetDate ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype System.DateTime GetDate() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.DateTime</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Get the selected date.</summary>
+        <returns>A DateTime object containing the selected day, month and year.</returns>
+        <remarks>
+          <para>Selected date information can also be retrieved with the <see cref="M:Gtk.Calendar.GetDate(uint,uint,uint)" /> method.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDate">
+      <MemberSignature Language="C#" Value="public void GetDate (out uint year, out uint month, out uint day);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetDate(unsigned int32 year, unsigned int32 month, unsigned int32 day) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="year" Type="System.UInt32&amp;" RefType="out" />
+        <Parameter Name="month" Type="System.UInt32&amp;" RefType="out" />
+        <Parameter Name="day" Type="System.UInt32&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="year">A variable to place the chosen year in.</param>
+        <param name="month">A variable to place the chosen month in.</param>
+        <param name="day">A variable to place the chosen day in.</param>
+        <summary>Get the selected date.</summary>
+        <remarks>
+          <para>NOTE: That month number is ZERO based, (0-11), whereas the day is one based, (1-31).</para>
+          <para>An alternative way to get the date is with the <see cref="M:Gtk.Calendar.GetDate(uint,uint,uint)" /> method.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.Calendar" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MarkDay">
+      <MemberSignature Language="C#" Value="public bool MarkDay (uint day);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool MarkDay(unsigned int32 day) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="day" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="day">A day number from 1 to 31.</param>
+        <summary>Adds a visual marker to the specified <paramref name="day" />.</summary>
+        <returns>
+          <see langword="true" />
+        </returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Month">
+      <MemberSignature Language="C#" Value="public int Month { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Month" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("month")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The selected month as a number between 0 and 11.</summary>
+        <value>a <see cref="T:System.Int32" /></value>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="MonthChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler MonthChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler MonthChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("month_changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Raised when the current month changes.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="NextMonth">
+      <MemberSignature Language="C#" Value="public event EventHandler NextMonth;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler NextMonth" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("next_month")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Raised when the month of the Calendar moves to the next one.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="NextYear">
+      <MemberSignature Language="C#" Value="public event EventHandler NextYear;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler NextYear" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("next_year")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Raised when the current year of the Calendar is increased.</summary>
+        <remarks>
+          <para>This may happen when the user explicitly advances the year, or when advancing from December to January.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NoMonthChange">
+      <MemberSignature Language="C#" Value="public bool NoMonthChange { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool NoMonthChange" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("no-month-change")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>If <see langword="true" />, the selected month can not be changed.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="OnDaySelected">
+      <MemberSignature Language="C#" Value="protected virtual void OnDaySelected ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnDaySelected() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideDaySelected", Type=typeof(Gtk.Calendar))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.Calendar.DaySelected" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Calendar.DaySelected" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnDaySelectedDoubleClick">
+      <MemberSignature Language="C#" Value="protected virtual void OnDaySelectedDoubleClick ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnDaySelectedDoubleClick() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideDaySelectedDoubleClick", Type=typeof(Gtk.Calendar))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.Calendar.DaySelectedDoubleClick" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Calendar.DaySelectedDoubleClick" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnMonthChanged">
+      <MemberSignature Language="C#" Value="protected virtual void OnMonthChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnMonthChanged() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideMonthChanged", Type=typeof(Gtk.Calendar))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.Calendar.MonthChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Calendar.MonthChanged" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnNextMonth">
+      <MemberSignature Language="C#" Value="protected virtual void OnNextMonth ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnNextMonth() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideNextMonth", Type=typeof(Gtk.Calendar))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.Calendar.NextMonth" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Calendar.NextMonth" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnNextYear">
+      <MemberSignature Language="C#" Value="protected virtual void OnNextYear ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnNextYear() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideNextYear", Type=typeof(Gtk.Calendar))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.Calendar.NextYear" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Calendar.NextYear" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnPrevMonth">
+      <MemberSignature Language="C#" Value="protected virtual void OnPrevMonth ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnPrevMonth() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverridePrevMonth", Type=typeof(Gtk.Calendar))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.Calendar.PrevMonth" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Calendar.PrevMonth" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnPrevYear">
+      <MemberSignature Language="C#" Value="protected virtual void OnPrevYear ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnPrevYear() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverridePrevYear", Type=typeof(Gtk.Calendar))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.Calendar.PrevYear" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Calendar.PrevYear" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PrevMonth">
+      <MemberSignature Language="C#" Value="public event EventHandler PrevMonth;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler PrevMonth" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("prev_month")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Raised when the Calendar moves to the previous month.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="PrevYear">
+      <MemberSignature Language="C#" Value="public event EventHandler PrevYear;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler PrevYear" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("prev_year")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Raised when the current year of the Calendar is decreased.</summary>
+        <remarks>
+          <para>This may happen when the user explicitly advances the year, or when clicking 'back' from January to December.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectDay">
+      <MemberSignature Language="C#" Value="public void SelectDay (uint day);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SelectDay(unsigned int32 day) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="day" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="day">A day number from 1 to 31.</param>
+        <summary>Select a specified day on the displayed month.</summary>
+        <remarks>
+          <para>A value of 0 for the <paramref name="day" /> will unselect the currently selected day.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectMonth">
+      <MemberSignature Language="C#" Value="public bool SelectMonth (uint month, uint year);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SelectMonth(unsigned int32 month, unsigned int32 year) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="month" Type="System.UInt32" />
+        <Parameter Name="year" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="month">A zero-based month number.</param>
+        <param name="year">The year the month is in.</param>
+        <summary>Shifts the Calendar to display the specified month.</summary>
+        <returns>
+          <see langword="true" />
+        </returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ShowDayNames">
+      <MemberSignature Language="C#" Value="public bool ShowDayNames { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ShowDayNames" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("show-day-names")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>If <see langword="true" />, day names are displayed.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="ShowHeading">
+      <MemberSignature Language="C#" Value="public bool ShowHeading { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ShowHeading" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("show-heading")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>If <see langword="true" />, a heading is displayed</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="ShowWeekNumbers">
+      <MemberSignature Language="C#" Value="public bool ShowWeekNumbers { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ShowWeekNumbers" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("show-week-numbers")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>If <see langword="true" />, week numbers are displayed</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Thaw">
+      <MemberSignature Language="C#" Value="public void Thaw ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Thaw() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Removes the effects of calling <see cref="M:Gtk.Calendar.Freeze" />.</summary>
+        <remarks>
+          <para>This draws all graphical updates to the Calendar that have happened since a <see cref="M:Gtk.Calendar.Freeze" />.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnmarkDay">
+      <MemberSignature Language="C#" Value="public bool UnmarkDay (uint day);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool UnmarkDay(unsigned int32 day) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="day" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="day">A day number from 1 to 31.</param>
+        <summary>Removes a visual marker from the specified <paramref name="day" />.</summary>
+        <returns>
+          <see langword="true" />
+        </returns>
+        <remarks>
+          <para>Visual markers are added to the Calendar with <see cref="M:Gtk.Calendar.MarkDay" />.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Year">
+      <MemberSignature Language="C#" Value="public int Year { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Year" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("year")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The selected year.</summary>
+        <value>a <see cref="T:System.Int32" /></value>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

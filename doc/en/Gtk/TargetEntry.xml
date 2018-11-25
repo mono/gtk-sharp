@@ -1,0 +1,131 @@
+<Type Name="TargetEntry" FullName="Gtk.TargetEntry">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public struct TargetEntry" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit TargetEntry extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>A potential target for a drag-and-drop operation; one row in a <see cref="T:Gtk.TargetTable" />.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TargetEntry (string target, Gtk.TargetFlags flags, uint info);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string target, valuetype Gtk.TargetFlags flags, unsigned int32 info) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="target" Type="System.String" />
+        <Parameter Name="flags" Type="Gtk.TargetFlags" />
+        <Parameter Name="info" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="target">a <see cref="T:System.String" /></param>
+        <param name="flags">a <see cref="T:Gtk.TargetFlags" /></param>
+        <param name="info">a <see cref="T:System.UInt32" /></param>
+        <summary>Constructor.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Flags">
+      <MemberSignature Language="C#" Value="public Gtk.TargetFlags Flags;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Gtk.TargetFlags Flags" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.TargetFlags</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The flags that constrain what can be dragged to this target.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Info">
+      <MemberSignature Language="C#" Value="public uint Info;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 Info" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>A unique identifier for a target.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Gtk.TargetEntry New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gtk.TargetEntry New(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.TargetEntry</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">A <see cref="T:IntPtr" />, pointer to the underlying C object.</param>
+        <summary>Constructor. Not for use by developers.</summary>
+        <returns>A <see cref="T:Gtk.TargetEntry" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Target">
+      <MemberSignature Language="C#" Value="public string Target;" />
+      <MemberSignature Language="ILAsm" Value=".field public string Target" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The target type.</summary>
+        <remarks>Some common types include "STRING", "GTK_TREE_MODEL_ROW",
+	"TEXT", "UTF8_STRING"; this is not an exhaustive list, and any given
+	application may define its own targets.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Gtk.TargetEntry Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Gtk.TargetEntry Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.TargetEntry</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An empty/default TargetEntry.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

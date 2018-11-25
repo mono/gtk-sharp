@@ -1,0 +1,53 @@
+<Type Name="CurrentParagraphIndentationChangedArgs" FullName="Gtk.CurrentParagraphIndentationChangedArgs">
+  <TypeSignature Language="C#" Value="public class CurrentParagraphIndentationChangedArgs : GLib.SignalArgs" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CurrentParagraphIndentationChangedArgs extends GLib.SignalArgs" />
+  <AssemblyInfo>
+    <AssemblyName>gtkhtml-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>3.16.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Event data.</summary>
+    <remarks>
+      <para>The <see cref="M:Gtk.HTML.CurrentParagraphIndentationChanged" /> event invokes <see cref="T:Gtk.CurrentParagraphIndentationChangedHandler" /> delegates which pass event data via this class.</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CurrentParagraphIndentationChangedArgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Public Constructor.</summary>
+        <remarks>Create a new <see cref="T:Gtk.CurrentParagraphIndentationChangedArgs" /> instance with this constructor if you need to invoke a <see cref="T:Gtk.CurrentParagraphIndentationChangedHandler" /> delegate.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NewIndentation">
+      <MemberSignature Language="C#" Value="public uint NewIndentation { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 NewIndentation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The new indentation level of the paragraph.</summary>
+        <value>An integer, the new indentation level.</value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

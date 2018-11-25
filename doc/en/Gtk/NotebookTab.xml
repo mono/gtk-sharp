@@ -1,0 +1,59 @@
+<Type Name="NotebookTab" FullName="Gtk.NotebookTab">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum NotebookTab" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed NotebookTab extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gtk.NotebookTabGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>An enumeration of tabs that can be found in every <see cref="T:Gtk.Notebook" />.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="First">
+      <MemberSignature Language="C#" Value="First" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.NotebookTab First = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.NotebookTab</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The first tab.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Last">
+      <MemberSignature Language="C#" Value="Last" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.NotebookTab Last = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.NotebookTab</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The last tab.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

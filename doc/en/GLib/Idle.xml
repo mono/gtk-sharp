@@ -1,0 +1,85 @@
+<Type Name="Idle" FullName="GLib.Idle">
+  <TypeSignature Language="C#" Value="public class Idle" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Idle extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>glib-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>This function is thread safe.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Idle handlers for GLib-based main-loops</summary>
+    <remarks>
+      GLib provides an implementation of a "main loop" (an event-based
+      main loop that dispatches requests).  The Idle handler class is
+      used to register a routine to be called when the main loop is
+      idle. 
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public static uint Add (GLib.IdleHandler hndlr);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int32 Add(class GLib.IdleHandler hndlr) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="hndlr" Type="GLib.IdleHandler" />
+      </Parameters>
+      <Docs>
+        <param name="hndlr">The delegate method that will be invoked.</param>
+        <summary>Installs an idle handler for the main loop.</summary>
+        <returns>The handler code assigned to this idle handler.</returns>
+        <remarks>
+          <para>
+	    This function installs the <paramref name="hndlr" /> as a
+	    handler to be invoked when the GLib mainloop is idle.  If
+	    the handler returns <see langword="true" /> the handler is
+	    kept for another round of Idle execution, if <see langword="false" /> is returned, the handler is removed. 
+	  </para>
+          <para>
+	    This method can be invoked from a different thread than the
+	    one running the Gtk main loop.  The delegate will be
+	    invoked within the context of the Gtk main loop.
+	  </para>
+          <para>
+	    The thread-safety of this routine can be used to queue
+	    work by a thread to be performed in the context of the
+	    main Gtk thread.  Gtk# is thread aware, but not thread
+	    safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread
+	    Programming</link> for details.
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Remove">
+      <MemberSignature Language="C#" Value="public static bool Remove (GLib.IdleHandler hndlr);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool Remove(class GLib.IdleHandler hndlr) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="hndlr" Type="GLib.IdleHandler" />
+      </Parameters>
+      <Docs>
+        <param name="hndlr">an <see cref="T:GLib.IdleHandler" /> to remove.</param>
+        <summary>Removes an Idle handler from the Main Loop.</summary>
+        <returns>The function will return true (a <see cref="T:System.Boolean" />) if the delegate was found and removed .</returns>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

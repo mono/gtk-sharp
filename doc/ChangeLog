@@ -1,0 +1,2754 @@
+2010-05-06  Andrés G. Aragoneses  <knocte@gmail.com>
+
+	* en/Gtk/ListStore.xml: fix example to not raise an exception.
+	Reported by Vinicius (|Zippo|) in #mono.
+
+2008-03-17  Mike Kestner  <mkestner@novell.com>
+
+	* en/Gtk/HBox.xml:
+	* en/Gtk/VBox.xml: move example tag outside summary.
+
+2006-08-09  Alp Toker  <alp@atoker.com>
+
+	* en/GLib/Thread.xml:
+	* en/Gdk/Threads.xml: Explain proper thread awareness init.
+
+2006-03-23  Hector E. Gomez Morales  <hectorgm@ciencias.unam.mx>
+
+	* en/Gtk/Button.xml
+	* en/Gtk/CellRendererText.xml
+	* en/Gtk/CellLayoutDataFunc.xml
+	* en/Gtk/CellRenderer.xml: Docs.
+
+2006-03-22  Hector E. Gomez Morales  <hectorgm@ciencias.unam.mx>
+
+	* en/Gtk/AboutDialogActivateLinkFunc.xml
+	* en/Gtk/Accelerator.xml
+	* en/Gtk/AccelGroup.xml
+	* en/Gtk/Action.xml
+	* en/Gtk/ActionGroup.xml
+	* en/Gtk/Application.xml: Docs.
+
+2006-03-01  Hector E. Gomez Morales  <hectorgm@ciencias.unam.mx>
+
+	* en/Gdk/PixbufRotation.xml
+	* en/Gdk/Pixbuf.xml
+	* en/Gdk/PixbufSaveFunc.xml: Docs.
+
+2005-08-28  Ben Maurer  <bmaurer@ximian.com>
+
+	* Makefile.am (gtk-sharp-docs.zip gtk-sharp-docs.tree): Use
+	mdassembler.
+
+	* en/Gtk/NodeSelection.xml: Docs
+
+2005-08-14  John Luke  <john.luke@gmail.com>
+
+	* en/Gtk/IconView.xml: add iconview example
+	based on GtkDemo code
+
+2005-08-09  Dan Winship  <danw@novell.com>
+
+	* en/index.xml: remove gda/gnomedb docs
+
+	* en/Gda:
+	* en/Gda.xml:
+	* en/GnomeDb:
+	* en/GnomeDb.xml: gone
+
+2005-07-19  John Luke  <john.luke@gmail.com>
+
+	* en/Gtk/TreeModelFilter.xml: add an example
+
+2005-06-22  Mike Kestner  <mkestner@novell.com>
+
+	* gen-vm-docs.cs : some monodocer formatting changes and attr lookup
+	enhancements.
+
+2005-06-16  Mike Kestner  <mkestner@novell.com>
+
+	* en/*/*.xml : run the versionator to add since elements for 2.6.
+
+2005-06-16  Mike Kestner  <mkestner@novell.com>
+
+	* en/*/*.xml : run the versionator to add since elements for 2.4.
+
+2005-06-10  Dan Winship  <danw@novell.com>
+
+	* en/Gnome/App.xml (AppId):
+	* en/Gnome/AppBar.xml (Interactivity, HasProgress, HasStatus):
+	* en/Gtk/MessageDialog.xml (MessageType): now read-write
+
+2005-06-06  Dan Winship  <danw@novell.com>
+
+	* en/Gdk/PangoRenderer.xml: update return type of GetDefault
+
+2005-06-01  Dan Winship  <danw@novell.com>
+
+	* en/GLib/Value.xml: document the new string[] methods (and all of
+	the previously-undocumented explicit cast operators).
+
+	* en/Gtk/AboutDialog.xml: document Authors, Artists, Documenters.
+
+2005-05-24  Dan Winship  <danw@novell.com>
+
+	* en/Gdk/PixdataType.xml:
+	* en/Gnome/PaperSelectorFlags.xml:
+	* en/Gnome/PrintDialogFlags.xml:
+	* en/Gnome/PrintDialogRangeFlags.xml:
+	* en/Gnome/PrintUnitBase.xml: Regen, adding FlagsAttribute
+
+	* en/index.xml
+	* en/Gtk/ArgFlags.xml
+	* en/Gtk/RcTokenType.xml: remove removed types
+
+2005-05-23  Mike Kestner  <mkestner@novell.com>
+
+	* Makefile.am : add an update-delete target for --delete.
+	* en/*/*.xml : update-delete.
+
+2005-05-23  Mike Kestner  <mkestner@novell.com>
+
+	* Makefile.am : switch to monodocer
+	* updater : kill
+	* en/*/*.xml : enormo-diff from monodocer first run without --delete.
+
+2005-05-07  John Luke  <john.luke@gmail.com>
+
+	* en/Pango/FontsetForeachFunc.xml:
+	* en/Pango/Matrix.xml:
+	* en/Pango/FcDecoder.xml:
+	* en/Pango/FcDecoderFindFunc.xml:
+	* en/Pango/Renderer.xml:
+	* en/Pango/AttrDataCopyFunc.xml:
+	* en/Pango/EllipsizeMode.xml:
+	* en/Pango/RenderPart.xml: doc some of these
+
+2005-05-04  John Luke  <john.luke@gmail.com>
+
+	* en/Gtk/AboutDialog.xml: doc
+	* en/Gtk/CellRendererCombo.xml: doc
+	* en/Gtk/CellRendererProgress.xml: doc
+	* en/Gtk/IconView.xml: doc
+
+2005-05-04  Dan Winship  <danw@novell.com>
+
+	* en/GLib/GType.xml: update, and remove a bunch of examples of how
+	not to derive types any more...
+
+	* en/GLib/GTypeAttribute.xml: add
+
+2005-05-04  Dan Winship  <danw@novell.com>
+
+	* updater/updater.cs (GetFieldVisibility, GetMethodVisibility):
+	return "protected" for "protected internal" members (rather than
+	returning null and causing them to be ignored).
+
+	* en/Gtk/BoxChild.xml:
+	* en/Gtk/ButtonBoxChild.xml:
+	* en/Gtk/FixedChild.xml:
+	* en/Gtk/LayoutChild.xml:
+	* en/Gtk/MenuChild.xml:
+	* en/Gtk/NotebookChild.xml:
+	* en/Gtk/PanedChild.xml:
+	* en/Gtk/TableChild.xml:
+	* en/Gtk/ToolbarChild.xml: document constructors
+
+2005-05-03  Dan Winship  <danw@novell.com>
+
+	* document new callback properties / deprecate some old
+	callback-setting methods
+
+	* updater/updater.cs (Update): close the writer when we're done.
+	(Compare): don't write "updates" to a file if its FullName is
+	wrong.
+
+2005-04-24  Dan Winship  <danw@novell.com>
+
+	* en/Pango/Attribute.xml, etc: document new Attribute stuff.
+
+2005-04-21  Dan Winship  <danw@novell.com>
+
+	* en/GLib/Marshaller.xml: update
+
+	* en/Gtk/ModuleDisplayInitFunc.xml:
+	* en/Gtk/ModuleInitFunc.xml: gone
+
+2005-04-22  John Luke  <john.luke@gmail.com>
+
+	* en/*/*.xml: run gen*.exe to fill in some docs
+	on the new gtk, atk, gdk, and pango stuff for 2.6
+
+2005-04-08  Dan Winship  <danw@novell.com>
+
+	* en/Gtk/Container.xml: document new children stuff
+
+2005-04-04  Dan Winship  <danw@novell.com>
+
+	* en/Pango/Scale.xml: update
+
+2005-04-01  Dan Winship  <danw@novell.com>
+
+	* en/Gdk/Pixbuf.xml: 
+	* en/Gdk/PixbufAnimation.xml: 
+	* en/Gdk/PixbufLoader.xml: 
+	* en/Gtk/Image.xml: document new/updated stream/resource constructors
+
+2005-03-15  Dan Winship  <danw@novell.com>
+
+	* en/Gtk/NodeStore.xml (AddNode):
+	* en/Gtk/TreeNode.xml (AddChild): I, for one, welcome our new
+	insert overloads.
+
+	* en/Gtk/TreeNodeRemovedHandler.xml: add "child" arg
+
+2005-02-23  Dan Winship  <danw@novell.com>
+
+	* en/GnomeDb/EditorClass.xml: gone
+	
+	* en/Gtk/AccelActivateArgs.xml:
+	* en/Gtk/AccelActivateHandler.xml:
+	* en/Gtk/AccelGroup.xml:
+	* en/Gtk/AccelMap.xml:
+	* en/Gtk/ActionGroup.xml:
+	* en/Gtk/MapChangedArgs.xml:
+	* en/Gtk/MapChangedHandler.xml:
+	* en/Gtk/Widget.xml:
+	* en/Gtk/WidgetEventAfterArgs.xml:
+	* en/Gtk/WidgetEventAfterHandler.xml: document newly exposed
+	signals, args, handlers
+
+	* en/Gda/*xml: rototilled by parser changes
+
+2005-02-18  Mike Kestner  <mkestner@novell.com>
+
+	* en/Gtk/ClipboardGetFunc.xml : fix param list.
+
+2005-02-15  Dan Winship  <danw@novell.com>
+
+	* updater/updater.cs (Compare): handle BaseType changes
+	(Generate, AddTypeSignature): fix spelling of "delegate"
+
+	* en/*: regenerate to update BaseType nodes
+
+2005-02-11  Dan Winship  <danw@novell.com>
+
+	* en/Gtk/Widget.xml (StyleGetValist, StyleGetProperty): update
+
+2005-02-07  Ben Maurer  <bmaurer@ximian.com>
+
+	* en/Gdk/Point.xml, en/Gdk/Rectangle.xml: Document new
+	members.
+
+2005-01-28  Dan Winship  <danw@novell.com>
+
+	* en/GLib/NotifyArgs.xml:
+	* en/GLib/NotifyHandler.xml: 
+	* en/GLib/Object.xml (AddNotification, RemoveNotification): document
+
+2005-01-18  Dan Winship  <danw@novell.com>
+
+	* en/GLib/Marshaller.xml (StringFormat): document
+
+	* en/Gtk/MessageDialog.xml: update ctors
+
+2005-01-07  Shane Landrum  <epicene@pobox.com>
+
+	* en/Glade/*: Cleaned up some parameters, added
+	docs.
+	
+2005-01-07  Shane Landrum  <epicene@pobox.com>
+
+	* en/Gnome/*: Cleaned up some <param> sections
+	to include links to the types they use; edited
+	<remarks> sections.
+
+2005-01-07  Shane Landrum  <epicene@pobox.com>
+
+	* en/GConf/ChangeSet.xml
+	* en/GConf/NoSuchKeyException.xml
+	* en/GConf/NotifyEventArgs.xml
+	* en/GConf/ClientBase.xml
+	* en/GConf/NotifyFuncNative.xml
+	* en/GConf/Client.xml: Cleaned up and added docs.
+	
+2005-01-06  Dan Winship  <danw@novell.com>
+
+	* en/Gtk/StockManager.xml: resurrect and update
+
+2005-01-05  Shane Landrum  <epicene@pobox.com>
+
+	* en/Gtk/XEmbedMessageType.xml
+	* en/Gtk/TargetPair.xml : Marked "Do not use."
+	* en/Gtk/ToggleAction.xml
+	* en/Gtk/Socket.xml
+	* en/Gtk/Style.xml
+	* en/Gtk/ToggleActionEntry.xml
+	* en/Gtk/VButtonBox.xml: Added docs.
+
+2005-01-05  Shane Landrum  <epicene@pobox.com>
+
+	* en/Gtk/SignalFunc.xml
+	* en/Gtk/Signal.xml
+	* en/Gtk/RcProperty.xml
+	* en/Gtk/PrintFunc.xml
+	* en/Gtk/PreviewType.xml: Marked "Do not use."
+	* en/Gtk/RadioAction.xml
+	* en/Gtk/Toolbar.xml
+	* en/Gtk/Rc.xml: Added docs.
+	
+2005-01-05  Shane Landrum  <epicene@pobox.com>
+
+	* en/Gtk/*ImageData.xml: Removed, see
+	bugzilla.ximian.com #70894.
+	* en/Gtk/ListStore.xml
+	* en/Gtk/MessageDialog.xml
+	* en/Gtk/Main.xml
+	* en/Gtk/Layout.xml
+	* en/Gtk/NodeStore.xml
+	* en/Gtk/Label.xml
+	* en/Gtk/MatchType.xml
+	* en/Gtk/Object.xml: Added docs.
+
+2005-01-05  Shane Landrum  <epicene@pobox.com>
+
+	* en/Gtk/Item.xml
+	* en/Gtk/Input.xml
+	* en/Gtk/ToolItem.xml
+	* en/Gtk/UIManager.xml: Added docs.
+	* en/Gtk/IMStatusStyle.xml
+	* en/Gtk/IMPreeditStyle.xml
+	* en/Gtk/IMContextInfo.xml: Marked "do not use"
+	pending resolution of bug 71021.
+	
+2005-01-04  Shane Landrum  <epicene@pobox.com>
+
+	* en/Gtk/ScreenChangedArgs.xml
+	* en/Gtk/PropertyNotifyEventArgs.xml
+	* en/Gtk/PreActivateArgs.xml
+	* en/Gtk/PopupContextMenuArgs.xml
+	* en/Gtk/PostActivateArgs.xml
+	* en/Gtk/PathClickedArgs.xml
+	* en/Gtk/NoExposeEventArgs.xml
+	* en/Gtk/PixbufInsertedArgs.xml: Documented event args.
+
+2005-01-04  Shane Landrum  <epicene@pobox.com>
+
+	* en/Gtk/Image.xml
+	* en/Gtk/RetrieveSurroundingArgs.xml
+	* en/Gtk/IMMulticontext.xml
+	* en/Gtk/FileInfo.xml
+	* en/Gtk/FileInfoType.xml
+	* en/Gtk/IMStatusStyle.xml
+	* en/Gtk/RetrieveSurroundingHandler.xml
+	* en/Gtk/IMPreeditStyle.xml: Added docs.
+
+2005-01-03  Shane Landrum  <epicene@pobox.com>
+
+	* en/Gtk/IMContextSimple.xml
+	* en/Gtk/IMContext.xml
+	* en/Gtk/IMContextInfo.xml: Added docs.
+
+2005-01-03  Shane Landrum  <epicene@pobox.com>
+
+	* en/Gtk/HButtonBox.xml
+	* en/Gtk/Global.xml
+	* en/Gtk/FontButton.xml: Add docs.
+	
+2005-01-03  Mike Kestner  <mkestner@novell.com>
+	
+	* en/Gtk/TreeNodeAttribute.xml : document ListOnly and add example.
+
+2005-01-03  Shane Landrum  <epicene@pobox.com>
+	
+	* en/Gtk/DrawingArea.xml
+	* en/Gtk/Expander.xml
+	* en/Gtk/ComboBox.xml
+	* en/Gtk/Style.xml
+	* en/Gtk/EntryCompletion.xml
+	* en/Gtk/EventBox.xml: Added docs; turned
+	some @param to <paramref name="param"/>.
+
+2005-01-03  Shane Landrum  <epicene@pobox.com>
+
+	* en/Gtk/DrawGdkArgs.xml
+	* en/Gtk/ContainerChild.xml
+	* en/Gtk/DestroyNotify.xml
+	* en/Gtk/Draw.xml
+	* en/Gtk/CellViewMenuItem.xml
+	* en/Gtk/CellView.xml
+	* en/Gtk/Callback.xml
+	* en/Gtk/Container.xml: Added docs.
+
+2005-01-02  Shane Landrum  <epicene@pobox.com>
+
+	* en/Gtk/ComboBox.xml: Doc edits.
+	* en/Gtk/ContainerChild.xml
+	* en/Gtk/Drag.xml
+	* en/Gtk/Draw.xml
+	* en/Gtk/CellViewMenuItem.xml
+	* en/Gtk/DisconnectProxyArgs.xml
+	* en/Gtk/CellView.xml
+	* en/Gtk/Container.xml: added docs.
+
+2005-01-02  Shane Landrum  <epicene@pobox.com>
+
+	* en/Gtk/ComboBox.xml
+	* en/Gtk/CellViewMenuItem.xml
+	* en/Gtk/CellView.xml
+	* en/Gtk/CellRendererSepText.xml
+	* en/Gtk/ConnectProxyArgs.xml
+	* en/Gtk/Combo.xml
+	* en/Gtk/CellRendererText.xml
+	* en/Gtk/CheckMenuItem.xml: Added docs.
+
+2004-12-31  Shane Landrum  <epicene@pobox.com>
+
+	* en/Gtk/Button.xml
+	* en/Gtk/Calendar.xml
+	* en/Gtk/ButtonBox.xml
+	* en/Gtk/Bindings.xml
+	* en/Gtk/CellRenderer.xml: Added docs.
+
+2004-12-31  Shane Landrum  <epicene@pobox.com>
+
+	* en/Gtk/ArgFlags.xml
+	* en/Gtk/Arg.xml: Added "Do not use" marks.
+	* en/Gtk/Action.xml
+	* en/Gtk/AddWidgetArgs.xml
+	* en/Gtk/Alignment.xml
+	* en/Gtk/AccelGroup.xml: Added docs
+
+2004-12-31  Shane Landrum  <epicene@pobox.com>
+	
+	* en/Gtk/FileSystem.xml: Wording tweak.
+	* en/Gtk/ActionGroup.xml
+	* en/Gtk/Action.xml
+	* en/Gtk/ActionEntry.xml
+	* en/Gtk/AccelGroup.xml
+	* en/Gtk/AccelMap.xml: Added docs.
+
+2004-12-31 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/FileSystem.xml
+	* en/Gtk/FileSystemUnix.xml
+	* en/Gtk/FileSystemVolume.xml
+	* en/Gtk/FileSystemWin32.xml: Filesystem docs.
+	* en/Gtk/FilesAddedHandler.xml	
+	* en/Gtk/FilesChangedHandler.xml
+	* en/Gtk/FilesRemovedHandler.xml: Handler docs.
+	* en/Gtk/FileInfoType.xml
+	* en/Gtk/FileSystemError.xml: Docs for some enums.
+	
+2004-12-30 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/FileSystem.xml
+	* en/Gtk/FileInfo.xml
+	* en/Gtk/FileInfoType.xml
+	* en/Gtk/FileSystemUnix.xml
+	* en/Gtk/FileSystemVolume.xml
+	* en/Gtk/FileSystemWin32.xml
+	* en/Gtk/FileFilterInfo.xml: Docs for filesystem-handling classes.
+	
+2004-12-30 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/IconSource.xml
+	* en/Gtk/IconThemeFile.xml
+	* en/Gtk/IconThemeFileParseError.xml
+	* en/Gtk/IconThemeFileSectionFunc.xml
+	* en/Gtk/IconTheme.xml
+	* en/Gtk/IconThemeFileLineFunc.xml: Docs for icon-theme classes.
+
+2004-12-30 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/Scale.xml
+	* en/Gtk/Paned.xml
+	* en/Gtk/ProgressBar.xml
+	* en/Gtk/Plug.xml
+	* en/Gtk/MovementStep.xml: Docs, some for 2.4 changes.
+
+2004-12-30 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/FilesAddedArgs.xml
+	* en/Gtk/FilePath.xml
+	* en/Gtk/FilesRemovedArgs.xml
+	* en/Gtk/FileFolder.xml
+	* en/Gtk/FilesChangedArgs.xml: Filesystem-handling docs.
+	* en/Gtk/ObjectRequestedArgs.xml
+	* en/Gtk/MatchSelectedArgs.xml
+	* en/Gtk/ChangedArgs.xml
+	* en/Gtk/ActionActivatedArgs.xml: Event data docs.
+	
+2004-12-30 Mike Kestner <mkestner@novell.com>
+
+	* en/Gtk/IterFactoryEntry.xml : fix a make assemble breakage.
+	* en/Gtk/TreeView.xml : docs for new InsertColumn overloads.
+
+2004-12-30 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/ItemFactory.xml
+	* en/Gtk/MenuShell.xml
+	* en/Gtk/MenuEntry.xml
+	* en/Gtk/Menu.xml
+	* en/Gtk/ItemFactoryEntry.xml
+	* en/Gtk/MenuCallback.xml: Docs for menus and menu creation.
+	* en/Gtk/Notebook.xml: Docs for a 2.4 change.
+
+2004-12-30 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/TreeViewColumn.xml
+	* en/Gtk/TreeStore.xml
+	* en/Gtk/TreeView.xml
+	* en/Gtk/TreeRowReference.xml
+	* en/Gtk/TreeModelFilter.xml: Add docs
+	
+2004-12-29  John Luke  <john.luke@gmail.com>
+
+	* gen-intptr-ctor-docs.cs: docs for Type (IntPtr) ctor
+	* gen-gtype-ctor-docs.cs: docs for Type (GType) ctor
+	* gen-finalize-docs.cs: docs Finalize methods
+	* gen-gtype-docs.cs: docs GType properties, based off
+	of gen-vm-docs.cs
+	* en/*.xml: run these 4 tools for all the assemblies
+
+2004-12-29 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/FileChooserEmbed.xml
+	* en/Gtk/FileChooserDialog.xml
+	* en/Gtk/FileChooserWidget.xml
+	* en/Gtk/FileFilter.xml
+	* en/Gtk/FileFilterFlags.xml
+	* en/Gtk/FileChooser.xml: file chooser and filter docs.
+	
+2004-12-28  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* en/Gnome.Vfs/*.xml: more docs.
+
+2004-12-28  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* en/Gnome.Vfs/*.xml: remove docs for files that no longer exist.
+
+2004-12-27  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* en/Gnome.Vfs.xml:
+	* en/Gnome.Vfs/*.xml: major doc commit (more to follow).
+
+2004-12-23  Mike Kestner  <mkestner@novell.com>
+
+	* en/GLib/ClassInitializerAttribute.xml : doc new attr.
+	* en/Gtk/BindingAttribute.xml : doc new attr.
+
+2004-12-22  Dan Winship  <danw@novell.com>
+
+	Update for changes from automatic field generation.
+
+	* en/Gdk/Colormap.xml (Size): New read-only property.
+
+	* en/Gdk/Image.xml (Bpp, Bpl, Depth, ByteOrder, BitsPerPixel,
+	Width, Visual, Type, Height): New read-only properties
+
+	* en/Gtk/FileSelection.xml (MainVBox): New read-only property
+
+	* en/Gtk/FontSelectionDialog.xml (ApplyButton, CancelButton,
+	OkButton): New read-only properties.
+
+	* en/Gtk/RcStyle.xml (Name, Xthickness, Ythickness, FontDesc):
+	New read-only properties.
+
+	* en/Gtk/Style.xml (Xthickness, Ythickness, FontDesc): New
+	read-only properties.
+
+	* en/Gtk/Toolbar.xml (NumChildren): New read-only property.
+
+	* en/Gtk/Widget.xml (Requisition): New read-write property.
+
+	* en/Gnome/App.xml (Contents, Statusbar): Now read-write
+	rather than write-only
+	(Name, Prefix, AccelGroup): New read-only properties.
+
+	* en/Gnome/DateEdit.xml (InitialTime): Fixed to use DateTime
+	rather than ulong.
+
+	* en/Gnome/Druid.xml (FinishButton, NextButton, HelpButton,
+	BackButton, CancelButton): New read-only properties.
+
+	* en/Gnome/DruidPageEdge.xml (BgColor, Title, TextboxColor,
+	TextColor, LogoBgColor, Watermark, TopWatermark, TitleColor,
+	Logo, Text): Now read-write rather than write-only.
+	(Position): New read-only property.
+
+	* en/Gnome/DruidPageStandard.xml (ContentsBackground,
+	TitleForeground, LogoBackground, Background): Now read-write
+	rather than write-only.
+	(VBox): New read-only property.
+
+	* en/Gnome/FontPicker.xml (Font): Fixed to use Gdk.Font rather
+	than IntPtr.
+
+2004-12-22  Dan Winship  <danw@novell.com>
+
+	* en/Gtk/Decorated.xml:
+	* en/Gtk/FileChooserDefault.xml:
+	* en/Gtk/FileChooserEntry.xml:
+	* en/Gtk/FileChooserProp.xml:
+	* en/Gtk/PathBar.xml:
+	* en/Gtk/RBNode.xml:
+	* en/Gtk/RBTree.xml:
+	* en/Gtk/RBTreeTraverseFunc.xml:
+	* en/Gtk/RBTreeView.xml:
+	* en/Gtk/Text.xml:
+	* en/Gtk/TextBTree.xml:
+	* en/Gtk/TextCounter.xml:
+	* en/Gtk/TextLineSegment.xml:
+	* en/Gtk/TextLineSegmentClass.xml:
+	* en/Gtk/TextLogAttrCache.xml:
+	* en/Gtk/TextMarkBody.xml:
+	* en/Gtk/TextSegCheckFunc.xml:
+	* en/Gtk/TextSegCleanupFunc.xml:
+	* en/Gtk/TextSegDeleteFunc.xml:
+	* en/Gtk/TextSegLineChangeFunc.xml:
+	* en/Gtk/TextSegSplitFunc.xml:
+	* en/Gtk/TextTagInfo.xml:
+	* en/Gtk/TextToggleBody.xml:
+	* en/Gtk/TextUtilCharChosenFunc.xml: gone
+
+	* en/Gtk/ThemeEngine.xml: mostly gone
+
+2004-12-21  Mike Kestner  <mkestner@novell.com>
+
+	* *.xml : fix some bad enum value docs.
+
+2004-12-21  Dan Winship  <danw@novell.com>
+
+	* en/Gtk/CheckMenuItem.xml (EmitToggled): document
+
+	* en/Gnome/PixmapEntry.xml (GnomeEntry, GtkEntry): gone (sort of)
+
+	* updater/updater.cs: remove unused vars
+
+2004-12-21 Jeroen Zwartepoorte <jeroen@xs4all.nl>
+
+	* en/Gnome.Vfs.xml: 
+	* en/Gnome.Vfs/*.xml: Start documenting Gnome.Vfs.
+
+2004-12-21 Jeroen Zwartepoorte <jeroen@xs4all.nl>
+
+	* en/Gnome.Vfs/*.xml : updater run for recent changes. Remove obsolete
+	ModuleCallback*[In|Out].xml files.
+
+2004-12-20  John Luke  <john.luke@gmail.com>
+
+	* en/Gtk/Widget.xml: finish
+	* en/Gtk/Window.xml: finish
+	* en/Gtk/*.xml: random stuff, mostly enums
+
+2004-12-20  John Luke  <john.luke@gmail.com>
+
+	* en/Gtk/CellView.xml: doc most of this
+	* en/Gtk/EntryCompletion.xml: add an example from GtkDemo
+
+2004-12-20  Dan Winship  <danw@novell.com>
+
+	* en/Gtk/TextCharPredicate.xml: update signature... this is usable now
+
+	* en/Atk/NoOpObject.xml (GetCharacterAtOffset):
+	* en/Atk/Text.xml (GetCharacterAtOffset):
+	* en/Gtk/Entry.xml (InvisibleChar):
+	* en/Pango/Global.xml (UnicharDirection, ScriptForUnichar):
+	* en/Vte/Terminal.xml (IsWordChar):
+	* en/Vte/TerminalAccessible.xml (GetCharacterAtOffset): document
+	newly-wrapped methods
+
+2004-12-20  Dan Winship  <danw@novell.com>
+
+	* en/Gtk/StockManager.xml: gone
+
+	* en/Gtk/Stock.xml (Lookup): document here
+
+2004-12-20 Mike Kestner <mkestner@novell.com>
+
+	* en/Gnome.Vfs/*.xml : updater run for recent changes.
+
+2004-12-17 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/Tooltips.xml
+	* en/Gtk/ToggleToolButton.xml
+	* en/Gtk/ToolItem.xml
+	* en/Gtk/ToolbarChildType.xml
+	* en/Gtk/SeparatorToolItem.xml
+	* en/Gtk/TooltipSetArgs.xml: Docs for tooltips and toolbar tools.
+
+2004-12-17  Dan Winship  <danw@novell.com>
+
+	* en/Gnome/FontPicker.xml (SetFontName):
+	* en/Gnome/IconEntry.xml (SetFilename):
+	* en/GnomeDb/Combo.xml (SetModel):
+	* en/GnomeDb/List.xml (SetModel):
+	* en/Gtk/Combo.xml (SetValueInList):
+	* en/Gtk/FontButton.xml (SetFontName):
+	* en/Gtk/FontSelection.xml (SetFontName):
+	* en/Gtk/Image.xml (GetStock, GetIconSet, GetPixmap, GetImage):
+	* en/Gtk/Table.xml (SetRowSpacing, GetRowSpacing): Newly-visible
+	methods
+
+	* en/Gnome/Entry.xml (OnTextInserted): 
+	* en/Gnome/FileEntry.xml (OnTextInserted): belatedly update for
+	previous change
+
+2004-12-17 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/FontSelectionDialog.xml: Doc 1 property
+	* en/Gtk/TargetEntry.xml
+	* en/Gtk/TargetPair.xml
+	* en/Gtk/SelectionData.xml
+	* en/Gtk/SelectionGetArgs.xml
+	* en/Gtk/SelectionNotifyEventArgs.xml
+	* en/Gtk/SelectionRequestEventArgs.xml: Docs for selection-related
+	and DND code.
+	* en/Gtk/Stock.xml: Doc some new items for 2.4
+	* en/Gtk/ToolButton.xml: Add docs
+
+2004-12-17 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/RadioAction.xml
+	* en/Gtk/RadioActionEntry.xml
+	* en/Gtk/RadioButton.xml
+	* en/Gtk/RadioMenuItem.xml
+	* en/Gtk/RadioToolButton.xml: Add docs
+	
+2004-12-16  Dan Winship  <danw@novell.com>
+
+	* en/Gtk/InputArgs.xml (NewValue):
+	* en/Gtk/ToggleSizeRequestedArgs.xml (Requisition): now write-only
+	rather than read-only
+
+	* en/Gtk/SizeRequestedArgs.xml (Requisition):
+	* en/Gtk/TextInsertedArgs.xml (Position): now read-write
+
+	* en/Gtk/Entry.xml (OnTextInserted): "position" is now "ref"
+	rather than "out"
+
+	* en/Gtk/RowsReorderedArgs.xml (NewOrder): changed, but still broken
+
+2004-12-16  Dan Winship  <danw@novell.com>
+
+	* en/Art/AlphaGamma.xml:
+	* en/Gtk/TextAttributes.xml (Refcount):
+	* en/Pango/GlyphString.xml (Space): these are now private
+
+	* en/Gda/XqlItem.xml:
+	* en/Glade/SignalInfo.xml:
+	* en/Gnome.Vfs/ModuleCallbackSaveAuthenticationIn.xml: 
+	* en/Gnome.Vfs/ModuleCallbackFullAuthenticationIn.xml: 
+	* en/Gnome.Vfs/ModuleCallbackFillAuthenticationIn.xml: rename
+	Objekt to Object.
+
+	* en/Atk/KeyEventStruct.xml: rename Str1ng to String
+	
+2004-12-15  John Luke  <john.luke@gmail.com>
+
+	* *.xml: run gen-vm-docs.exe and gen-handlerargs.exe
+	on everything
+
+2004-12-15  John Luke  <john.luke@gmail.com>
+
+	* en/Atk/LinkSelectedArgs.xml
+	* en/Atk/StateSet.xml
+	* en/Atk/TextRange.xml
+	* en/Atk/HyperLink.xml
+	* en/Atk/TextRectangle.xml
+	* en/Atk/NoOpObject.xml
+	* en/Atk/LinkSelectedHandler.xml
+	* en/Atk/StateManager.xml
+	* en/Atk/TextClipType.xml
+	* en/Gtk/FileChooserAction.xml
+	* en/Gtk/FileChooserError.xml: add docs
+
+2004-12-15  John Luke  <john.luke@gmail.com>
+
+	* en/Pango/FcFont.xml:
+	* en/Pango/FcFontMap.xml:
+	* en/Pango/Script.xml:
+	* en/Pango/ScriptIter.xml: doc'em
+
+2004-12-14 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/FileChooser.xml: Added full docs.
+	* en/Gtk/FileChooserDialog.xml
+	* en/Gtk/FileChooserEmbed.xml
+	* en/Gtk/FileChooserAction.xml
+	* en/Gtk/FileChooserWidget.xml
+	* en/Gtk/FileChooserEntry.xml
+	* en/Gtk/FileChooserDefault.xml
+	* en/Gtk/FileChooserError.xml
+	* en/Gtk/FileChooserProp.xml: Began working on docs.
+	
+2004-12-14 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/TextTagInfo.xml
+	* en/Gtk/TextToggleBody.xml
+	* en/Gtk/TextLineSegmentClass.xml
+	* en/Gtk/TextPendingScroll.xml
+	* en/Gtk/TextView.xml
+	* en/Gtk/TextLineSegment.xml: Changed "to be added" to "do not use"
+	* en/Gtk/TextIter.xml
+	* en/Gtk/TextBuffer.xml : Added docs for remaining TBA items.
+	
+2004-12-12 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/ToolItem.xml
+	* en/Gtk/Toolbar.xml: Expanded docs for toolbar-related classes.
+	* en/Gtk/SubmenuDirection.xml
+	* en/Gtk/SubmenuPlacement.xml: Docced submenu enums.
+
+2004-12-09  Mike Kestner  <mkestner@novell.com>
+
+	* en/Gtk/HTML*.xml : size_t marshaling updates.
+
+2004-12-08  John Luke  <john.luke@gmail.com>
+
+	* en/Gtk/IconLookupFlags.xml
+	* en/Gtk/IconInfo.xml
+	* en/Gtk/IconTheme.xml
+	* en/Gtk/IconThemeError.xml: doc these
+
+2004-12-08  Mike Kestner  <mkestner@novell.com>
+
+	* en/Art/Affine.xml : some s/int/bool changes.
+	* en/Gtk/Expander.xml : a ctor the updater added.
+
+2004-12-06  John Luke  <john.luke@gmail.com>
+
+	* en/Gtk/ComboBoxEntry.xml: doc it
+	* en/Gtk/Entry.xml: doc a few missing things
+	* en/Gtk/*.xml: run gen-handlerargs-docs.exe for gtk-sharp.dll
+	and gen-vm-docs.exe
+
+2004-12-06 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/AccelCanActivateHandler.xml
+	* en/Gtk/Widget.xml
+	* en/Gtk/AccelCanActivateArgs.xml: Added docs for accelerator-related
+	signals and handlers.
+
+2004-12-05  John Luke  <john.luke@gmail.com>
+
+	* en/Gtk/Expander.xml: doc it
+
+2004-12-03  Dan Winship  <danw@novell.com>
+
+	* en/Gtk/TextBuffer.xml: 
+	* en/Gtk/TextView.xml: update for TextIter pass-by-ref changes
+
+	* en/Gdk/Bitmap.xml: gone
+
+	* en/Gdk/GC.xml:
+	* en/Gdk/PangoAttrStipple.xml:
+	* en/Gdk/Pixbuf.xml:
+	* en/Gdk/Pixmap.xml:
+	* en/Gdk/Window.xml:
+	* en/Gtk/Drag.xml:
+	* en/Gtk/Image.xml:
+	* en/Gtk/TextAppearance.xml:
+	* en/Gtk/Widget.xml: update for Gdk.Bitmap -> Gdk.Pixmap aliasing
+	
+2004-12-02 Shane Landrum <epicene@pobox.com>
+	
+	* en/Gtk/EntryCompletionMatchFunc.xml
+	* en/Gtk/EntryCompletion.xml
+	* en/Gtk/CellLayout.xml
+	* en/Gtk/CellLayoutDataFunc.xml
+	* en/Gtk/Clipboard.xml
+	* en/Gtk/ClipboardTargetsReceivedFunc.xml
+	* en/Gtk/FileFilter.xml
+	* en/Gtk/FileFilterFlags.xml
+	* en/Gtk/FileFilterFunc.xml: Doc some delegate classes and the
+	methods that use them; mostly functionality new to 2.4.
+	* en/Gtk/RBTreeTraverseFunc.xml
+	* en/Gtk/TextSegLineChangeFunc.xml
+	* en/Gtk/TextSegSplitFunc.xml
+	* en/Gtk/TextSegCheckFunc.xml
+	* en/Gtk/TextUtilCharChosenFunc.xml
+	* en/Gtk/TextSegCleanupFunc.xml
+	* en/Gtk/TextSegDeleteFunc.xml
+	* en/Gtk/IconThemeFileLineFunc.xml: Removed extraneous TBAs.
+	
+2004-11-30  John Luke  <john.luke@gmail.com>
+
+	* en/Gtk/FileChooserAction.xml:
+	* en/Gtk/FileChooserError.xml:
+	* en/Gtk/ComboBox.xml: doc some stuff
+
+2004-11-30 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/ColorSelection.xml: Documented deprecated UpdatePolicy prop.
+	* en/Gtk/ColorButton.xml: Added docs.
+	* en/Gtk/TreeModel.xml
+	* en/Gtk/TreeModelFilter.xml
+	* en/Gtk/TreeModelFilterModifyFunc.xml
+	* en/Gtk/TreeModelFilterVisibleFunc.xml
+	* en/Gtk/TreeModelSort.xml: Added and elaborated docs
+	for filtering tree models, in compliance with GTK 2.4.
+	
+2004-11-26  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* doc/en/Gtk/ActionEntry.xml:
+	* doc/en/Gtk/ActionGroup.xml:
+	* doc/en/Gtk/RadioActionEntry.xml:
+	* doc/en/Gtk/ToggleActionEntry.xml:
+	* doc/en/Gtk/UIManager.xml:
+	
+	New ActionEntry related structs & methods.
+
+2004-11-18  Dan Winship  <danw@novell.com>
+
+	* en/Gtk/: update for container child property change
+
+2004-11-16  Dan Winship  <danw@novell.com>
+
+	* en/GLib/Value.xml: document new constructors
+
+2004-11-15  Dan Winship  <danw@novell.com>
+
+	* en/Gtk/Container.xml (FocusChild): Has a getter now too.
+	(Added): Clarify that this only means "Gtk.Container.Add was
+	called", and doesn't get fired when you call Gtk.Box.PackStart,
+	etc
+
+2004-11-15 Mike Kestner <mkestner@ximian.com>
+
+	* en/Gtk/ColorSelection.xml : remove newly hidden deprecated methods.
+	* en/*/*.xml : add some stubs for new DestroyNotify methods.
+
+2004-11-09  John Luke  <john.luke@gmail.com>
+
+	* en/Gtk/Action.xml:
+	* en/Gtk/ActionGroup.xml:
+	* en/Gtk/UIManagerItemType.xml:
+	* en/Gtk/UIManager.xml: doc
+
+2004-11-09  Dan Winship  <danw@novell.com>
+
+	* en/GLib/Object.xml: 
+	* en/Gtk/Widget.xml: update for CreateNativeObject changes
+
+2004-11-08  Dan Winship  <danw@novell.com>
+
+	* en/Gtk/Box.xml:
+	* en/Gtk/ButtonBox.xml:
+	* en/Gtk/Container.xml:
+	* en/Gtk/Fixed.xml:
+	* en/Gtk/Layout.xml:
+	* en/Gtk/Menu.xml:
+	* en/Gtk/Notebook.xml:
+	* en/Gtk/Paned.xml:
+	* en/Gtk/Table.xml:
+	* en/Gtk/Toolbar.xml: document container child properties
+
+2004-11-05 Mike Kestner <mkestner@ximian.com>
+
+	* Makefile.am : copy assemblies into updater so they don't
+	have to be installed to run the updater.
+	* updater/updater.cs : fix for recent corlib bugfix. Thanks
+	to Dan Winship for identifying the solution.
+
+2004-10-28  Dan Winship  <danw@novell.com>
+
+	* en/Gdk/Pixbuf.xml
+	* en/Gdk/Pixmap.xml
+	* en/Gdk/Window.xml
+	* en/Gtk/Style.xml
+	* en/Gtk/TargetList.xml: Update to match API fixes
+
+2004-10-11 Shane Landrum <epicene@pobox.com>
+
+	* en/Gdk/AreaUpdatedArgs.xml
+	* en/Gdk/SizePreparedArgs.xml: Delegate class docs.
+	
+2004-10-11 Shane Landrum <epicene@pobox.com>
+
+	* en/Gdk/Pixbuf.xml
+	* en/Gdk/PixbufAlphaMode.xml
+	* en/Gdk/PixbufAniAnim.xml
+	* en/Gdk/PixbufAniAnimIter.xml
+	* en/Gdk/PixbufDestroyNotify.xml
+	* en/Gdk/PixbufError.xml
+	* en/Gdk/PixbufFormat.xml
+	* en/Gdk/PixbufFrame.xml: Miscellaneous docs for pixbuf classes.
+	
+2004-09-25 Shane Landrum <epicene@pobox.com>
+
+	* en/Gdk/Drawable.xml
+	* en/Gdk/Pixbuf.xml
+	* en/Gdk/PixbufAlphaMode.xml
+	* en/Gdk/PixbufAniAnim.xml
+	* en/Gdk/PixbufAniAnimIter.xml
+	* en/Gdk/PixbufAnimation.xml
+	* en/Gdk/PixbufAnimationIter.xml: Docs for pixbufs and animations.
+	A first pass; see FIXME marks for some API that may need adjustment.
+	
+2004-09-23 Mike Kestner <mkestner@ximian.com>
+
+	* en/Gtk/Widget.xml : docs for new OnSetScrollAdjustments VM.
+
+2004-09-20 Shane Landrum <epicene@pobox.com>
+
+	* en/Gdk/FilterFunc.xml
+	* en/Gdk/Point.xml
+	* en/Gdk/Region.xml
+	* en/Gdk/Rgb.xml
+	* en/Gdk/RgbCmap.xml : Added docs for Gdk classes.
+	
+2004-09-20 Shane Landrum <epicene@pobox.com>
+	
+	* en/Gtk/FileSelection.xml
+	* en/Gtk/MapEventArgs.xml
+	* en/Gtk/ModuleDisplayInitFunc.xml
+	* en/Gtk/ModuleInitFunc.xml
+	* en/Gtk/MotionNotifyEventArgs.xml
+	* en/Gtk/TargetPair.xml
+	* en/Gtk/TextCounter.xml
+	* en/Gtk/TextPendingScroll.xml
+	* en/Gtk/TextUtilCharChosenFunc.xml
+	* en/Gtk/TextWindowType.xml
+	* en/Gtk/ThreadNotify.xml
+	* en/Gtk/ToggleSizeAllocatedArgs.xml
+	* en/Gtk/ToggleSizeRequestedArgs.xml
+	* en/Gtk/Widget.xml : Added and updated docs.
+	
+2004-09-20 Shane Landrum <epicene@pobox.com>
+
+	* en/Gdk/Window.xml : Added docs from GDK source.
+	
+2004-09-13 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/Accelerator.xml
+	* en/Gtk/Arg.xml
+	* en/Gtk/CallbackInvoker.xml
+	* en/Gtk/CellRendererState.xml
+	* en/Gtk/ColorSelectionButton.xml
+	* en/Gtk/Combo.xml
+	* en/Gtk/Container.xml
+	* en/Gtk/Decorated.xml
+	* en/Gtk/Dialog.xml
+	* en/Gtk/Drag.xml
+	* en/Gtk/FSButton.xml
+	* en/Gtk/FileSelection.xml
+	* en/Gtk/Function.xml
+	* en/Gtk/Gc.xml
+	* en/Gtk/Grab.xml
+	* en/Gtk/HandleBox.xml
+	* en/Gtk/Input.xml
+	* en/Gtk/InputDialog.xml
+	* en/Gtk/Widget.xml
+	* en/Gtk/Window.xml: Miscellaneous class docs.
+	
+2004-09-13 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/ClipboardClearFunc.xml
+	* en/Gtk/ClipboardGetFunc.xml
+	* en/Gtk/ClipboardTextReceivedFunc.xml
+	* en/Gtk/ColorSelectionChangePaletteWithScreenFunc.xml: Callback docs.
+	
+2004-09-13 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/Image.xml
+	* en/Gtk/ImageAnimationData.xml
+	* en/Gtk/ImageImageData.xml
+	* en/Gtk/ImagePixbufData.xml
+	* en/Gtk/ImagePixmapData.xml
+	* en/Gtk/ImageStockData.xml: Image-related class docs.
+	* en/Gtk/ItemFactory.xml
+	* en/Gtk/ItemFactoryCallback.xml
+	* en/Gtk/ItemFactoryCallback1.xml
+	* en/Gtk/ItemFactoryEntry.xml: ItemFactory-related class docs.	
+
+2004-09-13 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/IMContext.xml
+	* en/Gtk/IMContextInfo.xml
+	* en/Gtk/IMContextSimple.xml
+	* en/Gtk/IMMulticontext.xml
+	* en/Gtk/IMPreeditStyle.xml
+	* en/Gtk/IMStatusStyle.xml: Input-method-related classes.
+	
+2004-09-13 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/ChildNotifiedArgs.xml
+	* en/Gtk/ClientEventArgs.xml
+	* en/Gtk/CommitArgs.xml
+	* en/Gtk/DeleteEventArgs.xml
+	* en/Gtk/DestroyEventArgs.xml
+	* en/Gtk/DragDataGetArgs.xml
+	* en/Gtk/DragDataReceivedArgs.xml
+	* en/Gtk/DrawGdkArgs.xml
+	* en/Gtk/ExpandCollapseCursorRowArgs.xml
+	* en/Gtk/GrabNotifyArgs.xml
+	* en/Gtk/InputArgs.xml: Docs for event data classes.
+	
+2004-09-13 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/HTMLBeginFlags.xml
+	* en/Gtk/HTMLCommandType.xml
+	* en/Gtk/HTMLEditorEventType.xml
+	* en/Gtk/HTMLEmbedded.xml
+	* en/Gtk/HTMLEtchStyle.xml
+	* en/Gtk/HTMLStream.xml: Docs for HTML-related classes.
+	
+2004-09-09 Mike Kestner <mkestner@ximian.com>
+
+	* en/Gdk/*.xml: api updates.
+
+2004-09-06 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/Adjustment.xml
+	* en/Gtk/Callback.xml
+	* en/Gtk/Clipboard.xml
+	* en/Gtk/Quit.xml
+	* en/Gtk/ReadyEvent.xml
+	* en/Gtk/ImageStockData.xml
+	* en/Gtk/MovementStep.xml
+	* en/Gtk/RulerMetric.xml
+	* en/Gtk/Selection.xml
+	* en/Gtk/ThreadNotify.xml: Docs for assorted helper classes.
+
+2004-09-06 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/ProgressBar.xml
+	* en/Gtk/RadioButton.xml
+	* en/Gtk/RadioMenuItem.xml
+	* en/Gtk/Scrollbar.xml : Docs for assorted widgets.
+
+2004-09-06 Shane Landrum <epicene@pobox.com>
+	
+	* en/Gtk/HTML.xml
+	* en/Gtk/HTMLCommandType.xml
+	* en/Gtk/HTMLCursorSkipType.xml : Docs related to HTML widgets.
+	* en/Gtk/Button.xml
+	* en/Gtk/Widget.xml
+	* en/Gtk/Style.xml
+	* en/Gtk/Container.xml : Docs for major components.
+	
+2004-09-06 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/CommitArgs.xml
+	* en/Gtk/ConfigureEventArgs.xml
+	* en/Gtk/CursorMoveArgs.xml
+	* en/Gtk/CycleChildFocusArgs.xml
+	* en/Gtk/DeleteRangeArgs.xml
+	* en/Gtk/DirectionChangedArgs.xml
+	* en/Gtk/DrawPrintArgs.xml
+	* en/Gtk/EnterNotifyEventArgs.xml
+	* en/Gtk/FocusChildSetArgs.xml
+	* en/Gtk/FocusTabArgs.xml
+	* en/Gtk/FormatValueArgs.xml
+	* en/Gtk/FrameEventArgs.xml
+	* en/Gtk/HierarchyChangedArgs.xml
+	* en/Gtk/LeaveNotifyEventArgs.xml
+	* en/Gtk/MoveArgs.xml
+	* en/Gtk/MoveCurrentArgs.xml
+	* en/Gtk/MoveCursorArgs.xml
+	* en/Gtk/MoveFocusArgs.xml
+	* en/Gtk/MoveHandleArgs.xml
+	* en/Gtk/OnCommandArgs.xml
+	* en/Gtk/PageHorizontallyArgs.xml
+	* en/Gtk/ParentSetArgs.xml
+	* en/Gtk/ScrollChildArgs.xml
+	* en/Gtk/SubmitArgs.xml
+	* en/Gtk/TextEventArgs.xml : Event data docs.
+
+2004-09-04 Mike Kestner <mkestner@ximian.com>
+
+	* Makefile.am : use the ENABLE* ACSUBSTs in make update.
+
+2004-09-03 Mike Kestner <mkestner@ximian.com>
+
+	* en/Gdk/Pixmap.cs : updates to sigs of FromXpm* methods.
+	* en/Gtk/Init.cs : fix Check and remove AbiCheck.
+	* en/Gtk/Invisible.cs : add ctor.
+	* en/Gtk/NodeStore.cs : add GType prop.
+
+2004-09-02 Mike Kestner <mkestner@ximian.com>
+
+	* updater/* : rework of duncan's updater from monodoc that doesn't
+	cause so many whitespace issues and removes a few other annoyances.
+
+2004-08-29 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/Dialog.xml
+	* en/Gtk/HBox.xml
+	* en/Gtk/Image.xml
+	* en/Gtk/Init.xml
+	* en/Gtk/Invisible.xml
+	* en/Gtk/Misc.xml
+	* en/Gtk/NotebookTab.xml
+	* en/Gtk/Paned.xml
+	* en/Gtk/Quit.xml
+	* en/Gtk/RedirectArgs.xml
+	* en/Gtk/RulerMetric.xml
+	* en/Gtk/Scale.xml
+	* en/Gtk/ScrolledWindow.xml
+	* en/Gtk/Selection.xml
+	* en/Gtk/SelectionData.xml
+	* en/Gtk/TargetEntry.xml
+	* en/Gtk/TargetList.xml
+	* en/Gtk/TargetPair.xml
+	* en/Gtk/TextLogAttrCache.xml: Miscellaneous docs.
+	* ChangeLog: fixes for 2 prior commit logs.
+
+2004-08-29 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/Key.xml
+	* en/Gtk/KeySnoopFunc.xml: Docs for global hotkeys.
+	* en/Gtk/Range.xml
+	* en/Gtk/MoveSliderArgs.xml: Docs for number ranges.
+	* en/Gtk/Entry.xml
+	* en/Gtk/Label.xml: Small texty widgets docs.
+
+2004-08-29 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/Menu.xml
+	* en/Gtk/MenuDetachFunc.xml
+	* en/Gtk/MenuItem.xml
+	* en/Gtk/MenuPositionFunc.xml
+	* en/Gtk/MenuShell.xml: Docs for menu-related classes.	
+
+2004-08-29 Shane Landrum <epicene@pobox.com>
+	
+	* en/Gtk/TextSegCheckFunc.xml
+	* en/Gtk/TextSegCleanupFunc.xml
+	* en/Gtk/TextSegDeleteFunc.xml
+	* en/Gtk/TextSegLineChangeFunc.xml
+	* en/Gtk/TextSegSplitFunc.xml
+	* en/Gtk/TextLineSegment.xml
+	* en/Gtk/TextLineSegmentClass.xml: Marked 'do not use',
+	pending an answer on #64410.
+	
+2004-08-29 Shane Landrum <epicene@pobox.com>
+
+	* MarkDeletedArgs.xml
+	* MarkSetArgs.xml
+	* OrientationChangedArgs.xml
+	* SelectionClearEventArgs.xml
+	* SetBaseTargetArgs.xml
+	* SetFocusArgs.xml
+	* StateChangedArgs.xml
+	* SwitchPageArgs.xml
+	* TextEventArgs.xml: Event data.
+
+2004-08-29 Shane Landrum <epicene@pobox.com>
+
+	* HTML.xml
+	* HTMLBeginFlags.xml
+	* HTMLClassProperties.xml
+	* HTMLCommandType.xml
+	* HTMLEditorAPI.xml
+	* HTMLEditorEventType.xml
+	* HTMLFontStyleShift.xml
+	* HTMLParagraphStyle.xml
+	* HTMLPrintCallback.xml
+	* HTMLStream.xml
+	* HTMLStreamCloseFunc.xml
+	* HTMLStreamStatus.xml
+	* HTMLStreamTypesFunc.xml
+	* HTMLStreamWriteFunc.xml: Documented HTML widget and related classes.
+	
+2004-08-28 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/HSV.xml: Added docs for color selector.
+	* en/Gtk/ProximityInEventArgs.xml
+	* en/Gtk/ProximityOutEventArgs.xml
+	* en/Gtk/Widget.xml: Docs for proximity events and other events.
+	* en/Gtk/SizeAllocatedArgs.xml
+	* en/Gtk/SizeRequestedArgs.xml
+	* en/Gtk/Requisition.xml: Docs for widget size requests.
+	* en/Gdk/Rectangle.xml: Added docs.
+	* en/Gtk/CursorMoveArgs.xml
+	* en/Gtk/RemovedArgs.xml
+	* en/Gtk/SelectPageArgs.xml
+	* en/Gtk/SetBaseArgs.xml
+	* en/Gtk/ResponseArgs.xml
+	* en/Gtk/StyleSetArgs.xml: Event data.
+	* en/Gtk/Settings.xml: Added docs.
+	* en/Gtk/Table.xml: Added docs.
+	* en/Gtk/ThemeEngine.xml: Added docs.
+	* en/Gtk/StockManager.xml: Added docs, flagged some API that needs
+	review.
+	
+2004-08-28 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/Widget.xml: Added docs.
+	* en/Gtk/ExposeEventArgs.xml 
+	* en/Gtk/AddedArgs.xml
+	* en/Gtk/ActivateCurrentArgs.xml
+	* en/Gtk/AdjustBoundsArgs.xml
+	* en/Gtk/ChangeCurrentPageArgs.xml
+	* en/Gtk/ChangeValueArgs.xml
+	* en/Gtk/ChildAnchorInsertedArgs.xml
+	* en/Gtk/ChildAttachedArgs.xml
+	* en/Gtk/ChildDetachedArgs.xml
+	* en/Gtk/ConfigureEventArgs.xml
+	* en/Gtk/CycleHandleFocusArgs.xml
+	* en/Gtk/EditedArgs.xml
+	* en/Gtk/EnableDeviceArgs.xml
+	* en/Gtk/DisableDeviceArgs.xml
+	* en/Gtk/FocusedArgs.xml
+	* en/Gtk/LinkClickedArgs.xml
+	* en/Gtk/ExpandCollapseCursorRow.xml
+	* en/Gtk/FocusInEventArgs.xml
+	* en/Gtk/MoveFocusOutArgs.xml
+	* en/Gtk/OnUrlArgs.xml: Event data.
+	
+2004-08-28 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/TranslateFunc.xml: delegate docs.
+	* en/Gtk/Settings*.xml: settings classes docs, first pass.
+	* en/Gtk/Separator.xml: Documented protected constructor.
+	* en/Gtk/StockItem.xml: Documented translation domain.
+	* en/Gtk/Ruler.xml: Documented Ruler class.
+	* en/Gtk/SpinButton.xml: Documented SpinButton class.
+	* en/Gtk/TextMarkBody.xml: Internal class, do not use.
+	* en/Gtk/Submenu.xml: Documented submenus.
+	* en/Gtk/ItemFactory.xml
+	* en/Gtk/WindowKeysForeachFunc.xml
+	* en/Gtk/SurroundingDeletedArgs.xml: Added docs.
+	
+2004-08-27 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/Style.xml: bugfixes, more docs.
+	* en/Gtk/TextBTree.xml: internal class, do not use.
+	* en/Gtk/Accel*.xml: Accelerator-related docs.
+	* en/Gtk/CurrentParagraphAlignmentChangedArgs.xml
+	* en/Gtk/CurrentParagraphStyleChangedArgs.xml: Event data docs.
+	
+2004-08-27 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/WindowKeysForeachFunc.xml
+	* en/Gtk/Accessibility.xml
+	* en/Gtk/CallbackMarshal.xml
+	* en/Gtk/ColorSelectionChangePaletteFunc.xml
+	* en/Gtk/ColorSelectionDialog.xml
+	* en/Gtk/Container.xml
+	* en/Gtk/DestroyNotify.xml
+	* en/Gtk/IconSet.xml
+	* en/Gtk/ScrollAdjustmentsSetArgs.xml
+	* en/Gtk/ScrollType.xml 
+	* en/Gtk/MoveFocusArgs.xml : Miscellaneous docs.
+	* en/Gtk/RB*.xml : Internal classes. Do not use.
+	* en/Gtk/Style*.xml : Began documenting style-related classes.
+	
+2004-08-27 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/TagAddedArgs.xml
+	* en/Gtk/TagAppliedArgs.xml
+	* en/Gtk/TagChangedArgs.xml
+	* en/Gtk/TagRemovedArgs.xml : Docs for event data classes.
+	
+2004-08-26 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/TreeModelSort.xml
+	* en/Gtk/TreeView.xml: XML fixes.
+	* en/Gtk/TextWindow.xml: Added docs.
+	* en/Gtk/TextIter.xml: Elaborated existing docs.
+	* en/Gtk/TextCharPredicate: Delegate for TextIter; docs.
+	* en/Gtk/TextTagTableForeach.xml: Added docs.
+	* en/Gtk/InsertTextArgs.xml: Event arguments.
+	* en/Gtk/TextTag.xml: Added docs.
+	* en/Gtk/TextCounter.xml: Internal class. Do not use.
+	* en/Gtk/TextToggleBody.xml: Internal class. Do not use.
+	* en/Gtk/TextTagInfo.xml: Internal class. Do not use.
+
+	
+2004-08-24 Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/TreeView.xml:
+	* en/Gtk/TreeModel.xml:
+	* en/Gtk/TreeModelSort.xml:
+	* en/Gtk/TreeSortable.xml:
+	* en/Gtk/ListStore.xml: Added docs for list/tree classes; made them
+	consistent across similar classes.
+	* en/Gtk/TreeRowReference.xml: Marked internal-only.
+	
+2004-08-24  Mike Kestner  <mkestner@ximian.com>
+
+	* en/Gdk/Drawable.xml : add DrawPolygon overload and doc both.
+	* en/Gdk/Pixbuf.xml : add RenderThresholdAlpha overload docs.
+	* en/Gtk/Style.xml : fix signature of PaintPolygon.
+
+2004-08-22  Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/RowActivatedArgs.xml
+	* en/Gtk/RowCollapsedArgs.xml
+	* en/Gtk/RowExpandedArgs.xml
+	* en/Gtk/TestCollapseRowArgs.xml
+	* en/Gtk/TestExpandRowArgs.xml: Event argument delegate docs.
+	* en/Gtk/TreeView.xml: Event docs.
+	* en/Gtk/TreeViewColumnDropFunc.xml
+	* en/Gtk/TreeViewMappingFunc.xml
+	* en/Gtk/TreeViewSearchEqualFunc.xml: delegate docs for TreeView
+	
+2004-08-20  Mike Kestner  <mkestner@ximian.com>
+
+	* en/Atk/Relation.xml : update ctor to new sig.
+
+2004-08-19  Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/DeleteFromCursorArgs.xml
+	* en/Gtk/DeleteType.xml: Docs for deletion from text widgets.
+	* en/Gtk/Widget.xml: Added some event docs.
+	* en/Gtk/PopulatePopupArgs.xml: Event data for text widget popups.
+	* en/Gtk/TextView.xml: Docs for some events.
+	* en/Gtk/HTML.xml: Minor wording change, thanks to Ben Maurer.
+	* en/Gtk/Notebook.xml: Documented an event, minor style edits.
+
+2004-08-19  Shane Landrum <epicene@pobox.com>
+	
+	* en/Gtk/ClipboardReceivedFunc.xml: Added docs for classes related
+	to drag and drop.
+	* en/Gtk/SelectionData.xml: Added docs for DND selection data.
+	* en/Gtk/SelectionGetArgs.xml: Event data for selection get events.
+	* en/Gtk/SelectionReceivedArgs.xml: Event data for selection
+	receive events.
+
+2004-08-19  Shane Landrum <epicene@pobox.com>
+
+	Docs for tree-related classes:
+	* en/Gtk/TreeView.xml
+	* en/Gtk/TreeSelection.xml
+	* en/Gtk/TreeSelectionForeachFunc.xml: Added docs for tree operations.
+	* en/Gtk/RowsReorderedArgs.xml: Event data for list/tree datamodels.
+	* en/Gtk/SelectCursorRowArgs.xml: Event data for TreeView event.
+	* en/Gtk/TreeSelection.xml: Cleanup of extraneous TBA.
+
+2004-08-19  Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/RowHasChildToggledArgs.xml
+	* en/Gtk/RowInsertedArgs.xml
+	* en/Gtk/RowChangedArgs.xml
+	* en/Gtk/RowDeletedArgs.xml: Docs for event 
+	argument classes related to ListStore.
+	* en/Gtk/ListStore.xml: minor wording fixes.
+	
+2004-08-18  Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/ListStore.xml: Added docs.
+	
+2004-08-13  Shane Landrum <epicene@pobox.com>
+
+	* DragBeginArgs.xml
+	* DragDataDeleteArgs.xml
+	* DragDataGetArgs.xml
+	* DragDataReceivedArgs.xml
+	* DragDropArgs.xml
+	* DragEndArgs.xml
+	* DragLeaveArgs.xml
+	* DragMotionArgs.xml: Filled in event properties.
+
+2004-08-13  Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/Widget.xml: Filled in some event information,
+	removed a lot of extraneous "To be added" in remarks fields
+
+2004-08-13  Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/TextAppearance.xml
+	* en/Gtk/TextAttributes.xml: Classes to control text presentation.
+
+2004-08-13  Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/TreeCellDataFunc.xml
+	* en/Gtk/TreeDataList.xml
+	* en/Gtk/TreeDestroyCountFunc.xml
+	* en/Gtk/TreeIter.xml
+	* en/Gtk/TreeIterCompareFunc.xml
+	* en/Gtk/TreeModel.xml
+	* en/Gtk/TreeModelForeachFunc.xml
+	* en/Gtk/TreeSelectionFunc.xml
+	* en/Gtk/TreeSortable.xml
+	* en/Gtk/TreeView.xml: Various updates to tree object docs.
+	
+2004-08-13  Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/*Args.xml: Documented many handler arguments classes.
+
+2004-08-13  Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/HTML.xml
+	* en/Gtk/HTMLCommandType.xml
+	* en/Gtk/HTMLFontStyle.xml
+	* en/Gtk/HTMLParagraphAlignment.xml
+	* en/Gtk/HTMLSaveReceiverFn.xml: documented HTML widget classes.
+	
+2004-08-08  Hector E. Gomez Morales  <hectorgm@ciencias.unam.mx>
+
+	* en/Gtk/AccelGroup.xml
+	* en/Gtk/AccelGroupEntry.xml
+	* en/Gtk/AccelKey.xml
+	* en/Gtk/RcProperty.xml
+	* en/Gtk/TreeDragSource.xml: Fixed errors in tags, make assemble now works.
+	
+2004-08-05  Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/Rc*: Filled in all "to be added" for RC-file
+	subsystem.
+	* en/Gtk/Accel*: Added docs about accelerator keys.
+
+2004-08-04  Shane Landrum <epicene@pobox.com>
+
+	* en/Gtk/*: docs for many tree-related methods,
+	assorted others.
+
+2004-08-01  Shane Landrum <epicene@pobox.com>
+
+	* en/Pango/*: Filled in all "To be added"; cleaned
+	up existing docs and made them more consistent.
+	
+2004-07-27  John Luke  <john.luke@gmail.com>
+
+	some GLib and Atk docs
+
+2004-07-21  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/TextView.xml:
+	* en/Gtk/TextIter.xml: documented the rest
+
+2004-07-16  John Luke  <jluke@cfl.rr.com>
+
+	* en/Pango/*: doc'ed some more pango stuff
+
+2004-07-11  John Luke  <jluke@cfl.rr.com>
+
+	* en/Vte*: some Vte docs
+	* en/Pango/Context.xml: doc'ed
+
+2004-07-07  Jasper Van Putten <jaspervp@gmx.net>
+
+	* en/Gtk/*.xml : docs for Notebook and RadioButton.
+
+2004-07-06  Peter Johanson <latexer@gentoo.org>
+
+	* en/Gnome/*.xml : docs for ColorPicker.
+
+2004-07-02  Mike Kestner  <mkestner@ximian.com>
+
+	* en/GLib/*.xml : more glib docs.
+
+2004-07-02  Mike Kestner  <mkestner@ximian.com>
+
+	* en/GLib/*.xml : docs for Boxed, ConnectBeforeAttribute, and 
+	DefaultSignalHandlerAttribute.
+
+2004-07-02  Peter Johanson <latexer@gentoo.org>
+
+	* en/Art/*.xml : docs for some Art API.
+
+2004-06-29  Mike Kestner  <mkestner@ximian.com>
+
+	* en/Gdk/Key.xml : script fill summary tags.  There isn't a lot of
+	valuable information to be added here, so we're just using the member
+	name + " key value" for the summary.
+
+2004-06-29  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : remove To be added from enum <remarks> since they aren't
+	rendered.  Monodoc needs to be enhanced to render if they are there,
+	but we should normally put enum member docs in the summary, not remarks.
+
+2004-06-24  Mike Kestner  <mkestner@ximian.com>
+
+	* en/Gtk/Global.xml : finish.  there's a lot of crap in there.
+	* en/Gtk/IMContext.xml : docs for FilterKeypress ctors Reset and Commit.
+
+2004-06-24  Mike Kestner  <mkestner@ximian.com>
+
+	* en/Pango/Layout.xml : document IndexToPosition.
+
+2004-06-24  Mike Kestner  <mkestner@ximian.com>
+
+	* en/GLib/Timeout.xml : finish the class and Add docs.
+
+2004-06-24  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : add back the enumtype Value__ fields with "Do not use"
+	docs.  Monodoc doesn't show these nodes as fields, but needs them for
+	non-int enums.
+
+2004-06-24  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : kill all the dead files where types have been removed.
+	Mark several gtkhtml types as being in gtkhtml-sharp, not gtk-sharp.
+	Another 601 dead TBAs.
+
+2004-06-24  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : document event args classes and ctors via script-fu. 
+	Knocks off another 944 TBAs.
+
+2004-06-24  Jamin Philip Gray <jamin@pubcrawler.org>
+
+	* en/Gdk/EventButton.xml : documented members.
+
+2004-06-23  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : document event handler delegates via script-fu. 400 TBAs.
+
+2004-06-21  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : document ctor(GType) members via script-fu. 476 TBAs.
+
+2004-06-21  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : document GType props via script-fu. 620 TBAs killed.
+
+2004-06-19  Larry Ewing  <lewing@ximian.com>
+
+	* en/Gnome/CanvasItem.xml: update the documentation no that
+	the binding has been fixed.
+
+	* en/Gdk/Pixdata.xml: fixup the Pixdata docs now that the binding
+	is fixed.
+
+2004-06-19  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/*.xml: fix examples so they compile, are children of
+	<remarks /> so they are editable and spaced right, and some
+	miscellaneous fixes and updates
+
+2004-06-17  Mike Kestner  <mkestner@ximian.com>
+
+	* en/Gtk/Window.xml : document remaining TBAs.
+
+2004-06-17  Mike Kestner  <mkestner@ximian.com>
+
+	* scan-deprecations.cs : kill value__ fields of enum types too.
+	* en/*/*.xml : remove value__ fields from enum types. 400 more tba's.
+
+2004-06-15  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : generated summary and remarks for all the On* virtual
+	default handler methods. 700 more To be addeds gone.
+
+2004-06-14  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : run updater to 0.98 API.
+
+2004-06-01  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : run updater to fix Rgb method sigs. And LayoutLine.
+
+2004-06-07  Jeroen Zwartepoorte  <jeroen@xs4all.nl>
+
+	* en/Gtk/Widget.xml: Documented the FocusLineWidth and Flags properties.
+
+2004-06-01  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*/*.xml : run updater to add new protected ctor () 's.
+
+2004-06-01  Mike Kestner  <mkestner@ximian.com>
+
+	* en/Gtk/Widget.xml : move existing docs to new method sig.
+
+2004-05-31  Mike Kestner  <mkestner@ximian.com>
+
+	* en/Gdk/Rectangle.xml : docs for newly changed Isect and Union.
+	* en/Gdk/WindowClass.xml : move existing docs to new member names.
+	* en/Gtk/Widget.xml : run updater for Flags prop addition.
+
+2004-05-28  Mike Kestner  <mkestner@ximian.com>
+
+	* Makefile.am : fix disthook
+	* en/*Sharp.xml : kill
+	* en/* : run updater again for the TreeModel API change.
+
+2004-05-28  Mike Kestner  <mkestner@ximian.com>
+
+	* en/* : put back all the real docs the updater tossed.
+
+2004-05-28  Mike Kestner  <mkestner@ximian.com>
+
+	* en/* : run updater. fix a few *Sharp copy/pastisms.
+
+2004-05-27  Mike Kestner  <mkestner@ximian.com>
+
+	* en/* : run updater
+
+2004-04-27  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gdk/Threads.xml: document
+	* en/Gtk/TargetFlags.xml: document
+	* en/Gtk/TreeSelection.xml: add example
+	* en/Pango/Layout.xml: add example of drawing text to a Layout
+
+2004-04-12  Mike Kestner  <mkestner@ximian.com>
+
+	* en/GLib/Object.xml : some more docs for the Raw property.
+
+2004-03-17  Alex Combas  <yummyfiddlehead@yahoo.com>
+	* en/Gtk/Accel.xml: Full doc.
+
+2004-03-08  Hector E. Gomez Morales  <hectorgm@ciencias.unam.mx>
+	* en/Art/Global.xml
+	* en/Art/Render.xml
+	* en/Art/Rgb.xml
+	* en/Art/Rgba.xml
+	* en/Art/Uta.xml
+	* en/Gda/Command.xml
+	* en/Gda/Field.xml
+	* en/Gda/FieldAtributes,xml
+	* en/Gda/Parameter.xml
+	* en/Gdk/*.xml
+	* en/Glade/XML.xml
+	* en/Pango/Analysis.xml
+	* en/Pango/AttrIterator.xml
+	* en/Pango/Context.xml
+	* en/Pango/EngineLang.xml
+	* en/Pango/EngineShape.xml
+	* en/Pango/FontFamily.xml
+	* en/Pango/FontMap.xml
+	* en/Pango/FontMetrics.xml
+	* en/Pango/Global.xml
+	* en/Pango/GlyphItem.xml
+	* en/Pango/GlyphString.xml
+	* en/Pango/Layout.xml
+	* en/Pango/LayoutLine.xml: Updated and/or removed various nodes.
+	
+2004-03-05  Hector E. Gomez Morales  <hectorgm@ciencias.unam.mx>
+	* en/* : Created TODO files for every namespace (except *Sharp namespaces).
+	
+2004-02-29  Hector E. Gomez Morales  <hectorgm@ciencias.unam.mx>
+	* Changelog: Corrected bogus year dates.
+	* en/Gtk/TODO: updated TODO list.
+	* en/Atk/EditableText.xml
+	* en/Atk/Free.xml
+	* en/Atk/NoOpObject.xml
+	* en/Atk/Object.xml
+	* en/Atk/StateSet.xml
+	* en/Gnome/CanvasProxy.xml
+	* en/Gnome/CanvasRichText.xml
+	* en/Gnome/Config.xml
+	* en/Gnome/DateEdit.xml
+	* en/Gnome/Entry.xml
+	* en/Gnome/FileEntry.xml
+	* en/Gnome/Font.xml
+	* en/Gnome/FontFamily.xml
+	* en/Gnome/GlyphList.xml
+	* en/Gnome/IconList.xml
+	* en/Gnome/IconTheme.xml
+	* en/Gnome/Pgl.xml
+	* en/Gtk/Combo.xml
+	* en/Gtk/ListStore.xml
+	* en/Gtk/RadioMenuItem.xml
+	* en/Gtk/StockItem.xml
+	* en/Gtk/StockManager.xml
+	* en/Gtk/TextBuffer.xml
+	* en/Gtk/TextIter.xml
+	* en/Gtk/TextView.xml
+	* en/Gtk/TooltipsData.xml
+	* en/Gtk/TreeModelSort.xml
+	* en/Gtk/TreeStore.xml
+	* en/Gtk/TreeView.xml
+	* en/Gtk/Widget.xml 
+	* en/Gtk/Window.xml: Restored and/or removed various nodes.
+	* en/Gtk/Accel.xml: Removed deprecated GroupsFromObject Method.
+	* en/Gtk/Application: Removed deprecated CurrentEvent Property.
+	* en/Gtk/Container.xml: FocusChain and Children update.
+	* en/Gtk/DeleteEventArgs.xml: Removed deprecated Event Property.
+	* en/Gtk/DestroyEventArgs.xml: Removed deprecated Event Property.	
+	* en/Gtk/MenuItem.xml: ToggleSizeRequest update.
+	* en/Gtk/IMContext.xml: Removed deprecated GetPreeditString Method.
+	* en/Gtk/IMContextSimple.xml: Removed deprecated AddTable Method.
+	* en/Gtk/Init.xml: Removed deprecated AbiCheck Method
+	* en/Gtk/MapEventArgs.xml: Removed deprecated Event Property.
+	* en/Gtk/MenuItem.xml: Removed deprecated ToggleSizeRequest Method.
+	* en/Gtk/NoExposeEventArgs.xml: Removed deprecated Event Property.
+	* en/Gtk/SelectionData.xml: Removed deprecated Set Method. 
+	* en/Gtk/TextChildAnchor.xml: Widget update. 
+	* en/Gtk/TreeIter.xml: Stamp update. 
+	* en/Gtk/TreeModel.xml: EmitRowsReordered update. 
+	* en/Gtk/TreeRowReference.xml: Removed deprecated Reordered Method. 
+	* en/Gtk/TreeSelection.xml: Removed deprecated GetSelectedRows Method. 
+	* en/Gtk/TreeViewColumn.xml: Removed deprecated CellRenders Property.
+	* en/Gtk/UnmapEventArgs.xml: Removed deprecated Event Property.
+	
+2004-02-26  Mike Kestner  <mkestner@ximian.com>
+
+	* scan-deprecations.cs : little xpath tool to inspect deprecates.
+
+2004-02-26  Mike Kestner  <mkestner@ximian.com>
+
+	* Vte/Gnome/Gtk : add some new doc files.
+
+2004-02-26  Mike Kestner  <mkestner@ximian.com>
+
+	* All: run updater and kill stubbed deprecates
+
+2004-02-26  Mike Kestner  <mkestner@ximian.com>
+
+	* Atk/Gdk/Gtk : add some new doc files.
+
+2004-02-26  Mike Kestner  <mkestner@ximian.com>
+
+	* Pango/*.xml : run updater and kill stubbed deprecates
+	* Atk/*.xml : run updater and kill stubbed deprecates
+	* Gdk/*.xml : run updater and kill stubbed deprecates
+	* Gtk/*.xml : run updater and kill stubbed deprecates
+
+2004-02-25  Mike Kestner  <mkestner@ximian.com>
+
+	* All: update events to new handler namespaces.
+
+2004-02-25  Mike Kestner  <mkestner@ximian.com>
+
+	* en/GLibSharp.xml : Update Summary.
+	* en/GtkSharp.xml : Update Summary.
+
+2004-02-25  Mike Kestner  <mkestner@ximian.com>
+
+	* en/*.xml : remove toplevel xml files for killed *Sharp namespaces.
+
+2004-02-25  Mike Kestner  <mkestner@ximian.com>
+
+	* */*Handler.xml : move all signal delegates from *Sharp to base namespaces.
+
+2004-02-25  Mike Kestner  <mkestner@ximian.com>
+
+	* GtkSharp/*Delegate.xml : kill.
+	* GtkSharp/*Signal.xml : kill.
+
+2004-02-25  Mike Kestner  <mkestner@ximian.com>
+
+	* GtkSharp/*Native.xml : kill.
+
+2004-02-25  Mike Kestner  <mkestner@ximian.com>
+
+	* */*Wrapper.xml : kill all.  These are internal classes.
+
+2004-02-25  Mike Kestner  <mkestner@ximian.com>
+
+	* All: move all signal args from *Sharp to base namespaces.
+
+2004-01-13  Peter Williams  <peter@newton.cx>
+
+	* en/Gtk/Application.xml: Update Init, InitCheck functions
+	for new progname argument. Fix a paste-o in the docs for InitCheck.
+
+2004-01-13  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/TreeSelection.xml: add example
+
+2004-01-12  Hector E. Gomez Morales  <hgomez_36@flashmail.com>
+
+	* en/Gtk/Ctree.xml
+	* en/Gtk/Style.xml
+	* en/Gtk/Tree.xml: First draft.
+	* en/Gtk/TODO: updated.
+	* en/Gtk/Widget.xml: Documented the remaining methods and properties.
+	* en/Gtk/Window.xml: Documented all methods excepts the overloads and all the properties.
+
+2004-01-11  John Luke  <jluke@cfl.rr.com>
+	
+	* en/Gtk/RadioButton.xml:
+	* en/Gtk/Notebook.xml:
+	* en/Gtk/NotebookPage.xml:
+	* en/GConf/ClientBase.xml: update for recent cvs changes
+
+2004-01-08  John Luke  <jluke@cfl.rr.com>
+	
+	* */*/.xml: run updater
+	* en/Gtk/TreView.xml: correct GetRowExpanded docs
+	* en/Gtk/RadioButton.xml: documented
+
+2003-12-22  John Luke  <jluke@cfl.rr.com>
+
+	* en/GLib/GType.xml:
+	* en/GLib/DefaultSignalHandlerAttribute.xml: added
+	* */*/.xml: run updater
+
+2003-12-08  John Luke  <jluke@cfl.rr.com>
+
+	* en/Art/Rgba.xml: update
+	* en/Gnome/FileEntry.xml:
+	* en/Gnome/Druid.xml:
+	* en/Gnome/DruidPage.xml:
+	* en/Gnome/DruidPageEdge.xml:
+	* en/Gnome/DruidPageStandard.xml: documented
+	
+2003-12-04  John Luke  <jluke@cfl.rr.com>
+
+	* All: run updater
+	
+2003-11-22  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gnome/Print.xml: add example
+
+2003-11-18  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gnome/CanvasPixbuf.xml: correct HeightInPixels from Sebastian <scut@nb.in-berlin.de>
+
+2003-11-18  Peter Williams  <peter@newton.cx>
+ 
+	* en/Gtk/NodeStore.xml: Document new GetNode functions.
+ 
+2003-11-17  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/Socket.xml: documented
+	
+2003-11-16  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gdk/Atom.xml: documented
+	* en/Gtk/Clipboard.xml: documented
+	* en/Gtk/Stock.xml: documented
+	* en/Gtk/StockItem.xml: documented
+
+2003-11-12  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/Quit.xml: documented
+	* en/Gtk/TooltipsData.xml: documented
+	* en/Gtk/TODO: update
+	* en/Gtk/ToolbarSpaceStyle.xml: documented
+	
+2003-11-05  Mike Kestner  <mkestner@ximian.com>
+
+	* en/Gtk/NodeStore.xml : documented
+
+2003-11-05  Mike Kestner  <mkestner@ximian.com>
+
+	* en/Gtk/TreeNode.xml : documented
+	* en/Gtk/TreeView.xml : documented NodeStore ctor.
+
+2003-11-05  Mike Kestner  <mkestner@ximian.com>
+
+	* en/Gtk/ITreeNode.xml : documented
+	* en/Gtk/TreeNodeAddedHandler.xml : documented
+	* en/Gtk/TreeNodeRemovedHandler.xml : documented
+
+2003-11-05  Mike Kestner  <mkestner@ximian.com>
+
+	* en/Gtk/TreeNodeAttribute.xml : documented
+	* en/Gtk/TreeNodeValueAttribute.xml : documented
+
+2003-11-04  John Luke  <jluke@cfl.rr.com>
+
+	* en/*/*.xml: run updater
+
+2003-10-27  John Luke  <jluke@cfl.rr.com>
+
+	* en/*/*.xml: run updater
+	
+2003-10-22  Hector E. Gomez Morales  <hgomez_36@flashmail.com>
+	
+	* en/Gtk/Drag.xml: fix some typos and errors.
+	* en/Gtk/Window.xml: Almost done, some properties and events missing.
+	* en/Gtk/WidgetFlags.xml: fix some errors.
+	* en/Gtk/TODO: update missing list.
+
+2003-10-14  Martin Willemoes Hansen  <mwh@sysrq.dk>
+
+	* en/AtkSharp.xml: Added
+	* en/GLibSharp.xml: Added
+	* en/GdaSharp.xml: Added
+	* en/GdkSharp.xml: Added
+	* en/GladeSharp.xml: Added
+	* en/GnomeDbSharp.xml: Added
+	* en/GnomeSharp.xml: Added
+	* en/GtkSharp.xml: Added
+	* en/PangoSharp.xml: Added
+	* en/GConf/ChangeSet.xml: Documented finalize
+	* en/GConf/NotifyEventHandler.xml: Fixed ecma-style compliance
+	* en/GConf.PropertyEditors.xml: Added
+	* Makefile: checks if any changes are made to en/*.xml
+
+2003-10-13  John Luke  <jluke@cfl.rr.com>
+
+	* en/*/*.xml: fix finalize signature (override not virtual)
+	
+2003-10-12  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/HTML.xml:  call begin before Editable = true, update links, normalize
+	* makefile: add gtkhtml to update dirs
+	* en/Gnome/PaperSelectorFlags.xml
+	* en/Gnome/PrintButtons.xml
+	* en/Gnome/PrintDialogFlags.xml
+	* en/Gnome/PrintDialogRangeFlags.xml
+	* en/GtkSharp/TextEventArgs.xml
+	* en/GtkSharp/TextEventHandler.xml
+	* en/GtkSharp/WidgetEventArgs.xml
+	* en/GtkSharp/WidgetEventHandler.xml: add these
+	
+	* en/*/*.xml: run updater
+
+	* en/Gtk/MessageDialog.xml:
+	* en/Gtk/Menu.xml:
+	* en/Gtk/AccelLabel.xml:
+	* en/Gtk/Alignment.xml: remove IWrapper duplicates
+	
+2003-10-09  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gnome/About.xml: add note about destroy on close event
+
+2003-10-05  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/TreeStore.xml: 
+	* en/Gtk/TreeModel.xml: first pass through these two monsters
+	
+2003-10-04  Hector E. Gomez Morales  <hgomez_36@flashmail.com>
+
+	* en/Gtk/Icon.xml
+	* en/Gtk/ItemFactory.xml: Full docs.
+	* en/Gtk/TODO: Added file with list of missing Gtk docs.
+
+2003-10-03  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gnome/Popup.xml: documented w/ simple example
+	* en/Gtk.Menu.xml: popup example and parameter fix
+
+2003-09-25  Hector E. Gomez Morales  <hgomez_36@flashmail.com>
+
+	* en/Gtk/Accessible.xml
+	* en/Gtk/CellEditable.xml
+	* en/Gtk/Drag.xml: Full docs.
+	* en/Gtk/Widget.xml: Fixes and some updates.
+	* en/Gtk/WidgetFlags.xml: Full doc.
+	* en/Gtk/Window.xml: Fixes and some updates, still missing to document the properties.
+
+2003-09-23  John Luke  <jluke@cfl.rr.com>
+
+	* en/Art.xml:
+	* en/Gda.xml:
+	* en/GnomeDb.xml: add descriptions
+	
+2003-09-20  Hector E. Gomez Morales  <hgomez_36@flashmail.com>
+
+	* en/Gtk/Window.xml: Nearly all methods documented.
+	* en/Gtk/Widget.xml: SizeRequest method documented.
+
+2003-09-20  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gnome/AppBar.xml: documented
+	* en/Gnome/App.xml: half documented
+	* en/Gnome/Entry.xml: half documented
+	* en/Gnome/Window.xml: add some info
+	
+2003-09-17  John Luke  <jluke@cfl.rr.com>
+	
+	* en/*/*.xml: run the updater
+	Add Art, Gda, and GnomeDb docs
+
+2003-09-13  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/TreePath.xml: add info for ctor (string path)
+	
+2003-09-09  Duncan Mak  <duncan@ximian.com>
+
+	* en/Glade: Update the docs to include new helper functions in
+	Glade.XML. Also do some XML normalization.
+x
+2003-09-04  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/TextBuffer.xml: fix some typos
+	
+2003-08-29  John Luke  <jluke@cfl.rr.com>
+
+	* en/GLib/*.xml: update, transfer info from inline comments
+	* en/GtkSharp/SignalArgs.xml: transfer info from inline comments
+	* en/GtkSharp/ObjectManager.xml: transfer info from inline comments
+	* en/GtkSharp/SignalCallback.xml: transfer info from inline comments
+	
+2003-08-25  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/Layout.xml: mostly documented
+	* en/Gtk/Timeout.xml: documented
+
+2003-08-18  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gnome/Help.xml: documented
+	* en/Gnome/CanvasText.xml: add example from monkeyguide
+
+2003-08-09  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/Entry.xml: add example
+
+2003-08-06  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/Notebook.xml: add example, see references
+	* en/Gtk/Statusbar.xml: add example
+
+2003-08-06  Xavier Amado <xavier@blackbloodstudios.com>
+
+	* /en/Gtk/Notebook.xml: documented the CurrentPageWidget property
+                                                                           
+2003-08-04  Martin Willemoes Hansen <mwh@sysrq.dk>
+	* /en/Gnome/InteractFunction.xml:
+	* /en/Gnome/ModuleClassInitHook.xml:
+	* /en/Gnome/ModuleHook.xml:
+	* /en/Gnome/ModuleInitHook.xml:
+	* /en/Gnome/TriggerActionFunction.xml:
+	* /en/Gnome/UISignalConnectFunc.xml: documented
+
+2003-08-03  Martin Willemoes Hansen <mwh@sysrq.dk>
+
+	* /en/Gnome/ClientState.xml:
+	* /en/Gnome/FileDomain.xml:
+	* /en/Gnome/HelpError.xml:
+	* /en/Gnome/PreferencesType.xml:
+	* /en/Gnome/TriggerType.xml:
+	* /en/Gnome/URLError.xml: documented
+
+2003-08-02  Martin Willemoes Hansen <mwh@sysrq.dk>
+
+	* /en/Gnome/UIPixmapType.xml:
+	* /en/Gnome/UIInfoConfigurableTypes.xml:
+	* /en/Gnome/IconListMode.xml:
+	* /en/Gnome/FontPickerMode.xml:
+	* /en/Gnome/DateEditFlags.xml:
+	* /en/Gnome/ClientFlags.xml:
+	* /en/Gnome/DialogType.xml:
+	* /en/Gnome/EdgePosition.xml: 
+	* /en/Gnome/InteractStyle.xml:
+	* /en/Gnome/RestartStyle.xml: 
+	* /en/Gnome/SaveStyle.xml: 
+	* /en/Gnome/UIInfoType.xml: documented
+
+2003-08-01  Martin Willemoes Hansen <mwh@sysrq.dk>
+
+	* /en/Gtk/MessageDialog.xml: Fixed remark.
+
+2003-08-01  John Luke  <jluke@cfl.rr.com>
+
+	* en/*.xml: use C#-style names, ex Gdk instead of GDK
+	* en/Gtk/TreeView.xml: add some info
+	* en/Gtk/MessageDialog.xml: clean up
+
+2003-07-31  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/TreeIter.xml: documented except Zero, Copy, and Free
+	* en/Gtk/TreeViewColumn.xml: documented	
+	
+2003-07-30  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gnome/CanvasShape.xml: documented.
+
+2003-07-30  Duncan Mak  <duncan@ximian.com>
+	
+	* en/Gdk/EventNoExpose.xml: 
+	* en/Gdk/EventButton.xml: Added hyperlinks.
+
+2003-07-30  Duncan Mak  <duncan@ximian.com>	
+
+	* en/Gnome/CanvasWidget.xml: 
+	* en/Gnome/CanvasRect.xml: 
+	* en/Gnome/CanvasRE.xml: 
+	* en/Gnome/CanvasPolygon.xml:
+	* en/Gnome/CanvasPixbuf.xml: 
+	* en/Gnome/CanvasLine.xml:
+	* en/Gnome/CanvasItem.xml:
+	* en/Gnome/CanvasGroup.xml:
+	* en/Gnome/CanvasEllipse.xml:
+	* en/Gnome/CanvasClipgroup.xml:
+	* en/Gnome/CanvasBpath.xml:
+	* en/Gnome/Canvas.xml: fully documented.
+	
+2003-07-29  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/Label.xml: Finished documentation for the Gtk.Label
+	class.
+
+2003-07-28  Duncan Mak  <duncan@ximian.com>
+
+	* en/Glade/XML.xml: Added some documentation.
+
+2003-07-27  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/CheckButton.xml: add small example, update
+	* en/Gtk/Combo.xml: add example, update
+	
+	* en/Gtk/TreeModelFlags.xml:
+	* en/Gtk/RcFlags.xml: more documentation from 
+	Jonathan Kessler <Jwkpiano1@comcast.net>.
+
+2003-07-26  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/Orientation.xml: 
+	* en/Gtk/MetricType.xml:
+	* en/Gtk/ObjectFlags.xml: more documentation from 
+	Jonathan Kessler <Jwkpiano1@comcast.net>.
+
+2003-07-25  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/DestDefaults.xml: more documentation from 
+	Jonathan Kessler <Jwkpiano1@comcast.net>.
+
+	* en/Gtk/TreeViewColumnSizing.xml: added documentation from
+	Jonathan Kessler <Jwkpiano1@comcast.net>.
+
+2003-07-24  John Luke  <jluke@cfl.rr.com>
+
+	* en/Rsvg.xml: add summary page
+	* en/GConf.xml: add summary page
+
+2003-07-22  John Luke  <jluke@cfl.rr.com>
+
+	* en/Rsvg: add directory
+	* en/Rsvg/*.xml: add initial docs
+	* en/Rsvg/Tool.xml: add example
+	* en/Gtk/Menu.xml: add example
+
+2003-07-22  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/FSButton.xml: Removed the constructor, per the custom
+	file update and added documentation.
+
+2003-07-20  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/FileSelection.xml: update and add example
+
+2003-07-19  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/OptionMenu.xml: documented
+	
+2003-07-18  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/TreeView.xml: add TreeViewDemo example
+	* en/Pango/Weight.xml: remove trailing "n"
+
+2003-07-18  Duncan Mak  <duncan@ximian.com>
+
+	* en/Pango/Alignment.xml:
+	* en/Pango/AttrTyoe.xml:
+	* en/Pango/CoverageLevel.xml:
+	* en/Pango/Direction.xml:
+	* en/Pango/FontMask.xml:
+	* en/Pango/OTTableType.xml:
+	* en/Pango/Stretch.xml:
+	* en/Pango/Style.xml:
+	* en/Pango/TabAlign.xml:
+	* en/Pango/Underline.xml:
+	* en/Pango/Variant.xml:
+	* en/Pango/Weight.xml:
+	* en/Pango/WrapMode.xml: All enumerations in Pango are documented.
+	
+
+2003-07-17  John Luke  <jluke@cfl.rr.com>
+	
+	* en/Gtk/CellRendererMode.xml: documented
+	* en/Gtk/CellRendererState.xml: documented
+	* en/Gtk/CellRenderer.xml: documented
+	* en/Gtk/ImageMenuItem.xml: documented
+	
+2003-07-17  Duncan Mak  <duncan@ximian.com>
+
+	* Fixed another off-by-one error in the enums from the last
+	commit. I'm such a doofus.
+
+	Also added the new enums that were missing from last night's
+	commit.
+
+2003-07-17  Duncan Mak  <duncan@ximian.com>
+
+	* Added new documentation files for the new classes, and fixed the
+	off-by-one enum member name bug that was introduced in the previous
+	commit.
+
+2003-07-16  John Luke  <jluke@cfl.rr.com>
+	
+	* en/Gtk/CellRendererText.xml: documented, except one event and method
+	* en/Gtk/CellRendererToggle.xml: documented
+	* en/Gtk/CellRendererPixbuf.xml: documented
+	* en/GConf/Client.xml: documented
+	* en/Gnome/About.xml: documented
+	
+2003-07-16  Duncan Mak  <duncan@ximian.com>
+
+       * All enumerations: Fixed the TypeSignature and MemberSignature in all
+       documentation files for Enumerations.
+
+2003-07-15  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/ItemFactory.xml: Rename GetItemByAction and
+	GetWidgetByAction to GetItem and GetWidget, to reflect metadata
+	changes.
+
+	* en/Gtk/TextBuffer.xml: Remove all references to *ByName methods,
+	as they are now all overrides.
+
+	* en/Gtk/HTML.xml: Update to use the new Begin overloads, since
+	bug #46427 is fixed.
+
+2003-07-14  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/TextView.xml: all documented except for events.
+
+	* en/Gtk/TextTag.xml: added the missing properties.
+
+2003-07-13  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/TextTag.xml:
+	* en/Gtk/TextTagTable.xml: 
+	* en/Gtk/TextMark.xml:
+	* en/Gtk/TextChildAnchor.xml: documented.
+
+2003-07-12  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/TextBuffer.xml: all documented except for events.
+
+2003-07-07  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/TearoffMenuItem.xml: documented.
+
+2003-07-08  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/Fixed.xml:
+	* en/Gtk/Image.xml:
+	* en/Gtk/ToggleButton.xml:
+	* en/Gtk/Frame.xml
+	* en/Gtk/HBox.xml: small fixes
+
+2003-07-04  John Luke  <jluke@cfl.rr.com>
+	
+	* en/Gtk/Dialog.xml: fixes
+	* en/Gtk/Application.xml: add example, fix methods
+
+2003-07-04  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/AccelGroup.xml: revert parts of my last patch, as some of
+	the links do not resolve due to bug #38538.
+
+	* en/Gtk/Button.xml (NewFromLabel):
+	(NewFromStock): documented.
+
+	* en/Gtk/Frame.xml (GetLabelAlign): documented.
+
+	* en/Gtk/IconFactory.xml:
+	* en/Gtk/IconSet.xml: 	
+	* en/Gtk/IconSize.xml: 
+	* en/Gtk/IconSource.xml: documented.
+
+	* en/Gtk/Paned.xml: added documentation for the events.
+
+	* en/Gtk/ResponseType.xml: documented.
+
+2003-07-03  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/Container.xml: add first draft
+
+2003-07-02  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/TreeSelection.xml: fix method signatures, small updates
+
+2003-06-30  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/AccelGroup.xml: Added some more hyperlinks to the
+	existing text.
+
+2003-06-26  John Luke  <jluke@cfl.rr.com>
+	* en/Gtk/TreeView.xml: update example, paramater references
+	* en/Gtk/Toolbar.xml: update and fix methods
+
+2003-06-23  John Luke  <jluke@cfl.rr.com>
+	* en/Gtk/WindowGroup.xml: add some info
+	* en/Gtk/WindowPosition.xml: update
+	* en/Gtk/WindowType.xml: don't use contractions
+	* en/Gtk/ToolbarChildType.xml: add first draft
+	* en/Gtk/SortType.xml: update
+	* en/Gtk/SizeGroupMode.xml: update
+	* en/Gtk/ShadowType.xml: update
+	* en/Gtk/PolicyType.xml: update
+	* en/Gtk/PackType.xml: update
+	* en/Gtk/Justification.xml: update
+	* en/Gtk/CurveType.xml: update
+	* en/Gtk/AttachOptions.xml: update
+
+2003-06-15  John Luke  <jluke@cfl.rr.com>
+    * en/Gtk/Dialog.xml: add more info, add example
+    * en/Gtk/DialogFlags: add first draft
+
+2003-06-13  John Luke  <jluke@cfl.rr.com>
+    * en/Gtk/ProgressBarStyle.xml
+    * en/Gtk/ProgressBarOrientation.xml
+    * en/Gtk/ImageType.xml: add first drafts
+
+2003-06-12  Hector E. Gomez Morales <hgomez_36@flashmail.com>
+	* en/Gtk/Window.xml: first draft.
+
+2003-06-12  John Luke  <jluke@cfl.rr.com>
+	* en/Gtk/Image.xml: add parameter and returns references, Methods
+	* en/Gtk/Window.xml: add parameter and returns references
+	* en/Gtk/TreeView.xml: add RulesHint
+	* en/Gtk/Stock.xml: add returns references
+	* en/Gtk/Plug.xml: add first draft
+
+2003-06-06  John Luke  <jluke@cfl.rr.com>
+	* en/GConf/*.xml: add
+	* en/GConf.PropertyEditors/*.xml: add
+
+2003-06-03  John Luke  <jluke@cfl.rr.com>
+	* README: update instructions to compile and install docs
+
+2003-06-01  Lee Mallabone  <gnome@fonicmonkey.net>
+
+	* en/*Sharp/bool*.xml: Remove more internal signal classes.
+	* en/*Sharp/*Native.xml: Remove non-public signal classes.
+
+2003-05-30  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/ToggleButton.xml: Fix typo, bulleted list.
+	* en/Gtk/Progress.xml: Fix typo.
+	* en/Gtk/Tooltips.xml: Fix method signature.
+	* en/Gtk/Button.xml: Add some info.
+	* en/Gtk/MessageDialog.xml: Add first draft
+	* en/Gtk/InputDialog: Add first draft
+
+2003-05-29  Lee Mallabone  <gnome@fonicmonkey.net>
+
+	* en/*Sharp/*.xml: Remove the internal void*.xml signal docs.
+
+2003-05-21  Lee Mallabone  <gnome@fonicmonkey.net>
+
+	* en/Gtk/*.xml: Remove some private bits of Gtk assembly.
+	* en/Gtk/Button.xml: Result of running the updater.
+	* en/Gtk/SizeGroup*.xml: First draft of docs for GtkSizeGroup.
+
+2003-05-20  Hector E. Gomez Morales  <hgomez_36@flashmail.com>
+
+	* en/Gtk/Menu.xml:add first draft.
+
+2003-05-19  John Luke  <jluke@cfl.rr.com>
+	* en/Gtk/SeparatorMenuItem.xml:
+	* en/Gtk/Item.xml: Add first drafts.
+
+2003-05-15  Martin Willemoes Hansen <mwh@sysrq.dk>
+	* en/Gnome.xml: Added
+	* en/GLib.xml: Added
+
+2003-05-14  John Luke  <jluke@cfl.rr.com>
+	* en/Gtk/Progress.xml:
+	* en/Gtk/ProgressBar.xml: Add first drafts, without examples.
+	* en/Gtk/EventBox.xml:
+	* en/Gtk/Fixed.xml:
+	* en/Gtk/ToggleButton.xml:
+	* en/Gtk/Tooltips.xml:  Add myself as maintainer
+
+2003-05-09  John Luke  <jluke@cfl.rr.com>
+
+	* en/Gtk/ToolTips.xml: Add first draft, example.
+
+2003-05-08  Lee Mallabone  <gnome@fonicmonkey.net>
+
+	* en/Gtk/*.xml:
+	* en/GtkSharp/*.xml: Changes as a result of "updating" the XML
+	files to correspond to the latest actual API. Widget.xml is the
+	only file to not process yet.
+
+2003-05-02  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/EventBox.xml:
+	* en/Gtk/Fixed.xml: Add more updates from John Luke <jluke@cfl.rr.com>.
+
+2003-05-01  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/ToggleButton.xml: Add updates from John Luke <jluke@cfl.rr.com>.
+
+2003-04-24  Pedro Martínez Juliá  <yoros@wanadoo.es>
+
+	* en/Gtk/Combo.xml: Edit document. Ready to validate. There are a
+	few TODO attributes but I think that will not be documented.
+
+2003-04-22  Hector E. Gomez Morales  <hgomez_36@flashmail.com>
+
+	* en/Gtk/AccelGroup.xml
+	* en/Gtk/AccelLabel.xml
+	* en/Gtk/Entry.xml
+	* en/Gtk/HScrollbar.xml
+	* en/Gtk/Label.xml
+	* en/Gtk/MenuItem.xml
+	* en/Gtk/MenuShell.xml
+	* en/Gtk/Misc.xml
+	* en/Gtk/ScrolledWindow.xml
+	* en/Gtk/Toolbar.xml
+	* en/Gtk/VScrollbar.xml
+	* en/Gtk/Widget.xml: Changed the incorrect tag <see cref="langword:null" /> 
+	to the correct one <see langword="null" /> and some small fixes.
+
+2003-04-15  Miguel de Icaza  <miguel@ximian.com>
+
+	* en/Glade/WidgetAttribute.cs: Add docs.
+
+2003-04-14  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/Adjustment.xml: Add sane docs to ClampPage, based on the 
+	original C docs and comments from Miguel.
+
+	* en/Gtk/Viewport1.cs, en/Gtk/Viewport.xml: Add a full sample, it's
+	ignored	by the browser at the moment.
+
+2003-04-13  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/TreeSelection.xml: First draft.
+
+2003-04-11  Hector E. Gomez Morales  <hgomez_36@flashmail.com>
+
+	* en/Gtk/GammeCurve.xml
+	* en/Gtk/MenuBar.xml
+	* en/Gtk/MenuItem.xml
+	* en/Gtk/Widget.xml
+	* en/Gtk/WidgetFlags.xml: Got half of the properties of Widget only
+	left the boolean ones. Minor docs and typos.
+
+2003-04-04  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/Label.xml: Add first draft of Label docs.
+
+2003-03-28  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/Calendar.xml: Second draft.
+
+2003-03-27  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/Viewport.xml: First draft, includes custom constructor.
+
+2003-03-25  Duncan Mak  <duncan@ximian.com>
+
+	* makefile:  new overwrite family of targets. Use these for
+	removing deprecated nodes, instead of just leaving them tagged
+	with an attribute.
+
+2003-03-25  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/Calendar.xml: First draft docs, still need a little work.
+
+2003-03-24  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/HRuler.xml: 
+	* en/Gtk/VRuler.xml: 
+	* en/Gtk/Ruler.xml: New docs and tweaks.
+
+2003-03-22  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/HRuler.xml: Short docs, simple API.
+
+2003-03-21  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/Adjustment.xml: First draft; good docs for ClampPage missing.
+
+	* en/Gtk/CalendarDisplayOptions.xml:
+	* en/Gtk/AnchorType.xml: Simple docs for these enums.
+
+2003-03-16  Hector E. Gomez Morales  <hgomez_36@flashmail.com>
+
+	* en/Gtk/MenuShell.xml
+	* en/Gtk/MenuDirectionType.xml: Documented.
+
+2003-03-15  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/Bin.xml:
+	* en/Gtk/Alignment.xml: First drafts.
+
+2003-03-12  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/PositionType.xml:
+	* en/Gtk/HandleBox.xml: First draft docs.
+
+2003-03-11  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/Range.xml: First draft.
+	
+2003-03-09  Hector E. Gomez Morales  <hgomez_36@flashmail.com>
+
+	* en/Gtk/Widget.xml:First draft: all methods documented.
+	* en/Gtk/WidgetFlags.xml:Documented.
+
+2003-03-09  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/Scale.xml:
+	* en/Gtk/[VH]Scale.xml: Simple documentation for Scale widgets.
+
+2003-03-08  Miguel de Icaza  <miguel@ximian.com>
+
+	* en/GLib/IdleHandler.xml: Documented.
+
+	* en/GLib/List.xml: Documented. 
+
+	* en/GLib/Idle.xml: Documented.
+	
+
+2003-03-08  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/Table.xml: First draft of table docs. Have left spacing
+	  properties as todo items until I sort the API - it's a bit of a mess.
+	
+2003-03-08  Duncan Mak  <duncan@ximian.com>
+
+	* en/*/*.xml: Removed all the Deprecated nodes now.
+
+2003-03-06  Hector E. Gomez Morales  <hgomez_36@flashmail.com>
+
+	* en/Gtk/AccelFlags.xml
+	* en/Gtk/ScrollType.xml: Update and first draft.
+
+2003-03-06  Duncan Mak  <duncan@ximian.com>
+
+	* en/*/*.xml: Updated all the docs to match the new API. All the nodes
+	that no longer have a corresponding member in the type are now
+	marked as deprecated. We'll have to wait for Miguel to implement
+	this in the browser to stop displaying them.
+
+	All gtype constructors have been regenerated, because of the
+	'uint' to 'GLib.Type' change. However, this patch will preserve
+	(well, it was regenerated) the customized text for those GType
+	constructors.
+
+	A lot of the 'Finalized' methods are also now marked as
+	deprecated, because the classes implement 'Dispose' instead. This
+	is a possible place for customized scripts to generate template
+	documentation, similar to the GType property and GType constructors.
+
+2003-03-05  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/Statusbar.xml: 
+	* en/GtkSharp/TextP*.xml: Statusbar docs for widget and relevant event handlers.
+
+2003-03-05  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/Curve.xml
+	* en/Gtk/DrawingArea.xml: More from Hector.
+
+2003-03-04  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/*Paned.xml: First draft at Paned docs.
+
+2003-03-02  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/SpinButtonUpdatePolicy.xml:
+	* en/Gtk/SpinType.xml:
+	* en/Gtk/SpinButton.xml: First draft of things SpinButton related.
+
+2003-03-01  Peter Williams  <peterw@ximian.com>
+
+	* en/Gdk/GC.xml: Minor markup / grammar fixes.
+
+2003-02-28  Lee Mallabone <mono-docs@fonicmonkey.net>
+	
+	* en/Gtk/Invisible.xml:
+	* en/Gtk/Separator.xml:
+	* en/Gtk/VSeparator.xml:
+	* en/Gtk/GammaCurve: Hector's latest.
+
+	* en/Gtk/Frame.xml: complete docs exluding dubious API calls.
+	* en/Gtk/MenuItem: document a couple of skeleton methods
+
+	* en/Gtk: Some corrections for wrong use of 'langword'.
+
+2003-02-27  Martin Willemoes Hansen <mwh@sysrq.dk>
+	* en/Gtk/TreeModel.xml: Fixed GetValue method signature
+
+2003-02-25  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/AspectFrame.xml: full doc, based on C docs.
+	* en/Gtk/FileSelection.xml: first draft
+	* en/Gtk/ColorSelection.xml: first draft, incorrect API left undocumented and reported as bug #38672.
+	* en/Gtk/ColorSelectionDialog.xml: full doc.
+	* en/Gtk/CheckMenuItem.xml: full doc, based on C docs.
+	* en/Gtk/UpdateType.xml: simple docs for a simple enum.
+
+2003-02-25  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/WrapMode.xml: From Hector.
+
+	* en/Gtk/ButtonsType.xml:
+	* en/Gtk/MessageType.xml: Can't sleep, wrote (cut-n-pasted) some
+	documentation for some enums.
+
+2003-02-25  Lee Mallabone <mono-docs@fonicmonkey.net>
+
+	* en/Gtk/FontSelection.xml:
+	* en/Gtk/FontSelectionDialog.xml: docs for Font widgets
+
+2003-02-24  Kevin Breit  <mrproper@ximian.com>
+
+        * en/Gtk/ArrowType.xml: Fixed a tag mismatch error that caused it to break compile.
+
+2003-02-24  Duncan Mak  <duncan@ximian.com>
+
+	* makefile: Make the path generic again, I forgot to revert the
+	last patch after Gonzalo checked in a temporary fix to Uri.cs.
+
+2003-02-24  Kevin Breit  <mrproper@ximian.com>
+
+	* en/Gtk/ArrowType.xml: Removed the "To be added" from the remarks sections.
+
+	* en/Gtk/Arrow.xml: Fixed up a few things in the documentation.
+
+2003-02-23  Duncan Mak  <duncan@ximian.com>
+
+	* makefile: the docs target is dangerous, remove it by
+	default. Also, remove the -f flag, so even if we do run it, it
+	won't overwrite files, by default.
+
+	* en/Gtk/AccelGroup.xml: From Raphael Schmid
+	<raphael.schmid@gmx.de>, with edits.
+
+	* en/Gtk/DirectionType.xml: 
+	* en/Gtk/SelectionMode.xml: More from Hector.
+
+	* en/*/*.xml: a Big patch. This adds code-generated documentation
+	for internal constructors, the GType property and the Finalized method.
+
+2003-02-22  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/MovementStep.xml: 
+	* en/Gtk/ResizeMode.xml:
+	* en/Gtk/StateType.xml:
+	* en/Gtk/ToolbarStyle.xml: More from Hector, the Mexican
+	documentation phenomenon!
+
+	* en/Gtk/HSeparator.xml:  Hector Gomez.
+
+	* en/Gtk/DeleteType.xml:  Kevin Breit, with edits.
+
+2003-02-21  Kevin Breit  <mrproper@ximian.com>
+
+	* en/Gtk/Arrow.xml: Fixed a small error where a . was missing at the end of a sentence.
+
+2003-02-21  Duncan Mak  <duncan@ximian.com>
+
+	* en/Gtk/Arrow.xml: Kevin Breit, <mrproper@ximian.com>.
+
+	* en/Gtk/Misc.xml: Raphael J. Schmid, <raphael@arrivingarrow.net>.
+
+	* en/Gtk/CornerType.xml: Kevin Breit, <mrproper@ximian.com>.
+
+	* en/Gtk/AccelLabel.xml: Hector E. Gomez Morales <hgomez_36@flashmail.com>.
+
+	* en/Gtk/AccelFlags.xml: Hector E. Gomez Morales <hgomez_36@flashmail.com>.
+	
+2003-02-19  Jeffrey Stedfast  <fejj@ximian.com>
+
+	* en/Gdk/GC.xml: Documented.
+
+2003-02-17  Duncan Mak  <duncan@ximian.com>
+
+	* AtkSharp/*.xml:
+	* Gdk/*.xml:
+	* GdkSharp/*.xml:
+	* GladeSharp/*.xml:
+	* Gnome/*.xml:
+	* GnomeSharp/*.xml:
+	* Pango/*.xml: Some ref/out changes.
+
+2003-02-17  Duncan Mak  <duncan@ximian.com>
+
+	* makefile: Some makefile changes.
+
+	* en/Gtk/Entry.xml: Patch from Lee Mallabone
+	<mono-docs@fonicmonkey.net> to add some documentation text for the
+	Gtk.Entry class.
+
+2003-02-14  Duncan Mak  <duncan@ximian.com>
+
+	* en/*: Updated the docs and added a new Maintainer attribute, also
+	fixed the generator to produce 'ref/out' modifiers for parameters.
+
+2003-02-14  Duncan Mak  <duncan@ximian.com>
+
+	* makefile: Added a makefile.
+	* all.xml: Indexer file for the doc browser.

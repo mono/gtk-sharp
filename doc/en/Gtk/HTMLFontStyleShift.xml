@@ -1,0 +1,139 @@
+<Type Name="HTMLFontStyleShift" FullName="Gtk.HTMLFontStyleShift">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum HTMLFontStyleShift" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed HTMLFontStyleShift extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gtkhtml-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>3.16.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>Enumeration for how HTML font styles can be changed.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="Bold">
+      <MemberSignature Language="C#" Value="Bold" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLFontStyleShift Bold = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLFontStyleShift</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Bold font style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Fixed">
+      <MemberSignature Language="C#" Value="Fixed" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLFontStyleShift Fixed = int32(7)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLFontStyleShift</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Fixed-width font style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Italic">
+      <MemberSignature Language="C#" Value="Italic" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLFontStyleShift Italic = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLFontStyleShift</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Italic font style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Strikeout">
+      <MemberSignature Language="C#" Value="Strikeout" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLFontStyleShift Strikeout = int32(6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLFontStyleShift</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Strikeout font style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Subscript">
+      <MemberSignature Language="C#" Value="Subscript" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLFontStyleShift Subscript = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLFontStyleShift</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Subscript font style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Superscript">
+      <MemberSignature Language="C#" Value="Superscript" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLFontStyleShift Superscript = int32(9)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLFontStyleShift</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Superscript font style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Underline">
+      <MemberSignature Language="C#" Value="Underline" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLFontStyleShift Underline = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLFontStyleShift</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Underlined font style.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

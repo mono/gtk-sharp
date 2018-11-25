@@ -1,0 +1,2773 @@
+<Type Name="Terminal" FullName="Vte.Terminal">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class Terminal : Gtk.Widget" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Terminal extends Gtk.Widget" />
+  <AssemblyInfo>
+    <AssemblyName>vte-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>0.16.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Widget</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>A terminal widget implementation.
+</summary>
+    <remarks>
+      <para>
+  A <see cref="T:Vte.Terminal" /> is a terminal emulator implemented as a <see cref="T:Gtk.Widget" />.
+</para>
+      <para>
+        <example>
+          <code lang="C#">
+using System;
+using System.Collections;
+using Gtk;
+using Gnome;
+using Vte;
+ 
+class T
+{
+        static void Main (string[] args)
+        {
+                new T (args);
+        }
+ 
+        T (string[] args)
+        {
+                Program program = new Program ("vte-sharp-test", "0.0", Modules.UI, args);
+                App app = new App ("vte-sharp-test", "Test for vte widget");
+                app.SetDefaultSize (600, 450);
+                app.DeleteEvent += new DeleteEventHandler (OnAppDelete);
+ 
+                HBox hbox = new HBox ();
+                Terminal term = new Terminal ();
+                term.EncodingChanged += new EventHandler (OnEncodingChanged);
+                term.CursorBlinks = true;
+                term.MouseAutohide = true;
+                term.ScrollOnKeystroke = true;
+                term.DeleteBinding = TerminalEraseBinding.Auto;
+                term.BackspaceBinding = TerminalEraseBinding.Auto;
+                term.Encoding = "UTF-8";
+                term.FontFromString = "Monospace 12";
+                term.TextDeleted += new EventHandler (OnTextDeleted);
+                term.ChildExited += new EventHandler (OnChildExited);
+ 
+                VScrollbar vscroll = new VScrollbar (term.Adjustment);
+                hbox.PackStart (term);
+                hbox.PackStart (vscroll);
+ 
+                Gdk.Color white = new Gdk.Color ();
+                Gdk.Color.Parse ("white", ref white);
+ 
+                Gdk.Color black = new Gdk.Color ();
+                Gdk.Color.Parse ("black", ref black);
+                term.SetColors (black, white, white, 16);
+ 
+                string[] argv = Environment.GetCommandLineArgs ();
+                // wants an array of "variable=value"
+                string[] envv = new string [Environment.GetEnvironmentVariables ().Count];
+                int i = 0;
+                foreach (DictionaryEntry e in Environment.GetEnvironmentVariables ())
+                {
+                        if (e.Key == "" || e.Value == "")
+                                continue;
+                        string tmp = String.Format ("{0}={1}", e.Key, e.Value);
+                        envv[i] = tmp;
+                        i ++;
+                }
+ 
+			int pid = term.ForkCommand (
+				Environment.GetEnvironmentVariable ("SHELL"),
+				argv,
+				envv,
+				Environment.CurrentDirectory,
+				false,
+				true,
+				true);
+                Console.WriteLine ("Child pid: {0}", pid);
+ 
+                app.Contents = hbox;
+                app.ShowAll ();
+                program.Run ();
+        }
+ 
+        private void OnTextDeleted (object o, EventArgs args)
+        {
+                Console.WriteLine ("text deleted");
+        }
+ 
+        private void OnEncodingChanged (object o, EventArgs args)
+        {
+                Console.WriteLine ("encoding changed");
+        }
+ 
+        private void OnTextInserted (object o, EventArgs args)
+        {
+                Console.WriteLine ("text inserted");
+        }
+ 
+        private void OnChildExited (object o, EventArgs args)
+        {
+                // optionally we could just reset instead of quitting
+                Console.WriteLine ("child exited");
+                Application.Quit ();
+        }
+ 
+        private void OnAppDelete (object o, DeleteEventArgs args)
+        {
+                Application.Quit ();
+        }
+}
+
+  </code>
+        </example>
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Terminal ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Default Constructor</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Terminal (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Internal Constructor.</summary>
+        <remarks>This should not be called by normal applications.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Terminal (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">a <see cref="T:System.IntPtr" /></param>
+        <summary>Internal Constructor.</summary>
+        <remarks>This should not be called by normal user code.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Adjustment">
+      <MemberSignature Language="C#" Value="public Gtk.Adjustment Adjustment { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Adjustment Adjustment" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Adjustment</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An accessor function provided for the benefit of language bindings.</summary>
+        <value> the contents of terminal's adjustment field</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="AllowBold">
+      <MemberSignature Language="C#" Value="public bool AllowBold { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool AllowBold" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Controls whether or not the terminal will attempt to draw bold text by repainting text with a different offset.</summary>
+        <value>
+          <see langword="true" /> if the terminal should attempt to draw bold text</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="AudibleBell">
+      <MemberSignature Language="C#" Value="public bool AudibleBell { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool AudibleBell" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Controls whether or not the terminal will beep when the child outputs the "bl" sequence.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>
+          <see langword="true" /> if the terminal should beep</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BackgroundImage">
+      <MemberSignature Language="C#" Value="public Gdk.Pixbuf BackgroundImage { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Pixbuf BackgroundImage" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixbuf</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Sets a background image for the widget.</summary>
+        <value>
+          <see cref="T:Gdk.Pixbuf" /> to use, or <see langword="null" /> to cancel</value>
+        <remarks>Text which would otherwise be drawn using the default background color will instead be drawn over the specified image. If necessary, the image will be tiled to cover the widget's entire visible area.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BackgroundImageFile">
+      <MemberSignature Language="C#" Value="public string BackgroundImageFile { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string BackgroundImageFile" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Sets a background image for the widget.</summary>
+        <value>a <see cref="T:System.String" /></value>
+        <remarks>If specified by <see cref="P:Vte.Terminal.BackgroundSaturation" />, the terminal will make its in-memory copy of the image darker for its own use.
+
+<para>This is a convenience wrapper for <see cref="P:Vte.Terminal.BackgroundImage" />. If your application intends to create multiple terminal widgets using the same background, performing this step yourself and just using <see cref="P:Vte.Terminal.BackgroundImage" /> will reduce memory consumption.
+</para></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BackgroundSaturation">
+      <MemberSignature Language="C#" Value="public double BackgroundSaturation { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 BackgroundSaturation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Adjust the brightness of the background image.</summary>
+        <value>a <see cref="T:System.Double" /></value>
+        <remarks>
+          <para>If a background image has been set using <see cref="P:Vte.Terminal.BackgroundImage" />, <see cref="P:Vte.Terminal.BackgroundImageFile" />, or <see cref="P:Vte.Terminal.Background.Transparent" />, the terminal will adjust the brightness of the image before drawing the image. To do so, the terminal will create a copy of the background image (or snapshot of the root window) and modify its pixel values.
+</para>
+          <para>If your application intends to create multiple terminal widgets with the same settings, performing this step yourself and just using <see cref="P:Vte.Terminal.BackgroundImage" /> will save memory.
+</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BackgroundTintColor">
+      <MemberSignature Language="C#" Value="public Gdk.Color BackgroundTintColor { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Color BackgroundTintColor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:Gdk.Color" /></value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BackgroundTransparent">
+      <MemberSignature Language="C#" Value="public bool BackgroundTransparent { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool BackgroundTransparent" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Sets the terminal's background image to the pixmap stored in the root window, adjusted so that if there are no windows below your application, the widget will appear to be transparent.</summary>
+        <value>
+          <see langword="true" /> if the terminal should fake transparency</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="BackspaceBinding">
+      <MemberSignature Language="C#" Value="public Vte.TerminalEraseBinding BackspaceBinding { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vte.TerminalEraseBinding BackspaceBinding" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vte.TerminalEraseBinding</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Modifies the terminal's backspace key binding, which controls what string or control sequence the terminal sends to its child when the user presses the backspace key.</summary>
+        <value> a <see cref="T:Vte.TerminalEraseBinding" /> for the backspace key</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="CharAscent">
+      <MemberSignature Language="C#" Value="public long CharAscent { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int64 CharAscent" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An accessor function provided for the benefit of language bindings.</summary>
+        <value> the contents of terminal's char_ascent field</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="CharDescent">
+      <MemberSignature Language="C#" Value="public long CharDescent { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int64 CharDescent" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An accessor function provided for the benefit of language bindings.</summary>
+        <value>the contents of terminal's char_descent field</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="CharHeight">
+      <MemberSignature Language="C#" Value="public long CharHeight { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int64 CharHeight" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An accessor function provided for the benefit of language bindings.</summary>
+        <value> the contents of terminal's char_height field</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="CharSizeChanged">
+      <MemberSignature Language="C#" Value="public event Vte.CharSizeChangedHandler CharSizeChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class Vte.CharSizeChangedHandler CharSizeChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("char-size-changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Vte.CharSizeChangedHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted whenever selection of a new font causes the values of the char_width or char_height fields to change.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="CharWidth">
+      <MemberSignature Language="C#" Value="public long CharWidth { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int64 CharWidth" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An accessor function provided for the benefit of language bindings.</summary>
+        <value>a <see cref="T:System.Int64" /></value>
+        <remarks> the contents of terminal's char_width field</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ChildExited">
+      <MemberSignature Language="C#" Value="public event EventHandler ChildExited;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler ChildExited" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("child-exited")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>This signal is emitted when the terminal detects that a child started using <see cref="M:Vte.Terminal.ForkCommand()" /> has exited.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ClipboardCopied">
+      <MemberSignature Language="C#" Value="public event EventHandler ClipboardCopied;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler ClipboardCopied" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("copy-clipboard")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ClipboardPasted">
+      <MemberSignature Language="C#" Value="public event EventHandler ClipboardPasted;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler ClipboardPasted" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("paste-clipboard")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColorBackground">
+      <MemberSignature Language="C#" Value="public Gdk.Color ColorBackground { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Color ColorBackground" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Sets the background color for text which does not have a specific background color assigned.</summary>
+        <value> the new background color</value>
+        <remarks>Only has effect when no background image is set and when the terminal is not transparent.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColorBold">
+      <MemberSignature Language="C#" Value="public Gdk.Color ColorBold { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Color ColorBold" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Sets the color used to draw bold text in the default foreground color.</summary>
+        <value> the new bold color</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ColorCursor">
+      <MemberSignature Language="C#" Value="public Gdk.Color ColorCursor { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Color ColorCursor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+        <since version="Gnome# 2.16" />
+      </Docs>
+    </Member>
+    <Member MemberName="ColorDim">
+      <MemberSignature Language="C#" Value="public Gdk.Color ColorDim { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Color ColorDim" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Sets the color used to draw dim text in the default foreground color.</summary>
+        <value> the new dim color</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ColorForeground">
+      <MemberSignature Language="C#" Value="public Gdk.Color ColorForeground { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Color ColorForeground" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Sets the foreground color used to draw normal text</summary>
+        <value> the new foreground color</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ColorHighlight">
+      <MemberSignature Language="C#" Value="public Gdk.Color ColorHighlight { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Color ColorHighlight" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+        <since version="Gnome# 2.16" />
+      </Docs>
+    </Member>
+    <Member MemberName="ColumnCount">
+      <MemberSignature Language="C#" Value="public long ColumnCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int64 ColumnCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An accessor function provided for the benefit of language bindings.</summary>
+        <value> the contents of terminal's column_count field</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Commit">
+      <MemberSignature Language="C#" Value="public event Vte.CommitHandler Commit;" />
+      <MemberSignature Language="ILAsm" Value=".event class Vte.CommitHandler Commit" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("commit")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Vte.CommitHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted whenever the terminal receives input from the user and prepares to send it to the child process.</summary>
+        <remarks>The signal is emitted even when there is no child process.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ContentsChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler ContentsChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler ContentsChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("contents-changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted whenever the visible appearance of the terminal has changed.</summary>
+        <remarks>Used primarily by <see cref="T:Vte.TerminalAccessible" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CopyClipboard">
+      <MemberSignature Language="C#" Value="public void CopyClipboard ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CopyClipboard() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Places the selected text in the terminal in the GDK_SELECTION_CLIPBOARD selection.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="CopyPrimary">
+      <MemberSignature Language="C#" Value="public void CopyPrimary ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CopyPrimary() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Places the selected text in the terminal in the GDK_SELECTION_PRIMARY selection.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="CursorBlinks">
+      <MemberSignature Language="C#" Value="public bool CursorBlinks { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool CursorBlinks" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Sets whether or not the cursor will blink.</summary>
+        <value>
+          <see langword="true" /> if the cursor should blink</value>
+        <remarks>The length of the blinking cycle is controlled by the "gtk-cursor-blink-time" GTK+ setting.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CursorMoved">
+      <MemberSignature Language="C#" Value="public event EventHandler CursorMoved;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler CursorMoved" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("cursor-moved")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted whenever the cursor moves to a new character cell.</summary>
+        <remarks>Used primarily by <see cref="T:Vte.TerminalAccessible" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DecreaseFontSize">
+      <MemberSignature Language="C#" Value="public event EventHandler DecreaseFontSize;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DecreaseFontSize" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("decrease-font-size")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted when the user hits the '-' key while holding the Control key.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="DefaultEmulation">
+      <MemberSignature Language="C#" Value="public string DefaultEmulation { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string DefaultEmulation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+        <since version="Gnome# 2.16" />
+      </Docs>
+    </Member>
+    <Member MemberName="DeiconifyWindow">
+      <MemberSignature Language="C#" Value="public event EventHandler DeiconifyWindow;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DeiconifyWindow" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("deiconify-window")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted at the child application's request.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="DeleteBinding">
+      <MemberSignature Language="C#" Value="public Vte.TerminalEraseBinding DeleteBinding { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Vte.TerminalEraseBinding DeleteBinding" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Vte.TerminalEraseBinding</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Modifies the terminal's delete key binding, which controls what string or control sequence the terminal sends to its child when the user presses the delete key.</summary>
+        <value>a <see cref="T:Vte.TerminalEraseBinding" /> for the delete key</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Emulation">
+      <MemberSignature Language="C#" Value="public string Emulation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Emulation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Sets what type of terminal the widget attempts to emulate by scanning for control sequences defined in the system's termcap file.</summary>
+        <value> the name of a terminal description</value>
+        <remarks>Unless you are interested in this feature, always use "xterm".</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EmulationChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler EmulationChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler EmulationChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("emulation-changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted when the terminal emulation type is changed.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Encoding">
+      <MemberSignature Language="C#" Value="public string Encoding { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Encoding" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The encoding the terminal will expect data from the child to be encoded with.</summary>
+        <value> a valid gconv target</value>
+        <remarks>For certain terminal types, applications executing in the terminal can change the encoding. The default encoding is defined by the application's locale settings.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EncodingChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler EncodingChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler EncodingChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("encoding-changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted when the terminals encoding type is changed.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Eof">
+      <MemberSignature Language="C#" Value="public event EventHandler Eof;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Eof" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("eof")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Feed">
+      <MemberSignature Language="C#" Value="public void Feed (string data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Feed(string data) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="data">a <see cref="T:System.String" /></param>
+        <summary>Interprets <paramref name="data" /> as if it were data received from a child process.</summary>
+        <remarks>This can either be used to drive the terminal without a child process, or just to mess with your users.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FeedChild">
+      <MemberSignature Language="C#" Value="public void FeedChild (string text);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FeedChild(string text) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="text" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="text">a <see cref="T:System.String" /></param>
+        <summary>Sends a block of UTF-8 text to the child as if it were entered by the user at the keyboard.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="FeedChildBinary">
+      <MemberSignature Language="C#" Value="public void FeedChildBinary (string data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FeedChildBinary(string data) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="data" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+        <since version="Gnome# 2.16" />
+      </Docs>
+    </Member>
+    <Member MemberName="Font">
+      <MemberSignature Language="C#" Value="public Pango.FontDescription Font { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Pango.FontDescription Font" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.FontDescription</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The font used for rendering all text displayed by the terminal, overriding any fonts set using <see cref="M:Gtk.Widget.ModifyFont()" />.</summary>
+        <value>The <see cref="T:Pango.FontDescription" /> of the desired font.</value>
+        <remarks>The terminal will immediately attempt to load the desired font, retrieve its metrics, and attempts to resize itself to keep the same number of rows and columns.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FontFromString">
+      <MemberSignature Language="C#" Value="public string FontFromString { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string FontFromString" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>A convenience function which converts name into a PangoFontDescription and passes it to <see cref="P:Vte.Terminal.Font" />.</summary>
+        <value> A string describing the font.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ForkCommand">
+      <MemberSignature Language="C#" Value="public int ForkCommand (string command, string[] argv, string[] envv, string directory, bool lastlog, bool utmp, bool wtmp);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 ForkCommand(string command, string[] argv, string[] envv, string directory, bool lastlog, bool utmp, bool wtmp) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="command" Type="System.String" />
+        <Parameter Name="argv" Type="System.String[]" />
+        <Parameter Name="envv" Type="System.String[]" />
+        <Parameter Name="directory" Type="System.String" />
+        <Parameter Name="lastlog" Type="System.Boolean" />
+        <Parameter Name="utmp" Type="System.Boolean" />
+        <Parameter Name="wtmp" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="command"> the name of a binary to run</param>
+        <param name="argv"> the argument list to be passed to <paramref name="command" /></param>
+        <param name="envv"> a list of environment variables to be added to the environment before starting <paramref name="command" /></param>
+        <param name="directory"> the name of a directory the command should start in, or <see langword="null" /></param>
+        <param name="lastlog">
+          <see langword="true" /> if the session should be logged to the lastlog</param>
+        <param name="utmp">
+          <see langword="true" /> if the session should be logged to the utmp/utmpx log</param>
+        <param name="wtmp">
+          <see langword="true" /> if the session should be logged to the wtmp/wtmpx log</param>
+        <summary>Starts the specified command under a newly-allocated control pseudo-terminal.</summary>
+        <returns> the ID of the new process</returns>
+        <remarks>TERM is automatically set to reflect the terminal widget's emulation setting. If lastlog, utmp, or wtmp are <see langword="true" />, logs the session to the specified system log files.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetCursorPosition">
+      <MemberSignature Language="C#" Value="public void GetCursorPosition (out long column, out long row);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetCursorPosition(int64 column, int64 row) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="column" Type="System.Int64&amp;" RefType="out" />
+        <Parameter Name="row" Type="System.Int64&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="column"> long which will hold the column</param>
+        <param name="row"> long which will hold the row</param>
+        <summary>Reads the location of the insertion cursor and returns it.</summary>
+        <remarks>The row coordinate is absolute.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetPadding">
+      <MemberSignature Language="C#" Value="public void GetPadding (out int xpad, out int ypad);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetPadding(int32 xpad, int32 ypad) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="xpad" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="ypad" Type="System.Int32&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="xpad"> a <see cref="T:System.Int32" /> in which to store left/right-edge padding</param>
+        <param name="ypad">a <see cref="T:System.Int32" /> in which to store top/bottom-edge ypadding</param>
+        <summary>Determines the amount of additional space the widget is using to pad the edges of its visible area.</summary>
+        <remarks>This is necessary for cases where characters in the selected font do not themselves include a padding area and the text itself would be contiguous with the window border. Applications which use the widget's row_count, column_count, char_height, and char_width fields to set geometry hints using gtk_window_set_geometry_hints() will need to add this value to the base size. The values returned in xpad and ypad are the total padding used in each direction, and do not need to be doubled.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetText">
+      <MemberSignature Language="C#" Value="public string GetText (bool is_selected, IntPtr data, IntPtr attributes);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string GetText(bool is_selected, native int data, native int attributes) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="is_selected" Type="System.Boolean" />
+        <Parameter Name="data" Type="System.IntPtr" />
+        <Parameter Name="attributes" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="is_selected"> a callback</param>
+        <param name="data"> user data to be passed to the callback</param>
+        <param name="attributes"> location for storing text attributes</param>
+        <summary>Extracts a view of the visible part of the terminal.</summary>
+        <returns>a <see cref="T:System.String" /></returns>
+        <remarks>If <paramref name="is_selected" /> is not <see langword="null" />, characters will only be read if <paramref name="is_selected" /> returns <see langword="true" /> after being passed the column and row, respectively. A <see cref="T:Vte.CharAttributes" /> structure is added to attributes for each byte added to the returned string detailing the character's position, colors, and other characteristics.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetTextIncludeTrailingSpaces">
+      <MemberSignature Language="C#" Value="public string GetTextIncludeTrailingSpaces (bool is_selected, IntPtr data, IntPtr attributes);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string GetTextIncludeTrailingSpaces(bool is_selected, native int data, native int attributes) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="is_selected" Type="System.Boolean" />
+        <Parameter Name="data" Type="System.IntPtr" />
+        <Parameter Name="attributes" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="is_selected">To be added.</param>
+        <param name="data">To be added.</param>
+        <param name="attributes">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+        <since version="Gnome# 2.16" />
+      </Docs>
+    </Member>
+    <Member MemberName="GetTextRange">
+      <MemberSignature Language="C#" Value="public string GetTextRange (long start_row, long start_col, long end_row, long end_col, bool is_selected, IntPtr data, IntPtr attributes);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string GetTextRange(int64 start_row, int64 start_col, int64 end_row, int64 end_col, bool is_selected, native int data, native int attributes) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="start_row" Type="System.Int64" />
+        <Parameter Name="start_col" Type="System.Int64" />
+        <Parameter Name="end_row" Type="System.Int64" />
+        <Parameter Name="end_col" Type="System.Int64" />
+        <Parameter Name="is_selected" Type="System.Boolean" />
+        <Parameter Name="data" Type="System.IntPtr" />
+        <Parameter Name="attributes" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="start_row"> first row to search for data</param>
+        <param name="start_col"> first column to search for data</param>
+        <param name="end_row"> last row to search for data</param>
+        <param name="end_col"> last column to search for data</param>
+        <param name="is_selected"> a callback</param>
+        <param name="data"> user data to be passed to the callback</param>
+        <param name="attributes"> location for storing text attributes</param>
+        <summary>Extracts a view of the visible part of the string.</summary>
+        <returns>a <see cref="T:System.String" /></returns>
+        <remarks>If <paramref name="is_selected" /> is not <see langword="null" />, characters will only be read if <paramref name="is_selected" /> returns <see langword="true" /> after being passed the column and row, respectively. A <see cref="T:Vte.CharAttributes" /> structure is added to attributes for each byte added to the returned string detailing the character's position, colors, and other characteristics. The entire scrollback buffer is scanned, so it is possible to read the entire contents of the buffer using this function.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Vte.Terminal" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HasSelection">
+      <MemberSignature Language="C#" Value="public bool HasSelection { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool HasSelection" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Checks if the terminal currently contains selected text.</summary>
+        <value>
+          <see langword="true" /> if part of the text in the terminal is selected.</value>
+        <remarks>Note that this is different from determining if the terminal is the owner of any <see cref="T:Gtk.Clipboard" /> items.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IconifyWindow">
+      <MemberSignature Language="C#" Value="public event EventHandler IconifyWindow;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler IconifyWindow" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("iconify-window")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted at the child application's request.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="IconTitle">
+      <MemberSignature Language="C#" Value="public string IconTitle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string IconTitle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An accessor function provided for the benefit of language bindings.</summary>
+        <value> the contents of terminal's icon_title field</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="IconTitleChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler IconTitleChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler IconTitleChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("icon-title-changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted when the terminal's icon_title field is modified.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ImAppendMenuitems">
+      <MemberSignature Language="C#" Value="public void ImAppendMenuitems (Gtk.MenuShell menushell);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ImAppendMenuitems(class Gtk.MenuShell menushell) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="menushell" Type="Gtk.MenuShell" />
+      </Parameters>
+      <Docs>
+        <param name="menushell">a <see cref="T:Gtk.MenuShell" /></param>
+        <summary>Appends menu items for various input methods to the given menu.</summary>
+        <remarks>The user can select one of these items to modify the input method used by the terminal.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IncreaseFontSize">
+      <MemberSignature Language="C#" Value="public event EventHandler IncreaseFontSize;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler IncreaseFontSize" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("increase-font-size")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted when the user hits the '+' key while holding the Control key.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="IsWordChar">
+      <MemberSignature Language="C#" Value="public bool IsWordChar (char c);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsWordChar(char c) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="c" Type="System.Char" />
+      </Parameters>
+      <Docs>
+        <param name="c">a <see cref="T:System.Char" /></param>
+        <summary>Determines if a character is considered to be part of a word</summary>
+        <returns>
+          <see langword="true" /> if <paramref name="c" /> is considered to be a word character according to the current value of <see cref="P:Vte.Terminal.WordChars" />.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LowerWindow">
+      <MemberSignature Language="C#" Value="public event EventHandler LowerWindow;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler LowerWindow" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("lower-window")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted at the child application's request.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="MatchAdd">
+      <MemberSignature Language="C#" Value="public int MatchAdd (string match);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 MatchAdd(string match) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="match" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="match"> a regular expression</param>
+        <summary>Adds a regular expression to the list of matching expressions.</summary>
+        <returns> an integer associated with this expression</returns>
+        <remarks>When the user moves the mouse cursor over a section of displayed text which matches this expression, the text will be highlighted.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MatchCheck">
+      <MemberSignature Language="C#" Value="public string MatchCheck (long column, long row, out int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string MatchCheck(int64 column, int64 row, int32 tag) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="column" Type="System.Int64" />
+        <Parameter Name="row" Type="System.Int64" />
+        <Parameter Name="tag" Type="System.Int32&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="column"> the text column</param>
+        <param name="row"> the text row</param>
+        <param name="tag"> pointer to an integer</param>
+        <summary>Checks if the text in and around the specified position matches any of the regular expressions previously set using <see cref="M:Vte.Terminal.MatchAdd()" />.</summary>
+        <returns> a string which matches one of the previously set regular expressions</returns>
+        <remarks>If a match exists, the text string is returned and if <paramref name="tag" /> is not <see langword="null" />, the number associated with the matched regular expression will be stored in tag.  If more than one regular expression has been set with <see cref="T:Vte.Terminal.MatchAdd()" />, then expressions are checked in the order in which they were added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MatchClearAll">
+      <MemberSignature Language="C#" Value="public void MatchClearAll ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void MatchClearAll() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Clears the list of regular expressions the terminal uses to highlight text when the user moves the mouse cursor.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="MatchRemove">
+      <MemberSignature Language="C#" Value="public void MatchRemove (int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void MatchRemove(int32 tag) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tag" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="tag"> the tag of the regex to remove</param>
+        <summary>Removes the regular expression which is associated with the given <paramref name="tag" /> from the list of expressions which the terminal will highlight when the user moves the mouse cursor over matching text.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="MatchSetCursor">
+      <MemberSignature Language="C#" Value="public void MatchSetCursor (int tag, Gdk.Cursor cursor);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void MatchSetCursor(int32 tag, class Gdk.Cursor cursor) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tag" Type="System.Int32" />
+        <Parameter Name="cursor" Type="Gdk.Cursor" />
+      </Parameters>
+      <Docs>
+        <param name="tag">a <see cref="T:System.Int32" /></param>
+        <param name="cursor">a <see cref="T:Gdk.Cursor" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MatchSetCursorType">
+      <MemberSignature Language="C#" Value="public void MatchSetCursorType (int tag, Gdk.CursorType cursor_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void MatchSetCursorType(int32 tag, valuetype Gdk.CursorType cursor_type) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tag" Type="System.Int32" />
+        <Parameter Name="cursor_type" Type="Gdk.CursorType" />
+      </Parameters>
+      <Docs>
+        <param name="tag">a <see cref="T:System.Int32" /></param>
+        <param name="cursor_type">a <see cref="T:System.Int32" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaximizeWindow">
+      <MemberSignature Language="C#" Value="public event EventHandler MaximizeWindow;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler MaximizeWindow" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("maximize-window")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted at the child application's request.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="MouseAutohide">
+      <MemberSignature Language="C#" Value="public bool MouseAutohide { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool MouseAutohide" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The value of the terminal's mouse autohide setting.</summary>
+        <value>
+          <see langword="true" /> if the autohide should be enabled</value>
+        <remarks>When autohiding is enabled, the mouse cursor will be hidden when the user presses a key and shown when the user moves the mouse.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MoveWindow">
+      <MemberSignature Language="C#" Value="public event Vte.MoveWindowHandler MoveWindow;" />
+      <MemberSignature Language="ILAsm" Value=".event class Vte.MoveWindowHandler MoveWindow" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("move-window")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Vte.MoveWindowHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted at the child application's request.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="OnCharSizeChanged">
+      <MemberSignature Language="C#" Value="protected virtual void OnCharSizeChanged (uint p0, uint p1);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnCharSizeChanged(unsigned int32 p0, unsigned int32 p1) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideCharSizeChanged", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p0" Type="System.UInt32" />
+        <Parameter Name="p1" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="p0">a <see cref="T:System.UInt32" /></param>
+        <param name="p1">a <see cref="T:System.UInt32" /></param>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.CharSizeChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.CharSizeChanged" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnChildExited">
+      <MemberSignature Language="C#" Value="protected virtual void OnChildExited ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnChildExited() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideChildExited", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.ChildExited" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.ChildExited" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnClipboardCopied">
+      <MemberSignature Language="C#" Value="protected virtual void OnClipboardCopied ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnClipboardCopied() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideClipboardCopied", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnClipboardPasted">
+      <MemberSignature Language="C#" Value="protected virtual void OnClipboardPasted ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnClipboardPasted() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideClipboardPasted", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnCommit">
+      <MemberSignature Language="C#" Value="protected virtual void OnCommit (string p0, uint p1);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnCommit(string p0, unsigned int32 p1) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideCommit", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p0" Type="System.String" />
+        <Parameter Name="p1" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="p0">a <see cref="T:System.String" /> Representing the input data to commit. This can be a single character or a string.</param>
+        <param name="p1">a <see cref="T:System.UInt32" /> The length of P0.</param>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.Commit" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.Commit" /> event.
+<block subset="none" type="note"><para /></block>P0 can contain control characters. Every key the user presses will emmit a commit signal. About the only thing that will send a sring in P0 will be if the users pasts in some text. Also you must call the parent or base class OnCommit or things will get ugly.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnContentsChanged">
+      <MemberSignature Language="C#" Value="protected virtual void OnContentsChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnContentsChanged() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideContentsChanged", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.ContentsChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.ContentsChanged" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnCursorMoved">
+      <MemberSignature Language="C#" Value="protected virtual void OnCursorMoved ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnCursorMoved() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideCursorMoved", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.CursorMoved" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.CursorMoved" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnDecreaseFontSize">
+      <MemberSignature Language="C#" Value="protected virtual void OnDecreaseFontSize ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnDecreaseFontSize() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideDecreaseFontSize", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.DecreaseFontSize" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.DecreaseFontSize" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnDeiconifyWindow">
+      <MemberSignature Language="C#" Value="protected virtual void OnDeiconifyWindow ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnDeiconifyWindow() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideDeiconifyWindow", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.DeiconifyWindow" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.DeiconifyWindow" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnEmulationChanged">
+      <MemberSignature Language="C#" Value="protected virtual void OnEmulationChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnEmulationChanged() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideEmulationChanged", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.EmulationChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.EmulationChanged" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnEncodingChanged">
+      <MemberSignature Language="C#" Value="protected virtual void OnEncodingChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnEncodingChanged() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideEncodingChanged", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.EncodingChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.EncodingChanged" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnEof">
+      <MemberSignature Language="C#" Value="protected virtual void OnEof ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnEof() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideEof", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.Eof" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.Eof" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnIconifyWindow">
+      <MemberSignature Language="C#" Value="protected virtual void OnIconifyWindow ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnIconifyWindow() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideIconifyWindow", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.IconifyWindow" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.IconifyWindow" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnIconTitleChanged">
+      <MemberSignature Language="C#" Value="protected virtual void OnIconTitleChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnIconTitleChanged() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideIconTitleChanged", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.IconTitleChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.IconTitleChanged" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnIncreaseFontSize">
+      <MemberSignature Language="C#" Value="protected virtual void OnIncreaseFontSize ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnIncreaseFontSize() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideIncreaseFontSize", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.IncreaseFontSize" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.IncreaseFontSize" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnLowerWindow">
+      <MemberSignature Language="C#" Value="protected virtual void OnLowerWindow ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnLowerWindow() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideLowerWindow", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.LowerWindow" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.LowerWindow" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnMaximizeWindow">
+      <MemberSignature Language="C#" Value="protected virtual void OnMaximizeWindow ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnMaximizeWindow() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideMaximizeWindow", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.MaximizeWindow" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.MaximizeWindow" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnMoveWindow">
+      <MemberSignature Language="C#" Value="protected virtual void OnMoveWindow (uint p0, uint p1);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnMoveWindow(unsigned int32 p0, unsigned int32 p1) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideMoveWindow", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p0" Type="System.UInt32" />
+        <Parameter Name="p1" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="p0">a <see cref="T:System.UInt32" /></param>
+        <param name="p1">a <see cref="T:System.UInt32" /></param>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.MoveWindow" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.MoveWindow" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnRaiseWindow">
+      <MemberSignature Language="C#" Value="protected virtual void OnRaiseWindow ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnRaiseWindow() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideRaiseWindow", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.RaiseWindow" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.RaiseWindow" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnRefreshWindow">
+      <MemberSignature Language="C#" Value="protected virtual void OnRefreshWindow ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnRefreshWindow() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideRefreshWindow", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.RefreshWindow" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.RefreshWindow" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnResizeWindow">
+      <MemberSignature Language="C#" Value="protected virtual void OnResizeWindow (uint p0, uint p1);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnResizeWindow(unsigned int32 p0, unsigned int32 p1) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideResizeWindow", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p0" Type="System.UInt32" />
+        <Parameter Name="p1" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="p0">a <see cref="T:System.UInt32" /></param>
+        <param name="p1">a <see cref="T:System.UInt32" /></param>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.ResizeWindow" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.ResizeWindow" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnRestoreWindow">
+      <MemberSignature Language="C#" Value="protected virtual void OnRestoreWindow ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnRestoreWindow() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideRestoreWindow", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.RestoreWindow" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.RestoreWindow" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnSelectionChanged">
+      <MemberSignature Language="C#" Value="protected virtual void OnSelectionChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnSelectionChanged() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideSelectionChanged", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.SelectionChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.SelectionChanged" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnStatusLineChanged">
+      <MemberSignature Language="C#" Value="protected virtual void OnStatusLineChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnStatusLineChanged() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideStatusLineChanged", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.StatusLineChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.StatusLineChanged" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnTextDeleted">
+      <MemberSignature Language="C#" Value="protected virtual void OnTextDeleted ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnTextDeleted() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideTextDeleted", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.TextDeleted" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.TextDeleted" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnTextInserted">
+      <MemberSignature Language="C#" Value="protected virtual void OnTextInserted ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnTextInserted() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideTextInserted", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.TextInserted" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.TextInserted" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnTextModified">
+      <MemberSignature Language="C#" Value="protected virtual void OnTextModified ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnTextModified() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideTextModified", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.TextModified" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.TextModified" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnTextScrolled">
+      <MemberSignature Language="C#" Value="protected virtual void OnTextScrolled (int p0);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnTextScrolled(int32 p0) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideTextScrolled", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p0" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="p0">a <see cref="T:System.Int32" /></param>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.TextScrolled" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.TextScrolled" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnWindowTitleChanged">
+      <MemberSignature Language="C#" Value="protected virtual void OnWindowTitleChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnWindowTitleChanged() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideWindowTitleChanged", Type=typeof(Vte.Terminal))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Vte.Terminal.WindowTitleChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Vte.Terminal.WindowTitleChanged" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Opacity">
+      <MemberSignature Language="C#" Value="public ushort Opacity { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int16 Opacity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt16</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+        <since version="Gnome# 2.16" />
+      </Docs>
+    </Member>
+    <Member MemberName="PasteClipboard">
+      <MemberSignature Language="C#" Value="public void PasteClipboard ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PasteClipboard() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Sends the contents of the GDK_SELECTION_CLIPBOARD selection to the terminal's child.</summary>
+        <remarks>If necessary, the data is converted from UTF-8 to the terminal's current encoding.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PastePrimary">
+      <MemberSignature Language="C#" Value="public void PastePrimary ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PastePrimary() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Sends the contents of the GDK_SELECTION_PRIMARY selection to the terminal's child.</summary>
+        <remarks>If necessary, the data is converted from UTF-8 to the terminal's current encoding. The terminal will call also paste the GDK_SELECTION_PRIMARY selection when the user clicks with the the second mouse button.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Pty">
+      <MemberSignature Language="C#" Value="public int Pty { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Pty" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+        <since version="Gnome# 2.16" />
+      </Docs>
+    </Member>
+    <Member MemberName="RaiseWindow">
+      <MemberSignature Language="C#" Value="public event EventHandler RaiseWindow;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler RaiseWindow" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("raise-window")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted at the child application's request.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="RefreshWindow">
+      <MemberSignature Language="C#" Value="public event EventHandler RefreshWindow;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler RefreshWindow" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("refresh-window")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted at the child application's request.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Reset">
+      <MemberSignature Language="C#" Value="public void Reset (bool full, bool clear_history);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Reset(bool full, bool clear_history) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="full" Type="System.Boolean" />
+        <Parameter Name="clear_history" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="full">
+          <see langword="true" /> to reset tabstops</param>
+        <param name="clear_history">
+          <see langword="true" /> to empty the terminal's scrollback buffer</param>
+        <summary>Resets as much of the terminal's internal state as possible.</summary>
+        <remarks>Resets as much of the terminal's internal state as possible, discarding any unprocessed input data, resetting character attributes, cursor state, national character set state, status line, terminal modes (insert/delete), selection state, and encoding.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResizeWindow">
+      <MemberSignature Language="C#" Value="public event Vte.ResizeWindowHandler ResizeWindow;" />
+      <MemberSignature Language="ILAsm" Value=".event class Vte.ResizeWindowHandler ResizeWindow" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("resize-window")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Vte.ResizeWindowHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted at the child application's request.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="RestoreWindow">
+      <MemberSignature Language="C#" Value="public event EventHandler RestoreWindow;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler RestoreWindow" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("restore-window")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted at the child application's request.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="RowCount">
+      <MemberSignature Language="C#" Value="public long RowCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int64 RowCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An accessor function provided for the benefit of language bindings.</summary>
+        <value> the contents of terminal's row_count field</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ScrollBackground">
+      <MemberSignature Language="C#" Value="public bool ScrollBackground { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ScrollBackground" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScrollbackLines">
+      <MemberSignature Language="C#" Value="public long ScrollbackLines { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int64 ScrollbackLines" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Sets the length of the scrollback buffer used by the terminal.</summary>
+        <value>the length of the history buffer</value>
+        <remarks>The size of the scrollback buffer will be set to the larger of this value and the number of visible rows the widget can display, so 0 can safely be used to disable scrollback. Note that this setting only affects the normal screen buffer. For terminal types which have an alternate screen buffer, no scrollback is allowed.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScrollOnKeystroke">
+      <MemberSignature Language="C#" Value="public bool ScrollOnKeystroke { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ScrollOnKeystroke" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Controls whether or not the terminal will forcibly scroll to the bottom of the viewable history when the user presses a key.</summary>
+        <value>
+          <see langword="true" /> if the terminal should scroll on keystrokes</value>
+        <remarks>Modifier keys do not trigger this behavior.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScrollOnOutput">
+      <MemberSignature Language="C#" Value="public bool ScrollOnOutput { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ScrollOnOutput" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Controls whether or not the terminal will forcibly scroll to the bottom of the viewable history when the new data is received from the child.</summary>
+        <value>
+          <see langword="true" /> if the terminal should scroll on output</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="SelectAll">
+      <MemberSignature Language="C#" Value="public void SelectAll ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SelectAll() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectionChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler SelectionChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler SelectionChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("selection-changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted whenever the contents of terminal's selection changes.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="SelectNone">
+      <MemberSignature Language="C#" Value="public void SelectNone ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SelectNone() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetColors">
+      <MemberSignature Language="C#" Value="public void SetColors (Gdk.Color foreground, Gdk.Color background, Gdk.Color[] palette, long palette_size);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetColors(valuetype Gdk.Color foreground, valuetype Gdk.Color background, valuetype Gdk.Color[] palette, int64 palette_size) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="foreground" Type="Gdk.Color" />
+        <Parameter Name="background" Type="Gdk.Color" />
+        <Parameter Name="palette" Type="Gdk.Color[]" />
+        <Parameter Name="palette_size" Type="System.Int64" />
+      </Parameters>
+      <Docs>
+        <param name="foreground"> the new foreground color, or <see langword="null" /></param>
+        <param name="background"> the new background color, or <see langword="null" /></param>
+        <param name="palette"> the color palette</param>
+        <param name="palette_size"> the number of entries in <paramref name="palette" /></param>
+        <summary>Change the colors of the <see cref="T:Vte.Terminal" /></summary>
+        <remarks>
+          <para>
+  The terminal widget uses a 28-color model comprised of the default foreground and background colors, the bold foreground color, the dim foreground color, an eight color palette, and bold versions of the eight color palette, and a dim version of the the eight color palette.
+</para>
+          <para>
+            <paramref name="palette_size" /> must be either 0, 8, 16, or 24. If <paramref name="foreground" /> is <see langword="null" /> and <paramref name="palette_size" /> is greater than 0, the new foreground color is taken from palette[7]. If <paramref name="background" /> is <see langword="null" /> and <paramref name="palette_size" /> is greater than 0, the new background color is taken from palette[0]. If <paramref name="palette_size" /> is 8 or 16, the third (dim) and possibly second (bold) 8-color palette is extrapolated from the new background color and the items in palette.
+</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetDefaultColors">
+      <MemberSignature Language="C#" Value="public void SetDefaultColors ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDefaultColors() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Reset the terminal palette to reasonable compiled-in defaults.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="SetFontFromStringFull">
+      <MemberSignature Language="C#" Value="public void SetFontFromStringFull (string name, Vte.TerminalAntiAlias antialias);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetFontFromStringFull(string name, valuetype Vte.TerminalAntiAlias antialias) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="antialias" Type="Vte.TerminalAntiAlias" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <param name="antialias">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+        <since version="Gnome# 2.16" />
+      </Docs>
+    </Member>
+    <Member MemberName="SetFontFull">
+      <MemberSignature Language="C#" Value="public void SetFontFull (Pango.FontDescription font_desc, Vte.TerminalAntiAlias antialias);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetFontFull(class Pango.FontDescription font_desc, valuetype Vte.TerminalAntiAlias antialias) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="font_desc" Type="Pango.FontDescription" />
+        <Parameter Name="antialias" Type="Vte.TerminalAntiAlias" />
+      </Parameters>
+      <Docs>
+        <param name="font_desc">To be added.</param>
+        <param name="antialias">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+        <since version="Gnome# 2.16" />
+      </Docs>
+    </Member>
+    <Member MemberName="SetSize">
+      <MemberSignature Language="C#" Value="public void SetSize (long columns, long rows);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetSize(int64 columns, int64 rows) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="columns" Type="System.Int64" />
+        <Parameter Name="rows" Type="System.Int64" />
+      </Parameters>
+      <Docs>
+        <param name="columns"> the desired number of columns</param>
+        <param name="rows"> the desired number of rows</param>
+        <summary>Attempts to change the terminal's size in terms of rows and columns.</summary>
+        <remarks>If the attempt succeeds, the widget will resize itself to the proper size.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StatusLine">
+      <MemberSignature Language="C#" Value="public string StatusLine { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string StatusLine" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Some terminal emulations specify a status line which is separate from the main display area, and define a means for applications to move the cursor to the status line and back.</summary>
+        <value>The current contents of the terminal's status line. For terminals like "xterm", this will usually be the empty string. The string must not be modified or freed by the caller.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="StatusLineChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler StatusLineChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler StatusLineChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("status-line-changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted whenever the contents of the status line are modified or cleared.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="TextDeleted">
+      <MemberSignature Language="C#" Value="public event EventHandler TextDeleted;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler TextDeleted" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("text-deleted")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An internal signal used for communication between the terminal and its accessibility peer.</summary>
+        <remarks>May not be emitted under certain circumstances.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TextInserted">
+      <MemberSignature Language="C#" Value="public event EventHandler TextInserted;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler TextInserted" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("text-inserted")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An internal signal used for communication between the terminal and its accessibility peer.</summary>
+        <remarks>May not be emitted under certain circumstances.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TextModified">
+      <MemberSignature Language="C#" Value="public event EventHandler TextModified;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler TextModified" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("text-modified")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An internal signal used for communication between the terminal and its accessibility peer.</summary>
+        <remarks>May not be emitted under certain circumstances.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TextScrolled">
+      <MemberSignature Language="C#" Value="public event Vte.TextScrolledHandler TextScrolled;" />
+      <MemberSignature Language="ILAsm" Value=".event class Vte.TextScrolledHandler TextScrolled" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("text-scrolled")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Vte.TextScrolledHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An internal signal used for communication between the terminal and its accessibility peer.</summary>
+        <remarks>May not be emitted under certain circumstances.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UsingXft">
+      <MemberSignature Language="C#" Value="public bool UsingXft { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool UsingXft" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Whether a <see cref="T:Vte.Terminal" /> is using Xft to draw text.</summary>
+        <value>
+          <see langword="true" /> if the terminal is using Xft to render, <see langword="false" /> if the terminal is using Pango or Xlib.</value>
+        <remarks>This function allows an application to determine which mode the widget is in. This setting cannot be changed by the caller, but in practice usually matches the behavior of Gtk itself.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VisibleBell">
+      <MemberSignature Language="C#" Value="public bool VisibleBell { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool VisibleBell" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Controls whether or not the terminal will present a visible bell to the user when the child outputs the "bl" sequence.</summary>
+        <value>
+          <see langword="true" /> if visible bell is enabled, <see langword="false" /> if not</value>
+        <remarks>The terminal will clear itself to the default foreground color and then repaint itself.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WindowTitle">
+      <MemberSignature Language="C#" Value="public string WindowTitle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string WindowTitle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An accessor function provided for the benefit of language bindings.</summary>
+        <value> the contents of terminal's window_title field</value>
+        <remarks> the contents of terminal's window_title field</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WindowTitleChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler WindowTitleChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler WindowTitleChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("window-title-changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted when the terminal's window_title field is modified.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="WordChars">
+      <MemberSignature Language="C#" Value="public string WordChars { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string WordChars" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>When the user double-clicks to start selection, the terminal will extend the selection on word boundaries.</summary>
+        <value> a specification</value>
+        <remarks>
+          <para>When the user double-clicks to start selection, the terminal will extend the selection on word boundaries.  It will treat characters passed in as parts of words, and all other characters as word separators. Ranges of characters can be specified by separating them with a hyphen.
+</para>
+          <para>As a special case, if set to <see langword="null" /> or the empty string, the terminal will treat all graphic non-punctuation characters as word characters.
+</para>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

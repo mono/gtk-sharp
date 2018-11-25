@@ -1,0 +1,60 @@
+<Type Name="MimeEquivalence" FullName="Gnome.Vfs.MimeEquivalence">
+  <TypeSignature Language="C#" Value="public enum MimeEquivalence" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed MimeEquivalence extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gnome-vfs-sharp</AssemblyName>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Identical">
+      <MemberSignature Language="C#" Value="Identical" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.MimeEquivalence Identical = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.MimeEquivalence</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Parent">
+      <MemberSignature Language="C#" Value="Parent" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.MimeEquivalence Parent = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.MimeEquivalence</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Unrelated">
+      <MemberSignature Language="C#" Value="Unrelated" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.MimeEquivalence Unrelated = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.MimeEquivalence</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

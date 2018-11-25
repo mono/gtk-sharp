@@ -1,0 +1,53 @@
+<Type Name="ProximityInEventArgs" FullName="Gtk.ProximityInEventArgs">
+  <TypeSignature Language="C#" Value="public class ProximityInEventArgs : GLib.SignalArgs" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ProximityInEventArgs extends GLib.SignalArgs" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Event data.</summary>
+    <remarks>
+      <para>The <see cref="M:Gtk.Widget.ProximityInEvent" /> event invokes <see cref="T:Gtk.ProximityInEventHandler" /> delegates which pass event data via this class.</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ProximityInEventArgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Public Constructor.</summary>
+        <remarks>Create a new <see cref="T:Gtk.ProximityInEventArgs" /> instance with this constructor if you need to invoke a <see cref="T:Gtk.ProximityInEventHandler" /> delegate.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Event">
+      <MemberSignature Language="C#" Value="public Gdk.EventProximity Event { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.EventProximity Event" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventProximity</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The proximity event that triggered this signal.</summary>
+        <value>A <see cref="T:Gdk.EventProximity" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

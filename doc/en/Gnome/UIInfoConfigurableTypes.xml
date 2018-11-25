@@ -1,0 +1,569 @@
+<Type Name="UIInfoConfigurableTypes" FullName="Gnome.UIInfoConfigurableTypes">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum UIInfoConfigurableTypes" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed UIInfoConfigurableTypes extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gnome-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>This enum gives an identifier for each menu shortcut that can possible be redefined.</summary>
+    <remarks>
+    A user can redefine the accelerator keys for each menu item (if the application supports this). 
+    If an application is not using one of these accelerators, then no shortcut redefinition is 
+    possible unless the application specifically implements it (moral: use standard menu items).
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="About">
+      <MemberSignature Language="C#" Value="About" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes About = int32(20)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "About..." menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Clear">
+      <MemberSignature Language="C#" Value="Clear" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Clear = int32(12)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Clear" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Close">
+      <MemberSignature Language="C#" Value="Close" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Close = int32(7)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Close" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CloseWindow">
+      <MemberSignature Language="C#" Value="CloseWindow" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes CloseWindow = int32(23)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Close window" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Copy">
+      <MemberSignature Language="C#" Value="Copy" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Copy = int32(10)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Copy" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Cut">
+      <MemberSignature Language="C#" Value="Cut" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Cut = int32(9)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Cut" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EndGame">
+      <MemberSignature Language="C#" Value="EndGame" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes EndGame = int32(31)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "End game" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Find">
+      <MemberSignature Language="C#" Value="Find" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Find = int32(15)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Find..." menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FindAgain">
+      <MemberSignature Language="C#" Value="FindAgain" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes FindAgain = int32(16)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "FindAgain" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Hint">
+      <MemberSignature Language="C#" Value="Hint" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Hint = int32(29)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Hint" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="New" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes New = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "New" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NewGame">
+      <MemberSignature Language="C#" Value="NewGame" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes NewGame = int32(24)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "New game" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NewWindow">
+      <MemberSignature Language="C#" Value="NewWindow" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes NewWindow = int32(22)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "New window" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Open">
+      <MemberSignature Language="C#" Value="Open" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Open = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Open" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Paste">
+      <MemberSignature Language="C#" Value="Paste" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Paste = int32(11)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Paste" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PauseGame">
+      <MemberSignature Language="C#" Value="PauseGame" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes PauseGame = int32(25)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Pause game" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Preferences">
+      <MemberSignature Language="C#" Value="Preferences" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Preferences = int32(19)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Preferences..." menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Print">
+      <MemberSignature Language="C#" Value="Print" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Print = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Print" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PrintSetup">
+      <MemberSignature Language="C#" Value="PrintSetup" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes PrintSetup = int32(6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Print setup..." menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Properties">
+      <MemberSignature Language="C#" Value="Properties" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Properties = int32(18)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Properties..." menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Quit">
+      <MemberSignature Language="C#" Value="Quit" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Quit = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Quit" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Redo">
+      <MemberSignature Language="C#" Value="Redo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Redo = int32(14)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Redo" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RedoMove">
+      <MemberSignature Language="C#" Value="RedoMove" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes RedoMove = int32(28)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Redo move" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Replace">
+      <MemberSignature Language="C#" Value="Replace" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Replace = int32(17)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Replace..." menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RestartGame">
+      <MemberSignature Language="C#" Value="RestartGame" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes RestartGame = int32(26)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Restart game" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Revert">
+      <MemberSignature Language="C#" Value="Revert" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Revert = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Revert" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Save">
+      <MemberSignature Language="C#" Value="Save" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Save = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Save" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SaveAs">
+      <MemberSignature Language="C#" Value="SaveAs" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes SaveAs = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Save As..." menu</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Scores">
+      <MemberSignature Language="C#" Value="Scores" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Scores = int32(30)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Scores..." menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectAll">
+      <MemberSignature Language="C#" Value="SelectAll" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes SelectAll = int32(21)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Select all" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Undo">
+      <MemberSignature Language="C#" Value="Undo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes Undo = int32(13)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Undo" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UndoMove">
+      <MemberSignature Language="C#" Value="UndoMove" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.UIInfoConfigurableTypes UndoMove = int32(27)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.UIInfoConfigurableTypes</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The "Undo move" menu.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

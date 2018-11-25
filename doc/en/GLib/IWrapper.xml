@@ -1,0 +1,34 @@
+<Type Name="IWrapper" FullName="GLib.IWrapper">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public interface IWrapper" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IWrapper" />
+  <AssemblyInfo>
+    <AssemblyName>glib-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Interfaces />
+  <Docs>
+    <summary>Interface to identify a handle accessible wrapped type.</summary>
+    <remarks>This interface is used by the code generator, but it not typically used by application code.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Handle">
+      <MemberSignature Language="C#" Value="public IntPtr Handle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int Handle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>A pointer to the native type instance.</summary>
+        <value>an object of type <see cref="T:System.IntPtr" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

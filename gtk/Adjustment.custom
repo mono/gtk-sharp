@@ -1,0 +1,48 @@
+//
+// Gtk.Adjustment.custom - Allow customization of values in the GtkAdjustment
+//
+// This code is inserted after the automatically generated code.
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of version 2 of the Lesser GNU General 
+// Public License as published by the Free Software Foundation.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this program; if not, write to the
+// Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+// Boston, MA 02111-1307, USA.
+//
+
+[DllImport("libgtk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+static extern IntPtr gtk_adjustment_new(double value, double lower, double upper, double step_increment, double page_increment, double page_size);
+
+public Adjustment (double value, double lower, double upper, double step_increment, double page_increment, double page_size) : base (IntPtr.Zero)
+{
+	if (GetType () != typeof (Adjustment)) {
+		CreateNativeObject (Array.Empty<IntPtr> (), Array.Empty<GLib.Value> (), 0);
+		Value = value;
+		Lower = lower;
+		Upper = upper;
+		StepIncrement = step_increment;
+		PageIncrement = page_increment;
+		PageSize = page_size;
+		return;
+	}
+
+	owned = true;
+	Raw = gtk_adjustment_new(value, lower, upper, step_increment, page_increment, page_size);
+}
+
+[DllImport("gtksharpglue-2", CallingConvention=CallingConvention.Cdecl)]
+static extern void gtksharp_gtk_adjustment_set_bounds (IntPtr i, double lower, double upper, double step_increment, double page_increment, double page_size);
+
+public void SetBounds (double lower, double upper, double step_increment, double page_increment, double page_size)
+{
+	gtksharp_gtk_adjustment_set_bounds (this.Handle, lower, upper, step_increment, page_increment, page_size);
+}
+

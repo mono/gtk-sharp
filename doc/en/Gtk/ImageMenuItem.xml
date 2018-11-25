@@ -1,0 +1,183 @@
+<Type Name="ImageMenuItem" FullName="Gtk.ImageMenuItem">
+  <TypeSignature Language="C#" Maintainer="John Luke" Value="public class ImageMenuItem : Gtk.MenuItem" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ImageMenuItem extends Gtk.MenuItem" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.MenuItem</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>A <see cref="T:Gtk.MenuItem" /> with an icon.</summary>
+    <remarks>
+      <para>
+        <see cref="T:Gtk.ImageMenuItem" /> is a <see cref="T:Gtk.MenuItem" /> which has an icon next to the text label.</para>
+      <para>Note that the user can disable display of menu icons, so make sure to still fill in the text label.</para>
+      <example>
+        <code lang="C#">
+	//How to add MenuBar with a Quit stock MenuItem
+	...
+	Window win;	//if your class derive from Window then call this. istead of win.
+	MenuBar menuBar
+	...
+	AccelGroup grup = new AccelGroup ();
+	win.AddAccelGroup(grup);
+
+	menuFile = new Menu ();
+	ImageMenuItem quit_item = new ImageMenuItem(Stock.Quit, group);
+	quit_item.AddAccelerator("activate", grup, new AccelKey(
+		Gdk.Key.q, Gdk.ModifierType.ControlMask, AccelFlags.Visible));
+		
+	//OnMenuFileQuit is the Method runned when the event is trigged
+	quit_item.Activated += new EventHandler (OnMenuFileQuit);
+	menuFile.Append(quit_item); 
+	MenuItem file_item = new MenuItem("_File");
+	file_item.Submenu = menuFile;
+		
+	menuBar.Append(file_item);
+	
+  </code>
+      </example>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ImageMenuItem ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Creates a new <see cref="T:Gtk.ImageMenuItem" />.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected ImageMenuItem (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ImageMenuItem (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ImageMenuItem (string label);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string label) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="label">an object of type <see cref="T:System.String" /></param>
+        <summary>Creates a new <see cref="T:Gtk.ImageMenuItem" /> containing a label.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ImageMenuItem (string stock_id, Gtk.AccelGroup accel_group);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string stock_id, class Gtk.AccelGroup accel_group) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="stock_id" Type="System.String" />
+        <Parameter Name="accel_group" Type="Gtk.AccelGroup" />
+      </Parameters>
+      <Docs>
+        <param name="stock_id">an object of type <see cref="T:System.String" /></param>
+        <param name="accel_group">an object of type <see cref="T:Gtk.AccelGroup" /></param>
+        <summary>Creates a new <see cref="T:Gtk.ImageMenuItem" /> containing the image and text from a stock item.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.ImageMenuItem" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Image">
+      <MemberSignature Language="C#" Value="public Gtk.Widget Image { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Widget Image" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("image")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.Widget</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Child widget to appear next to the menu text.</summary>
+        <value>an object of type <see cref="T:Gtk.Widget" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

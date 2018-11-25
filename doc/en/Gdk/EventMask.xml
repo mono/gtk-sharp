@@ -1,0 +1,402 @@
+<Type Name="EventMask" FullName="Gdk.EventMask">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum EventMask" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed EventMask extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gdk.EventMaskGType))</AttributeName>
+    </Attribute>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>A set of bit-flags to indicate which events a window is to receive. Most of these masks map onto one or more of the <see cref="T:Gdk.EventType" /> event types above.</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="AllEventsMask">
+      <MemberSignature Language="C#" Value="AllEventsMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask AllEventsMask = int32(4194302)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The combination of all the above event masks.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Button1MotionMask">
+      <MemberSignature Language="C#" Value="Button1MotionMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask Button1MotionMask = int32(32)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive pointer motion events while 1 button is pressed.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Button2MotionMask">
+      <MemberSignature Language="C#" Value="Button2MotionMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask Button2MotionMask = int32(64)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive pointer motion events while 2 button is pressed.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Button3MotionMask">
+      <MemberSignature Language="C#" Value="Button3MotionMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask Button3MotionMask = int32(128)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive pointer motion events while 3 button is pressed.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ButtonMotionMask">
+      <MemberSignature Language="C#" Value="ButtonMotionMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask ButtonMotionMask = int32(16)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive pointer motion events while any button is pressed.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ButtonPressMask">
+      <MemberSignature Language="C#" Value="ButtonPressMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask ButtonPressMask = int32(256)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive button press events.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ButtonReleaseMask">
+      <MemberSignature Language="C#" Value="ButtonReleaseMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask ButtonReleaseMask = int32(512)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive button release events.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnterNotifyMask">
+      <MemberSignature Language="C#" Value="EnterNotifyMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask EnterNotifyMask = int32(4096)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive window enter events.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ExposureMask">
+      <MemberSignature Language="C#" Value="ExposureMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask ExposureMask = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive expose events.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FocusChangeMask">
+      <MemberSignature Language="C#" Value="FocusChangeMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask FocusChangeMask = int32(16384)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive focus change events.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="KeyPressMask">
+      <MemberSignature Language="C#" Value="KeyPressMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask KeyPressMask = int32(1024)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive key press events.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="KeyReleaseMask">
+      <MemberSignature Language="C#" Value="KeyReleaseMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask KeyReleaseMask = int32(2048)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive key release events.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LeaveNotifyMask">
+      <MemberSignature Language="C#" Value="LeaveNotifyMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask LeaveNotifyMask = int32(8192)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive window leave events.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PointerMotionHintMask">
+      <MemberSignature Language="C#" Value="PointerMotionHintMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask PointerMotionHintMask = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Special mask which is used to reduce the number of <see cref="T:Gdk.EventMask" />.MotionNotify events received</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PointerMotionMask">
+      <MemberSignature Language="C#" Value="PointerMotionMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask PointerMotionMask = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive all pointer motion events.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PropertyChangeMask">
+      <MemberSignature Language="C#" Value="PropertyChangeMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask PropertyChangeMask = int32(65536)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive property change events.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProximityInMask">
+      <MemberSignature Language="C#" Value="ProximityInMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask ProximityInMask = int32(262144)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive proximity in events.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProximityOutMask">
+      <MemberSignature Language="C#" Value="ProximityOutMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask ProximityOutMask = int32(524288)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive proximity out events.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScrollMask">
+      <MemberSignature Language="C#" Value="ScrollMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask ScrollMask = int32(2097152)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive scroll events.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StructureMask">
+      <MemberSignature Language="C#" Value="StructureMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask StructureMask = int32(32768)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive events about window configuration change.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SubstructureMask">
+      <MemberSignature Language="C#" Value="SubstructureMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask SubstructureMask = int32(1048576)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive events about window configuration changes of child windows.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VisibilityNotifyMask">
+      <MemberSignature Language="C#" Value="VisibilityNotifyMask" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.EventMask VisibilityNotifyMask = int32(131072)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Receive visibility change events.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

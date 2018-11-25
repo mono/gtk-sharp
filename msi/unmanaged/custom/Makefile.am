@@ -1,0 +1,1 @@
+SUBDIRS = etc share

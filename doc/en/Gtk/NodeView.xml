@@ -1,0 +1,110 @@
+<Type Name="NodeView" FullName="Gtk.NodeView">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class NodeView : Gtk.TreeView" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NodeView extends Gtk.TreeView" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>[00 24 00 00 04 80 00 00 94 00 00 00 06 02 00 00 00 24 00 00 52 53 41 31 00 04 00 00 01 00 01 00 71 EB 6C 55 75 52 9C BF 72 44 F7 A6 EA 05 62 84 F9 EA E0 3B CF F2 CC 13 2C 9C 49 0A B3 09 EA B0 B5 6B CE 44 9D F5 03 D9 C0 A8 1E 52 05 85 CD BE 70 E2 FB 90 43 4B AC 04 FA 62 22 A8 00 98 B7 A1 A7 B3 AF 99 1A 41 23 24 BB 43 25 F6 B8 65 BB 64 EB F6 D1 C2 06 D5 73 2D DF BC 70 A7 38 9E E5 3E 0C 24 6E 32 79 74 1A D0 05 03 E4 98 42 E1 9B F3 7B 19 8B 40 21 26 CB 36 89 C2 EA 64 96 A4 7C B4]</AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.TreeView</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>Tree and List view.</summary>
+    <remarks />
+    <since version="Gtk# 2.4" />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NodeView ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Public Constructor.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NodeView (Gtk.NodeStore store);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Gtk.NodeStore store) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="store" Type="Gtk.NodeStore" />
+      </Parameters>
+      <Docs>
+        <param name="store">a <see cref="T:Gtk.NodeStore" /></param>
+        <summary>Constructs a new view for a given <see cref="T:Gtk.NodeStore" />.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="AppendColumn">
+      <MemberSignature Language="C#" Value="public Gtk.TreeViewColumn AppendColumn (string title, Gtk.CellRenderer cell, Gtk.NodeCellDataFunc cell_data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gtk.TreeViewColumn AppendColumn(string title, class Gtk.CellRenderer cell, class Gtk.NodeCellDataFunc cell_data) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.TreeViewColumn</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="title" Type="System.String" />
+        <Parameter Name="cell" Type="Gtk.CellRenderer" />
+        <Parameter Name="cell_data" Type="Gtk.NodeCellDataFunc" />
+      </Parameters>
+      <Docs>
+        <param name="title">a <see cref="T:System.String" /></param>
+        <param name="cell">a <see cref="T:Gtk.CellRenderer" /></param>
+        <param name="cell_data">a <see cref="T:Gtk.NodeCellDataFunc" /></param>
+        <summary>Adds a column to the view using a data callback delegate.</summary>
+        <returns>a <see cref="T:Gtk.TreeViewColumn" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="NodeSelection">
+      <MemberSignature Language="C#" Value="public Gtk.NodeSelection NodeSelection { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.NodeSelection NodeSelection" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.NodeSelection</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Used to obtain and manipulate the currently selected node(s).</summary>
+        <value>a <see cref="T:Gtk.NodeSelection" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="NodeStore">
+      <MemberSignature Language="C#" Value="public Gtk.NodeStore NodeStore { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.NodeStore NodeStore" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.NodeStore</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The store containing the view's data.</summary>
+        <value>a <see cref="T:Gtk.NodeStore" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<metadata>
+  <attr path="/api/namespace/class[@cname='AtkGlobal']/method[@name='AddGlobalEventListener']" name="hidden">1</attr>
+  <attr path="/api/namespace/class[@cname='AtkState_']" name="name">StateManager</attr>
+  <attr path="/api/namespace/interface[@cname='AtkComponent']/*[@name='RefAccessibleAtPoint']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/interface[@cname='AtkDocument']/method[@name='GetAttributes']/return-type" name="element_type">AtkAttribute*</attr>
+  <attr path="/api/namespace/interface[@cname='AtkDocument']/method[@name='GetDocument']" name="name">GetTheDocument</attr>
+  <attr path="/api/namespace/interface[@cname='AtkDocument']/virtual_method[@name='GetDocument']" name="name">GetTheDocument</attr>
+  <attr path="/api/namespace/interface[@cname='AtkDocument']/virtual_method[@cname='get_document_attributes']/return-type" name="element_type">AtkAttribute*</attr>
+  <attr path="/api/namespace/interface[@cname='AtkDocument']/virtual_method[@name='GetDocumentAttributes']" name="name">GetAttributes</attr>
+  <attr path="/api/namespace/interface[@cname='AtkDocument']/virtual_method[@name='GetDocumentAttributeValue']" name="name">GetAttributeValue</attr>
+  <attr path="/api/namespace/interface[@cname='AtkDocument']/virtual_method[@name='GetDocumentLocale']" name="name">GetLocale</attr>
+  <attr path="/api/namespace/interface[@cname='AtkDocument']/virtual_method[@name='SetDocumentAttribute']" name="name">SetAttributeValue</attr>
+  <attr path="/api/namespace/interface[@cname='AtkEditableText']/method[@name='InsertText']/*/*[@name='position']" name="pass_as">ref</attr>
+  <attr path="/api/namespace/interface[@cname='AtkEditableText']/virtual_method[@name='InsertText']/*/*[@name='position']" name="pass_as">ref</attr>
+  <attr path="/api/namespace/interface[@cname='AtkImplementor']/*[@name='RefAccessible']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/interface[@cname='AtkSelection']/*[@name='RefSelection']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/interface[@cname='AtkTable']/*[@name='RefAt']/return-type" name="owned">true</attr>
+
+  <remove-node path="/api/namespace/interface[@cname='AtkTable']" />
+  <remove-node path="/api/namespace/object[@cname='AtkNoOpObject']/implements/interface[@cname='AtkTable']" />
+  <add-node path="/api/namespace/object[@cname='AtkNoOpObject']/implements">
+      <interface name="Atk.Table" />
+  </add-node>
+
+  <attr path="/api/namespace/interface[@cname='AtkText']/*[@name='GetRangeExtents']/*/*[@name='rect']" name="pass_as">out</attr>
+  <attr path="/api/namespace/interface[@cname='AtkValue']/*[@name='GetCurrentValue']/*/*[@name='value']" name="pass_as">ref</attr>
+  <attr path="/api/namespace/interface[@cname='AtkValue']/*[@name='GetMaximumValue']/*/*[@name='value']" name="pass_as">ref</attr>
+  <attr path="/api/namespace/interface[@cname='AtkValue']/*[@name='GetMinimumValue']/*/*[@name='value']" name="pass_as">ref</attr>
+  <attr path="/api/namespace/interface[@cname='AtkValue']/*[@name='GetMinimumIncrement']/*/*[@name='value']" name="pass_as">ref</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/method[@name='GetAttributes']/return-type" name="element_type">AtkAttribute*</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/method[@name='RefAccessibleChild']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/method[@name='RefRelationSet']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/method[@name='RefStateSet']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='AtkRelation']/constructor[@cname='atk_relation_new']/*/*[@name='targets']" name="array">1</attr>
+  <attr path="/api/namespace/object[@cname='AtkRelation']/method[@name='GetTarget']/return-type" name="element_type">AtkObject*</attr>
+  <attr path="/api/namespace/struct[@cname='AtkAttribute']/method[@name='SetFree']" name="hidden">1</attr>
+  <attr path="/api/namespace/interface[@cname='AtkText']/*[@name='GetRunAttributes']/return-type" name="element_type">AtkAttribute*</attr>
+  <attr path="/api/namespace/interface[@cname='AtkText']/*[@name='GetDefaultAttributes']/return-type" name="element_type">AtkAttribute*</attr>
+  <attr path="/api/namespace/interface[@cname='AtkEditableText']/*[@name='GetRunAttributes']/return-type" name="element_type">AtkAttribute*</attr>
+  <attr path="/api/namespace/interface[@cname='AtkEditableText']/*[@name='GetDefaultAttributes']/return-type" name="element_type">AtkAttribute*</attr>
+  <attr path="/api/namespace/interface[@cname='AtkHyperlinkImpl']/*[@cname='atk_hyperlink_impl_get_hyperlink']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='AtkObjectFactory']/*[@cname='atk_object_factory_create_accessible']/return-type" name="owned">true</attr>
+  <!-- Says transfer full, but it's actually a static variable being saved.
+       <attr path="/api/namespace/object[@cname='AtkRegistry']/*[@cname='atk_get_default_registry']/return-type" name="owned">true</attr>
+  -->
+  <attr path="/api/namespace/object[@cname='AtkStateSet']/*[@cname='atk_state_set_and_sets']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='AtkStateSet']/*[@cname='atk_state_set_or_sets']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='AtkStateSet']/*[@cname='atk_state_set_xor_sets']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/interface[@cname='AtkTable']/*[@cname='atk_table_get_summary']/return-type" name="owned">true</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@cname='atk_object_get_attributes']" name="hidden">1</attr>
+  <attr path="/api/namespace/interface[@cname='AtkText']/*[@cname='atk_text_get_run_attributes']" name="hidden">1</attr>
+  <attr path="/api/namespace/interface[@cname='AtkText']/*[@cname='atk_text_get_default_attributes']" name="hidden">1</attr>
+  <!-- The names are const strings, not string literals, so we need to match them to the real value -->
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyName']" name="cname">accessible-name</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyDescription']" name="cname">accessible-description</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyParent']" name="cname">accessible-parent</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyValue']" name="cname">accessible-value</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyRole']" name="cname">accessible-role</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyComponentLayer']" name="cname">accessible-component-layer</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyComponentMdiZorder']" name="cname">accessible-component-mdi-zorder</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyTableCaption']" name="cname">accessible-table-caption</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyTableColumnDescription']" name="cname">accessible-table-column-description</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyTableColumnHeader']" name="cname">accessible-table-column-header</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyTableRowDescription']" name="cname">accessible-table-row-description</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyTableRowHeader']" name="cname">accessible-row-header</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyTableSummary']" name="cname">accessible-table-summary</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyTableCaptionObject']" name="cname">accessible-table-caption-object</attr>
+  <attr path="/api/namespace/object[@cname='AtkObject']/*[@name='AtkObjectNamePropertyHypertextNumLinks']" name="cname">accessible-hypertext-nlinks</attr>
+</metadata>

@@ -1,0 +1,93 @@
+<Type Name="CapStyle" FullName="Gdk.CapStyle">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum CapStyle" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CapStyle extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gdk.CapStyleGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Determines how the end of lines are drawn.</summary>
+    <remarks>None.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Butt">
+      <MemberSignature Language="C#" Value="Butt" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.CapStyle Butt = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.CapStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The ends of the lines are drawn squared off and extending to the coordinates of the end point.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NotLast">
+      <MemberSignature Language="C#" Value="NotLast" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.CapStyle NotLast = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.CapStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The same as Butt for lines of non-zero width. For zero width lines, the final point on the line will not be drawn.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Projecting">
+      <MemberSignature Language="C#" Value="Projecting" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.CapStyle Projecting = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.CapStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The ends of the lines are drawn squared off and extending half the width of the line beyond the end point.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Round">
+      <MemberSignature Language="C#" Value="Round" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.CapStyle Round = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.CapStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The ends of the lines are drawn as semicircles with the diameter equal to the line width and centered at the end point.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

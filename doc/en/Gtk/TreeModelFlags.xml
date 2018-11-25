@@ -1,0 +1,62 @@
+<Type Name="TreeModelFlags" FullName="Gtk.TreeModelFlags">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum TreeModelFlags" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed TreeModelFlags extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gtk.TreeModelFlagsGType))</AttributeName>
+    </Attribute>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>These flags indicate various properties of a <see cref="T:Gtk.TreeModel" />.</summary>
+    <remarks>These flags are returned through the property <see cref="P:Gtk.TreeModel.Flags" /> and must be static for the lifetime of the object.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ItersPersist">
+      <MemberSignature Language="C#" Value="ItersPersist" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.TreeModelFlags ItersPersist = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.TreeModelFlags</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>If set, iterators survive all signals emitted by the tree.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ListOnly">
+      <MemberSignature Language="C#" Value="ListOnly" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.TreeModelFlags ListOnly = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.TreeModelFlags</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>If set, the model is a list only and never has children.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

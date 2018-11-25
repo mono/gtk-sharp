@@ -1,0 +1,149 @@
+<Type Name="PrintStatus" FullName="Gtk.PrintStatus">
+  <TypeSignature Language="C#" Value="public enum PrintStatus" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed PrintStatus extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gtk.PrintStatusGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>PrintStatus enumeration.</summary>
+    <remarks />
+    <since version="Gtk# 2.10" />
+  </Docs>
+  <Members>
+    <Member MemberName="Finished">
+      <MemberSignature Language="C#" Value="Finished" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.PrintStatus Finished = int32(7)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.PrintStatus</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Printing has finished.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="FinishedAborted">
+      <MemberSignature Language="C#" Value="FinishedAborted" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.PrintStatus FinishedAborted = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.PrintStatus</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Printing was aborted.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="GeneratingData">
+      <MemberSignature Language="C#" Value="GeneratingData" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.PrintStatus GeneratingData = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.PrintStatus</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Pages are being rendered.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Initial">
+      <MemberSignature Language="C#" Value="Initial" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.PrintStatus Initial = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.PrintStatus</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Printing has not started.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Pending">
+      <MemberSignature Language="C#" Value="Pending" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.PrintStatus Pending = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.PrintStatus</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Job sent to printer, but has not printed.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PendingIssue">
+      <MemberSignature Language="C#" Value="PendingIssue" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.PrintStatus PendingIssue = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.PrintStatus</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Problem occurred during printing.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Preparing">
+      <MemberSignature Language="C#" Value="Preparing" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.PrintStatus Preparing = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.PrintStatus</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>BeginPrint event has raised.  During pagination.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Printing">
+      <MemberSignature Language="C#" Value="Printing" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.PrintStatus Printing = int32(6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.PrintStatus</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Printer is processing job.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="SendingData">
+      <MemberSignature Language="C#" Value="SendingData" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.PrintStatus SendingData = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.PrintStatus</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Job is being sent to the printer.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

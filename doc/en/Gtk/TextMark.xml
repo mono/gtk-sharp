@@ -1,0 +1,259 @@
+<Type Name="TextMark" FullName="Gtk.TextMark">
+  <TypeSignature Language="C#" Maintainer="duncan" Value="public class TextMark : GLib.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit TextMark extends GLib.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>
+      A <see cref="T:Gtk.TextMark" /> is like a bookmark in a text buffer; it preserves a position in the text.
+    </summary>
+    <remarks>
+      <para>
+        A GtkTextMark is like a bookmark in a text buffer; it
+        preserves a position in the text. You can convert the mark to
+        an <see cref="T:Gtk.TextIter" /> iterator using <see cref="M:Gtk.TextBuffer.GetIterAtMark(Gtk.TextMark)" />. Unlike
+        iterators, marks remain valid across buffer mutations, because
+        their behavior is defined when text is inserted or
+        deleted. When text containing a mark is deleted, the mark
+        remains in the position originally occupied by the deleted
+        text. When text is inserted at a mark, a mark with left
+        gravity will be moved to the beginning of the newly-inserted
+        text, and a mark with right gravity will be moved to the
+        end.
+      </para>
+      <para>
+        Marks optionally have names; these can be convenient to avoid
+        passing the <see cref="T:Gtk.TextMark" /> object around.
+      </para>
+      <para>
+        Marks are typically created using the
+        <see cref="M:Gtk.TextMark.CreateMark(Gtk.TextMark)" /> function.
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected TextMark ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Default constructor</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected TextMark (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TextMark (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TextMark (string name, bool left_gravity);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string name, bool left_gravity) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+        <Parameter Name="left_gravity" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="name">To be added.</param>
+        <param name="left_gravity">To be added.</param>
+        <summary>Public constructor.</summary>
+        <remarks>To be added.</remarks>
+        <since version="Gtk# 2.12" />
+      </Docs>
+    </Member>
+    <Member MemberName="Buffer">
+      <MemberSignature Language="C#" Value="public Gtk.TextBuffer Buffer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.TextBuffer Buffer" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.TextBuffer</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          Gets the buffer where this mark is located
+        </summary>
+        <value>The buffer where this mark is applied</value>
+        <remarks>
+          <see langword="null" /> is returned if the mark has been deleted.
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Deleted">
+      <MemberSignature Language="C#" Value="public bool Deleted { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Deleted" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Whether or not the mark has been removed</summary>
+        <value>Returns <see langword="true" /> if the mark has been removed from its buffer.</value>
+        <remarks>
+          <para>
+            Returns <see langword="true" /> if the mark has been
+            removed from its buffer with <see cref="M:Gtk.TextBuffer.DeleteMark(Gtk.TextMark)" />. Marks
+            can't be used once they are deleted.
+          </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.TextMark" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LeftGravity">
+      <MemberSignature Language="C#" Value="public bool LeftGravity { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool LeftGravity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("left-gravity")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Whether or not the mark has left gravity</summary>
+        <value>
+          <see langword="true" /> if the mark has left gravity,
+          <see langword="false" /> otherwise.
+        </value>
+        <remarks>
+          "left" and "right" here refer to logical direction (left is
+          the toward the start of the buffer); in some languages such
+          as Hebrew the logically-leftmost text is not actually on the
+          left when displayed.
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("name")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The name of the mark</summary>
+        <value>
+          Returns the name of the mark and <see langword="null" /> if
+          it's an anonymous mark
+        </value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Visible">
+      <MemberSignature Language="C#" Value="public bool Visible { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Visible" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The visibility of the mark</summary>
+        <value>
+          <see langword="true" /> if the mark is visible (i.e. a cursor is displayed for it)</value>
+        <remarks>
+          <para>
+            The insertion point is normally visible, i.e. you can see
+            it as a vertical bar. Also, the text widget uses a visible
+            mark to indicate where a drop will occur when
+            dragging-and-dropping text. Most other marks are not
+            visible. Marks are not visible by default.
+          </para>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,378 @@
+<Type Name="CellRendererToggle" FullName="Gtk.CellRendererToggle">
+  <TypeSignature Language="C#" Maintainer="John Luke" Value="public class CellRendererToggle : Gtk.CellRenderer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CellRendererToggle extends Gtk.CellRenderer" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.CellRenderer</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>Renders a <see cref="T:Gtk.ToggleButton" /> or a <see cref="T:Gtk.RadioButton" /></summary>
+    <remarks>
+      <para>This Class is a <see cref="T:Gtk.CellRenderer" /> implementation that can render a checkbox in your <see cref="T:Gtk.TreeView" /> columns.</para>
+      <para>It is important to note that the <see cref="T:Gtk.CellRendererToggle" /> will not change the corresponding bool field in your <see cref="T:Gtk.TreeModel" /> itself - you'll need to provide a handler, as shown in the following code snippet:
+</para>
+      <example>
+        <code lang="C#">
+private TreeStore store;
+
+void SetupTreeView ()
+{
+	store = new TreeStore (typeof (string), typeof(bool));
+
+	// populate store..
+
+	TreeView tv = new TreeView (store);
+	tv.HeadersVisible = true;
+
+	tv.AppendColumn ("Name", new CellRendererText (), "text", 0);
+
+	CellRendererToggle crt = new CellRendererToggle();
+	crt.Activatable = true;
+	crt.Toggled += crt_toggled;
+	tv.AppendColumn ("CheckMe", crt, "active", 1);
+
+	// add the TreeView to some window...
+}
+
+void crt_toggled(object o, ToggledArgs args) {
+	TreeIter iter;
+
+	if (store.GetIter (out iter, new TreePath(args.Path))) {
+		bool old = (bool) store.GetValue(iter,1);
+		store.SetValue(iter,1,!old);
+	}
+}
+</code>
+      </example>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CellRendererToggle ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Creates a new <see cref="T:Gtk.CellRendererToggle" />.</summary>
+        <remarks>The default constructor.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected CellRendererToggle (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CellRendererToggle (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Activatable">
+      <MemberSignature Language="C#" Value="public bool Activatable { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Activatable" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("activatable")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The <see cref="T:Gtk.ToggleButton" /> can be activated.</summary>
+        <value>an object of type <see cref="T:System.Boolean" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Active">
+      <MemberSignature Language="C#" Value="public bool Active { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Active" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("active")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The toggle state of the <see cref="T:Gtk.ToggleButton" />.</summary>
+        <value>an object of type <see cref="T:System.Boolean" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="GetSize">
+      <MemberSignature Language="C#" Value="public override void GetSize (Gtk.Widget widget, ref Gdk.Rectangle cell_area, out int x_offset, out int y_offset, out int width, out int height);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void GetSize(class Gtk.Widget widget, valuetype Gdk.Rectangle cell_area, int32 x_offset, int32 y_offset, int32 width, int32 height) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="widget" Type="Gtk.Widget" />
+        <Parameter Name="cell_area" Type="Gdk.Rectangle&amp;" RefType="ref" />
+        <Parameter Name="x_offset" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="y_offset" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="width" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="height" Type="System.Int32&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="widget">To be added.</param>
+        <param name="cell_area">To be added.</param>
+        <param name="x_offset">To be added.</param>
+        <param name="y_offset">To be added.</param>
+        <param name="width">To be added.</param>
+        <param name="height">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.CellRendererToggle" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Inconsistent">
+      <MemberSignature Language="C#" Value="public bool Inconsistent { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Inconsistent" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("inconsistent")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The inconsistent state of the button.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="IndicatorSize">
+      <MemberSignature Language="C#" Value="public int IndicatorSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 IndicatorSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("indicator-size")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Size of check or radio indicator.</summary>
+        <value>defaults to 12.</value>
+        <remarks />
+        <since version="Gtk# 2.10" />
+      </Docs>
+    </Member>
+    <Member MemberName="OnToggled">
+      <MemberSignature Language="C#" Value="protected virtual void OnToggled (string path);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnToggled(string path) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideToggled", Type=typeof(Gtk.CellRendererToggle))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="path" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="path">a <see cref="T:System.String" /></param>
+        <summary>Default handler for the <see cref="M:Gtk.CellRendererToggle.Toggled" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.CellRendererToggle.Toggled" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Radio">
+      <MemberSignature Language="C#" Value="public bool Radio { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Radio" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("radio")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Draw the <see cref="T:Gtk.ToggleButton" /> as a <see cref="T:Gtk.RadioButton" />.</summary>
+        <value>an object of type <see cref="T:System.Boolean" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Render">
+      <MemberSignature Language="C#" Value="protected override void Render (Gdk.Drawable window, Gtk.Widget widget, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, Gdk.Rectangle expose_area, Gtk.CellRendererState flags);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Render(class Gdk.Drawable window, class Gtk.Widget widget, valuetype Gdk.Rectangle background_area, valuetype Gdk.Rectangle cell_area, valuetype Gdk.Rectangle expose_area, valuetype Gtk.CellRendererState flags) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="window" Type="Gdk.Drawable" />
+        <Parameter Name="widget" Type="Gtk.Widget" />
+        <Parameter Name="background_area" Type="Gdk.Rectangle" />
+        <Parameter Name="cell_area" Type="Gdk.Rectangle" />
+        <Parameter Name="expose_area" Type="Gdk.Rectangle" />
+        <Parameter Name="flags" Type="Gtk.CellRendererState" />
+      </Parameters>
+      <Docs>
+        <param name="window">To be added.</param>
+        <param name="widget">To be added.</param>
+        <param name="background_area">To be added.</param>
+        <param name="cell_area">To be added.</param>
+        <param name="expose_area">To be added.</param>
+        <param name="flags">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StartEditing">
+      <MemberSignature Language="C#" Value="public override Gtk.CellEditable StartEditing (Gdk.Event evnt, Gtk.Widget widget, string path, Gdk.Rectangle background_area, Gdk.Rectangle cell_area, Gtk.CellRendererState flags);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Gtk.CellEditable StartEditing(class Gdk.Event evnt, class Gtk.Widget widget, string path, valuetype Gdk.Rectangle background_area, valuetype Gdk.Rectangle cell_area, valuetype Gtk.CellRendererState flags) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.CellEditable</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="evnt" Type="Gdk.Event" />
+        <Parameter Name="widget" Type="Gtk.Widget" />
+        <Parameter Name="path" Type="System.String" />
+        <Parameter Name="background_area" Type="Gdk.Rectangle" />
+        <Parameter Name="cell_area" Type="Gdk.Rectangle" />
+        <Parameter Name="flags" Type="Gtk.CellRendererState" />
+      </Parameters>
+      <Docs>
+        <param name="evnt">To be added.</param>
+        <param name="widget">To be added.</param>
+        <param name="path">To be added.</param>
+        <param name="background_area">To be added.</param>
+        <param name="cell_area">To be added.</param>
+        <param name="flags">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Toggled">
+      <MemberSignature Language="C#" Value="public event Gtk.ToggledHandler Toggled;" />
+      <MemberSignature Language="ILAsm" Value=".event class Gtk.ToggledHandler Toggled" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("toggled")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.ToggledHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted when the cell is clicked.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

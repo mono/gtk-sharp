@@ -1,0 +1,34 @@
+<Type Name="HTMLPrintCallback" FullName="Gtk.HTMLPrintCallback">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public delegate void HTMLPrintCallback(HTML html, PrintContext print_context, double x, double y, double width, double height);" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed HTMLPrintCallback extends System.MulticastDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>gtkhtml-sharp</AssemblyName>
+    <AssemblyVersion>3.16.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="html" Type="Gtk.HTML" />
+    <Parameter Name="print_context" Type="Gtk.PrintContext" />
+    <Parameter Name="x" Type="System.Double" />
+    <Parameter Name="y" Type="System.Double" />
+    <Parameter Name="width" Type="System.Double" />
+    <Parameter Name="height" Type="System.Double" />
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Void</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <param name="html">To be added.</param>
+    <param name="print_context">To be added.</param>
+    <param name="x">To be added.</param>
+    <param name="y">To be added.</param>
+    <param name="width">To be added.</param>
+    <param name="height">To be added.</param>
+    <summary>Delegate for printing page framing elements.</summary>
+    <remarks>Used to print headers and footers in <see cref="M:Gtk.HTML.PrintWithHeaderFooter" />.</remarks>
+  </Docs>
+  <Members />
+</Type>

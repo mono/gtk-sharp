@@ -1,0 +1,104 @@
+<Type Name="Open" FullName="Gnome.Vfs.Open">
+  <TypeSignature Language="C#" Value="public class Open" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Open extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gnome-vfs-sharp</AssemblyName>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Open ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Fd">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result Fd (Gnome.Vfs.Handle handle, int filedes);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result Fd(class Gnome.Vfs.Handle handle, int32 filedes) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="Gnome.Vfs.Handle" />
+        <Parameter Name="filedes" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="filedes">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Uri">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result Uri (Gnome.Vfs.Handle handle, Gnome.Vfs.Uri uri, Gnome.Vfs.OpenMode open_mode);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result Uri(class Gnome.Vfs.Handle handle, class Gnome.Vfs.Uri uri, valuetype Gnome.Vfs.OpenMode open_mode) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="Gnome.Vfs.Handle" />
+        <Parameter Name="uri" Type="Gnome.Vfs.Uri" />
+        <Parameter Name="open_mode" Type="Gnome.Vfs.OpenMode" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="uri">To be added.</param>
+        <param name="open_mode">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UriCancellable">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result UriCancellable (Gnome.Vfs.Handle handle, Gnome.Vfs.Uri uri, Gnome.Vfs.OpenMode open_mode, Gnome.Vfs.Context context);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result UriCancellable(class Gnome.Vfs.Handle handle, class Gnome.Vfs.Uri uri, valuetype Gnome.Vfs.OpenMode open_mode, class Gnome.Vfs.Context context) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="Gnome.Vfs.Handle" />
+        <Parameter Name="uri" Type="Gnome.Vfs.Uri" />
+        <Parameter Name="open_mode" Type="Gnome.Vfs.OpenMode" />
+        <Parameter Name="context" Type="Gnome.Vfs.Context" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="uri">To be added.</param>
+        <param name="open_mode">To be added.</param>
+        <param name="context">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

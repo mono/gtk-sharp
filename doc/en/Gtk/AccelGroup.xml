@@ -1,0 +1,448 @@
+<Type Name="AccelGroup" FullName="Gtk.AccelGroup">
+  <TypeSignature Language="C#" Maintainer="RJS" Value="public class AccelGroup : GLib.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit AccelGroup extends GLib.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>Groups of global keyboard accelerators for an entire GtkWindow</summary>
+    <remarks>
+      <para>
+        A GtkAccelGroup represents a group of keyboard accelerators,
+        typically attached to a toplevel <see cref="T:Gtk.Window" /> (with <see cref="M:Gtk.Window.AddAccelGroup(Gtk.AccelGroup)" />). Usually
+        you won't need to create a <see cref="T:Gtk.AccelGroup" />
+        directly; instead, when using <see cref="T:Gtk.ItemFactory" />, Gtk# automatically sets up the accelerators for your menus
+        in the item factory's <see cref="T:Gtk.AccelGroup" />.
+      </para>
+      <para>
+        Note that accelerators are different from
+        mnemonics. Accelerators are shortcuts for activating a menu
+        item; they appear alongside the menu item they are a shortcut
+        for. For example "Ctrl+Q" might appear alongside the "Quit"
+        menu item. Mnemonics are shortcuts for GUI elements such as
+        text entries or buttons; they appear as underlined
+        characters. <see cref="M:Gtk.Label.NewWithMnemonic(System.String)" />. Menu
+        items can have both accelerators and mnemonics, of course.
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AccelGroup ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Default public constructor.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected AccelGroup (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AccelGroup (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AccelActivate">
+      <MemberSignature Language="C#" Value="public event Gtk.AccelActivateHandler AccelActivate;" />
+      <MemberSignature Language="ILAsm" Value=".event class Gtk.AccelActivateHandler AccelActivate" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("accel_activate")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.AccelActivateHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+        </summary>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="AccelChanged">
+      <MemberSignature Language="C#" Value="public event Gtk.AccelChangedHandler AccelChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class Gtk.AccelChangedHandler AccelChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("accel_changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.AccelChangedHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary />
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Activate">
+      <MemberSignature Language="C#" Value="public bool Activate (int accel_quark, GLib.Object acceleratable, uint accel_key, Gdk.ModifierType accel_mods);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Activate(int32 accel_quark, class GLib.Object acceleratable, unsigned int32 accel_key, valuetype Gdk.ModifierType accel_mods) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="accel_quark" Type="System.Int32" />
+        <Parameter Name="acceleratable" Type="GLib.Object" />
+        <Parameter Name="accel_key" Type="System.UInt32" />
+        <Parameter Name="accel_mods" Type="Gdk.ModifierType" />
+      </Parameters>
+      <Docs>
+        <param name="accel_quark">a <see cref="T:System.Int32" /></param>
+        <param name="acceleratable">a <see cref="T:GLib.Object" /></param>
+        <param name="accel_key">a <see cref="T:System.UInt32" /></param>
+        <param name="accel_mods">a <see cref="T:System.Int32" /></param>
+        <summary>Activates the accelerator.</summary>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Connect">
+      <MemberSignature Language="C#" Value="public void Connect (uint accel_key, Gdk.ModifierType accel_mods, Gtk.AccelFlags accel_flags, IntPtr closure);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Connect(unsigned int32 accel_key, valuetype Gdk.ModifierType accel_mods, valuetype Gtk.AccelFlags accel_flags, native int closure) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="accel_key" Type="System.UInt32" />
+        <Parameter Name="accel_mods" Type="Gdk.ModifierType" />
+        <Parameter Name="accel_flags" Type="Gtk.AccelFlags" />
+        <Parameter Name="closure" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="accel_key">Key value of the accelerator.</param>
+        <param name="accel_mods">Modifier combination of the accelerator.</param>
+        <param name="accel_flags">A flag mask to configure this accelerator.</param>
+        <param name="closure">Closure to be executed upon accelerator activation.</param>
+        <summary>
+          Installs an accelerator in this group. When accel_group is
+          being activated in response to a call to <see cref="M:Gtk.AccelGroup.Activate" />, closure will be
+          invoked if the accel_key and accel_mods from <see cref="M:Gtk.AccelGroup.Activate" /> match those of this
+          connection. The signature used for the closure is that of
+          <see cref="M:Gtk.AccelGroup.Activate" />.
+        </summary>
+        <remarks>Note that, due to implementation details, a single closure can only be connected to one accelerator group.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConnectByPath">
+      <MemberSignature Language="C#" Value="public void ConnectByPath (string accel_path, IntPtr closure);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ConnectByPath(string accel_path, native int closure) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="accel_path" Type="System.String" />
+        <Parameter Name="closure" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="accel_path">Path used for determining key and modifiers.</param>
+        <param name="closure">Closure to be executed upon accelerator activation</param>
+        <summary>Installs an accelerator in this group, using an
+        accelerator path to look up the appropriate key and modifiers
+        (see <see cref="M:Gtk.AccelMap.AddEntry" />). When the
+        group is being activated in response to a call to <see cref="M:Gtk.AccelGroup.Activate" />, <paramref name="closure" /> will be invoked if the accel_key and
+        accel_mods from <see cref="M:Gtk.AccelGroup.Activate" />
+        match the key and modifiers for the path.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Disconnect">
+      <MemberSignature Language="C#" Value="public bool Disconnect (IntPtr closure);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Disconnect(native int closure) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="closure" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="closure">The closure to remove from this accelerator group.</param>
+        <summary>Removes an accelerator previously installed through
+        <see cref="M:Gtk.AccelGroup.Connect(System.UInt32,Gdk.ModifierType,Gtk.AccelFlags,System.IntPtr)" />.</summary>
+        <returns>
+          <see langword="true" /> if the closure was found and got disconnected</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="DisconnectKey">
+      <MemberSignature Language="C#" Value="public bool DisconnectKey (uint accel_key, Gdk.ModifierType accel_mods);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool DisconnectKey(unsigned int32 accel_key, valuetype Gdk.ModifierType accel_mods) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="accel_key" Type="System.UInt32" />
+        <Parameter Name="accel_mods" Type="Gdk.ModifierType" />
+      </Parameters>
+      <Docs>
+        <param name="accel_key">Key value of the accelerator.</param>
+        <param name="accel_mods">Modifier combination of the accelerator.</param>
+        <summary>Removes an accelerator previously installed through <see cref="M:Gtk.AccelGroup.Connect(System.UInt32,Gdk.ModifierType,Gtk.AccelFlags,System.IntPtr)" />.</summary>
+        <returns>
+          <see langword="true" /> if there was an accelerator which could be removed, <see langword="false" /> otherwise.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Find">
+      <MemberSignature Language="C#" Value="public Gtk.AccelKey Find (Gtk.AccelGroupFindFunc find_func);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Gtk.AccelKey Find(class Gtk.AccelGroupFindFunc find_func) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.AccelKey</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="find_func" Type="Gtk.AccelGroupFindFunc" />
+      </Parameters>
+      <Docs>
+        <param name="find_func">a <see cref="T:Gtk.AccelGroupFindFunc" /> for filtering the AccelGroup entries</param>
+        <summary>Finds the first entry in an accelerator group for which <paramref name="find_func" /> returns TRUE and returns its <see cref="T:Gtk.AccelKey" />.</summary>
+        <returns>a <see cref="T:Gtk.AccelKey" />, the first key matching the find function. It is owned by Gtk# and must not be freed.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="FromAccelClosure">
+      <MemberSignature Language="C#" Value="public static Gtk.AccelGroup FromAccelClosure (IntPtr closure);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gtk.AccelGroup FromAccelClosure(native int closure) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.AccelGroup</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="closure" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="closure">A GClosure (<see cref="T:System.IntPtr" />)</param>
+        <summary>Finds the <see cref="T:Gtk.AccelGroup" /> to which closure is connected.</summary>
+        <returns>The <see cref="T:Gtk.AccelGroup" /> to which <paramref name="closure" /> is connected, or <see langword="null" />.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.AccelGroup" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Lock">
+      <MemberSignature Language="C#" Value="public void Lock ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Lock() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Locks the given accelerator group.</summary>
+        <remarks>Locking an accelerator group prevents the
+        accelerators contained within it to be changed duringb
+        runtime. Refer to 'gtk_accel_map_change_entry ()' about
+        runtime accelerator changes. If called more than once, it
+        remains locked until <see cref="M:Gtk.AccelGroup.Unlock" />
+        has been called an equivalent number of times.
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnAccelActivate">
+      <MemberSignature Language="C#" Value="protected virtual bool OnAccelActivate (GLib.Object acceleratable, uint keyval, Gdk.ModifierType modifier);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool OnAccelActivate(class GLib.Object acceleratable, unsigned int32 keyval, valuetype Gdk.ModifierType modifier) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideAccelActivate", Type=typeof(Gtk.AccelGroup))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="acceleratable" Type="GLib.Object" />
+        <Parameter Name="keyval" Type="System.UInt32" />
+        <Parameter Name="modifier" Type="Gdk.ModifierType" />
+      </Parameters>
+      <Docs>
+        <param name="acceleratable">a <see cref="T:GLib.Object" /></param>
+        <param name="keyval">a <see cref="T:System.UInt32" /></param>
+        <param name="modifier">a <see cref="T:System.Int32" /></param>
+        <summary>Default handler for the <see cref="M:Gtk.AccelGroup.AccelActivate" /> event.</summary>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.AccelGroup.AccelActivate" /> event.</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="OnAccelChanged">
+      <MemberSignature Language="C#" Value="protected virtual void OnAccelChanged (uint keyval, Gdk.ModifierType modifier, IntPtr accel_closure);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnAccelChanged(unsigned int32 keyval, valuetype Gdk.ModifierType modifier, native int accel_closure) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideAccelChanged", Type=typeof(Gtk.AccelGroup))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="keyval" Type="System.UInt32" />
+        <Parameter Name="modifier" Type="Gdk.ModifierType" />
+        <Parameter Name="accel_closure" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="keyval">a <see cref="T:System.UInt32" /></param>
+        <param name="modifier">a <see cref="T:Gdk.ModifierType" /></param>
+        <param name="accel_closure">a <see cref="T:System.IntPtr" /></param>
+        <summary>Default handler for the <see cref="M:Gtk.AccelGroup.AccelChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.AccelGroup.AccelChanged" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Query">
+      <MemberSignature Language="C#" Value="public Gtk.AccelGroupEntry Query (uint accel_key, Gdk.ModifierType accel_mods, out uint n_entries);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Gtk.AccelGroupEntry Query(unsigned int32 accel_key, valuetype Gdk.ModifierType accel_mods, unsigned int32 n_entries) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.AccelGroupEntry</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="accel_key" Type="System.UInt32" />
+        <Parameter Name="accel_mods" Type="Gdk.ModifierType" />
+        <Parameter Name="n_entries" Type="System.UInt32&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="accel_key">Key value of the accelerator.</param>
+        <param name="accel_mods">Modifier combination of the accelerator.</param>
+        <param name="n_entries">Location to return the number of entries found, or <see langword="null" />.</param>
+        <summary>Queries an accelerator group for all entries matching <paramref name="accel_key" /> and <paramref name="accel_mods" />.</summary>
+        <returns>An array of <paramref name="n_entries" /><see cref="T:Gtk.AccelGroupEntry" /> elements, or <see langword="null" />.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Unlock">
+      <MemberSignature Language="C#" Value="public void Unlock ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Unlock() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Undoes the last call to <see cref="M:Gtk.AccelGroup.Lock" /> on its object.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

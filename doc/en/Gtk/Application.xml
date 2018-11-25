@@ -1,0 +1,448 @@
+<Type Name="Application" FullName="Gtk.Application">
+  <TypeSignature Language="C#" Value="public class Application" Maintainer="John Luke" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi Application extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Application class</summary>
+    <remarks>
+      <para>
+	Provides the initialization and event loop iteration related
+	methods for the Gtk# widget library.  Since Gtk# is an event 
+	driven toolkit, Applications register callbacks against various
+	events to handle user input. These callbacks are invoked from
+	the main event loop when events are detected.
+      </para>
+      <example>
+        <code lang="C#">
+using Gtk;
+using System;
+using GLib;
+
+public class HelloWorld  {
+
+	public static int Main (string[] args)
+	{
+		Application.Init ();
+		Gtk.Window win = new Gtk.Window ("Gtk# Hello World");
+		win.DeleteEvent += new DeleteEventHandler (Window_Delete);
+		win.ShowAll ();
+		Application.Run ();
+		return 0;
+	}
+
+	static void Window_Delete (object obj, DeleteEventArgs args)
+	{
+		SignalArgs sa = (SignalArgs) args;
+		Application.Quit ();
+		sa.RetVal = true;
+	}
+}
+        </code>
+      </example>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="CurrentEvent">
+      <MemberSignature Language="C#" Value="public static Gdk.Event CurrentEvent { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class Gdk.Event CurrentEvent" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Event</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns the event currently taking place.</summary>
+        <value>a <see cref="T:Gdk.Event" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="EventsPending">
+      <MemberSignature Language="C#" Value="public static bool EventsPending ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool EventsPending() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Whether there are events on the queue</summary>
+        <returns>
+          <see langword="true" /> if events are available to be processed, <see langword="false" /> otherwise</returns>
+        <remarks>
+          <para>
+	    Checks if any events are pending. This can be used to
+	    update the GUI and invoke timeouts etc. while doing some
+	    time intensive computation.
+	  </para>
+          <example>
+            <code lang="C#">
+void LongComputation ()
+{
+	while (!done){
+	    ComputationChunk ();
+
+    	// Flush pending events to keep the GUI reponsive
+    	while (Application.EventsPending ())
+		    Application.RunIteration ();
+	}
+}
+	    </code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public static void Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Initializes GTK+ for operation.</summary>
+        <remarks>
+          <para>
+	    Call this function before using any other Gtk# functions
+	    in your GUI applications. It will initialize everything
+	    needed to operate the toolkit.
+	  </para>
+          <para>
+	    This function will terminate your program if it was unable
+	    to initialize the GUI for some reason. If you want your
+	    program to fall back to a textual interface you want to
+	    call <see cref="M:Gtk.Application.InitCheck(System.String, System.String []&amp;)" /> instead.
+	  </para>
+          <para>
+	    If you want to pass arguments from the command line use
+	    the <see cref="T:Gtk.Application.Init(System.String, System.String []&amp;)" />
+	    method instead. 
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public static void Init (string progname, ref string[] args);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Init(string progname, string[] args) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="progname" Type="System.String" />
+        <Parameter Name="args" Type="System.String[]&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="progname">The name of the program.</param>
+        <param name="args">An string array with the parameters given to the program.</param>
+        <summary>Call this method before using any other GTK# method in your GUI applications.</summary>
+        <remarks>
+          <para>
+	    It will initialize everything needed to operate the toolkit and parses some standard command line options, <paramref name="args" /> is adjusted accordingly so your code will never see those standard arugments.
+	  </para>
+          <para>
+	    Note that there are some alternative ways to initialize GTK#, if you are calling <see cref="M:Gtk.Global.ParseArgs" /> or <see cref="M:Gtk.Application.InitCheck" /> you don't have to call <see cref="M:Gtk.Application.Init" />.
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitCheck">
+      <MemberSignature Language="C#" Value="public static bool InitCheck (string progname, ref string[] args);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool InitCheck(string progname, string[] args) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="progname" Type="System.String" />
+        <Parameter Name="args" Type="System.String[]&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="progname">The name of the program.</param>
+        <param name="args">An string array with the parameters given to the program.</param>
+        <summary>This method does the same work as <see cref="M:Gtk.Application.Init" /> with only a single change, it does not terminate the program if the GUI can't be initialized. Instead it returns <see langword="false" /> on failure.</summary>
+        <returns>
+          <see langword="" /> if the GUI has been succesfully initialized, otherwise <see langword="false" />.</returns>
+        <remarks>This way the application can fall back to some toher means of communication with the user, for example a curses or command line interface.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Invoke">
+      <MemberSignature Language="C#" Value="public static void Invoke (EventHandler d);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Invoke(class System.EventHandler d) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="d" Type="System.EventHandler" />
+      </Parameters>
+      <Docs>
+        <param name="d">An event handler to invoke on the main thread.</param>
+        <summary>Invoke the given EventHandler in the GUI thread.</summary>
+        <remarks>
+	   Use this method to invoke the given delegate code in the
+    	   main thread.  This is necessary since Gtk# does not allow
+	   multiple threads to perform operations on Gtk objects as it
+	   the toolkit is not thread-safe.
+	   <para>
+	     This mechanism is simpler to use than <see cref="T:Gtk.ThreadNotify" /> since it does not require the
+    	     creation of a notifier per event.
+	   </para><para>
+	     This is particularly useful with C# 2.0 as it is possible
+	     to use anonymous methods with it, for example:
+	   </para><example><code lang="C#">
+	using Gtk;
+	using Gdk;
+	using System;
+	using System.Threading;
+
+	public class HelloThreads  {
+		static Label msg;
+		static Button but;
+		static int count;
+		static Thread thr;
+		
+		public static int Main (string[] args)
+		{
+			Application.Init ();
+			Gtk.Window win = new Gtk.Window ("Gtk# Threaded Counter");
+			win.DeleteEvent += new DeleteEventHandler (Window_Delete);
+			msg = new Label ("Click to quit");
+			but = new Button (msg);
+			but.Clicked += delegate { thr.Abort (); Application.Quit (); };
+			win.Add (but);
+			win.ShowAll ();
+
+			thr = new Thread (ThreadMethod);
+			thr.Start ();
+			
+			Application.Run ();
+			
+			return 0;
+		}
+
+		static void ThreadMethod ()
+		{
+			Console.WriteLine ("Starting thread");
+			while (true){
+				count++;
+				Thread.Sleep (500);
+				Application.Invoke (delegate {
+					msg.Text = String.Format ("Click to Quit ({0})", count);
+				});
+			}
+		}
+		
+		static void Window_Delete (object obj, DeleteEventArgs args)
+		{
+			Application.Quit ();
+			args.RetVal = true;
+		}
+        </code></example></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Invoke">
+      <MemberSignature Language="C#" Value="public static void Invoke (object sender, EventArgs args, EventHandler d);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Invoke(object sender, class System.EventArgs args, class System.EventHandler d) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sender" Type="System.Object" />
+        <Parameter Name="args" Type="System.EventArgs" />
+        <Parameter Name="d" Type="System.EventHandler" />
+      </Parameters>
+      <Docs>
+        <param name="sender">The sender to pass to the event handler..</param>
+        <param name="args">The argument to pass to the event handler.</param>
+        <param name="d">An event handler to invoke on the main thread.</param>
+        <summary>Invoke the given EventHandler in the GUI thread.</summary>
+        <remarks>
+    	   Use this method to invoke the given delegate code in the
+        	   main thread.  This is necessary since Gtk# does not allow
+    	   multiple threads to perform operations on Gtk objects as it
+    	   the toolkit is not thread-safe.
+    	   <para>
+    	     This mechanism is simpler to use than <see cref="T:Gtk.ThreadNotify" /> since it does not require the
+        	     creation of a notifier per event.
+    	   </para><para>
+    	     This is particularly useful with C# 2.0 as it is possible
+    	     to use anonymous methods with it, for example:
+    	   </para><example><code lang="C#">
+    	using Gtk;
+    	using Gdk;
+    	using System;
+    	using System.Threading;
+    
+    	public class HelloThreads  {
+    		static Label msg;
+    		static Button but;
+    		static int count;
+    		static Thread thr;
+    		
+    		public static int Main (string[] args)
+    		{
+    			Application.Init ();
+    			Gtk.Window win = new Gtk.Window ("Gtk# Threaded Counter");
+    			win.DeleteEvent += new DeleteEventHandler (Window_Delete);
+    			msg = new Label ("Click to quit");
+    			but = new Button (msg);
+    			but.Clicked += delegate { thr.Abort (); Application.Quit (); };
+    			win.Add (but);
+    			win.ShowAll ();
+    
+    			thr = new Thread (ThreadMethod);
+    			thr.Start ();
+    			
+    			Application.Run ();
+    			
+    			return 0;
+    		}
+    
+    		static void ThreadMethod ()
+    		{
+    			Console.WriteLine ("Starting thread");
+    			while (true){
+    				count++;
+    				Thread.Sleep (500);
+    				Application.Invoke (delegate {
+    					msg.Text = String.Format ("Click to Quit ({0})", count);
+    				});
+    			}
+    		}
+    		
+    		static void Window_Delete (object obj, DeleteEventArgs args)
+    		{
+    			Application.Quit ();
+    			args.RetVal = true;
+    		}
+            </code></example></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Quit">
+      <MemberSignature Language="C#" Value="public static void Quit ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Quit() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Quits the current main loop</summary>
+        <remarks>
+          <para>
+	    Makes the innermost invocation of the main loop return when it regains control.
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Run">
+      <MemberSignature Language="C#" Value="public static void Run ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Run() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Runs the main loop</summary>
+        <remarks>
+          <para>
+	    Runs the main loop until <see cref="M:Gtk.Application.Quit()" /> is called. You can nest
+	    calls to <see cref="M:Gtk.Application.Run()" />.  In that
+	    case <see cref="M:Gtk.Application.Quit()" /> will make the
+	    innermost invocation of the main loop return.
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RunIteration">
+      <MemberSignature Language="C#" Value="public static void RunIteration ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RunIteration() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Runs a single iteration of the main loop.</summary>
+        <remarks>
+          <para>
+	    Runs a single iteration of the main loop. If no events are
+	    waiting to be processed Gtk# will block until the next
+	    event is noticed.  If you do not want to block look at <see cref="M:Gtk.Application.RunIteration(System.Boolean)" /> or check if
+	    any events are pending with <see cref="M:Gtk.Application.EventsPending()" /> first.
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RunIteration">
+      <MemberSignature Language="C#" Value="public static bool RunIteration (bool blocking);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool RunIteration(bool blocking) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="blocking" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="blocking">A boolean value, whether the iteration should block or not</param>
+        <summary>Runs a single iteration of the main loop.</summary>
+        <returns>
+          <see langword="true" /> if <see cref="M:Gtk.Application.Quit()" /> has been called in the innermost main loop.</returns>
+        <remarks>
+          <para>
+            Runs a single iteration of the main loop. If <paramref name="blocking" /> is <see langword="true" />, then if no events are
+            waiting to be processed Gtk# will block until the next event is noticed; If <paramref name="blocking" /> is <see langword="false" />,
+            then it if no events are waiting to be processed Gtk#, routine will return immediately.
+          </para>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,80 @@
+<Type Name="Gc" FullName="Gtk.Gc">
+  <TypeSignature Language="C#" Value="public class Gc" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Gc extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>A shell around <see cref="T:Gdk.GC" />; represents a graphics context.</summary>
+    <remarks>TODO: add examples.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Gc ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Basic constructor.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Get">
+      <MemberSignature Language="C#" Value="public static Gdk.GC Get (int depth, Gdk.Colormap colormap, Gdk.GCValues values, Gdk.GCValuesMask values_mask);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.GC Get(int32 depth, class Gdk.Colormap colormap, valuetype Gdk.GCValues values, valuetype Gdk.GCValuesMask values_mask) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.GC</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="depth" Type="System.Int32" />
+        <Parameter Name="colormap" Type="Gdk.Colormap" />
+        <Parameter Name="values" Type="Gdk.GCValues" />
+        <Parameter Name="values_mask" Type="Gdk.GCValuesMask" />
+      </Parameters>
+      <Docs>
+        <param name="depth">a <see cref="T:System.Int32" /></param>
+        <param name="colormap">a <see cref="T:Gdk.Colormap" /></param>
+        <param name="values">a <see cref="T:Gdk.GCValues" /></param>
+        <param name="values_mask">a <see cref="T:Gdk.GCValuesMask" /></param>
+        <summary>Returns a <see cref="T:Gdk.GC" /> with the specified values.</summary>
+        <returns>a <see cref="T:Gdk.GC" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Release">
+      <MemberSignature Language="C#" Value="public static void Release (Gdk.GC gc);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Release(class Gdk.GC gc) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gc" Type="Gdk.GC" />
+      </Parameters>
+      <Docs>
+        <param name="gc">a <see cref="T:Gdk.GC" /></param>
+        <summary>Releases the <see cref="T:Gdk.GC" /> that is passed in.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

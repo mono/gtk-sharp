@@ -1,0 +1,76 @@
+<Type Name="Style" FullName="Pango.Style">
+  <TypeSignature Language="C#" Maintainer="duncan" Value="public enum Style" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed Style extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>pango-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Pango.StyleGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>
+      An enumeration specific the various slant styles possible for a
+      font
+    </summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="Italic">
+      <MemberSignature Language="C#" Value="Italic" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Pango.Style Italic = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Style</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The font is slanted in an italic style</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Normal">
+      <MemberSignature Language="C#" Value="Normal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Pango.Style Normal = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Style</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The font is upright</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Oblique">
+      <MemberSignature Language="C#" Value="Oblique" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Pango.Style Oblique = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Style</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The font is slanted, but in a roman style</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

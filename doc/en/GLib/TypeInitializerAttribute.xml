@@ -1,0 +1,73 @@
+<Type Name="TypeInitializerAttribute" FullName="GLib.TypeInitializerAttribute">
+  <TypeSignature Language="C#" Value="public sealed class TypeInitializerAttribute : Attribute" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit TypeInitializerAttribute extends System.Attribute" />
+  <AssemblyInfo>
+    <AssemblyName>glib-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Attribute</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.AttributeUsage(System.AttributeTargets.Class)</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>TypeInitializer Attribute.</summary>
+    <remarks>Replaces the <see cref="T:GLib.ClassInitializerAttribute" /> to allow for more efficient reflection memory usage.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TypeInitializerAttribute (Type type, string method_name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Type type, string method_name) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="type" Type="System.Type" />
+        <Parameter Name="method_name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="type">The Type to be Initialized.</param>
+        <param name="method_name">The method name to invoke.</param>
+        <summary>Public Constructor.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="MethodName">
+      <MemberSignature Language="C#" Value="public string MethodName { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string MethodName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>MethodName property.</summary>
+        <value>The name of a method to invoke at type initialization time.</value>
+        <remarks>The signature of the method should be void MethodName (GLib.GType, System.Type) and the method should be private static.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Type">
+      <MemberSignature Language="C#" Value="public Type Type { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Type Type" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Type Property.</summary>
+        <value>The Type which contains the method identified in <see cref="M:GLib.TypeInitializerAttribute.MethodName" />.</value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,905 @@
+<Type Name="Result" FullName="Gnome.Vfs.Result">
+  <TypeSignature Language="C#" Value="public enum Result" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed Result extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gnome-vfs-sharp</AssemblyName>
+    <AssemblyPublicKey>[00 24 00 00 04 80 00 00 94 00 00 00 06 02 00 00 00 24 00 00 52 53 41 31 00 04 00 00 01 00 01 00 71 EB 6C 55 75 52 9C BF 72 44 F7 A6 EA 05 62 84 F9 EA E0 3B CF F2 CC 13 2C 9C 49 0A B3 09 EA B0 B5 6B CE 44 9D F5 03 D9 C0 A8 1E 52 05 85 CD BE 70 E2 FB 90 43 4B AC 04 FA 62 22 A8 00 98 B7 A1 A7 B3 AF 99 1A 41 23 24 BB 43 25 F6 B8 65 BB 64 EB F6 D1 C2 06 D5 73 2D DF BC 70 A7 38 9E E5 3E 0C 24 6E 32 79 74 1A D0 05 03 E4 98 42 E1 9B F3 7B 19 8B 40 21 26 CB 36 89 C2 EA 64 96 A4 7C B4]</AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>Enumeration containing result codes for gnome-vfs operations.</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ErrorAccessDenied">
+      <MemberSignature Language="C#" Value="ErrorAccessDenied" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorAccessDenied = int32(16)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Access denied.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorBadFile">
+      <MemberSignature Language="C#" Value="ErrorBadFile" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorBadFile = int32(9)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Bad file handle.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorBadParameters">
+      <MemberSignature Language="C#" Value="ErrorBadParameters" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorBadParameters = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Invalid parameters.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorCancelled">
+      <MemberSignature Language="C#" Value="ErrorCancelled" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorCancelled = int32(31)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Operation cancelled.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorCorruptedData">
+      <MemberSignature Language="C#" Value="ErrorCorruptedData" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorCorruptedData = int32(7)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Data corrupted.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorDeprecatedFunction">
+      <MemberSignature Language="C#" Value="ErrorDeprecatedFunction" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorDeprecatedFunction = int32(49)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorDirectoryBusy">
+      <MemberSignature Language="C#" Value="ErrorDirectoryBusy" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorDirectoryBusy = int32(32)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Directory busy.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorDirectoryNotEmpty">
+      <MemberSignature Language="C#" Value="ErrorDirectoryNotEmpty" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorDirectoryNotEmpty = int32(33)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Directory not empty.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorEof">
+      <MemberSignature Language="C#" Value="ErrorEof" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorEof = int32(18)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>End of file.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorFileExists">
+      <MemberSignature Language="C#" Value="ErrorFileExists" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorFileExists = int32(22)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>File exists.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorGeneric">
+      <MemberSignature Language="C#" Value="ErrorGeneric" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorGeneric = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Generic error.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorHostHasNoAddress">
+      <MemberSignature Language="C#" Value="ErrorHostHasNoAddress" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorHostHasNoAddress = int32(29)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Host has no address.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorHostNotFound">
+      <MemberSignature Language="C#" Value="ErrorHostNotFound" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorHostNotFound = int32(27)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Host not found.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorInProgress">
+      <MemberSignature Language="C#" Value="ErrorInProgress" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorInProgress = int32(20)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Operation in progress.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorInternal">
+      <MemberSignature Language="C#" Value="ErrorInternal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorInternal = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Internal error.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorInterrupted">
+      <MemberSignature Language="C#" Value="ErrorInterrupted" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorInterrupted = int32(21)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Operation interrupted.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorInvalidFilename">
+      <MemberSignature Language="C#" Value="ErrorInvalidFilename" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorInvalidFilename = int32(50)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <since version="Gnome# 2.20" />
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorInvalidHostName">
+      <MemberSignature Language="C#" Value="ErrorInvalidHostName" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorInvalidHostName = int32(28)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Host name not valid.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorInvalidOpenMode">
+      <MemberSignature Language="C#" Value="ErrorInvalidOpenMode" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorInvalidOpenMode = int32(15)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Open mode not valid.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorInvalidUri">
+      <MemberSignature Language="C#" Value="ErrorInvalidUri" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorInvalidUri = int32(13)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Invalid <see cref="T:Gnome.Vfs.Uri" />.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorIo">
+      <MemberSignature Language="C#" Value="ErrorIo" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorIo = int32(6)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>I/O error.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorIsDirectory">
+      <MemberSignature Language="C#" Value="ErrorIsDirectory" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorIsDirectory = int32(25)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Is a directory.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorLaunch">
+      <MemberSignature Language="C#" Value="ErrorLaunch" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorLaunch = int32(45)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Error launching command.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorLocked">
+      <MemberSignature Language="C#" Value="ErrorLocked" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorLocked = int32(48)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorLoginFailed">
+      <MemberSignature Language="C#" Value="ErrorLoginFailed" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorLoginFailed = int32(30)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Login failed.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorLoop">
+      <MemberSignature Language="C#" Value="ErrorLoop" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorLoop = int32(23)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Looping links encountered.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorNameserver">
+      <MemberSignature Language="C#" Value="ErrorNameserver" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorNameserver = int32(47)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorNameTooLong">
+      <MemberSignature Language="C#" Value="ErrorNameTooLong" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorNameTooLong = int32(37)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Name too long.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorNoDefault">
+      <MemberSignature Language="C#" Value="ErrorNoDefault" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorNoDefault = int32(42)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>No default action associated.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorNoHandler">
+      <MemberSignature Language="C#" Value="ErrorNoHandler" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorNoHandler = int32(43)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>No handler for URL scheme.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorNoMasterBrowser">
+      <MemberSignature Language="C#" Value="ErrorNoMasterBrowser" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorNoMasterBrowser = int32(41)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Could not find master browser.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorNoMemory">
+      <MemberSignature Language="C#" Value="ErrorNoMemory" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorNoMemory = int32(26)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Not enough memory.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorNoSpace">
+      <MemberSignature Language="C#" Value="ErrorNoSpace" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorNoSpace = int32(11)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>No space left on device.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorNotADirectory">
+      <MemberSignature Language="C#" Value="ErrorNotADirectory" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorNotADirectory = int32(19)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Not a directory.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorNotASymbolicLink">
+      <MemberSignature Language="C#" Value="ErrorNotASymbolicLink" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorNotASymbolicLink = int32(51)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <since version="Gnome# 2.20" />
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorNotFound">
+      <MemberSignature Language="C#" Value="ErrorNotFound" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorNotFound = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>File not found.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorNotOpen">
+      <MemberSignature Language="C#" Value="ErrorNotOpen" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorNotOpen = int32(14)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>File not open.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorNotPermitted">
+      <MemberSignature Language="C#" Value="ErrorNotPermitted" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorNotPermitted = int32(24)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Operation not permitted.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorNotSameFileSystem">
+      <MemberSignature Language="C#" Value="ErrorNotSameFileSystem" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorNotSameFileSystem = int32(36)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Not on the same file system.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorNotSupported">
+      <MemberSignature Language="C#" Value="ErrorNotSupported" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorNotSupported = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Unsupported operation.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorParse">
+      <MemberSignature Language="C#" Value="ErrorParse" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorParse = int32(44)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Error parsing command line.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorProtocolError">
+      <MemberSignature Language="C#" Value="ErrorProtocolError" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorProtocolError = int32(40)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Protocol error.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorReadOnly">
+      <MemberSignature Language="C#" Value="ErrorReadOnly" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorReadOnly = int32(12)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Read-only file system.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorReadOnlyFileSystem">
+      <MemberSignature Language="C#" Value="ErrorReadOnlyFileSystem" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorReadOnlyFileSystem = int32(35)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Read only file system.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorServiceNotAvailable">
+      <MemberSignature Language="C#" Value="ErrorServiceNotAvailable" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorServiceNotAvailable = int32(38)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Service not available.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorServiceObsolete">
+      <MemberSignature Language="C#" Value="ErrorServiceObsolete" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorServiceObsolete = int32(39)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Request obsoletes service's data.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorTimeout">
+      <MemberSignature Language="C#" Value="ErrorTimeout" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorTimeout = int32(46)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorTooBig">
+      <MemberSignature Language="C#" Value="ErrorTooBig" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorTooBig = int32(10)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>File too big.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorTooManyLinks">
+      <MemberSignature Language="C#" Value="ErrorTooManyLinks" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorTooManyLinks = int32(34)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Too many links.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorTooManyOpenFiles">
+      <MemberSignature Language="C#" Value="ErrorTooManyOpenFiles" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorTooManyOpenFiles = int32(17)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Too many open files.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ErrorWrongFormat">
+      <MemberSignature Language="C#" Value="ErrorWrongFormat" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result ErrorWrongFormat = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Format not valid.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumErrors">
+      <MemberSignature Language="C#" Value="NumErrors" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result NumErrors = int32(52)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Number of errors.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Ok">
+      <MemberSignature Language="C#" Value="Ok" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.Vfs.Result Ok = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>No error.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

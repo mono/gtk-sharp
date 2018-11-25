@@ -1,0 +1,367 @@
+<Type Name="MessageDialog" FullName="Gtk.MessageDialog">
+  <TypeSignature Language="C#" Maintainer="John Luke" Value="public class MessageDialog : Gtk.Dialog" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit MessageDialog extends Gtk.Dialog" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Dialog</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>Convenient message window</summary>
+    <remarks>
+      <para>
+        <see cref="T:Gtk.MessageDialog" /> presents a <see cref="T:Gtk.Dialog" /> with an image representing the 
+	<see cref="T:Gtk.MessageType" /> (Error, Question, etc.) alongside some message text.
+	It is available as a convenience. You could construct the equivalent of 
+	<see cref="T:Gtk.MessageDialog" /> from <see cref="T:Gtk.Dialog" /> without too much effort, but 
+	<see cref="T:Gtk.MessageDialog" /> saves typing.
+      </para>
+      <para>
+	The <see cref="T:Gtk.MessageDialog" /> is displayed using <see cref="M:Gtk.Dialog.Run()" />, which
+	automatically makes the <see cref="T:Gtk.MessageDialog" /> modal and waits for the user to respond to it.
+	<see cref="M:Gtk.Dialog.Run()" /> returns when any <see cref="T:Gtk.Button" /> 
+	in the <see cref="T:Gtk.Dialog" /> is clicked or the <see cref="T:Gtk.MessageDialog" /> is closed.
+      </para>
+      <para>
+	After  <see cref="M:Gtk.Dialog.Run()" /> returns, you are responsible for hiding (using <see cref="M:Gtk.Widget.Hide()" />) or destroying (using <see cref="M:Gtk.Widget.Destroy()" />) the dialog if you wish to do so.</para>
+      <para>
+        A simple message dialog
+	<example><code lang="C#">
+MessageDialog md = new MessageDialog (parent_window, 
+                                      DialogFlags.DestroyWithParent,
+	                              MessageType.Error, 
+                                      ButtonsType.Close, "Error loading file");
+	
+int result = md.Run ();
+md.Destroy();
+  	  </code></example></para>
+      <para>
+        A yes/no message dialog
+	<example><code lang="C#">
+MessageDialog md = new MessageDialog (parent_window, 
+                                      DialogFlags.DestroyWithParent,
+	                              MessageType.Question, 
+                                      ButtonsType.YesNo, "Are you sure you want to quit?");
+	
+ResponseType result = (ResponseType)md.Run ();
+
+if (result == ResponseType.Yes)
+	Application.Quit();
+else
+	md.Destroy();
+  	  </code></example></para>
+      <para>
+        If you would like the <see cref="T:Gtk.MessageDialog" /> to not be modal, set the property <see cref="P:Gtk.Dialog.Modal" /> to <see langword="false" />.
+		<example><code language="C#">
+md.Modal = false;
+		  </code></example></para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected MessageDialog ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected MessageDialog (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MessageDialog (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MessageDialog (Gtk.Window parent_window, Gtk.DialogFlags flags, Gtk.MessageType type, Gtk.ButtonsType bt, string format, object[] args);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Gtk.Window parent_window, valuetype Gtk.DialogFlags flags, valuetype Gtk.MessageType type, valuetype Gtk.ButtonsType bt, string format, object[] args) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="parent_window" Type="Gtk.Window" />
+        <Parameter Name="flags" Type="Gtk.DialogFlags" />
+        <Parameter Name="type" Type="Gtk.MessageType" />
+        <Parameter Name="bt" Type="Gtk.ButtonsType" />
+        <Parameter Name="format" Type="System.String" />
+        <Parameter Name="args" Type="System.Object[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="parent_window">the dialog's parent <see cref="T:Gtk.Window" /> (or <see langword="null" />)</param>
+        <param name="flags">the <see cref="T:Gtk.DialogFlags" /></param>
+        <param name="type">the type of message dialog to display</param>
+        <param name="bt">the buttons to display</param>
+        <param name="format">the message format string</param>
+        <param name="args">optional arguments for <paramref name="format" /></param>
+        <summary>Creates an instance of <see cref="T:Gtk.MessageDialog" /></summary>
+        <remarks>
+          <para>
+	      Creates an instance of <see cref="T:Gtk.MessageDialog" /><example><code lang="C#">
+MessageDialog md = new MessageDialog
+	(parent_window, Gtk.DialogFlags.DestroyWithParent,
+	Gtk.MessageType.Error, Gtk.ButtonsType.Close, "Error loading file '{0}'", filename);
+	      </code></example></para>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MessageDialog (Gtk.Window parent_window, Gtk.DialogFlags flags, Gtk.MessageType type, Gtk.ButtonsType bt, bool use_markup, string format, object[] args);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Gtk.Window parent_window, valuetype Gtk.DialogFlags flags, valuetype Gtk.MessageType type, valuetype Gtk.ButtonsType bt, bool use_markup, string format, object[] args) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="parent_window" Type="Gtk.Window" />
+        <Parameter Name="flags" Type="Gtk.DialogFlags" />
+        <Parameter Name="type" Type="Gtk.MessageType" />
+        <Parameter Name="bt" Type="Gtk.ButtonsType" />
+        <Parameter Name="use_markup" Type="System.Boolean" />
+        <Parameter Name="format" Type="System.String" />
+        <Parameter Name="args" Type="System.Object[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="parent_window">the dialog's parent <see cref="T:Gtk.Window" /> (or <see langword="null" />)</param>
+        <param name="flags">the <see cref="T:Gtk.DialogFlags" /></param>
+        <param name="type">the type of message dialog to display</param>
+        <param name="bt">the buttons to display</param>
+        <param name="use_markup">whether or not <paramref name="format" /> uses Pango markup</param>
+        <param name="format">the message format string</param>
+        <param name="args">optional arguments for <paramref name="format" /></param>
+        <summary>Creates an instance of <see cref="T:Gtk.MessageDialog" /></summary>
+        <remarks>Like the other constructor, but allows you to pass a non-marked-up string.</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.MessageDialog" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Image">
+      <MemberSignature Language="C#" Value="public Gtk.Widget Image { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Widget Image" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("image")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.Widget</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The image displayed in the MessageBox.</summary>
+        <value>a <see cref="T:Gtk.Widget" /> displayed in the image location.</value>
+        <remarks />
+        <since version="Gtk# 2.10" />
+      </Docs>
+    </Member>
+    <Member MemberName="Markup">
+      <MemberSignature Language="C#" Value="public string Markup { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Markup" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Markup for the message to display in the dialog.</summary>
+        <value>a <see cref="T:System.String" /></value>
+        <remarks>Markup should be in Pango markup format. (TODO: check this.)</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="MessageType">
+      <MemberSignature Language="C#" Value="public Gtk.MessageType MessageType { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.MessageType MessageType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("message-type")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.MessageType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The <see cref="T:Gtk.MessageType" /> of the <see cref="T:Gtk.Dialog" /></summary>
+        <value>an object of type <see cref="T:Gtk.MessageDialog" /></value>
+        <remarks>The <see cref="T:Gtk.MessageType" /> of the <see cref="T:Gtk.Dialog" /></remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="SecondaryText">
+      <MemberSignature Language="C#" Value="public string SecondaryText { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string SecondaryText" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("secondary-text")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The secondary message for the MessageBox.</summary>
+        <value>defaults to <see langword="null" />.</value>
+        <remarks />
+        <since version="Gtk# 2.10" />
+      </Docs>
+    </Member>
+    <Member MemberName="SecondaryUseMarkup">
+      <MemberSignature Language="C#" Value="public bool SecondaryUseMarkup { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool SecondaryUseMarkup" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("secondary-use-markup")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Indicates if Pango markup is handled in the secondary text..</summary>
+        <value>if <see langword="true" />, markup is parsed.</value>
+        <remarks>See <see cref="M:Pango.Global.ParseMarkup" /> for more info.</remarks>
+        <since version="Gtk# 2.10" />
+      </Docs>
+    </Member>
+    <Member MemberName="Text">
+      <MemberSignature Language="C#" Value="public string Text { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Text" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("text")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The primary text displayed in the MessageBox.</summary>
+        <value>the primary text string.</value>
+        <remarks>If the box has secondary text, this is displayed as the Title.</remarks>
+        <since version="Gtk# 2.10" />
+      </Docs>
+    </Member>
+    <Member MemberName="UseMarkup">
+      <MemberSignature Language="C#" Value="public bool UseMarkup { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool UseMarkup" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("use-markup")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Indicates if Pango markup is handled in the primary text.</summary>
+        <value>if <see langword="true" />, markup is parsed.</value>
+        <remarks>See <see cref="M:Pango.Global.ParseMarkup" /> for more info.</remarks>
+        <since version="Gtk# 2.10" />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,199 @@
+<Type Name="FontSelection" FullName="Gtk.FontSelection">
+  <TypeSignature Language="C#" Maintainer="Lee Mallabone" Value="public class FontSelection : Gtk.VBox" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit FontSelection extends Gtk.VBox" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.VBox</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>A FontSelection is a widget that allows the user to select a font.</summary>
+    <remarks>
+      <para>The FontSelection widget lists the available fonts, styles and sizes, allowing the user to select a font. It is used in the <see cref="T:Gtk.FontSelectionDialog" /> widget to provide a <see cref="T:Gtk.Dialog" /> box for selecting fonts.
+    </para>
+      <para>Filters can be used to limit the fonts shown. There are 2 filters in the FontSelection - a base filter and a user filter. The base filter can not be changed by the user, so this can be used when the user must choose from the restricted set of fonts (e.g. for a terminal-type application you may want to force the user to select a fixed-width font).
+    </para>
+      <para>
+    The user filter can be changed or reset by the user, by using the 'Reset Filter' button or changing the options on the 'Filter' page of the widget.
+    </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public FontSelection ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>The main way to construct a new FontSelection</summary>
+        <remarks>
+          <para>Creates a new FontSelection widget that allows the user to select from the available fonts.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected FontSelection (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public FontSelection (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Font">
+      <MemberSignature Language="C#" Value="public Gdk.Font Font { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Font Font" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("font")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.Font</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Get the <see cref="T:Gdk.Font" /> that is currently selected.</summary>
+        <value>A Gdk font object representing the selected font, or null if no font is selected.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="FontName">
+      <MemberSignature Language="C#" Value="public string FontName { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string FontName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("font-name")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Manage the name of the font that is selected in this widget.</summary>
+        <value>The name of the currently selected font.</value>
+        <remarks>
+          <para>If this property is used to alter the widget's font name to a font that could not be found, the widget will retain its original font selection. See also <see cref="M:Gtk.FontSelection.SetFontName" />, which returns a value indicating whether or not the new font name was found.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.FontSelection" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PreviewText">
+      <MemberSignature Language="C#" Value="public string PreviewText { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string PreviewText" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("preview-text")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The text used to display a preview of the selected font.</summary>
+        <value>The text currently displaying the selected font.</value>
+        <remarks>
+          <para>This property determines the exact string that is displayed in the 'preview area' of the FontSelection.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetFontName">
+      <MemberSignature Language="C#" Value="public bool SetFontName (string fontname);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SetFontName(string fontname) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="fontname" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="fontname">the name of the font to be selected</param>
+        <summary>Set the current font selection</summary>
+        <returns>
+          <see langword="true" /> if the font was found and selected</returns>
+        <remarks>This can be used instead of setting <see cref="P:Gtk.FontSelection.FontName" /> property if you need to know whether or not <paramref name="fontname" /> was valid.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

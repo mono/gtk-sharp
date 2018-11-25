@@ -1,0 +1,73 @@
+<Type Name="IOStatus" FullName="GLib.IOStatus">
+  <TypeSignature Language="C#" Value="public enum IOStatus" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed IOStatus extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>glib-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>IOStatus enumeration.</summary>
+    <remarks>Status results for IO channel operations.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Again">
+      <MemberSignature Language="C#" Value="Again" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOStatus Again = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.IOStatus</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Resource was temporarily unavailable.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Eof">
+      <MemberSignature Language="C#" Value="Eof" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOStatus Eof = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.IOStatus</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>End of file reached.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Error">
+      <MemberSignature Language="C#" Value="Error" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOStatus Error = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.IOStatus</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>An error occurred.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Normal">
+      <MemberSignature Language="C#" Value="Normal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.IOStatus Normal = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.IOStatus</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Operation completed normally.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

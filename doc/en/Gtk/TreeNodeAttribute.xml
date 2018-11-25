@@ -1,0 +1,118 @@
+<Type Name="TreeNodeAttribute" FullName="Gtk.TreeNodeAttribute">
+  <TypeSignature Language="C#" Maintainer="Mike Kestner" Value="public sealed class TreeNodeAttribute : Attribute" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit TreeNodeAttribute extends System.Attribute" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Attribute</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.AttributeUsage(System.AttributeTargets.Class)</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>An attribute to specify tree node information of a class.</summary>
+    <remarks>
+      <para>
+        This attribute can be applied to a class which implements the 
+        <see cref="T:Gtk.ITreeNode" /> interface to provide additional information 
+	about the node type to the <see cref="T:Gtk.NodeStore" /> which will contain
+	the nodes.
+      </para>
+      <para>
+        In the following example, the class MyTreeNode is tagged as 
+        a tree node with 3 columns:
+        <example><code lang="C#">
+	[TreeNode(ColumnCount=3)]
+	public class MyTreeNode : ITreeNode {
+
+	...
+
+	}
+          </code></example></para>
+      <para>
+        In the following example, the class MyListNode is tagged as 
+        a node with 2 columns and no child nodes:
+        <example><code lang="C#">
+	[TreeNode(ColumnCount=2, ListOnly=true)]
+	public class MyListNode : ITreeNode {
+
+	...
+
+	}
+          </code></example></para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TreeNodeAttribute ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>TreeNodeAttribute constructor</summary>
+        <remarks>Instantiates a <see cref="T:Gtk.TreeNodeAttribute" /></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColumnCount">
+      <MemberSignature Language="C#" Value="public int ColumnCount { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 ColumnCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("This is no longer needed; it gets detected by Gtk#")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>ColumnCount named value.</summary>
+        <value>a <see cref="T:System.Int32" /></value>
+        <remarks>
+	  Specifies the number of columns the node exposes. A 
+	  <see cref="T:Gtk.TreeNodeValueAttribute" /> 
+	  should be added to each of the properties of the class which represent
+	  the individual column values.
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ListOnly">
+      <MemberSignature Language="C#" Value="public bool ListOnly { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ListOnly" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>ListOnly named value.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>
+	  Specifies if the node can have children. For list views, this tells the
+	  NodeStore that it is non-hierarchical and it can expose flags so that the
+	  NodeView doesn't include space for expanders in the column layout.
+	</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

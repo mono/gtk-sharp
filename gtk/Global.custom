@@ -1,0 +1,50 @@
+// Global.custom - customizations to Gtk.Global
+//
+// Authors: Marius Ungureanu <maungu@microsoft.com>
+//
+// Copyright (c) 2016 Microsoft
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of version 2 of the Lesser GNU General 
+// Public License as published by the Free Software Foundation.
+//
+//
+// This program is free software; you can redistribute it and/or
+// modify it under the terms of version 2 of the Lesser GNU General 
+// Public License as published by the Free Software Foundation.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+// Lesser General Public License for more details.
+//
+// You should have received a copy of the GNU Lesser General Public
+// License along with this program; if not, write to the
+// Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+// Boston, MA 02111-1307, USA.
+
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern bool gtk_parse_args(ref int argc, ref IntPtr argv);
+
+		public static bool ParseArgs(ref int argc, ref string[] argv) {
+			GLib.Argv a = new GLib.Argv (argv);
+			IntPtr buf = a.Handle;
+
+			bool ret = gtk_parse_args (ref argc, ref buf);
+			argv = a.GetArgs (argc);
+			return ret;
+		}
+
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern IntPtr gtk_get_current_event();
+
+		[DllImport ("libgdk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern void gdk_event_free (IntPtr raw);
+
+		public static Gdk.Event CurrentEvent { 
+			get {
+				IntPtr raw_ret = gtk_get_current_event();
+				Gdk.Event ret = Gdk.Event.GetEvent (raw_ret, true);
+				return ret;
+			}
+		}

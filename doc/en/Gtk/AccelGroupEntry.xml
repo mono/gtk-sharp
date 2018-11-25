@@ -1,0 +1,92 @@
+<Type Name="AccelGroupEntry" FullName="Gtk.AccelGroupEntry">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public struct AccelGroupEntry" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit AccelGroupEntry extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>One item within a <see cref="T:Gtk.AccelGroup" />.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="AccelPathQuark">
+      <MemberSignature Language="C#" Value="public int AccelPathQuark;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 AccelPathQuark" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>A <see cref="T:GLib.GQuark" /> containing an integer/string mapping for the path to accelerate.</summary>
+        <remarks>See the notes for <see cref="T:Gtk.Accel.MapAddEntry()" /> for details on the formatting of the path string.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Key">
+      <MemberSignature Language="C#" Value="public Gtk.AccelKey Key;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Gtk.AccelKey Key" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.AccelKey</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The key for this accelerator.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Gtk.AccelGroupEntry New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gtk.AccelGroupEntry New(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.AccelGroupEntry</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">
+          <see cref="T:IntPtr" />, pointer to the underlying C object.</param>
+        <summary>Internal constructor; do not use.</summary>
+        <returns>a <see cref="T:Gtk.AccelGroupEntry" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Gtk.AccelGroupEntry Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Gtk.AccelGroupEntry Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.AccelGroupEntry</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An empty <see cref="T:Gtk.AccelGroupEntry" />.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

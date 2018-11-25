@@ -1,0 +1,81 @@
+<Type Name="GtkHelper" FullName="Gnome.GtkHelper">
+  <TypeSignature Language="C#" Value="public class GtkHelper" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit GtkHelper extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gnome-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public GtkHelper ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ModuleInfoGet">
+      <MemberSignature Language="C#" Value="public static Gnome.ModuleInfo ModuleInfoGet ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gnome.ModuleInfo ModuleInfoGet() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.ModuleInfo</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gnome.ModuleInfo" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WidgetAddPopupItems">
+      <MemberSignature Language="C#" Value="public static void WidgetAddPopupItems (Gtk.Widget widget, Gnome.UIInfo uiinfo, IntPtr user_data);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void WidgetAddPopupItems(class Gtk.Widget widget, valuetype Gnome.UIInfo uiinfo, native int user_data) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="widget" Type="Gtk.Widget" />
+        <Parameter Name="uiinfo" Type="Gnome.UIInfo" />
+        <Parameter Name="user_data" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="widget">a <see cref="T:Gtk.Widget" /></param>
+        <param name="uiinfo">a <see cref="T:Gnome.UIInfo" /></param>
+        <param name="user_data">a <see cref="T:System.IntPtr" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

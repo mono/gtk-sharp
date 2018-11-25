@@ -1,0 +1,73 @@
+<Type Name="CurveType" FullName="Gtk.CurveType">
+  <TypeSignature Language="C#" Maintainer="Duncan Mak" Value="public enum CurveType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CurveType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gtk.CurveTypeGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>The method to use when making the curve.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="Free">
+      <MemberSignature Language="C#" Value="Free" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.CurveType Free = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.CurveType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>free form curve </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Linear">
+      <MemberSignature Language="C#" Value="Linear" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.CurveType Linear = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.CurveType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>linear interpolation</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Spline">
+      <MemberSignature Language="C#" Value="Spline" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.CurveType Spline = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.CurveType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>spline interpolation</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

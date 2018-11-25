@@ -1,0 +1,126 @@
+<Type Name="Segment" FullName="Gdk.Segment">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public struct Segment" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit Segment extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents a line segment defined as  [(x1,y1),(x2,y2)]</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Gdk.Segment New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gdk.Segment New(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Segment</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">an object of type 'IntPtr'</param>
+        <summary>Returns a new <see cref="T:Gdk.Segment" /> object. </summary>
+        <returns>an object of type 'Gdk.Segment'</returns>
+        <remarks>Passig IntPtr.Zero returns  Gdk.Segment.Zero</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="X1">
+      <MemberSignature Language="C#" Value="public int X1;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 X1" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>First x-value for the line segment.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="X2">
+      <MemberSignature Language="C#" Value="public int X2;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 X2" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Second x-value for the line segment.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Y1">
+      <MemberSignature Language="C#" Value="public int Y1;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Y1" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>First y-value for the line segment.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Y2">
+      <MemberSignature Language="C#" Value="public int Y2;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Y2" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Second y-value for the line segment.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Gdk.Segment Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Gdk.Segment Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Segment</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>References a static field defined as new Gdk.Segment ();
+</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

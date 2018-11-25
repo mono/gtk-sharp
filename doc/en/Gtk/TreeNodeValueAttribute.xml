@@ -1,0 +1,79 @@
+<Type Name="TreeNodeValueAttribute" FullName="Gtk.TreeNodeValueAttribute">
+  <TypeSignature Language="C#" Maintainer="Mike Kestner" Value="public sealed class TreeNodeValueAttribute : Attribute" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit TreeNodeValueAttribute extends System.Attribute" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>&gt;Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Attribute</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.AttributeUsage(System.AttributeTargets.Property | System.AttributeTargets.Field | System.AttributeTargets.All, AllowMultiple=true)</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>An attribute to identify a property as a tree node column value.</summary>
+    <remarks>
+      <para> 
+        This attribute is applied to a property of a tree node class to 
+        indicate that the property holds a column value of the node.
+      </para>
+      <para> 
+	In the following example, the Frombulator property is tagged as Column 2
+	of the node which implements it:
+      </para>
+      <example>
+        <code lang="C#">
+	[TreeNodeValue(Column=2)]
+	public string Frombulator {
+		get {
+			return frombulator;
+		}
+	}
+	</code>
+      </example>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TreeNodeValueAttribute ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>TreeNodeValueAttribute constructor</summary>
+        <remarks>Instantiates a <see cref="T:Gtk.TreeNodeValueAttribute" /></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Column">
+      <MemberSignature Language="C#" Value="public int Column { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Column" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Column named value</summary>
+        <value>a <see cref="T:System.Int32" /></value>
+        <remarks>
+	    The column number of the value which is exposed by the property
+            this <see cref="T:Gtk.TreeNodeValueAttribute" /> marks.
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

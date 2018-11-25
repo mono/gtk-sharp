@@ -1,0 +1,474 @@
+<Type Name="Color" FullName="Gdk.Color">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public struct Color" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit Color extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Describes an allocated or unallocated color.</summary>
+    <remarks>
+      <para>
+	The Gdk.Color structure is used to describe an allocated or
+	unallocated color.  Unallocated colors only have the red,
+	green and blue ushort values initialized.  Colors are
+	allocated using the <see cref="M:Gdk.Colormap.AllocColor(Gdk.Color,bool,bool)" />
+	method.  After a color is allocated the value in the <see cref="F:Gdk.Color.pixel" /> field is valid.
+      </para>
+      <example>
+        <code lang="C#">
+	  DrawRedLine (Gdk.Drawable drawable)
+	  {
+	  	Gdk.GC gc = new Gdk.GC (drawable);
+	  
+	  	Gdk.Color red_color = new Gdk.Color (0xff, 0, 0);
+	  
+		  // Use the system colormap, easy.
+		  Gdk.Colormap colormap = Gdk.Colormap.System;
+		  
+		  colormap.AllocColor (red_color, true, true);
+	
+	          gc.Foreground = red_color;
+	  
+		  // Now you can use it
+		  drawable.DrawLine (gc, 0, 0, 100, 100);
+	  }
+	</code>
+      </example>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Color (byte r, byte g, byte b);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int8 r, unsigned int8 g, unsigned int8 b) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="r" Type="System.Byte" />
+        <Parameter Name="g" Type="System.Byte" />
+        <Parameter Name="b" Type="System.Byte" />
+      </Parameters>
+      <Docs>
+        <param name="r">Red value (0-255)</param>
+        <param name="g">Green value (0-255)</param>
+        <param name="b">Blue value (0-255)</param>
+        <summary>Color constructor from RGB byte values</summary>
+        <remarks>
+          <para>
+	    This constructs the color from three byte values for red,
+	    green and blue.  Notice that the Gdk.Color structure
+	    actually uses 16-bit color values, so the byte values are
+	    mapped into the 16-bit value space.  This is just a
+	    convenience routine to initialize this structure. 
+	  </para>
+          <para>
+	    To use the Gdk.Color you must allocate it within the
+	    current colormap. 
+	  </para>
+          <example>
+            <code lang="C#">
+	      DrawRedLine (Gdk.Drawable drawable)
+	      {
+	              Gdk.GC gc = new Gdk.GC (drawable);
+	              
+	              Gdk.Color red_color = new Gdk.Color (0xff, 0, 0);
+	              
+	              // Use the system colormap, easy.
+	              Gdk.Colormap colormap = Gdk.Colormap.System;
+	              
+	              colormap.AllocColor (red_color, true, true);
+	              
+	              // Now you can use it
+	              drawable.DrawLine (gc, 0, 0, 100, 100);
+              }
+	    </code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Alloc">
+      <MemberSignature Language="C#" Value="public static int Alloc (Gdk.Colormap colormap, Gdk.Color color);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 Alloc(class Gdk.Colormap colormap, valuetype Gdk.Color color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="colormap" Type="Gdk.Colormap" />
+        <Parameter Name="color" Type="Gdk.Color" />
+      </Parameters>
+      <Docs>
+        <param name="colormap">a <see cref="T:Gdk.Colormap" /></param>
+        <param name="color">a <see cref="T:Gdk.Color" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Int32" /></returns>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Black">
+      <MemberSignature Language="C#" Value="public static int Black (Gdk.Colormap colormap, Gdk.Color color);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 Black(class Gdk.Colormap colormap, valuetype Gdk.Color color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="colormap" Type="Gdk.Colormap" />
+        <Parameter Name="color" Type="Gdk.Color" />
+      </Parameters>
+      <Docs>
+        <param name="colormap">a <see cref="T:Gdk.Colormap" /></param>
+        <param name="color">a <see cref="T:Gdk.Color" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Int32" /></returns>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Blue">
+      <MemberSignature Language="C#" Value="public ushort Blue;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int16 Blue" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt16</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Blue element of the color.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Change">
+      <MemberSignature Language="C#" Value="public static int Change (Gdk.Colormap colormap, Gdk.Color color);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 Change(class Gdk.Colormap colormap, valuetype Gdk.Color color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="colormap" Type="Gdk.Colormap" />
+        <Parameter Name="color" Type="Gdk.Color" />
+      </Parameters>
+      <Docs>
+        <param name="colormap">a <see cref="T:Gdk.Colormap" /></param>
+        <param name="color">a <see cref="T:Gdk.Color" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Int32" /></returns>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Equal">
+      <MemberSignature Language="C#" Value="public bool Equal (Gdk.Color colorb);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Equal(valuetype Gdk.Color colorb) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="colorb" Type="Gdk.Color" />
+      </Parameters>
+      <Docs>
+        <param name="colorb">The color to compare</param>
+        <summary>Compares whether two colors are equal.</summary>
+        <returns>true if the red, green and blue components are the same</returns>
+        <remarks>
+          <para>
+	    Notice that this will not compare the <see cref="F:Gdk.Color.pixel" /> value, it will
+	    only compare the red, green and blue elements.
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetHashCode">
+      <MemberSignature Language="C#" Value="public override int GetHashCode ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Green">
+      <MemberSignature Language="C#" Value="public ushort Green;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int16 Green" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt16</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Green element of the color.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The GLib.GType for Gdk.Color</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>The GLib.GType for the Gdk.Color class.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Gdk.Color New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gdk.Color New(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">A pointer to the unmanaged GdkColor structure.</param>
+        <summary>Creates a color from an unmanaged location.</summary>
+        <returns>This returns a Gdk.Color structure.</returns>
+        <remarks>
+          <para>
+	    The <paramref name="raw" /> parameter points to a C-based
+	    GdkColor structure.  This routine creates a Gdk.Color
+	    structure from its unmanaged version.
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Explicit">
+      <MemberSignature Language="C#" Value="public static GLib.Value op_Explicit (Gdk.Color boxed);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype GLib.Value op_Explicit(valuetype Gdk.Color boxed) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.Value</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="boxed" Type="Gdk.Color" />
+      </Parameters>
+      <Docs>
+        <param name="boxed">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Explicit">
+      <MemberSignature Language="C#" Value="public static Gdk.Color op_Explicit (GLib.Value val);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Gdk.Color op_Explicit(valuetype GLib.Value val) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="val" Type="GLib.Value" />
+      </Parameters>
+      <Docs>
+        <param name="val">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Parse">
+      <MemberSignature Language="C#" Value="public static bool Parse (string spec, ref Gdk.Color color);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool Parse(string spec, valuetype Gdk.Color color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="spec" Type="System.String" />
+        <Parameter Name="color" Type="Gdk.Color&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="spec">A <see cref="T:System.String" /> specifying the color.</param>
+        <param name="color">The <see cref="T:Gdk.Color" /> to fill  in.</param>
+        <summary>Parses a textual specification of a color and fill in the red, green, and blue fields of a <see cref="T:Gdk.Color" /> structure.</summary>
+        <returns>A <see cref="T:System.Boolean" /> which indicates whether the parsing succeeded.</returns>
+        <remarks>
+          <para>The color is not allocated.</para>
+          <para>The text string can be in any of the forms accepted by XParseColor; these include name for a color from rgb.txt, such as DarkSlateGray, or a hex specification such as #3050b2 or #35b.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Pixel">
+      <MemberSignature Language="C#" Value="public uint Pixel;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 Pixel" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Pixel value for the color.</summary>
+        <remarks>
+          <para>
+	    Colors are specified in Gdk by their red, green and blue
+	    elements.   But before the color can be used, the color
+	    has to be allocated in a given colormap.  The value of the
+	    allocation is stored in this pixel field and it is the
+	    token used to render the color.  
+	  </para>
+          <para>
+	    The pixel value is initialized when using the <see cref="M:Gdk.Colormap.AllocColor(Gdk.Color,bool,bool)" /> method.
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Red">
+      <MemberSignature Language="C#" Value="public ushort Red;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int16 Red" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt16</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Red element of the color.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="White">
+      <MemberSignature Language="C#" Value="public static int White (Gdk.Colormap colormap, Gdk.Color color);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 White(class Gdk.Colormap colormap, valuetype Gdk.Color color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="colormap" Type="Gdk.Colormap" />
+        <Parameter Name="color" Type="Gdk.Color" />
+      </Parameters>
+      <Docs>
+        <param name="colormap">a <see cref="T:Gdk.Colormap" /></param>
+        <param name="color">a <see cref="T:Gdk.Color" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Int32" /></returns>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Gdk.Color Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Gdk.Color Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Unallocated, empty color.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

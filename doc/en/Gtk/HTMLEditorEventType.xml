@@ -1,0 +1,102 @@
+<Type Name="HTMLEditorEventType" FullName="Gtk.HTMLEditorEventType">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum HTMLEditorEventType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed HTMLEditorEventType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gtkhtml-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>3.16.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>Enumeration of possible kinds of HTML editing events.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="CommandAfter">
+      <MemberSignature Language="C#" Value="CommandAfter" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLEditorEventType CommandAfter = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLEditorEventType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CommandBefore">
+      <MemberSignature Language="C#" Value="CommandBefore" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLEditorEventType CommandBefore = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLEditorEventType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Delete">
+      <MemberSignature Language="C#" Value="Delete" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLEditorEventType Delete = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLEditorEventType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>A deletion.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageUrl">
+      <MemberSignature Language="C#" Value="ImageUrl" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLEditorEventType ImageUrl = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLEditorEventType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LinkClicked">
+      <MemberSignature Language="C#" Value="LinkClicked" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.HTMLEditorEventType LinkClicked = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>3.16.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.HTMLEditorEventType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

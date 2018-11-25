@@ -1,0 +1,523 @@
+<Type Name="Range" FullName="Gtk.Range">
+  <TypeSignature Language="C#" Maintainer="Lee Mallabone" Value="public class Range : Gtk.Widget" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Range extends Gtk.Widget" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Widget</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>Base class for widgets that visualize an <see cref="T:Gtk.Adjustment" />.</summary>
+    <remarks>
+      <para>This class provides helper methods and properties for manipulating concrete widgets like <see cref="T:Gtk.HScale" /> and <see cref="T:Gtk.VScale" />.</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Range ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Protected constructor.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Range (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Range (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AdjustBounds">
+      <MemberSignature Language="C#" Value="public event Gtk.AdjustBoundsHandler AdjustBounds;" />
+      <MemberSignature Language="ILAsm" Value=".event class Gtk.AdjustBoundsHandler AdjustBounds" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("adjust_bounds")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.AdjustBoundsHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Raised when the bounds of the range are adjusted.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Adjustment">
+      <MemberSignature Language="C#" Value="public Gtk.Adjustment Adjustment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Adjustment Adjustment" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("adjustment")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.Adjustment</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Manipulate the underlying model of this range.</summary>
+        <value>The current <see cref="T:Gtk.Adjustment" /> underlying this range.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ChangeValue">
+      <MemberSignature Language="C#" Value="public event Gtk.ChangeValueHandler ChangeValue;" />
+      <MemberSignature Language="ILAsm" Value=".event class Gtk.ChangeValueHandler ChangeValue" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("change_value")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.ChangeValueHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.6" />
+      </Docs>
+    </Member>
+    <Member MemberName="FillLevel">
+      <MemberSignature Language="C#" Value="public double FillLevel { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 FillLevel" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("fill-level")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+        <since version="Gtk# 2.12" />
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.Range" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Inverted">
+      <MemberSignature Language="C#" Value="public bool Inverted { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Inverted" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("inverted")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Manage whether the control of this range is manipulated in the opposite direction.</summary>
+        <value>Whether visual control of the range is currently inverted.</value>
+        <remarks>
+          <para>Setting this to <see langword="true" /> causes a <see cref="T:Gtk.VScale" /> widget to move from right to left, instead of left to right.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LowerStepperSensitivity">
+      <MemberSignature Language="C#" Value="public Gtk.SensitivityType LowerStepperSensitivity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.SensitivityType LowerStepperSensitivity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("lower-stepper-sensitivity")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.SensitivityType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Sensitivity policy for the lower end of the Range's adjustment.</summary>
+        <value>the <see cref="Gtk.SensitivityType" />.</value>
+        <remarks />
+        <since version="Gtk# 2.10" />
+      </Docs>
+    </Member>
+    <Member MemberName="MoveSlider">
+      <MemberSignature Language="C#" Value="public event Gtk.MoveSliderHandler MoveSlider;" />
+      <MemberSignature Language="ILAsm" Value=".event class Gtk.MoveSliderHandler MoveSlider" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("move_slider")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.MoveSliderHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Raised when the user moves a slider.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="OnAdjustBounds">
+      <MemberSignature Language="C#" Value="protected virtual void OnAdjustBounds (double new_value);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnAdjustBounds(float64 new_value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideAdjustBounds", Type=typeof(Gtk.Range))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="new_value" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="new_value">a <see cref="T:System.Double" /></param>
+        <summary>Default handler for the <see cref="M:Gtk.Range.AdjustBounds" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Range.AdjustBounds" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnChangeValue">
+      <MemberSignature Language="C#" Value="protected virtual bool OnChangeValue (Gtk.ScrollType scroll, double new_value);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool OnChangeValue(valuetype Gtk.ScrollType scroll, float64 new_value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideChangeValue", Type=typeof(Gtk.Range))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="scroll" Type="Gtk.ScrollType" />
+        <Parameter Name="new_value" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="scroll">a <see cref="T:System.Int32" /></param>
+        <param name="new_value">a <see cref="T:System.Double" /></param>
+        <summary>Default handler for the <see cref="M:Gtk.Range.ChangeValue" /> event.</summary>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Range.ChangeValue" /> event.</remarks>
+        <since version="Gtk# 2.6" />
+      </Docs>
+    </Member>
+    <Member MemberName="OnMoveSlider">
+      <MemberSignature Language="C#" Value="protected virtual void OnMoveSlider (Gtk.ScrollType scroll);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnMoveSlider(valuetype Gtk.ScrollType scroll) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideMoveSlider", Type=typeof(Gtk.Range))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="scroll" Type="Gtk.ScrollType" />
+      </Parameters>
+      <Docs>
+        <param name="scroll">a <see cref="T:Gtk.ScrollType" /></param>
+        <summary>Default handler for the <see cref="M:Gtk.Range.MoveSlider" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Range.MoveSlider" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnValueChanged">
+      <MemberSignature Language="C#" Value="protected virtual void OnValueChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnValueChanged() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideValueChanged", Type=typeof(Gtk.Range))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.Range.ValueChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.Range.ValueChanged" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RestrictToFillLevel">
+      <MemberSignature Language="C#" Value="public bool RestrictToFillLevel { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool RestrictToFillLevel" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("restrict-to-fill-level")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+        <since version="Gtk# 2.12" />
+      </Docs>
+    </Member>
+    <Member MemberName="SetIncrements">
+      <MemberSignature Language="C#" Value="public void SetIncrements (double step, double page);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetIncrements(float64 step, float64 page) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="step" Type="System.Double" />
+        <Parameter Name="page" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="step">Value difference for step movements, (see below).</param>
+        <param name="page">Value difference for page movements, (see below).</param>
+        <summary>Sets the step and page sizes for this range.</summary>
+        <remarks>
+          <para>The <paramref name="step" /> size is used when the user clicks the <see cref="T:Gtk.Scrollbar" /> arrows or moves <see cref="T:Gtk.Scale" /> with arrow keys. The <paramref name="page" /> size is used for example when moving via Page Up or Page Down keys.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetRange">
+      <MemberSignature Language="C#" Value="public void SetRange (double min, double max);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetRange(float64 min, float64 max) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="min" Type="System.Double" />
+        <Parameter Name="max" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="min">The minimum acceptable value for this range.</param>
+        <param name="max">The maximum acceptable value for this range.</param>
+        <summary>Sets the limits of this range.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ShowFillLevel">
+      <MemberSignature Language="C#" Value="public bool ShowFillLevel { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ShowFillLevel" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("show-fill-level")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+        <since version="Gtk# 2.12" />
+      </Docs>
+    </Member>
+    <Member MemberName="UpdatePolicy">
+      <MemberSignature Language="C#" Value="public Gtk.UpdateType UpdatePolicy { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.UpdateType UpdatePolicy" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("update-policy")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.UpdateType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Manage how often the value label is updated.</summary>
+        <value>The current update policy.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="UpperStepperSensitivity">
+      <MemberSignature Language="C#" Value="public Gtk.SensitivityType UpperStepperSensitivity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.SensitivityType UpperStepperSensitivity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("upper-stepper-sensitivity")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gtk.SensitivityType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Sensitivity policy for the upper end of the Range's adjustment.</summary>
+        <value>the <see cref="Gtk.SensitivityType" />.</value>
+        <remarks />
+        <since version="Gtk# 2.10" />
+      </Docs>
+    </Member>
+    <Member MemberName="Value">
+      <MemberSignature Language="C#" Value="public double Value { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 Value" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Manage the value of this range.</summary>
+        <value>The current value of this range.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ValueChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler ValueChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler ValueChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("value_changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Raised when the value in this range changes.</summary>
+        <remarks>
+          <para>Connect to this event with a standard <see cref="T:System.EventHandler" /> to find out when the value changes.</para>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

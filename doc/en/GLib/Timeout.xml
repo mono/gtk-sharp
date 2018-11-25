@@ -1,0 +1,73 @@
+<Type Name="Timeout" FullName="GLib.Timeout">
+  <TypeSignature Language="C#" Value="public class Timeout" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Timeout extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>glib-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Allows the installation of Timeout Handlers on the GLib main loop.
+It's in a way very similar to a System.Windows.Forms.Timer class.
+You can use timeouts to invoke routines at specified intervals of time.
+The diferance between GLib.Timeout and System.Windows.Forms.Timer is that Timeouts are always invoked on the thread that owns the Gtk mainloop
+</summary>
+    <remarks>
+      <para>Use the <see cref="M:GLib.Timeout.Add" /> method to install timeout handlers into the mainloop.</para>
+      <example>
+        <code lang="C#">
+	void StartClock () 
+	{
+		GLib.Timeout.Add(1000, new GLib.TimeoutHandler(update_status));
+	}
+
+	bool update_status ()
+	{
+		time_label.Text=DateTime.Now.ToString ();
+		//returning true means that the timeout routine should be invoked
+		//again after the timeout period expires.  Returning false would 
+		//terminate the timeout.
+		return true;
+	}
+  </code>
+      </example>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public static uint Add (uint interval, GLib.TimeoutHandler hndlr);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int32 Add(unsigned int32 interval, class GLib.TimeoutHandler hndlr) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="interval" Type="System.UInt32" />
+        <Parameter Name="hndlr" Type="GLib.TimeoutHandler" />
+      </Parameters>
+      <Docs>
+        <param name="interval">the interval in milliseconds between invocations of <paramref name="hndlr" />.</param>
+        <param name="hndlr">a delegate of type <see cref="T:GLib.TimeoutHandler" /> to invoke every <paramref name="interval" />.</param>
+        <summary>Adds a <see cref="T:GLib.TimeoutHandler" /> delegate to the mainloop.  </summary>
+        <returns>an id representing the event source of the installed timeout handler.</returns>
+        <remarks>
+          <para>
+The delegate is invoked after the time period specified by <paramref name="interval" />. The delegate is invoked repeatedly until it returns <see langword="false" />.
+</para>
+          <para>
+Invocation of the delegate may be delayed by other event processing, so this mechanism cannot be depended on for accurate timing. The interval to the next timeout is calculated at completion of the preceding timeout. There is no attempt made to "catch up" if an invocation is delayed.
+</para>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

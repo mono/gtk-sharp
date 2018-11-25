@@ -1,0 +1,98 @@
+<Type Name="DefaultSignalHandlerAttribute" FullName="GLib.DefaultSignalHandlerAttribute">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public sealed class DefaultSignalHandlerAttribute : Attribute" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit DefaultSignalHandlerAttribute extends System.Attribute" />
+  <AssemblyInfo>
+    <AssemblyName>glib-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement />
+  <Base>
+    <BaseTypeName>System.Attribute</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Identifies a virtual class method on a GLib.Object subclass.</summary>
+    <remarks>
+      <para>
+When a virtual method tagged with this attribute is overridden in a subclass, the method is automatically hooked into the native object's vtable.  For the most part, this is an internal implementation detail, but it can be used by binding code to manually identify GObject virtual methods that can be overridden by subclasses.
+</para>
+      <para>
+The following code identifies the ForAll method as an overridable native method on the <see cref="T:Gtk.Container" /> class. When a managed subclass of Container overrides the ForAll method, at type registration time, the OverrideForall method is invoked to connect up a delegate to the native GtkContainerClass::forall vtable slot.
+</para>
+      <example>
+        <code lang="C#">
+static void Forall_cb (IntPtr container, bool include_internals, IntPtr cb, IntPtr data)
+{
+        Container obj = GLib.Object.GetObject (container, false) as Container;
+        CallbackInvoker invoker = new CallbackInvoker (cb, data);
+        obj.ForAll (include_internals, invoker);
+}
+
+static void OverrideForall (GLib.GType gtype)
+{
+        if (ForallCallback == null)
+                ForallCallback = new ForallDelegate (Forall_cb);
+        gtksharp_container_override_forall (gtype, ForallCallback);
+}
+
+[GLib.DefaultSignalHandler (Type=typeof(Gtk.Container), ConnectionMethod="OverrideForall")]
+protected virtual void ForAll (bool include_internals, CallbackInvoker invoker)
+{
+        gtksharp_container_base_forall (Handle, include_internals, invoker.Callback, invoker.Data);
+} </code>
+      </example>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public DefaultSignalHandlerAttribute ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Public Constructor.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ConnectionMethod">
+      <MemberSignature Language="C#" Value="public string ConnectionMethod { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string ConnectionMethod" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The method to invoke to hook into the native object's vtable.</summary>
+        <value>a <see cref="T:System.String" /> representing the method name to invoke.</value>
+        <remarks>This method is invoked during type registration to hook up a callback delegate into the native object's vtable for virtual methods.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Type">
+      <MemberSignature Language="C#" Value="public Type Type { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Type Type" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Type</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The Type of the object which exposes the virtual method.</summary>
+        <value>a <see cref="T:System.Type" /></value>
+        <remarks>The type registration code reflects on this type for the <see cref="M:GLib.DefaultSignalHandlerAttribute.ConnectionMethod" /> to invoke.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

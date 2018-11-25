@@ -1,0 +1,53 @@
+<Type Name="ChangeValueArgs" FullName="Gtk.ChangeValueArgs">
+  <TypeSignature Language="C#" Value="public class ChangeValueArgs : GLib.SignalArgs" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ChangeValueArgs extends GLib.SignalArgs" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Event data.</summary>
+    <remarks>
+      <para>The <see cref="M:Gtk.SpinButton.ChangeValue" /> event invokes <see cref="T:Gtk.ChangeValueHandler" /> delegates which pass event data via this class.</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ChangeValueArgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Public Constructor.</summary>
+        <remarks>Create a new <see cref="T:Gtk.ChangeValueArgs" /> instance with this constructor if you need to invoke a <see cref="T:Gtk.ChangeValueHandler" /> delegate.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Scroll">
+      <MemberSignature Language="C#" Value="public Gtk.ScrollType Scroll { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gtk.ScrollType Scroll" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.ScrollType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The type of incrementation or decrementation to perform.</summary>
+        <value>A <see cref="T:Gtk.ScrollType" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

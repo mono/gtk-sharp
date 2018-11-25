@@ -1,0 +1,144 @@
+<Type Name="Weight" FullName="Pango.Weight">
+  <TypeSignature Language="C#" Maintainer="duncan" Value="public enum Weight" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed Weight extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>pango-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Pango.WeightGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>An enumeration specifying the weight (boldness) of a font</summary>
+    <remarks>
+      <para>
+        This is a numerical value ranging from 100 to 900, but there
+        are two predefined values.
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Bold">
+      <MemberSignature Language="C#" Value="Bold" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Pango.Weight Bold = int32(700)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Weight</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The bold weight (700)</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Heavy">
+      <MemberSignature Language="C#" Value="Heavy" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Pango.Weight Heavy = int32(900)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Weight</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The heavy weight (900)</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Light">
+      <MemberSignature Language="C#" Value="Light" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Pango.Weight Light = int32(300)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Weight</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The light weight (300)</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Normal">
+      <MemberSignature Language="C#" Value="Normal" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Pango.Weight Normal = int32(400)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Weight</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The default weight (400)</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Semibold">
+      <MemberSignature Language="C#" Value="Semibold" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Pango.Weight Semibold = int32(600)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Weight</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.6" />
+      </Docs>
+    </Member>
+    <Member MemberName="Ultrabold">
+      <MemberSignature Language="C#" Value="Ultrabold" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Pango.Weight Ultrabold = int32(800)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Weight</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The ultrabold weight (800)</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Ultralight">
+      <MemberSignature Language="C#" Value="Ultralight" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Pango.Weight Ultralight = int32(200)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Weight</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The ultralight weight (200)</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

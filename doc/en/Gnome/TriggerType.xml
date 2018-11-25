@@ -1,0 +1,94 @@
+<Type Name="TriggerType" FullName="Gnome.TriggerType">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum TriggerType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed TriggerType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gnome-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gnome.TriggerTypeGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>These are the different types of triggers that can be activated by an application.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Command">
+      <MemberSignature Language="C#" Value="Command" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.TriggerType Command = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.TriggerType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The trigger causes a command to be executed.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Function">
+      <MemberSignature Language="C#" Value="Function" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.TriggerType Function = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.TriggerType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The trigger causes a function to be executed.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Mediaplay">
+      <MemberSignature Language="C#" Value="Mediaplay" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.TriggerType Mediaplay = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.TriggerType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The trigger causes a sound to be played.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="None">
+      <MemberSignature Language="C#" Value="None" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.TriggerType None = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.TriggerType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>A null trigger type. Should never be used.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

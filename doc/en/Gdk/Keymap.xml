@@ -1,0 +1,367 @@
+<Type Name="Keymap" FullName="Gdk.Keymap">
+  <TypeSignature Language="C#" Maintainer="ct" Value="public class Keymap : GLib.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Keymap extends GLib.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>Object for keyboard code manipulation</summary>
+    <remarks>
+      <para>
+    Defines translations from keyboard states to a `keyval`. Two phase translation: determine keyboard group and level 
+    for keyboard state, then lookup the keycode/group/level triplet in the keymap and get the corresponding keyval.
+    Keycode is the hardware/keyboard code for that key. Keygroup is used for language and horizontal tracking [ "group 1" is english, 
+    "group 2" is hebrew]. Keylevel is used to track letter case/alternate representation and vertical movement [ level 0 is "a", 
+    level 1 is "A" ; alternately, level 0 is "1" and level 1 is "!" ].
+    </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Keymap ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Keymap (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Internal constructor</summary>
+        <remarks>This is a constructor used by derivative types of <see cref="T:Gdk.Keymap" /> that would have their own GLib.GType assigned to it.  This is not typically used by C# code.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Keymap (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Default">
+      <MemberSignature Language="C#" Value="public static Gdk.Keymap Default { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class Gdk.Keymap Default" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Keymap</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added</summary>
+        <value>To be added: an object of type 'Gdk.Keymap'</value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Direction">
+      <MemberSignature Language="C#" Value="public Pango.Direction Direction { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Pango.Direction Direction" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Direction</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+        Member that represents the current direction of the keymap.
+        </summary>
+        <value>An object of type 'Pango.Direction', current keymap direction.</value>
+        <remarks>
+        None
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DirectionChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler DirectionChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DirectionChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("direction_changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+        An event handler that raised when the direction of a keymap has been changed.
+        </summary>
+        <remarks>
+        None
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetEntriesForKeycode">
+      <MemberSignature Language="C#" Value="public void GetEntriesForKeycode (uint hardware_keycode, out Gdk.KeymapKey[] keys, out uint[] keyvals);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetEntriesForKeycode(unsigned int32 hardware_keycode, valuetype Gdk.KeymapKey[] keys, unsigned int32[] keyvals) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="hardware_keycode" Type="System.UInt32" />
+        <Parameter Name="keys" Type="Gdk.KeymapKey[]&amp;" RefType="out" />
+        <Parameter Name="keyvals" Type="System.UInt32[]&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="hardware_keycode">An object of type <see cref="T:System.UInt32" />, a keyboard code.</param>
+        <param name="keys">An object of type <see cref="T:Gdk.KeymapKey" />, return reference for the list of keys.</param>
+        <param name="keyvals">An object of type <see cref="T:System.UInt32" />, return reference for the list of corresponding keyvals for <paramref name="keys" /></param>
+        <summary>Stores in <paramref name="keys" /> a reference to a list of the keys bound to <paramref name="hardware_keycode" />. The nth Gdk.KeymapKey in <paramref name="keys" /> is associated with the nth keyval in <paramref name="keyvals" />. When a keycode is pressed by the user, the keyval from <paramref name="keys" /> is selected.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetEntriesForKeyval">
+      <MemberSignature Language="C#" Value="public Gdk.KeymapKey[] GetEntriesForKeyval (uint keyval);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Gdk.KeymapKey[] GetEntriesForKeyval(unsigned int32 keyval) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.KeymapKey[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="keyval" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="keyval">An object of type <see cref="T:System.UInt32" />, such as GDK_a, GDK_up, GDK_RETURN, etc.</param>
+        <summary>Gets a list of keycode/group/level combinations that generate a <paramref name="keyval" />.</summary>
+        <returns>the list of key sequences.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetForDisplay">
+      <MemberSignature Language="C#" Value="public static Gdk.Keymap GetForDisplay (Gdk.Display display);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Keymap GetForDisplay(class Gdk.Display display) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Keymap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="display" Type="Gdk.Display" />
+      </Parameters>
+      <Docs>
+        <param name="display">a <see cref="T:Gdk.Display" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Keymap" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gdk.Keymap" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HaveBidiLayouts">
+      <MemberSignature Language="C#" Value="public bool HaveBidiLayouts ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool HaveBidiLayouts() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Requests Bidi layout status.</summary>
+        <returns>If <see langword="true" />, bi-directional layout is in use.</returns>
+        <remarks>To be added.</remarks>
+        <since version="Gtk# 2.12" />
+      </Docs>
+    </Member>
+    <Member MemberName="KeysChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler KeysChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler KeysChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("keys_changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LookupKey">
+      <MemberSignature Language="C#" Value="public uint LookupKey (Gdk.KeymapKey key);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int32 LookupKey(valuetype Gdk.KeymapKey key) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="Gdk.KeymapKey" />
+      </Parameters>
+      <Docs>
+        <param name="key">An object of type 'Gdk.KeymapKey', initalized keycode/group/level triplet.</param>
+        <summary>
+        Looks up a keyval mapped to a keycode/group/level triplet. If no keyval is bound to `key`, the method returns 0.
+        </summary>
+        <returns>An object of type 'uint', a keyval or 0 if none was found.</returns>
+        <remarks>
+        None
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnDirectionChanged">
+      <MemberSignature Language="C#" Value="protected virtual void OnDirectionChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnDirectionChanged() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideDirectionChanged", Type=typeof(Gdk.Keymap))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gdk.Keymap.DirectionChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gdk.Keymap.DirectionChanged" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnKeysChanged">
+      <MemberSignature Language="C#" Value="protected virtual void OnKeysChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnKeysChanged() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideKeysChanged", Type=typeof(Gdk.Keymap))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gdk.Keymap.KeysChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gdk.Keymap.KeysChanged" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TranslateKeyboardState">
+      <MemberSignature Language="C#" Value="public bool TranslateKeyboardState (uint hardware_keycode, Gdk.ModifierType state, int group, out uint keyval, out int effective_group, out int level, out Gdk.ModifierType consumed_modifiers);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TranslateKeyboardState(unsigned int32 hardware_keycode, valuetype Gdk.ModifierType state, int32 group, unsigned int32 keyval, int32 effective_group, int32 level, valuetype Gdk.ModifierType consumed_modifiers) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="hardware_keycode" Type="System.UInt32" />
+        <Parameter Name="state" Type="Gdk.ModifierType" />
+        <Parameter Name="group" Type="System.Int32" />
+        <Parameter Name="keyval" Type="System.UInt32&amp;" RefType="out" />
+        <Parameter Name="effective_group" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="level" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="consumed_modifiers" Type="Gdk.ModifierType&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="hardware_keycode">An object of type <see cref="T:System.UInt32" />, a keyboard code.</param>
+        <param name="state">An object of type <see cref="T:Gdk.ModifierType" />, a modifier state.</param>
+        <param name="group">An object of type <see cref="T:System.Int32" />, active keyboard group.</param>
+        <param name="keyval">An object of type <see cref="T:System.UInt32" />, return reference for `keyval`.</param>
+        <param name="effective_group">An object of type <see cref="T:System.Int32" />, return reference for `effective group`.</param>
+        <param name="level">An object of type <see cref="T:System.Int32" />, return reference for the new level.</param>
+        <param name="consumed_modifiers">An object of type <see cref="T:Gdk.ModifierType" />, return reference for modifiers used to determine group/level.</param>
+        <summary>Translates the contents of a Gdk.KeymapKey into a keyval/group/level. Modifiers affecting the translation are returned 
+        in `consumed_modifiers`. `effective_group` is the group used in translation. Key level is determined by `state`.</summary>
+        <returns>An object of type <see cref="T:System.Boolean" />, return <see langword="true" /> if keys were found and returned.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

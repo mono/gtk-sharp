@@ -1,0 +1,108 @@
+<Type Name="GlyphGeometry" FullName="Pango.GlyphGeometry">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public struct GlyphGeometry" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit GlyphGeometry extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>pango-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Contains width and positioning information for a single glyph.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Pango.GlyphGeometry New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Pango.GlyphGeometry New(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.GlyphGeometry</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">an object of type <see cref="T:System.IntPtr" /></param>
+        <summary>Internal method</summary>
+        <returns>an object of type <see cref="T:Pango.GlyphGeometry" /></returns>
+        <remarks>This is an internal method, and should not be used by user code.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Width">
+      <MemberSignature Language="C#" Value="public int Width;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Width" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>the logical width to use for the the character.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="XOffset">
+      <MemberSignature Language="C#" Value="public int XOffset;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 XOffset" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>horizontal offset from nominal character position.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="YOffset">
+      <MemberSignature Language="C#" Value="public int YOffset;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 YOffset" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>vertical offset from nominal character position. </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Pango.GlyphGeometry Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Pango.GlyphGeometry Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.GlyphGeometry</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns a new <see cref="T:Pango.GlyphGeometry" /></summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

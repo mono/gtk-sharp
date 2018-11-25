@@ -1,0 +1,82 @@
+<Type Name="Toolbar+ToolbarChild" FullName="Gtk.Toolbar+ToolbarChild">
+  <TypeSignature Language="C#" Value="public class Toolbar.ToolbarChild : Gtk.Container.ContainerChild" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi beforefieldinit Toolbar/ToolbarChild extends Gtk.Container/ContainerChild" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Gtk.Container+ContainerChild</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>A child of a <see cref="T:Gtk.Toolbar" />, used to interact with its container child properties.</summary>
+    <remarks>
+    </remarks>
+    <since version="Gtk# 2.4" />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected ToolbarChild (Gtk.Container parent, Gtk.Widget child);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig specialname rtspecialname instance void .ctor(class Gtk.Container parent, class Gtk.Widget child) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="parent" Type="Gtk.Container" />
+        <Parameter Name="child" Type="Gtk.Widget" />
+      </Parameters>
+      <Docs>
+        <param name="parent">To be added.</param>
+        <param name="child">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Expand">
+      <MemberSignature Language="C#" Value="public bool Expand { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Expand" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Gtk.ChildProperty("expand")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Whether or not the child should receive extra space as the toolbar grows.</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Homogeneous">
+      <MemberSignature Language="C#" Value="public bool Homogeneous { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Homogeneous" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>Gtk.ChildProperty("homogeneous")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Whether or not the child should be the same size as other (homogeneous) items</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

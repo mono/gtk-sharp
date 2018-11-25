@@ -1,0 +1,94 @@
+<Type Name="Score" FullName="Gnome.Score">
+  <TypeSignature Language="C#" Value="public class Score" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Score extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gnome-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Score ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetNotable">
+      <MemberSignature Language="C#" Value="public static int GetNotable (string gamename, string level, string names, out float scores, DateTime scoretimes);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 GetNotable(string gamename, string level, string names, float32 scores, valuetype System.DateTime scoretimes) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gamename" Type="System.String" />
+        <Parameter Name="level" Type="System.String" />
+        <Parameter Name="names" Type="System.String" />
+        <Parameter Name="scores" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="scoretimes" Type="System.DateTime" />
+      </Parameters>
+      <Docs>
+        <param name="gamename">a <see cref="T:System.String" /></param>
+        <param name="level">a <see cref="T:System.String" /></param>
+        <param name="names">a <see cref="T:System.String" /></param>
+        <param name="scores">a <see cref="T:System.Single" /></param>
+        <param name="scoretimes">a <see cref="T:System.DateTime" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Int32" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public static int Init (string gamename);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 Init(string gamename) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gamename" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="gamename">a <see cref="T:System.String" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Int32" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

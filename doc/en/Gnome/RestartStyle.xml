@@ -1,0 +1,94 @@
+<Type Name="RestartStyle" FullName="Gnome.RestartStyle">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum RestartStyle" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed RestartStyle extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gnome-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gnome.RestartStyleGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>The various ways in which the session manager can restart a client.</summary>
+    <remarks>Set by calling <see cref="P:Gnome.Client.RestartStyle" />.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Anyway">
+      <MemberSignature Language="C#" Value="Anyway" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.RestartStyle Anyway = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.RestartStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Restart even if the client was exited before the user logged out of the previous session.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IfRunning">
+      <MemberSignature Language="C#" Value="IfRunning" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.RestartStyle IfRunning = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.RestartStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Restart if the client was running when the previous session exited.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Immediately">
+      <MemberSignature Language="C#" Value="Immediately" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.RestartStyle Immediately = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.RestartStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Restart the client immediately whenever it crashes or exits.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Never">
+      <MemberSignature Language="C#" Value="Never" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gnome.RestartStyle Never = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gnome.RestartStyle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Do not restart the client.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

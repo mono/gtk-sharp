@@ -1,0 +1,230 @@
+<Type Name="ThumbnailFactory" FullName="Gnome.ThumbnailFactory">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class ThumbnailFactory : GLib.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ThumbnailFactory extends GLib.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gnome-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>To be added</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected ThumbnailFactory (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ThumbnailFactory (Gnome.ThumbnailSize size);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Gnome.ThumbnailSize size) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="size" Type="Gnome.ThumbnailSize" />
+      </Parameters>
+      <Docs>
+        <param name="size">a <see cref="T:Gnome.ThumbnailSize" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ThumbnailFactory (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">a <see cref="T:System.IntPtr" /></param>
+        <summary>Internal constructor</summary>
+        <remarks>This is not typically used by C# code.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CanThumbnail">
+      <MemberSignature Language="C#" Value="public bool CanThumbnail (string uri, string mime_type, DateTime mtime);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool CanThumbnail(string uri, string mime_type, valuetype System.DateTime mtime) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="System.String" />
+        <Parameter Name="mime_type" Type="System.String" />
+        <Parameter Name="mtime" Type="System.DateTime" />
+      </Parameters>
+      <Docs>
+        <param name="uri">a <see cref="T:System.String" /></param>
+        <param name="mime_type">a <see cref="T:System.String" /></param>
+        <param name="mtime">a <see cref="T:System.DateTime" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateFailedThumbnail">
+      <MemberSignature Language="C#" Value="public void CreateFailedThumbnail (string uri, DateTime mtime);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CreateFailedThumbnail(string uri, valuetype System.DateTime mtime) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="System.String" />
+        <Parameter Name="mtime" Type="System.DateTime" />
+      </Parameters>
+      <Docs>
+        <param name="uri">a <see cref="T:System.String" /></param>
+        <param name="mtime">a <see cref="T:System.DateTime" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GenerateThumbnail">
+      <MemberSignature Language="C#" Value="public Gdk.Pixbuf GenerateThumbnail (string uri, string mime_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gdk.Pixbuf GenerateThumbnail(string uri, string mime_type) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixbuf</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="System.String" />
+        <Parameter Name="mime_type" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="uri">a <see cref="T:System.String" /></param>
+        <param name="mime_type">a <see cref="T:System.String" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Pixbuf" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gnome.ThumbnailFactory" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HasValidFailedThumbnail">
+      <MemberSignature Language="C#" Value="public bool HasValidFailedThumbnail (string uri, DateTime mtime);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool HasValidFailedThumbnail(string uri, valuetype System.DateTime mtime) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="System.String" />
+        <Parameter Name="mtime" Type="System.DateTime" />
+      </Parameters>
+      <Docs>
+        <param name="uri">a <see cref="T:System.String" /></param>
+        <param name="mtime">a <see cref="T:System.DateTime" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Lookup">
+      <MemberSignature Language="C#" Value="public string Lookup (string uri, DateTime mtime);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string Lookup(string uri, valuetype System.DateTime mtime) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="System.String" />
+        <Parameter Name="mtime" Type="System.DateTime" />
+      </Parameters>
+      <Docs>
+        <param name="uri">a <see cref="T:System.String" /></param>
+        <param name="mtime">a <see cref="T:System.DateTime" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.String" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SaveThumbnail">
+      <MemberSignature Language="C#" Value="public void SaveThumbnail (Gdk.Pixbuf thumbnail, string uri, DateTime original_mtime);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SaveThumbnail(class Gdk.Pixbuf thumbnail, string uri, valuetype System.DateTime original_mtime) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="thumbnail" Type="Gdk.Pixbuf" />
+        <Parameter Name="uri" Type="System.String" />
+        <Parameter Name="original_mtime" Type="System.DateTime" />
+      </Parameters>
+      <Docs>
+        <param name="thumbnail">a <see cref="T:Gdk.Pixbuf" /></param>
+        <param name="uri">a <see cref="T:System.String" /></param>
+        <param name="original_mtime">a <see cref="T:System.DateTime" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,453 @@
+<Type Name="Handle" FullName="Rsvg.Handle">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class Handle : GLib.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Handle extends GLib.Object" />
+  <AssemblyInfo>
+    <AssemblyName>rsvg2-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.16.0.0</AssemblyVersion>
+    <AssemblyVersion>2.18.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>To be added</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Handle ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Returns a new rsvg handle.</summary>
+        <remarks>This handle can be used for dynamically loading an image. You need to feed it data using <see cref="M:Rsvg.Handle.Write()" />, then call <see cref="M:Rsvg.Handle.Close()" /> when done. No more than one image can be loaded with one handle.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Handle (byte[] data);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int8[] data) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="data" Type="System.Byte[]" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Handle (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">a <see cref="T:System.IntPtr" /></param>
+        <summary>To be added</summary>
+        <remarks>
+          <block subset="none" type="note">
+            <para>This is not a wrapper around rsvg_handle_new_from_data. This just passes the pointer as the pointer to the Glib object. It probably requires the pointer to be already initialized (like the result of rsvg_handle_new_from_data is).</para>
+          </block>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Handle (string file_name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string file_name) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="file_name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="file_name">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BaseUri">
+      <MemberSignature Language="C#" Value="public string BaseUri { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string BaseUri" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Close">
+      <MemberSignature Language="C#" Value="public bool Close ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Close() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Close, to indicate that loading the image is complete. </summary>
+        <returns>
+          <see langword="true" /> if the loader closed successfully, or <see langword="false" /> if there was an error.</returns>
+        <remarks>This will return <see langword="true" /> if the loader closed successfully.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Desc">
+      <MemberSignature Language="C#" Value="public string Desc { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Desc" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:System.String" /></value>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Dimensions">
+      <MemberSignature Language="C#" Value="public Rsvg.DimensionData Dimensions { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Rsvg.DimensionData Dimensions" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Rsvg.DimensionData</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dpi">
+      <MemberSignature Language="C#" Value="public double Dpi { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 Dpi" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Sets the DPI for the all future outgoing pixbufs.</summary>
+        <value> Dots Per Inch (aka Pixels Per Inch)</value>
+        <remarks>Common values are 72, 90, and 300 DPI. Passing a number &lt;= 0 to dpi will reset the DPI to whatever the default value happens to be.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Free">
+      <MemberSignature Language="C#" Value="public void Free ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Frees handle.</summary>
+        <remarks />
+      </Docs>
+      <AssemblyInfo />
+    </Member>
+    <Member MemberName="GetPixbufSub">
+      <MemberSignature Language="C#" Value="public Gdk.Pixbuf GetPixbufSub (string id);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gdk.Pixbuf GetPixbufSub(string id) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixbuf</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="id" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="id">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Metadata">
+      <MemberSignature Language="C#" Value="public string Metadata { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Metadata" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NewGz">
+      <MemberSignature Language="C#" Value="public static Rsvg.Handle NewGz ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Rsvg.Handle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>See <see cref="C:Rsvg.Handle" />, except that this will handle GZipped SVGs (svgz)</summary>
+        <returns>a <see cref="T:Rsvg.Handle" /></returns>
+        <remarks>Use the returned handle identically to how you use a handle returned from <see cref="C:Rsvg.Handle" /></remarks>
+      </Docs>
+      <AssemblyInfo />
+    </Member>
+    <Member MemberName="Path">
+      <MemberSignature Language="C#" Value="public void Path (string d, string id);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="d" Type="System.String" />
+        <Parameter Name="id" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="d">a <see cref="T:System.String" /></param>
+        <param name="id">a <see cref="T:System.String" /></param>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+      <AssemblyInfo />
+    </Member>
+    <Member MemberName="Pixbuf">
+      <MemberSignature Language="C#" Value="public Gdk.Pixbuf Pixbuf { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Pixbuf Pixbuf" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixbuf</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The pixbuf loaded by handle.</summary>
+        <value>a <see cref="T:Gdk.Pixbuf" /></value>
+        <remarks>If insufficient data has been read to create the pixbuf, or an error occurred in loading, then <see langword="null" /> will be returned.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RenderCairo">
+      <MemberSignature Language="C#" Value="public void RenderCairo (Cairo.Context cr);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RenderCairo(class Cairo.Context cr) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="cr" Type="Cairo.Context" />
+      </Parameters>
+      <Docs>
+        <param name="cr">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RenderCairoSub">
+      <MemberSignature Language="C#" Value="public void RenderCairoSub (Cairo.Context cr, string id);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RenderCairoSub(class Cairo.Context cr, string id) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="cr" Type="Cairo.Context" />
+        <Parameter Name="id" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="cr">To be added.</param>
+        <param name="id">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetDpiXY">
+      <MemberSignature Language="C#" Value="public void SetDpiXY (double dpi_x, double dpi_y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDpiXY(float64 dpi_x, float64 dpi_y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dpi_x" Type="System.Double" />
+        <Parameter Name="dpi_y" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="dpi_x">To be added.</param>
+        <param name="dpi_y">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetSizeCallback" Deprecated="true">
+      <MemberSignature Language="C#" Value="public void SetSizeCallback (Rsvg.SizeFunc size_func, IntPtr user_data, IntPtr user_data_destroy);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="size_func" Type="Rsvg.SizeFunc" />
+        <Parameter Name="user_data" Type="System.IntPtr" />
+        <Parameter Name="user_data_destroy" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="size_func">a <see cref="T:Rsvg.SizeFunc" /></param>
+        <param name="user_data">a <see cref="T:System.IntPtr" /></param>
+        <param name="user_data_destroy">a <see cref="T:System.IntPtr" /></param>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+      <AssemblyInfo />
+    </Member>
+    <Member MemberName="SizeCallback">
+      <MemberSignature Language="C#" Value="public Rsvg.SizeFunc SizeCallback { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Rsvg.SizeFunc SizeCallback" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Rsvg.SizeFunc</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:Rsvg.SizeFunc" /></value>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Title">
+      <MemberSignature Language="C#" Value="public string Title { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Title" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:System.String" /></value>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Write">
+      <MemberSignature Language="C#" Value="public bool Write (byte[] buf);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Write(unsigned int8[] buf) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="buf" Type="System.Byte[]" />
+      </Parameters>
+      <Docs>
+        <param name="buf">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Write">
+      <MemberSignature Language="C#" Value="public bool Write (byte[] buf, ulong count);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Write(unsigned int8[] buf, unsigned int64 count) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.18.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="buf" Type="System.Byte[]" />
+        <Parameter Name="count" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="buf"> Pointer to svg data</param>
+        <param name="count"> length of the <paramref name="buf" /> buffer in bytes</param>
+        <summary>Loads the next <paramref name="count" /> bytes</summary>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>This will return <see langword="true" /> if the data was loaded successful, and <see langword="false" /> if an error occurred. In the latter case, the loader will be closed, and will not accept further writes.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

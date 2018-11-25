@@ -1,0 +1,124 @@
+<Type Name="Targets" FullName="Gtk.Targets">
+  <TypeSignature Language="C#" Value="public class Targets" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Targets extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+    <since version="Gtk# 2.12" />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Targets ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IncludeImage">
+      <MemberSignature Language="C#" Value="public static bool IncludeImage (Gdk.Atom targets, int n_targets, bool writable);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IncludeImage(class Gdk.Atom targets, int32 n_targets, bool writable) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="targets" Type="Gdk.Atom" />
+        <Parameter Name="n_targets" Type="System.Int32" />
+        <Parameter Name="writable" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="targets">To be added.</param>
+        <param name="n_targets">To be added.</param>
+        <param name="writable">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IncludeRichText">
+      <MemberSignature Language="C#" Value="public static bool IncludeRichText (Gdk.Atom targets, int n_targets, Gtk.TextBuffer buffer);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IncludeRichText(class Gdk.Atom targets, int32 n_targets, class Gtk.TextBuffer buffer) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="targets" Type="Gdk.Atom" />
+        <Parameter Name="n_targets" Type="System.Int32" />
+        <Parameter Name="buffer" Type="Gtk.TextBuffer" />
+      </Parameters>
+      <Docs>
+        <param name="targets">To be added.</param>
+        <param name="n_targets">To be added.</param>
+        <param name="buffer">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IncludeText">
+      <MemberSignature Language="C#" Value="public static bool IncludeText (Gdk.Atom targets, int n_targets);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IncludeText(class Gdk.Atom targets, int32 n_targets) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="targets" Type="Gdk.Atom" />
+        <Parameter Name="n_targets" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="targets">To be added.</param>
+        <param name="n_targets">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IncludeUri">
+      <MemberSignature Language="C#" Value="public static bool IncludeUri (Gdk.Atom targets, int n_targets);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IncludeUri(class Gdk.Atom targets, int32 n_targets) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="targets" Type="Gdk.Atom" />
+        <Parameter Name="n_targets" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="targets">To be added.</param>
+        <param name="n_targets">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,201 @@
+<Type Name="PangoAttrEmbossed" FullName="Gdk.PangoAttrEmbossed">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class PangoAttrEmbossed : GLib.Opaque" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PangoAttrEmbossed extends GLib.Opaque" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.Opaque</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public PangoAttrEmbossed (bool embossed);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(bool embossed) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="embossed" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="embossed">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public PangoAttrEmbossed (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Attr">
+      <MemberSignature Language="C#" Value="public Pango.Attribute Attr { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Pango.Attribute Attr" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Replaced by explicit Pango.Attribute cast")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Pango.Attribute</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Embossed">
+      <MemberSignature Language="C#" Value="public bool Embossed { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Embossed" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Gdk.PangoAttrEmbossed New (bool embossed);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.PangoAttrEmbossed New(bool embossed) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Replaced by PangoAttrEmbossed(bool) constructor")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.PangoAttrEmbossed</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="embossed" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="embossed">To be added: an object of type 'bool'</param>
+        <summary>Obsolete: replaced by normal constructor</summary>
+        <returns>To be added: an object of type 'Gdk.PangoAttrEmbossed'</returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Gdk.PangoAttrEmbossed New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.PangoAttrEmbossed New(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Replaced by PangoAttrEmbossed(IntPtr) constructor")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.PangoAttrEmbossed</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">To be added: an object of type 'IntPtr'</param>
+        <summary>Obsolete internal constructor</summary>
+        <returns>To be added: an object of type 'Gdk.PangoAttrEmbossed'</returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Explicit">
+      <MemberSignature Language="C#" Value="public static Pango.Attribute op_Explicit (Gdk.PangoAttrEmbossed attr_embossed);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class Pango.Attribute op_Explicit(class Gdk.PangoAttrEmbossed attr_embossed) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Attribute</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="attr_embossed" Type="Gdk.PangoAttrEmbossed" />
+      </Parameters>
+      <Docs>
+        <param name="attr_embossed">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Explicit">
+      <MemberSignature Language="C#" Value="public static Gdk.PangoAttrEmbossed op_Explicit (Pango.Attribute attr);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class Gdk.PangoAttrEmbossed op_Explicit(class Pango.Attribute attr) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.PangoAttrEmbossed</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="attr" Type="Pango.Attribute" />
+      </Parameters>
+      <Docs>
+        <param name="attr">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Gdk.PangoAttrEmbossed Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class Gdk.PangoAttrEmbossed Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Gdk.PangoAttrEmbossed is a reference type now, use null")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.PangoAttrEmbossed</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Obsolete: use <see langword="null" /></summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

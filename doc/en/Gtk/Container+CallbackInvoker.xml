@@ -1,0 +1,37 @@
+<Type Name="Container+CallbackInvoker" FullName="Gtk.Container+CallbackInvoker">
+  <TypeSignature Language="C#" Value="public struct Container.CallbackInvoker" />
+  <TypeSignature Language="ILAsm" Value=".class nested public sequential ansi sealed beforefieldinit Container/CallbackInvoker extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>An class to invoke callback methods; mostly internal. Used by <see cref="M:Gtk.Container.ForAll" />.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="Invoke">
+      <MemberSignature Language="C#" Value="public void Invoke (Gtk.Widget w);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Invoke(class Gtk.Widget w) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="w" Type="Gtk.Widget" />
+      </Parameters>
+      <Docs>
+        <param name="w">To be added.</param>
+        <summary>Invoke the contained delegate.</summary>
+        <remarks>This should not typically be used by application code.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

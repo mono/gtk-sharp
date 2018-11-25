@@ -1,0 +1,178 @@
+<Type Name="DrawingArea" FullName="Gtk.DrawingArea">
+  <TypeSignature Language="C#" Maintainer="Hector Gomez M" Value="public class DrawingArea : Gtk.Widget" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit DrawingArea extends Gtk.Widget" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Widget</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>The <see cref="T:Gtk.DrawingArea" /> widget is used for creating custom user interface elements.</summary>
+    <remarks>
+      <para>
+      The <see cref="T:Gtk.DrawingArea" /> widget is used for creating custom user interface elements. It's essentially a blank widget; you can draw on <paramref name="widget" />-&gt;window. After creating a drawing area, the application may want to connect to:
+          <list type="bullet"><item><term> 1)  Mouse and button press signals to respond to input from the user. (Use <see cref="M:Gtk.Widget.AddEvents" /> to enable events you wish to receive).</term></item><item><term> 2)  The <paramref name="realize" /> signal to take any necessary actions when the widget is instantiated on a particular display. (Create GDK resources in response to this signal.)</term></item><item><term> 3)  The <paramref name="configure_event" /> signal to take any necessary actions when the widget changes size.</term></item><item><term> 4)  The <paramref name="expose_event" /> signal to handle redrawing the contents of the widget.</term></item></list></para>
+      <para>
+      Expose events are normally delivered when a drawing area first comes onscreen, or when it's covered by another window and then uncovered (exposed). You can also force an expose event by adding to the "damage region" of the drawing area's window; <see cref="M:Gtk.Widget.QueueDrawArea" /> and <see cref="M:Gdk.Window.InvalidateRect" /> are equally good ways to do this. You'll then get an expose event for the invalid region. See also <see cref="M:Gdk.Pixbuf.RenderToDrawable" /> for drawing a <see cref="T:Gdk.Pixbuf" />.
+     </para>
+    </remarks>
+    <example>
+      <code lang="C#">
+using System;
+using Gtk;
+using Pango;
+ 
+class LayoutSample : DrawingArea
+{
+        Pango.Layout layout;
+ 
+        static void Main ()
+        {
+                Application.Init ();
+                new LayoutSample ();
+                Application.Run ();
+        }
+ 
+        LayoutSample ()
+        {
+                Window win = new Window ("Layout sample");
+                win.SetDefaultSize (400, 300);
+                win.DeleteEvent += OnWinDelete;
+                this.Realized += OnRealized;
+                this.ExposeEvent += OnExposed;
+ 
+                win.Add (this);
+                win.ShowAll ();
+        }
+ 
+        void OnExposed (object o, ExposeEventArgs args)
+        {
+                this.GdkWindow.DrawLayout (this.Style.TextGC (StateType.Normal), 100, 150, layout);
+        }
+ 
+        void OnRealized (object o, EventArgs args)
+        {
+                layout = new Pango.Layout (this.PangoContext);
+                layout.Wrap = Pango.WrapMode.Word;
+                layout.FontDescription = FontDescription.FromString ("Tahoma 16");
+                layout.SetMarkup ("Hello Pango.Layout");
+        }
+ 
+        void OnWinDelete (object o, DeleteEventArgs args)
+        {
+                Application.Quit ();
+        }
+}
+	  </code>
+    </example>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public DrawingArea ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Default Constructor.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected DrawingArea (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public DrawingArea (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.DrawingArea" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Size">
+      <MemberSignature Language="C#" Value="public void Size (int width, int height);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Size(int32 width, int32 height) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="width" Type="System.Int32" />
+        <Parameter Name="height" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="width">a <see cref="T:System.Int32" /></param>
+        <param name="height">a <see cref="T:System.Int32" /></param>
+        <summary>Sets the size of the drawing area.</summary>
+        <remarks>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

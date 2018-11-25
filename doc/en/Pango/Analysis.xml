@@ -1,0 +1,294 @@
+<Type Name="Analysis" FullName="Pango.Analysis">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public struct Analysis" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit Analysis extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>pango-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>This structure stores information about the properties of a segment of text.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="ExtraAttrs">
+      <MemberSignature Language="C#" Value="public Pango.Attribute[] ExtraAttrs { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Pango.Attribute[] ExtraAttrs" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Attribute[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Extra attributes related to the segment.</summary>
+        <value>An array of <see cref="T:Pango.Attribute" /> values.</value>
+        <remarks />
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Flags">
+      <MemberSignature Language="C#" Value="public byte Flags;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int8 Flags" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+        <since version="Gtk# 2.12" />
+      </Docs>
+    </Member>
+    <Member MemberName="font">
+      <MemberSignature Language="C#" Value="public Pango.Font font { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Pango.Font font" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Replaced by Font property")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Pango.Font</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>the <see cref="T:Pango.Font" /></summary>
+        <value>an object of type <see cref="T:Pango.Font" /></value>
+        <remarks>Replaced by <see cref="M:Pango.Analysis.Font" />. </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Font">
+      <MemberSignature Language="C#" Value="public Pango.Font Font { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Pango.Font Font" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Font</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>the <see cref="T:Pango.Font" /></summary>
+        <value>an object of type <see cref="T:Pango.Font" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Gravity">
+      <MemberSignature Language="C#" Value="public byte Gravity;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int8 Gravity" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+        <since version="Gtk# 2.12" />
+      </Docs>
+    </Member>
+    <Member MemberName="lang_engine">
+      <MemberSignature Language="C#" Value="public Pango.EngineLang lang_engine { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Pango.EngineLang lang_engine" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Replaced by LangEngine property")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Pango.EngineLang</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The engine for doing rendering-system-independent processing.</summary>
+        <value>a <see cref="T:Pango.EngineLang" /></value>
+        <remarks>Replaced by <see cref="M:Pango.Analysis.LangEngine" />. </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LangEngine">
+      <MemberSignature Language="C#" Value="public Pango.EngineLang LangEngine { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Pango.EngineLang LangEngine" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.EngineLang</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The engine for doing rendering-system-independent processing.</summary>
+        <value>a <see cref="T:Pango.EngineLang" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="language">
+      <MemberSignature Language="C#" Value="public Pango.Language language { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Pango.Language language" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Replaced by Language property")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Pango.Language</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The <see cref="T:Pango.Language" /></summary>
+        <value>an object of type <see cref="T:Pango.Language" /></value>
+        <remarks>Replaced by <see cref="M:Pango.Analysis.Language" />. </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Language">
+      <MemberSignature Language="C#" Value="public Pango.Language Language { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Pango.Language Language" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Language</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The <see cref="T:Pango.Language" /></summary>
+        <value>an object of type <see cref="T:Pango.Language" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Level">
+      <MemberSignature Language="C#" Value="public byte Level;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int8 Level" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The bi-directional level for this segment.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Pango.Analysis New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Pango.Analysis New(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Analysis</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">an object of type <see cref="T:System.IntPtr" /></param>
+        <summary>Internal method</summary>
+        <returns>an object of type <see cref="T:Pango.Analysis" /></returns>
+        <remarks>This is an internal method, and should not be used by user code.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Script">
+      <MemberSignature Language="C#" Value="public byte Script;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int8 Script" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+        <since version="Gtk# 2.12" />
+      </Docs>
+    </Member>
+    <Member MemberName="shape_engine">
+      <MemberSignature Language="C#" Value="public Pango.EngineShape shape_engine { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Pango.EngineShape shape_engine" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Replaced by ShapeEngine property")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Pango.EngineShape</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The engine for doing rendering-system-dependent processing.</summary>
+        <value>a <see cref="T:Pango.EngineShape" /></value>
+        <remarks />
+        <remarks>Replaced by <see cref="M:Pango.Analysis.ShapeEngine" />. </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShapeEngine">
+      <MemberSignature Language="C#" Value="public Pango.EngineShape ShapeEngine { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Pango.EngineShape ShapeEngine" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.EngineShape</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The engine for doing rendering-system-dependent processing.</summary>
+        <value>a <see cref="T:Pango.EngineShape" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Pango.Analysis Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Pango.Analysis Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Analysis</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>returns a new <see cref="T:Pango.Analysis" /></summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

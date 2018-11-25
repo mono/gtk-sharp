@@ -1,0 +1,6 @@
+prefix=${pcfiledir}/../..
+
+
+Name: GAPI
+Description: GObject .NET API Wrapping Tool
+Version: @VERSION@

@@ -1,0 +1,23 @@
+<Type Name="Function" FullName="Gtk.Function">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public delegate bool Function();" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed Function extends System.MulticastDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Boolean</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <summary>A delegate for representing a function with a boolean return value.</summary>
+    <returns>To be added.</returns>
+    <remarks />
+  </Docs>
+  <Members />
+</Type>

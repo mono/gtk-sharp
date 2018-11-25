@@ -1,0 +1,158 @@
+<Type Name="ItemFactoryEntry" FullName="Gtk.ItemFactoryEntry">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public struct ItemFactoryEntry" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit ItemFactoryEntry extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Obsolete</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Class intended for use with <see cref="T:Gtk.ItemFactory" />.</summary>
+    <remarks>FIXME: see bugzilla.ximian.com #70887, which directly concerns this API.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Accelerator">
+      <MemberSignature Language="C#" Value="public string Accelerator;" />
+      <MemberSignature Language="ILAsm" Value=".field public string Accelerator" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The accelerator key for this item.</summary>
+        <remarks>For example, "&lt;control&gt;O".</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Callback">
+      <MemberSignature Language="C#" Value="public Gtk.ItemFactoryCallback Callback { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.ItemFactoryCallback Callback" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.ItemFactoryCallback</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CallbackAction">
+      <MemberSignature Language="C#" Value="public uint CallbackAction;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 CallbackAction" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>A callback function to run when this item is activated.</summary>
+        <remarks>NOTE: The API doesn't support the actual code here.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ItemType">
+      <MemberSignature Language="C#" Value="public string ItemType;" />
+      <MemberSignature Language="ILAsm" Value=".field public string ItemType" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Type of item to add.</summary>
+        <remarks>Possible values:
+	  "&lt;Title&gt;" creates a title item,
+	  "&lt;Item&gt;" creates a simple item,
+	  "&lt;ImageItem&gt;" creates an item holding an image,
+	  "&lt;StockItem&gt;" creates an item holding a stock image,
+	  "&lt;CheckItem&gt;" creates a check item,
+	  "&lt;ToggleItem&gt;" creates a toggle item,
+	  "&lt;RadioItem&gt;" creates a radio item,
+	  &lt;path&gt; for the path of a radio item to link against,
+	  "&lt;Separator&gt;" creates a separator,
+	  "&lt;Tearoff&gt;" creates a tearoff separator,
+	  "&lt;Branch&gt;" creates an item to hold sub items,
+	  "&lt;LastBranch&gt;" creates a right justified item to hold sub items.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Gtk.ItemFactoryEntry New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gtk.ItemFactoryEntry New(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.ItemFactoryEntry</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">a <see cref="T:IntPtr" />, pointer to the underlying C data.</param>
+        <summary>For internal use only. Do not use.</summary>
+        <returns>a <see cref="T:Gtk.ItemFactoryEntry" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Path">
+      <MemberSignature Language="C#" Value="public string Path;" />
+      <MemberSignature Language="ILAsm" Value=".field public string Path" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The path of the item.</summary>
+        <remarks>For example, "/File/_Open", where the "O" should be a mnemonic underline.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Gtk.ItemFactoryEntry Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Gtk.ItemFactoryEntry Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.ItemFactoryEntry</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Empty entry.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

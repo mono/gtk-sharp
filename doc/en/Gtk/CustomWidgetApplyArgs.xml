@@ -1,0 +1,50 @@
+<Type Name="CustomWidgetApplyArgs" FullName="Gtk.CustomWidgetApplyArgs">
+  <TypeSignature Language="C#" Value="public class CustomWidgetApplyArgs : GLib.SignalArgs" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CustomWidgetApplyArgs extends GLib.SignalArgs" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Event data.</summary>
+    <remarks>
+      <para>The <see cref="M:Gtk.PrintOperation.CustomWidgetApply" /> event invokes <see cref="T:Gtk.CustomWidgetApplyHandler" /> delegates which pass event data via this class.</para>
+    </remarks>
+    <since version="Gtk# 2.10" />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CustomWidgetApplyArgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Public Constructor.</summary>
+        <remarks>Create a new <see cref="T:Gtk.CustomWidgetApplyArgs" /> instance with this constructor if you need to invoke a <see cref="T:Gtk.CustomWidgetApplyHandler" /> delegate.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Widget">
+      <MemberSignature Language="C#" Value="public Gtk.Widget Widget { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Widget Widget" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Widget</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The custom widget supplied to a <see cref="M:Gtk.PrintOperation.CreateCustomWidget" /> event.</summary>
+        <value>a <see cref="T:Gtk.Widget" />.</value>
+        <remarks>Data should be read from the widget in response to this event, since it is not guaranteed to persist beyond this time.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

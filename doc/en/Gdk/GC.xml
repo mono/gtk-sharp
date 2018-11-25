@@ -1,0 +1,809 @@
+<Type Name="GC" FullName="Gdk.GC">
+  <TypeSignature Language="C#" Maintainer="miguel" Value="public class GC : GLib.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit GC extends GLib.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>Represents a graphics context</summary>
+    <remarks>
+      <para>
+	  The Gdk.GC class is used to represent a graphics context.
+      </para>
+      <para>
+	A number of resources are used when performing graphics
+	operations. Most information about performing graphics (for
+	example, foreground color, background color, line style, and
+	so on) is stored in resources called graphics contexts
+	(GCs). Most graphics operations take a GC as an
+	argument.
+      </para>
+      <para>
+	Graphics operations can be performed to either windows (<see cref="T:Gdk.Window" />) or pixmaps (<see cref="T:Gdk.Pixmap" />), which collectively are called
+	drawables (<see cref="T:Gdk.Drawable" />).  Each drawable exists
+	on a single screen.  A GC is created for a specific screen and
+	drawable depth and can only be used with drawables of matching
+	screen and depth.
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public GC (Gdk.Drawable drawable);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Gdk.Drawable drawable) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="drawable" Type="Gdk.Drawable" />
+      </Parameters>
+      <Docs>
+        <param name="drawable">To be added: an object of type 'Gdk.Drawable'</param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected GC (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Internal constructor</summary>
+        <remarks>This is a constructor used by derivative types of <see cref="T:Gdk.GC" /> that would have their own GLib.GType assigned to it.  This is not typically used by C# code.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public GC (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public GC (Gdk.Drawable drawable, Gdk.GCValues values, Gdk.GCValuesMask values_mask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Gdk.Drawable drawable, valuetype Gdk.GCValues values, valuetype Gdk.GCValuesMask values_mask) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="drawable" Type="Gdk.Drawable" />
+        <Parameter Name="values" Type="Gdk.GCValues" />
+        <Parameter Name="values_mask" Type="Gdk.GCValuesMask" />
+      </Parameters>
+      <Docs>
+        <param name="drawable">To be added: an object of type 'Gdk.Drawable'</param>
+        <param name="values">To be added: an object of type 'Gdk.GCValues'</param>
+        <param name="values_mask">To be added: an object of type 'Gdk.GCValuesMask'</param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Background">
+      <MemberSignature Language="C#" Value="public Gdk.Color Background { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Color Background" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Sets the background color for a graphics context.</summary>
+        <value>the new background color.</value>
+        <remarks>
+          <para>
+	    Sets the background color for a graphics
+	    context.  The color must have been allocated.
+	  </para>
+          <example>
+            <code lang="C#">
+	      Gdk.GC my_gc = new Gdk.GC (gdk_window);
+	      
+	      //
+	      // Create the color
+	      //
+	      Gdk.Color back_color = new Gdk.Color (0xff, 0, 0);
+	      Gdk.Color fore_color = new Gdk.Color (0, 0, 0xff);
+
+	      //
+	      // Allocate them
+	      //
+	      Gdk.Colormap colormap = Gdk.Colormap.System;
+	      colormap.AllocColor (ref back_color, true, true);
+	      Gdk.Colormap colormap = Gdk.Colormap.System;
+	      colormap.AllocColor (ref fore_color, true, true);
+
+	      my_gc.Background = back_color;
+	      my_gc.Background = fore_color;
+
+	      //
+	      // Draw a thick line, alternating between foreground and
+	      // background colors
+	      //
+	      my_gc.SetLineAttributes (3, LineStyle.DoubleDash, CapStyle.NotLast, JoinStyle.Round);
+
+	      //
+	      // Draw diagonal, using the GC with the red color
+	      //
+	      gdk_window.DrawLine (my_gc, 0, 0, 100, 100);
+	    </code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ClipMask">
+      <MemberSignature Language="C#" Value="public Gdk.Pixmap ClipMask { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Pixmap ClipMask" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Sets the clip mask for a graphics context from a bitmap.</summary>
+        <value>a bitmap.</value>
+        <remarks>
+          <para>Sets the clip mask for a graphics context from a
+          bitmap. The clip mask is interpreted relative to the clip
+          origin. (See <see cref="M:Gdk.GC.SetClipOrigin()" />).</para>
+        </remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="ClipRectangle">
+      <MemberSignature Language="C#" Value="public Gdk.Rectangle ClipRectangle { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Rectangle ClipRectangle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Rectangle</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Sets the clip mask for a graphics context from a rectangle.</summary>
+        <value>an object of type 'Gdk.Rectangle'</value>
+        <remarks>
+          <para>Sets the clip mask for a graphics context from a
+          rectangle. The clip mask is interpreted relative to the clip
+          origin. (See <see cref="M:Gdk.GC.SetClipOrigin()" />).</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ClipRegion">
+      <MemberSignature Language="C#" Value="public Gdk.Region ClipRegion { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Region ClipRegion" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Region</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Sets the clip mask for a graphics context from a region structure.</summary>
+        <value>the Gdk.Region</value>
+        <remarks>
+          <para>Sets the clip mask for a graphics context from a
+          region structure. The clip mask is interpreted relative to
+          the clip origin. (See <see cref="M:Gdk.GC.SetClipOrigin()" />).</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Colormap">
+      <MemberSignature Language="C#" Value="public Gdk.Colormap Colormap { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Colormap Colormap" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Colormap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Sets the colormap for the GC to the given colormap.</summary>
+        <value> a Gdk.Colormap</value>
+        <remarks>
+          <para>
+	    Fetches or changes the colormap of the GC.  The depth of
+	    the colormap's visual must match the depth of the drawable
+	    for which the GC was created.
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Copy">
+      <MemberSignature Language="C#" Value="public void Copy (Gdk.GC src_gc);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Copy(class Gdk.GC src_gc) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="src_gc" Type="Gdk.GC" />
+      </Parameters>
+      <Docs>
+        <param name="src_gc">The GC to copy.</param>
+        <summary>Copy the set of values from one graphics context onto another graphics context.</summary>
+        <remarks>
+          <para>
+	    Copies the settings of the <paramref name="src_gc" /> graphics
+	    context into this GC.
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Exposures">
+      <MemberSignature Language="C#" Value="public bool Exposures { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Exposures" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Sets whether or not this GC should geenrate exposure events.</summary>
+        <value>To be added: an object of type 'bool'</value>
+        <remarks>
+          <para>Sets whether copying non-visible portions of a
+          drawable using this graphics context generate exposure
+          events for the corresponding regions of the destination
+          drawable. (See <see cref="T:Gdk.Drawable" />).</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Fill">
+      <MemberSignature Language="C#" Value="public Gdk.Fill Fill { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Fill Fill" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Fill</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Set the fill mode for a graphics context.</summary>
+        <value>the new fill mode.</value>
+        <remarks>
+          <para>Set the fill mode for a graphics context.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Font">
+      <MemberSignature Language="C#" Value="public Gdk.Font Font { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Font Font" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.Font</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:Gdk.Font" /></value>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Foreground">
+      <MemberSignature Language="C#" Value="public Gdk.Color Foreground { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Color Foreground" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Sets the foreground color for a graphics context.</summary>
+        <value>the new foreground color.</value>
+        <remarks>
+          <para>
+	    Sets the foreground color for a graphics context to the
+	    given color.  The color must have been allocated for this
+	    to work.
+	  </para>
+          <example>
+            <code lang="C#">
+	      Gdk.GC my_gc = new Gdk.GC (gdk_window);
+	      
+	      //
+	      // Create the color
+	      //
+	      Gdk.Color red_color = new Gdk.Color (0xff, 0, 0);
+
+	      //
+	      // Allocate it
+	      //
+	      Gdk.Colormap colormap = Gdk.Colormap.System;
+	      colormap.AllocColor (ref red_color, true, true);
+
+	      my_gc.Foreground = red_color;
+
+	      //
+	      // Draw diagonal, using the GC with the red color
+	      //
+	      gdk_window.DrawLine (my_gc, 0, 0, 100, 100);
+	    </code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Function">
+      <MemberSignature Language="C#" Value="public Gdk.Function Function { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Function Function" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Function</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Determines how the current pixel values and the pixel values being drawn are combined to produce the final pixel values.</summary>
+        <value>a function.</value>
+        <remarks>
+          <para>Determines how the current pixel values and the pixel
+          values being drawn are combined to produce the final pixel
+          values.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetValues">
+      <MemberSignature Language="C#" Value="public void GetValues (Gdk.GCValues values);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetValues(valuetype Gdk.GCValues values) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="values" Type="Gdk.GCValues" />
+      </Parameters>
+      <Docs>
+        <param name="values">the <see cref="T:Gdk.GCValues" /> structure in which to store the results.</param>
+        <summary>Retrieves the current values from a graphics context.</summary>
+        <remarks>
+          <para>Retrieves the current values from a graphics context.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gdk.GC" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Offset">
+      <MemberSignature Language="C#" Value="public void Offset (int x_offset, int y_offset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Offset(int32 x_offset, int32 y_offset) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x_offset" Type="System.Int32" />
+        <Parameter Name="y_offset" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="x_offset">amount by which to offset the GC in the X direction</param>
+        <param name="y_offset">amount by which to offset the GC in the Y direction</param>
+        <summary>Set the x and y offsets on the Gdk.GC</summary>
+        <remarks>
+          <para>Offset attributes such as the clip and tile-stipple
+          origins of the GC so that drawing at x - x_offset, y -
+          y_offset with the offset GC has the same effect as drawing
+          at x, y with the original GC.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Ref">
+      <MemberSignature Language="C#" Value="public Gdk.GC Ref ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gdk.GC Ref() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.GC</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.GC" /></returns>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="RgbBgColor">
+      <MemberSignature Language="C#" Value="public Gdk.Color RgbBgColor { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Color RgbBgColor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Set the background color of a GC using an unallocated color.</summary>
+        <value>a Gdk.Color</value>
+        <remarks>
+          <para>Set the background color of a GC using an unallocated
+          color. The pixel value for the color will be determined
+          using GdkRGB. If the colormap for the GC has not previously
+          been initialized for GdkRGB, then for pseudo-color colormaps
+          (colormaps with a small modifiable number of colors), a
+          colorcube will be allocated in the colormap.</para>
+          <para>Calling this function for a GC without a colormap is
+          an error.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RgbFgColor">
+      <MemberSignature Language="C#" Value="public Gdk.Color RgbFgColor { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.Color RgbFgColor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Color</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Set the foreground color of a GC using an unallocated color.</summary>
+        <value>an object of type 'Gdk.Color'</value>
+        <remarks>
+          <para>Set the foreground color of a GC using an unallocated
+          color. The pixel value for the color will be determined
+          using GdkRGB. If the colormap for the GC has not previously
+          been initialized for GdkRGB, then for pseudo-color colormaps
+          (colormaps with a small modifiable number of colors), a
+          colorcube will be allocated in the colormap.</para>
+          <para>Calling this function for a GC without a colormap is
+          an error.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Screen">
+      <MemberSignature Language="C#" Value="public Gdk.Screen Screen { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Screen Screen" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Screen</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:Gdk.Screen" /></value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetClipOrigin">
+      <MemberSignature Language="C#" Value="public void SetClipOrigin (int x, int y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetClipOrigin(int32 x, int32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Int32" />
+        <Parameter Name="y" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="x">the x-coordinate of the origin.</param>
+        <param name="y">the y-coordinate of the origin.</param>
+        <summary>Sets the origin of the clip mask.</summary>
+        <remarks>
+          <para>Sets the origin of the clip mask. The coordinates are
+          interpreted relative to the upper-left corner of the
+          destination drawable of the current operation.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetDashes">
+      <MemberSignature Language="C#" Value="public void SetDashes (int dash_offset, sbyte[] dash_list, int n);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDashes(int32 dash_offset, int8[] dash_list, int32 n) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dash_offset" Type="System.Int32" />
+        <Parameter Name="dash_list" Type="System.SByte[]" />
+        <Parameter Name="n" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="dash_offset">the dash offset.</param>
+        <param name="dash_list">an array of dash lengths.</param>
+        <param name="n">the number of elemenst in dash_list.</param>
+        <summary>Sets the way dashed-lines are drawn.</summary>
+        <remarks>
+          <para>Sets the way dashed-lines are drawn. Lines will be
+          drawn with alternating on and off segments of the lengths
+          specified in dash_list. The manner in which the on and off
+          segments are drawn is determined by the line_style value of
+          the GC. (This can be changed with
+          Gdk.GC.SetLineAttributes())</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetLineAttributes">
+      <MemberSignature Language="C#" Value="public void SetLineAttributes (int line_width, Gdk.LineStyle line_style, Gdk.CapStyle cap_style, Gdk.JoinStyle join_style);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetLineAttributes(int32 line_width, valuetype Gdk.LineStyle line_style, valuetype Gdk.CapStyle cap_style, valuetype Gdk.JoinStyle join_style) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="line_width" Type="System.Int32" />
+        <Parameter Name="line_style" Type="Gdk.LineStyle" />
+        <Parameter Name="cap_style" Type="Gdk.CapStyle" />
+        <Parameter Name="join_style" Type="Gdk.JoinStyle" />
+      </Parameters>
+      <Docs>
+        <param name="line_width">the width of lines.</param>
+        <param name="line_style">the dash-style for lines.</param>
+        <param name="cap_style">the manner in which the ends of lines are drawn.</param>
+        <param name="join_style">the way in which lines are joined together.</param>
+        <summary>Sets various attributes of how lines are drawn.</summary>
+        <remarks>
+          <para>Sets various attributes of how lines are drawn. See
+          the corresponding members of Gdk.GC.Values for full
+          explanations of the arguments.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetTsOrigin">
+      <MemberSignature Language="C#" Value="public void SetTsOrigin (int x, int y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTsOrigin(int32 x, int32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Int32" />
+        <Parameter Name="y" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="x">the x-coordinate of the origin.</param>
+        <param name="y">the y-coordinate of the origin.</param>
+        <summary>Set the origin when using tiles or stipples with the GC.</summary>
+        <remarks>
+          <para>
+	    Set the origin when using tiles or stipples with the
+	    GC. The tile or stipple will be aligned such that the upper
+	    left corner of the tile or stipple will coincide with this
+	    point.
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetValues">
+      <MemberSignature Language="C#" Value="public void SetValues (Gdk.GCValues values, Gdk.GCValuesMask values_mask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetValues(valuetype Gdk.GCValues values, valuetype Gdk.GCValuesMask values_mask) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="values" Type="Gdk.GCValues" />
+        <Parameter Name="values_mask" Type="Gdk.GCValuesMask" />
+      </Parameters>
+      <Docs>
+        <param name="values">struct containing the new values</param>
+        <param name="values_mask">mask indicating which struct fields are to be used</param>
+        <summary>Sets attributes of a graphics context in bulk.</summary>
+        <remarks>
+          <para>Sets attributes of a graphics context in bulk. For
+          each flag set in values_mask, the corresponding field will
+          be read from values and set as the new value for gc. If
+          you're only setting a few values on gc, calling individual
+          "setter" functions is likely more convenient.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Stipple">
+      <MemberSignature Language="C#" Value="public Gdk.Pixmap Stipple { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Pixmap Stipple" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Set the stipple bitmap for a graphics context.</summary>
+        <value>the new stipple bitmap.</value>
+        <remarks>
+          <para>
+            Set the stipple bitmap for a graphics context. The
+            stipple will only be used if the fill mode is <see cref="E:Gdk.Fill.Stippled" />
+          or <see cref="Gdk.Fill.OpaqueStippled" />.
+        </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Subwindow">
+      <MemberSignature Language="C#" Value="public Gdk.SubwindowMode Subwindow { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.SubwindowMode Subwindow" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.SubwindowMode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Sets how drawing with this GC on a window will affect child windows of that window.</summary>
+        <value>the subwindow mode.</value>
+        <remarks>
+          <para>Sets how drawing with this GC on a window will affect
+          child windows of that window.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Tile">
+      <MemberSignature Language="C#" Value="public Gdk.Pixmap Tile { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Pixmap Tile" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Set a tile pixmap for a graphics context.</summary>
+        <value>an object of type 'Gdk.Pixmap'</value>
+        <remarks>
+          <para>Set a tile pixmap for a graphics context. This will
+          only be used if the fill mode is GDK_TILED.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Unref">
+      <MemberSignature Language="C#" Value="public void Unref ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Unref() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

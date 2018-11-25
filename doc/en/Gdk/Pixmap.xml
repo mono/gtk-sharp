@@ -1,0 +1,515 @@
+<Type Name="Pixmap" FullName="Gdk.Pixmap">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class Pixmap : Gdk.Drawable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Pixmap extends Gdk.Drawable" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gdk.Drawable</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>Offscreen drawable.</summary>
+    <remarks>
+      <para>Pixmaps are offscreen drawables that reside on the server on the X11 platform. They can be drawn upon with the standard drawing primitives, then copied to another drawable (such as a <see cref="T:Gdk.Window" />) with <see cref="M:Gdk.Pixmap.Draw()" />. 
+</para>
+      <para>
+The depth of a pixmap is the number of bits per pixels. Bitmaps are simply pixmaps with a depth of 1. (That is, they are monochrome bitmaps - each pixel can be either on or off).
+</para>
+      <para>
+For client-side images, see the <see cref="T:Gdk.Pixbuf" /> class.
+</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Pixmap (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Pixmap (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Pixmap (Gdk.Drawable drawable, int width, int height);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Gdk.Drawable drawable, int32 width, int32 height) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="drawable" Type="Gdk.Drawable" />
+        <Parameter Name="width" Type="System.Int32" />
+        <Parameter Name="height" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="drawable">A <see cref="T:Gdk.Drawable" />, used to determine default values for the new pixmap.</param>
+        <param name="width">The width of the new pixmap in pixels.</param>
+        <param name="height">The height of the new pixmap in pixels.</param>
+        <summary>Create a new pixmap using a reference drawable for depth.</summary>
+        <remarks>Creates a new pixmap with a given size and depth.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Pixmap (Gdk.Drawable drawable, int width, int height, int depth);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Gdk.Drawable drawable, int32 width, int32 height, int32 depth) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="drawable" Type="Gdk.Drawable" />
+        <Parameter Name="width" Type="System.Int32" />
+        <Parameter Name="height" Type="System.Int32" />
+        <Parameter Name="depth" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="drawable">A <see cref="T:Gdk.Drawable" />, used to determine default values for the new pixmap.
+ Can be <see langword="null" /> if <paramref name="depth" /> is specified</param>
+        <param name="width">The width of the new pixmap in pixels.</param>
+        <param name="height">	The height of the new pixmap in pixels.</param>
+        <param name="depth">The depth (number of bits per pixel) of the new pixmap. If -1, and drawable is not <see langword="null" />, the depth of the new pixmap will be equal to that of drawable.</param>
+        <summary>Creates a new pixmap with the given size and depth.</summary>
+        <remarks>Create a new pixmap with a given size and depth. </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColormapCreateFromXpm">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixmap ColormapCreateFromXpm (Gdk.Drawable drawable, Gdk.Colormap colormap, string filename);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixmap ColormapCreateFromXpm(class Gdk.Drawable drawable, class Gdk.Colormap colormap, string filename) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="drawable" Type="Gdk.Drawable" />
+        <Parameter Name="colormap" Type="Gdk.Colormap" />
+        <Parameter Name="filename" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="drawable">a <see cref="T:Gdk.Drawable" /></param>
+        <param name="colormap">a <see cref="T:Gdk.Colormap" /></param>
+        <param name="filename">a <see cref="T:System.String" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Pixmap" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColormapCreateFromXpm">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixmap ColormapCreateFromXpm (Gdk.Drawable drawable, Gdk.Colormap colormap, out Gdk.Pixmap mask, Gdk.Color transparent_color, string filename);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixmap ColormapCreateFromXpm(class Gdk.Drawable drawable, class Gdk.Colormap colormap, class Gdk.Pixmap mask, valuetype Gdk.Color transparent_color, string filename) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="drawable" Type="Gdk.Drawable" />
+        <Parameter Name="colormap" Type="Gdk.Colormap" />
+        <Parameter Name="mask" Type="Gdk.Pixmap&amp;" RefType="out" />
+        <Parameter Name="transparent_color" Type="Gdk.Color" />
+        <Parameter Name="filename" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="drawable">a <see cref="T:Gdk.Drawable" /></param>
+        <param name="colormap">a <see cref="T:Gdk.Colormap" /></param>
+        <param name="mask">a <see cref="T:Gdk.Pixmap" /></param>
+        <param name="transparent_color">a <see cref="T:Gdk.Color" /></param>
+        <param name="filename">a <see cref="T:System.String" /></param>
+        <summary>Create a pixmap from an XPM file using a specific colormap.</summary>
+        <returns>a <see cref="T:Gdk.Pixmap" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColormapCreateFromXpmD">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixmap ColormapCreateFromXpmD (Gdk.Drawable drawable, Gdk.Colormap colormap, string data);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixmap ColormapCreateFromXpmD(class Gdk.Drawable drawable, class Gdk.Colormap colormap, string data) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="drawable" Type="Gdk.Drawable" />
+        <Parameter Name="colormap" Type="Gdk.Colormap" />
+        <Parameter Name="data" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="drawable">a <see cref="T:Gdk.Drawable" /></param>
+        <param name="colormap">a <see cref="T:Gdk.Colormap" /></param>
+        <param name="data">a <see cref="T:System.String" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Pixmap" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColormapCreateFromXpmD">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixmap ColormapCreateFromXpmD (Gdk.Drawable drawable, Gdk.Colormap colormap, out Gdk.Pixmap mask, Gdk.Color transparent_color, string[] data);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixmap ColormapCreateFromXpmD(class Gdk.Drawable drawable, class Gdk.Colormap colormap, class Gdk.Pixmap mask, valuetype Gdk.Color transparent_color, string[] data) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="drawable" Type="Gdk.Drawable" />
+        <Parameter Name="colormap" Type="Gdk.Colormap" />
+        <Parameter Name="mask" Type="Gdk.Pixmap&amp;" RefType="out" />
+        <Parameter Name="transparent_color" Type="Gdk.Color" />
+        <Parameter Name="data" Type="System.String[]" />
+      </Parameters>
+      <Docs>
+        <param name="drawable">a <see cref="T:Gdk.Drawable" /></param>
+        <param name="colormap">a <see cref="T:Gdk.Colormap" /></param>
+        <param name="mask">a <see cref="T:Gdk.Pixmap" /></param>
+        <param name="transparent_color">a <see cref="T:Gdk.Color" /></param>
+        <param name="data">an array of <see cref="T:System.String" />, defining an image in XPM format</param>
+        <summary>Create a pixmap from XPM data using a colormap.</summary>
+        <returns>a <see cref="T:Gdk.Pixmap" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateBitmapFromData">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixmap CreateBitmapFromData (Gdk.Drawable drawable, string data, int width, int height);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixmap CreateBitmapFromData(class Gdk.Drawable drawable, string data, int32 width, int32 height) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="drawable" Type="Gdk.Drawable" />
+        <Parameter Name="data" Type="System.String" />
+        <Parameter Name="width" Type="System.Int32" />
+        <Parameter Name="height" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="drawable">A <see cref="T:Gdk.Drawable" />, used to determine default values for the new pixmap.</param>
+        <param name="data">A string representing the XBM data.</param>
+        <param name="width">The width of the new pixmap in pixels.</param>
+        <param name="height">The height of the new pixmap in pixels.</param>
+        <summary>Creates a new bitmap from data in XBM format.</summary>
+        <returns>The bitmap.</returns>
+        <remarks>None.</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="CreateFromData">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixmap CreateFromData (Gdk.Drawable drawable, string data, int width, int height, int depth, Gdk.Color fg, Gdk.Color bg);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixmap CreateFromData(class Gdk.Drawable drawable, string data, int32 width, int32 height, int32 depth, valuetype Gdk.Color fg, valuetype Gdk.Color bg) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="drawable" Type="Gdk.Drawable" />
+        <Parameter Name="data" Type="System.String" />
+        <Parameter Name="width" Type="System.Int32" />
+        <Parameter Name="height" Type="System.Int32" />
+        <Parameter Name="depth" Type="System.Int32" />
+        <Parameter Name="fg" Type="Gdk.Color" />
+        <Parameter Name="bg" Type="Gdk.Color" />
+      </Parameters>
+      <Docs>
+        <param name="drawable">a <see cref="T:Gdk.Drawable" /></param>
+        <param name="data">a <see cref="T:System.String" /></param>
+        <param name="width">a <see cref="T:System.Int32" /></param>
+        <param name="height">a <see cref="T:System.Int32" /></param>
+        <param name="depth">a <see cref="T:System.Int32" /></param>
+        <param name="fg">a <see cref="T:Gdk.Color" /></param>
+        <param name="bg">a <see cref="T:Gdk.Color" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Pixmap" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateFromXpm">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixmap CreateFromXpm (Gdk.Drawable drawable, string filename);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixmap CreateFromXpm(class Gdk.Drawable drawable, string filename) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="drawable" Type="Gdk.Drawable" />
+        <Parameter Name="filename" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="drawable">a <see cref="T:Gdk.Drawable" /></param>
+        <param name="filename">a <see cref="T:System.String" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Pixmap" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateFromXpm">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixmap CreateFromXpm (Gdk.Drawable drawable, out Gdk.Pixmap mask, Gdk.Color transparent_color, string filename);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixmap CreateFromXpm(class Gdk.Drawable drawable, class Gdk.Pixmap mask, valuetype Gdk.Color transparent_color, string filename) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="drawable" Type="Gdk.Drawable" />
+        <Parameter Name="mask" Type="Gdk.Pixmap&amp;" RefType="out" />
+        <Parameter Name="transparent_color" Type="Gdk.Color" />
+        <Parameter Name="filename" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="drawable">a <see cref="T:Gdk.Drawable" /></param>
+        <param name="mask">a <see cref="T:Gdk.Pixmap" /></param>
+        <param name="transparent_color">a <see cref="T:Gdk.Color" /></param>
+        <param name="filename">a <see cref="T:System.String" /></param>
+        <summary>Create a pixmap from an XPM file.</summary>
+        <returns>a <see cref="T:Gdk.Pixmap" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateFromXpmD">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixmap CreateFromXpmD (Gdk.Drawable drawable, string data);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixmap CreateFromXpmD(class Gdk.Drawable drawable, string data) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="drawable" Type="Gdk.Drawable" />
+        <Parameter Name="data" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="drawable">a <see cref="T:Gdk.Drawable" /></param>
+        <param name="data">a <see cref="T:System.String" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Pixmap" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateFromXpmD">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixmap CreateFromXpmD (Gdk.Drawable drawable, out Gdk.Pixmap mask, Gdk.Color transparent_color, string[] data);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixmap CreateFromXpmD(class Gdk.Drawable drawable, class Gdk.Pixmap mask, valuetype Gdk.Color transparent_color, string[] data) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="drawable" Type="Gdk.Drawable" />
+        <Parameter Name="mask" Type="Gdk.Pixmap&amp;" RefType="out" />
+        <Parameter Name="transparent_color" Type="Gdk.Color" />
+        <Parameter Name="data" Type="System.String[]" />
+      </Parameters>
+      <Docs>
+        <param name="drawable">a <see cref="T:Gdk.Drawable" /></param>
+        <param name="mask">a <see cref="T:Gdk.Pixmap" /></param>
+        <param name="transparent_color">a <see cref="T:Gdk.Color" /></param>
+        <param name="data">an array of <see cref="T:System.String" />, defining an XPM image</param>
+        <summary>Create a pixmap from XPM data.</summary>
+        <returns>a <see cref="T:Gdk.Pixmap" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ForeignNew">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixmap ForeignNew (uint anid);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixmap ForeignNew(unsigned int32 anid) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="anid" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="anid"> a native pixmap handle.</param>
+        <summary>Wraps a native window for the default display in a <see cref="T:Gdk.Pixmap" />. This may fail if the pixmap has been destroyed.</summary>
+        <returns>The newly-created <see cref="T:Gdk.Pixmap" /> wrapper for the native pixmap or <see langword="null" /> if the pixmap has been destroyed.</returns>
+        <remarks>Wraps a native window for the default display in a GdkPixmap. This may fail if the pixmap has been destroyed.
+<para>
+For example in the X backend, a native pixmap handle is an Xlib XID.
+</para></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ForeignNewForDisplay">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixmap ForeignNewForDisplay (Gdk.Display display, uint anid);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixmap ForeignNewForDisplay(class Gdk.Display display, unsigned int32 anid) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="display" Type="Gdk.Display" />
+        <Parameter Name="anid" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="display">The <see cref="T:Gdk.Display" /> where the pixmap is located.</param>
+        <param name="anid">	 a native pixmap handle.</param>
+        <summary>Wraps a native pixmap in a <see cref="T:Gdk.Pixmap" />. This may fail if the pixmap has been destroyed.</summary>
+        <returns>The newly-created <see cref="T:Gdk.Pixmap" /> wrapper for the native pixmap or <see langword="null" /> if the pixmap has been destroyed.</returns>
+        <remarks>Wraps a native pixmap in a GdkPixmap. This may fail if the pixmap has been destroyed.
+<para>
+For example in the X backend, a native pixmap handle is an Xlib XID.
+</para></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ForeignNewForScreen">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixmap ForeignNewForScreen (Gdk.Screen screen, uint anid, int width, int height, int depth);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixmap ForeignNewForScreen(class Gdk.Screen screen, unsigned int32 anid, int32 width, int32 height, int32 depth) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="screen" Type="Gdk.Screen" />
+        <Parameter Name="anid" Type="System.UInt32" />
+        <Parameter Name="width" Type="System.Int32" />
+        <Parameter Name="height" Type="System.Int32" />
+        <Parameter Name="depth" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="screen">the desired screen.</param>
+        <param name="anid">Native pixmap handle, for example, an xlib XID.</param>
+        <param name="width">Width of pixmap <paramref name="anid" />.</param>
+        <param name="height">Height of pixmap <paramref name="anid" />.</param>
+        <param name="depth">Depth of pixmap <paramref name="anid" />.</param>
+        <summary>Wraps a native Pixmap for a screen.</summary>
+        <returns>a <see cref="T:Gdk.Pixmap" /> wrapping the native ID, or <see langword="null" /> if the native pixmap is destroyed.</returns>
+        <remarks>Use this method as an alternative to <see cref="M:Gdk.Pixmap.ForeignNewForDisplay" /> when the dimensions and screen are known, which saves a roundtrip to the server on X.</remarks>
+        <since version="Gtk# 2.10" />
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gdk.Pixmap" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Lookup">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixmap Lookup (uint anid);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixmap Lookup(unsigned int32 anid) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="anid" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="anid">	 a native pixmap handle.</param>
+        <summary>Looks up the <see cref="T:Gdk.Pixmap" /> that wraps the given native pixmap handle.</summary>
+        <returns> the <see cref="T:Gdk.Window" /> wrapper for the native window, or <see langword="null" /> if there is none.</returns>
+        <remarks>Looks up the GdkPixmap that wraps the given native pixmap handle.
+<para>
+For example in the X backend, a native pixmap handle is an Xlib XID.
+</para></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LookupForDisplay">
+      <MemberSignature Language="C#" Value="public static Gdk.Pixmap LookupForDisplay (Gdk.Display display, uint anid);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Pixmap LookupForDisplay(class Gdk.Display display, unsigned int32 anid) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Pixmap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="display" Type="Gdk.Display" />
+        <Parameter Name="anid" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="display">a <see cref="T:Gdk.Display" /></param>
+        <param name="anid">a <see cref="T:System.UInt32" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Gdk.Pixmap" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

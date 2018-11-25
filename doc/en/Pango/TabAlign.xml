@@ -1,0 +1,49 @@
+<Type Name="TabAlign" FullName="Pango.TabAlign">
+  <TypeSignature Language="C#" Maintainer="duncan" Value="public enum TabAlign" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed TabAlign extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>pango-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Pango.TabAlignGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>
+      This enumeration specifies where a tab stop appears relative to
+    the text
+    </summary>
+    <remarks>
+      <para>
+        Right now, there is only one value in this enumeration. In
+        the future, Right, Center and Numeric may be supported.
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Left">
+      <MemberSignature Language="C#" Value="Left" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Pango.TabAlign Left = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.TabAlign</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The tab stop appears to the left of the text</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

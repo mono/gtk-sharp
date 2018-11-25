@@ -1,0 +1,188 @@
+<Type Name="Fixed" FullName="Gtk.Fixed">
+  <TypeSignature Language="C#" Maintainer="John Luke" Value="public class Fixed : Gtk.Container" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Fixed extends Gtk.Container" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Container</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>A container which allows you to position widgets at fixed coordinates</summary>
+    <remarks>
+      <para>The <see cref="T:Gtk.Fixed" /> widget is a container which can place child widgets at fixed positions and with fixed sizes, given in pixels. <see cref="T:Gtk.Fixed" /> performs no automatic layout management.</para>
+      <para>For most applications, you should not use this container! It keeps you from having to learn about the other Gtk# containers, but it results in broken applications. With <see cref="T:Gtk.Fixed" />, the following things will result in truncated text, overlapping widgets, and other display bugs:
+				<list type="bullet"><item><term>Themes, which may change widget sizes.</term></item><item><term>Fonts other than the one you used to write the app will of course change the size of widgets containing text; keep in mind that users may use a larger font because of difficulty reading the default, or they may be using Windows or the framebuffer port of GTK+, where different fonts are available.</term></item><item><term>Translation of text into other languages changes its size. Also, display of non-English text will use a different font in many cases.</term></item></list></para>
+      <para>In addition, the fixed widget can not properly be mirrored in right-to-left languages such as Hebrew and Arabic. i.e. normally Gtk# will flip the interface to put labels to the right of the thing they label, but it can not do that with <see cref="T:Gtk.Fixed" />. So your application will not be usable in right-to-left languages.</para>
+      <para>Finally, fixed positioning makes it kind of annoying to add/remove GUI elements, since you have to reposition all the other elements. This is a long-term maintenance problem for your application.</para>
+      <para>If you know none of these things are an issue for your application, and prefer the simplicity of <see cref="T:Gtk.Fixed" />, by all means use the widget. But you should be aware of the tradeoffs.</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Fixed ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Creates a new <see cref="T:Gtk.Fixed" /> object.</summary>
+        <remarks>Creates a new <see cref="T:Gtk.Fixed" /> object.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Fixed (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Fixed (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.Fixed" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HasWindow">
+      <MemberSignature Language="C#" Value="public bool HasWindow { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool HasWindow" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Determines if <see cref="T:Gtk.Fixed" /> has a seperate <see cref="T:Gdk.Window" /></summary>
+        <value>an object of type <see cref="T:System.Boolean" /></value>
+        <remarks>
+          <para>Gets whether the <see cref="T:Gtk.Fixed" /> has its own <see cref="T:Gdk.Window" />.</para>
+          <para>Sets whether a <see cref="T:Gtk.Fixed" /> widget is created with a separate <see cref="T:Gdk.Window" /> or not. (By default, it will be created without a seperate <see cref="T:Gdk.Window" />). This function must be called while the <see cref="T:Gtk.Fixed" /> is not realized, for instance, immediately after the window is created.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public override Gtk.Container.ContainerChild this[Gtk.Widget child] { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Container/ContainerChild Item(class Gtk.Widget)" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Container+ContainerChild</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="child" Type="Gtk.Widget" />
+      </Parameters>
+      <Docs>
+        <param name="child">To be added.</param>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Move">
+      <MemberSignature Language="C#" Value="public void Move (Gtk.Widget widget, int x, int y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Move(class Gtk.Widget widget, int32 x, int32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="widget" Type="Gtk.Widget" />
+        <Parameter Name="x" Type="System.Int32" />
+        <Parameter Name="y" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="widget">an object of type <see cref="T:Gtk.Widget" /></param>
+        <param name="x">an object of type <see cref="T:System.Int32" /></param>
+        <param name="y">an object of type <see cref="T:System.Int32" /></param>
+        <summary>Moves a child of a <see cref="T:Gtk.Fixed" /> container to the given position.</summary>
+        <remarks>Moves a child of a <see cref="T:Gtk.Fixed" /> container to the given position.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Put">
+      <MemberSignature Language="C#" Value="public void Put (Gtk.Widget widget, int x, int y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Put(class Gtk.Widget widget, int32 x, int32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="widget" Type="Gtk.Widget" />
+        <Parameter Name="x" Type="System.Int32" />
+        <Parameter Name="y" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="widget">an object of type <see cref="T:Gtk.Widget" /></param>
+        <param name="x">an object of type <see cref="T:System.Int32" /></param>
+        <param name="y">an object of type <see cref="T:System.Int32" /></param>
+        <summary>Adds a widget to a <see cref="T:Gtk.Fixed" /> container at the given position.</summary>
+        <remarks>Adds a widget to a <see cref="T:Gtk.Fixed" /> container at the given position.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

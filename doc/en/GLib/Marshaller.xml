@@ -1,0 +1,587 @@
+<Type Name="Marshaller" FullName="GLib.Marshaller">
+  <TypeSignature Language="C#" Value="public class Marshaller" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Marshaller extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>glib-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Marshalling utilities</summary>
+    <remarks>Utility class for internal wrapper use</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ArgvToArrayPtr">
+      <MemberSignature Language="C#" Value="public static IntPtr ArgvToArrayPtr (string[] args);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig native int ArgvToArrayPtr(string[] args) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use GLib.Argv instead to avoid leaks.")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="args" Type="System.String[]" />
+      </Parameters>
+      <Docs>
+        <param name="args">a <see cref="T:System.String" /></param>
+        <summary>Obsolete.</summary>
+        <returns>a <see cref="T:System.IntPtr" /></returns>
+        <remarks>Replaced by <see cref="T:GLib.Argv" /></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ArrayPtrToArgv">
+      <MemberSignature Language="C#" Value="public static string[] ArrayPtrToArgv (IntPtr array, int argc);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string[] ArrayPtrToArgv(native int array, int32 argc) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use GLib.Argv instead to avoid leaks.")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="array" Type="System.IntPtr" />
+        <Parameter Name="argc" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="array">a <see cref="T:System.IntPtr" /></param>
+        <param name="argc">a <see cref="T:System.Int32" /></param>
+        <summary>Obsolete.</summary>
+        <returns>a <see cref="T:System.String[]" /></returns>
+        <remarks>Replaced by <see cref="T:GLib.Argv" /></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CharToGUnichar">
+      <MemberSignature Language="C#" Value="public static uint CharToGUnichar (char c);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int32 CharToGUnichar(char c) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="c" Type="System.Char" />
+      </Parameters>
+      <Docs>
+        <param name="c">a <see cref="T:System.Char" /></param>
+        <summary>Marshals a UTF16 char to a UCS4 character represented as an uint.</summary>
+        <returns>a <see cref="T:System.UInt32" /></returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DateTimeTotime_t">
+      <MemberSignature Language="C#" Value="public static IntPtr DateTimeTotime_t (DateTime time);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig native int DateTimeTotime_t(valuetype System.DateTime time) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time" Type="System.DateTime" />
+      </Parameters>
+      <Docs>
+        <param name="time">a <see cref="T:System.DateTime" /></param>
+        <summary>Marshals DateTime structures to native time_t values.</summary>
+        <returns>a <see cref="T:System.IntPtr" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="FilenamePtrToString">
+      <MemberSignature Language="C#" Value="public static string FilenamePtrToString (IntPtr ptr);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string FilenamePtrToString(native int ptr) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ptr" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="ptr">A native filename-encoded string pointer.</param>
+        <summary>Marshals a native filename-encoded string to a managed string.</summary>
+        <returns>A managed string.</returns>
+        <remarks>The native pointer is not freed after marshaling. Use with const strings.</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="FilenamePtrToStringGFree">
+      <MemberSignature Language="C#" Value="public static string FilenamePtrToStringGFree (IntPtr ptr);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string FilenamePtrToStringGFree(native int ptr) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ptr" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="ptr">A native filename-encoded string pointer.</param>
+        <summary>Marshals a native filename-encoded string to a managed string.</summary>
+        <returns>A managed string.</returns>
+        <remarks>The native pointer is freed after marshaling.</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Free">
+      <MemberSignature Language="C#" Value="public static void Free (IntPtr ptr);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Free(native int ptr) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ptr" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="ptr">a <see cref="T:System.IntPtr" /></param>
+        <summary>Free a native pointer allocated by GLib.</summary>
+        <remarks />
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Free">
+      <MemberSignature Language="C#" Value="public static void Free (IntPtr[] ptrs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Free(native int[] ptrs) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ptrs" Type="System.IntPtr[]" />
+      </Parameters>
+      <Docs>
+        <param name="ptrs">An array of native memory addresses.</param>
+        <summary>Frees an array of native memory locations.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="GUnicharToChar">
+      <MemberSignature Language="C#" Value="public static char GUnicharToChar (uint ucs4_char);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig char GUnicharToChar(unsigned int32 ucs4_char) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Char</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ucs4_char" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="ucs4_char">a <see cref="T:System.UInt32" /></param>
+        <summary>Marshals a UCS4 character represented as an uint to a UTF16 char.</summary>
+        <returns>a <see cref="T:System.Char" /></returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ListPtrToArray">
+      <MemberSignature Language="C#" Value="public static Array ListPtrToArray (IntPtr list_ptr, Type list_type, bool owned, bool elements_owned, Type elem_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Array ListPtrToArray(native int list_ptr, class System.Type list_type, bool owned, bool elements_owned, class System.Type elem_type) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Array</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="list_ptr" Type="System.IntPtr" />
+        <Parameter Name="list_type" Type="System.Type" />
+        <Parameter Name="owned" Type="System.Boolean" />
+        <Parameter Name="elements_owned" Type="System.Boolean" />
+        <Parameter Name="elem_type" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="list_ptr">To be added.</param>
+        <param name="list_type">To be added.</param>
+        <param name="owned">To be added.</param>
+        <param name="elements_owned">To be added.</param>
+        <param name="elem_type">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ListToArray">
+      <MemberSignature Language="C#" Value="public static Array ListToArray (GLib.ListBase list, Type type);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Array ListToArray(class GLib.ListBase list, class System.Type type) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Array</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="list" Type="GLib.ListBase" />
+        <Parameter Name="type" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="list">The list to be marshaled.</param>
+        <param name="type">The type of the list elements.</param>
+        <summary>Marshals a native list to a typed array.</summary>
+        <returns>An array of <paramref name="type" />.</returns>
+        <remarks />
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Malloc">
+      <MemberSignature Language="C#" Value="public static IntPtr Malloc (ulong size);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig native int Malloc(unsigned int64 size) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="size" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="size">Size in bytes to be allocated.</param>
+        <summary>Allocates a block of heap memory using the glib allocator.</summary>
+        <returns>A pointer to the block.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="NullTermPtrToStringArray">
+      <MemberSignature Language="C#" Value="public static string[] NullTermPtrToStringArray (IntPtr null_term_array, bool owned);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string[] NullTermPtrToStringArray(native int null_term_array, bool owned) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="null_term_array" Type="System.IntPtr" />
+        <Parameter Name="owned" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="null_term_array">Pointer to a null-terminated string array.</param>
+        <param name="owned">Indicates if the memory is owned and should be released.</param>
+        <summary>Marshals a native null-terminated string array to a managed string array.</summary>
+        <returns>an array of managed strings.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="PtrArrayToArray">
+      <MemberSignature Language="C#" Value="public static Array PtrArrayToArray (IntPtr list_ptr, bool owned, bool elements_owned, Type elem_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Array PtrArrayToArray(native int list_ptr, bool owned, bool elements_owned, class System.Type elem_type) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Array</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="list_ptr" Type="System.IntPtr" />
+        <Parameter Name="owned" Type="System.Boolean" />
+        <Parameter Name="elements_owned" Type="System.Boolean" />
+        <Parameter Name="elem_type" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="list_ptr">To be added.</param>
+        <param name="owned">To be added.</param>
+        <param name="elements_owned">To be added.</param>
+        <param name="elem_type">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PtrToStringArrayGFree">
+      <MemberSignature Language="C#" Value="public static string[] PtrToStringArrayGFree (IntPtr string_array);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string[] PtrToStringArrayGFree(native int string_array) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="string_array" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="string_array">Pointer to a null-terminated string array.</param>
+        <summary>Marshal a null-terminated string array to a managed array.</summary>
+        <returns>A string array.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="PtrToStringGFree">
+      <MemberSignature Language="C#" Value="public static string PtrToStringGFree (IntPtr ptr);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string PtrToStringGFree(native int ptr) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ptr" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="ptr">a <see cref="T:System.IntPtr" /></param>
+        <summary>Marshals a utf8 string from native memory and frees the native string.</summary>
+        <returns>a <see cref="T:System.String" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="PtrToStringGFree">
+      <MemberSignature Language="C#" Value="public static string[] PtrToStringGFree (IntPtr[] ptrs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string[] PtrToStringGFree(native int[] ptrs) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ptrs" Type="System.IntPtr[]" />
+      </Parameters>
+      <Docs>
+        <param name="ptrs">a <see cref="T:System.IntPtr[]" /></param>
+        <summary>Marshals an array of utf8 string from native memory and frees the native strings.</summary>
+        <returns>a <see cref="T:System.String[]" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="StrFreeV">
+      <MemberSignature Language="C#" Value="public static void StrFreeV (IntPtr null_term_array);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void StrFreeV(native int null_term_array) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="null_term_array" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="null_term_array">Pointer to a native null-terminated string array.</param>
+        <summary>Frees a string array, including its member strings.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="StringArrayToNullTermPointer">
+      <MemberSignature Language="C#" Value="public static IntPtr[] StringArrayToNullTermPointer (string[] strs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig native int[] StringArrayToNullTermPointer(string[] strs) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="strs" Type="System.String[]" />
+      </Parameters>
+      <Docs>
+        <param name="strs">an array of strings.</param>
+        <summary>Marshals a managed string array to a native null-terminated array.</summary>
+        <returns>An array of native string pointers.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="StringFormat">
+      <MemberSignature Language="C#" Value="public static string StringFormat (string format, object[] args);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string StringFormat(string format, object[] args) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="format" Type="System.String" />
+        <Parameter Name="args" Type="System.Object[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="format">a <see cref="M:System.Format" />-style format string</param>
+        <param name="args">arguments for <paramref name="format" /></param>
+        <summary>Wrapper for marshalling between String.Format-style methods and printf-style ones</summary>
+        <returns>a <see cref="T:System.String" /></returns>
+        <remarks>This is a wrapper for marshalling between managed String.Format-style methods and unmanaged printf-style ones. The managed function should take a <see cref="T:System.String" /> format, and a <see langword="params" /> array of <see cref="T:System.Object" />, and pass that to <see cref="M:GLib.Marshaller.StringFormat" />. <see cref="M:GLib.Marshaller.StringFormat" /> will format the data, and then make sure that any percent signs in the result are doubled so that they can safely be passed to an unmanaged method that expects a printf-style string (and following arguments).</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="StringToFilenamePtr">
+      <MemberSignature Language="C#" Value="public static IntPtr StringToFilenamePtr (string str);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig native int StringToFilenamePtr(string str) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="str">A managed string to be marshaled.</param>
+        <summary>Marshals a string to a filename encoded native pointer.</summary>
+        <returns>A pointer to a newly allocated native string.</returns>
+        <remarks />
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="StringToPtrGStrdup">
+      <MemberSignature Language="C#" Value="public static IntPtr StringToPtrGStrdup (string str);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig native int StringToPtrGStrdup(string str) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="str">a <see cref="T:System.String" /></param>
+        <summary>Marshal a string to a native Utf8 string using GLib memory allocation.</summary>
+        <returns>a <see cref="T:System.IntPtr" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="StructureToPtrAlloc">
+      <MemberSignature Language="C#" Value="public static IntPtr StructureToPtrAlloc (object o);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig native int StructureToPtrAlloc(object o) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="o" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="o">the structure to marshal</param>
+        <summary>Marshals a structure to newly-allocated memory.</summary>
+        <returns>a pointer to the newly-allocated memory</returns>
+        <remarks>This is like <see cref="M:System.Runtime.InteropServices.Marshal.StructureToPtr" /> except that it allocates the memory for the unmanaged copy itself. You should free the memory with <see cref="M:System.Runtime.InteropServices.Marshal.FreeHGlobal" /> when you are done with it.</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="time_tToDateTime">
+      <MemberSignature Language="C#" Value="public static DateTime time_tToDateTime (IntPtr time_t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype System.DateTime time_tToDateTime(native int time_t) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.DateTime</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time_t" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="time_t">a <see cref="T:System.IntPtr" /></param>
+        <summary>Marshals native time_t values to DateTime values.</summary>
+        <returns>a <see cref="T:System.DateTime" /></returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Utf8PtrToString">
+      <MemberSignature Language="C#" Value="public static string Utf8PtrToString (IntPtr ptr);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string Utf8PtrToString(native int ptr) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ptr" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="ptr">a <see cref="T:System.IntPtr" /></param>
+        <summary>Marshals a native Utf8 string to a managed string.</summary>
+        <returns>a <see cref="T:System.String" /></returns>
+        <remarks />
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Utf8PtrToString">
+      <MemberSignature Language="C#" Value="public static string[] Utf8PtrToString (IntPtr[] ptrs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string[] Utf8PtrToString(native int[] ptrs) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ptrs" Type="System.IntPtr[]" />
+      </Parameters>
+      <Docs>
+        <param name="ptrs">a <see cref="T:System.IntPtr" /></param>
+        <summary>Marshals an array of native Utf8 strings to an array of managed strings.</summary>
+        <returns>a <see cref="T:System.String[]" /></returns>
+        <remarks />
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

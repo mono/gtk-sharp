@@ -1,0 +1,79 @@
+<Type Name="PackDirection" FullName="Gtk.PackDirection">
+  <TypeSignature Language="C#" Value="public enum PackDirection" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed PackDirection extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gtk.PackDirectionGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Menu Item packing directions.</summary>
+    <remarks />
+    <since version="Gtk# 2.8" />
+  </Docs>
+  <Members>
+    <Member MemberName="Btt">
+      <MemberSignature Language="C#" Value="Btt" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.PackDirection Btt = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.PackDirection</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Bottom to top.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Ltr">
+      <MemberSignature Language="C#" Value="Ltr" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.PackDirection Ltr = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.PackDirection</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Left to right.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Rtl">
+      <MemberSignature Language="C#" Value="Rtl" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.PackDirection Rtl = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.PackDirection</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Right to left.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Ttb">
+      <MemberSignature Language="C#" Value="Ttb" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.PackDirection Ttb = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.PackDirection</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Top to bottom.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

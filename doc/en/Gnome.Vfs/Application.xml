@@ -1,0 +1,562 @@
+<Type Name="Application" FullName="Gnome.Vfs.Application">
+  <TypeSignature Language="C#" Value="public class Application" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Application extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gnome-vfs-sharp</AssemblyName>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Application ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsUserOwnedApplication">
+      <MemberSignature Language="C#" Value="public static bool IsUserOwnedApplication (Gnome.Vfs.MimeApplication application);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsUserOwnedApplication(class Gnome.Vfs.MimeApplication application) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="application" Type="Gnome.Vfs.MimeApplication" />
+      </Parameters>
+      <Docs>
+        <param name="application">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistryAddMimeType">
+      <MemberSignature Language="C#" Value="public static void RegistryAddMimeType (string app_id, string mime_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RegistryAddMimeType(string app_id, string mime_type) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app_id" Type="System.String" />
+        <Parameter Name="mime_type" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="app_id">To be added.</param>
+        <param name="mime_type">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistryClearMimeTypes">
+      <MemberSignature Language="C#" Value="public static void RegistryClearMimeTypes (string app_id);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RegistryClearMimeTypes(string app_id) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app_id" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="app_id">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistryExists">
+      <MemberSignature Language="C#" Value="public static bool RegistryExists (string app_id);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool RegistryExists(string app_id) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app_id" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="app_id">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistryGetApplications">
+      <MemberSignature Language="C#" Value="public static GLib.List RegistryGetApplications (string mime_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class GLib.List RegistryGetApplications(string mime_type) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>GLib.List</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="mime_type" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="mime_type">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistryGetBoolValue">
+      <MemberSignature Language="C#" Value="public static bool RegistryGetBoolValue (string app_id, string key, out bool got_key);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool RegistryGetBoolValue(string app_id, string key, bool got_key) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app_id" Type="System.String" />
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="got_key" Type="System.Boolean&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="app_id">To be added.</param>
+        <param name="key">To be added.</param>
+        <param name="got_key">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistryGetKeys">
+      <MemberSignature Language="C#" Value="public static GLib.List RegistryGetKeys (string app_id);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class GLib.List RegistryGetKeys(string app_id) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>GLib.List</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app_id" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="app_id">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistryGetMimeApplication">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.MimeApplication RegistryGetMimeApplication (string app_id);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gnome.Vfs.MimeApplication RegistryGetMimeApplication(string app_id) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.MimeApplication</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app_id" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="app_id">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistryGetMimeTypes">
+      <MemberSignature Language="C#" Value="public static GLib.List RegistryGetMimeTypes (string app_id);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class GLib.List RegistryGetMimeTypes(string app_id) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>GLib.List</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app_id" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="app_id">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistryPeekValue">
+      <MemberSignature Language="C#" Value="public static string RegistryPeekValue (string app_id, string key);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string RegistryPeekValue(string app_id, string key) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app_id" Type="System.String" />
+        <Parameter Name="key" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="app_id">To be added.</param>
+        <param name="key">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistryReload">
+      <MemberSignature Language="C#" Value="public static void RegistryReload ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RegistryReload() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistryRemoveApplication">
+      <MemberSignature Language="C#" Value="public static void RegistryRemoveApplication (string app_id);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RegistryRemoveApplication(string app_id) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app_id" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="app_id">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistryRemoveMimeType">
+      <MemberSignature Language="C#" Value="public static void RegistryRemoveMimeType (string app_id, string mime_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RegistryRemoveMimeType(string app_id, string mime_type) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app_id" Type="System.String" />
+        <Parameter Name="mime_type" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="app_id">To be added.</param>
+        <param name="mime_type">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistrySaveMimeApplication">
+      <MemberSignature Language="C#" Value="public static void RegistrySaveMimeApplication (Gnome.Vfs.MimeApplication application);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RegistrySaveMimeApplication(class Gnome.Vfs.MimeApplication application) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="application" Type="Gnome.Vfs.MimeApplication" />
+      </Parameters>
+      <Docs>
+        <param name="application">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistrySetBoolValue">
+      <MemberSignature Language="C#" Value="public static void RegistrySetBoolValue (string app_id, string key, bool value);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RegistrySetBoolValue(string app_id, string key, bool value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app_id" Type="System.String" />
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="value" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="app_id">To be added.</param>
+        <param name="key">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistrySetValue">
+      <MemberSignature Language="C#" Value="public static void RegistrySetValue (string app_id, string key, string value);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RegistrySetValue(string app_id, string key, string value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app_id" Type="System.String" />
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="value" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="app_id">To be added.</param>
+        <param name="key">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistryShutdown">
+      <MemberSignature Language="C#" Value="public static void RegistryShutdown ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RegistryShutdown() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistrySupportsMimeType">
+      <MemberSignature Language="C#" Value="public static bool RegistrySupportsMimeType (string app_id, string mime_type);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool RegistrySupportsMimeType(string app_id, string mime_type) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app_id" Type="System.String" />
+        <Parameter Name="mime_type" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="app_id">To be added.</param>
+        <param name="mime_type">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistrySupportsUriScheme">
+      <MemberSignature Language="C#" Value="public static bool RegistrySupportsUriScheme (string app_id, string uri_scheme);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool RegistrySupportsUriScheme(string app_id, string uri_scheme) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app_id" Type="System.String" />
+        <Parameter Name="uri_scheme" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="app_id">To be added.</param>
+        <param name="uri_scheme">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistrySync">
+      <MemberSignature Language="C#" Value="public static Gnome.Vfs.Result RegistrySync ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gnome.Vfs.Result RegistrySync() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gnome.Vfs.Result</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegistryUnsetKey">
+      <MemberSignature Language="C#" Value="public static void RegistryUnsetKey (string app_id, string key);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RegistryUnsetKey(string app_id, string key) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app_id" Type="System.String" />
+        <Parameter Name="key" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="app_id">To be added.</param>
+        <param name="key">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,75 @@
+<Type Name="GlyphVisAttr" FullName="Pango.GlyphVisAttr">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public struct GlyphVisAttr" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit GlyphVisAttr extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>pango-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Used to communicate information between the shaping phase and the rendering phase.</summary>
+    <remarks>Its contents are still evolving.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="IsClusterStart">
+      <MemberSignature Language="C#" Value="public bool IsClusterStart { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsClusterStart" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:System.Boolean" /></value>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Pango.GlyphVisAttr New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Pango.GlyphVisAttr New(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.GlyphVisAttr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">an object of type <see cref="T:System.IntPtr" /></param>
+        <summary>Internal method</summary>
+        <returns>an object of type <see cref="T:Pango.GlyphVisAttr" /></returns>
+        <remarks>This is an internal method, and should not be used by user code.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Pango.GlyphVisAttr Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Pango.GlyphVisAttr Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.GlyphVisAttr</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns an empty <see cref="T:Pango.GlyphVisAttr" /></summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

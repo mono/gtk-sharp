@@ -1,0 +1,204 @@
+<Type Name="StockItem" FullName="Gtk.StockItem">
+  <TypeSignature Language="C#" Maintainer="John Luke" Value="public struct StockItem" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit StockItem extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Contains information about a related <see cref="T:Gtk.Stock" /> object.</summary>
+    <remarks>Each stock ID can be associated with a <see cref="T:Gtk.StockItem" />, which contains the user-visible label, keyboard accelerator, and translation domain of the menu or toolbar item; and/or with an icon stored in a <see cref="T:Gtk.IconFactory" />. See <see cref="T:Gtk.IconFactory" /> for more information on stock icons. The connection between a <see cref="T:Gtk.StockItem" /> and stock icons is purely conventional (by virtue of using the same stock ID); it is possible to register a stock item but no icon, and vice versa.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public StockItem (string stock_id, string label, uint keyval, Gdk.ModifierType modifier, string domain);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string stock_id, string label, unsigned int32 keyval, valuetype Gdk.ModifierType modifier, string domain) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="stock_id" Type="System.String" />
+        <Parameter Name="label" Type="System.String" />
+        <Parameter Name="keyval" Type="System.UInt32" />
+        <Parameter Name="modifier" Type="Gdk.ModifierType" />
+        <Parameter Name="domain" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="stock_id">a <see cref="T:System.String" /></param>
+        <param name="label">a <see cref="T:System.String" /></param>
+        <param name="keyval">a <see cref="T:System.UInt32" /></param>
+        <param name="modifier">a <see cref="T:System.Int32" /></param>
+        <param name="domain">a <see cref="T:System.String" /></param>
+        <summary>Public constructor</summary>
+        <remarks />
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="Copy">
+      <MemberSignature Language="C#" Value="public Gtk.StockItem Copy ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Gtk.StockItem Copy() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.StockItem</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Makes a copy of the current <see cref="T:Gtk.StockItem" />.</summary>
+        <returns>an object of type <see cref="T:Gtk.StockItem" /></returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Free">
+      <MemberSignature Language="C#" Value="public void Free ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Free() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Frees the memory used by this object.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Keyval">
+      <MemberSignature Language="C#" Value="public uint Keyval;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int32 Keyval" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Keyboard accelerator.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Label">
+      <MemberSignature Language="C#" Value="public string Label;" />
+      <MemberSignature Language="ILAsm" Value=".field public string Label" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>User-visible label.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Modifier">
+      <MemberSignature Language="C#" Value="public Gdk.ModifierType Modifier;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Gdk.ModifierType Modifier" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.ModifierType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Sets the modifier, if any, for this object's accelerator.</summary>
+        <remarks>See <see cref="M:Gdk.ModifierType" /> for eligible keys and mouse button values.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Gtk.StockItem New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gtk.StockItem New(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.StockItem</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">an object of type <see cref="T:System.IntPtr" /></param>
+        <summary>Returns a new <see cref="T:Gtk.StockItem" /> using the given <see cref="T:System.IntPtr" />.</summary>
+        <returns>an object of type <see cref="T:Gtk.StockItem" /></returns>
+        <remarks>This is not typically used by user code.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StockId">
+      <MemberSignature Language="C#" Value="public string StockId;" />
+      <MemberSignature Language="ILAsm" Value=".field public string StockId" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The identifying name of the <see cref="T:Gtk.StockItem" />.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="TranslationDomain">
+      <MemberSignature Language="C#" Value="public string TranslationDomain;" />
+      <MemberSignature Language="ILAsm" Value=".field public string TranslationDomain" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Specifies the translation domain for this item, for use in globalization.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Gtk.StockItem Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Gtk.StockItem Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.StockItem</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>An empty <see cref="T:Gtk.StockItem" /></summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

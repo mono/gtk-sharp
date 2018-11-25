@@ -1,0 +1,96 @@
+<Type Name="SvpWriter" FullName="Art.SvpWriter">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public struct SvpWriter" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit SvpWriter extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>art-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Art.SvpWriter New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Art.SvpWriter New(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Art.SvpWriter</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">a <see cref="T:System.IntPtr" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Art.SvpWriter" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RewindNew">
+      <MemberSignature Language="C#" Value="public static Art.SvpWriter RewindNew (Art.WindRule rule);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Art.SvpWriter RewindNew(valuetype Art.WindRule rule) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Art.SvpWriter</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rule" Type="Art.WindRule" />
+      </Parameters>
+      <Docs>
+        <param name="rule">a <see cref="T:Art.WindRule" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Art.SvpWriter" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RewindReap">
+      <MemberSignature Language="C#" Value="public Art.SVP RewindReap ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Art.SVP RewindReap() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Art.SVP</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Art.SVP" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Art.SvpWriter Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Art.SvpWriter Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Art.SvpWriter</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

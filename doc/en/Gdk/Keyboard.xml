@@ -1,0 +1,103 @@
+<Type Name="Keyboard" FullName="Gdk.Keyboard">
+  <TypeSignature Language="C#" Value="public class Keyboard" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Keyboard extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Keyboard ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Grab">
+      <MemberSignature Language="C#" Value="public static Gdk.GrabStatus Grab (Gdk.Window window, bool owner_events, uint time_);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gdk.GrabStatus Grab(class Gdk.Window window, bool owner_events, unsigned int32 time_) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.GrabStatus</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="window" Type="Gdk.Window" />
+        <Parameter Name="owner_events" Type="System.Boolean" />
+        <Parameter Name="time_" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="window">the <see cref="T:Gdk.Window" /> which will own the grab (the grab window).</param>
+        <param name="owner_events">if false then all keyboard events are reported with respect to window. If true then keyboard events for this application are reported as normal, but keyboard events outside this application are reported with respect to window. Both key press and key release events are always reported, independant of the event mask set by the application.</param>
+        <param name="time_">a timestamp from a <see cref="T:Gdk.Event" /> or <see cref="M:Gdk.EventDND.Time" /> if no timestamp is available.</param>
+        <summary>Grabs the keyboard so that all events are passed to this application until the keyboard is ungrabbed with <see cref="M:Gdk.Keyboard.Grab" />. This overrides any previous keyboard grab by this client.</summary>
+        <returns>a <see cref="M:Gdk.GrabStatus.Success" /> if the grab was successful.</returns>
+        <remarks>Documentation for this section has not yet been entered.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GrabInfoLibgtkOnly">
+      <MemberSignature Language="C#" Value="public static bool GrabInfoLibgtkOnly (Gdk.Display display, Gdk.Window grab_window, out bool owner_events);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool GrabInfoLibgtkOnly(class Gdk.Display display, class Gdk.Window grab_window, bool owner_events) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="display" Type="Gdk.Display" />
+        <Parameter Name="grab_window" Type="Gdk.Window" />
+        <Parameter Name="owner_events" Type="System.Boolean&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="display">a <see cref="T:Gdk.Display" /></param>
+        <param name="grab_window">a <see cref="T:Gdk.Window" /></param>
+        <param name="owner_events">a <see cref="T:System.Boolean" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.6" />
+      </Docs>
+    </Member>
+    <Member MemberName="Ungrab">
+      <MemberSignature Language="C#" Value="public static void Ungrab (uint time_);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Ungrab(unsigned int32 time_) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time_" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="time_">a timestamp from a <see cref="T:Gdk.Event" />, or <see cref="M:Gdk.EventDND.Time" /> if no timestamp is available.</param>
+        <summary>Ungrabs the keyboard, if it is grabbed by this application.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,394 @@
+<Type Name="WindowAttr" FullName="Gdk.WindowAttr">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public struct WindowAttr" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit WindowAttr extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Attributes to use for a newly-created window.</summary>
+    <remarks>None.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="colormap">
+      <MemberSignature Language="C#" Value="public Gdk.Colormap colormap { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Colormap colormap" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Replaced by Colormap property.")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.Colormap</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Colormap for the window.</summary>
+        <value>To be added: an object of type 'Gdk.Colormap'</value>
+        <remarks>Replaced by <see cref="P:Gdk.WindowAttr.Colormap" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Colormap">
+      <MemberSignature Language="C#" Value="public Gdk.Colormap Colormap { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Colormap Colormap" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Colormap</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Colormap for the window.</summary>
+        <value>an object of type 'Gdk.Colormap'</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="cursor">
+      <MemberSignature Language="C#" Value="public Gdk.Cursor cursor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Cursor cursor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Replaced by Cursor property.")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.Cursor</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Cursor for the window (see <see cref="P:Gdk.Window.Cursor" />).</summary>
+        <value>Cursor for the window. (see <see cref="P:Gdk.Window.Cursor" />).</value>
+        <remarks>Replaced by <see cref="P:Gdk.WindowAttr.Cursor" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Cursor">
+      <MemberSignature Language="C#" Value="public Gdk.Cursor Cursor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Cursor Cursor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Cursor</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Cursor for the window (see <see cref="P:Gdk.Window.Cursor" />).</summary>
+        <value>Cursor for the window. (see <see cref="P:Gdk.Window.Cursor" />).</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="EventMask">
+      <MemberSignature Language="C#" Value="public int EventMask;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 EventMask" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Event mask.</summary>
+        <remarks>See <see cref="P:Gdk.Window.Events" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Height">
+      <MemberSignature Language="C#" Value="public int Height;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Height" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Height of the window.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Mask">
+      <MemberSignature Language="C#" Value="public Gdk.EventMask Mask { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Gdk.EventMask Mask" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.EventMask</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Event mask.</summary>
+        <value>a <see cref="T:Gdk.EventMask" /></value>
+        <remarks>See <see cref="P:Gdk.Window.Events" />.</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Gdk.WindowAttr New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Gdk.WindowAttr New(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.WindowAttr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">raw unmanaged pointer.</param>
+        <summary>Internal method.</summary>
+        <returns>A new WindowAttr.</returns>
+        <remarks>Internal method, do not use this.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OverrideRedirect">
+      <MemberSignature Language="C#" Value="public bool OverrideRedirect;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool OverrideRedirect" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>True to bypass the window manager.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Title">
+      <MemberSignature Language="C#" Value="public string Title;" />
+      <MemberSignature Language="ILAsm" Value=".field public string Title" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Title of the window (for toplevel windows).</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeHint">
+      <MemberSignature Language="C#" Value="public Gdk.WindowTypeHint TypeHint;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Gdk.WindowTypeHint TypeHint" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.WindowTypeHint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Type Hints for the window.</summary>
+        <remarks />
+        <since version="Gtk# 2.12" />
+      </Docs>
+    </Member>
+    <Member MemberName="visual">
+      <MemberSignature Language="C#" Value="public Gdk.Visual visual { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Visual visual" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Replaced by Visual property.")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.Visual</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The <see cref="T:Gdk.Visual" /> for the window.</summary>
+        <value>a <see cref="T:Gdk.Visual" /> for the window.</value>
+        <remarks>Replaced by <see cref="P:Gdk.WindowAttr.Visual" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Visual">
+      <MemberSignature Language="C#" Value="public Gdk.Visual Visual { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Visual Visual" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Visual</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The <see cref="T:Gdk.Visual" /> for the window.</summary>
+        <value>a <see cref="T:Gdk.Visual" /> for the window.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Wclass">
+      <MemberSignature Language="C#" Value="public Gdk.WindowClass Wclass;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Gdk.WindowClass Wclass" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.WindowClass</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>InputOutput (for a normal window) or InputOnly (for a invisible window that receives events).</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Width">
+      <MemberSignature Language="C#" Value="public int Width;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Width" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Width of the window.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WindowType">
+      <MemberSignature Language="C#" Value="public Gdk.WindowType WindowType;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype Gdk.WindowType WindowType" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.WindowType</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Type of the window.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WmclassClass">
+      <MemberSignature Language="C#" Value="public string WmclassClass;" />
+      <MemberSignature Language="ILAsm" Value=".field public string WmclassClass" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Don't use.</summary>
+        <remarks>Don't use.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WmclassName">
+      <MemberSignature Language="C#" Value="public string WmclassName;" />
+      <MemberSignature Language="ILAsm" Value=".field public string WmclassName" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Don't use.</summary>
+        <remarks>Don't use.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="X">
+      <MemberSignature Language="C#" Value="public int X;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 X" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>X coordinate relative to parent window. (see <see cref="M:Gdk.Window.Move" />).</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Y">
+      <MemberSignature Language="C#" Value="public int Y;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 Y" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Y coordinate relative to parent window (see <see cref="M:Gdk.Window.Move" />).</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Gdk.WindowAttr Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Gdk.WindowAttr Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.WindowAttr</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>A zeroed structure.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

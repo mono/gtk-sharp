@@ -1,0 +1,76 @@
+<Type Name="AttachOptions" FullName="Gtk.AttachOptions">
+  <TypeSignature Language="C#" Maintainer="Duncan Mak" Value="public enum AttachOptions" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed AttachOptions extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gtk.AttachOptionsGType))</AttributeName>
+    </Attribute>
+    <Attribute>
+      <AttributeName>System.Flags</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Denotes the expansion properties that a <see cref="T:Gtk.Widget" /> will have when it (or its parent) is resized.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName="Expand">
+      <MemberSignature Language="C#" Value="Expand" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.AttachOptions Expand = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.AttachOptions</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The <see cref="T:Gtk.Widget" /> should expand to take up any extra space in its container that has been allocated.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Fill">
+      <MemberSignature Language="C#" Value="Fill" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.AttachOptions Fill = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.AttachOptions</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The <see cref="T:Gtk.Widget" /> should fill the space allocated to it.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Shrink">
+      <MemberSignature Language="C#" Value="Shrink" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.AttachOptions Shrink = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.AttachOptions</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The <see cref="T:Gtk.Widget" /> should shrink when possible.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

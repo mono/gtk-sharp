@@ -1,0 +1,214 @@
+<Type Name="RadioButton" FullName="Gtk.RadioButton">
+  <TypeSignature Language="C#" Maintainer="John Luke" Value="public class RadioButton : Gtk.CheckButton" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit RadioButton extends Gtk.CheckButton" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement />
+  <Base>
+    <BaseTypeName>Gtk.CheckButton</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>A choice from multiple buttons in a group.</summary>
+    <remarks>
+      <para>A single radio button performs the same basic function as a <see cref="Gtk.CheckButton" />, as its position in the object hierarchy reflects. It is only when multiple radio buttons are grouped together that they become a different user interface component in their own right.</para>
+      <para>Every radio button is a member of some group of radio buttons. When one is selected, all other radio buttons in the same group are deselected. A <see cref="T:Gtk.RadioButton" /> is one way of giving the user a choice from many options.</para>
+      <para>Radio button widgets are created with <see cref="C:Gtk.RadioButton(System.String)" />,  if this is the first radio button in a group. In subsequent calls, the group you wish to add this button to should be passed as an argument.</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected RadioButton (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Internal constructor</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public RadioButton (Gtk.RadioButton radio_group_member);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Gtk.RadioButton radio_group_member) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="radio_group_member" Type="Gtk.RadioButton" />
+      </Parameters>
+      <Docs>
+        <param name="radio_group_member">a <see cref="T:Gtk.RadioButton" /></param>
+        <summary>Creates a new <see cref="T:Gtk.RadioButton" /> instance.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public RadioButton (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">a <see cref="T:System.IntPtr" />, pointer to the underlying C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>Not for general developer use.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public RadioButton (string label);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string label) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="label">a <see cref="T:System.String" /></param>
+        <summary>Creates a new <see cref="T:Gtk.RadioButton" /> instance.</summary>
+        <remarks>Creates a new <see cref="T:Gtk.RadioButton" /> in its own group.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public RadioButton (Gtk.RadioButton radio_group_member, string label);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Gtk.RadioButton radio_group_member, string label) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="radio_group_member" Type="Gtk.RadioButton" />
+        <Parameter Name="label" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="radio_group_member">To be added.</param>
+        <param name="label">a <see cref="T:System.String" /></param>
+        <summary>Creates a new <see cref="T:Gtk.RadioButton" /> instance.</summary>
+        <remarks>Creates a RadioButton with the specified label and adds the newly created RadioButton to the same group as the RadioButton specified as the group parameter.
+
+<example><code lang="C#">
+	// Example of creating two radio buttons in the same greoup
+	RadioButton	radioButton1;
+	RadioButton	radioButton2;
+
+	// create first radio button allowing it to create it's own RadioButton Group
+	radioButton1 = new RadioButton("Single Radio Button in it's own group");
+
+	// create second radio button. supply first radio button so that this one can be added
+	// to the first radio button's group
+	radioButton2 = new RadioButton(radioButton1, "Second radio button in the same group as radioButton1");
+  </code></example></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Group">
+      <MemberSignature Language="C#" Value="public GLib.SList Group { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class GLib.SList Group" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.SList</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>sets and obtains a linked list with all the radio buttons in the same group.</summary>
+        <value>a <see cref="T:GLib.SList" /> with all the radio buttons in the same group as this radio button.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="GroupChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler GroupChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler GroupChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("group-changed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emitted when the group of radio buttons that a
+	  radio button belongs to changes.</summary>
+        <remarks>This is emitted when a radio button switches from
+	  being alone to being part of a group of 2 or more buttons, or
+	  vice-versa, and when a buttton is moved from one group of 2 or
+	  more buttons to a different one, but not when the composition
+	  of the group that a button belongs to changes.</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.RadioButton" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnGroupChanged">
+      <MemberSignature Language="C#" Value="protected virtual void OnGroupChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnGroupChanged() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideGroupChanged", Type=typeof(Gtk.RadioButton))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.RadioButton.GroupChanged" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.RadioButton.GroupChanged" /> event.</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

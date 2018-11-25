@@ -1,0 +1,29 @@
+<Type Name="FindInternalChildFunc" FullName="Glade.FindInternalChildFunc">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public delegate Gtk.Widget FindInternalChildFunc(XML xml, Widget parent, string childname);" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed FindInternalChildFunc extends System.MulticastDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>glade-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="xml" Type="Glade.XML" />
+    <Parameter Name="parent" Type="Gtk.Widget" />
+    <Parameter Name="childname" Type="System.String" />
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>Gtk.Widget</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <param name="xml">To be added.</param>
+    <param name="parent">To be added.</param>
+    <param name="childname">To be added.</param>
+    <summary>Event handler.</summary>
+    <returns>To be added.</returns>
+    <remarks>this delegate is used for custom methods to find the internal children of a widget.</remarks>
+  </Docs>
+  <Members />
+</Type>

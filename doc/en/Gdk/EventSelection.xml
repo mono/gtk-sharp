@@ -1,0 +1,123 @@
+<Type Name="EventSelection" FullName="Gdk.EventSelection">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class EventSelection : Gdk.Event" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit EventSelection extends Gdk.Event" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gdk.Event</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Generated when a selection is requested or ownership of a selection is taken over by another client application.</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public EventSelection (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">raw unmanaged pointer.</param>
+        <summary>Internal constructor.</summary>
+        <remarks>Internal constructor, do not use.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Property">
+      <MemberSignature Language="C#" Value="public Gdk.Atom Property { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Atom Property" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Atom</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The property in which to place the result of the conversation.</summary>
+        <value>The property in which to place the result of the conversion.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Requestor">
+      <MemberSignature Language="C#" Value="public uint Requestor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Requestor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The native window on which to place <see cref="P:Gdk.EventSelection.Property" />.</summary>
+        <value>The native window on which to place <see cref="P:Gdk.EventSelection.Property" />.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Selection">
+      <MemberSignature Language="C#" Value="public Gdk.Atom Selection { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Atom Selection" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Atom</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The selection.</summary>
+        <value>The selection.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Target">
+      <MemberSignature Language="C#" Value="public Gdk.Atom Target { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Atom Target" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Atom</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The target to which the selection should be converted.</summary>
+        <value>The target to which the selection should be converted.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Time">
+      <MemberSignature Language="C#" Value="public uint Time { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Time" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The time of the event in milliseconds.</summary>
+        <value>The time of the event in milliseconds.</value>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

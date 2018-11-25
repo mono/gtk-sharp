@@ -1,0 +1,397 @@
+<Type Name="ToggleButton" FullName="Gtk.ToggleButton">
+  <TypeSignature Language="C#" Maintainer="John Luke" Value="public class ToggleButton : Gtk.Button" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ToggleButton extends Gtk.Button" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.Button</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>A button that can be toggled on and off.</summary>
+    <remarks>
+      <para>A <see cref="T:Gtk.ToggleButton" /> is a <see cref="T:Gtk.Button" /> which will remain 'pressed-in' when clicked.
+	  Clicking again will cause the toggle button to return to its normal state.  This is useful if you need to maintain the state of a button.</para>
+      <example>
+        <code lang="C#" source="ToggleButton.cs">
+using Gtk;
+using System;
+
+public class ToggleButtonApp  {
+	
+	ToggleButton btn;
+
+	public static int Main (string[] args)
+	{
+		new ToggleButtonApp();
+		return 0;
+	}
+		
+	public ToggleButtonApp()
+	{
+		Application.Init ();
+		Window win = new Window ("ToggleButton Tester");
+		win.SetDefaultSize (200, 150);
+		win.DeleteEvent += new DeleteEventHandler (Window_Delete);
+		btn = new ToggleButton ("Unselected");
+		btn.Active = false;
+		btn.Toggled += new EventHandler (btn_toggled);
+		win.Add (btn);
+		win.ShowAll ();
+		Application.Run ();
+	}
+
+	void btn_toggled (object obj, EventArgs args)
+	{
+		Console.WriteLine ("Button Toggled");
+		if (btn.Active)
+		{
+			btn.Label = "Unselected";
+		}
+		else
+		{
+			btn.Label = "Selected";
+		}
+	}
+
+	static void Window_Delete (object obj, DeleteEventArgs args)
+	{
+		Application.Quit ();
+		args.RetVal = true;
+	}
+
+}
+		</code>
+      </example>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ToggleButton ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Creates a new <see cref="T:Gtk.ToggleButton" /> object</summary>
+        <remarks>
+          <para>
+            Creates a new <see cref="T:Gtk.ToggleButton" />, which is a
+            <see cref="T:Gtk.Container" />.  A widget should be packed
+            inside the toggle button using <see cref="M:Gtk.Container.Add (Gtk.Widget)" />.
+          </para>
+          <para>
+            <example>
+              <code lang="C#">
+Label label = new Label();
+ToggleButton btn = new ToggleButton ();
+btn.Add(label);
+							</code>
+            </example>
+          </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected ToggleButton (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ToggleButton (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ToggleButton (string label);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string label) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="label">a <see cref="T:System.String" /> containing the message to be placed in the toggle button.</param>
+        <summary>Creates a new <see cref="T:Gtk.ToggleButton" /> with a text label.</summary>
+        <remarks>Creates a new <see cref="T:Gtk.ToggleButton" /> with a text label.
+				<example><code lang="C#">ToggleButton btn = new ToggleButton ("ToggleButton");</code></example></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Active">
+      <MemberSignature Language="C#" Value="public bool Active { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Active" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("active")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Get or set the <see cref="T:Gtk.ToggleButton" /> active</summary>
+        <value>an object of type <see cref="T:System.Boolean" /></value>
+        <remarks>
+          <para>Get or set the <see cref="T:Gtk.ToggleButton" /> active.</para>
+          <para>Get: Queries a <see cref="T:Gtk.ToggleButton" /> and returns its current state.
+						Returns <see langword="true" /> if the toggle button is pressed in and <see langword="false" /> if it is raised.
+					</para>
+          <example>
+            <code lang="C#">
+if (btn.Active) {
+	Console.WriteLine("The ToggleButton is pressed in");
+}
+else {
+	Console.WriteLine("The ToggleButton is raised");
+}
+						</code>
+          </example>
+          <para>Set: Sets the status of the toggle button. Set to <see langword="true" /> if you want the GtkToggleButton to be 'pressed in', and <see langword="false" /> to raise it.
+						This action causes the toggled signal to be emitted.
+					</para>
+          <example>
+            <code lang="C#">
+// set the togglebutton active
+// and appear "pressed in"
+btn.Active = true;
+						</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawIndicator">
+      <MemberSignature Language="C#" Value="public bool DrawIndicator { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DrawIndicator" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("draw-indicator")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Determines the drawing style of a <see cref="T:Gtk.RadioButton" /> or <see cref="T:Gtk.CheckButton" /></summary>
+        <value>an object of type <see cref="T:System.Boolean" /></value>
+        <remarks>The DrawIndicator property can be set to <see langword="false" /> to make 
+					<see cref="T:Gtk.CheckButton" /> or <see cref="T:Gtk.RadioButton" /> look like a normal <see cref="T:Gtk.Button" />.
+				</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gtk.ToggleButton" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Inconsistent">
+      <MemberSignature Language="C#" Value="public bool Inconsistent { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Inconsistent" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Property("inconsistent")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Determines if the <see cref="T:Gtk.ToggleButton" /> has an intermediate state.</summary>
+        <value>an object of type <see cref="T:System.Boolean" /></value>
+        <remarks>
+          <para>
+						If the user has selected a range of elements (such as some text or spreadsheet cells) that are affected by a <see cref="T:Gtk.ToggleButton" />,
+						and the current values in that range are inconsistent, you may want to display the toggle in an "in between" state.
+						This function turns on "in between" display. Normally you would turn off the inconsistent state again if the user toggles the <see cref="T:Gtk.ToggleButton" />.
+						This has to be done manually, <see cref="P:Gtk.ToggleButton.Inconsistent" /> only affects visual appearance, it does not affect the semantics of the <see cref="T:Gtk.Button" />.
+					</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Mode">
+      <MemberSignature Language="C#" Value="public bool Mode { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Mode" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>The Mode of the <see cref="T:Gtk.ToggleButton" /></summary>
+        <value>an object of type <see cref="T:System.Boolean" /></value>
+        <remarks>
+          <para>The Mode of the <see cref="T:Gtk.ToggleButton" /></para>
+          <para>Sets whether the button is displayed as a separate indicator and label.
+		    		You can call this function on a <see cref="T:Gtk.CheckButton" /> or a <see cref="T:Gtk.RadioButton" /> with <see cref="P:Gtk.ToggleButton.DrawIndicator" /> = <see langword="false" /> to make the button look like a normal button
+		  		</para>
+          <para>This function only effects instances of classes like <see cref="T:Gtk.CheckButton" /> and <see cref="T:Gtk.RadioButton" />
+		    		that derive from <see cref="T:Gtk.ToggleButton" />, not instances of <see cref="T:Gtk.ToggleButton" /> itself.
+		  		</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NewWithLabel">
+      <MemberSignature Language="C#" Value="public static Gtk.ToggleButton NewWithLabel (string label);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gtk.ToggleButton NewWithLabel(string label) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.ToggleButton</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="label">a <see cref="T:System.String" /> containing the message to be placed in the toggle button.</param>
+        <summary>Creates a new <see cref="T:Gtk.ToggleButton" /> with a text label.</summary>
+        <returns>a new <see cref="T:Gtk.ToggleButton" />.</returns>
+        <remarks>Creates a new <see cref="T:Gtk.ToggleButton" /> with a text label.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnToggled">
+      <MemberSignature Language="C#" Value="protected virtual void OnToggled ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnToggled() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideToggled", Type=typeof(Gtk.ToggleButton))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Default handler for the <see cref="M:Gtk.ToggleButton.Toggled" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gtk.ToggleButton.Toggled" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Toggle">
+      <MemberSignature Language="C#" Value="public void Toggle ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Toggle() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emits the <see cref="E:Gtk.ToggleButton.Toggled" /> event</summary>
+        <remarks>Emits the <see cref="E:Gtk.ToggleButton.Toggled" /> event on the <see cref="T:Gtk.ToggleButton" />. There is no good reason for an application ever to call this function.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Toggled">
+      <MemberSignature Language="C#" Value="public event EventHandler Toggled;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Toggled" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("toggled")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Triggered when the <see cref="T:Gtk.ToggleButton" /> is clicked.</summary>
+        <remarks>Should be connected if you wish to perform an action whenever the <see cref="T:Gtk.ToggleButton" /> state changes.
+					<example><code lang="C#">
+ToggleButton btn = new ToggleButton("ToggleButton");
+btn.Toggled += new EventHandler (btn_toggled);
+
+void btn_toggled (object obj, EventArgs args)
+{
+	// code for toggled event here
+}
+						</code></example></remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

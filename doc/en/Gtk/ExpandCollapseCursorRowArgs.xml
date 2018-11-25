@@ -1,0 +1,85 @@
+<Type Name="ExpandCollapseCursorRowArgs" FullName="Gtk.ExpandCollapseCursorRowArgs">
+  <TypeSignature Language="C#" Value="public class ExpandCollapseCursorRowArgs : GLib.SignalArgs" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ExpandCollapseCursorRowArgs extends GLib.SignalArgs" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.SignalArgs</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Event data.</summary>
+    <remarks>
+      <para>The <see cref="M:Gtk.TreeView.ExpandCollapseCursorRow" /> event invokes <see cref="T:Gtk.ExpandCollapseCursorRowHandler" /> delegates which pass event data via this class.</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ExpandCollapseCursorRowArgs ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Public Constructor.</summary>
+        <remarks>Create a new <see cref="T:Gtk.ExpandCollapseCursorRowArgs" /> instance with this constructor if you need to invoke a <see cref="T:Gtk.ExpandCollapseCursorRowHandler" /> delegate.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Expand">
+      <MemberSignature Language="C#" Value="public bool Expand { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Expand" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Whether to expand (true) or collapse(false) the row.</summary>
+        <value>A <see cref="T:System.Boolean" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Logical">
+      <MemberSignature Language="C#" Value="public bool Logical { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Logical" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Whether or not this cursor row is a logical row.</summary>
+        <value>A <see cref="T:System.Boolean" /></value>
+        <remarks>TODO: explain.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OpenAll">
+      <MemberSignature Language="C#" Value="public bool OpenAll { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool OpenAll" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Whether or not to open all children of this cursor row.</summary>
+        <value>A <see cref="T:System.Boolean" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

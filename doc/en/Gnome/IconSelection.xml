@@ -1,0 +1,252 @@
+<Type Name="IconSelection" FullName="Gnome.IconSelection">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class IconSelection : Gtk.VBox" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit IconSelection extends Gtk.VBox" />
+  <AssemblyInfo>
+    <AssemblyName>gnome-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.20.0.0</AssemblyVersion>
+    <AssemblyVersion>2.24.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Gtk.VBox</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>An icon listing/chooser display.</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public IconSelection ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>Creates a new icon selection widget, it uses GnomeIconList for the listing of icons.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected IconSelection (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public IconSelection (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">Pointer to the C object.</param>
+        <summary>Internal constructor</summary>
+        <remarks>
+          <para>This is an internal constructor, and should not be used by user code.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddDefaults">
+      <MemberSignature Language="C#" Value="public void AddDefaults ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddDefaults() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Adds the default pixmap directory into the selection widget.</summary>
+        <remarks> It doesn't show the icons in the selection until you do ShowIcons.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddDirectory">
+      <MemberSignature Language="C#" Value="public void AddDirectory (string dir);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddDirectory(string dir) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dir" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="dir">Directory with pixmaps</param>
+        <summary>Adds the icons from the directory dir to the selection widget.</summary>
+        <remarks> It doesn't show the icons in the selection until you do ShowIcons.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Box">
+      <MemberSignature Language="C#" Value="public Gtk.Widget Box { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Widget Box" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Widget</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The Gtk.VBox widget that is used to pack the different elements of the selection into.</summary>
+        <value>To be added: an object of type 'Gtk.Widget'</value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Clear">
+      <MemberSignature Language="C#" Value="public void Clear (bool not_shown);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Clear(bool not_shown) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="not_shown" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="not_shown">Set to 'true' to clear even the icons that were not shown yet.</param>
+        <summary>Clear the currently shown icons, the ones that weren't shown yet are not cleared unless the not_shown parameter is given, in which case even those are cleared.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetIcon">
+      <MemberSignature Language="C#" Value="public string GetIcon (bool full_path);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string GetIcon(bool full_path) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="full_path" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="full_path">To be added: an object of type 'bool'</param>
+        <summary>Gets the currently selected icon name.</summary>
+        <returns>The name of the icon that is currently selected.</returns>
+        <remarks>If full_path is true, it returns the full path to the icon, if none is selected it returns NULL.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Gil">
+      <MemberSignature Language="C#" Value="public Gtk.Widget Gil { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Widget Gil" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Widget</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The IconList widget that is used for the display of icons</summary>
+        <value>To be added: an object of type 'Gtk.Widget'</value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>GType Property.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>Returns the native <see cref="T:GLib.GType" /> value for <see cref="T:Gnome.IconSelection" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectIcon">
+      <MemberSignature Language="C#" Value="public void SelectIcon (string filename);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SelectIcon(string filename) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="filename" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="filename">icon filename</param>
+        <summary>Selects the icon filename. This icon must have already been added and shown.</summary>
+        <remarks>see also ShowIcons</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShowIcons">
+      <MemberSignature Language="C#" Value="public void ShowIcons ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ShowIcons() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Shows the icons inside the widget that were added with AddDefaults and AddDirectory. Before this function is called the icons aren't actually added to the listing and can't be picked by the user.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="StopLoading">
+      <MemberSignature Language="C#" Value="public void StopLoading ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopLoading() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.24.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Stop the loading of images when we are in the loop in ShowIcons, otherwise it does nothing and is harmless, it should be used say if the dialog was hidden or when we want to quickly stop loading the images to do something else without destroying the icon selection object. The remaining icons can be shown by ShowIcons.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

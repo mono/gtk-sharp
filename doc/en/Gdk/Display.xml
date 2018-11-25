@@ -1,0 +1,974 @@
+<Type Name="Display" FullName="Gdk.Display">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class Display : GLib.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Display extends GLib.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>GLib.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+  </Interfaces>
+  <Docs>
+    <summary>
+      <para>Controls the keyboard/mouse pointer grabs and a set of GdkScreens.</para>
+    </summary>
+    <remarks>
+      <para>
+        <see cref="T:Gdk.Display" /> objects purpose are two fold:</para>
+      <list type="bullet">
+        <item>
+          <term>To grab/ungrab keyboard focus and mouse pointer</term>
+        </item>
+        <item>
+          <term>To manage and provide information about the <see cref="T:Gdk.Screen" />(s) available for this <see cref="T:Gdk.Display" /></term>
+        </item>
+      </list>
+      <para>
+        <see cref="T:Gdk.Display" /> objects are the GDK representation of the X Display which can be described as a workstation consisting of a keyboard a pointing device (such as a mouse) and one or more screens. It is used to open and keep track of various <see cref="T:Gdk.Screen" /> objects currently instanciated by the application. It is also used to grab and release the keyboard and the mouse pointer.</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Display ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected Display (GLib.GType gtype);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype GLib.GType gtype) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="gtype" Type="GLib.GType" />
+      </Parameters>
+      <Docs>
+        <param name="gtype">a <see cref="T:GLib.GType" /></param>
+        <summary>Protected Constructor.</summary>
+        <remarks>Chain to this constructor if you have manually registered a native <see cref="T:GLib.GType" /> value for your subclass.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Display (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int raw) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">a <see cref="T:System.IntPtr" /></param>
+        <summary>Internal constructor</summary>
+        <remarks>This is not typically used by C# code.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddClientMessageFilter">
+      <MemberSignature Language="C#" Value="public void AddClientMessageFilter (Gdk.Atom message_type, Gdk.FilterFunc func);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddClientMessageFilter(class Gdk.Atom message_type, class Gdk.FilterFunc func) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="message_type" Type="Gdk.Atom" />
+        <Parameter Name="func" Type="Gdk.FilterFunc" />
+      </Parameters>
+      <Docs>
+        <param name="message_type">a <see cref="T:Gdk.Atom" /> representing the type of ClientMessage events to receive.</param>
+        <param name="func">a <see cref="T:Gdk.FilterFunc" /> to call to process the event.</param>
+        <summary>Adds a filter to be called when X ClientMessage events are received.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Beep">
+      <MemberSignature Language="C#" Value="public void Beep ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Beep() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Emits a short beep.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Close">
+      <MemberSignature Language="C#" Value="public void Close ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Close() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Closes the connection windowing system for the given display, and cleans up associated resources.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Closed">
+      <MemberSignature Language="C#" Value="public event Gdk.ClosedHandler Closed;" />
+      <MemberSignature Language="ILAsm" Value=".event class Gdk.ClosedHandler Closed" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.Signal("closed")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Gdk.ClosedHandler</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>This event is emitted when the connect to the windowing system is closed.</summary>
+        <remarks>None.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CorePointer">
+      <MemberSignature Language="C#" Value="public Gdk.Device CorePointer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Device CorePointer" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Device</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Returns the core pointer device for the given display.</summary>
+        <value>The core pointer <see cref="T:Gdk.Device" /> for the display.</value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Default">
+      <MemberSignature Language="C#" Value="public static Gdk.Display Default { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class Gdk.Display Default" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Display</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Get the default <see cref="T:Gdk.Screen" /> for the display.</summary>
+        <value> the default <see cref="T:Gdk.Screen" /> object for display.</value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DefaultCursorSize">
+      <MemberSignature Language="C#" Value="public uint DefaultCursorSize { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 DefaultCursorSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:System.UInt32" /></value>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="DefaultGroup">
+      <MemberSignature Language="C#" Value="public Gdk.Window DefaultGroup { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Window DefaultGroup" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Window</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:Gdk.Window" /></value>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="DefaultScreen">
+      <MemberSignature Language="C#" Value="public Gdk.Screen DefaultScreen { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Screen DefaultScreen" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Screen</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The default screen..</summary>
+        <value>The screen represending the DefaultScreen.</value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DoubleClickDistance">
+      <MemberSignature Language="C#" Value="public uint DoubleClickDistance { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 DoubleClickDistance" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:System.UInt32" /></value>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="DoubleClickTime">
+      <MemberSignature Language="C#" Value="public uint DoubleClickTime { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 DoubleClickTime" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+      </Parameters>
+      <Docs>
+        <summary>Sets the double-click timeout.</summary>
+        <value>a <see cref="T:Gdk.Display" />, or null if there is no default display.</value>
+        <remarks>
+          <para>Sets the double click time (two clicks within this
+	      time interval count as a double click). Applications
+	      should NOT set this, it is a global user-configured
+	      setting.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Event">
+      <MemberSignature Language="C#" Value="public Gdk.Event Event { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gdk.Event Event" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Event</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>
+        </value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Flush">
+      <MemberSignature Language="C#" Value="public void Flush ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Flush() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="GetMaximalCursorSize">
+      <MemberSignature Language="C#" Value="public void GetMaximalCursorSize (out uint width, out uint height);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetMaximalCursorSize(unsigned int32 width, unsigned int32 height) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="width" Type="System.UInt32&amp;" RefType="out" />
+        <Parameter Name="height" Type="System.UInt32&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="width">a <see cref="T:System.UInt32" /></param>
+        <param name="height">a <see cref="T:System.UInt32" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="GetPointer">
+      <MemberSignature Language="C#" Value="public void GetPointer (out int x, out int y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetPointer(int32 x, int32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="y" Type="System.Int32&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="x">a <see cref="T:System.Int32" /></param>
+        <param name="y">a <see cref="T:System.Int32" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetPointer">
+      <MemberSignature Language="C#" Value="public void GetPointer (out Gdk.Screen screen, out int x, out int y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetPointer(class Gdk.Screen screen, int32 x, int32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="screen" Type="Gdk.Screen&amp;" RefType="out" />
+        <Parameter Name="x" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="y" Type="System.Int32&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="screen">a <see cref="T:Gdk.Screen" /></param>
+        <param name="x">a <see cref="T:System.Int32" /></param>
+        <param name="y">a <see cref="T:System.Int32" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetPointer">
+      <MemberSignature Language="C#" Value="public void GetPointer (out int x, out int y, out Gdk.ModifierType mod);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetPointer(int32 x, int32 y, valuetype Gdk.ModifierType mod) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="y" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="mod" Type="Gdk.ModifierType&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="x">a <see cref="T:System.Int32" /></param>
+        <param name="y">a <see cref="T:System.Int32" /></param>
+        <param name="mod">a <see cref="T:Gdk.ModifierType" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetPointer">
+      <MemberSignature Language="C#" Value="public void GetPointer (Gdk.Screen screen, out int x, out int y, out Gdk.ModifierType mask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetPointer(class Gdk.Screen screen, int32 x, int32 y, valuetype Gdk.ModifierType mask) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="screen" Type="Gdk.Screen" />
+        <Parameter Name="x" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="y" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="mask" Type="Gdk.ModifierType&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="screen">a <see cref="T:Gdk.Screen" /></param>
+        <param name="x">a <see cref="T:System.Int32&amp;" /></param>
+        <param name="y">a <see cref="T:System.Int32&amp;" /></param>
+        <param name="mask">a <see cref="T:Gdk.ModifierType&amp;" /></param>
+        <summary>Gets the current location of the pointer and the
+        current modifier mask for a given display.</summary>
+        <remarks>None</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetPointer">
+      <MemberSignature Language="C#" Value="public void GetPointer (out Gdk.Screen screen, out int x, out int y, out Gdk.ModifierType mask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetPointer(class Gdk.Screen screen, int32 x, int32 y, valuetype Gdk.ModifierType mask) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="screen" Type="Gdk.Screen&amp;" RefType="out" />
+        <Parameter Name="x" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="y" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="mask" Type="Gdk.ModifierType&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="screen">a <see cref="T:Gdk.Screen" /></param>
+        <param name="x">a <see cref="T:System.Int32" /></param>
+        <param name="y">a <see cref="T:System.Int32" /></param>
+        <param name="mask">a <see cref="T:Gdk.ModifierType" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetScreen">
+      <MemberSignature Language="C#" Value="public Gdk.Screen GetScreen (int screen_num);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gdk.Screen GetScreen(int32 screen_num) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Screen</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="screen_num" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="screen_num">a <see cref="T:System.Int32" /> representing the screen number</param>
+        <summary>Returns a screen object for one of the screens of the display.</summary>
+        <returns>a <see cref="T:Gdk.Screen" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetWindowAtPointer">
+      <MemberSignature Language="C#" Value="public Gdk.Window GetWindowAtPointer (out int win_x, out int win_y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gdk.Window GetWindowAtPointer(int32 win_x, int32 win_y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Window</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="win_x" Type="System.Int32&amp;" RefType="out" />
+        <Parameter Name="win_y" Type="System.Int32&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="win_x">a <see cref="T:System.Int32&amp;" /></param>
+        <param name="win_y">a <see cref="T:System.Int32&amp;" /></param>
+        <summary>Obtains the window underneath the mouse pointer.</summary>
+        <returns>a <see cref="T:Gdk.Window" /></returns>
+        <remarks>Obtains the window underneath the mouse pointer,
+        returning the location of that window in win_x, win_y for
+        screen. Returns NULL if the window under the mouse pointer is
+        not known to GDK (for example, belongs to another application).</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GType">
+      <MemberSignature Language="C#" Value="public static GLib.GType GType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype GLib.GType GType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.GType</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Gets the current location of the pointer and the current modifier mask for a given display.</summary>
+        <value>a <see cref="T:GLib.GType" /></value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="KeyboardUngrab">
+      <MemberSignature Language="C#" Value="public void KeyboardUngrab (uint time_);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void KeyboardUngrab(unsigned int32 time_) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time_" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="time_">a <see cref="T:System.UInt32" /> representing a  a timestap.</param>
+        <summary>Release any keyboard grab.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ListDevices">
+      <MemberSignature Language="C#" Value="public Gdk.Device[] ListDevices ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gdk.Device[] ListDevices() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Device[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns the list of available input devices attached to the display.</summary>
+        <returns>a <see cref="T:Gdk.Device[]" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The name of the display</summary>
+        <value>A <see cref="T:System.String" /> representing the
+        display name.</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NScreens">
+      <MemberSignature Language="C#" Value="public int NScreens { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 NScreens" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added</summary>
+        <value>a <see cref="T:System.Int32" /></value>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnClosed">
+      <MemberSignature Language="C#" Value="protected virtual void OnClosed (bool is_error);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnClosed(bool is_error) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>GLib.DefaultSignalHandler(ConnectionMethod="OverrideClosed", Type=typeof(Gdk.Display))</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="is_error" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="is_error">a <see cref="T:System.Boolean" /></param>
+        <summary>Default handler for the <see cref="M:Gdk.Display.Closed" /> event.</summary>
+        <remarks>Override this method in a subclass to provide a default handler for the <see cref="M:Gdk.Display.Closed" /> event.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Open">
+      <MemberSignature Language="C#" Value="public static Gdk.Display Open (string display_name);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Display Open(string display_name) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Display</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="display_name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="display_name">a <see cref="T:System.String" /> -  the name of the display to open</param>
+        <summary>Opens a display.</summary>
+        <returns>a <see cref="T:Gdk.Display" />, or null if the display could not be opened.</returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OpenDefaultLibgtkOnly">
+      <MemberSignature Language="C#" Value="public static Gdk.Display OpenDefaultLibgtkOnly ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Gdk.Display OpenDefaultLibgtkOnly() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Display</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Opens the default display specified by the command line arguments or the environment variables, setting it as the default display, it it was already set, then its just returned.</summary>
+        <returns>A <see cref="T:Gdk.Display" /> that is the default display just opened.</returns>
+        <remarks>Global.ParseArgs should be called first.
+<block subset="none" type="note"><para>
+	This method is internal and shouldn't be used in any application.
+  </para></block></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PeekEvent">
+      <MemberSignature Language="C#" Value="public Gdk.Event PeekEvent ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Gdk.Event PeekEvent() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.Event</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Gets a copy of the first <see cref="T:Gdk.Event" /> in the display's event queue, without removing the event from the queue. (Note that this function will not get more events from the windowing system. It only checks the events that have already been moved to the GDK event queue.)</summary>
+        <returns>a copy of the first <see cref="T:Gdk.Event" /> on the event queue, or null if no events are in the queue.</returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PointerIsGrabbed">
+      <MemberSignature Language="C#" Value="public bool PointerIsGrabbed ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool PointerIsGrabbed() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Test if the pointer is grabbed.</summary>
+        <returns>a <see cref="T:System.Boolean" /> that is true if an active X pointer grab is in effect.</returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PointerUngrab">
+      <MemberSignature Language="C#" Value="public void PointerUngrab (uint time_);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PointerUngrab(unsigned int32 time_) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time_" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="time_">a <see cref="T:System.UInt32" /> representing a  a timestap.</param>
+        <summary>Release any pointer grab.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PutEvent">
+      <MemberSignature Language="C#" Value="public void PutEvent (Gdk.Event evnt);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PutEvent(class Gdk.Event evnt) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="evnt" Type="Gdk.Event" />
+      </Parameters>
+      <Docs>
+        <param name="evnt">a <see cref="T:Gdk.Event" /> to be appended onto the front of the event queue.</param>
+        <summary>Appends the given event onto the front of the event queue for display.</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RequestSelectionNotification">
+      <MemberSignature Language="C#" Value="public bool RequestSelectionNotification (Gdk.Atom selection);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool RequestSelectionNotification(class Gdk.Atom selection) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="selection" Type="Gdk.Atom" />
+      </Parameters>
+      <Docs>
+        <param name="selection">a <see cref="T:Gdk.Atom" /></param>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.6" />
+      </Docs>
+    </Member>
+    <Member MemberName="SetPointerHooks">
+      <MemberSignature Language="C#" Value="public Gdk.DisplayPointerHooks SetPointerHooks (Gdk.DisplayPointerHooks new_hooks);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Gdk.DisplayPointerHooks SetPointerHooks(valuetype Gdk.DisplayPointerHooks new_hooks) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.DisplayPointerHooks</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="new_hooks" Type="Gdk.DisplayPointerHooks" />
+      </Parameters>
+      <Docs>
+        <param name="new_hooks">a <see cref="T:Gdk.DisplayPointerHooks" /></param>
+        <summary>
+        </summary>
+        <returns> the previous <see cref="T:Gdk.DisplayPointerHooks" /> table</returns>
+        <remarks>
+          <para>
+	     This function allows for hooking into the operation of
+	     getting the current location of the pointer on a
+	     particular display. This is only useful for such
+	     low-level tools as an event recorder. Applications
+	     should never have any reason to use this facility.
+	   </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StoreClipboard">
+      <MemberSignature Language="C#" Value="public void StoreClipboard (Gdk.Window clipboard_window, uint time_, Gdk.Atom targets, int n_targets);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StoreClipboard(class Gdk.Window clipboard_window, unsigned int32 time_, class Gdk.Atom targets, int32 n_targets) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="clipboard_window" Type="Gdk.Window" />
+        <Parameter Name="time_" Type="System.UInt32" />
+        <Parameter Name="targets" Type="Gdk.Atom" />
+        <Parameter Name="n_targets" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="clipboard_window">a <see cref="T:Gdk.Window" /></param>
+        <param name="time_">a <see cref="T:System.UInt32" /></param>
+        <param name="targets">a <see cref="T:Gdk.Atom" /></param>
+        <param name="n_targets">a <see cref="T:System.Int32" /></param>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.6" />
+      </Docs>
+    </Member>
+    <Member MemberName="SupportsClipboardPersistence">
+      <MemberSignature Language="C#" Value="public bool SupportsClipboardPersistence ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SupportsClipboardPersistence() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.6" />
+      </Docs>
+    </Member>
+    <Member MemberName="SupportsComposite">
+      <MemberSignature Language="C#" Value="public bool SupportsComposite { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool SupportsComposite" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Indicates if Compositing is supported.</summary>
+        <value>If compositing is supported, <see langword="true" />, otherwise <see langword="false" />.</value>
+        <remarks />
+        <since version="Gtk# 2.12" />
+      </Docs>
+    </Member>
+    <Member MemberName="SupportsCursorAlpha">
+      <MemberSignature Language="C#" Value="public bool SupportsCursorAlpha ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SupportsCursorAlpha() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="SupportsCursorColor">
+      <MemberSignature Language="C#" Value="public bool SupportsCursorColor ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SupportsCursorColor() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="SupportsInputShapes">
+      <MemberSignature Language="C#" Value="public bool SupportsInputShapes { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool SupportsInputShapes" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Indicates if input shapes are supported.</summary>
+        <value>If input shapes are supported, <see langword="true" />, otherwise <see langword="false" />.</value>
+        <remarks>Use <see cref="M:Gdk.Window.InputShapeCombineMask" /> to alter the input shape if support is indicated.</remarks>
+        <since version="Gtk# 2.10" />
+      </Docs>
+    </Member>
+    <Member MemberName="SupportsSelectionNotification">
+      <MemberSignature Language="C#" Value="public bool SupportsSelectionNotification ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SupportsSelectionNotification() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.Boolean" /></returns>
+        <remarks>To be added</remarks>
+        <since version="Gtk# 2.6" />
+      </Docs>
+    </Member>
+    <Member MemberName="SupportsShapes">
+      <MemberSignature Language="C#" Value="public bool SupportsShapes { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool SupportsShapes" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Indicates if shaped windows are supported.</summary>
+        <value>If shaped windows are supported, <see langword="true" />, otherwise <see langword="false" />.</value>
+        <remarks>Use <see cref="M:Gdk.Window.ShapeCombineMask" /> to alter the shape if support is indicated.</remarks>
+        <since version="Gtk# 2.10" />
+      </Docs>
+    </Member>
+    <Member MemberName="Sync">
+      <MemberSignature Language="C#" Value="public void Sync ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Sync() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WarpPointer">
+      <MemberSignature Language="C#" Value="public void WarpPointer (Gdk.Screen screen, int x, int y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WarpPointer(class Gdk.Screen screen, int32 x, int32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="screen" Type="Gdk.Screen" />
+        <Parameter Name="x" Type="System.Int32" />
+        <Parameter Name="y" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="screen">Screen to reposition pointer onto.</param>
+        <param name="x">X coordinate of pointer destination.</param>
+        <param name="y">Y coordinate of pointer destination.</param>
+        <summary>Warps the mouse pointer to a coordinate on a Screen.</summary>
+        <remarks>When grabs are in effect, the pointer will only be moved as far as the grab allows. Warping the pointer creates events as if the mouse were instantaneously moved to the destination by the user.</remarks>
+        <since version="Gtk# 2.8" />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

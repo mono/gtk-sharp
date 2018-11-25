@@ -1,0 +1,378 @@
+<Type Name="TypeFundamentals" FullName="GLib.TypeFundamentals">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum TypeFundamentals" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed TypeFundamentals extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>glib-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>The built-in types available in <see cref="N:GLib" />.</summary>
+    <remarks>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="TypeBoolean">
+      <MemberSignature Language="C#" Value="TypeBoolean" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeBoolean = int32(20)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeBoxed">
+      <MemberSignature Language="C#" Value="TypeBoxed" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeBoxed = int32(72)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeChar">
+      <MemberSignature Language="C#" Value="TypeChar" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeChar = int32(12)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeDouble">
+      <MemberSignature Language="C#" Value="TypeDouble" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeDouble = int32(60)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeEnum">
+      <MemberSignature Language="C#" Value="TypeEnum" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeEnum = int32(48)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeFlags">
+      <MemberSignature Language="C#" Value="TypeFlags" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeFlags = int32(52)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeFloat">
+      <MemberSignature Language="C#" Value="TypeFloat" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeFloat = int32(56)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeInt">
+      <MemberSignature Language="C#" Value="TypeInt" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeInt = int32(24)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeInt64">
+      <MemberSignature Language="C#" Value="TypeInt64" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeInt64 = int32(40)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeInterface">
+      <MemberSignature Language="C#" Value="TypeInterface" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeInterface = int32(8)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeInvalid">
+      <MemberSignature Language="C#" Value="TypeInvalid" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeInvalid = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeLong">
+      <MemberSignature Language="C#" Value="TypeLong" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeLong = int32(32)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeNone">
+      <MemberSignature Language="C#" Value="TypeNone" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeNone = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeObject">
+      <MemberSignature Language="C#" Value="TypeObject" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeObject = int32(80)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeParam">
+      <MemberSignature Language="C#" Value="TypeParam" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeParam = int32(76)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypePointer">
+      <MemberSignature Language="C#" Value="TypePointer" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypePointer = int32(68)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeString">
+      <MemberSignature Language="C#" Value="TypeString" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeString = int32(64)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeUChar">
+      <MemberSignature Language="C#" Value="TypeUChar" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeUChar = int32(16)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeUInt">
+      <MemberSignature Language="C#" Value="TypeUInt" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeUInt = int32(28)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeUInt64">
+      <MemberSignature Language="C#" Value="TypeUInt64" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeUInt64 = int32(44)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeULong">
+      <MemberSignature Language="C#" Value="TypeULong" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype GLib.TypeFundamentals TypeULong = int32(36)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>GLib.TypeFundamentals</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

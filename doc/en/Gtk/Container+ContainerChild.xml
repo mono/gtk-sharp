@@ -1,0 +1,105 @@
+<Type Name="Container+ContainerChild" FullName="Gtk.Container+ContainerChild">
+  <TypeSignature Language="C#" Value="public class Container.ContainerChild" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi beforefieldinit Container/ContainerChild extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>A mixin class for expressing the relation between a container
+    widget and its child widget(s).</summary>
+    <remarks>
+    </remarks>
+    <since version="Gtk# 2.4" />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ContainerChild (Gtk.Container parent, Gtk.Widget child);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Gtk.Container parent, class Gtk.Widget child) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="parent" Type="Gtk.Container" />
+        <Parameter Name="child" Type="Gtk.Widget" />
+      </Parameters>
+      <Docs>
+        <param name="parent">To be added.</param>
+        <param name="child">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="child">
+      <MemberSignature Language="C#" Value="protected Gtk.Widget child;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Gtk.Widget child" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Widget</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Protected internal data; the child widget.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Child">
+      <MemberSignature Language="C#" Value="public Gtk.Widget Child { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Widget Child" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Widget</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The child widget.</summary>
+        <value>a <see cref="T:Gtk.Widget" /></value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="parent">
+      <MemberSignature Language="C#" Value="protected Gtk.Container parent;" />
+      <MemberSignature Language="ILAsm" Value=".field family class Gtk.Container parent" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Container</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Protected internal data; the parent container.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Parent">
+      <MemberSignature Language="C#" Value="public Gtk.Container Parent { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Gtk.Container Parent" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.Container</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The parent container.</summary>
+        <value>a <see cref="T:Gtk.Container" /></value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

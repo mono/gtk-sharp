@@ -1,0 +1,89 @@
+<Type Name="ProgressBarOrientation" FullName="Gtk.ProgressBarOrientation">
+  <TypeSignature Language="C#" Maintainer="John Luke" Value="public enum ProgressBarOrientation" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed ProgressBarOrientation extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gtk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gtk.ProgressBarOrientationGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>An enumeration representing possible orientations and growth directions for the visible <see cref="T:Gtk.ProgressBar" />.</summary>
+    <remarks>An enumeration representing possible orientations and growth directions for the visible <see cref="T:Gtk.ProgressBar" />.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="BottomToTop">
+      <MemberSignature Language="C#" Value="BottomToTop" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.ProgressBarOrientation BottomToTop = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.ProgressBarOrientation</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>A vertical <see cref="T:Gtk.ProgressBar" /> growing from bottom to top.</summary>
+        <remarks>A vertical <see cref="T:Gtk.ProgressBar" /> growing from bottom to top.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LeftToRight">
+      <MemberSignature Language="C#" Value="LeftToRight" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.ProgressBarOrientation LeftToRight = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.ProgressBarOrientation</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>A horizontal <see cref="T:Gtk.ProgressBar" /> growing from left to right.</summary>
+        <remarks>A horizontal <see cref="T:Gtk.ProgressBar" /> growing from left to right.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RightToLeft">
+      <MemberSignature Language="C#" Value="RightToLeft" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.ProgressBarOrientation RightToLeft = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.ProgressBarOrientation</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>A horizontal <see cref="T:Gtk.ProgressBar" /> growing from right to left.</summary>
+        <remarks>A horizontal <see cref="T:Gtk.ProgressBar" /> growing from right to left.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TopToBottom">
+      <MemberSignature Language="C#" Value="TopToBottom" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gtk.ProgressBarOrientation TopToBottom = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gtk.ProgressBarOrientation</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>A vertical <see cref="T:Gtk.ProgressBar" /> growing from top to bottom.</summary>
+        <remarks>A vertical <see cref="T:Gtk.ProgressBar" /> growing from top to bottom.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

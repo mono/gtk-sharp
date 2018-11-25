@@ -1,0 +1,59 @@
+<Type Name="FillRule" FullName="Gdk.FillRule">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public enum FillRule" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed FillRule extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>gdk-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Attributes>
+    <Attribute>
+      <AttributeName>GLib.GType(typeof(Gdk.FillRuleGType))</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>The method for determining which pixels are included in a region, when creating a <see cref="T:Gdk.Region" /> from a polygon.</summary>
+    <remarks>The fill rule is only relevant for polygons which overlap themselves.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="EvenOddRule">
+      <MemberSignature Language="C#" Value="EvenOddRule" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.FillRule EvenOddRule = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.FillRule</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Areas which are overlapped an odd number of times are included in the region, while areas overlapped an even number of times are not.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WindingRule">
+      <MemberSignature Language="C#" Value="WindingRule" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Gdk.FillRule WindingRule = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Gdk.FillRule</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Overlapping areas are always included.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

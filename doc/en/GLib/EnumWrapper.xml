@@ -1,0 +1,83 @@
+<Type Name="EnumWrapper" FullName="GLib.EnumWrapper">
+  <TypeSignature Language="C#" Value="public class EnumWrapper" Maintainer="auto" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit EnumWrapper extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>glib-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Obsolete("Replaced by direct enum type casts to/from GLib.Value")</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Enum wrapper</summary>
+    <remarks>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public EnumWrapper (int val, bool flags);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 val, bool flags) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="val" Type="System.Int32" />
+        <Parameter Name="flags" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="val">an object of type <see cref="T:System.Int32" /></param>
+        <param name="flags">an object of type <see cref="T:System.Boolean" /></param>
+        <summary>Creates a new <see cref="T:T:GLib.EnumWrapper" /> instance.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="flags">
+      <MemberSignature Language="C#" Value="public bool flags;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool flags" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Indicates if the enum has the <see cref="T:System.FlagsAttribute" />.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="op_Explicit">
+      <MemberSignature Language="C#" Value="public static int op_Explicit (GLib.EnumWrapper wrap);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname int32 op_Explicit(class GLib.EnumWrapper wrap) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="wrap" Type="GLib.EnumWrapper" />
+      </Parameters>
+      <Docs>
+        <param name="wrap">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

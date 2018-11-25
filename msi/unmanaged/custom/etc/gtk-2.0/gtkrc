@@ -1,0 +1,8 @@
+gtk-theme-name = "MS-Windows"
+
+style "rules-hint"
+{
+	GtkTreeView::allow-rules = 1
+}
+
+class "*" style "rules-hint"

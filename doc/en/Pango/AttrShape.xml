@@ -1,0 +1,82 @@
+<Type Name="AttrShape" FullName="Pango.AttrShape">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public class AttrShape : Pango.Attribute" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit AttrShape extends Pango.Attribute" />
+  <AssemblyInfo>
+    <AssemblyName>pango-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>Pango.Attribute</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>An attribute that imposes a shape restriction.</summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AttrShape (Pango.Rectangle ink_rect, Pango.Rectangle logical_rect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Pango.Rectangle ink_rect, valuetype Pango.Rectangle logical_rect) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue />
+      <Parameters>
+        <Parameter Name="ink_rect" Type="Pango.Rectangle" />
+        <Parameter Name="logical_rect" Type="Pango.Rectangle" />
+      </Parameters>
+      <Docs>
+        <param name="ink_rect">a <see cref="T:Pango.Rectangle" /></param>
+        <param name="logical_rect">a <see cref="T:Pango.Rectangle" /></param>
+        <summary>Creates a new shape attribute</summary>
+        <remarks>
+	    A shape is used to impose a particular ink and logical
+	    rectangle on the result of shaping a particular glyph. This
+	    might be used, for instance, for embedding a picture or a
+	    widget inside a <see cref="T:Pango.Layout" />.
+	</remarks>
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="InkRect">
+      <MemberSignature Language="C#" Value="public Pango.Rectangle InkRect { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Pango.Rectangle InkRect" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Rectangle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The ink rectangle to restrict to</summary>
+        <value>a <see cref="T:Pango.Rectangle" /></value>
+        <remarks />
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+    <Member MemberName="LogicalRect">
+      <MemberSignature Language="C#" Value="public Pango.Rectangle LogicalRect { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype Pango.Rectangle LogicalRect" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Rectangle</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The logical rectangle to restrict to</summary>
+        <value>a <see cref="T:Pango.Rectangle" /></value>
+        <remarks />
+        <since version="Gtk# 2.4" />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

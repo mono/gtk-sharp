@@ -1,0 +1,131 @@
+<Type Name="LayoutRun" FullName="Pango.LayoutRun">
+  <TypeSignature Language="C#" Maintainer="auto" Value="public struct LayoutRun" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit LayoutRun extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>pango-sharp</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>2.12.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>The <see cref="T:Pango.LayoutRun" /> structure represents a single run within a <see cref="T:Pango.LayoutLine" />.</summary>
+    <remarks>It is simply an alternate name for <see cref="T:Pango.GlyphItem" />, present for backwards compatibility. See the <see cref="T:Pango.GlyphItem" /> docs for details on the fields.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="glyphs">
+      <MemberSignature Language="C#" Value="public Pango.GlyphString glyphs { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Pango.GlyphString glyphs" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Replaced by Glyphs property")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Pango.GlyphString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Obsolete alias for <see cref="M:Pango.LayoutRun.Glyphs" /></summary>
+        <value>an object of type <see cref="T:Pango.GlyphString" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Glyphs">
+      <MemberSignature Language="C#" Value="public Pango.GlyphString Glyphs { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Pango.GlyphString Glyphs" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.GlyphString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>the glyphs obtained by shaping the text corresponding to item.</summary>
+        <value>an object of type <see cref="T:Pango.GlyphString" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="item">
+      <MemberSignature Language="C#" Value="public Pango.Item item { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Pango.Item item" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Replaced by Item property")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>Pango.Item</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Obsolete alias for <see cref="M:Pango.LayoutRun.Item" /></summary>
+        <value>a <see cref="T:Pango.Item" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public Pango.Item Item { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Pango.Item Item" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.Item</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>A <see cref="T:Pango.Item" /> that provides information about a segment of text.</summary>
+        <value>a <see cref="T:Pango.Item" /></value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="New">
+      <MemberSignature Language="C#" Value="public static Pango.LayoutRun New (IntPtr raw);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Pango.LayoutRun New(native int raw) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.LayoutRun</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="raw" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="raw">an object of type <see cref="T:System.IntPtr" /></param>
+        <summary>Internal method</summary>
+        <returns>an object of type <see cref="T:Pango.LayoutRun" /></returns>
+        <remarks>This is an internal method, and should not be used by user code.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Zero">
+      <MemberSignature Language="C#" Value="public static Pango.LayoutRun Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype Pango.LayoutRun Zero" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.12.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Pango.LayoutRun</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns a new <see cref="T:Pango.LayoutRun" /></summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>
