@@ -24,6 +24,7 @@
 namespace Gdk {
 
 	using System;
+	using System.Collections.Generic;
 	using System.Runtime.InteropServices;
 
 	public class Event : GLib.IWrapper {
@@ -41,13 +42,20 @@ namespace Gdk {
 		static extern IntPtr gdk_event_get_type ();
 
 		IntPtr raw;
+		bool owned;
 
 		[DllImport ("libgdk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern void gdk_event_free (IntPtr raw);
 
 		~Event()
 		{
-			gdk_event_free (raw);
+			lock (lockObject) {
+				PendingFrees.Add (this);
+				if (!idleQueued) {
+					idleQueued = true;
+					GLib.Timeout.Add (50, PerformQueuedFreesHandler);
+				}
+			}
 		}
 
 		public Event(IntPtr raw) : this(raw, false)
@@ -57,8 +65,37 @@ namespace Gdk {
 		public Event(IntPtr raw, bool owned) 
 		{
 			this.raw = raw;
+			this.owned = owned;
 			if (!owned)
 				System.GC.SuppressFinalize (this);
+		}
+
+		static object lockObject = new object ();
+		static List<Event> PendingFrees = new List<Event> ();
+		static bool idleQueued;
+
+		static GLib.TimeoutHandler PerformQueuedFreesHandler = PerformQueuedFrees;
+		static bool PerformQueuedFrees ()
+		{
+			List<Event> references;
+			lock (lockObject) {
+				references = PendingFrees;
+				PendingFrees = new List<Event> ();
+				idleQueued = false;
+			}
+
+			foreach (var @event in references)
+				gdk_event_free (@event.Handle);
+
+			return false;
+		}
+
+		public void Dispose ()
+		{
+			if (owned) {
+				System.GC.SuppressFinalize (this);
+				gdk_event_free (Handle);
+			}
 		}
 
 		public IntPtr Handle {
