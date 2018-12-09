@@ -70,11 +70,11 @@ namespace Gdk {
 				System.GC.SuppressFinalize (this);
 		}
 
-		static object lockObject = new object ();
+		static readonly object lockObject = new object ();
 		static List<Event> PendingFrees = new List<Event> ();
 		static bool idleQueued;
 
-		static GLib.TimeoutHandler PerformQueuedFreesHandler = PerformQueuedFrees;
+		static readonly GLib.TimeoutHandler PerformQueuedFreesHandler = PerformQueuedFrees;
 		static bool PerformQueuedFrees ()
 		{
 			List<Event> references;
@@ -84,8 +84,12 @@ namespace Gdk {
 				idleQueued = false;
 			}
 
-			foreach (var @event in references)
-				gdk_event_free (@event.Handle);
+			foreach (var @event in references) {
+				if (@event.Handle != IntPtr.Zero) {
+					gdk_event_free (@event.Handle);
+					@event.Handle = IntPtr.Zero;
+				}
+			}
 
 			return false;
 		}
@@ -94,13 +98,19 @@ namespace Gdk {
 		{
 			if (owned) {
 				System.GC.SuppressFinalize (this);
-				gdk_event_free (Handle);
+				if (Handle != IntPtr.Zero) {
+					gdk_event_free (Handle);
+					Handle = IntPtr.Zero;
+				}
 			}
 		}
 
 		public IntPtr Handle {
 			get {
 				return raw;
+			}
+			private set {
+				raw = value;
 			}
 		}
 
