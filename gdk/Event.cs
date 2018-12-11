@@ -41,6 +41,9 @@ namespace Gdk {
 		[DllImport("libgdk-win32-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gdk_event_get_type ();
 
+		[DllImport ("libgdk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern IntPtr gdk_event_copy (IntPtr evt);
+
 		IntPtr raw;
 		bool owned;
 
@@ -62,12 +65,17 @@ namespace Gdk {
 		{
 		}
 
-		public Event(IntPtr raw, bool owned) 
+		public Event(IntPtr raw, bool owned)
 		{
-			this.raw = raw;
 			this.owned = owned;
-			if (!owned)
+
+			if (owned) {
+				this.raw = gdk_event_copy (raw);
+				gdk_event_free (raw);
+			} else {
+				this.raw = raw;
 				System.GC.SuppressFinalize (this);
+			}
 		}
 
 		static readonly object lockObject = new object ();

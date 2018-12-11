@@ -27,7 +27,12 @@ namespace Gdk {
 	public class EventOwnerChange : Event {
 
 		public EventOwnerChange (IntPtr handle) : base (handle) { }
-		public EventOwnerChange (IntPtr raw, bool owned) : base (raw, owned) { }
+		// Intentionally false here, event though it will leak.
+		// The problem is that we cannot control the lifetime of the event via
+		// a class, it would need to be a ref struct to make it live only on the stack.
+		// If we allow it to be true, we would finalize the event after it was probably
+		// freed in native.
+		public EventOwnerChange (IntPtr raw, bool owned) : base (raw, false) { }
 
 		struct NativeStruct {
 			public Gdk.EventType type;
