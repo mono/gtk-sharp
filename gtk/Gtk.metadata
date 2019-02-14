@@ -842,7 +842,7 @@
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='SetEvents']/*/*[@type='gint']" name="type">GdkEventMask</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='Set']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='SetState']" name="hidden">1</attr>
-  <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='SizeRequest']/*/*[@name='requisition']" name="pass_as">out</attr>
+  <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='SizeRequest']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='StyleGet']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='StyleGetProperty']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkWidget']/method[@name='StyleGetValist']" name="hidden">1</attr>
