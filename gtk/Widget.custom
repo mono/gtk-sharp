@@ -400,7 +400,7 @@ static extern void gtk_widget_size_request(IntPtr raw, ref Gtk.Requisition requi
 public Gtk.Requisition SizeRequest()
 {
         Gtk.Application.AssertMainThread();
-        Gtk.Requisition requisition = default(Requisition);
+        Gtk.Requisition requisition = Requisition;
         gtk_widget_size_request(Handle, ref requisition);
         return requisition;
 }
