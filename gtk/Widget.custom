@@ -393,3 +393,14 @@ public void ModifyText (Gtk.StateType state)
 {
 	gtk_widget_modify_text_ptr (Handle, (int) state, IntPtr.Zero);
 }
+
+[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+static extern void gtk_widget_size_request(IntPtr raw, ref Gtk.Requisition requisition);
+
+public Gtk.Requisition SizeRequest()
+{
+        Gtk.Application.AssertMainThread();
+        Gtk.Requisition requisition = default(Requisition);
+        gtk_widget_size_request(Handle, ref requisition);
+        return requisition;
+}
