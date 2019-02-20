@@ -9,6 +9,8 @@
 using System;
 
 using Gtk;
+// disambiguate, Gtk.Range vs System.Range
+using Range=Gtk.Range;
 
 namespace WidgetViewer {
 
