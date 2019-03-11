@@ -86,6 +86,10 @@ simple_method_enter (MonoProfiler *prof, MonoMethod *method)
 	}
 }
 
+#ifndef MONO_PROFILE_ENTER_LEAVE
+#define MONO_PROFILE_ENTER_LEAVE (1 << 12)
+#endif
+
 void
 mono_profiler_startup (const char *desc)
 {
