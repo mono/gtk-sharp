@@ -3,7 +3,7 @@ SUBDIRS = test GtkDemo pixmaps valtest opaquetest
 if ENABLE_MONO_CAIRO
 cairo_ref=-r:$(top_builddir)/cairo/Mono.Cairo.dll
 else
-cairo_ref=$(MONO_CAIRO_LIBS)
+cairo_ref=$(addsuffix .dll, $(MONO_CAIRO_LIBS))
 endif
 
 if ENABLE_GLADE

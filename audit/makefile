@@ -1,4 +1,4 @@
-MCS=mcs
+MCS=csc
 
 all: extract-missing.exe mono-api-info.exe mono-api-diff.exe
 

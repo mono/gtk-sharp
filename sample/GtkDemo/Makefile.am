@@ -9,7 +9,7 @@ assemblies = \
 	$(top_builddir)/atk/atk-sharp.dll $(top_builddir)/gdk/gdk-sharp.dll \
 	$(top_builddir)/gtk/gtk-sharp.dll $(local_mono_cairo)
 
-references = $(addprefix -r:, $(assemblies)) @MONO_CAIRO_LIBS@
+references = $(addprefix -r:, $(assemblies)) $(addsuffix .dll, @MONO_CAIRO_LIBS@)
 TARGETS = GtkDemo.exe
 DEBUGS = $(addsuffix .mdb, $(TARGETS)) 
 CLEANFILES = $(TARGETS) $(DEBUGS)
