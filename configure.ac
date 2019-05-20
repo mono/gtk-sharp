@@ -133,7 +133,7 @@ if test "x$RUNTIME" != "no" ; then
 	RUNTIME="mono$RUNTIME_DEBUG_FLAGS"
 fi
 
-AC_PATH_PROG(CSC, mcs, no)
+AC_PATH_PROG(CSC, csc, no)
 if test `uname -s` = "Darwin"; then
 	LIB_PREFIX=
 	LIB_SUFFIX=.dylib
