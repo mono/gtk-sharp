@@ -53,7 +53,7 @@ $(POLICY_ASSEMBLIES) : policy.%.$(ASSEMBLY): policy.%.config $(SNK)
 	$(AL) -link:policy.$*.config -version:$* -out:$@ -keyfile:$(SNK)
 
 build_sources = $(addprefix $(srcdir)/, $(sources)) AssemblyInfo.cs
-build_references = $(addprefix -r:, $(references)) $(MONO_CAIRO_LIBS)
+build_references = $(addprefix -r:, $(references)) $(addsuffix .dll, $(MONO_CAIRO_LIBS))
 
 $(ASSEMBLY): generated-stamp $(SNK) $(build_sources) $(references)
 	@rm -f $(ASSEMBLY).mdb
