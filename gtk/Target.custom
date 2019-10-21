@@ -8,7 +8,13 @@
 			Gtk.TargetEntry ret = Gtk.TargetEntry.New (raw_ret);
 			return ret;
 		}
-		
+
+		[Obsolete]
+		public static void TableFree(Gtk.TargetEntry targets, int n_targets) {
+			Gtk.Application.AssertMainThread();
+			TableFree(new Gtk.TargetEntry[] { targets });
+		}
+
 		public static Gtk.TargetEntry[] TableNewFromList(Gtk.TargetList list) {
 			Gtk.Application.AssertMainThread();
 			// there is an explicit operator

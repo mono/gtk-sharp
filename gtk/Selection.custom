@@ -19,6 +19,6 @@
 // Boston, MA 02111-1307, USA.
 
 	[Obsolete ("Please use the AddTargets(Widget, Atom, TargetEntry[]) overload")]
-	public static void AddTargets(Gtk.Widget widget, Gdk.Atom selection, Gtk.TargetEntry targets, int n_targets) {
+	public static void AddTargets(Gtk.Widget widget, Gdk.Atom selection, Gtk.TargetEntry targets, uint ntargets) {
 		AddTargets (widget, selection, new Gtk.TargetEntry[] { targets });
 	}

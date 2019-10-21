@@ -322,6 +322,7 @@
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='SetWithOwner']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForImage']/return-type" name="owned">true</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForTargets']" name="deprecated">1</attr>
+  <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForTargets']/*/*[@name='targets']" name="pass_as">out</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForContents']/return-type" name="owned">true</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForContents']/return-type" name="owned">true</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForRichText']" name="hidden">1</attr>
