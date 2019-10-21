@@ -314,13 +314,14 @@
   <attr path="/api/namespace/object[@cname='GtkCheckMenuItem']/method[@name='Toggled']" name="name">EmitToggled</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='RequestContents']/*/*[@name='callback']" name="scope">async</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='RequestImage']/*/*[@name='callback']" name="scope">async</attr>
+  <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='RequestTargets']" name="deprecated">1</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='RequestTargets']/*/*[@name='callback']" name="scope">async</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='RequestText']/*/*[@name='callback']" name="scope">async</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='SetCanStore']/*/*[@name='targets']" name="array">1</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='SetWithData']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='SetWithOwner']" name="hidden">1</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForImage']/return-type" name="owned">true</attr>
-  <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForTargets']" name="deprecated">true</attr>
+  <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForTargets']" name="deprecated">1</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForContents']/return-type" name="owned">true</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForContents']/return-type" name="owned">true</attr>
   <attr path="/api/namespace/object[@cname='GtkClipboard']/method[@name='WaitForRichText']" name="hidden">1</attr>
@@ -924,10 +925,7 @@
   <attr path="/api/namespace/*[@cname='GtkTargetList']/method[@name='AddTable']/*/*[@name='targets']" name="array">1</attr>
   <attr path="/api/namespace/*[@cname='GtkTargetList']/method[@name='AddTable']/*/*[@name='ntargets']" name="name">n_targets</attr>
   <attr path="/api/namespace/*[@cname='GtkTarget_']/method[@name='TableFree']/*/*[@name='targets']" name="array">1</attr>
-  <!--
-  <attr path="/api/namespace/*[@cname='GtkTarget_']/method[@name='TableNewFromList']/*/*[@name='targets']" name="array">1</attr>
-  <attr path="/api/namespace/*[@cname='GtkTarget_']/method[@name='TableNewFromList']/return-type" name="array">1</attr>
-  -->
+  <attr path="/api/namespace/*[@cname='GtkTarget_']/method[@name='TableNewFromList']" name="hidden">1</attr>
   <attr path="/api/namespace/struct[@cname='GtkTextAppearance']/field[@cname='underline']" name="type">PangoUnderline</attr>
   <attr path="/api/namespace/struct[@cname='GtkTextAppearance']/field[@cname='draw_bg']" name="hidden">1</attr>
   <attr path="/api/namespace/struct[@cname='GtkTextAppearance']/field[@cname='inside_selection']" name="hidden">1</attr>

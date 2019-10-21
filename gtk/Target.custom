@@ -1,0 +1,17 @@
+		[DllImport("libgtk-win32-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
+		static extern IntPtr gtk_target_table_new_from_list(IntPtr list, out int n_targets);
+
+		[Obsolete]
+		public static Gtk.TargetEntry TableNewFromList(Gtk.TargetList list, out int n_targets) {
+			Gtk.Application.AssertMainThread();
+			IntPtr raw_ret = gtk_target_table_new_from_list(list == null ? IntPtr.Zero : list.Handle, out n_targets);
+			Gtk.TargetEntry ret = Gtk.TargetEntry.New (raw_ret);
+			return ret;
+		}
+		
+		public static Gtk.TargetEntry[] TableNewFromList(Gtk.TargetList list) {
+			Gtk.Application.AssertMainThread();
+			// there is an explicit operator
+			return (Gtk.TargetEntry[])list;
+		}
+
