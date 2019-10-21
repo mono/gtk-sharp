@@ -116,6 +116,7 @@
 			gtk_clipboard_request_rich_text (Handle, buffer == null ? IntPtr.Zero : buffer.Handle, rt_rcvd_marshaler, (IntPtr) GCHandle.Alloc (cb));
 		}
 
+		[Obsolete("Use CanStore setter")]
 		public void SetCanStore (Gtk.TargetEntry targets, int n_targets)
 		{
 			CanStore = new Gtk.TargetEntry[] { targets };
