@@ -121,3 +121,38 @@
 		{
 			CanStore = new Gtk.TargetEntry[] { targets };
 		}
+
+		[DllImport("libgtk-win32-2.0-0.dll", EntryPoint="gtk_clipboard_wait_for_targets", CallingConvention = CallingConvention.Cdecl)]
+		static extern bool gtk_clipboard_wait_for_targets2(IntPtr raw, out IntPtr targets, out int n_targets);
+
+		public bool WaitForTargets(out Gdk.Atom[] targets) {
+			Gtk.Application.AssertMainThread();
+
+			IntPtr raw_targets;
+			int n_targets;
+
+			bool raw_ret = gtk_clipboard_wait_for_targets2(Handle, out raw_targets, out n_targets);
+
+			targets = new Gdk.Atom [n_targets];
+			for (int i = 0; i < n_targets; ++i) {
+				targets[i] = (Gdk.Atom) GLib.Opaque.GetOpaque (IntPtr.Add(raw_targets, IntPtr.Size * i), typeof(Gdk.Atom), true);
+			}
+			GLib.Marshaller.Free (raw_targets);
+
+			return raw_ret;
+		}
+
+		[DllImport("libgtk-win32-2.0-0.dll", EntryPoint="gtk_clipboard_request_targets", CallingConvention = CallingConvention.Cdecl)]
+		static extern void gtk_clipboard_request_targets2(IntPtr raw, GtkSharp.ClipboardTargetsReceivedFuncNative2 cb, IntPtr user_data);
+
+		public void RequestTargets(Gtk.ClipboardTargetsReceivedFunc2 cb) {
+			Gtk.Application.AssertMainThread();
+			IntPtr gch = IntPtr.Zero;
+			if (cb != null) {
+				gch = (IntPtr)GCHandle.Alloc (cb);
+			}
+			gtk_clipboard_request_targets2(Handle, (cb == null) ? null : GtkSharp.ClipboardTargetsReceivedFuncWrapper2.NativeDelegate, (IntPtr)gch);
+		}
+
+
+

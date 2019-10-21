@@ -33,6 +33,7 @@ sources = 				\
 	RowsReorderedHandler.cs		\
 	StockManager.cs			\
 	TextBufferSerializeFunc.cs		\
+	GtkSharp.ClipboardTargetsReceivedFuncs.cs \
 	GtkSharp.TextBufferSerializeFuncNative.cs \
 	ThreadNotify.cs			\
 	ToggleActionEntry.cs		\
