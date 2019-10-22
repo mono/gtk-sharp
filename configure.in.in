@@ -232,7 +232,7 @@ AM_CONDITIONAL(ENABLE_MONODOC, test "x$enable_monodoc" = "xyes")
 AM_CONDITIONAL(ENABLE_MSI, test "x$enable_msi" = "xyes")
 AM_CONDITIONAL(ENABLE_MONOGETOPTIONS, test "x$has_mono" = "xtrue")
 
-CSFLAGS="$DEBUG_FLAGS $CSDEFINES $WIN64DEFINES -unsafe"
+CSFLAGS="$DEBUG_FLAGS $CSDEFINES $WIN64DEFINES -unsafe -optimize+"
 
 if test "x$NET_4_6_SUPPORT" = "xtrue" ; then
   CSFLAGS="$CSFLAGS -define:HAVE_NET_4_6"
