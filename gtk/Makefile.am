@@ -33,6 +33,7 @@ sources = 				\
 	RowsReorderedHandler.cs		\
 	StockManager.cs			\
 	TextBufferSerializeFunc.cs		\
+	GtkSharp.ClipboardTargetsReceivedFuncs.cs \
 	GtkSharp.TextBufferSerializeFuncNative.cs \
 	ThreadNotify.cs			\
 	ToggleActionEntry.cs		\
@@ -117,6 +118,7 @@ customs = 				\
 	RecentChooserWidget.custom	\
 	RecentInfo.custom			\
 	ScrolledWindow.custom		\
+	Selection.custom			\
 	SelectionData.custom		\
 	Settings.custom			\
 	SpinButton.custom		\
@@ -125,6 +127,7 @@ customs = 				\
 	StockItem.custom		\
 	Style.custom			\
 	Table.custom			\
+	Target.custom		\
 	TargetEntry.custom		\
 	TargetList.custom		\
 	TargetPair.custom		\
