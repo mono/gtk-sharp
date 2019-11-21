@@ -24,6 +24,7 @@ namespace GLib {
 	using System;
 
 	[AttributeUsage (AttributeTargets.Assembly)]
+	[Obsolete("No longer used, use TypeInitializerAttribute")]
 	public sealed class IgnoreClassInitializersAttribute : Attribute 
 	{
 		public IgnoreClassInitializersAttribute () {}
