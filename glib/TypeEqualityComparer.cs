@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GLib
 {
-	class TypeEqualityComparer : IEqualityComparer<Type>
+	sealed class TypeEqualityComparer : IEqualityComparer<Type>
 	{
 		public bool Equals (Type x, Type y)
 		{
