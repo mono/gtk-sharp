@@ -256,7 +256,9 @@ namespace GLib {
 			GLib.GType.Register (gtype, t);
 			AddProperties (gtype, t);
 			ConnectDefaultHandlers (gtype, t);
-			InvokeClassInitializers (gtype, t);
+			if (GType.FullCompatStartup) {
+				InvokeClassInitializers (gtype, t);
+			}
 			AddInterfaces (gtype, t);
 			g_types[t] = gtype;
 			return gtype;

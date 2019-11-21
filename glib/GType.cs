@@ -32,6 +32,8 @@ namespace GLib {
 	[StructLayout(LayoutKind.Sequential)]
 	public struct GType : IEquatable<GType> {
 
+		static internal readonly bool FullCompatStartup = Environment.GetEnvironmentVariable ("GTKSHARP_SLIM_STARTUP") == null;
+
 		IntPtr val;
 
 		public GType (IntPtr val)
@@ -119,23 +121,22 @@ namespace GLib {
 				return gtype;
 			}
 
+			GTypeTypeAttribute geattr;
 			if (type.IsEnum) {
-				GTypeTypeAttribute geattr;
 				GTypeAttribute gattr;
 				if ((geattr = (GTypeTypeAttribute)Attribute.GetCustomAttribute (type, typeof (GTypeTypeAttribute), false)) != null) {
 					gtype = geattr.Type;
-				} else if ((gattr = (GTypeAttribute)Attribute.GetCustomAttribute (type, typeof (GTypeAttribute), false)) != null) {
+				} else if (FullCompatStartup && (gattr = (GTypeAttribute)Attribute.GetCustomAttribute (type, typeof (GTypeAttribute), false)) != null) {
 					// This should never happen for generated code, keep it in place for other users of the API.
 					var pi = gattr.WrapperType.GetProperty ("GType", BindingFlags.Public | BindingFlags.Static);
 					gtype = (GType)pi.GetValue (null, null);
 				} else
 					gtype = ManagedValue.GType;
 			} else {
-				GTypeTypeAttribute geattr;
 				PropertyInfo pi;
 				if ((geattr = (GTypeTypeAttribute)Attribute.GetCustomAttribute (type, typeof (GTypeTypeAttribute), false)) != null) {
 					gtype = geattr.Type;
-				} else if ((pi = type.GetProperty ("GType", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.FlattenHierarchy)) != null) {
+				} else if (FullCompatStartup  && (pi = type.GetProperty ("GType", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.FlattenHierarchy)) != null) {
 					gtype = (GType)pi.GetValue (null, null);
 				} else if (type.IsSubclassOf (typeof (GLib.Opaque)))
 					gtype = GType.Pointer;
@@ -188,6 +189,11 @@ namespace GLib {
 			}
 
 			if (result == null) {
+				var assemblySet = new HashSet<string> ();
+				foreach (var asm in assemblies) {
+					assemblySet.Add (asm.GetName().Name);
+				}
+
 				// Because of lazy loading of references, it's possible the type's assembly
 				// needs to be loaded.  We will look for it by name in the references of
 				// the currently loaded assemblies.  Hopefully a recursive traversal is
@@ -198,7 +204,7 @@ namespace GLib {
 				string asm_name = ns.ToLower ().Replace ('.', '-') + "-sharp";
 				foreach (Assembly asm in assemblies) {
 					foreach (AssemblyName ref_name in asm.GetReferencedAssemblies ()) {
-						if (ref_name.Name != asm_name)
+						if (ref_name.Name != asm_name || !assemblySet.Add(ref_name.Name))
 							continue;
 						try {
 							string asm_dir = Path.GetDirectoryName (asm.Location);
