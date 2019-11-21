@@ -78,13 +78,10 @@ namespace GLib {
 				return obj;
 
 			obj = GLib.ObjectManager.CreateObject (o);
-			if (obj == null) {
+			if (obj == null || owned_ref) {
 				g_object_unref (o);
-				return null;
 			}
 
-			if (owned_ref)
-				g_object_unref (o);
 			return obj;
 		}
 
