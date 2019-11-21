@@ -92,13 +92,13 @@ namespace GLib {
 
 		private static void ConnectDefaultHandlers (GType gtype, System.Type t)
 		{
-			object [] parms = new object [1];
 			foreach (MethodInfo minfo in t.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.DeclaredOnly)) {
 				MethodInfo baseinfo = minfo.GetBaseDefinition ();
 				if (baseinfo == minfo)
 					continue;
 
 				foreach (object attr in baseinfo.GetCustomAttributes (typeof (DefaultSignalHandlerAttribute), false)) {
+					object [] parms = new object [1];
 					DefaultSignalHandlerAttribute sigattr = attr as DefaultSignalHandlerAttribute;
 					MethodInfo connector = sigattr.Type.GetMethod (sigattr.ConnectionMethod, BindingFlags.Static | BindingFlags.NonPublic);
 					parms [0] = gtype;
