@@ -205,6 +205,9 @@ namespace GLib {
 
 		static void AddInterfaces (GType gtype, Type t)
 		{
+			if (!t.IsDefined (typeof (GInterfaceAttribute), true))
+				return;
+
 			foreach (Type iface in t.GetInterfaces ()) {
 				if (!iface.IsDefined (typeof (GInterfaceAttribute), true) || iface.IsAssignableFrom (t.BaseType))
 					continue;
