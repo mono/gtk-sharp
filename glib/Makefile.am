@@ -74,6 +74,7 @@ sources =		 			\
 	TypeConverter.cs			\
 	TypeFundamentals.cs			\
 	TypeInitializerAttribute.cs		\
+	TypeEqualityComparer.cs			\
 	UnwrappedObject.cs			\
 	ValueArray.cs				\
 	Value.cs

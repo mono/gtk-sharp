@@ -66,8 +66,8 @@ namespace GLib {
 		public static readonly GType Param = new GType ((IntPtr) TypeFundamentals.TypeParam);
 		public static readonly GType Object = new GType ((IntPtr) TypeFundamentals.TypeObject);
 
-		static Dictionary<IntPtr, Type> types = new Dictionary<IntPtr, Type> (IntPtrEqualityComparer.Instance);
-		static Dictionary<Type, GType> gtypes = new Dictionary<Type, GType> ();
+		static readonly Dictionary<IntPtr, Type> types = new Dictionary<IntPtr, Type> (IntPtrEqualityComparer.Instance);
+		static readonly Dictionary<Type, GType> gtypes = new Dictionary<Type, GType> (new TypeEqualityComparer());
 
 		// TODO: Add ignore map for assemblies, so we can skip assemblies which don't need to be scanned for types.
 
