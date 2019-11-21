@@ -178,7 +178,7 @@ namespace GLib {
 
 			string native_name = Marshaller.Utf8PtrToString (g_type_name (typeid));
 			string type_name = GetQualifiedName (native_name);
-			Assembly[] assemblies = (Assembly[]) AppDomain.CurrentDomain.GetAssemblies ().Clone ();
+			Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies ();
 			foreach (Assembly asm in assemblies) {
 				result = asm.GetType (type_name);
 				if (result != null)
