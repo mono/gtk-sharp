@@ -69,6 +69,8 @@ namespace GLib {
 		static Dictionary<IntPtr, Type> types = new Dictionary<IntPtr, Type> (IntPtrEqualityComparer.Instance);
 		static Dictionary<Type, GType> gtypes = new Dictionary<Type, GType> ();
 
+		// TODO: Add ignore map for assemblies, so we can skip assemblies which don't need to be scanned for types.
+
 		public static void Register (GType native_type, System.Type type)
 		{
 			if (native_type != GType.Pointer && native_type != GType.Boxed && native_type != ManagedValue.GType)
