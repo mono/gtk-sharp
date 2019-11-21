@@ -380,7 +380,7 @@ namespace GLib {
 			}
 			set {
 				if (handle != null) {
-					if (handle.handle == value)
+					if (handle.tref.Handle == value)
 						return;
 
 					handle.Dispose ();
@@ -424,7 +424,7 @@ namespace GLib {
 
 		public IntPtr Handle {
 			get {
-				return handle != null ? handle.handle : IntPtr.Zero;
+				return handle != null ? handle.tref.Handle : IntPtr.Zero;
 			}
 		}
 
