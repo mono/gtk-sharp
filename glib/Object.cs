@@ -109,14 +109,24 @@ namespace GLib {
 
 		private static void InvokeClassInitializers (GType gtype, System.Type t)
 		{
+			object[] parms = {gtype, t};
+
 			const BindingFlags flags = BindingFlags.Static | BindingFlags.NonPublic;
 
 			foreach (TypeInitializerAttribute tia in t.GetCustomAttributes (typeof (TypeInitializerAttribute), true)) {
 				MethodInfo m = tia.Type.GetMethod (tia.MethodName, flags);
-				if (m != null) {
-					object [] parms = { gtype, t };
+				if (m != null)
 					m.Invoke (null, parms);
-				}
+			}
+
+			for (Type curr = t; curr != typeof(GLib.Object); curr = curr.BaseType) {
+
+				if (curr.Assembly.IsDefined (typeof (IgnoreClassInitializersAttribute), false))
+					continue;
+
+				foreach (MethodInfo minfo in curr.GetMethods(flags))
+					if (minfo.IsDefined (typeof (ClassInitializerAttribute), true))
+						minfo.Invoke (null, parms);
 			}
  		}
 
