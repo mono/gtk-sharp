@@ -97,11 +97,9 @@ namespace GLib {
 				if (baseinfo == minfo)
 					continue;
 
-				foreach (object attr in baseinfo.GetCustomAttributes (typeof (DefaultSignalHandlerAttribute), false)) {
-					object [] parms = new object [1];
-					DefaultSignalHandlerAttribute sigattr = attr as DefaultSignalHandlerAttribute;
+				foreach (DefaultSignalHandlerAttribute sigattr in baseinfo.GetCustomAttributes (typeof (DefaultSignalHandlerAttribute), false)) {
+					object [] parms = new object[] { gtype };
 					MethodInfo connector = sigattr.Type.GetMethod (sigattr.ConnectionMethod, BindingFlags.Static | BindingFlags.NonPublic);
-					parms [0] = gtype;
 					connector.Invoke (null, parms);
 					break;
 				}
