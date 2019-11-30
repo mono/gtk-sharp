@@ -25,6 +25,9 @@ namespace GLib
 {
 	sealed class PointerWrapper : IDisposable
 	{
+		static Action<IntPtr> ObjectCreated;
+		static Action<IntPtr> ObjectDestroyed;
+
 		internal readonly ToggleRef tref;
 
 		static readonly Dictionary<IntPtr, ToggleRef> Objects = new Dictionary<IntPtr, ToggleRef> (IntPtrEqualityComparer.Instance);
@@ -40,6 +43,9 @@ namespace GLib
 				return null;
 
 			PointerWrapper safeHandle = new PointerWrapper (obj, handle);
+
+			if (ObjectCreated != null)
+				ObjectCreated.Invoke (handle);
 
 			lock (Objects)
 				Objects [handle] = safeHandle.tref;
@@ -86,6 +92,9 @@ namespace GLib
 			lock (Objects)
 				Objects.Remove (tref.Handle);
 
+			if (ObjectDestroyed != null)
+				ObjectDestroyed.Invoke (tref.Handle);
+
 			lock (lockObject) {
 				PendingDestroys.Add (tref);
 				if (!idle_queued) {
@@ -97,9 +106,10 @@ namespace GLib
 
 		public void Dispose ()
 		{
-			GC.SuppressFinalize (this);
 			if (tref.Handle == IntPtr.Zero)
 				return;
+
+			GC.SuppressFinalize (this);
 
 			lock (Objects)
 				Objects.Remove (tref.Handle);

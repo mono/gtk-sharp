@@ -114,7 +114,7 @@ namespace GLib {
 				Invoked (this, args);
 			}
 
-			unsafe static readonly ClosureMarshal Marshaler = new ClosureMarshal (MarshalCallback);
+			unsafe static readonly ClosureMarshal Marshaler = MarshalCallback;
 
 			[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 			unsafe delegate void ClosureMarshal (IntPtr closure, Value* return_val, uint n_param_vals, Value* param_values, IntPtr invocation_hint, IntPtr marshal_data);
@@ -164,7 +164,7 @@ namespace GLib {
 					closure.Dispose ();
 			}
 
-			static readonly ClosureNotify Notify = new ClosureNotify (NotifyCallback);
+			static readonly ClosureNotify Notify = NotifyCallback;
 
 			[DllImport ("glibsharpglue-2", CallingConvention = CallingConvention.Cdecl)]
 			static extern IntPtr glibsharp_closure_new (ClosureMarshal marshaler, ClosureNotify notify, IntPtr gch);

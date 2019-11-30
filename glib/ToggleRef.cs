@@ -97,6 +97,8 @@ namespace GLib {
 				g_object_remove_toggle_ref (handle, ToggleNotifyCallback, (IntPtr) gch);
 			reference = null;
 			gch.Free ();
+
+			handle = IntPtr.Zero;
 		}
 
 		internal void Harden ()
