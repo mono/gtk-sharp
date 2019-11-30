@@ -28,18 +28,36 @@ namespace GLib {
 
 	public class Markup {
 		private Markup () {}
+
+		delegate IntPtr EscapeTextDelegate (IntPtr text, IntPtr len);
 		
-		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
+		[DllImport("libglib-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
 		static extern IntPtr g_markup_escape_text (IntPtr text, IntPtr len);
-		
+
+		[DllImport ("libglib-2.0-0.dll", EntryPoint="g_markup_escape_text", CallingConvention = CallingConvention.Cdecl)]
+		static extern IntPtr g_markup_escape_text_win32 (IntPtr text, int len);
+
+		static IntPtr EscapeTextWindows (IntPtr text, IntPtr len)
+		{
+			return g_markup_escape_text_win32 (text, (int)len);
+		}
+
+		static IntPtr EscapeTextUnix (IntPtr text, IntPtr len)
+		{
+			return g_markup_escape_text (text, len);
+		}
+
+		static readonly EscapeTextDelegate escapeText = System.IO.Path.DirectorySeparatorChar == '\\'
+			? new EscapeTextDelegate (EscapeTextWindows) : EscapeTextUnix;
+
 		static public string EscapeText (string s)
 		{
 			if (s == null)
-				return String.Empty;
+				return string.Empty;
 
 			IntPtr len;
 			IntPtr native = Marshaller.StringToPtrGStrdup (s, out len);
-			string result = Marshaller.PtrToStringGFree (g_markup_escape_text (native, len));
+			string result = Marshaller.PtrToStringGFree (escapeText (native, len));
 			Marshaller.Free (native);
 			return result;
 		}
