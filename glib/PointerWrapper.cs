@@ -23,19 +23,18 @@ using System.Collections.Generic;
 
 namespace GLib
 {
-	class PointerWrapper : IDisposable
+	sealed class PointerWrapper : IDisposable
 	{
-		internal ToggleRef tref;
-		internal IntPtr handle;
-
 		static Action<IntPtr> ObjectCreated;
 		static Action<IntPtr> ObjectDestroyed;
 
+		internal readonly ToggleRef tref;
+
 		static readonly Dictionary<IntPtr, ToggleRef> Objects = new Dictionary<IntPtr, ToggleRef> (IntPtrEqualityComparer.Instance);
 
-		protected PointerWrapper (IntPtr handle)
+		PointerWrapper (Object obj, IntPtr handle)
 		{
-			this.handle = handle;
+			this.tref = new ToggleRef (obj, handle);
 		}
 
 		internal static PointerWrapper Create (Object obj, IntPtr handle)
@@ -43,15 +42,13 @@ namespace GLib
 			if (handle == IntPtr.Zero)
 				return null;
 
-			PointerWrapper safeHandle;
-			safeHandle = new PointerWrapper (handle);
-			safeHandle.tref = new ToggleRef (obj, handle);
+			PointerWrapper safeHandle = new PointerWrapper (obj, handle);
+
+			if (ObjectCreated != null)
+				ObjectCreated.Invoke (handle);
 
 			lock (Objects)
 				Objects [handle] = safeHandle.tref;
-			
-			if (ObjectCreated != null)
-				ObjectCreated.Invoke (handle);
 
 			return safeHandle;
 		}
@@ -72,7 +69,7 @@ namespace GLib
 		static readonly object lockObject = new object ();
 		static bool idle_queued;
 
-		static TimeoutHandler PerformQueuedUnrefsHandler = PerformQueuedUnrefs;
+		static readonly TimeoutHandler PerformQueuedUnrefsHandler = PerformQueuedUnrefs;
 		static bool PerformQueuedUnrefs ()
 		{
 			List<ToggleRef> references;
@@ -93,35 +90,30 @@ namespace GLib
 		~PointerWrapper ()
 		{
 			lock (Objects)
-				Objects.Remove (handle);
+				Objects.Remove (tref.Handle);
 
 			if (ObjectDestroyed != null)
-				ObjectDestroyed.Invoke (handle);
+				ObjectDestroyed.Invoke (tref.Handle);
 
 			lock (lockObject) {
-				if (tref != null) {
-					PendingDestroys.Add (tref);
-					if (!idle_queued) {
-						Timeout.Add (50, PerformQueuedUnrefsHandler);
-						idle_queued = true;
-					}
+				PendingDestroys.Add (tref);
+				if (!idle_queued) {
+					Timeout.Add (50, PerformQueuedUnrefsHandler);
+					idle_queued = true;
 				}
 			}
 		}
 
 		public void Dispose ()
 		{
-			if (handle == IntPtr.Zero)
+			if (tref.Handle == IntPtr.Zero)
 				return;
 
 			GC.SuppressFinalize (this);
-			lock (Objects)
-				Objects.Remove (handle);
 
-			if (ObjectDestroyed != null)
-				ObjectDestroyed.Invoke (handle);
+			lock (Objects)
+				Objects.Remove (tref.Handle);
 			
-			handle = IntPtr.Zero;
 			tref.Free ();
 		}
 		#endregion

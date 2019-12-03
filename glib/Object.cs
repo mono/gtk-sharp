@@ -78,13 +78,10 @@ namespace GLib {
 				return obj;
 
 			obj = GLib.ObjectManager.CreateObject (o);
-			if (obj == null) {
+			if (obj == null || owned_ref) {
 				g_object_unref (o);
-				return null;
 			}
 
-			if (owned_ref)
-				g_object_unref (o);
 			return obj;
 		}
 
@@ -100,11 +97,9 @@ namespace GLib {
 				if (baseinfo == minfo)
 					continue;
 
-				foreach (object attr in baseinfo.GetCustomAttributes (typeof (DefaultSignalHandlerAttribute), false)) {
-					DefaultSignalHandlerAttribute sigattr = attr as DefaultSignalHandlerAttribute;
+				foreach (DefaultSignalHandlerAttribute sigattr in baseinfo.GetCustomAttributes (typeof (DefaultSignalHandlerAttribute), false)) {
+					object [] parms = new object[] { gtype };
 					MethodInfo connector = sigattr.Type.GetMethod (sigattr.ConnectionMethod, BindingFlags.Static | BindingFlags.NonPublic);
-					object[] parms = new object [1];
-					parms [0] = gtype;
 					connector.Invoke (null, parms);
 					break;
 				}
@@ -116,7 +111,7 @@ namespace GLib {
 		{
 			object[] parms = {gtype, t};
 
-			BindingFlags flags = BindingFlags.Static | BindingFlags.NonPublic;
+			const BindingFlags flags = BindingFlags.Static | BindingFlags.NonPublic;
 
 			foreach (TypeInitializerAttribute tia in t.GetCustomAttributes (typeof (TypeInitializerAttribute), true)) {
 				MethodInfo m = tia.Type.GetMethod (tia.MethodName, flags);
@@ -137,14 +132,7 @@ namespace GLib {
 
 		//  Key: The pointer to the ParamSpec of the property
 		//  Value: The corresponding PropertyInfo object
-		static Dictionary<IntPtr, PropertyInfo> properties;
-		static Dictionary<IntPtr, PropertyInfo> Properties {
-			get {
-				if (properties == null)
-					properties = new Dictionary<IntPtr, PropertyInfo> (IntPtrEqualityComparer.Instance);
-				return properties;
-			}
-		}
+		static readonly Dictionary<IntPtr, PropertyInfo> Properties = new Dictionary<IntPtr, PropertyInfo> (IntPtrEqualityComparer.Instance);
 
 		[DllImport ("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern void gtksharp_override_property_handlers (IntPtr type, GetPropertyDelegate get_cb, SetPropertyDelegate set_cb);
@@ -194,17 +182,10 @@ namespace GLib {
 		static void GetPropertyCallback (IntPtr handle, uint property_id, ref GLib.Value value, IntPtr param_spec)
 		{
 			GLib.Object obj = GLib.Object.GetObject (handle, false);
-			value.Val = (Properties [param_spec] as PropertyInfo).GetValue (obj);
+			value.Val = Properties [param_spec].GetValue (obj);
 		}
 
-		static GetPropertyDelegate get_property_handler;
-		static GetPropertyDelegate GetPropertyHandler {
-			get {
-				if (get_property_handler == null)
-					get_property_handler = new GetPropertyDelegate (GetPropertyCallback);
-				return get_property_handler;
-			}
-		}
+		static readonly GetPropertyDelegate GetPropertyHandler = new GetPropertyDelegate (GetPropertyCallback);
 
 		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 		delegate void SetPropertyDelegate (IntPtr GObject, uint property_id, ref GLib.Value value, IntPtr pspec);
@@ -212,23 +193,19 @@ namespace GLib {
 		static void SetPropertyCallback(IntPtr handle, uint property_id, ref GLib.Value value, IntPtr param_spec)
 		{
 			GLib.Object obj = GLib.Object.GetObject (handle, false);
-			(Properties [param_spec] as PropertyInfo).SetValue (obj, value.Val);
+			Properties [param_spec].SetValue (obj, value.Val);
 		}
 
-		static SetPropertyDelegate set_property_handler;
-		static SetPropertyDelegate SetPropertyHandler {
-			get {
-				if (set_property_handler == null)
-					set_property_handler = new SetPropertyDelegate (SetPropertyCallback);
-				return set_property_handler;
-			}
-		}
+		static readonly SetPropertyDelegate SetPropertyHandler = new SetPropertyDelegate (SetPropertyCallback);
 
 		[DllImport("libgobject-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_type_add_interface_static (IntPtr gtype, IntPtr iface_type, ref GInterfaceInfo info);
 
 		static void AddInterfaces (GType gtype, Type t)
 		{
+			if (!t.IsDefined (typeof (GInterfaceAttribute), true))
+				return;
+
 			foreach (Type iface in t.GetInterfaces ()) {
 				if (!iface.IsDefined (typeof (GInterfaceAttribute), true) || iface.IsAssignableFrom (t.BaseType))
 					continue;
@@ -279,7 +256,9 @@ namespace GLib {
 			GLib.GType.Register (gtype, t);
 			AddProperties (gtype, t);
 			ConnectDefaultHandlers (gtype, t);
-			InvokeClassInitializers (gtype, t);
+			if (GType.FullCompatStartup) {
+				InvokeClassInitializers (gtype, t);
+			}
 			AddInterfaces (gtype, t);
 			g_types[t] = gtype;
 			return gtype;
@@ -380,7 +359,7 @@ namespace GLib {
 			}
 			set {
 				if (handle != null) {
-					if (handle.handle == value)
+					if (handle.tref.Handle == value)
 						return;
 
 					handle.Dispose ();
@@ -424,7 +403,7 @@ namespace GLib {
 
 		public IntPtr Handle {
 			get {
-				return handle != null ? handle.handle : IntPtr.Zero;
+				return handle != null ? handle.tref.Handle : IntPtr.Zero;
 			}
 		}
 

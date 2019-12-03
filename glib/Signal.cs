@@ -185,14 +185,7 @@ namespace GLib {
 				tref.RemoveSignal (name);
 		}
 
-		static EventHandler closure_disposed_cb;
-		static EventHandler ClosureDisposedHandler {
-			get {
-				if (closure_disposed_cb == null)
-					closure_disposed_cb = new EventHandler (ClosureDisposedCB);
-				return closure_disposed_cb;
-			}
-		}
+		static readonly EventHandler ClosureDisposedHandler = ClosureDisposedCB;
 
 		static void ClosureInvokedCB (object o, ClosureInvokedArgs args)
 		{
@@ -207,14 +200,7 @@ namespace GLib {
 				handler.DynamicInvoke (new object [] { args.Target, args.Args });
 		}
 
-		static ClosureInvokedHandler closure_invoked_cb;
-		static ClosureInvokedHandler ClosureInvokedHandler {
-			get {
-				if (closure_invoked_cb == null)
-					closure_invoked_cb = new ClosureInvokedHandler (ClosureInvokedCB);
-				return closure_invoked_cb;
-			}
-		}
+		static readonly ClosureInvokedHandler ClosureInvokedHandler = ClosureInvokedCB;
 
 		public static Signal Lookup (GLib.Object obj, string name)
 		{

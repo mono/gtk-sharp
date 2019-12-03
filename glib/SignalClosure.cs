@@ -61,7 +61,7 @@ namespace GLib {
 			uint id = UInt32.MaxValue;
 			GCHandle? gch;
 
-			static Dictionary<IntPtr, SignalClosure> closures = new Dictionary<IntPtr, SignalClosure> (IntPtrEqualityComparer.Instance);
+			static readonly Dictionary<IntPtr, SignalClosure> closures = new Dictionary<IntPtr, SignalClosure> (IntPtrEqualityComparer.Instance);
 
 			public SignalClosure (Signal sig)
 			{
@@ -114,18 +114,7 @@ namespace GLib {
 				Invoked (this, args);
 			}
 
-			static ClosureMarshal marshaler;
-			static ClosureMarshal Marshaler {
-				get {
-					if (marshaler == null) {
-						unsafe
-						{
-							marshaler = new ClosureMarshal (MarshalCallback);
-						}
-					}
-					return marshaler;
-				}
-			}
+			unsafe static readonly ClosureMarshal Marshaler = MarshalCallback;
 
 			[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
 			unsafe delegate void ClosureMarshal (IntPtr closure, Value* return_val, uint n_param_vals, Value* param_values, IntPtr invocation_hint, IntPtr marshal_data);
@@ -175,14 +164,7 @@ namespace GLib {
 					closure.Dispose ();
 			}
 
-			static ClosureNotify notify_handler;
-			static ClosureNotify Notify {
-				get {
-					if (notify_handler == null)
-						notify_handler = new ClosureNotify (NotifyCallback);
-					return notify_handler;
-				}
-			}
+			static readonly ClosureNotify Notify = NotifyCallback;
 
 			[DllImport ("glibsharpglue-2", CallingConvention = CallingConvention.Cdecl)]
 			static extern IntPtr glibsharp_closure_new (ClosureMarshal marshaler, ClosureNotify notify, IntPtr gch);

@@ -195,6 +195,7 @@
     <Compile Include="IntPtrEqualityComparer.cs" />
     <Compile Include="FastActivator.cs" />
     <Compile Include="PointerWrapper.cs" />
+    <Compile Include="TypeEqualityComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
