@@ -1,0 +1,26 @@
+trigger:
+  - master
+  - gtk-sharp-2-12-branch
+
+pr:
+  - master
+  - gtk-sharp-2-12-branch
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- bash: sudo apt install -y build-essential libtool autoconf automake gettext libglade2-dev libglib2.0-dev libgtk2.0-dev libgtk-3-dev libpango1.0-dev mono-devel monodoc-base pkg-config
+  displayName: Install Dependencies
+
+- bash: |
+    export CFLAGS=-ggdb3
+
+    if [ -e ./bootstrap-2.12 ]; then
+      ./bootstrap-2.12
+    else
+      ./autogen.sh
+    fi
+
+    make -w
+  displayName: Build
