@@ -26,27 +26,26 @@ namespace GLib {
 	
 	public class GException : Exception
 	{
-		IntPtr errptr;
-	
-		public GException (IntPtr errptr) : base ()
+		public GException (IntPtr errptr) : base (ToString(errptr))
 		{
-			this.errptr = errptr;
+			g_clear_error (ref errptr);
+		}
+
+		static string ToString (IntPtr errPtr)
+		{
+			if (errPtr != IntPtr.Zero) {
+				string message = Marshaller.Utf8PtrToString (gtksharp_error_get_message (errPtr));
+				if (!string.IsNullOrEmpty (message))
+					return message;
+			}
+			return "No GLib message";
 		}
 
 		[DllImport("glibsharpglue-2", CallingConvention=CallingConvention.Cdecl)]
 		static extern IntPtr gtksharp_error_get_message (IntPtr errptr);
-		public override string Message {
-			get {
-				return Marshaller.Utf8PtrToString (gtksharp_error_get_message (errptr));
-			}
-		}
 
 		[DllImport("libglib-2.0-0.dll", CallingConvention=CallingConvention.Cdecl)]
 		static extern void g_clear_error (ref IntPtr errptr);
-		~GException ()
-		{
-			g_clear_error (ref errptr);
-		}
 	}
 }
 
