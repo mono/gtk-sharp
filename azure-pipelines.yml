@@ -1,9 +1,9 @@
 trigger:
-  - master
+  - main
   - gtk-sharp-2-12-branch
 
 pr:
-  - master
+  - main
   - gtk-sharp-2-12-branch
 
 pool:
