@@ -143,11 +143,12 @@
   <api filename="../gdk/gdk-api.raw">
     <library name="libgdk-3-0.dll">
       <namespace name="Gdk">
-        <directory path="gtk+-3.0.0/gdk">
+        <directory path="gtk+-3.14.15/gdk">
           <exclude>gdkalias.h</exclude>
           <exclude>gdkwindowimpl.h</exclude>
           <exclude>keyname-table.h</exclude>
         </directory>
+        <directory path="gtk+-3.14.15/gdk/deprecated" />
       </namespace>
     </library>
     <library name="libgdk_pixbuf-2.0-0.dll">
@@ -167,7 +168,7 @@
   <api filename="../gtk/gtk-api.raw">
     <library name="libgtk-3-0.dll">
       <namespace name="Gtk">
-        <directory path="gtk+-3.0.0/gtk">
+        <directory path="gtk+-3.14.15/gtk">
           <!-- Internal stuff -->
           <exclude>gtkalias.h</exclude>
           <exclude>gtkappchooseronline.h</exclude>
@@ -260,7 +261,10 @@
           <exclude>gtktree.h</exclude>
           <exclude>gtktreeitem.c</exclude>
           <exclude>gtktreeitem.h</exclude>
+          <exclude>gtkcellarea.c</exclude>
+          <exclude>gtklockbutton.h</exclude>
         </directory>
+        <directory path="gtk+-3.14.15/gtk/deprecated" />
       </namespace>
     </library>
   </api>
