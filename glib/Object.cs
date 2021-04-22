@@ -36,6 +36,7 @@ namespace GLib {
 		bool disposed = false;
 		static uint idx = 1;
 		static Dictionary<IntPtr, ToggleRef> Objects = new Dictionary<IntPtr, ToggleRef>();
+		static Dictionary<IntPtr, Dictionary<IntPtr, GLib.Value>> PropertiesToSet = new Dictionary<IntPtr, Dictionary<IntPtr, GLib.Value>>();
 
 		~Object ()
 		{
@@ -89,7 +90,9 @@ namespace GLib {
 
 			ToggleRef toggle_ref;
 			lock (Objects) {
-				toggle_ref = (ToggleRef) Objects[o];
+				if (!Objects.TryGetValue (o, out toggle_ref)) {
+					return null;
+				}
 			}
 
 			if (toggle_ref != null) {
@@ -243,6 +246,7 @@ namespace GLib {
 				}
 
 				AddProperties (gobject_class_handle);
+				AddSignals ();
 			}
 
 			private void InitializeProperties (GInterfaceAdapter adapter, IntPtr gobject_class_handle)
@@ -320,6 +324,15 @@ namespace GLib {
 							throw new InvalidOperationException (String.Format ("GLib.PropertyAttribute cannot be applied to property {0} of type {1} because the return type of the property is not supported",
 							                                                    pinfo.Name, Type.FullName));
 						}
+					}
+				}
+			}
+
+			void AddSignals()
+			{
+				foreach (EventInfo einfo in Type.GetEvents (BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly)) {
+					foreach (object attr in einfo.GetCustomAttributes (typeof (SignalAttribute), false)) {
+						RegisterSignal (((SignalAttribute)attr).CName, gtype, GLib.Signal.Flags.RunLast, GLib.GType.None, new GLib.GType [0], null);
 					}
 				}
 			}
@@ -406,7 +419,9 @@ namespace GLib {
 			GType gtype = new GLib.GType (gtypeval);
 			GObjectClass threshold_class = (GObjectClass) Marshal.PtrToStructure (gtype.GetThresholdType ().GetClassPtr (), typeof (GObjectClass));
 			IntPtr raw = threshold_class.constructor_cb (gtypeval, n_construct_properties, construct_properties);
-			bool construct_needed = true;
+			Dictionary<IntPtr, GLib.Value> deferred;
+
+			GLib.Object obj = null;
 			for (int i = 0; i < n_construct_properties; i++) {
 				IntPtr p = new IntPtr (construct_properties.ToInt64 () + i * 2 * IntPtr.Size);
 
@@ -417,17 +432,40 @@ namespace GLib {
 				Value val = (Value) Marshal.PtrToStructure (Marshal.ReadIntPtr (p, IntPtr.Size), typeof (Value));
 				if ((IntPtr) val.Val != IntPtr.Zero) {
 					GCHandle gch = (GCHandle) (IntPtr) val.Val;
-					Object o = (GLib.Object) gch.Target;
-					o.Raw = raw;
-					construct_needed = false;
+					obj = (GLib.Object) gch.Target;
+					obj.Raw = raw;
 					break;
 				}
 			}
 
-			if (construct_needed)
-				GetObject (raw, false);
+			if (obj == null)
+				obj = GetObject (raw, false);
 
+			if(PropertiesToSet.TryGetValue(raw, out deferred)) {
+				foreach(var item in deferred) {
+					SetDeferredProperty(obj, item.Value, item.Key);
+				}
+				PropertiesToSet.Remove(raw);
+			}
 			return raw;
+		}
+
+		[DllImport (Global.GObjectNativeDll, CallingConvention = CallingConvention.Cdecl)]
+		static extern uint g_signal_newv (IntPtr signal_name, IntPtr gtype, GLib.Signal.Flags signal_flags, IntPtr closure, IntPtr accumulator, IntPtr accu_data, IntPtr c_marshaller, IntPtr return_type, uint n_params, [MarshalAs (UnmanagedType.LPArray)] IntPtr[] param_types);
+
+		protected static uint RegisterSignal (string signal_name, GLib.GType gtype, GLib.Signal.Flags signal_flags, GLib.GType return_type, GLib.GType[] param_types, GLib.ClosureMarshal marshaler)
+		{
+			IntPtr[] native_param_types = new IntPtr [param_types.Length];
+			for (int parm_idx = 0; parm_idx < param_types.Length; parm_idx++)
+				native_param_types [parm_idx] = param_types [parm_idx].Val;
+
+			IntPtr native_signal_name = GLib.Marshaller.StringToPtrGStrdup (signal_name);
+			try {
+				IntPtr closure = marshaler != null ? GLib.SignalClosure.CreateClosure (marshaler) : IntPtr.Zero;
+				return g_signal_newv (native_signal_name, gtype.Val, signal_flags, closure, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, return_type.Val, (uint) param_types.Length, native_param_types);
+			} finally {
+				GLib.Marshaller.Free (native_signal_name);
+			}
 		}
 
 		[DllImport (Global.GObjectNativeDll, CallingConvention = CallingConvention.Cdecl)]
@@ -511,17 +549,30 @@ namespace GLib {
 
 		static void SetPropertyCallback(IntPtr handle, uint property_id, ref GLib.Value value, IntPtr param_spec)
 		{
-			// FIXME: Here is a big quick hack to avoid race condition when trying to set up adjustment with contructor
-			// Because Raw is set too late
-			if (param_spec != IntPtr.Zero) {
-				ParamSpec foo =	new ParamSpec(param_spec);
-				if (foo.Name == "gtk-sharp-managed-instance") {
-					GCHandle gch = (GCHandle) (IntPtr) value.Val;
-					Object o = (GLib.Object) gch.Target;
-					o.Raw = handle;
-				}
+			// There are multiple issues in this place.
+			// We cannot construct an object here as it can be in construction
+			// from ConstructorCallback thus managed object already created.
+			//
+			// We cannot use the "gtk-sharp-managed-instance" property as when
+			// constructed by Gtk.Builder it is set to null.
+			//
+			// We defer setting the properties to later time when
+			// we have unmanaged and managed objects paired.
+			GLib.Object obj = TryGetObject(handle);
+			if(obj != null) {
+				SetDeferredProperty(obj, value, param_spec);
+				return;
 			}
-			GLib.Object obj = GLib.Object.GetObject (handle, false);
+			Dictionary<IntPtr, GLib.Value> deferred;
+			if(!PropertiesToSet.TryGetValue(handle, out deferred)) {
+				deferred = new Dictionary<IntPtr, GLib.Value>();
+				PropertiesToSet.Add(handle, deferred);
+			}
+			deferred[param_spec] = value;
+		}
+
+		static void SetDeferredProperty(GLib.Object obj, GLib.Value value, IntPtr param_spec)
+		{
 			var type = (Type)obj.LookupGType ();
 
 			Dictionary<IntPtr, PropertyInfo> props;
@@ -596,7 +647,7 @@ namespace GLib {
 		protected virtual void CreateNativeObject (string[] names, GLib.Value[] vals)
 		{
 			GType gtype = LookupGType ();
-			bool is_managed_subclass = gtype.ToString ().StartsWith ("__gtksharp");
+			bool is_managed_subclass = GType.IsManaged (gtype);
 			GParameter[] parms = new GParameter [is_managed_subclass ? names.Length + 1 : names.Length];
 			for (int i = 0; i < names.Length; i++) {
 				parms [i].name = GLib.Marshaller.StringToPtrGStrdup (names [i]);

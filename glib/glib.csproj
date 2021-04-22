@@ -102,6 +102,7 @@
     <Compile Include="SourceFuncs.cs" />
     <Compile Include="GLibSharp.SourceDummyMarshalNative.cs" />
     <Compile Include="GLibSharp.SourceFuncNative.cs" />
+    <Compile Include="TypeNameAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Core" />

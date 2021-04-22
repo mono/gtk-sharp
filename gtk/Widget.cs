@@ -53,38 +53,6 @@ namespace Gtk {
 			IntPtr notifiers;
 		}
 
-		[UnmanagedFunctionPointer (CallingConvention.Cdecl)]
-		delegate void ClosureMarshal (IntPtr closure, IntPtr return_val, uint n_param_vals, IntPtr param_values, IntPtr invocation_hint, IntPtr marshal_data);
-
-		[DllImport ("libgobject-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
-		static extern IntPtr g_closure_new_simple (int closure_size, IntPtr dummy);
-
-		[DllImport ("libgobject-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
-		static extern void g_closure_set_marshal (IntPtr closure, ClosureMarshal marshaler);
-
-		static IntPtr CreateClosure (ClosureMarshal marshaler) {
-			IntPtr raw_closure = g_closure_new_simple (Marshal.SizeOf (typeof (GClosure)), IntPtr.Zero);
-			g_closure_set_marshal (raw_closure, marshaler);
-			return raw_closure;
-		}
-
-		[DllImport ("libgobject-2.0-0.dll", CallingConvention = CallingConvention.Cdecl)]
-		static extern uint g_signal_newv (IntPtr signal_name, IntPtr gtype, GLib.Signal.Flags signal_flags, IntPtr closure, IntPtr accumulator, IntPtr accu_data, IntPtr c_marshaller, IntPtr return_type, uint n_params, [MarshalAs (UnmanagedType.LPArray)] IntPtr[] param_types);
-
-		static uint RegisterSignal (string signal_name, GLib.GType gtype, GLib.Signal.Flags signal_flags, GLib.GType return_type, GLib.GType[] param_types, ClosureMarshal marshaler)
-		{
-			IntPtr[] native_param_types = new IntPtr [param_types.Length];
-			for (int parm_idx = 0; parm_idx < param_types.Length; parm_idx++)
-				native_param_types [parm_idx] = param_types [parm_idx].Val;
-
-			IntPtr native_signal_name = GLib.Marshaller.StringToPtrGStrdup (signal_name);
-			try {
-				return g_signal_newv (native_signal_name, gtype.Val, signal_flags, CreateClosure (marshaler), IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, return_type.Val, (uint) param_types.Length, native_param_types);
-			} finally {
-				GLib.Marshaller.Free (native_signal_name);
-			}
-		}
-
 		static void ActivateMarshal_cb (IntPtr raw_closure, IntPtr return_val, uint n_param_vals, IntPtr param_values, IntPtr invocation_hint, IntPtr marshal_data)
 		{
 			try {
@@ -101,15 +69,15 @@ namespace Gtk {
 			}
 		}
 
-		static ClosureMarshal ActivateMarshalCallback;
+		static GLib.ClosureMarshal ActivateMarshalCallback;
 
 		static void ConnectActivate (GLib.GType gtype)
 		{
 			if (ActivateMarshalCallback == null)
-				ActivateMarshalCallback = new ClosureMarshal (ActivateMarshal_cb);
+				ActivateMarshalCallback = new GLib.ClosureMarshal (ActivateMarshal_cb);
 
 			GtkWidgetClass klass = GetClassStruct (gtype, false);
-			klass.ActivateSignal = RegisterSignal ("activate_signal", gtype, GLib.Signal.Flags.RunLast, GLib.GType.None, new GLib.GType [0], ActivateMarshalCallback);
+			klass.ActivateSignal = GLib.Object.RegisterSignal ("activate_signal", gtype, GLib.Signal.Flags.RunLast, GLib.GType.None, new GLib.GType [0], ActivateMarshalCallback);
 			OverrideClassStruct (gtype, klass);
 		}
 
@@ -156,11 +124,11 @@ namespace Gtk {
 			}
 		}
 
-		static ClosureMarshal binding_delegate;
-		static ClosureMarshal BindingDelegate {
+		static GLib.ClosureMarshal binding_delegate;
+		static GLib.ClosureMarshal BindingDelegate {
 			get {
 				if (binding_delegate == null)
-					binding_delegate = new ClosureMarshal (BindingMarshal_cb);
+					binding_delegate = new GLib.ClosureMarshal (BindingMarshal_cb);
 				return binding_delegate;
 			}
 		}
@@ -195,7 +163,7 @@ namespace Gtk {
 
 			string signame = t.Name.Replace (".", "_") + "_bindings";
 			IntPtr native_signame = GLib.Marshaller.StringToPtrGStrdup (signame);
-			RegisterSignal (signame, gtype, GLib.Signal.Flags.RunLast | GLib.Signal.Flags.Action, GLib.GType.None, new GLib.GType[] {GLib.GType.Long}, BindingDelegate);
+			GLib.Object.RegisterSignal (signame, gtype, GLib.Signal.Flags.RunLast | GLib.Signal.Flags.Action, GLib.GType.None, new GLib.GType[] {GLib.GType.Long}, BindingDelegate);
 
 			if (binding_invokers == null)
 				binding_invokers = new List<BindingInvoker> ();
