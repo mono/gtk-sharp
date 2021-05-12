@@ -56,7 +56,7 @@ namespace Cairo
 		public void Dispose ()
 		{
 			if (handle != IntPtr.Zero)
-				NativeMethods.cairo_device_destroy (handle);
+				Global.QueueUnref (NativeMethods.cairo_device_destroy, handle);
 			handle = IntPtr.Zero;
 			GC.SuppressFinalize (this);
 		}

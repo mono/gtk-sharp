@@ -79,7 +79,7 @@ namespace Cairo
 			if (handle == IntPtr.Zero)
 				return;
 
-			NativeMethods.cairo_font_options_destroy (handle);
+			Global.QueueUnref (NativeMethods.cairo_font_options_destroy, handle);
 			handle = IntPtr.Zero;
 		}
 

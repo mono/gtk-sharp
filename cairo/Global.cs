@@ -1,12 +1,10 @@
 //
-// Mono.Cairo.Context.cs
+// Mono.Cairo.Global.cs
 //
-// Author:
-//   Miguel de Icaza (miguel@novell.com)
+// Authors:
+//    Andrés G. Aragoneses
 //
-// This is an OO wrapper API for the Cairo API.
-//
-// Copyright 2007 Novell, Inc (http://www.novell.com)
+// (C) Andrés G. Aragoneses, 2013.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -15,10 +13,10 @@
 // distribute, sublicense, and/or sell copies of the Software, and to
 // permit persons to whom the Software is furnished to do so, subject to
 // the following conditions:
-//
+// 
 // The above copyright notice and this permission notice shall be
 // included in all copies or substantial portions of the Software.
-//
+// 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 // EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -29,48 +27,18 @@
 //
 
 using System;
-using System.Runtime.InteropServices;
-using Cairo;
 
-namespace Cairo {
-
-	public class Path : IDisposable
+namespace Cairo
+{
+	internal class Global
 	{
-		IntPtr handle = IntPtr.Zero;
-
-		internal Path (IntPtr handle)
+		internal static void QueueUnref (Action<IntPtr> unref_native_function, IntPtr handle)
 		{
-			if (handle == IntPtr.Zero)
-				throw new ArgumentException ("handle should not be NULL", "handle");
-
-			this.handle = handle;
-			if (CairoDebug.Enabled)
-				CairoDebug.OnAllocated (handle);
-		}
-
-		~Path ()
-		{
-			Dispose (false);
-		}
-
-		public IntPtr Handle { get { return handle; } }
-
-		public void Dispose ()
-		{
-			Dispose (true);
-			GC.SuppressFinalize (this);
-		}
-
-		protected virtual void Dispose (bool disposing)
-		{
-			if (!disposing || CairoDebug.Enabled)
-				CairoDebug.OnDisposed<Path> (handle, disposing);
-
-			if (handle == IntPtr.Zero)
-				return;
-
-			Global.QueueUnref (NativeMethods.cairo_path_destroy, handle);
-			handle = IntPtr.Zero;
+			GLib.Timeout.Add (50, () => {
+				unref_native_function (handle);
+				return false;
+			});
 		}
 	}
 }
+
