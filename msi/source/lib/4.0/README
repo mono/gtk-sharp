@@ -1,0 +1,5 @@
+Mono.Posix.dll has been taken from the lib\mono\4.0 directory in the mono-3.12.1 Windows binary release:
+http://download.mono-project.com/archive/3.12.1/windows-installer/mono-3.12.1-gtksharp-2.12.26-win32-0.msi
+
+Although newer mono releases exist, this was the last release with properly strong named Mono.Posix DLLs.
+Since the msi installer installs those DLLs into the GAC they need to be strong named.
